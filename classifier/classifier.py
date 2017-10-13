@@ -15,7 +15,7 @@ data_file = directory + "data.csv"
 dlist = []
 with open(data_file,'rb') as f:
 	dlist = list(csv.reader(f))
-
+#adding some stuff
 #print dlist
 result = []
 for repo in dlist:

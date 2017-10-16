@@ -13,15 +13,6 @@ index db992021..bb3e3881 100644
    public static final DiagnosticType VAR_MULTIPLY_DECLARED_ERROR =
        DiagnosticType.error(
            "JSC_VAR_MULTIPLY_DECLARED_ERROR",
-@@ -201,7 +197,7 @@ class SyntacticScopeCreator implements ScopeCreator {
-           info = parent.getJSDocInfo();
-         }
-         allowDupe =
--            info != null && info.getSuppressions().contains("duplicate");
-+          info != null && info.getSuppressions().contains("duplicate");
- 
-         if (!allowDupe) {
-           compiler.report(
 @@ -230,8 +226,7 @@ class SyntacticScopeCreator implements ScopeCreator {
    private void declareVar(String name, Node n, Node parent,
                            Node gramps, JSType declaredType,

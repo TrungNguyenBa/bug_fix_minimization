@@ -2,14 +2,15 @@ diff --git a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
 index 00649b6..2b31e2c 100644
 --- a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
 +++ b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
-@@ -70,9 +70,7 @@ public class SuperpermsListener implements Listener {
+@@ -70,11 +70,9 @@ public class SuperpermsListener implements Listener {
  				value = false;
  				perm = perm.substring(1);
  			}
 -			if (!permission.getChildren().containsKey(perm)) {
--				permission.getChildren().put(perm, value);
--			}
-+			permission.getChildren().put(perm, value);
+ 			permission.getChildren().put(perm, value);
  		}
  	}
+-	}
  
+ 	private void updatePlayerMetadata(Permission rootPermission, Player player, PermissionUser user) {
+ 		rootPermission.getChildren().clear();

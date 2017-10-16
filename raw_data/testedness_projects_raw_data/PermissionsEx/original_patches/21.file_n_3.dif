@@ -40,17 +40,6 @@ index 014604a..fc8eb74 100644
          try {
              InetAddress.getByName("api.mojang.com");
              Futures.addCallback(this.activeDataStore.performBulkOperation(new Function<DataStore, Integer>() {
-@@ -173,8 +162,8 @@ public class PermissionsEx implements ImplementationInterface {
-                 public void onSuccess(@Nullable Integer result) {
-                     if (result != null && result > 0) {
-                         getLogger().info(fLog(_n("%s user successfully converted from name to UUID",
--                                "%s users successfully converted from name to UUID!",
--                                result, result)));
-+                                                "%s users successfully converted from name to UUID!",
-+                                                result, result)));
-                     }
-                 }
- 
 @@ -187,6 +176,8 @@ public class PermissionsEx implements ImplementationInterface {
              getLogger().warn(fLog(_("Unable to resolve Mojang API for UUID conversion. Do you have an internet connection? UUID conversion will not proceed (but may not be necessary).")));
          }

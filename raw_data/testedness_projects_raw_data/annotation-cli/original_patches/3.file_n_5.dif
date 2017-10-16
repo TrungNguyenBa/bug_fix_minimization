@@ -27,15 +27,15 @@ index 983d8c6..d3ed144 100644
  
  /**
   * This is the main class used to process options that are available for a user
-@@ -56,8 +50,6 @@ import org.valhalla.cli.annotations.OptionReference;
-  * 
+@@ -57,8 +51,6 @@ import org.valhalla.cli.annotations.OptionReference;
   */
  public class Options {
--	
--	private static final Logger logger = LoggerFactory.getLogger(Options.class);
  
+-	private static final Logger logger = LoggerFactory.getLogger(Options.class);
+-
  	/**
  	 * This interface is used by the Options instance to convert the string
+ 	 * value that is passed as part of the command line parameter list into the
 @@ -102,55 +94,12 @@ public class Options {
  	 */
  	public Options(Class<?> cliOptions[]) throws OptionsException {

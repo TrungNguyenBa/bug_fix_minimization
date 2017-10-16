@@ -49,14 +49,14 @@ index 0290562..3ea21db 100644
  
    protected abstract void init() throws MojoExecutionException;
    protected abstract String getBuildAuthorName();
-@@ -172,7 +148,9 @@ public abstract class GitDataProvider {
+@@ -172,8 +148,10 @@ public abstract class GitDataProvider {
    }
  
    void log(String... parts) {
--    loggerBridge.log((Object[]) parts);
 +    if (loggerBridge != null) {
-+      loggerBridge.log((Object[]) parts);
-+    }
-   }
+       loggerBridge.log((Object[]) parts);
+     }
++  }
  
    protected void put(@NotNull Properties properties, String key, String value) {
+     String keyWithPrefix = prefixDot + key;

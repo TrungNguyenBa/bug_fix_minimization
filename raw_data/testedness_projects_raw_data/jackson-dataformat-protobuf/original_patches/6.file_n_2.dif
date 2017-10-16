@@ -10,13 +10,12 @@ index 5b92fd9..1fb9587 100644
 +            ProtobufField next = f.nextIf(name);
 +            if (next != null) {
 +                f = next;
-+            } else {
-+                f = _currMessage.field(name);
-+            }
-         } else  {
+             } else {
 -            f = _currMessage.firstIf(name);
--        }
++                f = _currMessage.field(name);
+             }
 -        if (f == null) {
++        } else  {
              f = _currMessage.field(name);
          }
          if (f == null) {
@@ -37,13 +36,12 @@ index 5b92fd9..1fb9587 100644
 +            ProtobufField next = f.nextIf(name.getValue());
 +            if (next != null) {
 +                f = next;
-+            } else {
-+                f = _currMessage.field(name);
-+            }
-         } else  {
+             } else {
 -            f = _currMessage.firstIf(name);
--        }
++                f = _currMessage.field(name);
+             }
 -        if (f == null) {
++        } else  {
              f = _currMessage.field(name);
          }
          if (f == null) {

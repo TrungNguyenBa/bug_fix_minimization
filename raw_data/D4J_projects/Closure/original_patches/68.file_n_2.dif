@@ -8,8 +8,7 @@ index 167e2cbf..9ceae7c5 100644
                      }
 -                  }
  
--                  token = eatTokensUntilEOL();
-+                    token = eatTokensUntilEOL();
+                     token = eatTokensUntilEOL();
 +                  }
                    continue retry;
                }

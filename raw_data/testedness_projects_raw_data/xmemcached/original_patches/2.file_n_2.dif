@@ -2,57 +2,28 @@ diff --git a/src/main/java/net/rubyeye/xmemcached/impl/MemcachedHandler.java b/s
 index 2130f95..e051ad1 100644
 --- a/src/main/java/net/rubyeye/xmemcached/impl/MemcachedHandler.java
 +++ b/src/main/java/net/rubyeye/xmemcached/impl/MemcachedHandler.java
-@@ -184,32 +184,30 @@ public class MemcachedHandler extends HandlerAdapter {
+@@ -184,15 +184,13 @@ public class MemcachedHandler extends HandlerAdapter {
  	}
  
  	private void checkHeartBeat(Session session) {
 -		if (this.enableHeartBeat) {
--			log.debug(
--					"Check session (%s) is alive,send heartbeat",
--					session.getRemoteSocketAddress() == null ? "unknown"
--							: SystemUtils.getRawAddress(session
--									.getRemoteSocketAddress())
--									+ ":"
+ 		log.debug(
+ 				"Check session (%s) is alive,send heartbeat",
+ 				session.getRemoteSocketAddress() == null ? "unknown"
+ 						: SystemUtils.getRawAddress(session
+ 								.getRemoteSocketAddress())
+ 								+ ":"
 -									+ session.getRemoteSocketAddress()
 -											.getPort());
--			Command versionCommand = null;
--			CountDownLatch latch = new CountDownLatch(1);
--			if (this.client.getProtocol() == Protocol.Binary) {
--				versionCommand = new BinaryVersionCommand(latch,
--						session.getRemoteSocketAddress());
-+		log.debug(
-+				"Check session (%s) is alive,send heartbeat",
-+				session.getRemoteSocketAddress() == null ? "unknown"
-+						: SystemUtils.getRawAddress(session
-+								.getRemoteSocketAddress())
-+								+ ":"
 +								+ session.getRemoteSocketAddress().getPort());
-+		Command versionCommand = null;
-+		CountDownLatch latch = new CountDownLatch(1);
-+		if (this.client.getProtocol() == Protocol.Binary) {
-+			versionCommand = new BinaryVersionCommand(latch,
-+					session.getRemoteSocketAddress());
- 
--			} else {
--				versionCommand = new TextVersionCommand(latch,
--						session.getRemoteSocketAddress());
--			}
--			session.write(versionCommand);
--			// Start a check thread,avoid blocking reactor thread
--			if (this.heartBeatThreadPool != null) {
--				this.heartBeatThreadPool.execute(new CheckHeartResultThread(
--						versionCommand, session));
--			}
-+		} else {
-+			versionCommand = new TextVersionCommand(latch,
-+					session.getRemoteSocketAddress());
+ 		Command versionCommand = null;
+ 		CountDownLatch latch = new CountDownLatch(1);
+ 		if (this.client.getProtocol() == Protocol.Binary) {
+@@ -209,7 +207,7 @@ public class MemcachedHandler extends HandlerAdapter {
+ 			this.heartBeatThreadPool.execute(new CheckHeartResultThread(
+ 					versionCommand, session));
  		}
-+		session.write(versionCommand);
-+		// Start a check thread,avoid blocking reactor thread
-+		if (this.heartBeatThreadPool != null) {
-+			this.heartBeatThreadPool.execute(new CheckHeartResultThread(
-+					versionCommand, session));
-+		}
+-		}
 +
  	}
  

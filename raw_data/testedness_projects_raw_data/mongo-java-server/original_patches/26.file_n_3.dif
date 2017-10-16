@@ -7,7 +7,8 @@ index 2b2d629..996e22f 100644
      @Test
      public void testQueryWithDotNotationFieldSelector() throws Exception {
 -        collection.insert(json("_id: 123, index: false, foo: { a: 'a1', b: 0}"));
--        DBObject obj = collection.findOne(json("{}"), json("foo.a: 1, foo.b: 1"));
++    	collection.insert(json("index: 1, foo: { a: 'a1', b: 'b1'}"));
+     	DBObject obj = collection.findOne(json("{}"), json("foo.a: 1, foo.b: 1"));
 -        assertThat(obj).isEqualTo(json("_id: 123, foo: {a: 'a1', b: 0}"));
 -
 -        obj = collection.findOne(json("{}"), json("foo.a: 1"));
@@ -21,8 +22,6 @@ index 2b2d629..996e22f 100644
 -
 -        obj = collection.findOne(json("{}"), json("foo.a.b.c.d: 1"));
 -        assertThat(obj).isEqualTo(json("_id: 123, foo: {}"));
-+    	collection.insert(json("index: 1, foo: { a: 'a1', b: 'b1'}"));
-+    	DBObject obj = collection.findOne(json("{}"), json("foo.a: 1, foo.b: 1"));
 +        assertThat(obj.keySet()).containsOnly("_id", "foo");
      }
  

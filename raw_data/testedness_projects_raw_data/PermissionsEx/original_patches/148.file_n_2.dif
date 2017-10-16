@@ -20,7 +20,7 @@ index 88d0b2f..9885246 100644
  /**
   * @author t3hk0d3
   */
-@@ -588,12 +588,14 @@ public abstract class PermissionGroup extends PermissionEntity implements Compar
+@@ -588,15 +588,17 @@ public abstract class PermissionGroup extends PermissionEntity implements Compar
  			}
  		}
  
@@ -29,13 +29,14 @@ index 88d0b2f..9885246 100644
 +		if (!visitedGroups.contains(this)) {
  			visitedGroups.add(this);
  
--			for (PermissionGroup group : this.getParentGroups(worldName)) {
--				group.getInheritedPermissions(worldName, permissions, true, false, visitedGroups);
 +			// Group inhertance
 +			if (groupInheritance) {
-+				for (PermissionGroup group : this.getParentGroups(worldName)) {
-+					group.getInheritedPermissions(worldName, permissions, true, false, visitedGroups);
-+				}
+ 				for (PermissionGroup group : this.getParentGroups(worldName)) {
+ 					group.getInheritedPermissions(worldName, permissions, true, false, visitedGroups);
+ 				}
  			}
  		}
- 	}
++	}
+ 
+ 	protected void copyFilterPermissions(String filterPrefix, List<String> to, String[] from) {
+ 		for (String permission : from) {

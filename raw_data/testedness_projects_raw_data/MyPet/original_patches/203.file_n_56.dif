@@ -163,14 +163,14 @@ index afbfc701..f0c545be 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the sound that is played when the MyPet get hurt
 +     */
 +    @Override
 +    protected String getHurtSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -            final MyZombie myZombie = (MyZombie) myPet;
 -            final EntityMyZombie entityMyZombie = this;
@@ -189,7 +189,12 @@ index afbfc701..f0c545be 100644
 -                        for (EquipmentSlot slot : EquipmentSlot.values())
 -                        {
 -                            if (myZombie.getEquipment(slot) != null)
--                            {
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
 -                                entityMyZombie.setPetEquipment(slot.getSlotId(), myZombie.getEquipment(slot));
 -                            }
 -                        }
@@ -197,12 +202,6 @@ index afbfc701..f0c545be 100644
 -                }
 -            }, 5L);
 -        }
-+    /**
-+     * Returns the sound that is played when the MyPet dies
-+     */
-+    @Override
-+    protected String getDeathSound()
-+    {
 +        return "mob.zombie.death";
      }
  

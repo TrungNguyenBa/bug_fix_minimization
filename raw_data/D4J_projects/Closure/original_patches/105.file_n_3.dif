@@ -2,7 +2,7 @@ diff --git a/test/com/google/javascript/jscomp/FoldConstantsTest.java b/test/com
 index 6edfbb20..c5544a6d 100644
 --- a/test/com/google/javascript/jscomp/FoldConstantsTest.java
 +++ b/test/com/google/javascript/jscomp/FoldConstantsTest.java
-@@ -641,22 +641,8 @@ public class FoldConstantsTest extends CompilerTestCase {
+@@ -641,20 +641,6 @@ public class FoldConstantsTest extends CompilerTestCase {
      // Only optimize if it's a size win.
      fold("x = ['a', '5', 'c'].join('a very very very long chain')",
           "x = [\"a\",\"5\",\"c\"].join(\"a very very very long chain\")");
@@ -21,8 +21,5 @@ index 6edfbb20..c5544a6d 100644
 -    fold("x = [1,2,3].join('abcdef')",
 -         "x = '1abcdef2abcdef3'");
    }
--  
-+
+ 
    public void testStringJoinAdd_b1992789() {
-     fold("x = ['a'].join('')", "x = \"a\"");
-     fold("x = [foo()].join('')", "x = '' + foo()");

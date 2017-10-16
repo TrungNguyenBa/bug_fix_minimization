@@ -48,25 +48,24 @@ index e8537c9..fc40cc4 100644
  
 -	private PermissionUser getUser(String identifier, String fallbackName, boolean store) {
 -		PermissionUser user = users.get(identifier.toLowerCase());
-+	private PermissionUser getUser(String identifier, String fallbackName) {
-+		PermissionUser user = users.get(identifier);
- 
+-
 -		if (user != null) {
 -			return user;
 -		}
-+		if (user == null) {
-+			PermissionsUserData data = backend.getUserData(identifier);
++	private PermissionUser getUser(String identifier, String fallbackName) {
++		PermissionUser user = users.get(identifier);
  
--		PermissionsUserData data = backend.getUserData(identifier);
--		if (data != null) {
++		if (user == null) {
+ 			PermissionsUserData data = backend.getUserData(identifier);
++
+ 			if (data != null) {
 -			if (fallbackName != null) {
 -				if (!backend.hasUser(identifier) && backend.hasUser(fallbackName)) {
-+			if (data != null) {
 +				if (fallbackName != null && !backend.hasUser(identifier) && backend.hasUser(fallbackName)) {
  					if (isDebug()) {
  						getLogger().info("Converting user " + fallbackName + " (UUID " + identifier + ") to UUID-based storage");
  					}
-@@ -302,23 +305,32 @@ public class PermissionManager {
+@@ -302,21 +305,30 @@ public class PermissionManager {
  					oldData.remove();
  					// Convert
  				}
@@ -75,22 +74,19 @@ index e8537c9..fc40cc4 100644
  					data.setOption("name", fallbackName, null);
  				}
 -			}
--			user = new PermissionUser(identifier, data, this);
--			user.initialize();
+ 				user = new PermissionUser(identifier, data, this);
+ 				user.initialize();
 -			if (store) {
 -				System.out.println("Storing user " + fallbackName);
-+				user = new PermissionUser(identifier, data, this);
-+				user.initialize();
  				this.users.put(identifier.toLowerCase(), user);
-+			} else {
-+				throw new IllegalStateException("User " + identifier + " is null");
+-			}
+ 			} else {
+ 				throw new IllegalStateException("User " + identifier + " is null");
  			}
--		} else {
--			throw new IllegalStateException("User " + identifier + " is null");
- 		}
- 
- 		return user;
- 	}
++		}
++
++		return user;
++	}
  
 +	private PermissionUser createAndLoadUser(String identifier) {
 +		PermissionUser user;
@@ -98,12 +94,10 @@ index e8537c9..fc40cc4 100644
 +			if (data != null) {
 +				user = new PermissionUser(identifier, data, this);
 +				user.initialize();
-+				return user;
+ 				return user;
 +			} else {
 +				throw new IllegalStateException("User " + identifier + " is null");
 +			}
-+	}
-+
+ 	}
+ 
  	/**
- 	 * Return all registered user objects
- 	 *

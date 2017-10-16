@@ -40,14 +40,3 @@ index c94e3ca2..aa2e3b22 100644
      }
  
      public static boolean setScriptPath(String path) {
-@@ -186,8 +166,8 @@ public class JavaScript extends Experience {
-         scriptEngine = manager.getEngineByName("js");
- 
-         scriptEngine.eval("MyPet = new Object();" +
--                "MyPet.getType = function() { return \"" + getMyPet().getPetType().getTypeName() + "\"; };" +
--                "MyPet.getOwnerName = function() { return \"" + getMyPet().getOwner().getName() + "\"; };");
-+                                  "MyPet.getType = function() { return \"" + getMyPet().getPetType().getTypeName() + "\"; };" +
-+                                  "MyPet.getOwnerName = function() { return \"" + getMyPet().getOwner().getName() + "\"; };");
- 
-         scriptEngine.eval(expScript);
- 

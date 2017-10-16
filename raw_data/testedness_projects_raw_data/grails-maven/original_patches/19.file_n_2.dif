@@ -2,7 +2,7 @@ diff --git a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java b/src
 index f802dd4..db434b8 100755
 --- a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
 +++ b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
-@@ -336,23 +336,12 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+@@ -336,22 +336,11 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
              testDependencies.addAll( compileDependencies );
              testDependencies.addAll( runtimeDependencies );
              testDependencies.addAll( testDependencies );
@@ -22,8 +22,6 @@ index f802dd4..db434b8 100755
 -            } catch (DependencyResolutionRequiredException e) {
 -                throw new MojoExecutionException("Failed to create runtime classpath for Grails execution.", e);
 -            }
--            
-+
+ 
              ec.setGrailsWorkDir(new File(grailsWorkDir));
              ec.setProjectWorkDir(new File(targetDir));
-             ec.setClassesDir(new File(targetDir, "classes"));

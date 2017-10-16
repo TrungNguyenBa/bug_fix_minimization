@@ -119,20 +119,20 @@ index b5e44da..4763652 100644
      public ImmutableOptionSubjectData clearParents() {
 -        if (this.contexts.isEmpty()) {
 -            return this;
--        }
--
++        return null;
+     }
+ 
 -        Map<Set<Context>, DataEntry> newValue = Maps.transformValues(this.contexts, new Function<DataEntry, DataEntry>() {
 -            @Nullable
--            @Override
+     @Override
 -            public DataEntry apply(@Nullable DataEntry dataEntry) {
 -                return dataEntry.withoutParents();
 -            }
 -        });
 -        return new FileOptionSubjectData(newValue);
-+        return null;
-     }
- 
-     @Override
+-    }
+-
+-    @Override
 -    public ImmutableOptionSubjectData clearParents(Set<Context> contexts) {
 -        if (!this.contexts.containsKey(contexts)) {
 -            return this;

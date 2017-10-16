@@ -2,16 +2,14 @@ diff --git a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java b/src
 index f8d0e1f..81c835d 100755
 --- a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
 +++ b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
-@@ -323,22 +323,32 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
-             final String targetDir = this.project.getBuild().getDirectory();
+@@ -324,21 +324,31 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
              ForkedGrailsRuntime.ExecutionContext ec = new ForkedGrailsRuntime.ExecutionContext();
              ec.setBuildDependencies(resolveGrailsExecutionPathJars(true));
--            List<File> providedDependencies = resolveArtifacts(getProvidedArtifacts(project));
+             List<File> providedDependencies = resolveArtifacts(getProvidedArtifacts(project));            
 -            List<File> compileDependencies = getCompileFiles();
 -            Set<File> testDependencies = new HashSet<File>();
 -            Set<File> runtimeDependencies = new HashSet<File>( getRuntimeFiles() );
 -            runtimeDependencies.addAll(compileDependencies);
-+            List<File> providedDependencies = resolveArtifacts(getProvidedArtifacts(project));            
 +            List<File> compileDependencies = resolveArtifacts(getCompileArtifacts(project));
  
 +            Set<File> runtimeDependencies = new HashSet<File>( resolveArtifacts(getRuntimeArtifacts(project)) );

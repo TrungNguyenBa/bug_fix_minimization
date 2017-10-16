@@ -2,14 +2,6 @@ diff --git a/test/com/google/javascript/jscomp/FunctionInjectorTest.java b/test/
 index 59f271e3..4d684dad 100644
 --- a/test/com/google/javascript/jscomp/FunctionInjectorTest.java
 +++ b/test/com/google/javascript/jscomp/FunctionInjectorTest.java
-@@ -23,7 +23,6 @@ import com.google.javascript.jscomp.FunctionInjector.CanInlineResult;
- import com.google.javascript.jscomp.FunctionInjector.InliningMode;
- import com.google.javascript.jscomp.NodeTraversal.Callback;
- import com.google.javascript.rhino.Node;
--
- import junit.framework.TestCase;
- 
- import java.util.List;
 @@ -1343,19 +1342,6 @@ public class FunctionInjectorTest extends TestCase {
          "foo", INLINE_BLOCK);
    }

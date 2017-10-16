@@ -2,17 +2,15 @@ diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/JodaDateSeria
 index 613069e..73e831a 100644
 --- a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/JodaDateSerializerBase.java
 +++ b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/JodaDateSerializerBase.java
-@@ -47,12 +47,7 @@ public abstract class JodaDateSerializerBase<T> extends JodaSerializerBase<T>
-     public final boolean isEmpty(T value) {
-         return isEmpty(null, value);
+@@ -49,11 +49,6 @@ public abstract class JodaDateSerializerBase<T> extends JodaSerializerBase<T>
      }
--
--    @Override
+     
+     @Override
 -    public boolean isEmpty(SerializerProvider prov, T value) {
 -        return value == null;
 -    }
 -
-+    
-     @Override
+-    @Override
      public JsonSerializer<?> createContextual(SerializerProvider prov,
              BeanProperty property) throws JsonMappingException
+     {

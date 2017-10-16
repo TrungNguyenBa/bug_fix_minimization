@@ -78,11 +78,10 @@ index a7fa099..e376512 100644
          byte[] bytes = w.writeValueAsBytes(new StringArray("A", "B", "C"));
          assertEquals(8, bytes.length);
          Assert.assertArrayEquals(new byte[] {
-@@ -144,105 +130,7 @@ public class WriteArrayTest extends ProtobufTestBase
-                 1, 'C',
+@@ -145,104 +131,6 @@ public class WriteArrayTest extends ProtobufTestBase
          }, bytes);
      }
--
+     
 -    // and then do something bit more sizable
 -    public void testStringArraySparseLong() throws Exception
 -    {
@@ -174,7 +173,7 @@ index a7fa099..e376512 100644
 -        assertEquals(bytes.length, ptr);
 -        
 -    }
-     
+-    
 -    /*
 -    /**********************************************************
 -    /* Test methods, POJO arrays

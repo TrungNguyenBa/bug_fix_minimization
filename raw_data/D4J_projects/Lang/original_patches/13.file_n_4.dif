@@ -2,11 +2,10 @@ diff --git a/src/test/java/org/apache/commons/lang3/SerializationUtilsTest.java 
 index 9bf9c0d7..01c98cd2 100644
 --- a/src/test/java/org/apache/commons/lang3/SerializationUtilsTest.java
 +++ b/src/test/java/org/apache/commons/lang3/SerializationUtilsTest.java
-@@ -364,16 +364,6 @@ public class SerializationUtilsTest extends TestCase {
-         }
+@@ -365,16 +365,6 @@ public class SerializationUtilsTest extends TestCase {
          fail();
      }
--    
+ 
 -    public void testPrimitiveTypeClassSerialization() {
 -        Class<?>[] primitiveTypes = { byte.class, short.class, int.class, long.class, float.class, double.class,
 -                boolean.class, char.class, void.class };
@@ -16,6 +15,7 @@ index 9bf9c0d7..01c98cd2 100644
 -            assertEquals(primitiveType, clone);
 -        }
 -    }
- 
+-
  }
  
+ @SuppressWarnings("serial")

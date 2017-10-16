@@ -9,8 +9,9 @@ index 0a19aa64..6131f14f 100644
 -        long instant;
 -        try {
 -            instant = iGregorianChronology.getDateTimeMillis
--                (year, monthOfYear, dayOfMonth,
--                 hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
++        long instant = iGregorianChronology.getDateTimeMillis
+             (year, monthOfYear, dayOfMonth,
+              hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
 -        } catch (IllegalFieldValueException ex) {
 -            if (monthOfYear != 2 || dayOfMonth != 29) {
 -                throw ex;
@@ -22,9 +23,6 @@ index 0a19aa64..6131f14f 100644
 -                throw ex;
 -            }
 -        }
-+        long instant = iGregorianChronology.getDateTimeMillis
-+            (year, monthOfYear, dayOfMonth,
-+             hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
          if (instant < iCutoverMillis) {
              // Maybe it's Julian.
              instant = iJulianChronology.getDateTimeMillis

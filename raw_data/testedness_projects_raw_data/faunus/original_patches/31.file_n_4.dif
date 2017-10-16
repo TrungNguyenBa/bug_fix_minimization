@@ -54,7 +54,7 @@ index 8e78950e..017b6592 100644
      public:
        /**
         * @brief Constructor
-@@ -287,38 +264,13 @@ namespace Faunus {
+@@ -287,37 +264,12 @@ namespace Faunus {
        WolfBase(double alpha, double rcut) {
          kappa = alpha;
          kappa2 = kappa*kappa;
@@ -69,8 +69,7 @@ index 8e78950e..017b6592 100644
 -        rc4i_d = expKc*( (2*kappa4/(3*rc1i)) + (2*kappa2*rc1i/3) + rc3i ) + rc1i_d*rc3i;
 -        rc5i_d = expKc*(rc2i*rc2i + (2*rc2i*kappa2/3) + (kappa6/(3*rc2i)) + (kappa4/6)) + rc1i_d*rc2i*rc2i;
 -        rc6i_d = expKc*((-kappa6/(15*rc1i)) + (2*kappa6*kappa2/(15*rc3i)) + (2*kappa2*rc3i/3) + (4*kappa4/(15*rc1i)) + rc1i) + rc1i_d*rc3i*rc2i;
-+        rc4i_d = 2*expKc*((kappa2*kappa2/(3*rc1i)) + (kappa2*rc1i/3) + (rc1i*rc2i/2)) + rc1i_d*rc1i*rc2i;
-       }
+-      }
 -      
 -      /**
 -       * @brief Returns ion-dipole interaction, Needs to be checked!
@@ -90,11 +89,11 @@ index 8e78950e..017b6592 100644
 -           double W1 = QxMu1*mu1.dot(r)*(r3i_d - rc3i_d + der);
 -           double W2 = QxMu2*mu2.dot(r)*(r3i_d - rc3i_d + der);
 -           return (W1-W2);  // Beware of r_Mu - r_Q = -r according to Israelachvili p.36, i.e. minus becomes plus
--         }
++        rc4i_d = 2*expKc*((kappa2*kappa2/(3*rc1i)) + (kappa2*rc1i/3) + (rc1i*rc2i/2)) + rc1i_d*rc1i*rc2i;
+       }
  
        /**
-        * @brief Dipole-dipole energy
-@@ -331,53 +283,17 @@ namespace Faunus {
+@@ -331,52 +283,16 @@ namespace Faunus {
         * @returns energy in `kT/lB`
         */
        template<class Tvec>
@@ -112,10 +111,7 @@ index 8e78950e..017b6592 100644
 -          Eigen::Matrix3d T = 3*r*r.transpose()*(r5i_d - rc5i_d + 5*rc6i_d) - Matrix3d::Identity()*(r3i_d - rc3i_d + 3*rc4i_d);
 -          double W = -muA.transpose()*T*muB;  
 -          return W*muAxmuB;
-+          Eigen::Matrix3d T = 3*r*r.transpose() - Matrix3d::Identity();
-+          double W = muA.transpose()*T*muB;  
-+          return W*muAxmuB*(r3i_d-rc3i_d + 3*rc4i_d*(r1i_d - rc1i_d));
-         }
+-        }
 -        
 -      /**
 -       * @brief Returns ion-quadrupole interaction
@@ -149,10 +145,12 @@ index 8e78950e..017b6592 100644
 -            double r3i_d = expK*(kappa2 + r2i) + r1i_d;
 -            double r5i_d = expK*(r2i + (2/3)*kappa2 + (kappa6/(3*r2i*r2i)) + (kappa4/(6*r2i))) + r1i_d;                                        // Normalized with 1/r2i
 -            return (3.0*p.mu.dot(r_ab)*r_ab*r5i_d - p.mu*r3i_d)*p.muscalar; // \beta e E
--          }
++          Eigen::Matrix3d T = 3*r*r.transpose() - Matrix3d::Identity();
++          double W = muA.transpose()*T*muB;  
++          return W*muAxmuB*(r3i_d-rc3i_d + 3*rc4i_d*(r1i_d - rc1i_d));
+         }
  
        double getKappa() { return kappa; }
-       double getCutoff() { return 1/rc1i; }
 @@ -388,11 +304,12 @@ namespace Faunus {
     */
    template<class Tvec, class Tmat>
@@ -196,11 +194,10 @@ index 8e78950e..017b6592 100644
            }
  
          string info(char w) {
-@@ -586,39 +503,6 @@ namespace Faunus {
- 
+@@ -587,39 +504,6 @@ namespace Faunus {
          string info(char w) { return _brief(); }
      };
--    
+ 
 -    class IonDipoleWolf : public IonDipole {
 -      private:
 -        string _brief() { return "Ion-dipole Wolf"; }
@@ -233,9 +230,10 @@ index 8e78950e..017b6592 100644
 -          return o.str();
 -        }
 -    };
- 
+-
      class DipoleDipoleWolf : public DipoleDipole {
        private:
+         string _brief() { return "Dipole-dipole Wolf"; }
 @@ -633,15 +517,9 @@ namespace Faunus {
  
          template<class Tparticle>

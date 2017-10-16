@@ -33,12 +33,10 @@ index 4716d84..8252926 100755
  
      /**
       * Whether to activate the reloading agent (forked mode only) for this command
-@@ -228,7 +232,11 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
-      * IDEs to generate project dependency information during builds.
+@@ -229,6 +233,10 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
       */
      private String dependencyFileLocation;
--
-+    
+     
 +    /**
 +     * @component
 +     */
@@ -70,161 +68,37 @@ index 4716d84..8252926 100755
       * @readonly
       */
      private List<RemoteRepository> remoteRepos;
-@@ -330,108 +330,109 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+@@ -330,6 +330,9 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
       * @throws MojoExecutionException if an error occurs while attempting to execute the target.
       */
      protected void runGrails(final String targetName, String args) throws MojoExecutionException {
--        final String targetDir = this.project.getBuild().getDirectory();
--        ForkedGrailsRuntime.ExecutionContext ec = new ForkedGrailsRuntime.ExecutionContext();
--        ec.setBuildDependencies(resolveGrailsExecutionPathJars(true));
--        List<File> providedDependencies = resolveArtifacts("provided");
--        List<File> compileDependencies = resolveArtifacts("compile");
--
--        List<File> runtimeDependencies = resolveArtifacts("compile+runtime");
--
--        Set<File> testDependencies = new HashSet<File>( resolveArtifacts("test") );
--        testDependencies.addAll( providedDependencies );
--        testDependencies.addAll( compileDependencies );
--        testDependencies.addAll(runtimeDependencies);
--        ec.setProvidedDependencies(providedDependencies);
--        ec.setRuntimeDependencies(new ArrayList<File>(runtimeDependencies));
--        ec.setCompileDependencies(compileDependencies);
--        ec.setTestDependencies(new ArrayList<File>(testDependencies));
--
--        ec.setGrailsWorkDir(new File(grailsWorkDir));
--        ec.setProjectWorkDir(new File(targetDir));
--        ec.setClassesDir(new File(targetDir, "classes"));
--        ec.setTestClassesDir(new File(targetDir, "test-classes"));
--        ec.setResourcesDir(new File(targetDir, "resources"));
--        ec.setProjectPluginsDir(this.pluginsDir);
--        ec.setForkedVmArgs(this.forkedVmArgs);
--
--        // If the command is running in non-interactive mode, we
--        // need to pass on the relevant argument.
--        if (this.nonInteractive) {
--            args = (args != null) ? "--non-interactive " + args : "--non-interactive ";
--        }
--
--        // If the project has specified to print stacktraces to the console
--        // turn on the flag in the arguments.
--        if (this.showStacktrace) {
--            args = (args != null) ? "--stacktrace " + args : "--stacktrace ";
--        }
- 
--        // these two settings are only used if running inside of an ide
--        if (this.grailsBuildListener != null) {
--            ec.setGrailsBuildListener(grailsBuildListener);
--        }
--        if (this.dependencyFileLocation != null) {
--            ec.setDependencyFileLocation(new File(dependencyFileLocation));
--        }
- 
--        // Enable the plain output for the Grails command to fix an issue with JLine
--        // consuming the standard output after execution via Maven.
--        args = (args != null) ? "--plain-output " + args : "--plain-output";
--        ec.setArgs(args);
--        ec.setScriptName(targetName);
--        ec.setBaseDir(project.getBasedir());
--        ec.setEnv(getEnvironment());
--        ForkedGrailsRuntime fgr = new ForkedGrailsRuntime(ec);
--        if(activateAgent) {
--            File springLoadedJar = resolveArtifact("org.springframework:springloaded:" + SPRING_LOADED_VERSION);
--            if(springLoadedJar != null) {
--                fgr.setReloadingAgent(springLoadedJar);
--            }else{
--                getLog().warn("Grails Start with Reloading: org.springsource.springloaded:springloaded-core"+SPRING_LOADED_VERSION+" not found");
--                getLog().error("Grails Start with Reloading: not enabled");
++
++
 +        if (fork) {
-+            final String targetDir = this.project.getBuild().getDirectory();
-+            ForkedGrailsRuntime.ExecutionContext ec = new ForkedGrailsRuntime.ExecutionContext();
-+            ec.setBuildDependencies(resolveGrailsExecutionPathJars(true));
-+            List<File> providedDependencies = resolveArtifacts("provided");
-+            List<File> compileDependencies = resolveArtifacts("compile");
-+
-+            List<File> runtimeDependencies = resolveArtifacts("compile+runtime");
-+
-+            Set<File> testDependencies = new HashSet<File>( resolveArtifacts("test") );
-+            testDependencies.addAll( providedDependencies );
-+            testDependencies.addAll( compileDependencies );
-+            testDependencies.addAll(runtimeDependencies);
-+            ec.setProvidedDependencies(providedDependencies);
-+            ec.setRuntimeDependencies(new ArrayList<File>(runtimeDependencies));
-+            ec.setCompileDependencies(compileDependencies);
-+            ec.setTestDependencies(new ArrayList<File>(testDependencies));
-+
-+            ec.setGrailsWorkDir(new File(grailsWorkDir));
-+            ec.setProjectWorkDir(new File(targetDir));
-+            ec.setClassesDir(new File(targetDir, "classes"));
-+            ec.setTestClassesDir(new File(targetDir, "test-classes"));
-+            ec.setResourcesDir(new File(targetDir, "resources"));
-+            ec.setProjectPluginsDir(this.pluginsDir);
-+            ec.setForkedVmArgs(this.forkedVmArgs);
-+
-+            // If the command is running in non-interactive mode, we
-+            // need to pass on the relevant argument.
-+            if (this.nonInteractive) {
-+                args = (args != null) ? "--non-interactive " + args : "--non-interactive ";
-             }
--        }
--        fgr.setDebug(forkDebug);
--        fgr.setMaxMemory(forkMaxMemory);
--        fgr.setMaxPerm(forkPermGen);
--        fgr.setMinMemory(forkMinMemory);
--        try {
--            handleVersionSync();
--            fgr.fork();
--        } catch (Exception e) {
--            throw new MojoExecutionException(e.getMessage(), e);
--        }
- 
--    }
-+            // If the project has specified to print stacktraces to the console
-+            // turn on the flag in the arguments.
-+            if (this.showStacktrace) {
-+                args = (args != null) ? "--stacktrace " + args : "--stacktrace ";
-+            }
-+            
-+            // these two settings are only used if running inside of an ide
-+            if (this.grailsBuildListener != null) {
-+                ec.setGrailsBuildListener(grailsBuildListener);
-+            }
-+            if (this.dependencyFileLocation != null) {
-+                ec.setDependencyFileLocation(new File(dependencyFileLocation));
-+            }
- 
--    private File resolveArtifact(Artifact artifact) throws MojoExecutionException {
--        return resolveArtifact(artifact.getGroupId() + ":" + artifact.getId() + ":" + artifact.getVersion());
-+            // Enable the plain output for the Grails command to fix an issue with JLine
-+            // consuming the standard output after execution via Maven.
-+            args = (args != null) ? "--plain-output " + args : "--plain-output";
-+            ec.setArgs(args);
-+            ec.setScriptName(targetName);
-+            ec.setBaseDir(project.getBasedir());
-+            ec.setEnv(getEnvironment());
-+            ForkedGrailsRuntime fgr = new ForkedGrailsRuntime(ec);
-+            if(activateAgent) {
+             final String targetDir = this.project.getBuild().getDirectory();
+             ForkedGrailsRuntime.ExecutionContext ec = new ForkedGrailsRuntime.ExecutionContext();
+             ec.setBuildDependencies(resolveGrailsExecutionPathJars(true));
+@@ -384,7 +387,7 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+             ec.setEnv(getEnvironment());
+             ForkedGrailsRuntime fgr = new ForkedGrailsRuntime(ec);
+             if(activateAgent) {
+-            File springLoadedJar = resolveArtifact("org.springframework:springloaded:" + SPRING_LOADED_VERSION);
 +                File springLoadedJar = resolveArtifact("org.springsource.springloaded:springloaded-core:" + SPRING_LOADED_VERSION);
-+                if(springLoadedJar != null) {
-+                    fgr.setReloadingAgent(springLoadedJar);
-+                }else{
-+                    getLog().warn("Grails Start with Reloading: org.springsource.springloaded:springloaded-core"+SPRING_LOADED_VERSION+" not found");
-+                    getLog().error("Grails Start with Reloading: not enabled");
-+                }
-+            }
-+            fgr.setDebug(forkDebug);
-+            fgr.setMaxMemory(forkMaxMemory);
-+            fgr.setMaxPerm(forkPermGen);
-+            fgr.setMinMemory(forkMinMemory);
-+            try {
-+                handleVersionSync();
-+                fgr.fork();
-+            } catch (Exception e) {
-+                throw new MojoExecutionException(e.getMessage(), e);
-+            }
+                 if(springLoadedJar != null) {
+                     fgr.setReloadingAgent(springLoadedJar);
+                 }else{
+@@ -402,36 +405,34 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+             } catch (Exception e) {
+                 throw new MojoExecutionException(e.getMessage(), e);
+             }
+-
 +        } else {
 +            getLog().warn("Grails Start with out fork");
 +            runGrailsInline(targetName, args);
-+        }
+         }
+-
+-    private File resolveArtifact(Artifact artifact) throws MojoExecutionException {
+-        return resolveArtifact(artifact.getGroupId() + ":" + artifact.getId() + ":" + artifact.getVersion());
      }
  
      private File resolveArtifact(String artifactId) throws MojoExecutionException {
@@ -266,7 +140,7 @@ index 4716d84..8252926 100755
      }
  
      protected List<File> resolveArtifacts(MavenProject mavenProject, String scope, DependencyFilter filter) throws MojoExecutionException {
-@@ -485,8 +486,81 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+@@ -485,7 +486,80 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
          }
      }
  
@@ -290,8 +164,8 @@ index 4716d84..8252926 100755
 +            launcher.setPlainOutput(true);
 +            configureBuildSettings(launcher);
 +            handleVersionSync();
- 
- 
++
++
 +            // If the command is running in non-interactive mode, we
 +            // need to pass on the relevant argument.
 +            if (this.nonInteractive) {
@@ -324,7 +198,7 @@ index 4716d84..8252926 100755
 +                if (retval != 0) {
 +                    throw new MojoExecutionException("Grails returned non-zero value: " + retval);
 +                }
-+
+ 
 +            } finally {
 +                if (oldBuildListeners != null) {
 +                    System.setProperty(GRAILS_BUILD_LISTENERS, oldBuildListeners);
@@ -344,18 +218,9 @@ index 4716d84..8252926 100755
 +            System.setOut(currentOutput);
 +        }
 +    }
-+
+ 
      private void handleVersionSync() {
          // Search for all Grails plugin dependencies and install
-         // any that haven't already been installed.
-@@ -616,7 +690,6 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
-         add("jline");
-         add("grails-maven-plugin");
-     }};
--
-     private List<File> resolveGrailsExecutionPathJars(boolean pluginOnly) throws MojoExecutionException {
-         try {
-             final List<Dependency> unresolvedDependencies = new ArrayList<Dependency>();
 @@ -635,7 +708,7 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
  
              Set<File> jars = new HashSet<File>();
@@ -365,17 +230,6 @@ index 4716d84..8252926 100755
  
              }
              else {
-@@ -645,8 +718,8 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
- 
- 
-             /*
--            * Convert each resolved artifact into a URL/classpath element.
--            */
-+                * Convert each resolved artifact into a URL/classpath element.
-+                */
-             List<String> pluginDependencies = new ArrayList<String>();
-             for (Object o : pluginProject.getDependencies()) {
-                 Dependency d = (Dependency) o;
 @@ -717,14 +790,9 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
      }
  

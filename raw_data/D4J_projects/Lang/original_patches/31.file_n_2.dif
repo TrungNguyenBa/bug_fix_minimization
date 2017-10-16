@@ -2,50 +2,34 @@ diff --git a/src/main/java/org/apache/commons/lang3/StringUtils.java b/src/main/
 index 4aac02d1..e60c4497 100644
 --- a/src/main/java/org/apache/commons/lang3/StringUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/StringUtils.java
-@@ -1437,32 +1437,20 @@ public class StringUtils {
-      * <code>false</code> if no match or null input
+@@ -1438,27 +1438,15 @@ public class StringUtils {
       * @since 2.4
       */
--	public static boolean containsAny(CharSequence cs, char[] searchChars) {
+     public static boolean containsAny(CharSequence cs, char[] searchChars) {
 -		if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
--			return false;
--		}
++        if (cs == null || cs.length() == 0 || searchChars == null || searchChars.length == 0) {
+             return false;
+         }
 -		int csLength = cs.length();
 -		int searchLength = searchChars.length;
 -		int csLastIndex = csLength - 1;
 -		int searchLastIndex = searchLength - 1;
 -		for (int i = 0; i < csLength; i++) {
--			char ch = cs.charAt(i);
++        for (int i = 0; i < cs.length(); i++) {
+             char ch = cs.charAt(i);
 -			for (int j = 0; j < searchLength; j++) {
--				if (searchChars[j] == ch) {
++            for (int j = 0; j < searchChars.length; j++) {
+                 if (searchChars[j] == ch) {
 -					if (i < csLastIndex && j < searchLastIndex && ch >= Character.MIN_HIGH_SURROGATE && ch <= Character.MAX_HIGH_SURROGATE) {
 -						// ch is a supplementary character
 -						if (searchChars[j + 1] == cs.charAt(i + 1)) {
--							return true;
--						}
+                     return true;
+                 }
 -					} else {
 -						// ch is in the Basic Multilingual Plane
 -						return true;
 -					}
 -				}
--			}
--		}
--		return false;
--	}
-+    public static boolean containsAny(CharSequence cs, char[] searchChars) {
-+        if (cs == null || cs.length() == 0 || searchChars == null || searchChars.length == 0) {
-+            return false;
-+        }
-+        for (int i = 0; i < cs.length(); i++) {
-+            char ch = cs.charAt(i);
-+            for (int j = 0; j < searchChars.length; j++) {
-+                if (searchChars[j] == ch) {
-+                    return true;
-+                }
-+            }
-+        }
-+        return false;
-+    }
- 
-     /**
-      * <p>
+             }
+         }
+         return false;

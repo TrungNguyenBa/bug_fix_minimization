@@ -31,8 +31,8 @@ index b60e18f..622d95b 100644
 + * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
   */
  class BasicRequestExecutor implements RequestExecutor {
--	
--	
+ 
+ 	
 -	private final ExecutionHandler responseHandler;
 -	
 -	
@@ -67,7 +67,7 @@ index b60e18f..622d95b 100644
 -	 * @since 1.2.4
 -	 */
 -	protected HttpResponse fetchResponse(HttpRequestBase request, InvocationContext context) {
- 
+-
 -		try {
 -		
 -			Class<?> endpoint = context.getEndpoint();
@@ -84,7 +84,7 @@ index b60e18f..622d95b 100644
 -		}
 -	}
 -	
--	/**
+ 	/**
 -	 * <p>Determines whether the {@link HttpResponse} signifies a successful request execution or not.</p>
 -	 *
 -	 * @param response
@@ -100,8 +100,8 @@ index b60e18f..622d95b 100644
 -		return status > 199 && status < 300;
 -	}
 -	
- 	
- 	/**
+-	
+-	/**
 -	 * <p>Executes an {@link HttpRequestBase} using the endpoint's {@link HttpClient} and handles the 
 -	 * resulting {@link HttpResponse} using this executor's {@link ExecutionHandler}.</p>
 -	 * 
@@ -125,8 +125,7 @@ index b60e18f..622d95b 100644
 -	public HttpResponse execute(HttpRequestBase request, InvocationContext context) 
 +	public synchronized HttpResponse execute(HttpRequestBase httpRequestBase, InvocationContext config)
  	throws RequestExecutionException {
--		
-+	
+ 	
  		try {
  			
 -			HttpResponse response = fetchResponse(request, context);
@@ -149,13 +148,9 @@ index b60e18f..622d95b 100644
 -			return response;
 -		}
 -		catch (Exception error) {
--			
--			try {
 +			int statusCode = httpResponse.getStatusLine().getStatusCode();
  			
--				responseHandler.onError(context, error);
--			}
--			catch(Exception e) {
+-			try {
 +			if(!(statusCode > 199 && statusCode < 300)) {
 +				
 +				StringBuilder builder = new StringBuilder()
@@ -166,12 +161,14 @@ index b60e18f..622d95b 100644
 +				.append(", ")
 +				.append(httpResponse.getStatusLine().getReasonPhrase());
  				
--				throw RequestExecutionException.wrap(context.getRequest(), context.getEndpoint(), e);
+-				responseHandler.onError(context, error);
 +				throw new IOException(builder.toString());
  			}
-+		
+-			catch(Exception e) {
+ 		
+-				throw RequestExecutionException.wrap(context.getRequest(), context.getEndpoint(), e);
 +			return httpResponse;
-+		}
+ 		}
 +		catch (Exception e) {
  			
 -			throw RequestExecutionException.wrap(context.getRequest(), context.getEndpoint(), error);

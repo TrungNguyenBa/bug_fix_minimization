@@ -2,11 +2,11 @@ diff --git a/experience-scripts/exp.js b/experience-scripts/exp.js
 index b14730c0..d20ce467 100644
 --- a/experience-scripts/exp.js
 +++ b/experience-scripts/exp.js
-@@ -95,71 +95,4 @@ function getCurrentExp(exp) {
-         lastExp = exp;
+@@ -96,70 +96,3 @@ function getCurrentExp(exp) {
      }
      return currentExp;
--}
+ }
+\ No newline at end of file
 -
 -function getExpByLevel(level) {
 -    if(level <= 1) {
@@ -74,6 +74,4 @@ index b14730c0..d20ce467 100644
 -    40      1635    118
 -    41      1760    125
 -*/
-\ No newline at end of file
-+}
 \ No newline at end of file

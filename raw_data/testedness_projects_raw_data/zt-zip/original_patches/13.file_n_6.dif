@@ -19,9 +19,8 @@ index a5c2322..0ee38cc 100644
      
      ZTFilePermissions permissions = ZTFilePermissionsUtil.getDefaultStategy().getPermissions(file);
 -    if (permissions != null) {
--      ZipEntryUtil.setZTFilePermissions(zipEntry, permissions);
+     ZipEntryUtil.setZTFilePermissions(zipEntry, permissions);
 -    }
-+    ZipEntryUtil.setZTFilePermissions(zipEntry, permissions);
 +    
      return zipEntry;
    }

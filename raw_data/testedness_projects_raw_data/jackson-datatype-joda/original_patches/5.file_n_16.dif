@@ -74,14 +74,14 @@ index fe23b5e..45f426d 100644
      public void testLocalDateDeserWithTypeInfo() throws IOException
      {
          ObjectMapper mapper = jodaMapper();
-@@ -250,28 +214,8 @@ public class MiscDeserializationTest extends JodaTestBase
+@@ -250,26 +214,6 @@ public class MiscDeserializationTest extends JodaTestBase
          interval = MAPPER.readValue(quote("-100-1396440001"), Interval.class);
          assertEquals(-100, interval.getStartMillis());
          assertEquals(1396440001, interval.getEndMillis());
 -        
 -        assertEquals(ISOChronology.getInstance(DateTimeZone.UTC), interval.getChronology());
-     }
- 
+-    }
+-
 -    public void testIntervalDeserWithTimeZone() throws IOException
 -    {
 -    	MAPPER.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
@@ -98,11 +98,9 @@ index fe23b5e..45f426d 100644
 -        assertEquals(1396440001, interval.getEndMillis());
 -        assertEquals(ISOChronology.getInstance(DateTimeZone.forID("America/Los_Angeles")), interval.getChronology());
 -
--    }
--    
+     }
+ 
      public void testIntervalDeserWithTypeInfo() throws IOException
-     {
-         ObjectMapper mapper = jodaMapper();
 @@ -315,38 +259,6 @@ public class MiscDeserializationTest extends JodaTestBase
          assertNull(MAPPER.readValue(quote(""), LocalDateTime.class));
      }

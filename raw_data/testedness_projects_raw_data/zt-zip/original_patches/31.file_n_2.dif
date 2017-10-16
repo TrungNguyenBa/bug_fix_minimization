@@ -121,7 +121,7 @@ index c561368..4cc1707 100644
    }
  
    /**
-@@ -341,48 +409,22 @@ public class Zips {
+@@ -341,49 +409,23 @@ public class Zips {
     * @see #iterate(File, ZipEntryCallback)
     */
    public void iterate(ZipInfoCallback action) {
@@ -146,40 +146,32 @@ index c561368..4cc1707 100644
      ZipFile zf = null;
      try {
 -      if (src != null) {
--        zf = getZipFile();
--
+       zf = getZipFile();
+ 
 -        // manage existing entries
--        Enumeration en = zf.entries();
--        while (en.hasMoreElements()) {
--          ZipEntry e = (ZipEntry) en.nextElement();
+       Enumeration en = zf.entries();
+       while (en.hasMoreElements()) {
+         ZipEntry e = (ZipEntry) en.nextElement();
 -          String entryName = e.getName();
 -          if (removedEntries.contains(entryName) || isEntryInDir(removedDirs, entryName)) {
 -            // removed entries are
 -            continue;
 -          }
 -          InputStream is = zf.getInputStream(e);
--          try {
+         try {
 -            zipEntryCallback.process(is, e);
--          }
--          catch (ZipBreakException ex) {
--            break;
--          }
++          action.process(e);
+         }
+         catch (ZipBreakException ex) {
+           break;
+         }
 -          finally {
 -            IOUtils.closeQuietly(is);
 -          }
-+      zf = getZipFile();
-+
-+      Enumeration en = zf.entries();
-+      while (en.hasMoreElements()) {
-+        ZipEntry e = (ZipEntry) en.nextElement();
-+        try {
-+          action.process(e);
-+        }
-+        catch (ZipBreakException ex) {
-+          break;
-         }
+-        }
        }
      }
+     catch (IOException e) {
 @@ -394,37 +436,6 @@ public class Zips {
      }
    }
@@ -248,23 +240,17 @@ index c561368..4cc1707 100644
  
      public void process(InputStream in, ZipEntry zipEntry) throws IOException {
        String entryName = zipEntry.getName();
+-
+-      if (visitedNames.contains(entryName)) {
 +      if (names.add(entryName)) { // duplicate entries are ignored
 +        if (removedEntries.contains(entryName) || isEntryInDir(removedDirNames, entryName)) {
 +          // this entry should be removed.
-+          return;
-+        }
- 
--      if (visitedNames.contains(entryName)) {
--        return;
--      }
+           return;
+         }
 -      visitedNames.add(entryName);
--
+ 
 -      ZipEntryTransformer transformer = (ZipEntryTransformer) entryByPath.remove(entryName);
 -      if (transformer == null) { // no transformer
--        copyEntry(zipEntry, in, out);
--      }
--      else { // still transfom entry
--        transformer.transform(in, zipEntry, out);
 +        ZipEntrySource entry = (ZipEntrySource) changedEntriesByPath.remove(entryName);
 +        if (entry != null) {
 +          // change entry
@@ -272,8 +258,10 @@ index c561368..4cc1707 100644
 +        }
 +        else {
 +          // unchanged entry
-+          copyEntry(zipEntry, in, out);
-+        }
+           copyEntry(zipEntry, in, out);
+         }
+-      else { // still transfom entry
+-        transformer.transform(in, zipEntry, out);
        }
      }
    }

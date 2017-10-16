@@ -16,9 +16,8 @@ index 294ddc12..b7f528f5 100644
              {
 -                if (Backup.MAKE_BACKUPS)
 -                {
--                    sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] created backup -> " + MyPetPlugin.getPlugin().getBackupManager().createBackup());
+                 sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] created backup -> " + MyPetPlugin.getPlugin().getBackupManager().createBackup());
 -                }
-+                sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] created backup -> " + MyPetPlugin.getPlugin().getBackupManager().createBackup());
  
                  for (InactiveMyPet inactiveMyPet : deletionList)
                  {

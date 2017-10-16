@@ -147,9 +147,3 @@ index 20d2c1e..342c9d1 100644
  	}
  
  	@Override
-@@ -564,5 +499,4 @@ public class SQLBackend extends PermissionBackend {
- 		}
- 		super.close();
- 	}
--
- }

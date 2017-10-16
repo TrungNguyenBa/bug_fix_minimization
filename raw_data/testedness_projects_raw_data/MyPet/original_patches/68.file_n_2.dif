@@ -12,7 +12,7 @@ index acd910cf..070bde4f 100644
                          if (Configuration.CONSUME_LEASH_ITEM && damager.getGameMode() != GameMode.CREATIVE && damager.getItemInHand() != null) {
                              if (damager.getItemInHand().getAmount() > 1) {
                                  damager.getItemInHand().setAmount(damager.getItemInHand().getAmount() - 1);
-@@ -457,22 +460,17 @@ public class EntityListener implements Listener {
+@@ -457,10 +460,6 @@ public class EntityListener implements Listener {
                              }
                          }
  
@@ -20,28 +20,14 @@ index acd910cf..070bde4f 100644
 -                        if (myPet != null) {
 -                            myPet.createPet();
 -
--                            getPluginManager().callEvent(new MyPetLeashEvent(myPet));
--                            DebugLogger.info("New Pet leashed:");
--                            DebugLogger.info("   " + myPet.toString());
--                            if (Configuration.STORE_PETS_ON_PET_LEASH) {
--                                DebugLogger.info(MyPetPlugin.getPlugin().savePets(false) + " pet(s) saved.");
--                            }
--                            damager.sendMessage(Locales.getString("Message.Leash.Add", myPet.getOwner().getLanguage()));
-+                        getPluginManager().callEvent(new MyPetLeashEvent(myPet));
-+                        DebugLogger.info("New Pet leashed:");
-+                        DebugLogger.info("   " + myPet.toString());
-+                        if (Configuration.STORE_PETS_ON_PET_LEASH) {
-+                            DebugLogger.info(MyPetPlugin.getPlugin().savePets(false) + " pet(s) saved.");
-+                        }
-+                        damager.sendMessage(Locales.getString("Message.Leash.Add", myPet.getOwner().getLanguage()));
+                         getPluginManager().callEvent(new MyPetLeashEvent(myPet));
+                         DebugLogger.info("New Pet leashed:");
+                         DebugLogger.info("   " + myPet.toString());
+@@ -478,7 +477,6 @@ public class EntityListener implements Listener {
+             }
+         }
+     }
+-    }
  
--                            if (myPet.getOwner().isCaptureHelperActive()) {
--                                myPet.getOwner().setCaptureHelperActive(false);
--                                myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Command.CaptureHelper.Mode", myPet.getOwner()), Locales.getString("Name.Disabled", myPet.getOwner())));
--                            }
-+                        if (myPet.getOwner().isCaptureHelperActive()) {
-+                            myPet.getOwner().setCaptureHelperActive(false);
-+                            myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Command.CaptureHelper.Mode", myPet.getOwner()), Locales.getString("Name.Disabled", myPet.getOwner())));
-                         }
-                     }
-                 }
+     @EventHandler
+     public void onMyPetEntityDamage(final EntityDamageEvent event) {

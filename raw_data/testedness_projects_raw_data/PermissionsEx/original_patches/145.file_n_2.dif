@@ -188,11 +188,3 @@ index d16f514..2f4cb40 100644
  			}
  		}
  
-@@ -389,7 +411,6 @@ public class FileBackend extends PermissionBackend {
- 		writer.flush();
- 	}
- 
--
- 	// Some of the methods are common in PermissionEntity. Sadly not very many of them.
- 	private void dumpEntityData(PermissionEntity entity, ConfigurationSection section) {
- 

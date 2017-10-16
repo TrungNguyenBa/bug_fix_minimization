@@ -25,7 +25,7 @@ index 271f64f..28de4c1 100644
              for (Iterator<String> it = filterCommands(context).iterator(); it.hasNext();) {
                  args.add(it.next());
                  if (it.hasNext()) {
-@@ -140,32 +135,21 @@ public class ChildCommands {
+@@ -140,33 +135,22 @@ public class ChildCommands {
      }
  
      public static CommandExecutor executor(CommandElement arg) {
@@ -55,9 +55,9 @@ index 271f64f..28de4c1 100644
 -                    fallbackExecutor.execute(src, args);
 -                    return;
 -                } else {
--                    throw new CommandException(_("Invalid subcommand state -- only one command spec must be provided for child arg %s", key));
--                }
-+                throw new CommandException(_("Invalid subcommand state -- only one command spec must be provided for child arg %s", key));
+                 throw new CommandException(_("Invalid subcommand state -- only one command spec must be provided for child arg %s", key));
              }
+-            }
              spec.getExecutor().execute(src, args);
          }
+     }

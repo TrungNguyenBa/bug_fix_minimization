@@ -19,14 +19,7 @@ index c7f0479b..59a6946a 100644
                  defaultGroup.addWorld(world.getName());
              }
              config.set("Groups.default", worldNames);
-@@ -575,17 +576,23 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
-                         }
-                     }
-                     if (newGroup.getWorlds().size() > 0) {
--                        DebugLogger.info(" registered '" + newGroup.getName() + "' group");
-+                        DebugLogger.info("   registered '" + newGroup.getName() + "' group");
-                         newGroup.registerGroup();
-                     }
+@@ -581,7 +582,13 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
                  }
              }
  
@@ -41,8 +34,3 @@ index c7f0479b..59a6946a 100644
              if (defaultGroup == null) {
                  defaultGroup = new WorldGroup("default");
                  defaultGroup.registerGroup();
--                DebugLogger.info(" registered 'default' group");
-+                DebugLogger.info("   registered 'default' group");
-             }
- 
-             boolean saveConfig = false;

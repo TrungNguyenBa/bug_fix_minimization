@@ -27,11 +27,9 @@ index 96e1a7d..bc6ea79 100644
  	public void end() {
  		try {
 -			if (this.backend != null) {
--				this.backend.close();
--				this.backend = null;
+ 			this.backend.close();
+ 			this.backend = null;
 -			}
-+			this.backend.close();
-+			this.backend = null;
  			reset();
  		} catch (PermissionBackendException ignore) {
  			// Ignore because we're shutting down so who cares

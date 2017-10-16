@@ -58,19 +58,18 @@ index 0d32c54..11c8873 100644
 +			sql = "UPDATE `{permissions_entity}` SET `prefix` = ?, `suffix` = ?, `default` = ? WHERE `name` = ? AND `type` = ?";
  		}
 -		return enter;
--	}
- 
--	private String nullToEmpty(String enter) {
--		if (enter == null) {
--			return "null";
++
 +		try (SQLConnection conn = backend.getSQL()) {
 +			conn.prepAndBind(sql, nullToEmpty(this.prefix), nullToEmpty(this.suffix), this.def ? 1 : 0, this.getIdentifier(), this.type.ordinal()).execute();
 +		} catch (SQLException e) {
 +			if (this.isVirtual()) {
 +				this.virtual = false;
 +				this.updateInfo(); // try again
-+			}
-+
+ 			}
+ 
+-	private String nullToEmpty(String enter) {
+-		if (enter == null) {
+-			return "null";
 +			throw new RuntimeException(e);
  		}
 -		return enter;
@@ -89,9 +88,6 @@ index 0d32c54..11c8873 100644
 -			conn.prepAndBind("INSERT INTO `{permissions_entity}` (`prefix`, `suffix`, `default`, `name`, `type`) VALUES (?, ?, ?, ?, ?)" +
 -					" ON DUPLICATE KEY UPDATE `prefix` = VALUES(`prefix`), `suffix` = VALUES(`suffix`), `default` = VALUES(`default`)",
 -					nullToEmpty(this.globalPrefix), nullToEmpty(this.globalSuffix), this.globalDef ? 1 : 0, this.getIdentifier(), this.type.ordinal()).execute();
--		} catch (SQLException e) {
--			if (virtual.compareAndSet(true, false)) {
--				this.updateInfo();
 +			ResultSet results = conn.prepAndBind("SELECT `permission`, `world`, `value` FROM `{permissions}` WHERE `name` = ? AND `type` = ? ORDER BY `id` DESC", this.getIdentifier(), this.type.ordinal()).executeQuery();
 +			while (results.next()) {
 +				String permission = results.getString("permission").trim();
@@ -124,12 +120,14 @@ index 0d32c54..11c8873 100644
 +						commonOptions.put(permission, value);
 +					}
 +				}
- 			}
-+		} catch (SQLException e) {
++			}
+ 		} catch (SQLException e) {
+-			if (virtual.compareAndSet(true, false)) {
+-				this.updateInfo();
 +			throw new RuntimeException(e);
 +		}
-+	}
-+
+ 	}
+ 
 +	protected final void fetchInheritance() {
 +		try (SQLConnection conn = backend.getSQL()) {
 +			this.parents = new HashMap<>();
@@ -139,7 +137,7 @@ index 0d32c54..11c8873 100644
 +			while (results.next()) {
 +				String parentName = results.getString(1);
 +				String worldName = results.getString(2);
- 
++
 +				if (!this.parents.containsKey(worldName)) {
 +					this.parents.put(worldName, new HashSet<String>());
 +				}
@@ -216,10 +214,9 @@ index 0d32c54..11c8873 100644
  
 -			while (set.next()) {
 -				permissions.add(set.getString("permission"));
--			}
 +		if (commonPermissions == null) {
 +			this.fetchPermissions();
-+		}
+ 		}
  
 -			return Collections.unmodifiableList(permissions);
 -		} catch (SQLException e) {
@@ -228,10 +225,10 @@ index 0d32c54..11c8873 100644
 +			List<String> worldPermissions = this.worldsPermissions.get(worldName);
 +			if (worldPermissions != null) {
 +				permissions.addAll(worldPermissions);
-+			}
+ 			}
 +		} else {
 +			permissions = commonPermissions;
- 		}
++		}
 +
 +		return Collections.unmodifiableList(permissions);
  	}
@@ -303,16 +300,15 @@ index 0d32c54..11c8873 100644
 -				worlds.add(res.getString("world"));
 -			}
 -			worlds.remove("");
- 
--			return Collections.unmodifiableSet(worlds);
--		} catch (SQLException e) {
--			throw new RuntimeException(e);
--		}
++
 +		worlds.addAll(worldsOptions.keySet());
 +		worlds.addAll(worldsPermissions.keySet());
 +		worlds.addAll(parents.keySet());
-+
-+		return Collections.unmodifiableSet(worlds);
+ 
+ 		return Collections.unmodifiableSet(worlds);
+-		} catch (SQLException e) {
+-			throw new RuntimeException(e);
+-		}
  	}
  
  	@Override
@@ -355,18 +351,18 @@ index 0d32c54..11c8873 100644
 -				return res.getString("value");
 +		if (this.commonOptions == null) {
 +			fetchPermissions();
-+		}
+ 		}
+-		} catch (SQLException e) {
+-			e.printStackTrace();
 +		if (worldName != null && !worldName.isEmpty() && this.worldsOptions.containsKey(worldName)) {
 +			if (this.worldsOptions.get(worldName).containsKey(option)) {
 +				return this.worldsOptions.get(worldName).get(option);
- 			}
--		} catch (SQLException e) {
--			e.printStackTrace();
- 		}
++			}
++		}
 +
 +		if ((worldName == null || worldName.isEmpty()) && this.commonOptions.containsKey(option)) {
 +			return this.commonOptions.get(option);
-+		}
+ 		}
 +
  		return null;
  	}
@@ -380,25 +376,23 @@ index 0d32c54..11c8873 100644
  			} catch (SQLException e) {
  				throw new RuntimeException(e);
  			}
--		} else {
++
++			if (commonOptions == null) {
++				fetchPermissions();
+ 			} else {
 -			try (SQLConnection conn = backend.getSQL()) {
 -				conn.prepAndBind("INSERT INTO `{permissions}` (`name`, `type`, `permission`, `world`, `value`) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)", getIdentifier(), this.type.ordinal(), option, worldName, value).execute();
 -			} catch (SQLException e) {
 -				throw new RuntimeException(e);
-+
-+			if (commonOptions == null) {
-+				fetchPermissions();
-+			} else {
 +				if (!worldName.isEmpty() && this.worldsOptions.containsKey(worldName)) {
 +					this.worldsOptions.get(worldName).remove(option);
 +				} else {
 +					this.commonOptions.remove(option);
-+				}
+ 				}
  			}
 +
 +			return;
  		}
--	}
  
 -	@Override
 -	public Map<String, String> getOptions(String worldName) {
@@ -470,12 +464,11 @@ index 0d32c54..11c8873 100644
 -					allOptions.put(world, worldOpts);
 -				}
 -				worldOpts.put(res.getString("permission"), res.getString("value"));
--			}
--		} catch (SQLException e) {
--			throw new RuntimeException(e);
 +		if (this.commonOptions == null) {
 +			this.fetchPermissions();
-+		}
+ 		}
+-		} catch (SQLException e) {
+-			throw new RuntimeException(e);
 +
 +		allOptions.put(null, Collections.unmodifiableMap(this.commonOptions));
 +
@@ -493,28 +486,25 @@ index 0d32c54..11c8873 100644
  	}
  
  	@Override
-@@ -333,58 +432,36 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+@@ -333,7 +432,6 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
  
  	@Override
  	public void remove() {
 -		if (this.virtual.compareAndSet(false, true)) {
--			try (SQLConnection conn = backend.getSQL()) {
--				// clear inheritance info
--				conn.prepAndBind("DELETE FROM `{permissions_inheritance}` WHERE `child` = ? AND `type` = ?", this.getIdentifier(), this.type.ordinal()).execute();
--				// clear permissions
--				conn.prepAndBind("DELETE FROM `{permissions}` WHERE `name` = ? AND `type` = ?", this.getIdentifier(), this.type.ordinal()).execute();
--				// clear info
--				conn.prepAndBind("DELETE FROM `{permissions_entity}` WHERE `name` = ? AND `type` = ?", this.getIdentifier(), this.type.ordinal()).execute();
--			} catch (SQLException e) {
--				throw new RuntimeException(e);
--			}
+ 		try (SQLConnection conn = backend.getSQL()) {
+ 			// clear inheritance info
+ 			conn.prepAndBind("DELETE FROM `{permissions_inheritance}` WHERE `child` = ? AND `type` = ?", this.getIdentifier(), this.type.ordinal()).execute();
+@@ -344,47 +442,26 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 		} catch (SQLException e) {
+ 			throw new RuntimeException(e);
+ 		}
 -		}
 -	}
--
+ 
 -	@Override
 -	public Map<String, List<String>> getParentsMap() {
 -		Map<String, List<String>> ret = new HashMap<>();
- 		try (SQLConnection conn = backend.getSQL()) {
+-		try (SQLConnection conn = backend.getSQL()) {
 -			ResultSet res = conn.prepAndBind("SELECT `parent`, `world` FROM `{permissions_inheritance}` WHERE `child` = ? AND `type` = ? ORDER BY `id` DESC", getIdentifier(), this.type.ordinal()).executeQuery();
 -			while (res.next()) {
 -				String world = res.getString("world");
@@ -525,17 +515,10 @@ index 0d32c54..11c8873 100644
 -				}
 -				worldParents.add(res.getString("parent"));
 -			}
-+			// clear inheritance info
-+			conn.prepAndBind("DELETE FROM `{permissions_inheritance}` WHERE `child` = ? AND `type` = ?", this.getIdentifier(), this.type.ordinal()).execute();
-+			// clear permissions
-+			conn.prepAndBind("DELETE FROM `{permissions}` WHERE `name` = ? AND `type` = ?", this.getIdentifier(), this.type.ordinal()).execute();
-+			// clear info
-+			conn.prepAndBind("DELETE FROM `{permissions_entity}` WHERE `name` = ? AND `type` = ?", this.getIdentifier(), this.type.ordinal()).execute();
- 		} catch (SQLException e) {
- 			throw new RuntimeException(e);
- 		}
+-		} catch (SQLException e) {
+-			throw new RuntimeException(e);
+-		}
 -		return Collections.unmodifiableMap(ret);
-+
 +		this.virtual = true;
 +		this.commonOptions.clear();
 +		this.commonPermissions.clear();
@@ -556,12 +539,11 @@ index 0d32c54..11c8873 100644
 -			}
 -			while (res.next()) {
 -				ret.add(res.getString("parent"));
--			}
--		} catch (SQLException e) {
--			throw new RuntimeException(e);
 +		if (this.parents == null) {
 +			this.fetchInheritance();
-+		}
+ 		}
+-		} catch (SQLException e) {
+-			throw new RuntimeException(e);
 +
 +		if (this.parents.containsKey(worldName)) {
 +			return ImmutableList.copyOf(this.parents.get(worldName));

@@ -51,7 +51,7 @@ index b67879a8..6744a6d3 100755
        saltdistr=_saltdistr;
      }
  
-@@ -116,23 +122,24 @@ namespace Faunus {
+@@ -116,20 +122,20 @@ namespace Faunus {
        Point p = f_pp+f_pi-f_ip+f_ii;
        float midp = saltdistr->mid();
        float endp = saltdistr->end();
@@ -78,7 +78,3 @@ index b67879a8..6744a6d3 100755
        return o.str();
      }
  
-+
-     PolymerShape::PolymerShape() {
-       name="Polymer Shape";
-     }

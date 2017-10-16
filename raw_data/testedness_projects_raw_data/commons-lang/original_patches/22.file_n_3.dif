@@ -20,15 +20,7 @@ index 26538d73..7863322a 100644
  import java.util.concurrent.ConcurrentHashMap;
  import java.util.concurrent.ConcurrentMap;
  import java.util.regex.Matcher;
-@@ -72,7 +67,6 @@
-  * @see FastDatePrinter
-  */
- public class FastDateParser implements DateParser, Serializable {
--
-     /**
-      * Required for serialization support.
-      *
-@@ -88,11 +82,16 @@
+@@ -88,10 +82,15 @@
      private final Locale locale;
      private final int century;
      private final int startYear;
@@ -38,15 +30,13 @@ index 26538d73..7863322a 100644
 -    private transient List<StrategyAndWidth> patterns;
 +    private transient Pattern parsePattern;
 +    private transient Strategy[] strategies;
-+
+ 
 +    // dynamic fields to communicate with Strategy
 +    private transient String currentFormatField;
 +    private transient Strategy nextStrategy;
  
--    
      /**
       * <p>Constructs a new FastDateParser.</p>
-      * 
 @@ -105,7 +104,22 @@
       * @param locale non-null locale
       */
@@ -90,7 +80,7 @@ index 26538d73..7863322a 100644
       */
      private void init(final Calendar definingCalendar) {
 -        patterns = new ArrayList<StrategyAndWidth>();
- 
+-
 -        StrategyParser fm = new StrategyParser(pattern, definingCalendar);
 -        for(;;) {
 -            StrategyAndWidth field = fm.getNextStrategy();
@@ -103,25 +93,19 @@ index 26538d73..7863322a 100644
 -
 -    // helper classes to parse the format string
 -    //-----------------------------------------------------------------------
-+        final StringBuilder regex= new StringBuilder();
-+        final List<Strategy> collector = new ArrayList<Strategy>();
- 
+-
 -    /**
 -     * Struct to hold strategy and filed width 
 -     */
 -    private static class StrategyAndWidth {
 -        final Strategy strategy;
 -        final int width;
--
+ 
 -        StrategyAndWidth(Strategy strategy, int width) {
 -            this.strategy = strategy;
 -            this.width = width;
-+        final Matcher patternMatcher= formatPattern.matcher(pattern);
-+        if(!patternMatcher.lookingAt()) {
-+            throw new IllegalArgumentException(
-+                    "Illegal pattern character '" + pattern.charAt(patternMatcher.regionStart()) + "'");
-         }
- 
+-        }
+-
 -        int getMaxWidth(ListIterator<StrategyAndWidth> lt) {
 -            if(!strategy.isNumber() || !lt.hasNext()) {
 -                return 0;
@@ -148,30 +132,23 @@ index 26538d73..7863322a 100644
 -        StrategyAndWidth getNextStrategy() {
 -            if(currentIdx >= pattern.length()) {
 -                return null;
-+        currentFormatField= patternMatcher.group();
-+        Strategy currentStrategy= getStrategy(currentFormatField, definingCalendar);
-+        for(;;) {
-+            patternMatcher.region(patternMatcher.end(), patternMatcher.regionEnd());
-+            if(!patternMatcher.lookingAt()) {
-+                nextStrategy = null;
-+                break;
-             }
--
+-            }
++        final StringBuilder regex= new StringBuilder();
++        final List<Strategy> collector = new ArrayList<Strategy>();
+ 
 -            char c = pattern.charAt(currentIdx);
 -            if( isFormatLetter(c)) {
 -                return letterPattern(c);
 -            }
 -            else {
 -                return literal();
-+            final String nextFormatField= patternMatcher.group();
-+            nextStrategy = getStrategy(nextFormatField, definingCalendar);
-+            if(currentStrategy.addRegex(this, regex)) {
-+                collector.add(currentStrategy);
-             }
-+            currentFormatField= nextFormatField;
-+            currentStrategy= nextStrategy;
+-            }
++        final Matcher patternMatcher= formatPattern.matcher(pattern);
++        if(!patternMatcher.lookingAt()) {
++            throw new IllegalArgumentException(
++                    "Illegal pattern character '" + pattern.charAt(patternMatcher.regionStart()) + "'");
          }
--
+ 
 -        private StrategyAndWidth letterPattern(char c) {
 -            int begin = currentIdx;
 -            while( ++currentIdx<pattern.length() ) {
@@ -182,9 +159,7 @@ index 26538d73..7863322a 100644
 -
 -            int width = currentIdx - begin;
 -            return new StrategyAndWidth(getStrategy(c, width, definingCalendar), width);
-+        if (patternMatcher.regionStart() != patternMatcher.regionEnd()) {
-+            throw new IllegalArgumentException("Failed to parse \""+pattern+"\" ; gave up at index "+patternMatcher.regionStart());
-         }
+-        }
 -
 -        private StrategyAndWidth literal() {
 -            boolean activeQuote = false;
@@ -193,21 +168,35 @@ index 26538d73..7863322a 100644
 -            while( currentIdx<pattern.length() ) {
 -                char c= pattern.charAt(currentIdx);
 -                if( !activeQuote && isFormatLetter( c ) ) {
--                    break;
--                }
++        currentFormatField= patternMatcher.group();
++        Strategy currentStrategy= getStrategy(currentFormatField, definingCalendar);
++        for(;;) {
++            patternMatcher.region(patternMatcher.end(), patternMatcher.regionEnd());
++            if(!patternMatcher.lookingAt()) {
++                nextStrategy = null;
+                 break;
+             }
 -                else if( c=='\'' ) {
 -                    if(++currentIdx==pattern.length() || pattern.charAt(currentIdx)!='\'') {
 -                        activeQuote = !activeQuote;
 -                        continue;
 -                    }
--                }
++            final String nextFormatField= patternMatcher.group();
++            nextStrategy = getStrategy(nextFormatField, definingCalendar);
++            if(currentStrategy.addRegex(this, regex)) {
++                collector.add(currentStrategy);
+             }
 -                ++currentIdx;
 -                sb.append(c);
--            }
++            currentFormatField= nextFormatField;
++            currentStrategy= nextStrategy;
+         }
 -
 -            if(activeQuote) {
 -                throw new IllegalArgumentException("Unterminated quote");
--            }
++        if (patternMatcher.regionStart() != patternMatcher.regionEnd()) {
++            throw new IllegalArgumentException("Failed to parse \""+pattern+"\" ; gave up at index "+patternMatcher.regionStart());
+         }
 -
 -            String formatField = sb.toString();
 -            return new StrategyAndWidth(new CopyQuotedStrategy(formatField), formatField.length());
@@ -273,7 +262,7 @@ index 26538d73..7863322a 100644
       * <p>
       * To determine if the parse has succeeded, the caller must check if the current parse position
       * given by {@link ParsePosition#getIndex()} has been updated. If the input buffer has been fully
-@@ -395,37 +346,23 @@ public Object parseObject(final String source, final ParsePosition pos) {
+@@ -395,36 +346,22 @@ public Object parseObject(final String source, final ParsePosition pos) {
       */
      @Override
      public Date parse(final String source, final ParsePosition pos) {
@@ -291,10 +280,7 @@ index 26538d73..7863322a 100644
 +        for(int i=0; i<strategies.length;) {
 +            final Strategy strategy= strategies[i++];
 +            strategy.setCalendar(this, cal, matcher.group(i));
-+        }
-+        pos.setIndex(offset+matcher.end());
-+        return cal.getTime();
-     }
+         }
 -    
 -    /**
 -     * Parse a formatted date string according to the format.  Updates the Calendar with parsed fields.  
@@ -319,10 +305,11 @@ index 26538d73..7863322a 100644
 -             }
 -         }
 -         return true;
--     }
++        pos.setIndex(offset+matcher.end());
++        return cal.getTime();
+     }
  
      // Support for strategies
-     //-----------------------------------------------------------------------
 @@ -455,42 +392,62 @@ private static StringBuilder simpleQuote(final StringBuilder sb, final String va
      }
  
@@ -349,9 +336,11 @@ index 26538d73..7863322a 100644
 +                if(unquote) {
 +                    if(++i==value.length()) {
 +                        return regex;
-+                    }
+                     }
+-            return right.getKey().compareToIgnoreCase(left.getKey());
 +                    c= value.charAt(i);
-+                }
+                 }
+-    };
 +                break;
 +            case '\\':
 +                if(++i==value.length()) {
@@ -373,11 +362,9 @@ index 26538d73..7863322a 100644
 +                break;
 +            default:
 +                break;
-             }
--            return right.getKey().compareToIgnoreCase(left.getKey());
++            }
 +            regex.append(c);
-         }
--    };
++        }
 +        regex.append("\\E");
 +        return regex;
 +    }
@@ -414,66 +401,38 @@ index 26538d73..7863322a 100644
      }
  
      /**
-@@ -504,73 +461,82 @@ private int adjustYear(final int twoDigitYear) {
+@@ -504,6 +461,22 @@ private int adjustYear(final int twoDigitYear) {
      }
  
      /**
--     * A strategy to parse a single field from the parsing pattern
 +     * Is the next field a number?
 +     * @return true, if next field will be a number
-      */
--    private static abstract class Strategy {
--        /**
--         * Is this field a number?
--         * The default implementation returns false.
--         *
--         * @return true, if field is a number
--         */
--        boolean isNumber() {
--            return false;
--        }
++     */
 +    boolean isNextNumber() {
 +        return nextStrategy!=null && nextStrategy.isNumber();
 +    }
- 
--        abstract boolean parse(FastDateParser parser, Calendar calendar, String source, ParsePosition pos, int maxWidth);
++
 +    /**
 +     * What is the width of the current field?
 +     * @return The number of characters in the current format field
 +     */
 +    int getFieldWidth() {
 +        return currentFormatField.length();
-     }
- 
-     /**
++    }
++
++    /**
       * A strategy to parse a single field from the parsing pattern
       */
--    private static abstract class PatternStrategy extends Strategy {
--
--        private Pattern pattern;
--
--        void createPattern(StringBuilder regex) {
--            createPattern(regex.toString());
--        }
--
--        void createPattern(String regex) {
--            this.pattern = Pattern.compile(regex);
--        }
--
-+    private static abstract class Strategy {
-+        
-         /**
-          * Is this field a number?
-          * The default implementation returns false.
-          *
-          * @return true, if field is a number
-          */
--        @Override
-         boolean isNumber() {
+     private static abstract class Strategy {
+@@ -517,49 +491,36 @@ boolean isNumber() {
              return false;
          }
-+        
-+        /**
+         
+-        abstract boolean parse(FastDateParser parser, Calendar calendar, String source, ParsePosition pos, int maxWidth);
+-    }
+-
+         /**
+-     * A strategy to parse a single field from the parsing pattern
 +         * Set the Calendar with the parsed field.
 +         *
 +         * The default implementation does nothing.
@@ -481,8 +440,37 @@ index 26538d73..7863322a 100644
 +         * @param parser The parser calling this strategy
 +         * @param cal The <code>Calendar</code> to set
 +         * @param value The parsed field to translate and set in cal
-+         */
+          */
+-    private static abstract class PatternStrategy extends Strategy {
+-
+-        private Pattern pattern;
+-
+-        void createPattern(StringBuilder regex) {
+-            createPattern(regex.toString());
+-        }
 +        void setCalendar(final FastDateParser parser, final Calendar cal, final String value) {
+ 
+-        void createPattern(String regex) {
+-            this.pattern = Pattern.compile(regex);
+         }
+         
+         /**
+-         * Is this field a number?
+-         * The default implementation returns false.
+-         *
+-         * @return true, if field is a number
++         * Generate a <code>Pattern</code> regular expression to the <code>StringBuilder</code>
++         * which will accept this field
++         * @param parser The parser calling this strategy
++         * @param regex The <code>StringBuilder</code> to append to
++         * @return true, if this field will set the calendar;
++         * false, if this field is a constant value
+          */
+-        @Override
+-        boolean isNumber() {
+-            return false;
+-        }
++        abstract boolean addRegex(FastDateParser parser, StringBuilder regex);
  
 -        @Override
 -        boolean parse(FastDateParser parser, Calendar calendar, String source, ParsePosition pos, int maxWidth) {
@@ -494,30 +482,19 @@ index 26538d73..7863322a 100644
 -            pos.setIndex(pos.getIndex() + matcher.end(1));
 -            setCalendar(parser, calendar, matcher.group(1));
 -            return true;
-         }
-+        
-+        /**
-+         * Generate a <code>Pattern</code> regular expression to the <code>StringBuilder</code>
-+         * which will accept this field
-+         * @param parser The parser calling this strategy
-+         * @param regex The <code>StringBuilder</code> to append to
-+         * @return true, if this field will set the calendar;
-+         * false, if this field is a constant value
-+         */
-+        abstract boolean addRegex(FastDateParser parser, StringBuilder regex);
- 
--        abstract void setCalendar(FastDateParser parser, Calendar cal, String value);
      }
  
-     /**
+-        abstract void setCalendar(FastDateParser parser, Calendar cal, String value);
+-    }
++    /**
 +     * A <code>Pattern</code> to parse the user supplied SimpleDateFormat pattern
 +     */
 +    private static final Pattern formatPattern= Pattern.compile(
 +            "D+|E+|F+|G+|H+|K+|M+|S+|W+|X+|Z+|a+|d+|h+|k+|m+|s+|w+|y+|z+|''|'[^']++(''[^']*+)*+'|[^'A-Za-z]++");
-+
-+    /**
+ 
+     /**
       * Obtain a Strategy given a field from a SimpleDateFormat pattern
-      * @param formatField A sub-sequence of the SimpleDateFormat pattern
+@@ -567,10 +528,15 @@ boolean parse(FastDateParser parser, Calendar calendar, String source, ParsePosi
       * @param definingCalendar The calendar to obtain the short and long values
       * @return The Strategy that will handle parsing for the field
       */
@@ -614,16 +591,15 @@ index 26538d73..7863322a 100644
 -                }
 -                if (formatField.charAt(idx) != source.charAt(sIdx)) {
 -                    pos.setErrorIndex(sIdx);
--                    return false;
--                }
--            }
--            pos.setIndex(formatField.length() + pos.getIndex());
--            return true;
 +        boolean addRegex(final FastDateParser parser, final StringBuilder regex) {
 +            escapeRegex(regex, formatField, true);
-+            return false;
+             return false;
          }
      }
+-            pos.setIndex(formatField.length() + pos.getIndex());
+-            return true;
+-        }
+-    }
  
      /**
       * A strategy that handles a text field in the parsing pattern
@@ -644,13 +620,12 @@ index 26538d73..7863322a 100644
          CaseInsensitiveTextStrategy(final int field, final Calendar definingCalendar, final Locale locale) {
 -            this.field = field;
 -            this.locale = locale;
--            
--            StringBuilder regex = new StringBuilder();
 +            this.field= field;
 +            this.locale= locale;
 +            final Map<String, Integer> keyValues = getDisplayNames(field, definingCalendar, locale);
 +            this.lKeyValues= new HashMap<String,Integer>();
-+
+ 
+-            StringBuilder regex = new StringBuilder();
 +            for(final Map.Entry<String, Integer> entry : keyValues.entrySet()) {
 +                lKeyValues.put(entry.getKey().toLowerCase(locale), entry.getValue());
 +            }
@@ -724,36 +699,35 @@ index 26538d73..7863322a 100644
 -                char c = source.charAt(idx);
 -                if (!Character.isDigit(c)) {
 -                    break;
--                }
 +        boolean addRegex(final FastDateParser parser, final StringBuilder regex) {
 +            // See LANG-954: We use {Nd} rather than {IsNd} because Android does not support the Is prefix
 +            if(parser.isNextNumber()) {
 +                regex.append("(\\p{Nd}{").append(parser.getFieldWidth()).append("}+)");
              }
--
--            if (pos.getIndex() == idx) {
--                pos.setErrorIndex(idx);
--                return false;
 +            else {
 +                regex.append("(\\p{Nd}++)");
              }
 -
+-            if (pos.getIndex() == idx) {
+-                pos.setErrorIndex(idx);
+-                return false;
++            return true;
+         }
+ 
 -            int value = Integer.parseInt(source.substring(pos.getIndex(), idx));
 -            pos.setIndex(idx);
 -
 -            calendar.set(field, modify(parser, value));
-             return true;
-         }
- 
-         /**
+-            return true;
++        /**
 +         * {@inheritDoc}
 +         */
 +        @Override
 +        void setCalendar(final FastDateParser parser, final Calendar cal, final String value) {
 +            cal.set(field, modify(Integer.parseInt(value)));
-+        }
-+
-+        /**
+         }
+ 
+         /**
           * Make any modifications to parsed integer
 -         * @param parser The parser
           * @param iValue The parsed integer
@@ -767,7 +741,7 @@ index 26538d73..7863322a 100644
      }
  
      private static final Strategy ABBREVIATED_YEAR_STRATEGY = new NumberStrategy(Calendar.YEAR) {
-@@ -812,21 +775,26 @@ int modify(FastDateParser parser, final int iValue) {
+@@ -812,20 +775,25 @@ int modify(FastDateParser parser, final int iValue) {
           * {@inheritDoc}
           */
          @Override
@@ -789,16 +763,13 @@ index 26538d73..7863322a 100644
 +    static class TimeZoneStrategy extends Strategy {
          private static final String RFC_822_TIME_ZONE = "[+-]\\d{4}";
          private static final String GMT_OPTION= "GMT[+-]\\d{1,2}:\\d{2}";
--
-+        
+         
          private final Locale locale;
          private final Map<String, TimeZone> tzNames= new HashMap<String, TimeZone>();
-- 
 +        private final String validTimeZoneChars;
-+
+ 
          /**
           * Index of zone id
-          */
 @@ -834,11 +802,9 @@ int modify(FastDateParser parser, final int iValue) {
  
          /**

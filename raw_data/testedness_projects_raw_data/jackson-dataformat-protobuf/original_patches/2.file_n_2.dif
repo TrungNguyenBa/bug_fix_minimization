@@ -36,14 +36,6 @@ index 56cdd10..142d44f 100644
          buf[ptr++] = (byte) v;
          v >>= 8;
          buf[ptr++] = (byte) v;
-@@ -1261,7 +1258,6 @@ public class ProtobufGenerator extends GeneratorBase
-         buf[ptr++] = (byte) v;
- 
-         v = (int) (v64 >> 32);
--        
-         buf[ptr++] = (byte) v;
-         v >>= 8;
-         buf[ptr++] = (byte) v;
 @@ -1307,11 +1303,11 @@ public class ProtobufGenerator extends GeneratorBase
          // need to ensure room for tag id, length (10 bytes); might as well ask for bit more
          _ensureRoom(20);

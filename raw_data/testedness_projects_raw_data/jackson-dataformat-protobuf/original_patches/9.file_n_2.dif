@@ -59,11 +59,10 @@ index 739a1b5..3d5b8ca 100644
 -                if (_checkEnd()) {
 -                    return (_currToken = JsonToken.END_OBJECT);
 -                }
--                if (_inputPtr >= _inputEnd) {
 +            _skipUnknownAtRoot2(wireType);
 +
 +            // end-of-the-line?
-+            if (_inputPtr >= _inputEnd) {
+             if (_inputPtr >= _inputEnd) {
 +                if (_state == STATE_NESTED_KEY) {
                      loadMoreGuaranteed();
 -                }

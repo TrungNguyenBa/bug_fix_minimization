@@ -56,7 +56,7 @@ index e1bc8c9..6b74b7a 100644
  		if (saveSuppressed) {
  			return;
  		}
-@@ -212,15 +211,12 @@ public class FileConfig {
+@@ -212,17 +211,14 @@ public class FileConfig {
  		}
  	}
  
@@ -65,19 +65,18 @@ index e1bc8c9..6b74b7a 100644
 -			FileMatcherGroup fGroup = group instanceof FileMatcherGroup ? (FileMatcherGroup) group : null;
 -			if (fGroup != null) {
 -				List<String> comments = fGroup.getComments();
--				if (comments != null) {
--					for (String comment : comments) {
--						writer.writeComment(comment);
--					}
 +	private void writeGroups(ConfigInstance<FileMatcherGroup> list, PEXMLWriter writer) throws IOException {
 +		for (FileMatcherGroup group : list.getGroups()) {
 +			List<String> comments = group.getComments();
-+			if (comments != null) {
-+				for (String comment : comments) {
-+					writer.writeComment(comment);
+ 			if (comments != null) {
+ 				for (String comment : comments) {
+ 					writer.writeComment(comment);
  				}
  			}
+-			}
  			writer.beginHeader(group.getName());
+ 			for (Map.Entry<Qualifier, String> qual : group.getQualifiers().entries()) {
+ 				writer.writeQualifier(qual.getKey().getName(), qual.getValue());
 @@ -231,13 +227,13 @@ public class FileConfig {
  
  			if (group.isMap()) {

@@ -2,22 +2,21 @@ diff --git a/src/main/java/pl/project13/maven/git/NativeGitProvider.java b/src/m
 index 87413e8..d78ef07 100644
 --- a/src/main/java/pl/project13/maven/git/NativeGitProvider.java
 +++ b/src/main/java/pl/project13/maven/git/NativeGitProvider.java
-@@ -73,15 +73,9 @@ public class NativeGitProvider extends GitDataProvider {
+@@ -73,16 +73,10 @@ public class NativeGitProvider extends GitDataProvider {
    }
  
    private String getBranch(File canonical) {
 -    String branch = null;
 -    try{
 -      branch = tryToRunGitCommand(canonical, "symbolic-ref HEAD");
--      if (branch != null) {
--        branch = branch.replace("refs/heads/", "");
--      }
++    String branch = tryToRunGitCommand(canonical, "symbolic-ref HEAD");
+     if (branch != null) {
+       branch = branch.replace("refs/heads/", "");
+     }
 -    }catch(RuntimeException e){
 -      // it seems that git repro is in 'DETACHED HEAD'-State, using Commid-Id as Branch
 -      branch = getCommitId();
-+    String branch = tryToRunGitCommand(canonical, "symbolic-ref HEAD");
-+    if (branch != null) {
-+      branch = branch.replace("refs/heads/", "");
-     }
+-    }
      return branch;
    }
+ 

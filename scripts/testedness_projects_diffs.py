@@ -67,7 +67,7 @@ with open("/Users/trung/Documents/Umass_rs/bug_fix_minimization/csv_data/"+"test
 	writer=csv.DictWriter(csvfile, fieldnames=fieldnames)
 	writer.writeheader()
 	for d in data_list:
-		writer.writerow({'PID': d.get_project(), 'BID': d.get_bugnumber(),'FILE' : d.get_filename(),
+		writer.writerow({'PID': d.get_project(), 'BID': d.get_bugnumber(),'File' : d.get_filename(),
 						 'inserted' : d.get_inserted_num(), 'deleted': d.get_deleted_num(), 'modified' : d.get_modified_num()})
 
 

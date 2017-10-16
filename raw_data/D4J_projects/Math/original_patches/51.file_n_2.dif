@@ -23,9 +23,7 @@ index b3a23a1d4..fde7172e3 100644
                      f0 *= 0.5;
 -                    break;
 -                case PEGASUS:
-+                }
-+                if (method == Method.PEGASUS) {
-                     f0 *= f1 / (f1 + fx);
+-                    f0 *= f1 / (f1 + fx);
 -                    break;
 -                case REGULA_FALSI:
 -                    if (x == x1) {
@@ -41,12 +39,13 @@ index b3a23a1d4..fde7172e3 100644
 -                    // Should never happen.
 -                    throw new MathInternalError();
                  }
-+                x1 = x;
-+                f1 = fx;
-             }
++                if (method == Method.PEGASUS) {
++                    f0 *= f1 / (f1 + fx);
+                 }
 -            // Update from [x0, x1] to [x0, x].
--            x1 = x;
--            f1 = fx;
+                 x1 = x;
+                 f1 = fx;
++            }
  
              // If the function value of the last approximation is too small,
              // given the function value accuracy, then we can't get closer to

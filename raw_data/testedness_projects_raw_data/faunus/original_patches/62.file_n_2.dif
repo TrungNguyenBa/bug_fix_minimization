@@ -11,12 +11,10 @@ index 281c56ac..be52c095 100644
     * to PDB but also contains charges and radii
     */
    class FormatPQR {
-@@ -189,64 +189,6 @@ namespace Faunus {
-          */
- 
+@@ -191,64 +191,6 @@ namespace Faunus {
    };
--   
--    /**
+ 
+   /**
 -     * @brief XYZ format
 -     * @date June 2013
 -     *
@@ -73,6 +71,8 @@ index 281c56ac..be52c095 100644
 -        }
 -        
 -    };
- 
-   /**
+-
+-  /**
     * @brief Gromacs GRO format
+    * @date December 2007
+    * @todo Non cubic dimensions

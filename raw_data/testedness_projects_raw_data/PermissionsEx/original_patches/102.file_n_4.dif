@@ -70,9 +70,8 @@ index aa44d9a..cb52947 100644
 -				if (this.backend.dbDriver.equals("sqlite")) {// Not really the best way, but too bad
 -					conn.prepAndBind("INSERT OR REPLACE INTO `{permissions}` (`name`, `type`, `permission`, `world`, `value`) VALUES (?, ?, ?, ?, ?)", getIdentifier(), this.type.ordinal(), option, worldName, value).execute();
 -				} else {
--					conn.prepAndBind("INSERT INTO `{permissions}` (`name`, `type`, `permission`, `world`, `value`) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)", getIdentifier(), this.type.ordinal(), option, worldName, value).execute();
+ 				conn.prepAndBind("INSERT INTO `{permissions}` (`name`, `type`, `permission`, `world`, `value`) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)", getIdentifier(), this.type.ordinal(), option, worldName, value).execute();
 -				}
-+				conn.prepAndBind("INSERT INTO `{permissions}` (`name`, `type`, `permission`, `world`, `value`) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)", getIdentifier(), this.type.ordinal(), option, worldName, value).execute();
  			} catch (SQLException e) {
  				throw new RuntimeException(e);
  			}

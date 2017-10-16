@@ -16,15 +16,6 @@ index ae94a49..799ce66 100644
          int ptr = _writeTag(_currPtr) + 1; // +1 to leave room for length indicator
          final int start = ptr;
          final byte[] buf = _currBuffer;
-@@ -544,7 +540,7 @@ public class ProtobufGenerator extends GeneratorBase
-         }
-         _currPtr = ptr;
-     }
--
-+    
-     @Override
-     public void writeString(char[] text, int offset, int clen) throws IOException
-     {
 @@ -565,12 +561,8 @@ public class ProtobufGenerator extends GeneratorBase
              _encodeLongerString(text, offset, clen);
              return;

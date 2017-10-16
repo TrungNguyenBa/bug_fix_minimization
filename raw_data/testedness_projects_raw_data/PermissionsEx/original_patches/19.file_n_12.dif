@@ -154,10 +154,9 @@ index 1d47482..5ab92f7 100644
 -            if (childElement != null) {
 -                childElement.parse(args, context);
 -            }
-+            super.parse(args, context);
- 
-         }
- 
+-
+-        }
+-
 -        private void parseLongFlag(String longFlag, CommandArgs args, CommandContext context) throws ArgumentParseException {
 -            if (longFlag.contains("=")) {
 -                final String[] flagSplit = longFlag.split("=", 2);
@@ -185,7 +184,8 @@ index 1d47482..5ab92f7 100644
 -                }
 -            }
 -        }
--
++            super.parse(args, context);
+ 
 -        private void parseShortFlags(String shortFlags, CommandArgs args, CommandContext context) throws ArgumentParseException {
 -            for (int i = 0; i < shortFlags.length(); ++i) {
 -                final String flagChar = shortFlags.substring(i, i + 1);
@@ -195,8 +195,8 @@ index 1d47482..5ab92f7 100644
 -                }
 -                element.parse(args, context);
 -            }
--        }
--
+         }
+ 
          @Override
          public <TextType> TextType getUsage(Commander<TextType> src) {
 -            final StringBuilder usageBuilder = new StringBuilder();
@@ -269,22 +269,17 @@ index 1d47482..5ab92f7 100644
                      element.parse(args, context);
                      int endPos = args.getPosition();
 -                    if (!args.hasNext()) {
--                        args.setPosition(startPos);
--                        List<String> inputs = element.tabComplete(src, args, context);
--                        args.setPosition(args.getPosition() - 1);
+                     args.setPosition(startPos);
+                     List<String> inputs = element.tabComplete(src, args, context);
+                     args.setPosition(args.getPosition() - 1);
 -                        if (!inputs.contains(args.next())) { // Tabcomplete returns results to complete the last word in an argument.
 -                            // If the last word is one of the completions, the command is most likely complete
--                            return inputs;
--                        }
--
--                        args.setPosition(endPos);
-+                    args.setPosition(startPos);
-+                    List<String> inputs = element.tabComplete(src, args, context);
-+                    args.setPosition(args.getPosition() - 1);
 +                    if (!inputs.contains(args.next())) {
-+                        return inputs;
+                         return inputs;
                      }
-+                    args.setPosition(endPos);
+-
+                     args.setPosition(endPos);
+-                    }
                  } catch (ArgumentParseException e) {
                      args.setPosition(startPos);
                      return element.tabComplete(src, args, context);

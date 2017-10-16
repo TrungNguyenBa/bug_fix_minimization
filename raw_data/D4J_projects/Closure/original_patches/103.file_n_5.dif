@@ -2,7 +2,7 @@ diff --git a/test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java b/te
 index f63e9370..4175682a 100644
 --- a/test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java
 +++ b/test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java
-@@ -1240,18 +1240,12 @@ public class ControlFlowAnalysisTest extends TestCase {
+@@ -1240,12 +1240,6 @@ public class ControlFlowAnalysisTest extends TestCase {
      testCfg(src, expectedWhenNotTraversingFunctions, false);
    }
  
@@ -15,10 +15,3 @@ index f63e9370..4175682a 100644
    public void testSynBlock() {
      String src = "START(); var x; END()";
      ControlFlowGraph<Node> cfg = createCfg(src, true);
-     assertDownEdge(cfg, Token.BLOCK, Token.EXPR_RESULT, Branch.SYN_BLOCK);
-   }
--  
-+
-   public void testPartialTraversalOfScope() {
-     Compiler compiler = new Compiler();
-     ControlFlowAnalysis cfa = new ControlFlowAnalysis(compiler, true);

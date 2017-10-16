@@ -2,20 +2,20 @@ diff --git a/src/java/org/apache/commons/math/util/MathUtils.java b/src/java/org
 index 1389d5a28..50ed22a6a 100644
 --- a/src/java/org/apache/commons/math/util/MathUtils.java
 +++ b/src/java/org/apache/commons/math/util/MathUtils.java
-@@ -311,13 +311,6 @@ public final class MathUtils {
-         }
+@@ -312,13 +312,6 @@ public final class MathUtils {
          return true;
      }
--    
+ 
 -    /** All long-representable factorials */
 -    private static final long[] factorials = new long[] 
 -       {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800,
 -        479001600, 6227020800l, 87178291200l, 1307674368000l, 20922789888000l,
 -        355687428096000l, 6402373705728000l, 121645100408832000l,
 -        2432902008176640000l};
- 
+-
      /**
       * Returns n!. Shorthand for <code>n</code> <a
+      * href="http://mathworld.wolfram.com/Factorial.html"> Factorial</a>, the
 @@ -342,14 +335,12 @@ public final class MathUtils {
       * @throws IllegalArgumentException if n < 0
       */

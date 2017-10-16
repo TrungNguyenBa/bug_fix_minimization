@@ -34,7 +34,7 @@ index 6af19aa..66bf4d7 100644
       * </ul>
       * TODO: How do we accept pretty names for users?
       * @param key The key to store the parsed argument under
-@@ -89,61 +84,21 @@ public class GameArguments {
+@@ -89,62 +84,22 @@ public class GameArguments {
                  return ImmutableList.copyOf(pex.getRegisteredSubjectTypes());
              }
  
@@ -60,17 +60,23 @@ index 6af19aa..66bf4d7 100644
 -                                        }
 -                                    }));
 -                } else {
--                    return ImmutableList.copyOf(Iterables.filter(pex.getRegisteredSubjectTypes(), new GenericArguments.StartsWithPredicate(type)));
++                System.out.println("Identifier is not present, completing for subject types");
+                 return ImmutableList.copyOf(Iterables.filter(pex.getRegisteredSubjectTypes(), new GenericArguments.StartsWithPredicate(type)));
 -                }
 -
 -            }
 -            return ImmutableList.copyOf(
--                    Iterables.filter(
--                            Iterables.concat(pex.getSubjects(type).getAllIdentifiers(), pex.getTransientSubjects(type).getAllIdentifiers()),
--                            new GenericArguments.StartsWithPredicate(identifierSegment.get())
--                    ));
--        }
--    }
++            } else {
++                System.out.println("Getting completions for subject identifier type " + type);
++                List<String> ret = ImmutableList.copyOf(
+                         Iterables.filter(
+                                 Iterables.concat(pex.getSubjects(type).getAllIdentifiers(), pex.getTransientSubjects(type).getAllIdentifiers()),
+                                 new GenericArguments.StartsWithPredicate(identifierSegment.get())
+                         ));
++                System.out.println("Suggestions: " + ret);
++                return ret;
+             }
+         }
 -
 -    public static CommandElement context(Translatable key) {
 -        return new ContextCommandElement(key);
@@ -88,24 +94,14 @@ index 6af19aa..66bf4d7 100644
 -            final String[] contextSplit = context.split("=", 2);
 -            if (contextSplit.length != 2) {
 -                throw args.createError(_("Context must be of the form <key>=<value>!"));
-+                System.out.println("Identifier is not present, completing for subject types");
-+                return ImmutableList.copyOf(Iterables.filter(pex.getRegisteredSubjectTypes(), new GenericArguments.StartsWithPredicate(type)));
-+            } else {
-+                System.out.println("Getting completions for subject identifier type " + type);
-+                List<String> ret = ImmutableList.copyOf(
-+                        Iterables.filter(
-+                                Iterables.concat(pex.getSubjects(type).getAllIdentifiers(), pex.getTransientSubjects(type).getAllIdentifiers()),
-+                                new GenericArguments.StartsWithPredicate(identifierSegment.get())
-+                        ));
-+                System.out.println("Suggestions: " + ret);
-+                return ret;
-             }
+-            }
 -            return Maps.immutableEntry(contextSplit[0], contextSplit[1]);
 -        }
 -
 -        @Override
 -        public <TextType> List<String> tabComplete(Commander<TextType> src, CommandArgs args, CommandContext context) {
 -            return Collections.emptyList();
-         }
+-        }
      }
  
+ }

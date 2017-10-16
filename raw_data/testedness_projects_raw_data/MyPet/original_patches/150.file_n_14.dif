@@ -11,19 +11,3 @@ index a70c600d..1e6339ed 100644
              public void itemStateChanged(ItemEvent e) {
                  if (e.getStateChange() == ItemEvent.SELECTED) {
                      selectedMobtype = SkillTreeMobType.getMobTypeByName(mobTypeComboBox.getSelectedItem().toString());
-@@ -71,6 +71,7 @@ public class SkilltreeCreator {
-                 }
-             }
-         });
-+
-         skilltreeTree.addTreeSelectionListener(new TreeSelectionListener() {
-             public void valueChanged(TreeSelectionEvent e) {
-                 if (skilltreeTree.getSelectionPath() != null && skilltreeTree.getSelectionPath().getPathCount() == 2) {
-@@ -244,6 +245,7 @@ public class SkilltreeCreator {
- 
-             }
-         });
-+
-         copyMenuItem.addActionListener(new ActionListener() {
-             public void actionPerformed(ActionEvent e) {
-                 skilltreeCopyPaste = ((SkillTreeNode) skilltreeTree.getSelectionPath().getPathComponent(1)).getSkillTree();

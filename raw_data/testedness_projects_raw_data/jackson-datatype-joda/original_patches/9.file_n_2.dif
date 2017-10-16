@@ -2,7 +2,7 @@ diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDa
 index 8fbbab4..bde188e 100644
 --- a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
 +++ b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
-@@ -116,29 +116,21 @@ public class JacksonJodaDateFormat extends JacksonJodaFormatBase
+@@ -116,20 +116,6 @@ public class JacksonJodaDateFormat extends JacksonJodaFormatBase
  
      public DateTimeFormatter createFormatter(SerializerProvider provider)
      {
@@ -21,22 +21,18 @@ index 8fbbab4..bde188e 100644
 -    public DateTimeFormatter createFormatterWithLocale(SerializerProvider provider)
 -    {
          DateTimeFormatter formatter = _formatter;
--
-+        
+         
          if (!_explicitLocale) {
-             Locale loc = provider.getLocale();
-             if (loc != null && !loc.equals(_locale)) {
+@@ -138,6 +124,12 @@ public class JacksonJodaDateFormat extends JacksonJodaFormatBase
                  formatter = formatter.withLocale(loc);
              }
          }
--
 +        if (!_explicitTimezone) {
 +            TimeZone tz = provider.getTimeZone();
 +            if (tz != null && !tz.equals(_jdkTimezone)) {
 +                formatter = formatter.withZone(DateTimeZone.forTimeZone(tz));
 +            }
 +        }
-+        
+         
          return formatter;
      }
-     

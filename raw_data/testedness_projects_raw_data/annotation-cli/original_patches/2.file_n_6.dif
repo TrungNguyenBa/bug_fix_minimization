@@ -37,15 +37,13 @@ index 854ea14..104b11f 100644
 -				OptionImplTwo.class, OptionImplThree.class });
  		String expectedUsageMessage = "usage: java org.valhalla.cli.MainClass simple command line string"
  				+ lineSep
--				+ "  -A    This is an A option"
--				+ lineSep
--				+ "  --bOption[=value| value]    This is the bOption option"
-+				+ "  -A	This is an A option"
+ 				+ "  -A	This is an A option"
  				+ lineSep
+ 				+ "  --bOption[=value| value]	This is the bOption option"
+-				+ lineSep
 -				+ "  -B    This is option B that will contain a description that will span multiple lines to test that the usage mechanism"
 -				+ lineSep 
 -				+ "    will properly display this information on the screen"
-+				+ "  --bOption[=value| value]	This is the bOption option"
  				+ lineSep;
  		String usageMessage = this.options.usage(MainClass.class,
  				"simple command line string");

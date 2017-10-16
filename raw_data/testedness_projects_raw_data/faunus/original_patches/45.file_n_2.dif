@@ -14,14 +14,6 @@ index b92ea4e9..2fbf03a7 100755
  
            void setResolution(Tx resolution) {
              assert( resolution>0 );
-@@ -538,6 +541,7 @@ namespace Faunus {
-               return sample(spc,all,ida,idb);
-             }
- 
-+
-           template<class Tspace>
-             void sampleMolecule(Tspace &spc, Group &sol) {
-               for (int i=0; i<sol.numMolecules()-1; i++) {
 @@ -1193,15 +1197,8 @@ namespace Faunus {
            }
  

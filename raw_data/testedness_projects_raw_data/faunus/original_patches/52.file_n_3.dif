@@ -13,7 +13,7 @@ index 5c91b675..ded0696f 100644
              rcut2 = pow(in.get<double>("g2g_cutoff",pc::infty), 2);
              base::name+=" (g2g cut=" + std::to_string(sqrt(rcut2))
                + textio::_angstrom + ")";
-@@ -566,30 +563,19 @@ namespace Faunus {
+@@ -566,13 +563,12 @@ namespace Faunus {
            }
  
            /**
@@ -28,14 +28,13 @@ index 5c91b675..ded0696f 100644
             */
            double i2all(typename base::Tpvec &p, int i) FOVERRIDE {
 -            if (noPairPotentialCutoff) {
--              auto gi=base::spc->findGroup(i);
--              assert(gi!=nullptr);
--              double u=base::i2g(p,*gi,i); // i<->own group
--              for (auto gj : base::spc->groupList())
--                if (gj!=gi)
--                  u+=g2g(p,*gi,*gj);
--              return u;
--            }
+             auto gi=base::spc->findGroup(i);
+             assert(gi!=nullptr);
+             double u=base::i2g(p,*gi,i); // i<->own group
+@@ -581,16 +577,6 @@ namespace Faunus {
+                 u+=g2g(p,*gi,*gj);
+             return u;
+           }
 -            else
 -            {
 -              double u=0;
@@ -45,13 +44,7 @@ index 5c91b675..ded0696f 100644
 -                  u+=base::i2g(p,*gj,i);
 -              return u;
 -            }
-+            auto gi=base::spc->findGroup(i);
-+            assert(gi!=nullptr);
-+            double u=base::i2g(p,*gi,i); // i<->own group
-+            for (auto gj : base::spc->groupList())
-+              if (gj!=gi)
-+                u+=g2g(p,*gi,*gj);
-+            return u;
-           }
+-          }
        };
  
+     /**

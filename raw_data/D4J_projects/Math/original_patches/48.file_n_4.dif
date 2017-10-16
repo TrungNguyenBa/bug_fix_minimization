@@ -51,9 +51,3 @@ index 457c9580d..08fb0c7d0 100644
       * @param functionValueAccuracy Maximum function value error.
       */
      public PegasusSolver(final double relativeAccuracy,
-@@ -82,4 +79,5 @@ public class PegasusSolver extends BaseSecantSolver {
-                          final double functionValueAccuracy) {
-         super(relativeAccuracy, absoluteAccuracy, functionValueAccuracy, Method.PEGASUS);
-     }
-+
- }

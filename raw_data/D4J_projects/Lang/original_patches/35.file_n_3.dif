@@ -2,11 +2,10 @@ diff --git a/src/test/java/org/apache/commons/lang3/ArrayUtilsAddTest.java b/src
 index 8d2e0e16..e38e4811 100644
 --- a/src/test/java/org/apache/commons/lang3/ArrayUtilsAddTest.java
 +++ b/src/test/java/org/apache/commons/lang3/ArrayUtilsAddTest.java
-@@ -221,25 +221,6 @@ public class ArrayUtilsAddTest extends TestCase {
-         assertTrue(Arrays.equals((new Object[]{null}), newArray));
+@@ -222,25 +222,6 @@ public class ArrayUtilsAddTest extends TestCase {
          assertEquals(Object.class, newArray.getClass().getComponentType());
      }
--    
+ 
 -    public void testLANG571(){
 -        String[] stringArray=null;
 -        String aString=null;
@@ -25,6 +24,7 @@ index 8d2e0e16..e38e4811 100644
 -            //expected
 -        }
 -    }
- 
+-
      public void testAddObjectArrayToObjectArray() {
          assertNull(ArrayUtils.addAll((Object[]) null, (Object[]) null));
+         Object[] newArray;

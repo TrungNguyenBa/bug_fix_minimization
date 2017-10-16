@@ -2,11 +2,10 @@ diff --git a/src/test/java/org/apache/commons/math3/geometry/euclidean/threed/Su
 index b941ffae7..f060cfb8f 100644
 --- a/src/test/java/org/apache/commons/math3/geometry/euclidean/threed/SubLineTest.java
 +++ b/src/test/java/org/apache/commons/math3/geometry/euclidean/threed/SubLineTest.java
-@@ -152,13 +152,5 @@ public class SubLineTest {
-         Assert.assertNull(sub1.intersection(sub2, true));
+@@ -153,12 +153,4 @@ public class SubLineTest {
          Assert.assertNull(sub1.intersection(sub2, false));
      }
--    
+ 
 -    @Test
 -    public void testIntersectionNotIntersecting() throws MathIllegalArgumentException {
 -        SubLine sub1 = new SubLine(new Vector3D(1, 1, 1), new Vector3D(1.5, 1, 1));
@@ -14,5 +13,5 @@ index b941ffae7..f060cfb8f 100644
 -        Assert.assertNull(sub1.intersection(sub2, true));
 -        Assert.assertNull(sub1.intersection(sub2, false));
 -    }
- 
+-
  }

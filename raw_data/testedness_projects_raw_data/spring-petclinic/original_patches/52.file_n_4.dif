@@ -2,17 +2,17 @@ diff --git a/src/main/java/org/springframework/samples/petclinic/repository/jpa/
 index 3415def..fccf795 100644
 --- a/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVisitRepositoryImpl.java
 +++ b/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVisitRepositoryImpl.java
-@@ -45,12 +45,7 @@ public class JpaVisitRepositoryImpl implements VisitRepository {
+@@ -45,13 +45,8 @@ public class JpaVisitRepositoryImpl implements VisitRepository {
  
      @Override
      public void save(Visit visit) {
 -    	if (visit.getId() == null) {
--    		this.em.persist(visit);     		
--    	}
+         this.em.persist(visit);
+     }
 -    	else {
 -    		this.em.merge(visit);    
 -    	}
-+        this.em.persist(visit);
-     }
+-    }
  
  
+     @Override

@@ -370,7 +370,10 @@ index 97e781c..7f50cc9 100644
 -         id="path5469"
 -         inkscape:connector-curvature="0" />
 -      <flowRoot
--         xml:space="preserve"
++         id="path5469" />
++    </g>
++    <text
+        xml:space="preserve"
 -         id="flowRoot5481"
 -         style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
 -           id="flowRegion5483"><rect
@@ -380,10 +383,6 @@ index 97e781c..7f50cc9 100644
 -             x="307.80179"
 -             y="181.80531" /></flowRegion><flowPara
 -           id="flowPara5487"></flowPara></flowRoot>    </g>
-+         id="path5469" />
-+    </g>
-+    <text
-+       xml:space="preserve"
 +       style="font-size:168.41470337px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9d9d9d;fill-opacity:1;stroke:none;font-family:Sans"
 +       x="681.88068"
 +       y="741.05432"

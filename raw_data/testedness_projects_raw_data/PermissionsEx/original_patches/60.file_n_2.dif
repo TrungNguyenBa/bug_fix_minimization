@@ -36,10 +36,7 @@ index 09eb517..42c3289 100644
 -			PermissionManager manager = pexPlugin.getPermissionsManager();
 -			if (manager != null) {
 -				PermissionBackend backend = manager.getBackend();
-+		if (pexPlugin != null && pexConfig.getString("permissions.backend", "file").equalsIgnoreCase("file")) {
-+			File file = new File(pexPlugin.getDataFolder(), pexConfig.getString("permissions.backends.file.file", "permissions.yml"));
-+			if (file.exists()) {
- 				try {
+-				try {
 -					if (backend != null) {
 -						final StringWriter writer = new StringWriter();
 -						backend.writeContents(writer);
@@ -51,17 +48,16 @@ index 09eb517..42c3289 100644
 -				}
 -			}
 -			if (permissionsDb == null && pexConfig.getString("permissions.backends." + pexConfig.getString("permissions.backend", "file") + ".type", "file").equalsIgnoreCase("file")) {
--				File file = new File(pexPlugin.getDataFolder(), pexConfig.getString("permissions.backends.file.file", "permissions.yml"));
--				if (file.exists()) {
--					try {
--						permissionsDb = StringUtils.readStream(new FileInputStream(file));
++		if (pexPlugin != null && pexConfig.getString("permissions.backend", "file").equalsIgnoreCase("file")) {
+ 			File file = new File(pexPlugin.getDataFolder(), pexConfig.getString("permissions.backends.file.file", "permissions.yml"));
+ 			if (file.exists()) {
+ 				try {
+ 					permissionsDb = StringUtils.readStream(new FileInputStream(file));
 -						activeBackend = "file";
--					} catch (IOException ignore) {
--					}
-+					permissionsDb = StringUtils.readStream(new FileInputStream(file));
-+				} catch (IOException ignore) {
+ 				} catch (IOException ignore) {
  				}
  			}
+-			}
 -		}
 -		if (permissionsDb == null) {
 +		} else {

@@ -2,7 +2,7 @@ diff --git a/src/com/google/javascript/jscomp/ProcessCommonJSModules.java b/src/
 index 67779577..bed92d07 100644
 --- a/src/com/google/javascript/jscomp/ProcessCommonJSModules.java
 +++ b/src/com/google/javascript/jscomp/ProcessCommonJSModules.java
-@@ -114,14 +114,9 @@ public class ProcessCommonJSModules implements CompilerPass {
+@@ -114,10 +114,6 @@ public class ProcessCommonJSModules implements CompilerPass {
    }
  
    private String normalizeSourceName(String filename) {
@@ -13,10 +13,6 @@ index 67779577..bed92d07 100644
      if (filename.indexOf(filenamePrefix) == 0) {
        filename = filename.substring(filenamePrefix.length());
      }
--
-     return filename;
-   }
- 
 @@ -181,7 +176,8 @@ public class ProcessCommonJSModules implements CompilerPass {
        Preconditions.checkArgument(scriptNodeCount == 1,
            "ProcessCommonJSModules supports only one invocation per " +

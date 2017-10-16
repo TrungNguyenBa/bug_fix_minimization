@@ -32,15 +32,12 @@ index e5c75cb..afaeb58 100644
 -		File unzippedTempDestination = downloadAndExtractToTempDirReturnUnzippedDirOrNull(link);
 -		if(unzippedTempDestination == null){
 -			final boolean logged = false;
--			int tries = 0;
--			while(!logged && tries < 4){
--				tries++;
++		boolean logged = false;
+ 		int tries = 0;
+ 		while(!logged && tries < 4){
+ 			tries++;
 -				unzippedTempDestination = downloadAndExtractToTempDirReturnUnzippedDirOrNull(link);
 -				if(unzippedTempDestination == null){					
-+		boolean logged = false;
-+		int tries = 0;
-+		while(!logged && tries < 4){
-+			tries++;
 +			try {
 +				final URL url = new URL(nameAndlink.link);
 +				final HttpURLConnection connection = (HttpURLConnection)  url.openConnection();
@@ -53,22 +50,19 @@ index e5c75cb..afaeb58 100644
 +				}else{
 +					logged = true;
  				}
--			}
--			if(!logged){
--				output.out("Não foi possível logar no legendas.tv");
--				System.exit(1);
 +			} catch (final MalformedURLException e) {
 +				e.printStackTrace();
 +			} catch (final IOException e) {
 +				e.printStackTrace();
  			}
- 		}
- 		
-+		if(!logged){
-+			output.out("Não foi possível logar no legendas.tv");
-+			System.exit(1);
 +		}
 +		
+ 		if(!logged){
+ 			output.out("Não foi possível logar no legendas.tv");
+ 			System.exit(1);
+ 		}
+-		}
+ 		
 +		output.out("Fazendo download de pacote de legendas "+nameAndlink.name);
 +		final String link = nameAndlink.link;
  		

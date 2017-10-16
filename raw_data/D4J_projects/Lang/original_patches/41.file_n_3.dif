@@ -38,15 +38,6 @@ index 896d542e..48986d6f 100644
      }
      
      public void test_getShortClassName_String() {
-@@ -129,7 +100,7 @@ public class ClassUtilsTest extends TestCase {
-         assertEquals("", ClassUtils.getShortClassName((String) null));
-         assertEquals("", ClassUtils.getShortClassName(""));
-     }
--
-+    
-     // -------------------------------------------------------------------------
-     public void test_getPackageName_Object() {
-         assertEquals("org.apache.commons.lang", ClassUtils.getPackageName(new ClassUtils(), "<null>"));
 @@ -141,24 +112,6 @@ public class ClassUtilsTest extends TestCase {
          assertEquals("java.lang", ClassUtils.getPackageName(String.class));
          assertEquals("java.util", ClassUtils.getPackageName(Map.Entry.class));

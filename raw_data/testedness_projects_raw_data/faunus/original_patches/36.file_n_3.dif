@@ -2,15 +2,7 @@ diff --git a/include/faunus/externalpotential.h b/include/faunus/externalpotenti
 index bfa8fb1f..5d871bbc 100644
 --- a/include/faunus/externalpotential.h
 +++ b/include/faunus/externalpotential.h
-@@ -32,18 +32,11 @@ namespace Faunus {
-           TcoordFunc p2c; // function to convert point to internal coordinate
-         public:
-           ExternalPotentialBase() : p2c(nullptr) {}
--
-           virtual ~ExternalPotentialBase() {}
--
-           template<typename T> void setCoordinateFunc(T f) { p2c=f; }
--
+@@ -40,10 +37,6 @@ namespace Faunus {
            string info() {
              return _info();
            }

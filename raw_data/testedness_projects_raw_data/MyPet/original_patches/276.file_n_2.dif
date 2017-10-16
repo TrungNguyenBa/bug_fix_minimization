@@ -58,93 +58,65 @@ index ed18a260..0d21488a 100644
          }
      }
  
-@@ -881,42 +904,66 @@ public class MyPetEntityListener implements Listener
+@@ -881,8 +904,14 @@ public class MyPetEntityListener implements Listener
              }
              if (MyPetExperience.DAMAGE_WEIGHTED_EXPERIENCE_DISTRIBUTION)
              {
 -                Map<Entity, Double> damagePercentMap = MyPetExperience.getDamageToEntityPercent(event.getEntity());
 -                for (Entity entity : damagePercentMap.keySet())
 +                if (event.getEntity().hasMetadata("DamageCount"))
-                 {
--                    if (entity instanceof CraftMyPet)
--                    {
--                        MyPet myPet = ((CraftMyPet) entity).getMyPet();
--                        if (MyPetConfiguration.PREVENT_LEVELLING_WITHOUT_SKILLTREE && myPet.getSkillTree() == null)
--                        {
--                            continue;
--                        }
--                        double randomExp = MyPetMonsterExperience.getMonsterExperience(event.getEntity().getType()).getRandomExp();
--                        myPet.getExperience().addExp(damagePercentMap.get(entity) * randomExp);
--                    }
--                    else if (entity instanceof Player)
++                {
 +                    for (MetadataValue value : event.getEntity().getMetadata("DamageCount"))
-                     {
--                        Player owner = (Player) entity;
--                        if (MyPetList.hasMyPet(owner))
++                    {
 +                        if (value.getOwningPlugin() == MyPetPlugin.getPlugin())
-                         {
--                            MyPet myPet = MyPetList.getMyPet(owner);
--                            if (MyPetConfiguration.PREVENT_LEVELLING_WITHOUT_SKILLTREE && myPet.getSkillTree() == null)
++                        {
 +                            Map<Entity, Integer> damageMap = (Map<Entity, Integer>) value.value();
 +                            for (Entity entity : damageMap.keySet())
                              {
--                                return;
--                            }
--                            if (myPet.isPassiv())
--                            {
--                                if (myPet.getStatus() == PetState.Here)
-+                                if (entity instanceof CraftMyPet)
+                                 if (entity instanceof CraftMyPet)
                                  {
-+                                    MyPet myPet = ((CraftMyPet) entity).getMyPet();
-+                                    if (MyPetConfiguration.PREVENT_LEVELLING_WITHOUT_SKILLTREE && myPet.getSkillTree() == null)
-+                                    {
-+                                        continue;
-+                                    }
+@@ -891,8 +920,15 @@ public class MyPetEntityListener implements Listener
+                                     {
+                                         continue;
+                                     }
 +                                    double damage = damageMap.get(entity);
 +                                    double allDamage = 0;
                                      double randomExp = MyPetMonsterExperience.getMonsterExperience(event.getEntity().getType()).getRandomExp();
--                                    myPet.getExperience().addExp(damagePercentMap.get(entity) * randomExp);
+-                        myPet.getExperience().addExp(damagePercentMap.get(entity) * randomExp);
 +                                    for (Integer d : damageMap.values())
 +                                    {
 +                                        allDamage += d;
 +                                    }
 +                                    //MyPetLogger.write("Exp: " + (damage / allDamage * randomExp) + "/" + randomExp + " (" + (damage / allDamage * 100) + ")");
 +                                    myPet.getExperience().addExp(damage / allDamage * randomExp);
-+                                }
-+                                else if (entity instanceof Player)
-+                                {
-+                                    Player owner = (Player) entity;
-+                                    if (MyPetList.hasMyPet(owner))
-+                                    {
-+                                        MyPet myPet = MyPetList.getMyPet(owner);
-+                                        if (MyPetConfiguration.PREVENT_LEVELLING_WITHOUT_SKILLTREE && myPet.getSkillTree() == null)
-+                                        {
-+                                            return;
-+                                        }
-+                                        if (myPet.isPassiv())
-+                                        {
-+                                            if (myPet.getStatus() == PetState.Here)
-+                                            {
+                                 }
+                                 else if (entity instanceof Player)
+                                 {
+@@ -908,15 +944,26 @@ public class MyPetEntityListener implements Listener
+                                         {
+                                             if (myPet.getStatus() == PetState.Here)
+                                             {
 +                                                double damage = damageMap.get(entity);
 +                                                double allDamage = 0;
-+                                                double randomExp = MyPetMonsterExperience.getMonsterExperience(event.getEntity().getType()).getRandomExp();
+                                                 double randomExp = MyPetMonsterExperience.getMonsterExperience(event.getEntity().getType()).getRandomExp();
+-                                    myPet.getExperience().addExp(damagePercentMap.get(entity) * randomExp);
 +                                                for (Integer d : damageMap.values())
 +                                                {
 +                                                    allDamage += d;
 +                                                }
 +                                                //MyPetLogger.write("Exp: " + (damage / allDamage * randomExp) + "/" + randomExp + " (" + (damage / allDamage *100) + ")");
 +                                                myPet.getExperience().addExp(damage / allDamage * randomExp);
-+                                            }
-+                                        }
-+                                    }
+                                             }
+                                         }
+                                     }
                                  }
                              }
 +                            return;
-                         }
++                        }
                      }
-                 }
-             }
 -            else if (event.getEntity().getLastDamageCause() instanceof EntityDamageByEntityEvent)
++                }
++            }
 +            if (event.getEntity().getLastDamageCause() instanceof EntityDamageByEntityEvent)
              {
                  EntityDamageByEntityEvent edbee = (EntityDamageByEntityEvent) event.getEntity().getLastDamageCause();

@@ -10,7 +10,8 @@ index c229d90b..c45436c6 100644
 -     * Returns the sound that is played when the MyPet dies
 -     */
 -    protected String getDeathSound()
--    {
++    public void setMyPet(MyPet myPet)
+     {
 -        return "mob.villager.defaultdeath";
 -    }
 -
@@ -18,12 +19,10 @@ index c229d90b..c45436c6 100644
 -     * Returns the sound that is played when the MyPet get hurt
 -     */
 -    protected String getHurtSound()
-+    public void setMyPet(MyPet myPet)
-     {
++        if (myPet != null)
+         {
 -        return "mob.villager.defaulthurt";
 -    }
-+        if (myPet != null)
-+        {
 +            super.setMyPet(myPet);
  
 -    /**
@@ -92,17 +91,17 @@ index c229d90b..c45436c6 100644
      }
  
 -    public void setBaby(boolean flag)
-+    /**
-+     * Returns the sound that is played when the MyPet dies
-+     */
-+    protected String getDeathSound()
-     {
+-    {
 -        if (flag)
 -        {
 -            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
 -        }
 -        else
--        {
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    protected String getDeathSound()
+     {
 -            this.datawatcher.watch(12, new Integer(0));
 -        }
 -        ((MyVillager) myPet).isBaby = flag;
@@ -110,13 +109,13 @@ index c229d90b..c45436c6 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the default sound of the MyPet
 +     */
 +    protected String getLivingSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -
 -            this.setProfession(((MyVillager) myPet).getProfession());

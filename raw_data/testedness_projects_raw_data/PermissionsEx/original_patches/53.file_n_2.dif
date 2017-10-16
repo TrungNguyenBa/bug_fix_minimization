@@ -2,16 +2,17 @@ diff --git a/src/main/java/ru/tehkode/permissions/backends/caching/CachingData.j
 index 37c8940..1de4e5b 100644
 --- a/src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java
 +++ b/src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java
-@@ -168,11 +168,7 @@ public abstract class CachingData implements PermissionsData {
+@@ -168,13 +168,9 @@ public abstract class CachingData implements PermissionsData {
  				options.put(world, optionsMap);
  				clearWorldsCache();
  			}
 -			if (value == null) {
 -				optionsMap.remove(option);
 -			} else {
--				optionsMap.put(option, value);
--			}
-+			optionsMap.put(option, value);
+ 			optionsMap.put(option, value);
  		}
  	}
+-	}
  
+ 	@Override
+ 	public Map<String, String> getOptions(String worldName) {

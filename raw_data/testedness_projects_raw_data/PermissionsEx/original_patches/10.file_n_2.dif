@@ -20,10 +20,10 @@ index 3a1b691..3f7c0b8 100644
 -                                return child.tabComplete(src, args, context); // todo make this more correct
 -                            } catch (CommandException e) {
 -                            }
+-                        }
 +                        if (child == null) {
-+                            return ImmutableList.of();
-                         }
--                        return ImmutableList.of();
+                             return ImmutableList.of();
++                        }
 +                        return child.tabComplete(src, args, context);
                      } else {
                          return ImmutableList.copyOf(Iterables.filter(filterCommands(src), new Predicate<String>() {

@@ -78,11 +78,3 @@ index a3f98d7..9453fff 100644
      }
  
      @Test
-@@ -1792,6 +1782,7 @@ public abstract class AbstractBackendTest extends AbstractSimpleBackendTest {
-         }
-     }
- 
-+
-     @Test
-     public void testAddNonUniqueIndexOnNonIdField() {
-         collection.createIndex(new BasicDBObject("someField", 1), new BasicDBObject("unique", false));

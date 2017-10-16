@@ -15,11 +15,9 @@ index ccafb93e..416fde64 100644
                              ((Creeper) normalEntity).setPowered(((MyCreeper) myPet).isPowered());
                          } else if (myPet instanceof MyEnderman) {
 -                            if (((MyEnderman) myPet).hasBlock()) {
--                                MaterialData materialData = new MaterialData(((MyEnderman) myPet).getBlock().getType(), ((MyEnderman) myPet).getBlock().getData().getData());
--                                ((Enderman) normalEntity).setCarriedMaterial(materialData);
+                             MaterialData materialData = new MaterialData(((MyEnderman) myPet).getBlock().getType(), ((MyEnderman) myPet).getBlock().getData().getData());
+                             ((Enderman) normalEntity).setCarriedMaterial(materialData);
 -                            }
-+                            MaterialData materialData = new MaterialData(((MyEnderman) myPet).getBlock().getType(), ((MyEnderman) myPet).getBlock().getData().getData());
-+                            ((Enderman) normalEntity).setCarriedMaterial(materialData);
                          } else if (myPet instanceof MyIronGolem) {
                              ((IronGolem) normalEntity).setPlayerCreated(true);
                          } else if (myPet instanceof MyMooshroom) {

@@ -2,11 +2,10 @@ diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTes
 index 0cc58c9..2814823 100644
 --- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
 +++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
-@@ -75,6 +75,18 @@ abstract class ProtobufTestBase extends TestCase
-             +" required string last = 7;\n"
+@@ -76,6 +76,18 @@ abstract class ProtobufTestBase extends TestCase
              +"}\n"
      ;
-+
+ 
 +    final protected static String PROTOC_STRINGS =
 +            "message Strings {\n"
 +            +" repeated string values = 3;\n"
@@ -18,20 +17,21 @@ index 0cc58c9..2814823 100644
 +            +" repeated string values = 2 [packed=true];\n"
 +            +"}\n"
 +    ;
-     
++    
      // protoc definition from 'jvm-serializers' project:
      final protected static String PROTOC_MEDIA_ITEM =
-@@ -181,6 +193,13 @@ abstract class ProtobufTestBase extends TestCase
-             return "[first="+first+", last="+last+"]";
+ "package serializers.protobuf.media;\n"+
+@@ -182,6 +194,13 @@ abstract class ProtobufTestBase extends TestCase
          }
      }
-+    
+     
 +    static class Strings {
 +        public String[] values;
 +
 +        public Strings() { }
 +        public Strings(String... v) { values = v; }
 +    }
- 
++
      // // // POJOs for "JVM-serializers" case
      
+     static class  MediaItem

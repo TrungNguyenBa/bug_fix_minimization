@@ -9,12 +9,11 @@ index 64da5ea5..6efe0716 100644
 -    static ThreadLocal<Boolean> cVerbose = new ThreadLocal<Boolean>() {
 -        protected Boolean initialValue() {
 -            return Boolean.FALSE;
--        }
--    };
 +    static ThreadLocal<Boolean> cVerbose = new ThreadLocal<Boolean>();
 +    static {
 +        cVerbose.set(Boolean.FALSE);
-+    }
+     }
+-    };
  
      /**
       * Gets a flag indicating that verbose logging is required.

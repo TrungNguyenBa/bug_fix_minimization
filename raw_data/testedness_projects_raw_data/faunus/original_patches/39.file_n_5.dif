@@ -13,11 +13,3 @@ index 4976731d..2f74056e 100644
        bool rc=false;
        if (p.size()==trial.size())
          for (size_t i=0; i<p.size(); i++) {
-@@ -195,7 +195,6 @@ namespace Faunus {
-       }
-       if (rc==false)
-         std::exit(1);
--      
-       return rc;
-     }
- 

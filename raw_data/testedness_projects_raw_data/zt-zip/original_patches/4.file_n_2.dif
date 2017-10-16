@@ -7,9 +7,8 @@ index 3ba1666..c23ca63 100644
     */
    public static void pack(ZipEntrySource[] entries, OutputStream os) {
 -    if (log.isDebugEnabled()) {
--      log.debug("Creating stream from {}.", Arrays.asList(entries));
+     log.debug("Creating stream from {}.", Arrays.asList(entries));
 -    }
-+    log.debug("Creating stream from {}.", Arrays.asList(entries));
      pack(entries, os, false);
    }
  
@@ -25,9 +24,8 @@ index 3ba1666..c23ca63 100644
     */
    public static void pack(ZipEntrySource[] entries, File zip) {
 -    if (log.isDebugEnabled()) {
--      log.debug("Creating '{}' from {}.", zip, Arrays.asList(entries));
+     log.debug("Creating '{}' from {}.", zip, Arrays.asList(entries));
 -    }
-+    log.debug("Creating '{}' from {}.", zip, Arrays.asList(entries));
  
      OutputStream out = null;
      try {

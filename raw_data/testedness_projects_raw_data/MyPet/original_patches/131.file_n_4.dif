@@ -2,18 +2,20 @@ diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java b/src/main/java/
 index a708d26a..82525303 100644
 --- a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
 +++ b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
-@@ -334,9 +334,11 @@ public class MyPetPlayer implements IScheduler, NBTStorage {
+@@ -334,13 +334,15 @@ public class MyPetPlayer implements IScheduler, NBTStorage {
          if (hasMyPet()) {
              MyPet myPet = getMyPet();
              if (myPet.getStatus() == PetState.Here) {
 -                if (myPet.getLocation().getWorld() != this.getPlayer().getLocation().getWorld() || myPet.getLocation().distance(this.getPlayer().getLocation()) > 20) {
--                    myPet.removePet(true);
--                    myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Despawn", getLanguage()), myPet.getPetName()));
 +                if (myPet.getLocation().getWorld() != this.getPlayer().getLocation().getWorld() || myPet.getLocation().distance(this.getPlayer().getLocation()) > 75) {
 +                    if (!myPet.getCraftPet().canMove()) {
-+                        myPet.removePet(true);
-+                        myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Despawn", getLanguage()), myPet.getPetName()));
-+                    }
+                         myPet.removePet(true);
+                         myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Despawn", getLanguage()), myPet.getPetName()));
+                     }
                  }
              }
          }
++    }
+ 
+     @Override
+     public boolean equals(Object obj) {

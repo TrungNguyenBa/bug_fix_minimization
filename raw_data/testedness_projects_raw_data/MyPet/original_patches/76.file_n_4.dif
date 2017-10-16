@@ -18,14 +18,14 @@ index c08080ec..5b2a3459 100644
      }
  
      public void setExp(double exp) {
-@@ -84,9 +85,7 @@ public class Experience {
+@@ -84,10 +85,8 @@ public class Experience {
          int tmplvl = getLevel();
          this.exp = expEvent.getExp();
  
 -        if (tmplvl != getLevel()) {
--            Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmplvl, true));
--        }
-+        Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmplvl, true));
+         Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmplvl, true));
      }
+-    }
  
      public double getExp() {
+         return this.exp;

@@ -424,15 +424,17 @@ index 87fe6f27..c2f1558d 100644
          });
 -        displayNameTextField.addKeyListener(new KeyListener() {
 -            public void keyTyped(KeyEvent arg0) {
+-            }
+-
+-            public void keyReleased(KeyEvent arg0) {
+-                if (displayNameCheckbox.isSelected() && !skillTree.getDisplayName().equals(displayNameTextField.getText())) {
+-                    if (!displayNameTextField.getText().equalsIgnoreCase("")) {
 +        displayNameTextField.addKeyListener(new KeyListener()
 +        {
 +            public void keyTyped(KeyEvent arg0)
 +            {
-             }
- 
--            public void keyReleased(KeyEvent arg0) {
--                if (displayNameCheckbox.isSelected() && !skillTree.getDisplayName().equals(displayNameTextField.getText())) {
--                    if (!displayNameTextField.getText().equalsIgnoreCase("")) {
++            }
++
 +            public void keyReleased(KeyEvent arg0)
 +            {
 +                if (displayNameCheckbox.isSelected() && !skillTree.getDisplayName().equals(displayNameTextField.getText()))
@@ -456,15 +458,17 @@ index 87fe6f27..c2f1558d 100644
          });
 -        levelUpMessageInput.addKeyListener(new KeyListener() {
 -            public void keyTyped(KeyEvent arg0) {
+-            }
+-
+-            public void keyReleased(KeyEvent arg0) {
+-                if (levelUpMessageCheckBox.isSelected() && selectedLevel != null && (selectedLevel.getLevelupMessage() == null || !selectedLevel.getLevelupMessage().equals(levelUpMessageInput.getText()))) {
+-                    if (!levelUpMessageInput.getText().equalsIgnoreCase("")) {
 +        levelUpMessageInput.addKeyListener(new KeyListener()
 +        {
 +            public void keyTyped(KeyEvent arg0)
 +            {
-             }
- 
--            public void keyReleased(KeyEvent arg0) {
--                if (levelUpMessageCheckBox.isSelected() && selectedLevel != null && (selectedLevel.getLevelupMessage() == null || !selectedLevel.getLevelupMessage().equals(levelUpMessageInput.getText()))) {
--                    if (!levelUpMessageInput.getText().equalsIgnoreCase("")) {
++            }
++
 +            public void keyReleased(KeyEvent arg0)
 +            {
 +                if (levelUpMessageCheckBox.isSelected() && selectedLevel != null && (selectedLevel.getLevelupMessage() == null || !selectedLevel.getLevelupMessage().equals(levelUpMessageInput.getText())))
@@ -757,7 +761,7 @@ index 87fe6f27..c2f1558d 100644
          DefaultMutableTreeNode root = new DefaultMutableTreeNode("");
          skillTreeTreeModel = new DefaultTreeModel(root);
          skillTreeTree = new JTree(skillTreeTreeModel);
-@@ -599,50 +760,64 @@ public class LevelCreator {
+@@ -599,48 +760,62 @@ public class LevelCreator {
          inheritanceComboBox = new JComboBox(inheritanceComboBoxModel);
      }
  
@@ -833,7 +837,3 @@ index 87fe6f27..c2f1558d 100644
                  return false;
              }
          };
-     }
--}
-\ No newline at end of file
-+}

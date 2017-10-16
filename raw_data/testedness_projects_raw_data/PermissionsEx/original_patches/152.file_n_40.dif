@@ -2,7 +2,7 @@ diff --git a/src/main/java/ru/tehkode/permissions/commands/Command.java b/src/ma
 index 9ca3f35..d628e77 100644
 --- a/src/main/java/ru/tehkode/permissions/commands/Command.java
 +++ b/src/main/java/ru/tehkode/permissions/commands/Command.java
-@@ -28,17 +28,14 @@ import java.lang.annotation.Retention;
+@@ -28,6 +28,7 @@ import java.lang.annotation.Retention;
  import java.lang.annotation.RetentionPolicy;
  
  /**
@@ -10,19 +10,3 @@ index 9ca3f35..d628e77 100644
   * @author code
   */
  @Retention(RetentionPolicy.RUNTIME)
- public @interface Command {
--	String name();
--
--	String syntax();
--
--	String description();
--
--	String permission() default "";
--
--	boolean isPrimary() default false;
-+    String name();
-+    String syntax();
-+    String description();
-+    String permission() default "";
-+    boolean isPrimary() default false;
- }

@@ -33,89 +33,64 @@ index 8bf3410..36c5faa 100644
              map.put("line", getLine());
          }
  
-@@ -76,38 +80,39 @@ public class GelfMessage {
+@@ -76,33 +80,34 @@ public class GelfMessage {
      }
  
      public ByteBuffer[] toBuffers() {
 -        byte[] messageBytes = gzipMessage(toJson());
--        // calculate the length of the datagrams array
++		byte[] messageBytes = gzipMessage( toJson() );
+ 		// calculate the length of the datagrams array
 -        int diagrams_length = messageBytes.length / MAXIMUM_CHUNK_SIZE;
--        // In case of a remainder, due to the integer division, add a extra datagram
++		int diagrams_length=messageBytes.length / MAXIMUM_CHUNK_SIZE;
+ 		// In case of a remainder, due to the integer division, add a extra datagram
 -        if (messageBytes.length % MAXIMUM_CHUNK_SIZE != 0) {
--            diagrams_length++;
--        }
++		if ( messageBytes.length % MAXIMUM_CHUNK_SIZE != 0 ) {
+ 			diagrams_length++;
+ 		}
 -        ByteBuffer[] datagrams = new ByteBuffer[diagrams_length];
 -        if (messageBytes.length > MAXIMUM_CHUNK_SIZE) {
 -            sliceDatagrams(messageBytes, datagrams);
--        } else {
--            datagrams[0] = ByteBuffer.allocate(messageBytes.length);
--            datagrams[0].put(messageBytes);
--            datagrams[0].flip();
--        }
--        return datagrams;
--    }
-+		byte[] messageBytes = gzipMessage( toJson() );
-+		// calculate the length of the datagrams array
-+		int diagrams_length=messageBytes.length / MAXIMUM_CHUNK_SIZE;
-+		// In case of a remainder, due to the integer division, add a extra datagram
-+		if ( messageBytes.length % MAXIMUM_CHUNK_SIZE != 0 ) {
-+			diagrams_length++;
-+		}
 +		ByteBuffer[] datagrams = new ByteBuffer[ diagrams_length ];
 +		if ( messageBytes.length > MAXIMUM_CHUNK_SIZE ) {
 +			sliceDatagrams( messageBytes, datagrams );
-+		} else {
+ 		} else {
+-            datagrams[0] = ByteBuffer.allocate(messageBytes.length);
+-            datagrams[0].put(messageBytes);
 +			datagrams[0] = ByteBuffer.allocate( messageBytes.length );
 +			datagrams[0].put( messageBytes );
-+			datagrams[0].flip();
-+		}
-+		return datagrams;
-+	}
+ 			datagrams[0].flip();
+ 		}
+ 		return datagrams;
+ 	}
  
      public ByteBuffer toBuffer() {
 -        byte[] messageBytes = gzipMessage(toJson());
 -        ByteBuffer buffer = ByteBuffer.allocate(messageBytes.length);
 -        buffer.put(messageBytes);
--        buffer.flip();
--        return buffer;
--    }
--
--    private void sliceDatagrams(byte[] messageBytes, ByteBuffer[] datagrams) {
 +		byte[] messageBytes = gzipMessage( toJson() );
 +		ByteBuffer buffer = ByteBuffer.allocate( messageBytes.length );
 +		buffer.put( messageBytes );
-+		buffer.flip();
-+		return buffer;
-+	}
-+
+ 		buffer.flip();
+ 		return buffer;
+ 	}
+ 
+-    private void sliceDatagrams(byte[] messageBytes, ByteBuffer[] datagrams) {
 +	private void sliceDatagrams(byte[] messageBytes, ByteBuffer[] datagrams)
 +	{
          int messageLength = messageBytes.length;
          byte[] messageId = ByteBuffer.allocate(8)
--                .putInt(getCurrentMillis())       // 4 least-significant-bytes of the time in millis
--                .put(hostBytes)                                // 4 least-significant-bytes of the host
--                .array();
-+            .putInt(getCurrentMillis())       // 4 least-significant-bytes of the time in millis
-+            .put(hostBytes)                                // 4 least-significant-bytes of the host
-+            .array();
- 
-         // Reuse length of datagrams array since this is supposed to be the correct number of datagrams
-         int num = datagrams.length;
-@@ -118,10 +123,10 @@ public class GelfMessage {
+             .putInt(getCurrentMillis())       // 4 least-significant-bytes of the time in millis
+@@ -118,8 +123,8 @@ public class GelfMessage {
              if (to >= messageLength) {
                  to = messageLength;
              }
 -            byte[] datagram = concatByteArray(header, Arrays.copyOfRange(messageBytes, from, to));
 -            datagrams[idx] = ByteBuffer.allocate(datagram.length);
--            datagrams[idx].put(datagram);
--            datagrams[idx].flip();
 +			byte[] datagram = concatByteArray( header, Arrays.copyOfRange( messageBytes, from, to ) );
 +			datagrams[idx] = ByteBuffer.allocate( datagram.length );
-+			datagrams[idx].put(datagram);
-+			datagrams[idx].flip();
+ 			datagrams[idx].put(datagram);
+ 			datagrams[idx].flip();
          }
-     }
- 
 @@ -134,7 +139,7 @@ public class GelfMessage {
  
          try {

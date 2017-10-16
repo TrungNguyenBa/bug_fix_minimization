@@ -15,11 +15,10 @@ index 86c9b02..7de26e8 100644
  
  	protected Pattern createPattern(String expression) {
 -        try {
--		    return Pattern.compile(prepareRegexp(expression), Pattern.CASE_INSENSITIVE);
+ 		return Pattern.compile(prepareRegexp(expression), Pattern.CASE_INSENSITIVE);
 -        } catch (PatternSyntaxException e) {
 -            return Pattern.compile(Pattern.quote(expression), Pattern.CASE_INSENSITIVE);
 -        }
-+		return Pattern.compile(prepareRegexp(expression), Pattern.CASE_INSENSITIVE);
  	}
  
  	public static String prepareRegexp(String expression) {

@@ -2,11 +2,10 @@ diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/Prot
 index 8d7d7b6..33d1c6f 100644
 --- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
 +++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
-@@ -85,14 +85,6 @@ public class ProtobufMessage
-     }
+@@ -86,14 +86,6 @@ public class ProtobufMessage
  
      public ProtobufField firstField() { return _firstField; }
--
+     
 -    public ProtobufField firstIf(String name) {
 -        ProtobufField f = _firstField;
 -        if (f != null && name.equals(f.name)) {
@@ -14,6 +13,7 @@ index 8d7d7b6..33d1c6f 100644
 -        }
 -        return null;
 -    }
-     
+-    
      public int getFieldCount() { return _fields.length; }
  
+     public String getName() { return _name; }

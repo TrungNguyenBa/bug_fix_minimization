@@ -2,18 +2,6 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java b/
 index d5ac59f0..e6b0a033 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
-@@ -35,9 +35,11 @@ import org.bukkit.Material;
- public class EntityMyWolf extends EntityMyPet
- {
-     public static int GROW_UP_ITEM = Material.POTION.getId();
-+
-     protected boolean shaking;
-     protected boolean isWet;
-     protected float shakeCounter;
-+
-     private MyPetAISit sitPathfinder;
- 
-     public EntityMyWolf(World world, MyPet myPet)
 @@ -45,6 +47,48 @@ public class EntityMyWolf extends EntityMyPet
          super(world, myPet);
      }
@@ -252,19 +240,19 @@ index d5ac59f0..e6b0a033 100644
      }
  
 -    public void setTamed(boolean flag)
-+    /**
-+     * Returns the sound that is played when the MyPet dies
-+     */
-+    @Override
-+    protected String getDeathSound()
-     {
+-    {
 -        int i = this.datawatcher.getByte(16);
 -        if (flag)
 -        {
 -            this.datawatcher.watch(16, (byte) (i | 0x4));
 -        }
 -        else
--        {
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
 -            this.datawatcher.watch(16, (byte) (i & 0xFFFFFFFB));
 -        }
 -        ((MyWolf) myPet).isTamed = flag;

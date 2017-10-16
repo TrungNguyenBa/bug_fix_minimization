@@ -67,18 +67,17 @@ index bc5c0ab7..0002aa6c 100644
  
    sys.init( Energy::systemEnergy(spc,pot,spc.p)  );   // initial energy
    while ( loop.macroCnt() ) {                         // Markov chain 
-@@ -72,9 +47,11 @@ int main() {
+@@ -72,11 +47,13 @@ int main() {
          for (auto i=sol.front(); i<sol.back(); i++) { // salt rdf
            for (auto j=i+1; j<=sol.back(); j++) {
              double r =spc.geo.dist(spc.p[i],spc.p[j]); 
--            rdf(r)++;
--            mucorr(r) += spc.p[i].mu.dot(spc.p[j].mu);
--            mucorr_distribution(spc.p[i].mu.dot(spc.p[j].mu)) += 1;
 +            if(r < rc) {
-+              rdf(r)++;
-+              mucorr(r) += spc.p[i].mu.dot(spc.p[j].mu);
-+              mucorr_distribution(spc.p[i].mu.dot(spc.p[j].mu)) += 1;
-+            }
+               rdf(r)++;
+               mucorr(r) += spc.p[i].mu.dot(spc.p[j].mu);
+               mucorr_distribution(spc.p[i].mu.dot(spc.p[j].mu)) += 1;
+             }
            }
-         }
++        }
        if (slp_global()>0.99)
+         xtc.save(textio::prefix+"out.xtc", spc.p);  
+     }    

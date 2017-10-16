@@ -2,7 +2,7 @@ diff --git a/src/test/java/org/apache/commons/math/optimization/direct/BOBYQAOpt
 index fe64f9e37..7eb774213 100644
 --- a/src/test/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizerTest.java
 +++ b/src/test/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizerTest.java
-@@ -231,60 +231,6 @@ public class BOBYQAOptimizerTest {
+@@ -231,30 +231,6 @@ public class BOBYQAOptimizerTest {
                  1e-13, 1e-6, 2000, expected);
      }
  
@@ -30,24 +30,13 @@ index fe64f9e37..7eb774213 100644
 -        }
 -    }
 -
--    /**
--     * @param func Function to optimize.
--     * @param startPoint Starting point.
--     * @param boundaries Upper / lower point limit.
--     * @param goal Minimization or maximization.
--     * @param fTol Tolerance relative error on the objective function.
--     * @param pointTol Tolerance for checking that the optimum is correct.
--     * @param maxEvaluations Maximum number of evaluations.
--     * @param expected Expected point / value.
--     */
--    private void doTest(MultivariateFunction func,
--                        double[] startPoint,
--                        double[][] boundaries,
--                        GoalType goal,
--                        double fTol,
--                        double pointTol,
--                        int maxEvaluations,
--                        RealPointValuePair expected) {
+     /**
+      * @param func Function to optimize.
+      * @param startPoint Starting point.
+@@ -273,40 +249,6 @@ public class BOBYQAOptimizerTest {
+             double pointTol,
+             int maxEvaluations,
+             RealPointValuePair expected) {
 -        doTest(func,
 -               startPoint,
 -               boundaries,
@@ -60,18 +49,19 @@ index fe64f9e37..7eb774213 100644
 -               "");
 -    }
 -
-     /**
-      * @param func Function to optimize.
-      * @param startPoint Starting point.
-@@ -293,20 +239,16 @@ public class BOBYQAOptimizerTest {
-      * @param fTol Tolerance relative error on the objective function.
-      * @param pointTol Tolerance for checking that the optimum is correct.
-      * @param maxEvaluations Maximum number of evaluations.
+-    /**
+-     * @param func Function to optimize.
+-     * @param startPoint Starting point.
+-     * @param boundaries Upper / lower point limit.
+-     * @param goal Minimization or maximization.
+-     * @param fTol Tolerance relative error on the objective function.
+-     * @param pointTol Tolerance for checking that the optimum is correct.
+-     * @param maxEvaluations Maximum number of evaluations.
 -     * @param additionalInterpolationPoints Number of interpolation to used
 -     * in addition to the default (2 * dim + 1).
-      * @param expected Expected point / value.
-      */
-     private void doTest(MultivariateFunction func,
+-     * @param expected Expected point / value.
+-     */
+-    private void doTest(MultivariateFunction func,
 -                        double[] startPoint,
 -                        double[][] boundaries,
 -                        GoalType goal,
@@ -81,17 +71,10 @@ index fe64f9e37..7eb774213 100644
 -                        int additionalInterpolationPoints,
 -                        RealPointValuePair expected,
 -                        String assertMsg) {
-+            double[] startPoint,
-+            double[][] boundaries,
-+            GoalType goal,
-+            double fTol,
-+            double pointTol,
-+            int maxEvaluations,
-+            RealPointValuePair expected) {
  
          System.out.println(func.getClass().getName() + " BEGIN"); // XXX
  
-@@ -316,17 +258,17 @@ public class BOBYQAOptimizerTest {
+@@ -316,14 +258,14 @@ public class BOBYQAOptimizerTest {
  //        RealPointValuePair result = optim.optimize(100000, func, goal, startPoint);
          final double[] lB = boundaries == null ? null : boundaries[0];
          final double[] uB = boundaries == null ? null : boundaries[1];
@@ -108,8 +91,4 @@ index fe64f9e37..7eb774213 100644
 +                result.getValue(), fTol);
          for (int i = 0; i < dim; i++) {
              Assert.assertEquals(expected.getPoint()[i],
--                                result.getPoint()[i], pointTol);
-+                    result.getPoint()[i], pointTol);
-         }
- 
-         System.out.println(func.getClass().getName() + " END"); // XXX
+                     result.getPoint()[i], pointTol);

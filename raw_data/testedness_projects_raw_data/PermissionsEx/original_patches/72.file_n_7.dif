@@ -26,7 +26,7 @@ index cf4abda..4bd6887 100644
  
  /**
   * Object holding state for a permission query about to happen.
-@@ -114,78 +111,35 @@ public abstract class PermissionQuery<T extends PermissionQuery<T>> implements C
+@@ -114,65 +111,23 @@ public abstract class PermissionQuery<T extends PermissionQuery<T>> implements C
  	 * @return the relevant matcher groups
  	 */
  	protected ListenableFuture<List<MatcherGroup>> performQuery(final String sectionName, final boolean createIfEmpty) {
@@ -89,31 +89,20 @@ index cf4abda..4bd6887 100644
 -							for (List<MatcherGroup> list : lists) {
 -								result.addAll(list);
 -							}
-+					if (result.isEmpty() && createIfEmpty) {
-+						Multimap<Qualifier, String> qualifiers = HashMultimap.create();
-+						qualifiers.put(primaryKey, primaryValue);
-+						if (world != null && primaryKey != Qualifier.WORLD) {
-+							qualifiers.put(Qualifier.WORLD, world);
- 						}
+-						}
 -
 -						if ((result == null || result.isEmpty()) && createIfEmpty) {
--							Multimap<Qualifier, String> qualifiers = HashMultimap.create();
--							qualifiers.put(primaryKey, primaryValue);
--							if (world != null && primaryKey != Qualifier.WORLD) {
--								qualifiers.put(Qualifier.WORLD, world);
--							}
--							if (until != 0) {
--								qualifiers.put(Qualifier.UNTIL, String.valueOf(until));
--							}
--							result = Lists.newArrayList(Futures.getUnchecked(manager.getBackend().createMatcherGroup(sectionName, ImmutableMap.<String, String>of(), qualifiers)));
-+						if (until != 0) {
-+							qualifiers.put(Qualifier.UNTIL, String.valueOf(until));
++					if (result.isEmpty() && createIfEmpty) {
+ 						Multimap<Qualifier, String> qualifiers = HashMultimap.create();
+ 						qualifiers.put(primaryKey, primaryValue);
+ 						if (world != null && primaryKey != Qualifier.WORLD) {
+@@ -183,9 +138,8 @@ public abstract class PermissionQuery<T extends PermissionQuery<T>> implements C
  						}
--						return result;
-+						result = Lists.newArrayList(Futures.getUnchecked(manager.getBackend().createMatcherGroup(sectionName, ImmutableMap.<String, String>of(), qualifiers)));
+ 						result = Lists.newArrayList(Futures.getUnchecked(manager.getBackend().createMatcherGroup(sectionName, ImmutableMap.<String, String>of(), qualifiers)));
  					}
+-						return result;
+ 				}
 -				});
-+				}
 +				return result;
  			}
  		});

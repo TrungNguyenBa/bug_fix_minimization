@@ -9,8 +9,7 @@ index 5869f444..48c5b6ba 100644
 -        Player owner = this.getOwner().getPlayer();
  
 -        if (itemStack == null || itemStack.id == 0)
-+        if (itemStack == null)
-         {
+-        {
 -            if (Ride.RIDE_ITEM == 0 && myPet.getSkills().isSkillActive("Ride") && canMove())
 -            {
 -                if (MyPetPermissions.hasExtended(owner, "MyPet.user.extended.Ride"))
@@ -19,7 +18,8 @@ index 5869f444..48c5b6ba 100644
 -                    return true;
 -                }
 -                else
--                {
++        if (itemStack == null)
+         {
 -                    getMyPet().sendMessageToOwner(MyPetLocales.getString("Message.CantUse", myPet.getOwner().getLanguage()));
 -                }
 -            }

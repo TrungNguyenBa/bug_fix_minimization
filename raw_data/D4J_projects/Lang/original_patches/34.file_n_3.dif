@@ -2,73 +2,6 @@ diff --git a/src/test/java/org/apache/commons/lang3/builder/ToStringBuilderTest.
 index f2085b2c..228704a0 100644
 --- a/src/test/java/org/apache/commons/lang3/builder/ToStringBuilderTest.java
 +++ b/src/test/java/org/apache/commons/lang3/builder/ToStringBuilderTest.java
-@@ -5,9 +5,9 @@
-  * The ASF licenses this file to You under the Apache License, Version 2.0
-  * (the "License"); you may not use this file except in compliance with
-  * the License.  You may obtain a copy of the License at
-- *
-+ * 
-  *      http://www.apache.org/licenses/LICENSE-2.0
-- *
-+ * 
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-@@ -34,7 +34,7 @@ public class ToStringBuilderTest extends TestCase {
- 
-     private final Integer base = new Integer(5);
-     private final String baseStr = base.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(base));
--
-+    
-     public ToStringBuilderTest(String name) {
-         super(name);
-     }
-@@ -69,7 +69,7 @@ public class ToStringBuilderTest extends TestCase {
-     public void testSetDefaultEx() {
-         try {
-             ToStringBuilder.setDefaultStyle(null);
--
-+            
-         } catch (IllegalArgumentException ex) {
-             return;
-         }
-@@ -79,7 +79,7 @@ public class ToStringBuilderTest extends TestCase {
-     public void testBlank() {
-         assertEquals(baseStr + "[]", new ToStringBuilder(base).toString());
-     }
--
-+    
-     /**
-      * Test wrapper for int primitive.
-      */
-@@ -114,9 +114,9 @@ public class ToStringBuilderTest extends TestCase {
-     private String toBaseString(Object o) {
-         return o.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(o));
-     }
--
-+    
-     // Reflection Array tests
--
-+    
-     //
-     // Note on the following line of code repeated in the reflection array tests.
-     //
-@@ -124,12 +124,12 @@ public class ToStringBuilderTest extends TestCase {
-     //
-     // The expected value is not baseStr + "[<null>]" since array==null and is typed as Object.
-     // The null array does not carry array type information.
--    // If we added a primitive array type constructor and pile of associated methods,
-+    // If we added a primitive array type constructor and pile of associated methods, 
-     // then type declaring type information could be carried forward. IMHO, null is null.
-     //
--    // Gary Gregory - 2003-03-12 - ggregory@seagullsw.com
-+    // Gary Gregory - 2003-03-12 - ggregory@seagullsw.com  
-     //
--
-+    
-     public void assertReflectionArray(String expected, Object actual) {
-         if (actual == null) {
-             // Until ToStringBuilder supports null objects.
 @@ -147,7 +147,7 @@ public class ToStringBuilderTest extends TestCase {
          assertEquals(baseStr + "[{<null>,5,{3,6}}]", ToStringBuilder.reflectionToString(array));
          array = null;
@@ -141,18 +74,15 @@ index f2085b2c..228704a0 100644
      }
  
      public void testReflectionBooleanArray() {
-@@ -219,9 +219,9 @@ public class ToStringBuilderTest extends TestCase {
+@@ -219,7 +219,7 @@ public class ToStringBuilderTest extends TestCase {
          assertEquals(baseStr + "[{true,false,false}]", ToStringBuilder.reflectionToString(array));
          array = null;
          assertReflectionArray("<null>", array);
 -        this.validateNullToStringStyleRegistry();
 +        this.validateEmptyToStringStyleRegistry();
      }
--
-+    
+     
      // Reflection Array Array tests
- 
-     public void testReflectionFloatArrayArray() {
 @@ -230,7 +230,7 @@ public class ToStringBuilderTest extends TestCase {
          assertEquals(baseStr + "[{{1.0,2.29686},<null>,{NaN}}]", ToStringBuilder.reflectionToString(array));
          array = null;
@@ -216,18 +146,15 @@ index f2085b2c..228704a0 100644
      }
  
      public void testReflectionBooleanArrayArray() {
-@@ -295,9 +295,9 @@ public class ToStringBuilderTest extends TestCase {
+@@ -295,7 +295,7 @@ public class ToStringBuilderTest extends TestCase {
          assertEquals(baseStr + "[{{true,false},<null>,{false}}]", ToStringBuilder.reflectionToString(array));
          array = null;
          assertReflectionArray("<null>", array);
 -        this.validateNullToStringStyleRegistry();
 +        this.validateEmptyToStringStyleRegistry();
      }
--
-+    
+     
      // Reflection hierarchy tests
- 
-     public void testReflectionHierarchyArrayList() {
 @@ -305,7 +305,7 @@ public class ToStringBuilderTest extends TestCase {
          String baseStr = this.toBaseString(base);
          assertEquals(baseStr + "[elementData={<null>,<null>,<null>,<null>,<null>,<null>,<null>,<null>,<null>,<null>},size=0,modCount=0]", ToStringBuilder.reflectionToString(base, null, true));
@@ -237,15 +164,6 @@ index f2085b2c..228704a0 100644
      }
  
      public void testReflectionHierarchy() {
-@@ -318,7 +318,7 @@ public class ToStringBuilderTest extends TestCase {
-         assertEquals(baseStr + "[a=a]", ToStringBuilder.reflectionToString(baseA, null, false, null));
-         assertEquals(baseStr + "[a=a]", ToStringBuilder.reflectionToString(baseA, null, false, Object.class));
-         assertEquals(baseStr + "[a=a]", ToStringBuilder.reflectionToString(baseA, null, false, ReflectionTestFixtureA.class));
--
-+        
-         ReflectionTestFixtureB baseB = new ReflectionTestFixtureB();
-         baseStr = this.toBaseString(baseB);
-         assertEquals(baseStr + "[b=b,a=a]", ToStringBuilder.reflectionToString(baseB));
 @@ -330,7 +330,7 @@ public class ToStringBuilderTest extends TestCase {
          assertEquals(baseStr + "[b=b,a=a]", ToStringBuilder.reflectionToString(baseB, null, false, Object.class));
          assertEquals(baseStr + "[b=b,a=a]", ToStringBuilder.reflectionToString(baseB, null, false, ReflectionTestFixtureA.class));
@@ -255,24 +173,6 @@ index f2085b2c..228704a0 100644
      }
  
      static class ReflectionTestFixtureA {
-@@ -351,7 +351,7 @@ public class ToStringBuilderTest extends TestCase {
-         Outer outer = new Outer();
-         assertEquals(toBaseString(outer) + "[inner=" + toBaseString(outer.inner) + "[]]", outer.toString());
-     }
--
-+    
-     static class Outer {
-         Inner inner = new Inner();
-         class Inner {
-@@ -365,7 +365,7 @@ public class ToStringBuilderTest extends TestCase {
-             return ToStringBuilder.reflectionToString(this);
-         }
-     }
--
-+    
-     // Reflection cycle tests
- 
-     /**
 @@ -377,7 +377,7 @@ public class ToStringBuilderTest extends TestCase {
          assertEquals(
              this.toBaseString(objects) + "[{" + this.toBaseString(objects) + "}]",
@@ -300,38 +200,7 @@ index f2085b2c..228704a0 100644
      }
  
      /**
-@@ -475,7 +475,7 @@ public class ToStringBuilderTest extends TestCase {
-             return ToStringBuilder.reflectionToString(this);
-         }
-       }
--
-+    
-     private static class SelfInstanceTwoVarsReflectionTestFixture {
-         @SuppressWarnings("unused")
-         private SelfInstanceTwoVarsReflectionTestFixture typeIsSelf;
-@@ -484,7 +484,7 @@ public class ToStringBuilderTest extends TestCase {
-         public SelfInstanceTwoVarsReflectionTestFixture() {
-             this.typeIsSelf = this;
-         }
--
-+        
-         public String getOtherType(){
-             return this.otherType;
-         }
-@@ -494,47 +494,50 @@ public class ToStringBuilderTest extends TestCase {
-             return ToStringBuilder.reflectionToString(this);
-         }
-       }
--
--
-+    
-+    
-     /**
-      * Test an Object pointing to itself, the simplest test.
--     *
-+     * 
-      * @throws Exception
-      */
+@@ -504,8 +504,9 @@ public class ToStringBuilderTest extends TestCase {
      public void testSimpleReflectionObjectCycle() throws Exception {
          SimpleReflectionTestFixture simple = new SimpleReflectionTestFixture();
          simple.o = simple;
@@ -342,10 +211,7 @@ index f2085b2c..228704a0 100644
      }
  
      /**
-      * Test a class that defines an ivar pointing to itself.
--     *
-+     * 
-      * @throws Exception
+@@ -515,8 +516,9 @@ public class ToStringBuilderTest extends TestCase {
       */
      public void testSelfInstanceVarReflectionObjectCycle() throws Exception {
          SelfInstanceVarReflectionTestFixture test = new SelfInstanceVarReflectionTestFixture();
@@ -354,15 +220,9 @@ index f2085b2c..228704a0 100644
 -        this.validateNullToStringStyleRegistry();
 +        this.validateEmptyToStringStyleRegistry();
      }
--
-+    
+     
      /**
--     * Test a class that defines an ivar pointing to itself.  This test was
-+     * Test a class that defines an ivar pointing to itself.  This test was 
-      * created to show that handling cyclical object resulted in a missing endFieldSeparator call.
--     *
-+     * 
-      * @throws Exception
+@@ -527,8 +529,9 @@ public class ToStringBuilderTest extends TestCase {
       */
      public void testSelfInstanceTwoVarsReflectionObjectCycle() throws Exception {
          SelfInstanceTwoVarsReflectionTestFixture test = new SelfInstanceTwoVarsReflectionTestFixture();
@@ -371,155 +231,43 @@ index f2085b2c..228704a0 100644
 -        this.validateNullToStringStyleRegistry();
 +        this.validateEmptyToStringStyleRegistry();
      }
--
-+    
+     
  
-     /**
-      * Test Objects pointing to each other.
--     *
-+     * 
-      * @throws Exception
-      */
-     public void testReflectionObjectCycle() throws Exception {
-@@ -545,13 +548,13 @@ public class ToStringBuilderTest extends TestCase {
+@@ -545,7 +548,7 @@ public class ToStringBuilderTest extends TestCase {
          assertEquals(
              this.toBaseString(a) + "[b=" + this.toBaseString(b) + "[a=" + this.toBaseString(a) + "]]",
              a.toString());
 -        this.validateNullToStringStyleRegistry();
 +        this.validateEmptyToStringStyleRegistry();
      }
--
-+    
+     
      /**
-      * Test a nasty combination of arrays and Objects pointing to each other.
-      * objects[0] -> SimpleReflectionTestFixture[ o -> objects ]
--     *
-+     * 
-      * @throws Exception
-      */
-     public void testReflectionArrayAndObjectCycle() throws Exception {
-@@ -573,36 +576,36 @@ public class ToStringBuilderTest extends TestCase {
+@@ -573,15 +576,15 @@ public class ToStringBuilderTest extends TestCase {
                  + this.toBaseString(simple)
                  + "}]",
              ToStringBuilder.reflectionToString(simple));
 -        this.validateNullToStringStyleRegistry();
 +        this.validateEmptyToStringStyleRegistry();
      }
--
+         
 -    void validateNullToStringStyleRegistry() {
 -       if (ToStringStyle.getRegistry() != null) {
-+        
 +    void validateEmptyToStringStyleRegistry() {
 +       if (!ToStringStyle.getRegistry().isEmpty()) {
             System.out.println(ToStringStyle.getRegistry());
         }
--
+        
 -        assertNull(ToStringStyle.getRegistry());
-+       
 +        assertTrue(ToStringStyle.getRegistry().isEmpty());        
      }
      //  End: Reflection cycle tests
  
-     public void testAppendSuper() {
-         assertEquals(baseStr + "[]", new ToStringBuilder(base).appendSuper("Integer@8888[]").toString());
-         assertEquals(baseStr + "[<null>]", new ToStringBuilder(base).appendSuper("Integer@8888[<null>]").toString());
--
-+        
-         assertEquals(baseStr + "[a=hello]", new ToStringBuilder(base).appendSuper("Integer@8888[]").append("a", "hello").toString());
-         assertEquals(baseStr + "[<null>,a=hello]", new ToStringBuilder(base).appendSuper("Integer@8888[<null>]").append("a", "hello").toString());
-         assertEquals(baseStr + "[a=hello]", new ToStringBuilder(base).appendSuper(null).append("a", "hello").toString());
-     }
--
-+    
-     public void testAppendToString() {
-         assertEquals(baseStr + "[]", new ToStringBuilder(base).appendToString("Integer@8888[]").toString());
-         assertEquals(baseStr + "[<null>]", new ToStringBuilder(base).appendToString("Integer@8888[<null>]").toString());
--
-+        
-         assertEquals(baseStr + "[a=hello]", new ToStringBuilder(base).appendToString("Integer@8888[]").append("a", "hello").toString());
-         assertEquals(baseStr + "[<null>,a=hello]", new ToStringBuilder(base).appendToString("Integer@8888[<null>]").append("a", "hello").toString());
-         assertEquals(baseStr + "[a=hello]", new ToStringBuilder(base).appendToString(null).append("a", "hello").toString());
-     }
--
-+    
-     public void testObject() {
-         Integer i3 = new Integer(3);
-         Integer i4 = new Integer(4);
-@@ -706,7 +709,7 @@ public class ToStringBuilderTest extends TestCase {
-         assertEquals(baseStr + "[<null>]", new ToStringBuilder(base).append(array).toString());
-         assertEquals(baseStr + "[<null>]", new ToStringBuilder(base).append((Object) array).toString());
-     }
--
-+    
-     public void testByteArray() {
-         byte[] array = new byte[] {1, 2, -3, 4};
-         assertEquals(baseStr + "[{1,2,-3,4}]", new ToStringBuilder(base).append(array).toString());
-@@ -742,7 +745,7 @@ public class ToStringBuilderTest extends TestCase {
-         assertEquals(baseStr + "[<null>]", new ToStringBuilder(base).append(array).toString());
-         assertEquals(baseStr + "[<null>]", new ToStringBuilder(base).append((Object) array).toString());
-     }
--
-+    
-     public void testBooleanArray() {
-         boolean[] array = new boolean[] {true, false, false};
-         assertEquals(baseStr + "[{true,false,false}]", new ToStringBuilder(base).append(array).toString());
-@@ -829,21 +832,21 @@ public class ToStringBuilderTest extends TestCase {
-         ObjectCycle b = new ObjectCycle();
-         a.obj = b;
-         b.obj = a;
--
-+       
+@@ -832,7 +835,7 @@ public class ToStringBuilderTest extends TestCase {
+        
          String expected = toBaseString(a) + "[" + toBaseString(b) + "[" + toBaseString(a) + "]]";
          assertEquals(expected, a.toString());
 -        validateNullToStringStyleRegistry();
 +        validateEmptyToStringStyleRegistry();
      }
--
-+    
+     
      static class ObjectCycle {
-         Object obj;
--
-+       
-         @Override
-         public String toString() {
-             return new ToStringBuilder(this).append(obj).toString();
-         }
-     }
--
-+    
-     public void testSimpleReflectionStatics() {
-         SimpleReflectionStaticFieldsFixture instance1 = new SimpleReflectionStaticFieldsFixture();
-         assertEquals(
-@@ -909,12 +912,12 @@ public class ToStringBuilderTest extends TestCase {
-      *
-      * <p>Transient fields are not output.</p>
-      *
--     * <p>Superclass fields will be appended up to and including the specified superclass.
-+     * <p>Superclass fields will be appended up to and including the specified superclass. 
-      * A null superclass is treated as <code>java.lang.Object</code>.</p>
-      *
-      * <p>If the style is <code>null</code>, the default
-      * <code>ToStringStyle</code> is used.</p>
--     *
-+     * 
-      * @param object  the Object to be output
-      * @param style  the style of the <code>toString</code> to create,
-      *  may be <code>null</code>
-@@ -935,7 +938,7 @@ public class ToStringBuilderTest extends TestCase {
-         ReflectionToStringBuilder test = new ReflectionToStringBuilder(val);
-         test.setUpToClass(Number.class);
-     }
--
-+    
-     /**
-      * Tests ReflectionToStringBuilder setUpToClass().
-      */
-@@ -949,7 +952,7 @@ public class ToStringBuilderTest extends TestCase {
-             // expected
-         }
-     }
--
-+    
-     /**
-      * Tests ReflectionToStringBuilder.toString() for statics.
-      */

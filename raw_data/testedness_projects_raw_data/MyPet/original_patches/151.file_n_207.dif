@@ -2,15 +2,11 @@ diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/info/InventoryInfo.java b
 index 091578d8..23bf0935 100644
 --- a/src/main/java/de/Keyle/MyPet/skill/skills/info/InventoryInfo.java
 +++ b/src/main/java/de/Keyle/MyPet/skill/skills/info/InventoryInfo.java
-@@ -29,26 +29,31 @@ import de.Keyle.MyPet.skill.skilltree.SkillTreeSkill;
- 
- @SkillName("Inventory")
+@@ -31,24 +31,29 @@ import de.Keyle.MyPet.skill.skilltree.SkillTreeSkill;
  @SkillProperties(parameterNames = {"add", "drop"},
--                 parameterTypes = {NBTdatatypes.Int, NBTdatatypes.Boolean},
--                 parameterDefaultValues = {"1", "false"})
+         parameterTypes = {NBTdatatypes.Int, NBTdatatypes.Boolean},
+         parameterDefaultValues = {"1", "false"})
 -public class InventoryInfo extends SkillTreeSkill implements ISkillInfo {
-+        parameterTypes = {NBTdatatypes.Int, NBTdatatypes.Boolean},
-+        parameterDefaultValues = {"1", "false"})
 +public class InventoryInfo extends SkillTreeSkill implements ISkillInfo
 +{
      private SkillPropertiesPanel panel = null;

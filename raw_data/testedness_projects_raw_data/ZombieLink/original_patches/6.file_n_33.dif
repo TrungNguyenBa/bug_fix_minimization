@@ -48,7 +48,7 @@ index 17fe94e..4eecbdd 100644
  	throws RequestProcessorException {
  
  		try {
--			
+ 
 -			Endpoint endpoint = config.getEndpoint().getAnnotation(Endpoint.class);
 -			String value = endpoint.value();
 -			String host = (value == null || value.isEmpty())? endpoint.host() :value;
@@ -57,7 +57,6 @@ index 17fe94e..4eecbdd 100644
 -			String port = endpoint.port();
 -			String path = endpoint.path();
 -			
-+
  			Request request = config.getRequest().getAnnotation(Request.class);
  			
 -			URIBuilder uriBuilder = new URIBuilder();

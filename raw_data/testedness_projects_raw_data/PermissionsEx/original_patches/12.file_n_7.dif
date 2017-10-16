@@ -25,21 +25,16 @@ index d824d05..5181554 100644
  import static ninja.leaping.permissionsex.util.Translations._;
  import static ninja.leaping.permissionsex.util.command.args.GenericArguments.*;
  import static ninja.leaping.permissionsex.util.command.args.GameArguments.*;
-@@ -65,40 +58,23 @@ public class PermissionsExCommands {
-                         .flag("-transient")
-                         .valueFlag(context(_("context")), "-context", "-contexts", "c")
+@@ -67,39 +60,22 @@ public class PermissionsExCommands {
                          .buildWith(optional(
--                                        firstParsing(
--                                                children,
+                         firstParsing(
+                                 children,
 -                                                seq(subject(_("subject"), pex), subjectChildren),
 -                                                seq(subjectType(_("subject-type"), pex), literal(_("list"), "list"), optional(string(_("filter"))))
 -                                        )
 -                                )
--                        ))
-+                        firstParsing(
-+                                children,
 +                                seq(subject(_("subject"), pex), subjectChildren)))
-+                ))
+                 ))
                  .setExecutor(new CommandExecutor() {
                      @Override
 -                    public <TextType> void execute(final Commander<TextType> src, CommandContext args) throws CommandException {
@@ -67,13 +62,13 @@ index d824d05..5181554 100644
                          } else if (args.hasAny(children.getKey().getUntranslated())) {
                              ChildCommands.executor(children).execute(src, args);
 -                        } else {
--                            src.msg(src.fmt().combined("PermissionsEx ", src.fmt().hl(src.fmt().combined("v", pex.getVersion()))));
--                            src.msg(args.getSpec().getUsage(src));
 +                            return;
-                         }
++                        }
 +
-+                        src.msg(src.fmt().combined("PermissionsEx ", src.fmt().hl(src.fmt().combined("v", pex.getVersion()))));
-+                        src.msg(args.getSpec().getUsage(src));
+                         src.msg(src.fmt().combined("PermissionsEx ", src.fmt().hl(src.fmt().combined("v", pex.getVersion()))));
+                         src.msg(args.getSpec().getUsage(src));
                      }
+-                    }
                  })
                  .build();
+     }

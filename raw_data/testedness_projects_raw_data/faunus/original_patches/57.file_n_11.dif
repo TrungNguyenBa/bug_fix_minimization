@@ -3,7 +3,7 @@ index 26866b66..ac2a1f79 100644
 --- a/src/playground/vacha/psc-nvt.input
 +++ b/src/playground/vacha/psc-nvt.input
 @@ -1,8 +1,7 @@
--atomlist           psc-nvt.json
+ atomlist	 psc-nvt.json
 -cuboid_len         100
 -temperature        298.15
 -loop_macrosteps    20
@@ -11,7 +11,6 @@ index 26866b66..ac2a1f79 100644
 -tion1              PSC
 -nion1              30
 -
-+atomlist	 psc-nvt.json
 +cuboid_len 	 130
 +temperature	 298.13
 +loop_macrosteps  50

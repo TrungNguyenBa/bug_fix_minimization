@@ -60,9 +60,8 @@ index b456876b..539e7db8 100644
       *
       * Key                | Description
       * :----------------- | :-----------------------------
--     * `nvt_z`            | Length displacement parameter
+      * `nvt_z`          | Length displacement parameter
 -     * `nvt_runfraction`  | Runfraction [default=1]
-+     * `nvt_z`          | Length displacement parameter
 +     * `nvt_runfraction`| Runfraction [default=1]
       *
       */

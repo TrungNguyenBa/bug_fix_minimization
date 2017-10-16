@@ -2,7 +2,7 @@ diff --git a/src/main/java/com/lonepulse/zombielink/executor/RequestExecutionExc
 index 1f1ae2f..1f0e0aa 100644
 --- a/src/main/java/com/lonepulse/zombielink/executor/RequestExecutionException.java
 +++ b/src/main/java/com/lonepulse/zombielink/executor/RequestExecutionException.java
-@@ -25,68 +25,52 @@ import java.lang.reflect.Method;
+@@ -25,13 +25,12 @@ import java.lang.reflect.Method;
  import com.lonepulse.zombielink.ZombieLinkRuntimeException;
  
  /**
@@ -20,11 +20,9 @@ index 1f1ae2f..1f0e0aa 100644
   */
  class RequestExecutionException extends ZombieLinkRuntimeException {
  
+@@ -40,53 +39,38 @@ class RequestExecutionException extends ZombieLinkRuntimeException {
  	
- 	private static final long serialVersionUID = -7083028842706994616L;
- 	
--	
-+
+ 
  	/**
 -	 * <p>If the given exception is an instance of {@link RequestExecutionException} it is returned as is, 
 -	 * else a new {@link RequestExecutionException} is created using the given exception as the root cause.</p>
@@ -52,7 +50,12 @@ index 1f1ae2f..1f0e0aa 100644
 +			 " on " + endpoint.getSimpleName(), rootCause);
  	}
  	
--	
++	/**
++	 * See {@link RuntimeException#RuntimeException()}.
++	 */
++	public RequestExecutionException() {
++	}
+ 
  	/**
 -	 * <p>Displays a detailed description with information on the endpoint and request definition.<p>
 -	 * 
@@ -66,24 +69,20 @@ index 1f1ae2f..1f0e0aa 100644
 -	 * 			the parent cause which resulted in the request execution failure 
 -	 * <br><br>
 -	 * @since 1.1.0
-+	 * See {@link RuntimeException#RuntimeException()}.
++	 * See {@link RuntimeException#RuntimeException(String)}.
  	 */
 -	public RequestExecutionException(Method request, Class<?> endpoint, Throwable rootCause) {
-+	public RequestExecutionException() {
-+	}
-+
-+	/**
-+	 * See {@link RuntimeException#RuntimeException(String)}.
-+	 */
 +	public RequestExecutionException(String detailMessage) {
  		
 -		super(new StringBuilder("Failed to execute request ").append(request.getName())
 -			  .append(" on ").append(endpoint.getSimpleName()).toString(), rootCause);
 +		super(detailMessage);
  	}
--	
-+
-+	/**
+ 
+ 	/**
+-	 * <p>See {@link ZombieLinkRuntimeException#ZombieLinkRuntimeException(String, Throwable)}.</p>
+-	 * <br><br>
+-	 * @since 1.1.0
 +	 * See {@link RuntimeException#RuntimeException(Throwable)}.
 +	 */
 +	public RequestExecutionException(Throwable throwable) {
@@ -91,10 +90,7 @@ index 1f1ae2f..1f0e0aa 100644
 +		super(throwable);
 +	}
 +
- 	/**
--	 * <p>See {@link ZombieLinkRuntimeException#ZombieLinkRuntimeException(String, Throwable)}.</p>
--	 * <br><br>
--	 * @since 1.1.0
++	/**
 +	 * See {@link RuntimeException#RuntimeException(String, Throwable)}.
  	 */
  	public RequestExecutionException(String detailMessage, Throwable throwable) {

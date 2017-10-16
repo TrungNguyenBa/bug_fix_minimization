@@ -2,7 +2,7 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.j
 index 2ef5d032..3b89844a 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
-@@ -34,28 +34,32 @@ public class EntityMyCreeper extends EntityMyPet
+@@ -34,40 +34,14 @@ public class EntityMyCreeper extends EntityMyPet
          super(world, myPet);
      }
  
@@ -11,89 +11,83 @@ index 2ef5d032..3b89844a 100644
 -     */
 -    @Override
 -    protected String getDeathSound()
-+    public void setMyPet(MyPet myPet)
-     {
+-    {
 -        return "mob.creeper.death";
-+        if (myPet != null)
-+        {
-+            super.setMyPet(myPet);
-+
-+            this.setPowered(((MyCreeper) myPet).isPowered());
-+        }
-     }
- 
+-    }
+-
 -    /**
 -     * Returns the sound that is played when the MyPet get hurt
 -     */
 -    @Override
 -    protected String getHurtSound()
-+    public void setPowered(boolean powered)
++    public void setMyPet(MyPet myPet)
      {
 -        return "mob.creeper.say";
-+        if (!powered)
-+        {
-+            this.datawatcher.watch(17, (byte) 0);
-+        }
-+        else
-+        {
-+            this.datawatcher.watch(17, (byte) 1);
-+        }
-+        ((MyCreeper) myPet).isPowered = powered;
-     }
- 
+-    }
+-
 -    @Override
 -    protected String getLivingSound()
++        if (myPet != null)
+         {
+-        return null;
+-    }
++            super.setMyPet(myPet);
+ 
+-    protected void initDatawatcher()
+-    {
+-        super.initDatawatcher();
+-        this.datawatcher.a(16, new Byte((byte) -1)); // fuse
+-        this.datawatcher.a(17, new Byte((byte) 0));  // powered
++            this.setPowered(((MyCreeper) myPet).isPowered());
+         }
+-
+-    public boolean isPowered()
+-    {
+-        return ((MyCreeper) myPet).isPowered;
+     }
+ 
+     public void setPowered(boolean powered)
+@@ -83,13 +57,39 @@ public class EntityMyCreeper extends EntityMyPet
+         ((MyCreeper) myPet).isPowered = powered;
+     }
+ 
+-    public void setMyPet(MyPet myPet)
 +    public boolean isPowered()
      {
--        return null;
+-        if (myPet != null)
 +        return ((MyCreeper) myPet).isPowered;
-     }
++    }
++
++    protected void initDatawatcher()
+     {
+-            super.setMyPet(myPet);
++        super.initDatawatcher();
++        this.datawatcher.a(16, new Byte((byte) -1)); // fuse
++        this.datawatcher.a(17, new Byte((byte) 0));  // powered
++    }
  
-     protected void initDatawatcher()
-@@ -65,31 +69,27 @@ public class EntityMyCreeper extends EntityMyPet
-         this.datawatcher.a(17, new Byte((byte) 0));  // powered
-     }
- 
--    public boolean isPowered()
+-            this.setPowered(((MyCreeper) myPet).isPowered());
 +    /**
 +     * Returns the sound that is played when the MyPet get hurt
 +     */
 +    @Override
 +    protected String getHurtSound()
-     {
--        return ((MyCreeper) myPet).isPowered;
++    {
 +        return "mob.creeper.say";
      }
- 
--    public void setPowered(boolean powered)
++
 +    /**
 +     * Returns the sound that is played when the MyPet dies
 +     */
 +    @Override
 +    protected String getDeathSound()
-     {
--        if (!powered)
--        {
--            this.datawatcher.watch(17, (byte) 0);
--        }
--        else
--        {
--            this.datawatcher.watch(17, (byte) 1);
--        }
--        ((MyCreeper) myPet).isPowered = powered;
++    {
 +        return "mob.creeper.death";
-     }
- 
--    public void setMyPet(MyPet myPet)
++    }
++
 +    @Override
 +    protected String getLivingSound()
-     {
--        if (myPet != null)
--        {
--            super.setMyPet(myPet);
--
--            this.setPowered(((MyCreeper) myPet).isPowered());
--        }
++    {
 +        return null;
      }
  }

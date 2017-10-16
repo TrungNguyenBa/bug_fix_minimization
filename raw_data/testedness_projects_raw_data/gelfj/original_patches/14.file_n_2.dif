@@ -2,7 +2,7 @@ diff --git a/src/main/java/org/graylog2/GelfAMQPSender.java b/src/main/java/org/
 index 103b852..3eada3e 100644
 --- a/src/main/java/org/graylog2/GelfAMQPSender.java
 +++ b/src/main/java/org/graylog2/GelfAMQPSender.java
-@@ -19,15 +19,17 @@ public class GelfAMQPSender implements GelfSender {
+@@ -19,16 +19,18 @@ public class GelfAMQPSender implements GelfSender {
  
      private String exchangeName;
      private String routingKey;
@@ -16,13 +16,13 @@ index 103b852..3eada3e 100644
  
          this.exchangeName = exchangeName;
          this.routingKey = routingKey;
--        this.maxRetries = maxRetries;
 +        if (maxRetries != null) {
-+            this.maxRetries = maxRetries;
-+        }
-     }
+             this.maxRetries = maxRetries;
+         }
++    }
  
      public boolean sendMessage(GelfMessage message) {
+         if (shutdown || !message.isValid()) {
 @@ -39,8 +41,8 @@ public class GelfAMQPSender implements GelfSender {
          String uuid = UUID.randomUUID().toString();
          String messageid = "gelf" + message.getHost() + message.getFacility() + message.getTimestamp() + uuid;
@@ -40,9 +40,9 @@ index 103b852..3eada3e 100644
                  channel = null;
 -                tries++;
 +                retries++;
-             }
++            }
+         }
 -        } while (tries <= maxRetries || maxRetries < 0);
-+        }
  
          return false;
      }

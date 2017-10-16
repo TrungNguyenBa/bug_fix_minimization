@@ -19,11 +19,10 @@ index 3d1f043..8accbcd 100644
  		
  		stubFor(get(urlMatching(subpath))
  				.willReturn(aResponse()
-@@ -132,47 +133,45 @@ public class MockEndpointTest {
- 		assertEquals(body, mockEndpoint.subpathWithParams(firstName, lastName));
+@@ -133,46 +134,44 @@ public class MockEndpointTest {
  		verify(getRequestedFor(urlEqualTo(url)));
  	}
--
+ 	
 -//	TODO write fresh tests for RESTful requests	
 -//	
 -//	/**
@@ -64,7 +63,6 @@ index 3d1f043..8accbcd 100644
 -//		assertEquals(body, mockEndpoint.restfulSubpathWithParam(id));
 -//		verify(getRequestedFor(urlEqualTo(url)));
 -//	}
-+	
 +	/**
 +	 * <p>Test for a RESTful {@Link Request} with a subpath.
 +	 * 

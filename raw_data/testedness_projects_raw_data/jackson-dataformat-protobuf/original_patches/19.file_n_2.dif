@@ -9,9 +9,8 @@ index 542ffd7..d8b7503 100644
 -            if (_currField.type == FieldType.ENUM) {
 -                _writeEnum(text);
 -            } else {
--                _reportWrongWireType("string");
+             _reportWrongWireType("string");
 -            }
-+            _reportWrongWireType("string");
              return;
          }
  
@@ -22,9 +21,8 @@ index 542ffd7..d8b7503 100644
 -            if (_currField.type == FieldType.ENUM) {
 -                _writeEnum(new String(text, offset, clen));
 -            } else {
--                _reportWrongWireType("string");
+             _reportWrongWireType("string");
 -            }
-+            _reportWrongWireType("string");
 +            return;
          }
  
@@ -38,16 +36,15 @@ index 542ffd7..d8b7503 100644
 -            if (_currField.type == FieldType.ENUM) {
 -                _writeEnum(sstr);
 -            } else {
--                _reportWrongWireType("string");
+             _reportWrongWireType("string");
 -            }
-+            _reportWrongWireType("string");
              return;
          }
 -        _verifyValueWrite();
          byte[] b = sstr.asUnquotedUTF8();
          _writeLengthPrefixed(b,  0, b.length);
      }
-@@ -708,49 +697,27 @@ public class ProtobufGenerator extends GeneratorBase
+@@ -708,48 +697,26 @@ public class ProtobufGenerator extends GeneratorBase
      @Override
      public void writeRawUTF8String(byte[] text, int offset, int len) throws IOException
      {
@@ -95,28 +92,10 @@ index 542ffd7..d8b7503 100644
 -        _reportError("No Enum '"+enumStr+"' found for property '"+_currField.name+"'; valid values = "
 -                +_currField.getEnumValues());
 -    }
--
 +    private final static Charset UTF8 = Charset.forName("UTF-8");
-+    
+     
      /*
      /**********************************************************
-     /* Output method implementations, unprocessed ("raw")
-@@ -999,13 +966,13 @@ public class ProtobufGenerator extends GeneratorBase
-             _reportError("Can not write value without indicating field first (in message of type "+_currMessage.getName()+")");
-         }
-     }
--
-+    
-     /*
-     /**********************************************************
-     /* Implementations for methods from base class
-     /**********************************************************
-      */
--
-+    
-     @Override
-     protected void _verifyValueWrite(String typeMsg) throws IOException {
-         _throwInternal();
 @@ -1026,8 +993,6 @@ public class ProtobufGenerator extends GeneratorBase
      /**********************************************************
       */

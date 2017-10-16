@@ -2,7 +2,7 @@ diff --git a/src/main/java/org/zeroturnaround/zip/FileSource.java b/src/main/jav
 index 3bfbc58..1699676 100644
 --- a/src/main/java/org/zeroturnaround/zip/FileSource.java
 +++ b/src/main/java/org/zeroturnaround/zip/FileSource.java
-@@ -22,25 +22,20 @@ import java.io.IOException;
+@@ -22,11 +22,6 @@ import java.io.IOException;
  import java.io.InputStream;
  import java.util.zip.ZipEntry;
  
@@ -14,30 +14,7 @@ index 3bfbc58..1699676 100644
  public class FileSource implements ZipEntrySource {
  
    private final String path;
-   private final File file;
--
-+  
-   public FileSource(String path, File file) {
-     this.path = path;
-     this.file = file;
-   }
--
-+  
-   public String getPath() {
-     return path;
-   }
--
-+  
-   public ZipEntry getEntry() {
-     ZipEntry entry = new ZipEntry(path);
-     if (!file.isDirectory()) {
-@@ -58,34 +53,9 @@ public class FileSource implements ZipEntrySource {
-       return new BufferedInputStream(new FileInputStream(file));
-     }
-   }
--
-+  
-   public String toString() {
+@@ -63,29 +58,4 @@ public class FileSource implements ZipEntrySource {
      return "FileSource[" + path + ", " + file + "]";
    }
  

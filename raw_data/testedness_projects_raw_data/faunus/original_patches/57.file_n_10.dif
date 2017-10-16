@@ -2,36 +2,23 @@ diff --git a/src/playground/vacha/psc-nvt.cpp b/src/playground/vacha/psc-nvt.cpp
 index 59c01457..d5915ef0 100644
 --- a/src/playground/vacha/psc-nvt.cpp
 +++ b/src/playground/vacha/psc-nvt.cpp
-@@ -1,20 +1,21 @@
- #include <faunus/faunus.h>
- using namespace Faunus;
-+
- typedef Space<Geometry::Cuboid,CigarParticle> Tspace;
-+
- using namespace Faunus::Potential;
-+
- typedef CombinedPairPotential<CosAttractMixed<>,WeeksChandlerAndersen> Tpair;
- //the first interaction is a patchy, the second one is isotropic
- typedef CigarSphereSplit<Tpair,Tpair,Tpair> Tpairpot;
+@@ -8,13 +11,11 @@ typedef CigarSphereSplit<Tpair,Tpair,Tpair> Tpairpot;
  
  int main() {
--  cout << textio::splash();                 // show faunus banner and credits
+   cout << textio::splash();           // show faunus banner and credits
 -  //InputMap mcp("cigars2fibrils.input");     // open user input file
 -  InputMap mcp("psc-nvt.input");
--  MCLoop loop(mcp);                         // class for handling mc loops
--  FormatMXYZ mxyz;                          // MXYZ structure file I/O
--  EnergyDrift sys;                         // class for tracking system energy drifts
-+  cout << textio::splash();           // show faunus banner and credits
 +  InputMap mcp("psc-nvt.input");     // open user input file
-+  MCLoop loop(mcp);                   // class for handling mc loops
+   MCLoop loop(mcp);                   // class for handling mc loops
+-  FormatMXYZ mxyz;                          // MXYZ structure file I/O
 +  FormatMXYZ mxyz;                      // PQR structure file I/O
-+  EnergyDrift sys; // class for tracking system energy drifts
+   EnergyDrift sys; // class for tracking system energy drifts
  
 -    
    // Energy functions and space
    Tspace spc(mcp);
    auto pot = Energy::NonbondedVector<Tspace,Tpairpot>(mcp);
-@@ -22,27 +23,33 @@ int main() {
+@@ -22,24 +23,29 @@ int main() {
    // Markov moves and analysis
    Move::AtomicTranslation<Tspace> mv(mcp, pot, spc);
    Move::AtomicRotation<Tspace> rot(mcp, pot, spc);
@@ -65,10 +52,6 @@ index 59c01457..d5915ef0 100644
    while ( loop.macroCnt() ) {  // Markov chain 
      while ( loop.microCnt() ) {
        int i=slp_global.rand() % 2;
-+        
-       switch (i) {
-         case 0:
-           mv.setGroup(cigars);
 @@ -53,14 +60,35 @@ int main() {
            sys+=rot.move( cigars.size() ); // translate cigars
            break;
@@ -90,12 +73,10 @@ index 59c01457..d5915ef0 100644
 +      }
 +
      } // end of micro loop
--  sys.checkDrift(Energy::systemEnergy(spc,pot,spc.p)); // compare energy sum with current
- 
--  cout << loop.timing();
-+    sys.checkDrift(Energy::systemEnergy(spc,pot,spc.p)); // compare energy sum with current
 +
-+    cout << loop.timing();
+     sys.checkDrift(Energy::systemEnergy(spc,pot,spc.p)); // compare energy sum with current
+ 
+     cout << loop.timing();
  
 -  mxyz.save("cigars2fibrils-mov", spc.p, spc.geo.len, loop.count());
    } // end of macro loop

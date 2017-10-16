@@ -2,11 +2,10 @@ diff --git a/src/test/java/org/apache/commons/math/stat/clustering/KMeansPlusPlu
 index dfe89adef..da1d8a93d 100644
 --- a/src/test/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClustererTest.java
 +++ b/src/test/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClustererTest.java
-@@ -93,27 +93,5 @@ public class KMeansPlusPlusClustererTest {
-         assertTrue(cluster3Found);
+@@ -94,26 +94,4 @@ public class KMeansPlusPlusClustererTest {
  
      }
--    
+ 
 -    /**
 -     * JIRA: MATH-305
 -     * 
@@ -28,5 +27,5 @@ index dfe89adef..da1d8a93d 100644
 -        assertTrue(clusters.get(0).getPoints().contains(pt2));
 -
 -    } 
- 
+-
  }

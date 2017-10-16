@@ -14,12 +14,3 @@ index 8bee886d..3d4951fa 100644
      if (MAKE_LOCAL_NAMES_UNIQUE) {
        MakeDeclaredNamesUnique renamer = new MakeDeclaredNamesUnique();
        NodeTraversal t = new NodeTraversal(compiler, renamer);
-@@ -349,7 +348,7 @@ class Normalize implements CompilerPass {
-      */
-     private void annotateConstantsByConvention(Node n, Node parent) {
-       Preconditions.checkState(
--          n.getType() == Token.NAME
-+          n.getType() == Token.NAME 
-           || n.getType() == Token.STRING
-           || n.getType() == Token.GET
-           || n.getType() == Token.SET);

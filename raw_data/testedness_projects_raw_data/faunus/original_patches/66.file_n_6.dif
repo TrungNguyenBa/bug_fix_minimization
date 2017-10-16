@@ -34,7 +34,7 @@ index d2444d95..c056a962 100644
    Group sol;
    sol.addParticles(spc, in);                     // group for particles
    MCLoop loop(in);                               // class for mc loop counting
-@@ -34,21 +33,20 @@ int main() {
+@@ -34,7 +33,7 @@ int main() {
    spc.load("state_ST");
    spc.p = spc.trial;
    
@@ -43,11 +43,8 @@ index d2444d95..c056a962 100644
    while ( loop.macroCnt() ) {                         // Markov chain 
      while ( loop.microCnt() ) {
        if (slp_global() > 0.5)
--        sys+=trans.move( sol.size() );                // translate
-+        sys+=trans.move( sol.size() );                     // translate
-       else
--        sys+=rot.move( sol.size() );                  // rotate
-+        sys+=rot.move( sol.size() );                       // rotate
+@@ -43,12 +42,11 @@ int main() {
+         sys+=rot.move( sol.size() );                       // rotate
  
        if (slp_global()<0.5)
 -        for (auto i=sol.front(); i<sol.back(); i++) { // salt rdf

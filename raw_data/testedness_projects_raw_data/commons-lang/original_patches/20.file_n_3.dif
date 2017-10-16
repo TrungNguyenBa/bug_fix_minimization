@@ -2,16 +2,15 @@ diff --git a/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java b/
 index 84bf7e27..3f6b3bd1 100644
 --- a/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java
 +++ b/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java
-@@ -875,21 +875,14 @@ public void appendTo(final StringBuffer buffer, final Calendar calendar) {
+@@ -875,7 +875,6 @@ public void appendTo(final StringBuffer buffer, final Calendar calendar) {
           */
          @Override
          public final void appendTo(final StringBuffer buffer, int value) {
 -            int first = buffer.length();
              // pad the buffer with adequate zeros
              for(int digit = 0; digit<mSize; ++digit) {
--                buffer.append('0');
-+                buffer.append('0');                
-             }
+                 buffer.append('0');                
+@@ -883,13 +882,7 @@ public final void appendTo(final StringBuffer buffer, int value) {
              // backfill the buffer with non-zero digits
              int index = buffer.length();
              for( ; value>0; value /= 10) {

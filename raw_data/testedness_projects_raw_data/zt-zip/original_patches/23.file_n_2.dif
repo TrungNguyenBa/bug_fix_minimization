@@ -2,17 +2,18 @@ diff --git a/src/main/java/org/zeroturnaround/zip/ZipUtil.java b/src/main/java/o
 index bf13789..2d61b9d 100644
 --- a/src/main/java/org/zeroturnaround/zip/ZipUtil.java
 +++ b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
-@@ -1027,9 +1027,8 @@ public final class ZipUtil {
+@@ -1027,10 +1027,9 @@ public final class ZipUtil {
          }
        });
      }
 -    else {
 +    else
        pack(sourceDir, targetZipFile);
--    }
    }
+-  }
  
    /**
+    * Compresses the given file into a ZIP file.
 @@ -1161,9 +1160,9 @@ public final class ZipUtil {
        String filename = filenames[i];
        File file = new File(dir, filename);
@@ -25,7 +26,7 @@ index bf13789..2d61b9d 100644
        }
  
        // Create a ZIP entry
-@@ -2162,16 +2161,13 @@ public final class ZipUtil {
+@@ -2162,17 +2161,14 @@ public final class ZipUtil {
      public void process(InputStream in, ZipEntry zipEntry) throws IOException {
        if (names.add(zipEntry.getName())) {
          ZipEntryTransformer entry = (ZipEntryTransformer) entryByPath.remove(zipEntry.getName());
@@ -36,12 +37,13 @@ index bf13789..2d61b9d 100644
 -        else {
 +        else
            ZipEntryUtil.copyEntry(zipEntry, in, out);
--        }
        }
+-      }
 -      else if (log.isDebugEnabled()) {
 +      else if (log.isDebugEnabled())
          log.debug("Duplicate entry: {}", zipEntry.getName());
--      }
      }
+-    }
  
      /**
+      * @return <code>true</code> if at least one entry was replaced.

@@ -40,20 +40,6 @@ index 253f3c59e..35fe9160b 100644
 -        // use the value of small as epsilon criteria for zero checks
 -        if (Precision.equals(hPrev, 0.0, small)) {
 -            hPrev = small;
--        }
--
--        int n = 1;
--        double dPrev = 0.0;
--        double cPrev = hPrev;
--        double hN = hPrev;
--
--        while (n < maxIterations) {
--            final double a = getA(n, x);
--            final double b = getB(n, x);
--
--            double dN = a + b * dPrev;
--            if (Precision.equals(dN, 0.0, small)) {
--                dN = small;
 +        double p0 = 1.0;
 +        double p1 = getA(0, x);
 +        double q0 = 0.0;
@@ -96,29 +82,40 @@ index 253f3c59e..35fe9160b 100644
 +                    infinite = Double.isInfinite(p2) || Double.isInfinite(q2);
 +                    if (!infinite) {
 +                        break;
-+                    }
-+                }
-             }
+                     }
+-
+-        int n = 1;
+-        double dPrev = 0.0;
+-        double cPrev = hPrev;
+-        double hN = hPrev;
+-
+-        while (n < maxIterations) {
+-            final double a = getA(n, x);
+-            final double b = getB(n, x);
+-
+-            double dN = a + b * dPrev;
+-            if (Precision.equals(dN, 0.0, small)) {
+-                dN = small;
+                 }
 -            double cN = a + b / cPrev;
 -            if (Precision.equals(cN, 0.0, small)) {
 -                cN = small;
-+
-+            if (infinite) {
-+               // Scaling failed
-+               throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_INFINITY_DIVERGENCE,
-+                                              x);
              }
  
 -            dN = 1 / dN;
 -            final double deltaN = cN * dN;
 -            hN = hPrev * deltaN;
-+            double r = p2 / q2;
- 
+-
 -            if (Double.isInfinite(hN)) {
--                throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_INFINITY_DIVERGENCE,
--                                               x);
--            }
++            if (infinite) {
++               // Scaling failed
+                throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_INFINITY_DIVERGENCE,
+                                               x);
+             }
 -            if (Double.isNaN(hN)) {
++
++            double r = p2 / q2;
++
 +            if (Double.isNaN(r)) {
                  throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_NAN_DIVERGENCE,
                                                 x);

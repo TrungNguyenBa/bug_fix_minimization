@@ -2,15 +2,13 @@ diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDes
 index 6d5e4ad..f2c6a60 100644
 --- a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
 +++ b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
-@@ -8,7 +8,10 @@ import org.joda.time.Interval;
+@@ -8,6 +8,9 @@ import org.joda.time.Interval;
  
  import java.io.IOException;
  
--public class IntervalDeserializer extends JodaDeserializerBase<Interval>
 +/**
 + * @author jkolobok
 + */
-+public class IntervalDeserializer  extends JodaDeserializerBase<Interval>
+ public class IntervalDeserializer  extends JodaDeserializerBase<Interval>
  {
      private static final long serialVersionUID = 5196071166239332742L;
- 

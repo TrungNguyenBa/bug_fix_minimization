@@ -92,15 +92,6 @@ index bdba3e9..cce8056 100644
          case STATE_NESTED_VALUE:
              {
                  JsonToken t = _readNextValue(_currentField.type, false);
-@@ -689,7 +647,7 @@ public class ProtobufParser extends ParserMinimalBase
-     private JsonToken _readNextValue(FieldType t, boolean rootValue) throws IOException
-     {
-         JsonToken type;
--        
-+
-         switch (_currentField.type) {
-         case DOUBLE:
-             _numberDouble = Double.longBitsToDouble(_decode64Bits());
 @@ -851,7 +809,7 @@ public class ProtobufParser extends ParserMinimalBase
                      loadMoreGuaranteed();
                  } else if (!loadMore()) {

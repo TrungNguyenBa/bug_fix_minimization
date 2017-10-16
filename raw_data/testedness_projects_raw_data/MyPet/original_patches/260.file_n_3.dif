@@ -9,10 +9,9 @@ index 2089f00d..f6cc9351 100644
 -
 -                    if (myPet.getLocation().getWorld() != event.getTo().getWorld() || myPet.getLocation().distance(event.getTo()) > 10)
 -                    {
--                        myPet.removePet();
+                     myPet.removePet();
 -                    }
 -                    myPet.setLocation(event.getTo());
-+                    myPet.removePet();
 +                    myPet.setLocation(event.getPlayer().getLocation());
  
                      MyPetPlugin.getPlugin().getServer().getScheduler().runTaskLater(MyPetPlugin.getPlugin(), new Runnable()

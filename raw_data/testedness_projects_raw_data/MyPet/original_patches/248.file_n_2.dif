@@ -14,7 +14,7 @@ index 780620aa..bf36cf74 100644
  import de.Keyle.MyPet.skill.skilltreeloader.MyPetSkillTreeLoaderJSON;
  import de.Keyle.MyPet.skill.skilltreeloader.MyPetSkillTreeLoaderNBT;
  import de.Keyle.MyPet.skill.skilltreeloader.MyPetSkillTreeLoaderYAML;
-@@ -334,88 +335,41 @@ public class CommandAdmin implements CommandExecutor, TabCompleter
+@@ -334,87 +335,40 @@ public class CommandAdmin implements CommandExecutor, TabCompleter
              {
                  petTypes[i] = MyPetType.values()[i].getTypeName();
              }
@@ -57,17 +57,17 @@ index 780620aa..bf36cf74 100644
 +                            continue;
                          }
 -                        else
+-                        {
+-                            skillTree = null;
+-                        }
+-                    }
+-                    else
 +                        for (ISkillInfo skill : level.getSkills())
                          {
--                            skillTree = null;
+-                        skillTree = null;
 +                            myPet.getSkills().getSkill(skill.getName()).upgrade(skill, true);
                          }
                      }
--                    else
--                    {
--                        skillTree = null;
--                    }
--                }
 -                myPet.setSkilltree(skillTree);
 -                if (skillTree != null)
 -                {
@@ -77,11 +77,11 @@ index 780620aa..bf36cf74 100644
                          if (skill.isActive())
                          {
 -                            myPet.sendMessageToOwner(MyPetBukkitUtil.setColors("  %green%%skillname%%white% " + skill.getFormattedValue()).replace("%skillname%", skill.getName()));
+-                        }
 +                            myPet.sendMessageToOwner(MyPetBukkitUtil.setColors("%green%%skillname%%white% " + skill.getFormattedValue()).replace("%skillname%", skill.getName()));
                          }
                      }
                  }
-             }
 -            for (InactiveMyPet myPet : MyPetList.getAllInactiveMyPets())
 -            {
 -                MyPetSkillTree skillTree = myPet.getSkillTree();
@@ -107,7 +107,6 @@ index 780620aa..bf36cf74 100644
 -                    }
 -                }
 -                myPet.setSkillTree(skillTree);
--            }
+             }
              sender.sendMessage(MyPetBukkitUtil.setColors("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] skilltrees reloaded!"));
              DebugLogger.info("Skilltrees reloaded.");
-         }

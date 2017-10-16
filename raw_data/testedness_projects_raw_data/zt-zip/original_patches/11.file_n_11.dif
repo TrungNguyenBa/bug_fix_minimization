@@ -2,12 +2,8 @@ diff --git a/src/main/java/org/zeroturnaround/zip/transform/StreamZipEntryTransf
 index 85f0dad..1fe9f81 100644
 --- a/src/main/java/org/zeroturnaround/zip/transform/StreamZipEntryTransformer.java
 +++ b/src/main/java/org/zeroturnaround/zip/transform/StreamZipEntryTransformer.java
-@@ -8,31 +8,12 @@ import java.util.zip.ZipOutputStream;
- 
- 
- public abstract class StreamZipEntryTransformer implements ZipEntryTransformer {
--
-+  
+@@ -11,28 +11,9 @@ public abstract class StreamZipEntryTransformer implements ZipEntryTransformer {
+   
    /**
     * Copies and transforms the given input stream into the output stream.
 -   *

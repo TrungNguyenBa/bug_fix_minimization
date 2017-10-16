@@ -60,13 +60,11 @@ index 0b72906..614c716 100644
  		if (this.shutdown) {
  			throw new MemcachedException("Xmemcached is stopped");
  		}
-@@ -641,8 +613,8 @@ public class XMemcachedClient implements XMemcachedClientMBean, MemcachedClient
- 			Transcoder<T> transcoder) throws InterruptedException,
+@@ -642,7 +614,7 @@ public class XMemcachedClient implements XMemcachedClientMBean, MemcachedClient
  			TimeoutException, MemcachedException, MemcachedException {
  		final Command command = this.commandFactory.createGetCommand(key,
--				keyBytes, cmdType, this.transcoder);
+ 				keyBytes, cmdType, this.transcoder);		
 -		this.latchWait(command, timeout, this.sendCommand(command));
-+				keyBytes, cmdType, this.transcoder);		
 +		this.latchWait(command, timeout,this.sendCommand(command));
  		command.getIoBuffer().free(); // free buffer
  		this.checkException(command);
@@ -80,13 +78,11 @@ index 0b72906..614c716 100644
  			command.getIoBuffer().free();
  			this.checkException(command);
  			if (command.getResult() == null) {
-@@ -1951,8 +1923,8 @@ public class XMemcachedClient implements XMemcachedClientMBean, MemcachedClient
- 		ByteUtils.checkKey(keyBytes);
+@@ -1952,7 +1924,7 @@ public class XMemcachedClient implements XMemcachedClientMBean, MemcachedClient
  		CountDownLatch latch = new CountDownLatch(1);
  		final Command command = this.commandFactory.createTouchCommand(key,
--				keyBytes, latch, exp, false);
+ 				keyBytes, latch, exp, false);	
 -		this.latchWait(command, opTimeout, this.sendCommand(command));
-+				keyBytes, latch, exp, false);	
 +		this.latchWait(command, opTimeout,this.sendCommand(command));
  		command.getIoBuffer().free();
  		this.checkException(command);

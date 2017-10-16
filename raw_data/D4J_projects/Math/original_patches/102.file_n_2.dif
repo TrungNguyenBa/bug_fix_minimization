@@ -46,12 +46,10 @@ index 984d56da1..137d4c5bf 100644
 -                dev = ((double) observed[i] - ratio * expected[i]);
 -                sumSq += dev * dev / (ratio * expected[i]);
 -            } else {
--                dev = ((double) observed[i] - expected[i]);
--                sumSq += dev * dev / expected[i];
--            }
-+            dev = ((double) observed[i] - expected[i]);
-+            sumSq += dev * dev / expected[i];
+             dev = ((double) observed[i] - expected[i]);
+             sumSq += dev * dev / expected[i];
          }
+-        }
          return sumSq;
      }
  

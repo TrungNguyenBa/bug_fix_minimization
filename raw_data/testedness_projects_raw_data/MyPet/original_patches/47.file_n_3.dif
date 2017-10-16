@@ -24,15 +24,13 @@ index fbc33a0c..8ae07211 100644
 -                    StateFlag.State s = set.queryState(null, DefaultFlag.PVP);
 -                    return s == null || s == StateFlag.State.ALLOW;
 -                } else {
--                    RegionManager mgr = wgp.getGlobalRegionManager().get(location.getWorld());
+                 RegionManager mgr = wgp.getGlobalRegionManager().get(location.getWorld());
 -                    ApplicableRegionSet set = mgr.getApplicableRegions(location);
--                    return set.allows(DefaultFlag.PVP);
--                }
-+                RegionManager mgr = wgp.getGlobalRegionManager().get(location.getWorld());
 +                Vector pt = new Vector(location.getX(), location.getY(), location.getZ());
 +                ApplicableRegionSet set = mgr.getApplicableRegions(pt);
 +
-+                return set.allows(DefaultFlag.PVP);
+                 return set.allows(DefaultFlag.PVP);
+-                }
              } catch (Error e) {
                  USE_WorldGuard = false;
              } catch (Exception ignored) {

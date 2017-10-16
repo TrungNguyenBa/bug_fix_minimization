@@ -2,7 +2,7 @@ diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/Type
 index b38210d..5dc0243 100644
 --- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java
 +++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java
-@@ -85,55 +85,70 @@ public class TypeResolver
+@@ -85,44 +85,36 @@ public class TypeResolver
                  ._resolve(rawType);
      }
          
@@ -16,11 +16,10 @@ index b38210d..5dc0243 100644
 -            _resolvedMessageTypes = new HashMap<String,ProtobufMessage>();
 -        }
 -        _resolvedMessageTypes.put(rawType.getName(), message);
--        
--        // and then resolve fields
 +        List<ProtobufField> fields = new ArrayList<ProtobufField>();
 +        List<Unresolved> unresolved = null;
-+
+ 
+-        // and then resolve fields
          for (Field f : rawType.getFields()) {
              String typeStr = f.getType();
              // First: could it be we have a simple scalar type
@@ -43,48 +42,41 @@ index b38210d..5dc0243 100644
 -                fields.put(f.getName(), new ProtobufField(f,
 -                        TypeResolver.construct(this, nativeMt.getNestedTypes())._resolve(nativeMt)));
 -                continue;
+-            }
 +            if (nativeMt == null) {
-+                // If not, perhaps parent might have an answer?
+                 // If not, perhaps parent might have an answer?
+-            resolvedF = _parent._findAnyResolved(f, typeStr);
+-            if (resolvedF != null) {
+-                fields.put(f.getName(), resolvedF);
 +                if (_parent != null) {
 +                    ProtobufField f2 = _parent._findAnyResolved(f, typeStr);
 +                    if (f2 != null) {
 +                        fields.add(f2);
-+                        continue;
-+                    }
+                         continue;
+                     }
 +                }
-+                // Ok, we are out of options here...
-+                StringBuilder enumStr = _knownEnums(new StringBuilder());
-+                StringBuilder msgStr = _knownMsgs(new StringBuilder());
-+                throw new IllegalArgumentException("Unknown protobuf field type '"+typeStr
-+                        +"' for field '"+f.getName()+"' of MessageType '"+rawType.getName()
-+                        +"' (known enum types: "+enumStr+"; known message types: "+msgStr+")");
+                 // Ok, we are out of options here...
+                 StringBuilder enumStr = _knownEnums(new StringBuilder());
+                 StringBuilder msgStr = _knownMsgs(new StringBuilder());
+@@ -130,10 +122,33 @@ public class TypeResolver
+                         +"' for field '"+f.getName()+"' of MessageType '"+rawType.getName()
+                         +"' (known enum types: "+enumStr+"; known message types: "+msgStr+")");
              }
--            // If not, perhaps parent might have an answer?
--            resolvedF = _parent._findAnyResolved(f, typeStr);
--            if (resolvedF != null) {
--                fields.put(f.getName(), resolvedF);
--                continue;
+-        return message;
 +            ProtobufField pf = new ProtobufField(f, FieldType.MESSAGE);
 +            fields.add(pf);
 +            if (unresolved == null) {
 +                unresolved = new ArrayList<Unresolved>();
-             }
--            // Ok, we are out of options here...
--            StringBuilder enumStr = _knownEnums(new StringBuilder());
--            StringBuilder msgStr = _knownMsgs(new StringBuilder());
--            throw new IllegalArgumentException("Unknown protobuf field type '"+typeStr
--                    +"' for field '"+f.getName()+"' of MessageType '"+rawType.getName()
--                    +"' (known enum types: "+enumStr+"; known message types: "+msgStr+")");
--        }
--        return message;
++            }
 +            unresolved.add(new Unresolved(pf, nativeMt));
-+        }
+         }
 +        ProtobufMessage resolved = new ProtobufMessage(rawType.getName(), fields);
 +        if (_resolvedMessageTypes.isEmpty()) {
 +            _resolvedMessageTypes = new HashMap<String,ProtobufMessage>();
 +        }
 +        _resolvedMessageTypes.put(rawType.getName(), resolved);
-+
+ 
+-    private ProtobufMessage _findResolvedMessage(String typeStr)
 +        // and then resolve dependencies for remaining fields
 +        if (unresolved != null) {
 +            for (Unresolved u : unresolved) {
@@ -96,9 +88,8 @@ index b38210d..5dc0243 100644
 +            }
 +        }
 +        return resolved;
-     }    
- 
--    private ProtobufMessage _findResolvedMessage(String typeStr)
++    }    
++
 +    protected ProtobufMessage _findResolvedMessage(String typeStr)
      {
          ProtobufMessage msg = _resolvedMessageTypes.get(typeStr);
@@ -118,11 +109,10 @@ index b38210d..5dc0243 100644
 -                        TypeResolver.construct(this, nativeMt.getNestedTypes())._resolve(nativeMt));
 -            }
 -            if (_parent != null) {
--                return _parent._findAnyResolved(nativeField, typeStr);
--            }
 +        if ((f == null) && (_parent != null)) {
-+            return _parent._findAnyResolved(nativeField, typeStr);
+             return _parent._findAnyResolved(nativeField, typeStr);
          }
+-        }
          return f;
      }
  

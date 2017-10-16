@@ -2,26 +2,23 @@ diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/SimpleWrite
 index 3b8639c..a7a2712 100644
 --- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/SimpleWriteTest.java
 +++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/SimpleWriteTest.java
-@@ -35,17 +35,12 @@ public class SimpleWriteTest extends ProtobufTestBase
+@@ -35,14 +35,9 @@ public class SimpleWriteTest extends ProtobufTestBase
              +"}\n"
      ;
  
 -    final protected static String PROTOC_POINT_ARRAY_SPARSE = "message Points {\n"
-+    final protected static String PROTOC_POINT_ARRAY_PACKED = "message Points {\n"
+-            +" repeated Point points = 1;\n"
+-            +"}\n"
+-            +PROTOC_POINT;
+-    ;
+-
+     final protected static String PROTOC_POINT_ARRAY_PACKED = "message Points {\n"
+-          +" repeated Point points = 1 [packed=true];\n"
 +//            +" repeated Point points = 1 [packed=true];\n"
-             +" repeated Point points = 1;\n"
++            +" repeated Point points = 1;\n"
              +"}\n"
              +PROTOC_POINT;
      ;
--
--    final protected static String PROTOC_POINT_ARRAY_PACKED = "message Points {\n"
--          +" repeated Point points = 1 [packed=true];\n"
--          +"}\n"
--          +PROTOC_POINT;
--  ;
-     
-     static class IntArray {
-         public int[] values;
 @@ -143,7 +138,9 @@ public class SimpleWriteTest extends ProtobufTestBase
      {
          /*

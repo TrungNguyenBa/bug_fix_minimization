@@ -2,14 +2,7 @@ diff --git a/zombielink-it/src/test/java/com/lonepulse/zombielink/request/Serial
 index 4a8b65f..393a414 100644
 --- a/zombielink-it/src/test/java/com/lonepulse/zombielink/request/SerializerEndpoint.java
 +++ b/zombielink-it/src/test/java/com/lonepulse/zombielink/request/SerializerEndpoint.java
-@@ -20,13 +20,14 @@ package com.lonepulse.zombielink.request;
-  * #L%
-  */
- 
-+
- import static com.lonepulse.zombielink.annotation.Entity.ContentType.JSON;
- import static com.lonepulse.zombielink.annotation.Entity.ContentType.XML;
- 
+@@ -26,7 +27,7 @@ import static com.lonepulse.zombielink.annotation.Entity.ContentType.XML;
  import com.lonepulse.zombielink.annotation.Endpoint;
  import com.lonepulse.zombielink.annotation.Entity;
  import com.lonepulse.zombielink.annotation.PUT;

@@ -2,13 +2,13 @@ diff --git a/include/faunus/spherocylinder.h b/include/faunus/spherocylinder.h
 index 471c796b..c68a7014 100644
 --- a/include/faunus/spherocylinder.h
 +++ b/include/faunus/spherocylinder.h
-@@ -8,29 +8,25 @@ namespace Faunus {
- 
+@@ -9,27 +9,23 @@ namespace Faunus {
    namespace Geometry {
  
--      /**
+     /**
 -       * @brief Calculate perpendicular projection of the first vector versus the second vector
--       *
++     * @brief Calculate minimum distance between two line segments
+      *
 -       * Calculate projection of a vector to a plane define by second vector (normal of a plan)
 -       * \param a the first vector
 -       * \param b the second vector
@@ -20,18 +20,6 @@ index 471c796b..c68a7014 100644
 -  
 -      /**
 -       * @brief Initialize vectors and propertise of patchy spherocylinder - run at start and after patch changes
--       *
--       * Calculates cosine of angles, patch direction including chirality
--       * and vector corresponding to sides of patch that are used in
--       * calculations of interactions. 
--       * This function shall be run at the beginning of calculations and after changes of patch properties.
--       * It shall be also after a lot of move to remove accumulated comouptation errors
--       * \param geo geometry
--       * \param target patchy spherocylinder
--       */
-+    /**
-+     * @brief Calculate minimum distance between two line segments
-+     *
 +     * Find closest distance between line segments and return its vector
 +     * gets orientations and lengths of line segments and the vector connecting
 +     * their center os masses (from vec1 to vec2)
@@ -41,16 +29,22 @@ index 471c796b..c68a7014 100644
 +     * SoftSurfer makes no warranty for this code, and cannot be held
 +     * liable for any real or imagined damage resulting from its use.
 +     * Users of this code must verify correctness for their application.
-+     *
+      *
+-       * Calculates cosine of angles, patch direction including chirality
+-       * and vector corresponding to sides of patch that are used in
+-       * calculations of interactions. 
+-       * This function shall be run at the beginning of calculations and after changes of patch properties.
+-       * It shall be also after a lot of move to remove accumulated comouptation errors
+-       * \param geo geometry
+-       * \param target patchy spherocylinder
 +     * \param dir1 Direction of first segment
 +     * \param halfl1 Half length of first segment
 +     * \param dir2 Direction of second segment
 +     * \param halfl2 Half length of second segment
 +     * \param r_cm Distance vector between the middle of the two segments
-+     */
+      */
      template<class Tgeometry>
        int cigar_initialize(Tgeometry &geo, CigarParticle &target)
-       {
 @@ -48,15 +44,8 @@ namespace Faunus {
            Point vec;
            Geometry::QuaternionRotate rot;

@@ -2,29 +2,17 @@ diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/sr
 index 720a97c..fb30fa1 100644
 --- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
 +++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
-@@ -278,17 +278,18 @@ public class PermissionsEx extends JavaPlugin {
- 	}
- 
- 	public class PlayerEventsListener implements Listener {
-+
-+
+@@ -281,12 +283,11 @@ public class PermissionsEx extends JavaPlugin {
  		@EventHandler
  		public void onPlayerLogin(PlayerLoginEvent event) {
  			try {
 -				PermissionUser user = getPermissionsManager().getUser(event.getPlayer());
 -				user.setOption("name", event.getPlayer().getName()); // Update name
--				if (!config.shouldLogPlayers()) {
--					return;
--				}
-+			if (!config.shouldLogPlayers()) {
-+				return;
-+			}
- 
--				user.setOption("last-login-time", Long.toString(System.currentTimeMillis() / 1000L));
--				// user.setOption("last-login-ip", event.getPlayer().getAddress().getAddress().getHostAddress()); // somehow this won't work
-+			PermissionUser user = getPermissionsManager().getUser(event.getPlayer());
-+			user.setOption("last-login-time", Long.toString(System.currentTimeMillis() / 1000L));
-+			// user.setOption("last-login-ip", event.getPlayer().getAddress().getAddress().getHostAddress()); // somehow this won't work
- 			} catch (Throwable t) {
- 				ErrorReport.handleError("While login cleanup event", t);
+ 			if (!config.shouldLogPlayers()) {
+ 				return;
  			}
+ 
++			PermissionUser user = getPermissionsManager().getUser(event.getPlayer());
+ 			user.setOption("last-login-time", Long.toString(System.currentTimeMillis() / 1000L));
+ 			// user.setOption("last-login-ip", event.getPlayer().getAddress().getAddress().getHostAddress()); // somehow this won't work
+ 			} catch (Throwable t) {

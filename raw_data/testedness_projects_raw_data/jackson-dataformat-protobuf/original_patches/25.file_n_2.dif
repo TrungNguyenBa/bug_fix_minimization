@@ -10,9 +10,8 @@ index 6fd8493..7cdff4e 100644
 -    
      // !!! TEMP: inefficient, only used during initial prototyping
      protected final ByteArrayOutputStream _bytes = new ByteArrayOutputStream(200);
--
+     
 -    public ByteAccumulator(ByteAccumulator p, int typedTag) {
-+    
 +    public ByteAccumulator(ByteAccumulator p) {
          _parent = p;
 -        _typedTag = typedTag;

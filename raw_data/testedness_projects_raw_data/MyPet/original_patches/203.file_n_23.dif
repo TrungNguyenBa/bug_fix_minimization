@@ -118,11 +118,11 @@ index db976f0f..2e606a7c 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    @Override
 +    protected String getLivingSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -
 -            this.setScreaming(((MyEnderman) myPet).isScreaming());

@@ -2,22 +2,13 @@ diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufPar
 index bbf8347..915ab00 100644
 --- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
 +++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
-@@ -541,7 +541,7 @@ public class ProtobufParser extends ParserMinimalBase
-         _tokenInputTotal = _currInputProcessed + _inputPtr;
-         // also: clear any data retained so far
-         _binaryValue = null;
--        
-+
-         switch (_state) {
-         case STATE_INITIAL:
-             _currentMessage = _schema.getRootType();
 @@ -559,12 +559,13 @@ public class ProtobufParser extends ParserMinimalBase
              }
              {
                  int tag = _decodeVInt();
-+                
-                 int wireType = (tag & 0x7);
--
+-                int wireType = (tag & 0x7);
+                 
++                int wireType = (tag & 0x7);
                  _currentType = wireType;
                  // Note: may be null; if so, value needs to be skipped
                  _currentField = _currentMessage.field(tag >> 3);

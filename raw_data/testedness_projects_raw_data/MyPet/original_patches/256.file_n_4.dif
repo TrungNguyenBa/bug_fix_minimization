@@ -2,51 +2,20 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.j
 index bd617182..f5e764b3 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
-@@ -83,38 +83,31 @@ public class EntityMyChicken extends EntityMyPet
+@@ -83,8 +83,6 @@ public class EntityMyChicken extends EntityMyPet
  
      public boolean a_(EntityHuman entityhuman)
      {
 -        try
-+        if (super.a_(entityhuman))
+-        {
+         if (super.a_(entityhuman))
          {
--            if (super.a_(entityhuman))
--            {
--                return true;
--            }
-+            return true;
-+        }
- 
--            ItemStack itemStack = entityhuman.inventory.getItemInHand();
-+        ItemStack itemStack = entityhuman.inventory.getItemInHand();
- 
--            if (getOwner().equals(entityhuman) && itemStack != null)
-+        if (getOwner().equals(entityhuman) && itemStack != null)
-+        {
-+            if (itemStack.id == GROW_UP_ITEM.getId())
-             {
--                if (itemStack.id == GROW_UP_ITEM.getId())
-+                if (isBaby())
-                 {
--                    if (isBaby())
-+                    if (!entityhuman.abilities.canInstantlyBuild)
-                     {
--                        if (!entityhuman.abilities.canInstantlyBuild)
-+                        if (--itemStack.count <= 0)
-                         {
--                            if (--itemStack.count <= 0)
--                            {
--                                entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
--                            }
-+                            entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
-                         }
--                        this.setBaby(false);
--                        return true;
-                     }
-+                    this.setBaby(false);
-+                    return true;
+             return true;
+@@ -110,11 +108,6 @@ public class EntityMyChicken extends EntityMyPet
                  }
              }
          }
+-        }
 -        catch (Exception e)
 -        {
 -            e.printStackTrace();
@@ -54,39 +23,23 @@ index bd617182..f5e764b3 100644
          return false;
      }
  
-@@ -151,25 +144,18 @@ public class EntityMyChicken extends EntityMyPet
+@@ -151,8 +144,6 @@ public class EntityMyChicken extends EntityMyPet
  
      public void c()
      {
 -        try
 -        {
--            super.c();
-+        super.c();
+         super.c();
  
--            if (!this.onGround && this.motY < 0.0D)
--            {
--                this.motY *= 0.6D;
--            }
--
--            if (CAN_LAY_EGGS && !world.isStatic && --nextEggTimer <= 0)
--            {
--                world.makeSound(this, "mob.chicken.plop", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
--                b(Item.EGG.id, 1);
--                nextEggTimer = (random.nextInt(6000) + 6000);
--            }
-+        if (!this.onGround && this.motY < 0.0D)
-+        {
-+            this.motY *= 0.6D;
-         }
--        catch (Exception e)
-+
-+        if (CAN_LAY_EGGS && !world.isStatic && --nextEggTimer <= 0)
-         {
--            e.printStackTrace();
-+            world.makeSound(this, "mob.chicken.plop", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
-+            b(Item.EGG.id, 1);
-+            nextEggTimer = (random.nextInt(6000) + 6000);
+         if (!this.onGround && this.motY < 0.0D)
+@@ -167,9 +158,4 @@ public class EntityMyChicken extends EntityMyPet
+             nextEggTimer = (random.nextInt(6000) + 6000);
          }
      }
+-        catch (Exception e)
+-        {
+-            e.printStackTrace();
+-        }
+-    }
  }
 \ No newline at end of file

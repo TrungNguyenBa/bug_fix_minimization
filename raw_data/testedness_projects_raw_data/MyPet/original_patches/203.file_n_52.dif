@@ -49,13 +49,13 @@ index 27748ff9..a2a86c4c 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the default sound of the MyPet
 +     */
 +    protected String getLivingSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -        }
 +        return !playIdleSound() ? null : "mob.witch.idle";

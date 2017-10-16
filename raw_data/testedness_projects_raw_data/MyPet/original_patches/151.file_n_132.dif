@@ -41,7 +41,7 @@ index 0e4a4489..5b7b593b 100644
                  skillPropertiesPanel.load(skill.getProperties());
                  GuiMain.levelCreator.getFrame().setEnabled(true);
                  skillPropertyEditorFrame.setVisible(false);
-@@ -63,35 +69,42 @@ public class SkillPropertyEditor {
+@@ -63,31 +69,38 @@ public class SkillPropertyEditor {
          });
      }
  
@@ -87,9 +87,3 @@ index 0e4a4489..5b7b593b 100644
                  String[] parameters = splittedParameter.split("=", 2);
                  parameterMap.put(parameters[0], parameters[1]);
              }
-         }
-         return parameterMap;
-     }
--}
-\ No newline at end of file
-+}

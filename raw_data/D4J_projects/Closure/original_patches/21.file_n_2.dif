@@ -10,8 +10,6 @@ index 722d2252..ee0fc6dd 100644
 -    // these cases when we visit the child, and the peephole passes will
 -    // fix up the tree in more clever ways when these are removed.
 -    if (n.isExprResult() || n.isBlock()) {
--      return;
--    }
 +    int pt = parent.getType();
 +    if (pt == Token.COMMA) {
 +      Node gramps = parent.getParent();
@@ -25,14 +23,10 @@ index 722d2252..ee0fc6dd 100644
 +            parent.getChildCount() == 2 &&
 +            n.getNext().isName() &&
 +            "eval".equals(n.getNext().getString())) {
-+          return;
-+        }
+           return;
+         }
 +      }
- 
--    // This no-op statement was there so that JSDoc information could
--    // be attached to the name. This check should not complain about it.
--    if (n.isQualifiedName() && n.getJSDocInfo() != null) {
--      return;
++
 +      if (n == parent.getLastChild()) {
 +        for (Node an : parent.getAncestors()) {
 +          int ancestorType = an.getType();
@@ -54,23 +48,25 @@ index 722d2252..ee0fc6dd 100644
 +      } else {
 +        return;  // it might be OK to not have a side-effect
 +      }
-     }
++    }
  
--    boolean isResultUsed = NodeUtil.isExpressionResultUsed(n);
-     boolean isSimpleOp = NodeUtil.isSimpleOperatorType(n.getType());
--    if (!isResultUsed &&
--        (isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {
++    boolean isSimpleOp = NodeUtil.isSimpleOperatorType(n.getType());
 +    if (isSimpleOp ||
 +        !NodeUtil.mayHaveSideEffects(n, t.getCompiler())) {
 +      if (n.isQualifiedName() && n.getJSDocInfo() != null) {
-+        // This no-op statement was there so that JSDoc information could
-+        // be attached to the name. This check should not complain about it.
+         // This no-op statement was there so that JSDoc information could
+         // be attached to the name. This check should not complain about it.
+-    if (n.isQualifiedName() && n.getJSDocInfo() != null) {
 +        return;
 +      } else if (n.isExprResult()) {
 +        // we already reported the problem when we visited the child.
-+        return;
-+      }
-+
+         return;
+       }
+ 
+-    boolean isResultUsed = NodeUtil.isExpressionResultUsed(n);
+-    boolean isSimpleOp = NodeUtil.isSimpleOperatorType(n.getType());
+-    if (!isResultUsed &&
+-        (isSimpleOp || !NodeUtil.mayHaveSideEffects(n, t.getCompiler()))) {
        String msg = "This code lacks side-effects. Is there a bug?";
        if (n.isString()) {
          msg = "Is there a missing '+' on the previous line?";

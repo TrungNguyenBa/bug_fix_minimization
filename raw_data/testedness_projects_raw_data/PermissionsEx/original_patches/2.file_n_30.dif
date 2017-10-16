@@ -29,14 +29,6 @@ index 3fc5f35..0f37f5d 100644
      private final ConcurrentMap<Set<Map.Entry<String, String>>, List<Subject>> parentsCache = new ConcurrentHashMap<>();
  
      public PEXOptionSubjectData(SubjectCache cache, String identifier, PermissionsExPlugin plugin) throws ExecutionException {
-@@ -66,6 +64,7 @@ class PEXOptionSubjectData implements OptionSubjectData, Caching<ImmutableSubjec
-     @SuppressWarnings("unchecked")
-     static Set<Map.Entry<String, String>> parSet(Set<Context> input) {
-         return (Set) input;
-+
-     }
- 
-     private static <T> Map<Set<Context>, T> tKeys(Map<Set<Map.Entry<String, String>>, T> input) {
 @@ -86,74 +85,58 @@ class PEXOptionSubjectData implements OptionSubjectData, Caching<ImmutableSubjec
          return ret.build();
      }
@@ -48,19 +40,18 @@ index 3fc5f35..0f37f5d 100644
 -                return true;
 -            } catch (InterruptedException | ExecutionException e) {
 -                return false;
--            }
--        } else {
--            return true;
 +    private boolean updateIfChanged(ImmutableSubjectData old, @Nullable ImmutableSubjectData newData) {
 +        if (newData == null) {
 +            return false; // Change unsuccessful
 +        } else if (old == newData) {
 +            return false; // Nothing to do?
          }
+-        } else {
 +
 +        cache.update(identifier, newData);
-+        return true;
+         return true;
      }
+-    }
  
      @Override
      public void clearCache(ImmutableSubjectData newData) {
@@ -248,11 +239,10 @@ index 3fc5f35..0f37f5d 100644
 -            @Override
 -            public ImmutableSubjectData applyNonNull(ImmutableSubjectData input) {
 -                return input.clearParents(parSet(set));
--            }
--        }));
 +    public boolean clearParents(Set<Context> set) {
 +        return updateIfChanged(data, data.clearParents(parSet(set)));
-+    }
+     }
+-        }));
 +
 +    public ImmutableSubjectData getCurrent() {
 +        return this.data;

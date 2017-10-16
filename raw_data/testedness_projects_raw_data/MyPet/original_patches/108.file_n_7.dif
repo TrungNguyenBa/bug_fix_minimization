@@ -30,9 +30,8 @@ index bc450c1e..ae01c634 100644
          try {
              Constructor<?> ctor = clazz.getConstructor(boolean.class);
              Object obj = ctor.newInstance(is);
--            return (ISkillInfo) obj;
 +            if (obj != null) {
-+                return (ISkillInfo) obj;
+                 return (ISkillInfo) obj;
 +            }
          } catch (Exception e) {
              MyPetLogger.write(ChatColor.RED + clazz.getName() + " is no valid Skill)!");

@@ -2,12 +2,10 @@ diff --git a/src/test/java/org/apache/commons/math/optimization/linear/SimplexSo
 index 469d9edc7..9d43a5405 100644
 --- a/src/test/java/org/apache/commons/math/optimization/linear/SimplexSolverTest.java
 +++ b/src/test/java/org/apache/commons/math/optimization/linear/SimplexSolverTest.java
-@@ -57,22 +57,7 @@ public class SimplexSolverTest {
-       RealPointValuePair solution = new SimplexSolver().optimize(f, constraints, GoalType.MAXIMIZE, true);
-       assertEquals(6.9, solution.getValue(), .0000001);
+@@ -59,21 +59,6 @@ public class SimplexSolverTest {
      }
--
--    @Test
+     
+     @Test
 -    public void testMath288() throws OptimizationException {
 -        LinearObjectiveFunction f = new LinearObjectiveFunction(new double[] { 7, 3, 0, 0 }, 0 );
 -        Collection<LinearConstraint> constraints = new ArrayList<LinearConstraint>();
@@ -22,7 +20,7 @@ index 469d9edc7..9d43a5405 100644
 -        assertEquals(10.0, solution.getValue(), .0000001);
 -    }
 -
-+    
-     @Test
+-    @Test
      public void testSimplexSolver() throws OptimizationException {
          LinearObjectiveFunction f =
+             new LinearObjectiveFunction(new double[] { 15, 10 }, 7);

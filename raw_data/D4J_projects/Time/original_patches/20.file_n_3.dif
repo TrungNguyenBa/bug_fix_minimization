@@ -11,11 +11,11 @@ index ebb4b087..558a5864 100644
                  if (str.startsWith(id)) {
 -                	if (best == null || id.length() > best.length()) {
 -                		best = id;
--                	}
 +                    bucket.setZone(DateTimeZone.forID(id));
 +                    return position + id.length();
                  }
              }
+-            }
 -            if (best != null) {
 -                bucket.setZone(DateTimeZone.forID(best));
 -                return position + best.length();

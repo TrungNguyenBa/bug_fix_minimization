@@ -33,11 +33,9 @@ index a7990575..bded1540 100644
 -                if (!letters && !numbers) {
 -                    end = Integer.MAX_VALUE;
 -                } else {
--                    end = 'z' + 1;
--                    start = ' ';                
+             end = 'z' + 1;
+             start = ' ';
 -                }
-+            end = 'z' + 1;
-+            start = ' ';
 +            if (!letters && !numbers) {
 +                start = 0;
 +                end = Integer.MAX_VALUE;

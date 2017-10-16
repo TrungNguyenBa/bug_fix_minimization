@@ -2,14 +2,6 @@ diff --git a/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBacke
 index 4d963f6..3814763 100644
 --- a/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java
 +++ b/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java
-@@ -2147,6 +2147,7 @@ public abstract class AbstractBackendTest extends AbstractSimpleBackendTest {
-     @Test
-     public void testUpdateCurrentDate() throws Exception {
-         DBObject object = json("_id: 1");
-+
-         collection.insert(object);
- 
-         collection.update(object, json("$currentDate: {'x.lastModified': true}"));
 @@ -2159,59 +2160,6 @@ public abstract class AbstractBackendTest extends AbstractSimpleBackendTest {
          assertThat(((DBObject) collection.findOne(object).get("x")).get("lastModified")).isInstanceOf(BSONTimestamp.class);
      }

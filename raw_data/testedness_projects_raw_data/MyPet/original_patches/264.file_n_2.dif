@@ -240,10 +240,10 @@ index be6f2995..04f0bbf3 100644
                      return petTypeList;
                  }
 -                if (strings.length >= 4)
+-                {
+-                    if (petTypeOptionMap.containsKey(strings[2].toLowerCase()))
 +                if (strings.length == 3)
                  {
--                    if (petTypeOptionMap.containsKey(strings[2].toLowerCase()))
--                    {
 -                        return petTypeOptionMap.get(strings[2].toLowerCase());
 -                    }
 -                    return emptyList;

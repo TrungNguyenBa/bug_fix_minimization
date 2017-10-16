@@ -79,7 +79,7 @@ index 8252926..664e4f6 100755
       * Extra classpath entries as a comma separated list of file names.
       * For entries with a comma in their name, use backslash to escape.
       * 
-@@ -244,40 +264,7 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+@@ -244,39 +264,6 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
       */
      private GrailsServices grailsServices;
  
@@ -116,11 +116,9 @@ index 8252926..664e4f6 100755
 -    protected AbstractGrailsMojo() {
 -    }
 -
--
-+    
+     
      /**
       * Returns the configured base directory for this execution of the plugin.
-      *
 @@ -336,15 +323,17 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
              final String targetDir = this.project.getBuild().getDirectory();
              ForkedGrailsRuntime.ExecutionContext ec = new ForkedGrailsRuntime.ExecutionContext();
@@ -179,26 +177,12 @@ index 8252926..664e4f6 100755
 +            throw new MojoExecutionException("Failed to create classpath for Grails execution.", e);
 +        }
 +        List<File> dependencyFiles = getDependencyFiles(compileClasspathElements);
-+
-+        Collection<Artifact> compileArtifacts = getCompileArtifacts(project);
-+        List<File> files = artifactsToFiles(compileArtifacts);
-+        dependencyFiles.addAll(zipFilesOnly(files));
-+
-+        return dependencyFiles;
-+    }
-+
-+    private Collection<? extends File> zipFilesOnly(List<File> files) {
-+        List<File> newFiles = new ArrayList<File>();
-+        for (File file : files) {
-+            if(file != null && file.getName().endsWith(".zip")) {
-+                newFiles.add(file);
-+            }
-+        }
-+        return newFiles;
-+    }
  
 -        getLog().info( "Resolving artifact " + artifactId +
 -                " from " + remoteRepos );
++        Collection<Artifact> compileArtifacts = getCompileArtifacts(project);
++        List<File> files = artifactsToFiles(compileArtifacts);
++        dependencyFiles.addAll(zipFilesOnly(files));
  
 -        ArtifactResult result;
 -        try
@@ -207,25 +191,74 @@ index 8252926..664e4f6 100755
 -            result.getArtifact().getFile();
 -        } catch ( ArtifactResolutionException e ) {
 -            throw new MojoExecutionException( e.getMessage(), e );
-+    private List<File> getRuntimeFiles() throws MojoExecutionException {
-+        List runtimeClasspathElements;
-+        try {
-+            runtimeClasspathElements = project.getRuntimeClasspathElements();
-+        } catch (DependencyResolutionRequiredException e) {
-+            throw new MojoExecutionException("Failed to create classpath for Grails execution.", e);
-         }
-+        List<File> dependencyFiles = getDependencyFiles(runtimeClasspathElements);
-+        Collection<Artifact> compileArtifacts = getRuntimeArtifacts(project);
-+        List<File> files = artifactsToFiles(compileArtifacts);
-+        dependencyFiles.addAll(zipFilesOnly(files));
++        return dependencyFiles;
+     }
  
 -        getLog().info( "Resolved artifact " + artifactId + " to " +
 -                result.getArtifact().getFile() + " from "
 -                + result.getRepository() );
 -        return null;
-+        return dependencyFiles;
++    private Collection<? extends File> zipFilesOnly(List<File> files) {
++        List<File> newFiles = new ArrayList<File>();
++        for (File file : files) {
++            if(file != null && file.getName().endsWith(".zip")) {
++                newFiles.add(file);
+             }
+-
+-
+-
+-    /**
+-     * Resolves artifacts to files including transitive resolution
+-     *
+-     * @return
+-     * @throws MojoExecutionException
+-     */
+-    protected List<File> resolveArtifacts() throws MojoExecutionException {
+-        return resolveArtifacts( "compile");
+         }
+-
+-    protected List<File> resolveArtifacts(String scope) throws MojoExecutionException {
+-        MavenProject mavenProject = project;
+-        return resolveArtifacts(mavenProject, scope);
++        return newFiles;
      }
  
+-    protected List<File> resolveArtifacts(MavenProject mavenProject, String scope) throws MojoExecutionException {
+-        return resolveArtifacts(mavenProject, scope);
+-    }
+ 
+-    protected List<File> resolveArtifacts(MavenProject mavenProject, String scope, DependencyFilter filter) throws MojoExecutionException {
++    private List<File> getRuntimeFiles() throws MojoExecutionException {
++        List runtimeClasspathElements;
+         try {
+-            DefaultDependencyResolutionRequest request = new DefaultDependencyResolutionRequest(mavenProject, repoSession);
+-            if(filter != null) {
+-                request.setResolutionFilter(new OrDependencyFilter(new ScopeDependencyFilter(scope), filter));
+-            }
+-            else {
+-                request.setResolutionFilter(new ScopeDependencyFilter(scope));
++            runtimeClasspathElements = project.getRuntimeClasspathElements();
++        } catch (DependencyResolutionRequiredException e) {
++            throw new MojoExecutionException("Failed to create classpath for Grails execution.", e);
+         }
+-            DependencyResolutionResult result = projectDependenciesResolver.resolve(request);
+-            List<org.eclipse.aether.graph.Dependency> dependencies = result.getDependencies();
++        List<File> dependencyFiles = getDependencyFiles(runtimeClasspathElements);
++        Collection<Artifact> compileArtifacts = getRuntimeArtifacts(project);
++        List<File> files = artifactsToFiles(compileArtifacts);
++        dependencyFiles.addAll(zipFilesOnly(files));
+ 
+-            final List<File> files = new ArrayList<File>();
++        return dependencyFiles;
++    }
+ 
+-            for(org.eclipse.aether.graph.Dependency d : dependencies) {
+-                org.eclipse.aether.artifact.Artifact artifact = d.getArtifact();
+-                File file = artifact.getFile();
+-                if(file != null) {
+-                    String name = file.getName();
+-                    if(!name.contains("xml-apis") && !name.contains("commons-logging"))
+-                        files.add(file);
 +    private List<File> getTestFiles() throws MojoExecutionException {
 +        List testClasspathElements;
 +        try {
@@ -238,58 +271,27 @@ index 8252926..664e4f6 100755
 +        List<File> files = artifactsToFiles(testArtifacts);
 +        dependencyFiles.addAll(zipFilesOnly(files));
 +        return dependencyFiles;
-+    }
+     }
  
 +    private List<File> getDependencyFiles(List compileClasspathElements) {
 +        List<File> files = new ArrayList<File>();
 +        for (Object compileClasspathElement : compileClasspathElements) {
 +            files.add(new File(compileClasspathElement.toString()));
-+        }
-+        return files;
-+    }
- 
-     /**
-      * Resolves artifacts to files including transitive resolution
-      *
+         }
+         return files;
+-        } catch (DependencyResolutionException e) {
+-            throw new MojoExecutionException("Dependency resolution failure: " + e.getMessage(), e);
+     }
++
++    /**
++     * Resolves artifacts to files including transitive resolution
++     *
 +     * @param artifacts The artifacts
-      * @return
-      * @throws MojoExecutionException
-      */
--    protected List<File> resolveArtifacts() throws MojoExecutionException {
--        return resolveArtifacts( "compile");
--    }
--
--    protected List<File> resolveArtifacts(String scope) throws MojoExecutionException {
--        MavenProject mavenProject = project;
--        return resolveArtifacts(mavenProject, scope);
--    }
--
--    protected List<File> resolveArtifacts(MavenProject mavenProject, String scope) throws MojoExecutionException {
--        return resolveArtifacts(mavenProject, scope);
--    }
--
--    protected List<File> resolveArtifacts(MavenProject mavenProject, String scope, DependencyFilter filter) throws MojoExecutionException {
++     * @return
++     * @throws MojoExecutionException
++     */
 +    protected List<File> resolveArtifacts(Collection<Artifact> artifacts) throws MojoExecutionException {
-         try {
--            DefaultDependencyResolutionRequest request = new DefaultDependencyResolutionRequest(mavenProject, repoSession);
--            if(filter != null) {
--                request.setResolutionFilter(new OrDependencyFilter(new ScopeDependencyFilter(scope), filter));
--            }
--            else {
--                request.setResolutionFilter(new ScopeDependencyFilter(scope));
--            }
--            DependencyResolutionResult result = projectDependenciesResolver.resolve(request);
--            List<org.eclipse.aether.graph.Dependency> dependencies = result.getDependencies();
--
--            final List<File> files = new ArrayList<File>();
--
--            for(org.eclipse.aether.graph.Dependency d : dependencies) {
--                org.eclipse.aether.artifact.Artifact artifact = d.getArtifact();
--                File file = artifact.getFile();
--                if(file != null) {
--                    String name = file.getName();
--                    if(!name.contains("xml-apis") && !name.contains("commons-logging"))
--                        files.add(file);
++        try {
 +            ArtifactResolutionResult result = artifactCollector.collect(new HashSet<Artifact>(artifacts),
 +                    project.getArtifact(),
 +                    this.localRepository,
@@ -302,18 +304,14 @@ index 8252926..664e4f6 100755
 +            for (final Artifact currentArtifact : newArtifacts) {
 +                if (!currentArtifact.getArtifactId().equals("tools") && !currentArtifact.getGroupId().equals("com.sun")) {
 +                    this.artifactResolver.resolve(currentArtifact, this.remoteRepositories, this.localRepository);
-                 }
--
-             }
--            return files;
--        } catch (DependencyResolutionException e) {
--            throw new MojoExecutionException("Dependency resolution failure: " + e.getMessage(), e);
++                }
++            }
 +            return artifactsToFiles(newArtifacts);
 +        } catch (ArtifactResolutionException e) {
 +            throw new MojoExecutionException("Failed to create classpath for Grails execution.", e);
 +        } catch (ArtifactNotFoundException e) {
 +            throw new MojoExecutionException("Failed to create classpath for Grails execution.", e);
-         }
++        }
 +
 +
      }
@@ -348,7 +346,6 @@ index 8252926..664e4f6 100755
 -            Set<File> jars = new HashSet<File>();
              if(pluginOnly) {
 -                jars.addAll( resolveArtifacts(pluginProject, "compile+runtime") );
--
 +                Dependency mavenPluginDependency = new Dependency();
 +                Artifact currentArtifact = getPluginProject().getArtifact();
 +                mavenPluginDependency.setGroupId(currentArtifact.getGroupId());
@@ -357,7 +354,7 @@ index 8252926..664e4f6 100755
 +                unresolvedDependencies.add(mavenPluginDependency);
 +                Dependency grailsLauncherDep = findDependency(getPluginProject().getDependencies(), "grails-launcher");
 +                unresolvedDependencies.add(grailsLauncherDep);
-+                
+                 
              }
              else {
 -                jars.addAll( resolveArtifacts(pluginProject, "compile+runtime") );

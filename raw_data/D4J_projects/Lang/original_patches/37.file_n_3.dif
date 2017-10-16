@@ -17,10 +17,7 @@ index e38e4811..2b80d835 100644
   * @version $Id$
   */
  public class ArrayUtilsAddTest extends TestCase {
-+    public static void main(String[] args) {
-+        TestRunner.run(suite());
-+    }
- 
+-
 -    public void testJira567(){
 -        Number[] n;
 -        // Valid array construction
@@ -32,7 +29,10 @@ index e38e4811..2b80d835 100644
 -               n = ArrayUtils.addAll(new Integer[]{Integer.valueOf(1)}, new Long[]{Long.valueOf(2)});
 -               fail("Should have generated IllegalArgumentException");
 -        } catch (IllegalArgumentException expected) {
--        }
++    public static void main(String[] args) {
++        TestRunner.run(suite());
+     }
++
 +    public static Test suite() {
 +        TestSuite suite = new TestSuite(ArrayUtilsAddTest.class);
 +        suite.setName("ArrayUtils add Tests");

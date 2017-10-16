@@ -34,9 +34,8 @@ index c30fdff..9292df6 100644
  		Boolean bool = defaultsMap.get(world);
  		if (bool == null) {
 -			synchronized (lock) {
--				bool = getBackingData().isDefault(world);
+ 			bool = getBackingData().isDefault(world);
 -			}
-+			bool = getBackingData().isDefault(world);
  			defaultsMap.put(world, bool);
  		}
  		return bool;

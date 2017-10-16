@@ -23,23 +23,21 @@ index 930cb48..db61ae3 100644
 -	 * @return The values for the qualifier. Should return an empty collection if no values
 -	 */
 -	public Collection<String> getValues(Qualifier qual);
--
++	public Set<String> getServerTags();
+ 
 -	/**
 -	 * Returns whether or not this context has a value for the specified qualifier
 -	 * @param qual The qualifier to check
 -	 * @return Whether a value is specified for this qualifier
 -	 */
 -	public boolean hasValue(Qualifier qual);
--
++	public String getEntityName();
+ 
 -	/**
 -	 * Return all defined values for qualifiers
 -	 * @return The defined qualifier values
 -	 */
 -	public ImmutableMultimap<Qualifier, String> getValues();
-+	public Set<String> getServerTags();
-+
-+	public String getEntityName();
-+
 +	public EntityType getEntityType();
 +
 +	public String getWorld();

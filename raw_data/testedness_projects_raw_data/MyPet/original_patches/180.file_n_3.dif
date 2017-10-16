@@ -53,13 +53,24 @@ index a745e55b..bbf46467 100644
  
      static
      {
-@@ -149,56 +162,623 @@ public class CommandAdmin implements CommandExecutor, TabCompleter
+@@ -149,58 +162,625 @@ public class CommandAdmin implements CommandExecutor, TabCompleter
          }
      }
  
 -    public CommandAdmin()
 +    public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
-     {
++    {
++        String lang = "en";
++        if (sender instanceof Player)
++        {
++            if (!Permissions.has((Player) sender, "MyPet.admin", false))
++            {
++                return true;
++            }
++            lang = BukkitUtil.getPlayerLanguage((Player) sender);
++        }
++        if (args.length < 1)
+         {
 -        commandOptions.put("name", new CommandOptionName());
 -        commandOptions.put("exp", new CommandOptionExp());
 -        commandOptions.put("respawn", new CommandOptionRespawn());
@@ -71,43 +82,23 @@ index a745e55b..bbf46467 100644
 -        commandOptions.put("remove", new CommandOptionRemove());
 -        commandOptions.put("cleanup", new CommandOptionCleanup());
 -        commandOptions.put("test", new CommandOptionTest());
--
--        commandOptions.put("build", new CommandOption()
-+        String lang = "en";
-+        if (sender instanceof Player)
-         {
--            @Override
--            public boolean onCommandOption(CommandSender sender, String[] parameter)
-+            if (!Permissions.has((Player) sender, "MyPet.admin", false))
-             {
--                DebugLogger.info("MyPet-" + MyPetVersion.getMyPetVersion() + "-b#" + MyPetVersion.getMyPetBuild());
--                sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] MyPet-" + MyPetVersion.getMyPetVersion() + "-b#" + MyPetVersion.getMyPetBuild());
-                 return true;
-             }
--        });
--    }
-+            lang = BukkitUtil.getPlayerLanguage((Player) sender);
-+        }
-+        if (args.length < 1)
-+        {
 +            return false;
 +        }
 +        String option = args[0];
 +        String[] parameter = Arrays.copyOfRange(args, 1, args.length);
  
--    public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
--    {
--        if (sender instanceof Player)
+-        commandOptions.put("build", new CommandOption()
 +        if (option.equalsIgnoreCase("name") && parameter.length >= 2)
          {
--            if (!Permissions.has((Player) sender, "MyPet.admin", false))
+-            @Override
+-            public boolean onCommandOption(CommandSender sender, String[] parameter)
 +            Player petOwner = Bukkit.getServer().getPlayer(parameter[0]);
 +
 +            if (petOwner == null || !petOwner.isOnline())
-             {
++            {
 +                sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] " + Locales.getString("Message.No.PlayerOnline", lang));
-                 return true;
-             }
++                return true;
++            }
 +            else if (!MyPetList.hasMyPet(petOwner))
 +            {
 +                sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] " + Util.formatText(Locales.getString("Message.No.UserHavePet", lang), petOwner.getName()));
@@ -135,12 +126,11 @@ index a745e55b..bbf46467 100644
 +
 +            myPet.setPetName(name);
 +            sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] new name is now: " + name);
-         }
++        }
 +        else if (option.equalsIgnoreCase("exp") && parameter.length >= 2)
 +        {
 +            Player petOwner = Bukkit.getServer().getPlayer(parameter[0]);
- 
--        if (args.length < 1)
++
 +            if (petOwner == null || !petOwner.isOnline())
 +            {
 +                sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] " + Locales.getString("Message.No.PlayerOnline", lang));
@@ -208,8 +198,7 @@ index a745e55b..bbf46467 100644
 +            }
 +        }
 +        else if (option.equalsIgnoreCase("respawn") && parameter.length >= 1)
-         {
--            return false;
++        {
 +            Player petOwner = Bukkit.getServer().getPlayer(parameter[0]);
 +
 +            if (petOwner == null || !petOwner.isOnline())
@@ -255,12 +244,14 @@ index a745e55b..bbf46467 100644
 +            Configuration.loadConfiguration();
 +            DebugLogger.info("Config reloaded.");
 +            sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] config (config.yml) reloaded!");
-         }
-+        else if (option.equalsIgnoreCase("build"))
-+        {
-+            DebugLogger.info("MyPet-" + MyPetVersion.getMyPetVersion() + "-b#" + MyPetVersion.getMyPetBuild());
-+            sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] MyPet-" + MyPetVersion.getMyPetVersion() + "-b#" + MyPetVersion.getMyPetBuild());
 +        }
++        else if (option.equalsIgnoreCase("build"))
+         {
+             DebugLogger.info("MyPet-" + MyPetVersion.getMyPetVersion() + "-b#" + MyPetVersion.getMyPetBuild());
+             sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] MyPet-" + MyPetVersion.getMyPetVersion() + "-b#" + MyPetVersion.getMyPetBuild());
+-                return true;
+         }
+-        });
 +        else if (option.equalsIgnoreCase("reloadskills"))
 +        {
 +            SkillTreeMobType.clearMobTypes();
@@ -272,24 +263,25 @@ index a745e55b..bbf46467 100644
 +            for (MyPet myPet : MyPetList.getAllActiveMyPets())
 +            {
 +                myPet.getSkills().reset();
-+            }
+             }
  
--        String[] parameter = Arrays.copyOfRange(args, 1, args.length);
--        CommandOption option = commandOptions.get(args[0].toLowerCase());
+-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
 +            SkillTreeMobType.clearMobTypes();
 +            SkillTreeLoaderNBT.getSkilltreeLoader().loadSkillTrees(MyPetPlugin.getPlugin().getDataFolder().getPath() + File.separator + "skilltrees", petTypes);
 +            SkillTreeLoaderYAML.getSkilltreeLoader().loadSkillTrees(MyPetPlugin.getPlugin().getDataFolder().getPath() + File.separator + "skilltrees", petTypes);
 +            SkillTreeLoaderJSON.getSkilltreeLoader().loadSkillTrees(MyPetPlugin.getPlugin().getDataFolder().getPath() + File.separator + "skilltrees", petTypes);
 +
 +            for (MyPetType mobType : MyPetType.values())
-+            {
+             {
+-        if (sender instanceof Player)
 +                SkillTreeMobType skillTreeMobType = SkillTreeMobType.getMobTypeByName(mobType.getTypeName());
 +                SkillTreeLoader.addDefault(skillTreeMobType);
 +                SkillTreeLoader.manageInheritance(skillTreeMobType);
 +            }
 +
 +            for (MyPet myPet : MyPetList.getAllActiveMyPets())
-+            {
+             {
+-            if (!Permissions.has((Player) sender, "MyPet.admin", false))
 +                myPet.getSkills().reset();
 +
 +                SkillTree skillTree = myPet.getSkillTree();
@@ -319,7 +311,7 @@ index a745e55b..bbf46467 100644
 +                {
 +                    sender.sendMessage(Util.formatText(Locales.getString("Message.Command.Skills.Show", myPet.getOwner()), myPet.getPetName(), (myPet.getSkillTree() == null ? "-" : myPet.getSkillTree().getDisplayName())));
 +                    for (ISkillInstance skill : myPet.getSkills().getSkills())
-+                    {
+                     {
 +                        if (skill.isActive())
 +                        {
 +                            myPet.sendMessageToOwner("  " + ChatColor.GREEN + skill.getName() + ChatColor.RESET + " " + skill.getFormattedValue());
@@ -336,8 +328,7 @@ index a745e55b..bbf46467 100644
 +                    if (SkillTreeMobType.getMobTypeByPetType(myPet.getPetType()) != null)
 +                    {
 +                        SkillTreeMobType mobType = SkillTreeMobType.getMobTypeByPetType(myPet.getPetType());
- 
--        if (option != null)
++
 +                        if (mobType.hasSkillTree(skilltreeName))
 +                        {
 +                            skillTree = mobType.getSkillTree(skilltreeName);
@@ -368,15 +359,16 @@ index a745e55b..bbf46467 100644
 +            if (petOwner == null || !petOwner.isOnline())
 +            {
 +                sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] " + Locales.getString("Message.No.PlayerOnline", lang));
-+                return true;
-+            }
+                 return true;
+             }
 +            else if (!MyPetList.hasMyPet(petOwner))
 +            {
 +                sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] " + Util.formatText(Locales.getString("Message.No.UserHavePet", lang), petOwner.getName()));
 +                return true;
-+            }
+             }
 +            MyPet myPet = MyPetList.getMyPet(petOwner);
-+
+ 
+-        if (args.length < 1)
 +            SkillTreeMobType skillTreeMobType = SkillTreeMobType.getMobTypeByName(myPet.getPetType().getTypeName());
 +            if (skillTreeMobType.hasSkillTree(parameter[1]))
 +            {
@@ -398,10 +390,12 @@ index a745e55b..bbf46467 100644
 +        else if (option.equalsIgnoreCase("create"))
 +        {
 +            if (parameter.length < 2)
-+            {
-+                return false;
-+            }
-+
+             {
+                 return false;
+             }
+ 
+-        String[] parameter = Arrays.copyOfRange(args, 1, args.length);
+-        CommandOption option = commandOptions.get(args[0].toLowerCase());
 +            int forceOffset = 0;
 +            if (parameter[0].equalsIgnoreCase("-f"))
 +            {
@@ -417,7 +411,8 @@ index a745e55b..bbf46467 100644
 +                    sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] " + Locales.getString("Message.No.PlayerOnline", lang));
 +                    return true;
 +                }
-+
+ 
+-        if (option != null)
 +                MyPetPlayer newOwner = MyPetPlayer.getMyPetPlayer(owner);
 +                if (newOwner.hasMyPet() && forceOffset == 1)
 +                {
@@ -434,7 +429,8 @@ index a745e55b..bbf46467 100644
 +                    if (parameter.length > 2 + forceOffset)
 +                    {
 +                        for (int i = 2 + forceOffset ; i < parameter.length ; i++)
-+                        {
+                         {
+-            return option.onCommandOption(sender, parameter);
 +                            if (parameter[i].equalsIgnoreCase("baby"))
 +                            {
 +                                compoundTag.getValue().put("Baby", new ByteTag("Baby", true));
@@ -557,14 +553,14 @@ index a745e55b..bbf46467 100644
 +                                    blockData = Math.min(Math.max(0, blockData), 15);
 +                                    compoundTag.getValue().put("BlockData", new IntTag("BlockData", blockData));
 +                                }
-+                            }
+                             }
 +                        }
 +                    }
 +
 +                    MyPetList.addInactiveMyPet(inactiveMyPet);
 +                    MyPet myPet = MyPetList.setMyPetActive(inactiveMyPet);
 +                    myPet.createPet();
-+
+ 
 +                    WorldGroup wg = WorldGroup.getGroup(owner.getWorld().getName());
 +                    myPet.setWorldGroup(wg.getName());
 +                    myPet.getOwner().setMyPetForWorldGroup(wg.getName(), myPet.getUUID());
@@ -576,13 +572,12 @@ index a745e55b..bbf46467 100644
 +            }
 +        }
 +        else if (option.equalsIgnoreCase("clone"))
-         {
--            return option.onCommandOption(sender, parameter);
++        {
 +            if (parameter.length < 2)
 +            {
-+                return false;
-+            }
-+
+                 return false;
+             }
+ 
 +            Player oldOwner = Bukkit.getPlayer(parameter[0]);
 +            if (oldOwner == null || !oldOwner.isOnline())
 +            {
@@ -639,7 +634,7 @@ index a745e55b..bbf46467 100644
 +            MyPetList.setMyPetActive(newPet);
 +
 +            sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] MyPet owned by " + newOwner.getName() + " successfully cloned!");
-         }
++        }
 +        else if (option.equalsIgnoreCase("remove"))
 +        {
 +            if (parameter.length >= 1)
@@ -701,10 +696,11 @@ index a745e55b..bbf46467 100644
 +        }
 +        else if (option.equalsIgnoreCase("test"))
 +        {
- 
--        return false;
++
 +        }
 +        return true;
-     }
- 
++    }
++
      @Override
+     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings)
+     {

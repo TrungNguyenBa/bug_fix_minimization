@@ -29,10 +29,6 @@ index 58acc528..94237419 100644
  
    @Override
    public CompilerPass getProcessor(final Compiler compiler) {
--    PeepholeOptimizationsPass peepholePass =
--      new PeepholeOptimizationsPass(compiler, new PeepholeRemoveDeadCode());
--
--    return peepholePass;
 +    return new CompilerPass() {
 +      @Override
 +      public void process(Node externs, Node root) {
@@ -41,7 +37,10 @@ index 58acc528..94237419 100644
 +        definitionFinder.process(externs, root);
 +        new PureFunctionIdentifier(compiler, definitionFinder)
 +            .process(externs, root);
-+        PeepholeOptimizationsPass peepholePass =
+         PeepholeOptimizationsPass peepholePass =
+-      new PeepholeOptimizationsPass(compiler, new PeepholeRemoveDeadCode());
+-
+-    return peepholePass;
 +            new PeepholeOptimizationsPass(
 +                compiler, new PeepholeRemoveDeadCode());
 +        peepholePass.process(externs, root);
@@ -50,14 +49,6 @@ index 58acc528..94237419 100644
    }
  
    @Override
-@@ -226,7 +243,6 @@ public class PeepholeRemoveDeadCodeTest extends CompilerTestCase {
-     //  - the FOR init expression
-     //  - the FOR increment expression
- 
--
-     // Known side-effect free functions calls are removed.
-     fold("Math.random()", "");
-     fold("Math.random(f() + g())", "f(),g();");
 @@ -234,7 +250,11 @@ public class PeepholeRemoveDeadCodeTest extends CompilerTestCase {
  
      // Calls to functions with unknown side-effects are are left.

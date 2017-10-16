@@ -51,15 +51,13 @@ index cfdccbe6..f1f57359 100644
 -
 -          if (token == JsDocToken.EOC ||
 -              token == JsDocToken.EOF ||
--              // When we're capturing a license block, annotations
--              // in the block are ok.
--              (token == JsDocToken.ANNOTATION &&
--               option != WhitespaceOption.PRESERVE)) {
 +        case ANNOTATION:
 +        case EOC:
 +        case EOF:
-+          // When we're capturing a license block, annotations
-+          // in the block are ok.
+           // When we're capturing a license block, annotations
+           // in the block are ok.
+-              (token == JsDocToken.ANNOTATION &&
+-               option != WhitespaceOption.PRESERVE)) {
 +          if (!(option == WhitespaceOption.PRESERVE &&
 +                token == JsDocToken.ANNOTATION)) {
              String multilineText = builder.toString();

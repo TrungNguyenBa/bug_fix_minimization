@@ -10,22 +10,19 @@ index d87aec3..184e78a 100644
  import org.apache.http.client.methods.HttpRequestBase;
  import org.apache.http.entity.ContentType;
  
-@@ -98,14 +97,11 @@ class EntityProcessor extends AbstractRequestProcessor {
+@@ -98,15 +97,12 @@ class EntityProcessor extends AbstractRequestProcessor {
  		}
  		catch(MissingEntityException mee) { //violates HTTP 1.1 specification, be more verbose 
  			
 -			if(!(httpRequestBase instanceof HttpPost)) { //allow leeway for POST requests
-+			StringBuilder errorContext = new StringBuilder("It is imperative that this request encloses an entity.")
-+			.append(" Identify exactly one entity by annotating an argument with @")
-+			.append(Entity.class.getSimpleName());
+-			
+ 			StringBuilder errorContext = new StringBuilder("It is imperative that this request encloses an entity.")
+ 			.append(" Identify exactly one entity by annotating an argument with @")
+ 			.append(Entity.class.getSimpleName());
  			
--				StringBuilder errorContext = new StringBuilder("It is imperative that this request encloses an entity.")
--				.append(" Identify exactly one entity by annotating an argument with @")
--				.append(Entity.class.getSimpleName());
--				
--				throw new RequestProcessorException(errorContext.toString(), mee);
--			}
-+			throw new RequestProcessorException(errorContext.toString(), mee);
+ 			throw new RequestProcessorException(errorContext.toString(), mee);
  		}
+-		}
  		catch(MultipleEntityException mee) { //violates HTTP 1.1 specification, be more verbose 
  			
+ 			StringBuilder errorContext = new StringBuilder("This request is only able to enclose exactly one entity.")

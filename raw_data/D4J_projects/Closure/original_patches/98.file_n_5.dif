@@ -56,15 +56,6 @@ index da4ed3e0..1e4b0ae9 100644
      }
  
      /**
-@@ -477,7 +453,7 @@ class ReferenceCollectingCallback implements ScopedCallback, CompilerPass {
-     }
- 
-    /**
--    * @return For an assignment, variable declaration, or function declaration
-+    * @return For an assignment, variable declaration, or function declaration 
-     * return the assigned value, otherwise null.
-     */
-     Node getAssignedValue() {
 @@ -548,16 +524,6 @@ class ReferenceCollectingCallback implements ScopedCallback, CompilerPass {
      private final boolean isHoisted;
  

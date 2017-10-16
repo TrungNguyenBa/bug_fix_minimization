@@ -2,18 +2,17 @@ diff --git a/src/main/java/com/stripe/net/LiveStripeResponseGetter.java b/src/ma
 index 8784791..09a54bb 100644
 --- a/src/main/java/com/stripe/net/LiveStripeResponseGetter.java
 +++ b/src/main/java/com/stripe/net/LiveStripeResponseGetter.java
-@@ -239,12 +239,8 @@ public class LiveStripeResponseGetter implements StripeResponseGetter {
+@@ -239,13 +239,9 @@ public class LiveStripeResponseGetter implements StripeResponseGetter {
  		Iterator<?> it = ((List<?>)params).iterator();
  		String newPrefix = String.format("%s[]", keyPrefix);
  
 -		if (params.isEmpty()) {
 -			flatParams.add(new Parameter(keyPrefix, ""));
 -		} else {
--			while (it.hasNext()) {
--				flatParams.addAll(flattenParamsValue(it.next(), newPrefix));
--			}
-+		while (it.hasNext()) {
-+			flatParams.addAll(flattenParamsValue(it.next(), newPrefix));
+ 		while (it.hasNext()) {
+ 			flatParams.addAll(flattenParamsValue(it.next(), newPrefix));
  		}
+-		}
  
  		return flatParams;
+ 	}

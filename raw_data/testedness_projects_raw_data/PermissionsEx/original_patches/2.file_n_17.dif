@@ -29,11 +29,3 @@ index 0bfe0c7..05c7371 100644
          Preconditions.checkNotNull(identifier, "identifier");
          Preconditions.checkNotNull(newData, "newData");
  
-@@ -129,6 +129,7 @@ public class SubjectCache {
-         Preconditions.checkNotNull(listener, "listener");
- 
-         listeners.addListener(identifier, listener);
-+
-     }
- 
-     public String getType() {

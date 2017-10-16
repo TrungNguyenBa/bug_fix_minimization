@@ -28,13 +28,14 @@ index 5ea67a7c..5b36bc50 100644
 -                int normalizedMonths = FieldUtils.safeToInt(totalMonths);
 -                result = result.withMonths(normalizedMonths);
 -                totalMonths = totalMonths - normalizedMonths;
+-            }
+-            if (totalMonths != 0) {
+-                throw new UnsupportedOperationException("Unable to normalize as PeriodType is missing either years or months but period has a month/year amount: " + toString());
 +            years = FieldUtils.safeAdd(years, months / 12);
 +            months = months % 12;
 +            if (years != 0) {
 +                result = result.withYears(years);
-             }
--            if (totalMonths != 0) {
--                throw new UnsupportedOperationException("Unable to normalize as PeriodType is missing either years or months but period has a month/year amount: " + toString());
++            }
 +            if (months != 0) {
 +                result = result.withMonths(months);
              }

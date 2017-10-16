@@ -14,14 +14,6 @@ index b504db8..dec50f5 100755
       * The Grails work directory to use.
       *
       * @parameter expression="${grails.grailsWorkDir}" default-value="${project.build.directory}/work"
-@@ -278,7 +273,6 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
-      */
-     private List<RemoteRepository> remoteRepos;
- 
--
-     protected AbstractGrailsMojo() {
-     }
- 
 @@ -546,16 +540,14 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
              Set<File> jars = new HashSet<File>();
              // calculate the Grails version to use from the dependency or grailsVersion setting

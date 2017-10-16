@@ -35,7 +35,7 @@ index a13652d9d..041678748 100644
      public void testMath320A() {
          RealMatrix rm = new Array2DRowRealMatrix(new double[][] {
              { 1.0, 2.0, 3.0 }, { 2.0, 3.0, 4.0 }, { 3.0, 5.0, 7.0 }
-@@ -175,39 +149,45 @@ public class SingularValueSolverTest {
+@@ -175,38 +149,44 @@ public class SingularValueSolverTest {
          };
          SingularValueDecomposition svd =
              new SingularValueDecompositionImpl(rm);
@@ -68,8 +68,6 @@ index a13652d9d..041678748 100644
 -                    Assert.assertTrue((residual(rm, x, b) - svdMinResidual) > -epsilon);
 -                }
 -            }
--        }
--
 +        regularElements(svd.getU());
 +        regularElements(svd.getVT());
 +//        double[] b = new double[] { 5.0, 6.0, 7.0 };
@@ -104,10 +102,10 @@ index a13652d9d..041678748 100644
 +//        Assert.assertEquals(0, d2Min, 1.0e-15);
      }
  
-+
+-    }
+ 
      @Test
      public void testMath320B() {
-         RealMatrix rm = new Array2DRowRealMatrix(new double[][] {
 @@ -215,17 +195,18 @@ public class SingularValueSolverTest {
          });
          SingularValueDecomposition svd =

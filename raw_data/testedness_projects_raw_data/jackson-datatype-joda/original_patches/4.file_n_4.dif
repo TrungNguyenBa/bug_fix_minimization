@@ -12,12 +12,11 @@ index 878940b..23014ef 100644
 -     */
 -    public final static JacksonJodaDateFormat DEFAULT_DATETIME_PARSER
 -    	= new JacksonJodaDateFormat(ISODateTimeFormat.dateTimeParser().withZoneUTC());
-+    public final static JacksonJodaDateFormat DEFAULT_DATETIME_FORMAT
-+        = new JacksonJodaDateFormat(ISODateTimeFormat.dateTime().withZoneUTC());
- 
--    public final static JacksonJodaDateFormat DEFAULT_DATETIME_PRINTER
--    	= new JacksonJodaDateFormat(ISODateTimeFormat.dateTime().withZoneUTC());
 -
+-    public final static JacksonJodaDateFormat DEFAULT_DATETIME_PRINTER
++    public final static JacksonJodaDateFormat DEFAULT_DATETIME_FORMAT
+         = new JacksonJodaDateFormat(ISODateTimeFormat.dateTime().withZoneUTC());
+ 
 -    /**
 -     * @deprecated Since 2.6.1
 -     */

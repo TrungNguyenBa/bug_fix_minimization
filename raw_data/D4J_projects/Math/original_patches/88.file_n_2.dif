@@ -29,11 +29,10 @@ index a6d7419cf..ba577223d 100644
 -                coefficients[i] = 0;
 -            } else {
 -                basicRows.add(basicRow);
--                coefficients[i] =
+             coefficients[i] =
 -                    (basicRow == null ? 0 : getEntry(basicRow, getRhsOffset())) -
 -                    (restrictToNonNegative ? 0 : mostNegative);
 -            }
-+            coefficients[i] =
 +                getDecisionVariableValue(i) - (restrictToNonNegative ? 0 : mostNegative); 
          }
          return new RealPointValuePair(coefficients, f.getValue(coefficients));

@@ -72,13 +72,13 @@ index 4fff2845..4ec9f03c 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the default sound of the MyPet
 +     */
 +    protected String getLivingSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -            setOnFire(((MyBlaze) myPet).isOnFire());
 -        }

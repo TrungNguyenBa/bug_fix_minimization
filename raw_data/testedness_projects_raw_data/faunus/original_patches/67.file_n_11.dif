@@ -34,15 +34,6 @@ index ee108e13..19e54ab3 100644
    }
  
    AtomMap::AtomMap() {
-@@ -34,7 +30,7 @@ namespace Faunus {
-     a.name="UNK";
-     list.push_back(a);
-   }
--  
-+
-   AtomData & AtomMap::operator[] (AtomData::Tid i) { return list.at(i); }
- 
-   AtomData & AtomMap::operator[] (string s) {
 @@ -46,7 +42,7 @@ namespace Faunus {
  
    /**
@@ -84,11 +75,3 @@ index ee108e13..19e54ab3 100644
        a.mw = json::value<double>(atom.second, "Mw", 1.);
        a.charge = json::value<double>(atom.second, "q", 0);
        a.radius = json::value<double>(atom.second, "r", 0);
-@@ -83,6 +74,7 @@ namespace Faunus {
-       a.radius = a.sigma/2;
-       a.id=AtomData::Tid( list.size() );
-       a.patchtype = json::value<double>(atom.second, "patchtype", 0);
-+
-       list.push_back(a); // add to main particle list
-     }
-     return (n>0) ? true : false;

@@ -25,7 +25,7 @@ index 1f6e58b..0cc58c9 100644
      }
  
      enum Size { SMALL, LARGE };
-@@ -258,24 +242,8 @@ abstract class ProtobufTestBase extends TestCase
+@@ -258,22 +242,6 @@ abstract class ProtobufTestBase extends TestCase
          public String title;
          public int width, height;
          public Size size;    
@@ -46,11 +46,8 @@ index 1f6e58b..0cc58c9 100644
 -                    ;
 -        }
      } 
--    
-+
-     enum Player { JAVA, FLASH; }
  
-     static class Media {
+     enum Player { JAVA, FLASH; }
 @@ -302,27 +270,6 @@ abstract class ProtobufTestBase extends TestCase
              persons.add(p);
              return this;

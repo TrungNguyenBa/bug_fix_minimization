@@ -8,11 +8,10 @@ index 2daf6f4..8eeea4a 100755
              handleVersionSync();
 -            getLog().info("Starting " + (fork ? "forked" : "unforked") + " grails project.");
 -            if(fork) {
--                fgr.fork();
+             fgr.fork();
 -            } else {
 -                fgr.nofork();
 -            }
-+            fgr.fork();
          } catch (Exception e) {
              throw new MojoExecutionException(e.getMessage(), e);
          }

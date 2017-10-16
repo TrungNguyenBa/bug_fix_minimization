@@ -8,14 +8,13 @@ index 45266aa2..9c4fdc18 100644
          virtual string _brief();
 -        //void initCutoff(size_t, float);       //!< Initialize all cut-off distances to single value
 -        //void setCutoff(size_t, size_t, float);//!< Specialized cut-off for a pair
--      public:
--        typedef PairMatrix<double> Tcutoff;
--        Tcutoff rcut2;                        //!< Squared cut-off distance (angstrom^2)
 +      protected:
 +        Eigen::MatrixXf rcut2;                //!< Squared cut-off distance (angstrom)
 +        void initCutoff(size_t, float);       //!< Initialize all cut-off distances to single value
 +        void setCutoff(size_t, size_t, float);//!< Specialized cut-off for a pair
-+      public:  
+       public:  
+-        typedef PairMatrix<double> Tcutoff;
+-        Tcutoff rcut2;                        //!< Squared cut-off distance (angstrom^2)
          PairPotentialBase(std::string="");
          virtual ~PairPotentialBase();
          string name;       //!< Name of potential

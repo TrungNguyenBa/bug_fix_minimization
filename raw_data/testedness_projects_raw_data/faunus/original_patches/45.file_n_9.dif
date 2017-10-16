@@ -10,13 +10,11 @@ index 2f74056e..40a74d8d 100644
        while (n>0) {
          geo.randompos(a);
 -        if (!overlap(a)) {
--          insert(a,-1);
--          n--;
--        }
 +        //if (overlap(a))
 +          //cout << "Overlap on insert ignored!\n";
-+        insert(a,-1);
-+        n--;
+         insert(a,-1);
+         n--;
+-        }
 +        //}
        }
        return true;

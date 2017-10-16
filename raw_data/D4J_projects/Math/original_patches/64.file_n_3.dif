@@ -64,14 +64,6 @@ index b41456eff..4cf4ee006 100644
  
                  // compute the new point and the norm of the evolution direction
                  double lmNorm = 0;
-@@ -365,6 +357,7 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
-                     lmNorm  += s * s;
-                 }
-                 lmNorm = Math.sqrt(lmNorm);
-+
-                 // on the first iteration, adjust the initial step bound.
-                 if (firstIteration) {
-                     delta = Math.min(delta, lmNorm);
 @@ -372,6 +365,7 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
  
                  // evaluate the function at x + p and calculate its norm
@@ -96,7 +88,7 @@ index b41456eff..4cf4ee006 100644
                  } else {
                      // failed iteration, reset the previous values
                      cost = previousCost;
-@@ -446,18 +431,24 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+@@ -446,11 +431,16 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
                      tmpVec    = residuals;
                      residuals = oldRes;
                      oldRes    = tmpVec;
@@ -105,12 +97,6 @@ index b41456eff..4cf4ee006 100644
 -                    oldObj    = tmpVec;
                  }
 -                if (checker==null) {
--                	if (((Math.abs(actRed) <= costRelativeTolerance) &&
--                        (preRed <= costRelativeTolerance) &&
--                        (ratio <= 2.0)) ||
--                       (delta <= parRelativeTolerance * xNorm)) {
--                       return current;
--                   }
 +
 +                // tests for convergence.
 +                if (checker != null) {
@@ -120,14 +106,6 @@ index b41456eff..4cf4ee006 100644
 +                    }
 +                } else {
 +                    // we use the Levenberg-Marquardt specific convergence parameters
-+                    if (((Math.abs(actRed) <= costRelativeTolerance) &&
-+                         (preRed <= costRelativeTolerance) &&
-+                         (ratio <= 2.0)) ||
-+                        (delta <= parRelativeTolerance * xNorm)) {
-+                        return current;
-+                    }
-                 }
-+
-                 // tests for termination and stringent tolerances
-                 // (2.2204e-16 is the machine epsilon for IEEE754)
-                 if ((Math.abs(actRed) <= 2.2204e-16) && (preRed <= 2.2204e-16) && (ratio <= 2.0)) {
+                     if (((Math.abs(actRed) <= costRelativeTolerance) &&
+                          (preRed <= costRelativeTolerance) &&
+                          (ratio <= 2.0)) ||

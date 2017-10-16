@@ -7,27 +7,21 @@ index f5d8b31c..3b426bb1 100644
  
          for (MyPet myPet : MyPetList.getAllActiveMyPets()) {
 -            try {
--                CompoundTag petNBT = myPet.save();
--                petList.add(petNBT);
--                petCount++;
+             CompoundTag petNBT = myPet.save();
+             petList.add(petNBT);
+             petCount++;
 -            } catch (Exception e) {
 -                DebugLogger.printThrowable(e);
 -            }
-+            CompoundTag petNBT = myPet.save();
-+            petList.add(petNBT);
-+            petCount++;
          }
          for (InactiveMyPet inactiveMyPet : MyPetList.getAllInactiveMyPets()) {
 -            try {
--                CompoundTag petNBT = inactiveMyPet.save();
--                petList.add(petNBT);
--                petCount++;
+             CompoundTag petNBT = inactiveMyPet.save();
+             petList.add(petNBT);
+             petCount++;
 -            } catch (Exception e) {
 -                DebugLogger.printThrowable(e);
 -            }
-+            CompoundTag petNBT = inactiveMyPet.save();
-+            petList.add(petNBT);
-+            petCount++;
          }
          nbtConfiguration.getNBTCompound().getValue().put("Version", new StringTag("Version", MyPetVersion.getMyPetVersion()));
          nbtConfiguration.getNBTCompound().getValue().put("Build", new StringTag("Build", MyPetVersion.getMyPetBuild()));
@@ -36,11 +30,10 @@ index f5d8b31c..3b426bb1 100644
          for (MyPetPlayer myPetPlayer : MyPetPlayer.getMyPetPlayers()) {
              if (myPetPlayer.hasCustomData()) {
 -                try {
--                    playerList.add(myPetPlayer.save());
+                 playerList.add(myPetPlayer.save());
 -                } catch (Exception e) {
 -                    DebugLogger.printThrowable(e);
 -                }
-+                playerList.add(myPetPlayer.save());
              }
          }
          return new ListTag<CompoundTag>("Players", CompoundTag.class, playerList);

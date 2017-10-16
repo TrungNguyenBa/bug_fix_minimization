@@ -2,16 +2,16 @@ diff --git a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.jav
 index 475c2f2b..ec4dbaaf 100644
 --- a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java
 +++ b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java
-@@ -251,11 +251,7 @@ public class CommandOptionCreate implements CommandOptionTabCompleter {
+@@ -251,12 +251,8 @@ public class CommandOptionCreate implements CommandOptionTabCompleter {
  
                  MyPetList.addInactiveMyPet(inactiveMyPet);
                  MyPet myPet = MyPetList.setMyPetActive(inactiveMyPet);
 -                if (myPet != null) {
--                    myPet.createPet();
--                } else {
+                 myPet.createPet();
+             } else {
 -                    sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] Can't create MyPet for " + newOwner.getName() + ". Is this player online?");
 -                }
-+                myPet.createPet();
-             } else {
+-            } else {
                  sender.sendMessage("[" + ChatColor.AQUA + "MyPet" + ChatColor.RESET + "] " + newOwner.getName() + " has already an active MyPet!");
              }
+         }

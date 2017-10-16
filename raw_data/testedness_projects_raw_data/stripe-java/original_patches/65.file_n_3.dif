@@ -20,6 +20,5 @@ index c3c657e..8766d0f 100644
 -	public void setBalanceTransaction(String balanceTransaction) {
 -		this.balanceTransaction = balanceTransaction;
 -	}
--}
-+}
+ }
 \ No newline at end of file

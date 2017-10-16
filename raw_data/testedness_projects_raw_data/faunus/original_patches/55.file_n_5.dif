@@ -8,7 +8,7 @@ index 70ea3398..f4375d81 100644
  #include <faunus/faunus.h>
  
  /*
-@@ -6,18 +8,58 @@
+@@ -6,12 +8,52 @@
   * - any number of atomic species
   * - equilibrium swap moves
   * - external pressure (NPT)
@@ -62,13 +62,6 @@ index 70ea3398..f4375d81 100644
  typedef Space<Geometry::Cuboid> Tspace;
  typedef CombinedPairPotential<DebyeHuckelShift,CutShift<LennardJones> > Tpairpot;
  
- int main(int argc, char** argv) {
-   Faunus::MPI::MPIController mpi;
--
-+  
-   InputMap mcp("manybody.input");
-   FormatXTC xtc(1000);                 // XTC gromacs trajectory format
-   EnergyDrift sys;                     // class for tracking system energy drifts
 @@ -31,6 +73,11 @@ int main(int argc, char** argv) {
  
    auto eqenergy = &pot.second;
@@ -81,7 +74,7 @@ index 70ea3398..f4375d81 100644
    // Add molecules
    int N1 = mcp.get("molecule1_N",0);
    int N2 = mcp.get("molecule2_N",0);
-@@ -63,18 +110,18 @@ int main(int argc, char** argv) {
+@@ -63,19 +110,19 @@ int main(int argc, char** argv) {
    Analysis::ChargeMultipole mpol;
    Scatter::DebyeFormula<Scatter::FormFactorUnity<>> debye(mcp);
  
@@ -98,12 +91,13 @@ index 70ea3398..f4375d81 100644
    if (inPlane)
      for (auto &m : pol)
        gmv.directions[ m.name ]=Point(1,1,0);
-+  
+   
 +  gmv.mpi=&mpi;
 +  tit.mpi=&mpi;
- 
++
    sys.init( Energy::systemEnergy(spc,pot,spc.p) );    // Store total system energy
  
+   if (mpi.isMaster())
 @@ -87,9 +134,9 @@ int main(int argc, char** argv) {
    MCLoop loop(mcp);
    while ( loop.macroCnt() ) {  // Markov chain
@@ -143,7 +137,7 @@ index 70ea3398..f4375d81 100644
            mv.setGroup(salt);
            sys+=mv.move();
            break;
-@@ -128,25 +176,29 @@ int main(int argc, char** argv) {
+@@ -128,14 +176,8 @@ int main(int argc, char** argv) {
      } // end of micro loop
  
      sys.checkDrift( Energy::systemEnergy(spc,pot,spc.p) ); // detect energy drift
@@ -159,12 +153,10 @@ index 70ea3398..f4375d81 100644
  
    } // end of macro loop
  
-   if (mpi.isMaster()) {
+@@ -143,6 +185,15 @@ int main(int argc, char** argv) {
      cout << tit.info() + loop.info() + sys.info() + gmv.info() + mv.info()
--      + iso.info() + mpol.info() << endl;
--
-+    + iso.info() + mpol.info() << endl;
-+    
+     + iso.info() + mpol.info() << endl;
+     
 +    int cnt=0;
 +    std::ofstream f;
 +    f.open("debye"+std::to_string(cnt)+".xyz");
@@ -177,10 +169,8 @@ index 70ea3398..f4375d81 100644
      rdf.save("rdf_p2p.dat");
      FormatPQR::save("confout.pqr", spc.p, spc.geo.len);
      spc.save("state");
-     mcp.save("mdout.mdp");
+@@ -150,3 +201,4 @@ int main(int argc, char** argv) {
      debye.save("debye.dat");
    }
--}
-\ No newline at end of file
-+}
+ }
 +#endif

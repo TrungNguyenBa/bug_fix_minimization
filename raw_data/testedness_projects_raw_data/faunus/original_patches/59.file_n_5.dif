@@ -2,28 +2,7 @@ diff --git a/include/faunus/spherocylinder.h b/include/faunus/spherocylinder.h
 index 78bd6b2b..471c796b 100644
 --- a/include/faunus/spherocylinder.h
 +++ b/include/faunus/spherocylinder.h
-@@ -36,24 +36,25 @@ namespace Faunus {
-       {
-           //epsilon; sigma; pdis; pswitch; len; half_len; pangl; panglsw; chiral_angle;
-           /*
--           rcutwca = (sigma)*pow(2.0,1.0/6.0);
--           rcut = pswitch+pdis;
--           pcangl = cos(pangl/2.0/180*PI);
--           pcanglsw = cos((pangl/2.0+panglsw)/180*PI);
--           pcoshalfi = cos((pangl/2.0+panglsw)/2.0/180*PI);
--           psinhalfi = sqrt(1.0 - pcoshalfi * pcoshalfi);
--           chiral_cos = cos(chiral_angle / 360 * PI);
--           chiral_sin = sqrt(1 - chiral_cos * chiral_cos);
-+          rcutwca = (sigma)*pow(2.0,1.0/6.0);
-+          rcut = pswitch+pdis;
-+          pcangl = cos(pangl/2.0/180*PI);                
-+          pcanglsw = cos((pangl/2.0+panglsw)/180*PI);
-+          pcoshalfi = cos((pangl/2.0+panglsw)/2.0/180*PI);
-+          psinhalfi = sqrt(1.0 - pcoshalfi * pcoshalfi);
-+          chiral_cos = cos(chiral_angle / 360 * PI);
-+          chiral_sin = sqrt(1 - chiral_cos * chiral_cos);
-            */
-           Point vec;
+@@ -49,11 +49,12 @@ namespace Faunus {
            Geometry::QuaternionRotate rot;
            
            if ( target.halfl < 1e-6 ) return 0;
@@ -79,7 +58,7 @@ index 78bd6b2b..471c796b 100644
                  intrs=0; /* the intersection is outside sc */
                else {
                  intrs=1;
-@@ -251,15 +252,12 @@ namespace Faunus {
+@@ -251,9 +252,7 @@ namespace Faunus {
                      intrs=0; /* found intersection we already have -it is at boundary*/
                    i++;
                  }
@@ -90,12 +69,6 @@ index 78bd6b2b..471c796b 100644
                }
              }
            }
- 
-         }
--        
-         return intrs;
-       }
- 
 @@ -301,7 +299,7 @@ namespace Faunus {
        int find_intersect_planec(
            const Tpsc &part1, const Tpsc &part2, 
@@ -114,15 +87,7 @@ index 78bd6b2b..471c796b 100644
                    intrs=0; /* the intersection is outside sc */
                  else {
                    intrs=1;
-@@ -339,7 +337,6 @@ namespace Faunus {
-             }
-           }
-         }
--        
-         return intrs;
-       }
- 
-@@ -349,12 +346,13 @@ namespace Faunus {
+@@ -349,11 +346,12 @@ namespace Faunus {
      template<class Tpsc, class T=double>
        int psc_intersect(
            const Tpsc &part1, const Tpsc &part2,
@@ -132,12 +97,10 @@ index 78bd6b2b..471c796b 100644
          T a, b, c, d, e, x1, x2;
          Point cm21, vec1, vec2, vec3, vec4;          
  
--        /*1- do intersections of spherocylinder2 with patch of spherocylinder1 at
 +        T rcut2=rcut*rcut;
-+        /*1- do intersections of spherocylinder2 with patch of spherocylinder1 at 
+         /*1- do intersections of spherocylinder2 with patch of spherocylinder1 at 
            cut distance C*/
          /*1a- test intersection with half planes of patch and look how far they are 
-           from spherocylinder. If closer then C  we got itersection*/
 @@ -362,11 +360,12 @@ namespace Faunus {
          /* plane1 */
          /* find intersections of part2 with plane by par1 and patchsides[0] */
@@ -180,15 +143,7 @@ index 78bd6b2b..471c796b 100644
            d = b*b-4*a*c;
            if (d >= 0) { /*if d<0 there are no intersections*/
              x1= (-b + sqrt(d))*0.5/a; /*parameter on line of SC2 determining intersection*/
-@@ -510,7 +509,6 @@ namespace Faunus {
-               intrs+=test_intrpatch(part1,vec2,part1.pcanglsw,-1.0*part2.halfl,intersections);
-           }
-         }
--        
-         return intrs;
-       }
- 
-@@ -519,25 +517,26 @@ namespace Faunus {
+@@ -519,13 +517,14 @@ namespace Faunus {
        */
      template<class Tpsc>
        int cpsc_intersect(const Tpsc &part1, const Tpsc &part2,
@@ -201,12 +156,11 @@ index 78bd6b2b..471c796b 100644
          Point cm21, vec1, vec2, vec3, vec4;
  
          intrs=0;
--        /*1- do intersections of spherocylinder2 with patch of spherocylinder1 at
 +        rcut2=rcut*rcut;
-+        /*1- do intersections of spherocylinder2 with patch of spherocylinder1 at 
+         /*1- do intersections of spherocylinder2 with patch of spherocylinder1 at 
            cut distance C*/
          /*1a- test intersection with half planes of patch and look how far they are 
-           from spherocylinder. If closer then C  we got itersection*/
+@@ -533,11 +532,11 @@ namespace Faunus {
  
          /* plane1 */
          /* find intersections of part2 with plane by par1 and part1.patchsides[0] */
@@ -229,14 +183,6 @@ index 78bd6b2b..471c796b 100644
            d = b*b - 4*a*c;
            if ( d >= 0) { /*there is intersection with infinite cylinder */
              x1 = (-b+sqrt(d))*0.5/a; /*parameter on line of SC2 determining intersection*/
-@@ -580,7 +579,6 @@ namespace Faunus {
-             }
-           }
-         }
--        
-         //	    printf ("cylinder %d x1 %f x2 %f e %f\n", intrs, x1, x2, e);
-         /*1c- test intersection with plates at the end - it is at distace C and in wedge*/
-         if (intrs < 2 )  {
 @@ -594,7 +592,7 @@ namespace Faunus {
              else {
                vec2 = x1*part2.dir - vec1; /*vector from ENDPOINT to intersection point */
@@ -255,76 +201,7 @@ index 78bd6b2b..471c796b 100644
                else {
                  intrs+=test_intrpatch(part1,vec2,part1.pcanglsw,x2,intersections);
                }
-@@ -616,6 +614,7 @@ namespace Faunus {
- 
-           }
-         }
-+
-         /*1d- if there is only one itersection shperocylinder ends within patch wedge 
-           set as second intersection end inside patch*/
-         if (intrs < 2 )  {
-@@ -676,42 +675,40 @@ namespace Faunus {
-     /*!
-      * \brief Hard pair potential for spherocylinders
-      */
--      class HardSpheroCylinder : public PairPotentialBase {
-+    class HardSpheroCylinder : public PairPotentialBase {
-       private:
--          string _brief() { return name; };
--          Geometry::Geometrybase *geoPtr;
-+        string _brief() { return name; };
-+        Geometry::Geometrybase *geoPtr;
-       public:
--          struct prop {
--              double halfl;
--          };
--          
--          std::map<CigarParticle::Tid, prop> m;
--          
--          HardSpheroCylinder(InputMap &in) {
--              name="HardspheroCylinder";
--          }
--          
--          inline double operator() (const CigarParticle &p1, const CigarParticle &p2, double r2) {
--              Point r_cm = geoPtr->vdist(p1,p2);
--              Point distvec = Geometry::mindist_segment2segment(p1.dir, m[p1.id].halfl, p2.dir, m[p2.id].halfl, r_cm );
--              double mindist=p1.radius+p2.radius;
--              if ( distvec.dot(distvec) < mindist*mindist)
--                  return pc::infty;
--              return 0;
--          }
--          
--          string info(char w) {
--              using namespace Faunus::textio;
--              return textio::indent(SUB)+name+"\n";
--          }
--      };
-+        struct prop {
-+          double halfl;
-+        };
-+
-+        std::map<CigarParticle::Tid, prop> m;
-+
-+        HardSpheroCylinder(InputMap &in) {
-+          name="HardspheroCylinder";
-+        }
-+
-+        inline double operator() (const CigarParticle &p1, const CigarParticle &p2, double r2) {
-+          Point r_cm = geoPtr->vdist(p1,p2);
-+          Point distvec = Geometry::mindist_segment2segment(p1.dir, m[p1.id].halfl, p2.dir, m[p2.id].halfl, r_cm );
-+          double mindist=p1.radius+p2.radius;
-+          if ( distvec.dot(distvec) < mindist*mindist)
-+            return pc::infty;
-+          return 0;		
-+        }
-+
-+        string info(char w) {
-+          using namespace Faunus::textio;
-+          return textio::indent(SUB)+name+"\n";
-+        }
-+    };
- 
-     /**
+@@ -710,8 +709,6 @@ namespace Faunus {
       * @brief Brief description here (one line)
       *
       * Detailed description here...
@@ -337,9 +214,8 @@ index 78bd6b2b..471c796b 100644
            }
          public:
            Tcigarsphere pairpot;
--        
 +          vector< vector<double> >* rcutPtr;
-+
+ 
            PatchyCigarSphere(InputMap &in) : pairpot(in) {
 +            rcutPtr=nullptr;
            }
@@ -398,16 +274,14 @@ index 78bd6b2b..471c796b 100644
          public:
 +          vector< vector<double> >* rcutPtr;
            Tcigarcigar pairpot;
--        
-+
+ 
            PatchyCigarCigar(InputMap &in) : pairpot(in) {
 +            rcutPtr=nullptr;
            }
  
            double operator() (const CigarParticle &a, const CigarParticle &b, const Point &r_cm) {
--              //0- isotropic, 1-PSC all-way patch,2 -CPSC cylindrical patch
 +            assert(rcutPtr!=nullptr);
-+            //0- isotropic, 1-PSC all-way patch,2 -CPSC cylindrical patch
+             //0- isotropic, 1-PSC all-way patch,2 -CPSC cylindrical patch
              if (atom.list[a.id].patchtype >0 ) {
                if (atom.list[b.id].patchtype > 0) {
                  //patchy sc with patchy sc
@@ -469,13 +343,12 @@ index 78bd6b2b..471c796b 100644
                  }
                  S1=intersections[0]; //points on sc1
                  S2=intersections[1];
--                
+ 
 -                //3- scaling function1: dependence on the length of intersetions
 -                v1=fabs(S1-S2)*0.5;
 -                v2=fabs(T1-T2)*0.5;
 -                f0=v1+v2;
 -                //4a- with two intersection pices calculate vector between their CM
-+
 +                //3a- with two intersection pices calculate vector between their CM
                  //-this is for angular orientation
 +                v1=fabs(S1-S2);
@@ -486,9 +359,8 @@ index 78bd6b2b..471c796b 100644
                  //vec_intrs should be from sc1 t sc2
 -                 //cout <<"vecintrs:  "<< vec_intrs.x() <<" " << vec_intrs.y() <<" "<< vec_intrs.z() << " \n";
 -                 //  cout << v1 << " " << v2 << " \n";
--                  
+ 
 -                //4b - calculate closest distance attractive energy from it
-+
 +                //3b - calculate closest distance attractive energy from it
                  vec_mindist = Geometry::mindist_segment2segment(a.dir,v1,b.dir,v2,vec_intrs);
 -                //cout << "vecmindist: "<<vec_mindist.x() <<" " << vec_mindist.y() <<" "<< vec_mindist.z() << " \n";
@@ -500,11 +372,10 @@ index 78bd6b2b..471c796b 100644
                  //5- scaling function2: angular dependence of patch1
                  vec1=Geometry::vec_perpproject(vec_intrs, a.dir);
                  vec1.normalize();
-@@ -876,15 +867,9 @@ namespace Faunus {
-                 vec1.normalize();
+@@ -877,14 +868,8 @@ namespace Faunus {
                  s = vec1.dot(b.patchdir);
                  f2 = fanglscale(s,b);
--                  
+ 
 -                //cout <<"pair pot: "<< pairpot.first(a,b,ndistsq) <<" f0: "<< f0 <<" f1: "<< f1 <<" f2: "<< f2;
 -                //cout << " v1: " << v1 << " v2: " << v2 << "\n";
 -                //cout <<"v1: "<<v1 <<" v2: "<<v2 << " distsq: " << ndistsq << " \n";
@@ -513,20 +384,11 @@ index 78bd6b2b..471c796b 100644
 -                
 -                //8- put it all together and output scale
 -                return f0*f1*f2*pairpot.first(a,b,ndistsq)+pairpot.second(a,b,rclose.squaredNorm());
-+
 +                //7- put it all together and output scale
 +                return f0*f1*f2*pairpot(a,b,ndistsq);
                }
                else {
                  assert(!"PSC w. isotropic cigar not implemented!");
-@@ -942,7 +927,6 @@ namespace Faunus {
- 
-           double operator() (const CigarParticle &a, const CigarParticle &b, const Point &r_cm)
-           {
--              
-             if (a.halfl<1e-6) {
-               // a sphere - b sphere
-               if (b.halfl<1e-6) {
 @@ -951,25 +935,29 @@ namespace Faunus {
                // a sphere - b cigar
                else {

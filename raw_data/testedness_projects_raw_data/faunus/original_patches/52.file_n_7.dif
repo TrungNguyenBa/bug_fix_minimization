@@ -40,20 +40,18 @@ index b36ce5d3..ee539a7d 100644
            }
            break;
          case 2: // volume move (NPT)
-@@ -140,9 +131,14 @@ int main(int argc, char** argv) {
+@@ -140,8 +131,13 @@ int main(int argc, char** argv) {
  
      sys.checkDrift( Energy::systemEnergy(spc,pot,spc.p) ); // detect energy drift
  
 -    if (mpi.isMaster())
 +    if (mpi.isMaster()) {
        cout << loop.timing();
-- 
 +      std::ofstream f("masscenter"+std::to_string(loop.count())+".xyz");
 +      if (f && !cm_vec.empty())
 +        for (auto &m : cm_vec)
 +          f << "H " << m.transpose() << endl;
 +    }
-+
+ 
    } // end of macro loop
  
-   if (mpi.isMaster()) {

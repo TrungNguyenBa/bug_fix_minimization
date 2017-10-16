@@ -20,11 +20,10 @@ index 330935cd..3c47bd28 100644
              // ja_JP_JP cannot handle dates before 1868 properly
              if (eraBC && locale.equals(FastDateParser.JAPANESE_IMPERIAL)) {
                  continue;
-@@ -342,28 +340,6 @@ private void testLocales(final String format, final boolean eraBC) throws Except
-             }
+@@ -343,28 +341,6 @@ private void testLocales(final String format, final boolean eraBC) throws Except
          }
      }
--    
+ 
 -    @Test
 -    public void testJpLocales() {
 -
@@ -46,9 +45,10 @@ index 330935cd..3c47bd28 100644
 -            }
 -        }
 -    }
- 
+-
      private String trimMessage(final String msg) {
          if (msg.length() < 100) {
+             return msg;
 @@ -465,7 +441,7 @@ private void testSdfAndFdp(final String format, final String date, final boolean
              final DateParser fdp = getInstance(format, NEW_YORK, Locale.US);
              dfdp = fdp.parse(date);

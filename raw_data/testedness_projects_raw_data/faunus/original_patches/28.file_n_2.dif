@@ -41,13 +41,11 @@ index 8aa54347..922f3bf2 100644
        }
        return 0;
      }
-@@ -410,12 +408,11 @@ namespace Faunus {
-     std::string HydrophobicWall<T>::_info() {
+@@ -411,11 +409,10 @@ namespace Faunus {
        std::ostringstream o;
        if (_type == "sqwl")
--        o << pad(textio::SUB, 50, ">>> USING: square well potential <<<") << endl
+         o << pad(textio::SUB, 50, ">>> USING: square well potential <<<") << endl 
 -          << pad(textio::SUB, 26, "Depth, " + textio::epsilon + "(SQWL)") << _depth << textio::kT + " = " << pc::kT2kJ(_depth) << " kJ/mol" << endl
-+        o << pad(textio::SUB, 50, ">>> USING: square well potential <<<") << endl 
            << pad(textio::SUB, 25, "Threshold") << _threshold << textio::_angstrom << " (particle - wall distance)" << endl;
 -      if (_type == "lj")
 -        o << pad(textio::SUB, 50, ">>> USING: Lennard-Jones potential <<<") << endl

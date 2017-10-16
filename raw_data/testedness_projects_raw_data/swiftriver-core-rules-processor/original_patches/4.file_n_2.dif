@@ -16,10 +16,9 @@ index 659244f..86ba924 100644
  	public void setAmqpTemplate(AmqpTemplate amqpTemplate) {
  		this.amqpTemplate = amqpTemplate;
 -	}
--
+ 		
 -	public void setObjectMapper(ObjectMapper mapper) {
 -		this.objectMapper = mapper;
-+		
  	}
  
  	public synchronized void onMessage(Message message, Channel channel) 

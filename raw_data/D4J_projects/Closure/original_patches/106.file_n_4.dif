@@ -6,9 +6,8 @@ index bdfc2e80..d7983173 100644
     * @return {@code true} if the description was recorded.
     */
    public boolean recordBlockDescription(String description) {
--    populated = true;
 +    if (parseDocumentation) {
-+      populated = true;
+       populated = true;
 +    }
      return currentInfo.documentBlock(description);
    }

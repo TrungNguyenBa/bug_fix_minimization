@@ -83,7 +83,7 @@ index d8b7503..277377d 100644
          _writeLengthPrefixed(text, offset, len);
      }
  
-@@ -709,15 +674,11 @@ public class ProtobufGenerator extends GeneratorBase
+@@ -709,10 +674,6 @@ public class ProtobufGenerator extends GeneratorBase
      public final void writeUTF8String(byte[] text, int offset, int len) throws IOException
      {
          _verifyValueWrite();
@@ -94,12 +94,6 @@ index d8b7503..277377d 100644
          _writeLengthPrefixed(text, offset, len);
      }
  
-     private final static Charset UTF8 = Charset.forName("UTF-8");
--    
-+
-     /*
-     /**********************************************************
-     /* Output method implementations, unprocessed ("raw")
 @@ -778,8 +739,7 @@ public class ProtobufGenerator extends GeneratorBase
          // expecting String, and rather assume that if so, caller just provides as
          // raw bytes of String
@@ -110,15 +104,6 @@ index d8b7503..277377d 100644
          }
          _ensureRoom(10);
          _writeLengthPrefixed(data, offset, len);
-@@ -795,7 +755,7 @@ public class ProtobufGenerator extends GeneratorBase
-     public void writeBoolean(boolean state) throws IOException
-     {
-         _verifyValueWrite();
--        
-+
-         // same as 'writeNumber(int)', really
-         final int type = _currField.wireType;
- 
 @@ -811,16 +771,13 @@ public class ProtobufGenerator extends GeneratorBase
              _writeInt64(1L);
              return;
@@ -227,17 +212,17 @@ index d8b7503..277377d 100644
      /* Internal text/binary writes
      /**********************************************************
       */
-@@ -1362,13 +1340,6 @@ public class ProtobufGenerator extends GeneratorBase
-     /* Helper methods, error reporting
+@@ -1363,13 +1341,6 @@ public class ProtobufGenerator extends GeneratorBase
      /**********************************************************
       */
--
+     
 -    protected void _reportWrongWireType(String typeStr) throws IOException {
 -        if (_currField == UNKNOWN_FIELD) {
 -            return;
 -        }
 -        _reportError("Can not write `string` value for '"+_currField.name+"' (type "+_currField.type+")");
 -    }
-     
+-    
      private void _throwIllegalSurrogate(int code)
      {
+         if (code > 0x10FFFF) { // over max?

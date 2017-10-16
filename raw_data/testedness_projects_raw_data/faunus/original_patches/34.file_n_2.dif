@@ -14,12 +14,8 @@ index 821586b3..f8da0be3 100755
  #
  function mkinput() {
  echo "##### files needed #####
-@@ -47,19 +44,18 @@ pivot_minlen             1
- pivot_maxlen             210              # N-1
- 
- ##### misc #####
--test_stable              no" > simulation.input
-+test_stable            no" > simulation.input
+@@ -50,16 +47,15 @@ pivot_maxlen             210              # N-1
+ test_stable            no" > simulation.input
  }
  # ext params
 -dens=zzz     # g/L

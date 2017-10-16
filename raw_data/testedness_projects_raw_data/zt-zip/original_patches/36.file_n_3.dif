@@ -64,6 +64,9 @@ index eff4411..40219f1 100644
        try {
          // Copy and replace entries
 -        iterate(new RepackCallback(entryByPath, removedDirs, removedEntries, out));
+-        // Add new entries
+-        for (Iterator it = entryByPath.values().iterator(); it.hasNext();) {
+-          ZipUtil.addEntry((ZipEntrySource) it.next(), out);
 +        final Set names = new HashSet();
 +        iterate(new ZipEntryCallback() {
 +          public void process(InputStream in, ZipEntry zipEntry) throws IOException {
@@ -72,46 +75,44 @@ index eff4411..40219f1 100644
 +              if (removedEntries.contains(entryName) || isEntryInDir(removedDirs, entryName)) {
 +                // this entry should be removed.
 +                return;
-+              }
-+
-+              ZipEntrySource entry = (ZipEntrySource) entryByPath.remove(entryName);
-+              if (entry != null) {
-+                // change entry
-+                ZipUtil.addEntry(entry, out);
-+              }
-+              else {
-+                // unchanged entry
-+                copyEntry(zipEntry, in, out);
-+              }
-+            }
-+          }
-+        });
-         // Add new entries
-         for (Iterator it = entryByPath.values().iterator(); it.hasNext();) {
-           ZipUtil.addEntry((ZipEntrySource) it.next(), out);
-         }
+               }
  
 -        handleInPlaceActions(destinationZip);
 -      }
 -      finally {
 -        IOUtils.closeQuietly(out);
 -      }
--    }
++              ZipEntrySource entry = (ZipEntrySource) entryByPath.remove(entryName);
++              if (entry != null) {
++                // change entry
++                ZipUtil.addEntry(entry, out);
+               }
 -    catch (IOException e) {
 -      throw ZipUtil.rethrow(e);
--    }
++              else {
++                // unchanged entry
++                copyEntry(zipEntry, in, out);
+               }
 -    finally {
 -      if (isInPlace()) {
 -        // destinationZip is a temporary file
 -        FileUtils.deleteQuietly(destinationZip);
--      }
--    }
--  }
--
+             }
+           }
++        });
++        // Add new entries
++        for (Iterator it = entryByPath.values().iterator(); it.hasNext();) {
++          ZipUtil.addEntry((ZipEntrySource) it.next(), out);
+         }
+ 
 -  public synchronized void transform() {
 -    if (src == null) {
 -      throw new IllegalArgumentException("Source cannot be null for transformation");
--    }
++        if (isInPlace()) {
++          // we operate in-place
++          FileUtils.forceDelete(src);
++          FileUtils.moveFile(destinationZip, src);
+         }
 -    File destinationZip = null;
 -    try {
 -      destinationZip = isInPlace() ? File.createTempFile("zips", ".zip") : dest;
@@ -120,11 +121,6 @@ index eff4411..40219f1 100644
 -        TransformerZipEntryCallback action = new TransformerZipEntryCallback(getTransformersArray(), out);
 -        iterate(action);
 -        handleInPlaceActions(destinationZip);
-+        if (isInPlace()) {
-+          // we operate in-place
-+          FileUtils.forceDelete(src);
-+          FileUtils.moveFile(destinationZip, src);
-+        }
        }
        finally {
          IOUtils.closeQuietly(out);

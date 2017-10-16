@@ -43,7 +43,7 @@ for pid in Closure Lang Math Time; do
     		file_name=${chunks[${#chunks[@]}-1]}
     		echo file_name is $file_name
     		#get the diff between versions for this file
-    		git -C /tmp/${pid}_${bid}_buggy diff $fixed $faulted  -- "${file_name}" > $dir_original/${bid}.file_n_${fid}.dif
+    		git -C /tmp/${pid}_${bid}_buggy diff --ignore-blank-lines -b $fixed $faulted  -- "${file_name}" > $dir_original/${bid}.file_n_${fid}.dif
     		#get the stat of the diff
     		diffstat -m -t -R $dir_original/${bid}.file_n_${fid}.dif > $dir_original/${bid}.file_n_${fid}.dif.stat
     	done

@@ -9,10 +9,9 @@ index 4bd83420..13b99a7c 100644
 -            boolean callAfterSwap = false;
 -            if (myPetPlayer.hasMyPet()) {
 -                callAfterSwap = myPetPlayer.getMyPet().getStatus() == PetState.Here;
--                myPetPlayer.getMyPet().removePet(callAfterSwap);
--            }
 +            boolean callAfterSwap = myPetPlayer.hasMyPet() && myPetPlayer.getMyPet().getStatus() == PetState.Here;
-+            myPetPlayer.getMyPet().removePet(callAfterSwap);
+             myPetPlayer.getMyPet().removePet(callAfterSwap);
+-            }
  
              if (fromGroup != toGroup) {
                  if (myPetPlayer.hasMyPet()) {

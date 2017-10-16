@@ -14,34 +14,33 @@ index 54bb1fa0..d222bd8d 100644
 +    public void setMyPet(MyPet myPet)
      {
 -        return "mob.bat.death";
--    }
 +        if (myPet != null)
 +        {
 +            super.setMyPet(myPet);
++
++            this.setHanging(((MyBat) myPet).ishanging());
++        }
+     }
  
 -    /**
 -     * Returns the sound that is played when the MyPet get hurt
 -     */
 -    @Override
 -    protected String getHurtSound()
--    {
--        return "mob.bat.hurt";
-+            this.setHanging(((MyBat) myPet).ishanging());
-+        }
-     }
- 
--    @Override
--    protected String getLivingSound()
 +    public void setHanging(boolean flags)
      {
--        return !playIdleSound() ? null : "mob.bat.idle";
+-        return "mob.bat.hurt";
 +        int i = this.datawatcher.getByte(16);
 +        if (flags)
 +        {
 +            this.datawatcher.watch(16, (byte) (i | 0x1));
-+        }
+         }
+-
+-    @Override
+-    protected String getLivingSound()
 +        else
-+        {
+         {
+-        return !playIdleSound() ? null : "mob.bat.idle";
 +            this.datawatcher.watch(16, (byte) (i & 0xFFFFFFFE));
 +        }
 +        ((MyBat) myPet).hanging = flags;
@@ -71,27 +70,25 @@ index 54bb1fa0..d222bd8d 100644
      }
  
 -    public void setHanging(boolean flags)
+-    {
+-        int i = this.datawatcher.getByte(16);
+-        if (flags)
 +    /**
 +     * Returns the sound that is played when the MyPet dies
 +     */
 +    @Override
 +    protected String getDeathSound()
      {
--        int i = this.datawatcher.getByte(16);
--        if (flags)
--        {
 -            this.datawatcher.watch(16, (byte) (i | 0x1));
--        }
++        return "mob.bat.death";
+     }
 -        else
--        {
++
++    public float getSoundSpeed()
+     {
 -            this.datawatcher.watch(16, (byte) (i & 0xFFFFFFFE));
 -        }
 -        ((MyBat) myPet).hanging = flags;
-+        return "mob.bat.death";
-+    }
-+
-+    public float getSoundSpeed()
-+    {
 +        return super.getSoundSpeed() * 0.95F;
      }
  
@@ -101,11 +98,11 @@ index 54bb1fa0..d222bd8d 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    @Override
 +    protected String getLivingSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -
 -            this.setHanging(((MyBat) myPet).ishanging());

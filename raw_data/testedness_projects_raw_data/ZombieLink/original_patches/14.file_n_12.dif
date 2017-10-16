@@ -45,11 +45,7 @@ index eab8354..12537f9 100644
  	
  	/**
  	 * <p>Sends a request with a set of constant query paramers.
-@@ -165,19 +177,15 @@ public interface MockEndpoint {
- 	 */
- 	@Request(path = "/putrequest", method = RequestMethod.PUT)
- 	public String putRequest(@Entity String user);
--	
+@@ -169,15 +180,12 @@ public interface MockEndpoint {
  	/**
  	 * <p>A mock request which uses the HTTP method DELETE.
  	 * 

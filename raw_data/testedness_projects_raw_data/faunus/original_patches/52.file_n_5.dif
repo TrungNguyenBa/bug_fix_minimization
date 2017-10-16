@@ -88,14 +88,3 @@ index 5e1f033c..09f2a3e8 100644
            template<class Tpairpot>
              void add(AtomData::Tid id1, AtomData::Tid id2, Tpairpot pot) {
                pot.name=atom[id1].name + "<->" + atom[id2].name + ": " + pot.name;
-@@ -1041,8 +1025,8 @@ namespace Faunus {
-         }
- 
-     /**
--      @brief Old class for multipole energy. To be removed.
--      */
-+     @brief Old class for multipole energy. To be removed.
-+     */
-     class MultipoleEnergy {
-       public:
-         double lB;

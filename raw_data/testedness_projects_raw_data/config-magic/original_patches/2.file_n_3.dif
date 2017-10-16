@@ -9,13 +9,12 @@ index f3b2317..5869cee 100644
  import java.util.concurrent.TimeUnit;
  import java.util.regex.Matcher;
  import java.util.regex.Pattern;
-@@ -11,27 +10,8 @@ public class TimeSpan
+@@ -11,26 +10,7 @@ public class TimeSpan
      private final TimeUnit unit;
      private final long millis;
  
 -    private static final Pattern SPLIT = Pattern.compile("^(\\d+)\\s?(\\w+)$");
-+    private static final Pattern SPLIT = Pattern.compile("^(\\d+)(\\w+)$");
- 
+-
 -    private static final HashMap<String,TimeUnit> UNITS = new HashMap<String,TimeUnit>();
 -    static {
 -        UNITS.put("ms", TimeUnit.MILLISECONDS);
@@ -34,10 +33,10 @@ index f3b2317..5869cee 100644
 -        UNITS.put("day", TimeUnit.DAYS);
 -        UNITS.put("days", TimeUnit.DAYS);
 -    }
--    
++    private static final Pattern SPLIT = Pattern.compile("^(\\d+)(\\w+)$");
+ 
      public TimeSpan(String spec)
      {
-         Matcher m = SPLIT.matcher(spec);
 @@ -41,8 +21,22 @@ public class TimeSpan
          String number = m.group(1);
          String type = m.group(2);

@@ -34,14 +34,14 @@ index d902096..6d5e4ad 100644
 -        } catch (NumberFormatException e) {
 -            throw JsonMappingException.from(jsonParser,
 -                    "Failed to parse number from '"+str+"' (full source String '"+v+"') to construct "+handledType().getName());
+-        }
 +        if (jsonParser.getCurrentToken() == JsonToken.VALUE_STRING) {
 +            String v = jsonParser.getText();
 +            int dashIndex = v.indexOf('-');
 +            long start = Long.valueOf(v.substring(0, dashIndex));
 +            long end = Long.valueOf(v.substring(dashIndex + 1));
-+            return new Interval(start, end);
+             return new Interval(start, end);
          }
--        return new Interval(start, end);
 +        throw deserializationContext.mappingException("expected JSON String");
-     }
++    }
  }

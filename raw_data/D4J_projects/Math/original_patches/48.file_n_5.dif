@@ -2,11 +2,7 @@ diff --git a/src/main/java/org/apache/commons/math/analysis/solvers/RegulaFalsiS
 index 71224a0da..89c50dfd0 100644
 --- a/src/main/java/org/apache/commons/math/analysis/solvers/RegulaFalsiSolver.java
 +++ b/src/main/java/org/apache/commons/math/analysis/solvers/RegulaFalsiSolver.java
-@@ -17,30 +17,13 @@
- 
- package org.apache.commons.math.analysis.solvers;
- 
-+
+@@ -20,27 +21,9 @@ package org.apache.commons.math.analysis.solvers;
  /**
   * Implements the <em>Regula Falsi</em> or <em>False position</em> method for
   * root-finding (approximating a zero of a univariate real function). It is a

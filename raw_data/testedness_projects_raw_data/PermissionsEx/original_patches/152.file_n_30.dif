@@ -2,14 +2,6 @@ diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/sr
 index cbfba1f..072e37e 100644
 --- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
 +++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
-@@ -20,7 +20,6 @@ package ru.tehkode.permissions.bukkit;
- 
- import java.util.logging.Level;
- import java.util.logging.Logger;
--
- import org.bukkit.ChatColor;
- import org.bukkit.command.Command;
- import org.bukkit.command.CommandSender;
 @@ -40,6 +39,7 @@ import ru.tehkode.permissions.commands.CommandsManager;
  import ru.tehkode.permissions.exceptions.PermissionsNotAvailable;
  
@@ -18,28 +10,3 @@ index cbfba1f..072e37e 100644
   * @author code
   */
  public class PermissionsEx extends JavaPlugin {
-@@ -50,11 +50,10 @@ public class PermissionsEx extends JavaPlugin {
- 	protected CommandsManager commandsManager;
- 	protected FileConfiguration config;
- 	protected BukkitPermissions superms;
--	private static PermissionsEx instance;
--
--	{
--		instance = this;
--	}
-+    private static PermissionsEx instance;
-+    {
-+        instance = this;
-+    }
- 
- 	public PermissionsEx() {
- 		super();
-@@ -119,7 +118,7 @@ public class PermissionsEx extends JavaPlugin {
- 		}
- 
- 		this.getServer().getServicesManager().unregister(PermissionManager.class, this.permissionsManager);
--		this.superms.onDisable();
-+        this.superms.onDisable();
- 
- 		logger.log(Level.INFO, "[PermissionsEx] v" + this.getDescription().getVersion() + " disabled successfully.");
- 	}

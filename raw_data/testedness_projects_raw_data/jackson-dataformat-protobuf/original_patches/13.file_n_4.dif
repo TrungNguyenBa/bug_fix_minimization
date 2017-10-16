@@ -2,23 +2,7 @@ diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufPar
 index b8c3f07..0f7187f 100644
 --- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
 +++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
-@@ -809,7 +809,6 @@ public class ProtobufParser extends ParserMinimalBase
-             break;
- 
-         case VINT64_STD:
--
-             _numberLong = _decodeVLong();
-             _numTypesValid = NR_LONG;
-             type =  JsonToken.VALUE_NUMBER_INT;
-@@ -1950,52 +1949,51 @@ public class ProtobufParser extends ParserMinimalBase
-             return _decodeVLongSlow();
-         }
-         final byte[] buf = _inputBuffer;
--        
-+
-         // First things first: can start by accumulating as int, first 4 bytes
- 
-         int v = buf[_inputPtr++];
+@@ -1957,19 +1956,18 @@ public class ProtobufParser extends ParserMinimalBase
          if (v >= 0) {
              return v;
          }
@@ -41,15 +25,7 @@ index b8c3f07..0f7187f 100644
              return v | (ch << 21);
          }
          v |= ((ch & 0x7F) << 21);
--        
-+
-         // 4 bytes gotten. How about 4 more?
-         long l = (long) v;
--        
-+
-         v = buf[_inputPtr++];
-         if (v >= 0) {
-             return (((long) v) << 28) | l;
+@@ -1983,19 +1981,19 @@ public class ProtobufParser extends ParserMinimalBase
          }
          v &= 0x7F;
          ch = buf[_inputPtr++];

@@ -7,12 +7,11 @@ index 84d564d..4823aab 100644
      @Override
      public void save(Pet pet) {
 -    	if (pet.getId() == null) {
--    		this.em.persist(pet);     		
--    	}
+         this.em.persist(pet);
+     }
 -    	else {
 -    		this.em.merge(pet);    
 -    	}
-+        this.em.persist(pet);
-     }
+-    }
  
  }

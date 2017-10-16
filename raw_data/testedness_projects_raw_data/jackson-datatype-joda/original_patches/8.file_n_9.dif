@@ -28,6 +28,5 @@ index 332141f..33202b1 100644
 +            jgen.writeString(_format.createFormatter(provider).print(value));
          }
      }
--}
-+}
+ }
 \ No newline at end of file

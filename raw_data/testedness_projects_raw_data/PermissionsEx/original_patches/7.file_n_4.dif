@@ -19,19 +19,6 @@ index 926c692..0d04766 100644
  
      public MemoryDataStore() {
          super(FACTORY);
-@@ -56,10 +59,12 @@ public class MemoryDataStore extends AbstractDataStore {
- 
-     @Override
-     protected void initializeInternal() {
-+
-     }
- 
-     @Override
-     public void close() {
-+
-     }
- 
-     @Override
 @@ -150,13 +155,17 @@ public class MemoryDataStore extends AbstractDataStore {
      }
  

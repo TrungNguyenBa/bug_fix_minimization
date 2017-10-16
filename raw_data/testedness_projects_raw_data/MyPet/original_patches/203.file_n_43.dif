@@ -134,13 +134,13 @@ index bc37b4b1..448b18fb 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the sound that is played when the MyPet get hurt
 +     */
 +    protected String getHurtSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -            final MySkeleton mySkeleton = (MySkeleton) myPet;
 -            final EntityMySkeleton entityMySkeleton = this;
@@ -158,7 +158,11 @@ index bc37b4b1..448b18fb 100644
 -                        for (EquipmentSlot slot : EquipmentSlot.values())
 -                        {
 -                            if (mySkeleton.getEquipment(slot) != null)
--                            {
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    protected String getDeathSound()
+     {
 -                                entityMySkeleton.setPetEquipment(slot.getSlotId(), mySkeleton.getEquipment(slot));
 -                            }
 -                        }
@@ -166,11 +170,6 @@ index bc37b4b1..448b18fb 100644
 -                }
 -            }, 5L);
 -        }
-+    /**
-+     * Returns the sound that is played when the MyPet dies
-+     */
-+    protected String getDeathSound()
-+    {
 +        return "mob.skeleton.death";
      }
  

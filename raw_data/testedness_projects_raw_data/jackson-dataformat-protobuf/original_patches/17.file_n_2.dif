@@ -75,21 +75,19 @@ index 7738e60..f0c6b32 100644
 -                } else if (i == 0) {
 -                    type = JsonToken.VALUE_FALSE; 
 -                } else {
--                    _reportError(String.format("Invalid byte value for bool field %s: 0x%2x; should be either 0x0 or 0x1",
--                            _currentField.name, i));
--                    type = null;
 +                    return JsonToken.VALUE_TRUE; 
 +                }
 +                if (i == 0) {
 +                    return JsonToken.VALUE_FALSE; 
-                 }
-+                _reportError(String.format("Invalid byte value for bool field %s: 0x%2x; should be either 0x0 or 0x1",
-+                        _currentField.name, i));
++                }
+                 _reportError(String.format("Invalid byte value for bool field %s: 0x%2x; should be either 0x0 or 0x1",
+                         _currentField.name, i));
+-                    type = null;
              }
+-            }
 -            break;
--
+         
 -        default:
-+        
          case STRING:
          case BYTES:
          case ENUM:

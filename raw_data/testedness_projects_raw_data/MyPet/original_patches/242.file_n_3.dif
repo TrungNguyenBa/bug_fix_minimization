@@ -16,10 +16,9 @@ index ca84f07e..b291d6d4 100644
      {
 -        if (mobExp.containsKey(type))
 -        {
--            return mobExp.get(type);
--        }
--        return unknown;
-+        return mobExp.get(type);
+         return mobExp.get(type);
      }
+-        return unknown;
+-    }
  }
 \ No newline at end of file

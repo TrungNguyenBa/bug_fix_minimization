@@ -56,14 +56,6 @@ index 7e3bc377..78bd6b2b 100644
            }
          }
          /*1d- if there is only one itersection shperocylinder ends within patch wedge 
-@@ -749,6 +765,7 @@ namespace Faunus {
-               f0 -= contt - t;
-               
-               //cout << pairpot.first(a,b,ndistsq) << f1 << (f0+1.0);
-+            
-               return pairpot.first(a,b,ndistsq)*f1*(f0+1.0)+pairpot.second(a,b,ndistsq);
-           }
- 
 @@ -757,17 +774,11 @@ namespace Faunus {
  
  
@@ -85,17 +77,16 @@ index 7e3bc377..78bd6b2b 100644
       */
      template<typename Tcigarcigar>
        class PatchyCigarCigar : public PairPotentialBase {
-@@ -865,18 +876,26 @@ namespace Faunus {
-                 vec1.normalize();
+@@ -866,17 +877,25 @@ namespace Faunus {
                  s = vec1.dot(b.patchdir);
                  f2 = fanglscale(s,b);
-+                  
+                   
 +                //cout <<"pair pot: "<< pairpot.first(a,b,ndistsq) <<" f0: "<< f0 <<" f1: "<< f1 <<" f2: "<< f2;
 +                //cout << " v1: " << v1 << " v2: " << v2 << "\n";
 +                //cout <<"v1: "<<v1 <<" v2: "<<v2 << " distsq: " << ndistsq << " \n";
 +                //cout << "repdist " << rclose.squaredNorm() << "\n";
 +                //cout << "eatr: " << f0*f1*f2*pairpot.first(a,b,ndistsq) <<" erep: " << pairpot.second(a,b,rclose.squaredNorm()) << "\n";
-                 
++                
                  //8- put it all together and output scale
                  return f0*f1*f2*pairpot.first(a,b,ndistsq)+pairpot.second(a,b,rclose.squaredNorm());
                }

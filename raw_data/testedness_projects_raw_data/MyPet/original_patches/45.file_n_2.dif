@@ -2,19 +2,15 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman
 index ebc85aa2..20872c2d 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
-@@ -92,9 +92,9 @@ public class EntityMyEnderman extends EntityMyPet {
+@@ -92,7 +92,7 @@ public class EntityMyEnderman extends EntityMyPet {
  
      protected void initDatawatcher() {
          super.initDatawatcher();
 -        this.datawatcher.a(16, new Short((short) 0));  // blockID
--        this.datawatcher.a(17, new Byte((byte) 0));    // blockData
--        this.datawatcher.a(18, new Byte((byte) 0));    // face(angry)
 +        this.datawatcher.a(16, new Byte((byte) 0));  // blockID
-+        this.datawatcher.a(17, new Byte((byte) 0));  // blockData
-+        this.datawatcher.a(18, new Byte((byte) 0));  // face(angry)
+         this.datawatcher.a(17, new Byte((byte) 0));  // blockData
+         this.datawatcher.a(18, new Byte((byte) 0));  // face(angry)
      }
- 
-     public boolean isScreaming() {
 @@ -106,7 +106,7 @@ public class EntityMyEnderman extends EntityMyPet {
      }
  

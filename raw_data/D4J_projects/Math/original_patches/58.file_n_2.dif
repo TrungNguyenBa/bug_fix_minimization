@@ -15,11 +15,7 @@ index e1b54f49e..725b5ca84 100644
  import org.apache.commons.math.exception.util.LocalizedFormats;
  import org.apache.commons.math.optimization.DifferentiableMultivariateVectorialOptimizer;
  import org.apache.commons.math.optimization.fitting.CurveFitter;
-@@ -59,66 +57,29 @@ import org.apache.commons.math.optimization.fitting.WeightedObservedPoint;
-  * @version $Revision$ $Date$
-  */
- public class GaussianFitter extends CurveFitter {
-+
+@@ -62,63 +61,25 @@ public class GaussianFitter extends CurveFitter {
      /**
       * Constructs an instance using the specified optimizer.
       *
@@ -93,14 +89,6 @@ index e1b54f49e..725b5ca84 100644
      }
  
      /**
-@@ -129,6 +90,7 @@ public class GaussianFitter extends CurveFitter {
-     public static class ParameterGuesser {
-         /** Observed points. */
-         private final WeightedObservedPoint[] observations;
-+
-         /** Resulting guessed parameters. */
-         private double[] parameters;
- 
 @@ -150,7 +112,7 @@ public class GaussianFitter extends CurveFitter {
          /**
           * Guesses the parameters based on the observed points.
@@ -110,7 +98,7 @@ index e1b54f49e..725b5ca84 100644
           */
          public double[] guess() {
              if (parameters == null) {
-@@ -162,13 +124,15 @@ public class GaussianFitter extends CurveFitter {
+@@ -162,8 +124,9 @@ public class GaussianFitter extends CurveFitter {
          /**
           * Guesses the parameters based on the specified observed points.
           *
@@ -122,12 +110,6 @@ index e1b54f49e..725b5ca84 100644
           */
          private double[] basicGuess(WeightedObservedPoint[] points) {
              Arrays.sort(points, createWeightedObservedPointComparator());
-             double[] params = new double[3];
- 
-+
-             int maxYIdx = findMaxY(points);
-             params[0] = points[maxYIdx].getY();
-             params[1] = points[maxYIdx].getX();
 @@ -190,8 +154,9 @@ public class GaussianFitter extends CurveFitter {
          /**
           * Finds index of point in specified points with the largest Y.
@@ -148,12 +130,6 @@ index e1b54f49e..725b5ca84 100644
 -         * specified Y.
 +         * Interpolates using the specified points to determine X at the specified
 +         * Y.
-+         *
-+         * @param points points to use for interpolation
-+         * @param startIdx index within points from which to start search for
-+         *        interpolation bounds points
-+         * @param idxStep index step for search for interpolation bounds points
-+         * @param y Y value for which X should be determined
           *
 -         * @param points Points to use for interpolation.
 -         * @param startIdx Index within points from which to start search for
@@ -164,6 +140,12 @@ index e1b54f49e..725b5ca84 100644
 -         * @throws ZeroException if {@code idxStep} is 0.
 -         * @throws OutOfRangeException if specified {@code y} is not within the
 -         * range of the specified {@code points}.
++         * @param points points to use for interpolation
++         * @param startIdx index within points from which to start search for
++         *        interpolation bounds points
++         * @param idxStep index step for search for interpolation bounds points
++         * @param y Y value for which X should be determined
++         *
 +         * @return value of X at the specified Y
 +         *
 +         * @throws IllegalArgumentException if idxStep is 0
@@ -201,13 +183,7 @@ index e1b54f49e..725b5ca84 100644
           */
          private WeightedObservedPoint[] getInterpolationPointsForY(WeightedObservedPoint[] points,
                                                                     int startIdx, int idxStep, double y)
-@@ -275,17 +244,19 @@ public class GaussianFitter extends CurveFitter {
-                 maxY = Math.max(maxY, point.getY());
-             }
-             throw new OutOfRangeException(y, minY, maxY);
-+
-         }
- 
+@@ -280,12 +250,13 @@ public class GaussianFitter extends CurveFitter {
          /**
           * Determines whether a value is between two other values.
           *

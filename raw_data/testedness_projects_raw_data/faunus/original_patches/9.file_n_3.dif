@@ -20,14 +20,8 @@ index b8d33dd1..d4823018 100644
  
  #ifdef DEBYEHUCKEL
    cout << pot.first.pairpot.first.info(spc.p,spc.geo.getVolume()) << endl;
-@@ -71,22 +71,19 @@ int main() {
- 
-   // save to disk
-   FormatPQR::save("confout.pqr", spc.p); // final PQR snapshot for VMD etc.
--  rdf_ab.save("rdf.dat");                // g(r) - not normalized!
--  spc.save("state");                     // final simulation state
-+  rdf_ab.save("rdf.dat");         // g(r) - not normalized!
-+  spc.save("state");              // final simulation state
+@@ -75,14 +75,12 @@ int main() {
+   spc.save("state");              // final simulation state
  
    // perform unit tests (irrelevant for the simulation)
 -  UnitTest test(mcp);                    // class for unit testing
@@ -42,7 +36,3 @@ index b8d33dd1..d4823018 100644
  
    return test.numFailed();
  }
--
- /**
-   @page example_bulk Example: Melted NaCl
- 

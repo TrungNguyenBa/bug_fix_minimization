@@ -2,31 +2,28 @@ diff --git a/src/main/java/ru/tehkode/utils/FieldReplacer.java b/src/main/java/r
 index ab18be0..5dc73f5 100644
 --- a/src/main/java/ru/tehkode/utils/FieldReplacer.java
 +++ b/src/main/java/ru/tehkode/utils/FieldReplacer.java
-@@ -10,15 +10,16 @@ public class FieldReplacer<Instance, Type> {
+@@ -10,16 +10,17 @@ public class FieldReplacer<Instance, Type> {
  	private final Field field;
  
  	public FieldReplacer(Class<? extends Instance> clazz, String fieldName, Class<Type> requiredType) {
--		this.requiredType = requiredType;
++		try {
+ 			this.requiredType = requiredType;
 -		field = getField(clazz, fieldName);
 -		if (field == null) {
 -			throw new ExceptionInInitializerError("No such field " + fieldName + " in class " + clazz);
 -		}
-+		try {
-+			this.requiredType = requiredType;
 +			field = clazz.getDeclaredField(fieldName);
  
--		field.setAccessible(true);
--		if (!requiredType.isAssignableFrom(field.getType())) {
--			throw new ExceptionInInitializerError("Field of wrong type");
-+			field.setAccessible(true);
-+			if (!requiredType.isAssignableFrom(field.getType())) {
-+				throw new ExceptionInInitializerError("Field of wrong type");
-+			}
+ 			field.setAccessible(true);
+ 			if (!requiredType.isAssignableFrom(field.getType())) {
+ 				throw new ExceptionInInitializerError("Field of wrong type");
+ 			}
 +		} catch (NoSuchFieldException e) {
 +			throw new ExceptionInInitializerError(e);
- 		}
++		}
  	}
  
+ 	public Type get(Instance instance) {
 @@ -37,15 +38,4 @@ public class FieldReplacer<Instance, Type> {
  			throw new Error(e); // This shouldn't happen because we call setAccessible in the constructor
  		}

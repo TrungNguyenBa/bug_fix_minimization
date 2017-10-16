@@ -24,15 +24,6 @@ index 541daf5f..9672f907 100644
    std::map<int, Analysis::LineDistribution<> > surfresdist;
    Analysis::Table2D<double, Average<double> > netqtable;
    Analysis::Table2D<double, Average<double> > rg2table;
-@@ -121,7 +120,7 @@ int main() {
-   
-   std::ofstream f1("rg_step.dat");
-   std::ofstream f2("surf_res_dist.dat");
--  
-+
-   MCLoop loop(mcp);
-   while (loop.macroCnt()) {
-     while (loop.microCnt()) {
 @@ -153,7 +152,7 @@ int main() {
  	shape.sample(pol, spc);
  	Point r2 = shape.vectorgyrationRadiusSquared(pol, spc);

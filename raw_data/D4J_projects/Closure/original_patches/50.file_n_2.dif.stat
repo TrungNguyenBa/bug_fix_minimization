@@ -1,2 +1,2 @@
 INSERTED,DELETED,MODIFIED,FILENAME
-9,0,2,PeepholeReplaceKnownMethods.java
+9,0,1,PeepholeReplaceKnownMethods.java

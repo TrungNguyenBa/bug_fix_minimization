@@ -83,18 +83,18 @@ index 7a11a9a2..5dc93df8 100644
      }
  
 -    public void setBaby(boolean flag)
+-    {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
+-        }
+-        else
 +    /**
 +     * Returns the sound that is played when the MyPet dies
 +     */
 +    @Override
 +    protected String getDeathSound()
      {
--        if (flag)
--        {
--            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
--        }
--        else
--        {
 -            this.datawatcher.watch(12, new Integer(0));
 -        }
 -        ((MyChicken) myPet).isBaby = flag;
@@ -112,13 +112,13 @@ index 7a11a9a2..5dc93df8 100644
 -    }
 -
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the default sound of the MyPet
 +     */
 +    protected String getLivingSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -
 -            this.setBaby(((MyChicken) myPet).isBaby());

@@ -1,0 +1,79 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 4859882a..3c6f46d9 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -22,7 +22,6 @@
+   <body>
+ 
+   <release version="3.2" date="TBA" description="Next release">
+-    <action issue="LANG-693" type="fix" due-to="Calvin Echols">Method createNumber from NumberUtils doesn't work for floating point numbers other than Float</action>
+     <action issue="LANG-887" type="fix">FastDateFormat does not use the locale specific cache correctly</action>
+     <action issue="LANG-884" type="update">Simplify FastDateFormat; eliminate boxing</action>
+     <action issue="LANG-882" type="update">LookupTranslator now works with implementations of CharSequence other than String</action>
+diff --git a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+index 1e6ccdc0..064f5043 100644
+--- a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -482,7 +482,6 @@ public class NumberUtils {
+         // if both e and E are present, this is caught by the checks on expPos (which prevent IOOBE)
+         // and the parsing which will detect if e or E appear in a number due to using the wrong offset
+ 
+-        int numDecimals = 0; // Check required precision (LANG-693)
+         if (decPos > -1) { // there is a decimal point
+ 
+             if (expPos > -1) { // there is an exponent
+@@ -494,7 +493,6 @@ public class NumberUtils {
+                 dec = str.substring(decPos + 1);
+             }
+             mant = str.substring(0, decPos);
+-            numDecimals = dec.length(); // gets number of digits past the decimal to ensure no loss of precision for floating point numbers.
+         } else {
+             if (expPos > -1) {
+                 if (expPos > str.length()) { // prevents double exponent causing IOOBE
+@@ -590,22 +588,18 @@ public class NumberUtils {
+         //Must be a Float, Double, BigDecimal
+         final boolean allZeros = isAllZeros(mant) && isAllZeros(exp);
+         try {
+-            if(numDecimals <= 7){// If number has 7 or fewer digits past the decimal point then make it a float
+             final Float f = createFloat(str);
+             if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {
+                 return f;
+             }
+-            }
+         } catch (final NumberFormatException nfe) { // NOPMD
+             // ignore the bad number
+         }
+         try {
+-            if(numDecimals <= 16){// If number has between 8 and 16 digits past the decimal point then make it a double
+             final Double d = createDouble(str);
+             if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {
+                 return d;
+             }
+-            }
+         } catch (final NumberFormatException nfe) { // NOPMD
+             // ignore the bad number
+         }
+diff --git a/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java b/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
+index 56b0597e..b41c0303 100644
+--- a/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
++++ b/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
+@@ -117,19 +117,6 @@ public class NumberUtilsTest {
+     }
+ 
+     /**
+-     * Test for {(@link NumberUtils#createNumber(String)}
+-     */
+-    @Test
+-    public void testStringCreateNumberEnsureNoPrecisionLoss(){
+-        String shouldBeFloat = "1.23";
+-        String shouldBeDouble = "3.40282354e+38";
+-        String shouldBeBigDecimal = "1.797693134862315759e+308";
+-        
+-        assertTrue(NumberUtils.createNumber(shouldBeFloat) instanceof Float);
+-        assertTrue(NumberUtils.createNumber(shouldBeDouble) instanceof Double);
+-        assertTrue(NumberUtils.createNumber(shouldBeBigDecimal) instanceof BigDecimal);
+-    }
+-    /**
+      * Test for {@link NumberUtils#toDouble(String)}.
+      */
+     @Test

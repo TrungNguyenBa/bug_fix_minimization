@@ -10,54 +10,6 @@ index b3f41e3a..e6d332bf 100644
  #include <faunus/potentials.h>
  #include <faunus/auxiliary.h>
  #endif
-@@ -113,7 +112,7 @@ namespace Faunus {
- 
-           virtual double external(const Tpvec&)                // External energy - pressure, for example.
-           { return 0; }
--
-+          
-           virtual void field(const Tpvec&, Eigen::MatrixXd&) //!< Calculate electric field on all particles
-           { }
- 
-@@ -519,7 +518,7 @@ namespace Faunus {
-                     for (auto i : *gi)  // loop over particle index in 1st group
-                       for (auto j : *gj) // loop ove
-                         E.col(i) = E.col(i) + pairpot.field(p[j],geo.vdist(p[i],p[j]));
--            } else {
-+              } else {
-               size_t i=0;
-               for (auto &pi : p) {
-                 for (auto &pj : p)
-@@ -902,10 +901,10 @@ namespace Faunus {
-           }
- 
-         /* uncommented due to gcc 4.6
--           auto getBondList() -> decltype(this->list) {
--           return Tbase::getBondList();
--           }
--           */
-+        auto getBondList() -> decltype(this->list) {
-+          return Tbase::getBondList();
-+        }
-+        */
-     };
- 
-     /**
-@@ -1075,10 +1074,10 @@ namespace Faunus {
-             else
-               return pc::infty;
-           }
--          double i_external(const Tpvec &p, int i) {
--            auto gi = base::spc->findGroup(i);
--            return g_external(p, *gi);
--          }
-+        double i_external(const Tpvec &p, int i) {
-+          auto gi = base::spc->findGroup(i);
-+          return g_external(p, *gi);
-+        }
-       };
- 
-     /**
 @@ -1345,43 +1344,6 @@ namespace Faunus {
        };
  

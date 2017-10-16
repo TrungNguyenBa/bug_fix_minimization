@@ -1,2 +1,2 @@
 INSERTED,DELETED,MODIFIED,FILENAME
-1,21,6,PeepholeRemoveDeadCodeTest.java
+0,21,5,PeepholeRemoveDeadCodeTest.java

@@ -59,11 +59,18 @@ index 75c9292..387e199 100644
  			getConfig().set("user", "databaseuser");
  			getConfig().set("password", "databasepassword");
 -			throw new PermissionBackendException("SQL connection is not configured, see config.yml");
+-		}
 +			ds = null;
 +			connectionPool = null;
 +		} else {
-+		    dbDriver = dbUri.split(":", 2)[0];
-+
+ 		    dbDriver = dbUri.split(":", 2)[0];
+ 
+-		this.ds = new BasicDataSource();
+-		this.ds.setUrl("jdbc:" + dbUri);
+-		this.ds.setUsername(dbUser);
+-		this.ds.setPassword(dbPassword);
+-		this.ds.setMaxTotal(20);
+-		this.ds.setMaxWaitMillis(200); // 4 ticks
 +			ConnectionFactory connectionFactory = new DriverManagerConnectionFactory("jdbc:" + dbUri, dbUser, dbPassword);
 +			PoolableConnectionFactory poolableConnectionFactory = new PoolableConnectionFactory(connectionFactory, null);
 +			GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(poolableConnectionFactory);
@@ -72,17 +79,10 @@ index 75c9292..387e199 100644
 +			connectionPool.setMaxWaitMillis(200);
 +			this.ds = new PoolingDataSource<>(connectionPool);
 +			this.connectionPool = connectionPool;
- 		}
--		dbDriver = dbUri.split(":", 2)[0];
++		}
 +		this.setupAliases();
 +	}
- 
--		this.ds = new BasicDataSource();
--		this.ds.setUrl("jdbc:" + dbUri);
--		this.ds.setUsername(dbUser);
--		this.ds.setPassword(dbPassword);
--		this.ds.setMaxTotal(20);
--		this.ds.setMaxWaitMillis(200); // 4 ticks
++
 +	protected static String getDriverClass(String alias) {
 +		if (alias.equals("mysql")) {
 +			alias = "com.mysql.jdbc.Driver";

@@ -76,18 +76,18 @@ index c0afd43a..5133ef6a 100644
      }
  
 -    public void setBaby(boolean flag)
+-    {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(12, new Integer(Integer.MIN_VALUE));
+-        }
+-        else
 +    /**
 +     * Returns the sound that is played when the MyPet get hurt
 +     */
 +    @Override
 +    protected String getHurtSound()
      {
--        if (flag)
--        {
--            this.datawatcher.watch(12, new Integer(Integer.MIN_VALUE));
--        }
--        else
--        {
 -            this.datawatcher.watch(12, new Integer(0));
 -        }
 -        ((MyMooshroom) myPet).isBaby = flag;
@@ -106,13 +106,13 @@ index c0afd43a..5133ef6a 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the default sound of the MyPet
 +     */
 +    protected String getLivingSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
 -
 -            this.setBaby(((MyMooshroom) myPet).isBaby());

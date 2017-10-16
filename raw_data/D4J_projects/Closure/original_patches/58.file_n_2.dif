@@ -7,13 +7,11 @@ index e107faa9..772d2511 100644
              lhs = lhs.getLastChild();
            }
 -          if (NodeUtil.isName(lhs)) {
--            addToSetIfLocal(lhs, kill);
--            addToSetIfLocal(lhs, gen);
+           addToSetIfLocal(lhs, kill);
+           addToSetIfLocal(lhs, gen);
 -          } else {
 -            computeGenKill(lhs, gen, kill, conditional);
 -          }
-+          addToSetIfLocal(lhs, kill);
-+          addToSetIfLocal(lhs, gen);
            computeGenKill(rhs, gen, kill, conditional);
          }
          return;

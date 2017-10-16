@@ -19,62 +19,11 @@ index 1ebeba8..4ab9a52 100644
  			.registerTypeAdapter(StripeRawJsonObject.class, new StripeRawJsonObjectDeserializer())
  			.create();
  
-@@ -278,7 +275,7 @@ public abstract class APIResource extends StripeObject {
- 	}
- 
- 	private static String createQuery(Map<String, Object> params)
--			throws UnsupportedEncodingException, InvalidRequestException {
-+	    throws UnsupportedEncodingException, InvalidRequestException {
- 		Map<String, String> flatParams = flattenParams(params);
- 		StringBuilder queryStringBuffer = new StringBuilder();
- 		for (Map.Entry<String, String> entry : flatParams.entrySet()) {
-@@ -310,10 +307,10 @@ public abstract class APIResource extends StripeObject {
- 				}
- 				flatParams.putAll(flattenParams(flatNestedMap));
- 			} else if ("".equals(value)) {
--					throw new InvalidRequestException("You cannot set '"+key+"' to an empty string. "+
--										"We interpret empty strings as null in requests. "+
--										"You may set '"+key+"' to null to delete the property.",
--										key, null);
-+			    throw new InvalidRequestException("You cannot set '"+key+"' to an empty string. "+
-+							      "We interpret empty strings as null in requests. "+
-+							      "You may set '"+key+"' to null to delete the property.",
-+							      key, null);
- 			} else if (value == null) {
- 				flatParams.put(key, "");
- 			} else if (value != null) {
-@@ -341,11 +338,11 @@ public abstract class APIResource extends StripeObject {
- 
- 	private static String getResponseBody(InputStream responseStream)
- 			throws IOException {
--		//\A is the beginning of
--		// the stream boundary
-+                //\A is the beginning of
-+                // the stream boundary
- 		String rBody = new Scanner(responseStream, CHARSET)
--												.useDelimiter("\\A")
--												.next(); //
-+                        .useDelimiter("\\A")
-+			.next(); //
- 
- 		responseStream.close();
- 		return rBody;
-@@ -374,7 +371,7 @@ public abstract class APIResource extends StripeObject {
- 										+ "support@stripe.com for assistance.",
- 								method));
- 			}
--			// trigger the request
-+                        // trigger the request
- 			int rCode = conn.getResponseCode();
- 			String rBody = null;
- 			Map<String, List<String>> headers;
-@@ -425,8 +422,9 @@ public abstract class APIResource extends StripeObject {
- 			if (allowedToSetTTL) {
+@@ -426,7 +423,8 @@ public abstract class APIResource extends StripeObject {
  				if (originalDNSCacheTTL == null) {
  					// value unspecified by implementation
--					// DNS_CACHE_TTL_PROPERTY_NAME of -1 = cache forever
+                                         // DNS_CACHE_TTL_PROPERTY_NAME of -1 = cache forever
 -					java.security.Security.setProperty(DNS_CACHE_TTL_PROPERTY_NAME, "-1");
-+                                        // DNS_CACHE_TTL_PROPERTY_NAME of -1 = cache forever
 +					java.security.Security.setProperty(
 +							DNS_CACHE_TTL_PROPERTY_NAME, "-1");
  				} else {

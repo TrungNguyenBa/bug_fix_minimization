@@ -2,27 +2,7 @@ diff --git a/test/com/google/javascript/jscomp/CheckGlobalThisTest.java b/test/c
 index 74b92769..c0fa4395 100644
 --- a/test/com/google/javascript/jscomp/CheckGlobalThisTest.java
 +++ b/test/com/google/javascript/jscomp/CheckGlobalThisTest.java
-@@ -35,7 +35,7 @@ public class CheckGlobalThisTest extends CompilerTestCase {
-   private void testFailure(String js) {
-     test(js, null, CheckGlobalThis.GLOBAL_THIS);
-   }
--
-+  
-   public void testGlobalThis1() throws Exception {
-     testSame("var a = this;");
-   }
-@@ -51,19 +51,15 @@ public class CheckGlobalThisTest extends CompilerTestCase {
-   public void testGlobalThis4() {
-     testFailure("this['foo'] = 5;");
-   }
--
-+  
-   public void testGlobalThis5() {
-     testFailure("(a = this).foo = 4;");
-   }
--
-+  
-   public void testGlobalThis6() {
+@@ -60,10 +60,6 @@ public class CheckGlobalThisTest extends CompilerTestCase {
      testSame("a = this;");
    }
  

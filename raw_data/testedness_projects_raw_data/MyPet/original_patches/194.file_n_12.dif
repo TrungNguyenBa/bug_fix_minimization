@@ -19,10 +19,3 @@ index f12f474d..9bfb3188 100644
  import de.Keyle.MyPet.util.*;
  import de.Keyle.MyPet.util.locale.Locales;
  import de.Keyle.MyPet.util.support.*;
-@@ -780,4 +776,4 @@ public abstract class MyPet implements IMyPet, NBTStorage
-     {
-         return wantToRespawn;
-     }
--}
-\ No newline at end of file
-+}

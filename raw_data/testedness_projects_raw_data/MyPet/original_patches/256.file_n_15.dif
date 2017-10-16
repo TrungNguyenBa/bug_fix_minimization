@@ -2,31 +2,25 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java 
 index 03f733c8..db38add2 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
-@@ -117,21 +117,14 @@ public class EntityMySlime extends EntityMyPet
+@@ -117,8 +117,6 @@ public class EntityMySlime extends EntityMyPet
       */
      public void l_()
      {
 -        try
 -        {
--            super.l_();
--
--            if (this.onGround && jumpDelay-- <= 0 && lastPathEntity != getNavigation().d())
--            {
--                getControllerJump().a();
--                jumpDelay = (this.random.nextInt(20) + 10);
--                lastPathEntity = getNavigation().d();
+         super.l_();
+ 
+         if (this.onGround && jumpDelay-- <= 0 && lastPathEntity != getNavigation().d())
+@@ -126,12 +124,7 @@ public class EntityMySlime extends EntityMyPet
+             getControllerJump().a();
+             jumpDelay = (this.random.nextInt(20) + 10);
+             lastPathEntity = getNavigation().d();
 -                makeSound("mob.magmacube." + (getSize() > 1 ? "big" : "small"), ba(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) / 0.8F);
 -            }
 -        }
 -        catch (Exception e)
-+        super.l_();
-+
-+        if (this.onGround && jumpDelay-- <= 0 && lastPathEntity != getNavigation().d())
-         {
+-        {
 -            e.printStackTrace();
-+            getControllerJump().a();
-+            jumpDelay = (this.random.nextInt(20) + 10);
-+            lastPathEntity = getNavigation().d();
 +            makeSound("mob.slime." + (getSize() > 1 ? "big" : "small"), ba(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) / 0.8F);
          }
      }

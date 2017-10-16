@@ -10,43 +10,6 @@ index 16bb38f..4716d84 100755
  
      /**
       * Whether to activate the reloading agent (forked mode only) for this command
-@@ -205,27 +204,27 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
-     /**
-      * Extra classpath entries as a comma separated list of file names.
-      * For entries with a comma in their name, use backslash to escape.
--     *
-+     * 
-      * INTERNAL This parameter is not meant to be used externally.  It is used by IDEs
-      * that require extra classpath entries to execute grails commands.
--     *
-+     * 
-      * @parameter
-      */
-     private String extraClasspathEntries;
--
--
-+    
-+    
-     /**
--     * Fully qualified classname of a grails build listener to attach
-+     * Fully qualified classname of a grails build listener to attach 
-      * to the Grails command
--     *
-+     * 
-      * @parameter
-      */
-     private String grailsBuildListener;
--
-+    
-     /**
-      * Fully qualified path name of the project dependency file to create.
--     *
--     * INTERNAL This parameter is not meant to be used externally. This parameter is used by
-+     * 
-+     * INTERNAL This parameter is not meant to be used externally. This parameter is used by 
-      * IDEs to generate project dependency information during builds.
-      */
-     private String dependencyFileLocation;
 @@ -337,7 +336,7 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
          List<File> providedDependencies = resolveArtifacts("provided");
          List<File> compileDependencies = resolveArtifacts("compile");

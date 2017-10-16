@@ -2,12 +2,10 @@ diff --git a/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java b/
 index 56b0597e..b41c0303 100644
 --- a/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
 +++ b/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
-@@ -115,20 +115,7 @@ public class NumberUtilsTest {
-         assertTrue("toFloat(String,int) 1 failed", NumberUtils.toFloat("1.2345", 5.1f) == 1.2345f);
-         assertTrue("toFloat(String,int) 2 failed", NumberUtils.toFloat("a", 5.0f) == 5.0f);
+@@ -117,19 +117,6 @@ public class NumberUtilsTest {
      }
--    
--    /**
+ 
+     /**
 -     * Test for {(@link NumberUtils#createNumber(String)}
 -     */
 -    @Test
@@ -20,7 +18,7 @@ index 56b0597e..b41c0303 100644
 -        assertTrue(NumberUtils.createNumber(shouldBeDouble) instanceof Double);
 -        assertTrue(NumberUtils.createNumber(shouldBeBigDecimal) instanceof BigDecimal);
 -    }
-+
-     /**
+-    /**
       * Test for {@link NumberUtils#toDouble(String)}.
       */
+     @Test

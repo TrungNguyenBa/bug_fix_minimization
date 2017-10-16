@@ -138,19 +138,17 @@ index a0c3721..cf4abda 100644
 -				} else {
 -					break;
 -				}
--			} else {
--				cacheVal = fetchUncached(sectionName, createIfEmpty);
--				cache.put(rawContext, cacheVal);
--			}
 +		final ListenableFuture<List<MatcherGroup>> query;
 +		if (primaryKey != null) {
 +			query = this.manager.getBackend().getMatchingGroups(sectionName, primaryKey, primaryValue);
-+		} else {
+ 		} else {
+-				cacheVal = fetchUncached(sectionName, createIfEmpty);
+-				cache.put(rawContext, cacheVal);
+-			}
 +			query = this.manager.getBackend().getMatchingGroups(sectionName);
  		}
  
 -		return cacheVal.result;
--	}
 +		final Function<List<MatcherGroup>, List<MatcherGroup>> func = new Function<List<MatcherGroup>, List<MatcherGroup>>() {
 +			@Override
 +			public List<MatcherGroup> apply(List<MatcherGroup> result) {
@@ -161,17 +159,8 @@ index a0c3721..cf4abda 100644
 +						if (!group.matches(PermissionQuery.this, primaryKey)) {
 +							it.remove();
 +							continue;
-+						}
-+						if (inheritance) {
-+							if (group.getQualifiers().containsKey(Qualifier.WORLD)) {
-+								for (String world : group.getQualifiers().get(Qualifier.WORLD)) {
-+									allowedWorlds.addAll(Futures.getUnchecked(Qualifier.WORLD.getInheritedValues(manager.getBackend(), world)));
-+								}
-+							}
-+						}
-+					}
-+					Collections.sort(result);
- 
+ 						}
+-
 -	/**
 -	 * Calculate inheritance for any qualifier involved in inheritance
 -	 *
@@ -179,22 +168,27 @@ index a0c3721..cf4abda 100644
 -	 */
 -	private Map<Qualifier, ListenableFuture<List<String>>> calculateInheritance() {
 -		final Map<Qualifier, ListenableFuture<List<String>>> parentFutures = new HashMap<>();
--		if (inheritance) {
+ 						if (inheritance) {
 -			// TODO: Inheritance for all used/supported qualifiers -- not too important because nothing else uses inheritance now, but makes expansion easier
 -			if (explicitValues.containsKey(Qualifier.USER)) {
 -				parentFutures.put(Qualifier.USER.getInheritanceQualifier(), Qualifier.USER.getInheritedValues(manager.getBackend(), explicitValues.get(Qualifier.USER).iterator().next()));
 -			} else if (explicitValues.containsKey(Qualifier.GROUP)) {
 -				parentFutures.put(Qualifier.GROUP.getInheritanceQualifier(), Qualifier.GROUP.getInheritedValues(manager.getBackend(), explicitValues.get(Qualifier.GROUP).iterator().next()));
--			}
++							if (group.getQualifiers().containsKey(Qualifier.WORLD)) {
++								for (String world : group.getQualifiers().get(Qualifier.WORLD)) {
++									allowedWorlds.addAll(Futures.getUnchecked(Qualifier.WORLD.getInheritedValues(manager.getBackend(), world)));
+ 								}
 -			if (explicitValues.containsKey(Qualifier.WORLD)) {
 -				parentFutures.put(Qualifier.WORLD.getInheritanceQualifier(), Qualifier.WORLD.getInheritedValues(manager.getBackend(), explicitValues.get(Qualifier.WORLD).iterator().next()));
+ 							}
+ 						}
+-		return parentFutures;
+ 					}
++					Collections.sort(result);
+ 
 +				}
 +				return result;
- 			}
--		}
--		return parentFutures;
--	}
--
++			}
 +		};
 +		// TODO: Make inheritance work with any qualifier
 +		ListenableFuture<List<String>> parents = (inheritance && primaryKey != null && primaryKey != Qualifier.WORLD) ?
@@ -222,12 +216,12 @@ index a0c3721..cf4abda 100644
  					}
  				}
 -				return Futures.chain(manager.getBackend().getMatchingGroups(sectionName, StaticContext.of(contextMultimap)), new Function<List<MatcherGroup>, ListenableFuture<List<MatcherGroup>>>() {
-+				return Futures.transform(Futures.allAsList(toWait), new Function<List<List<MatcherGroup>>, List<MatcherGroup>>() {
- 					@Override
+-					@Override
 -					public ListenableFuture<List<MatcherGroup>> apply(List<MatcherGroup> matcherGroups) {
 -						if (matcherGroups.isEmpty() && createIfEmpty) {
 -							return Futures.transform(manager.getBackend().createMatcherGroup(sectionName, ImmutableMap.<String, String>of(), explicitValues), new Function<MatcherGroup, List<MatcherGroup>>() {
--								@Override
++				return Futures.transform(Futures.allAsList(toWait), new Function<List<List<MatcherGroup>>, List<MatcherGroup>>() {
+ 					@Override
 -								public List<MatcherGroup> apply(MatcherGroup matcherGroup) {
 -									return ImmutableList.of(matcherGroup);
 -								}
@@ -243,8 +237,9 @@ index a0c3721..cf4abda 100644
 +							result = new ArrayList<>(lists.size() * Math.max(1, lists.get(0).size()));
 +							for (List<MatcherGroup> list : lists) {
 +								result.addAll(list);
-+							}
-+						}
+ 							}
+-							return Futures.immediateFuture(matcherGroups);
+ 						}
 +
 +						if ((result == null || result.isEmpty()) && createIfEmpty) {
 +							Multimap<Qualifier, String> qualifiers = HashMultimap.create();
@@ -252,20 +247,15 @@ index a0c3721..cf4abda 100644
 +							if (world != null && primaryKey != Qualifier.WORLD) {
 +								qualifiers.put(Qualifier.WORLD, world);
  							}
--							return Futures.immediateFuture(matcherGroups);
+-				});
 +							if (until != 0) {
 +								qualifiers.put(Qualifier.UNTIL, String.valueOf(until));
-+							}
+ 							}
+-		});
+-		return new CacheElement(result, Futures.immediateFuture(Collections.<MatcherGroup>emptyList())); // TODO: Keep track of groups involved in inheritance
 +							result = Lists.newArrayList(Futures.getUnchecked(manager.getBackend().createMatcherGroup(sectionName, ImmutableMap.<String, String>of(), qualifiers)));
  						}
-+						return result;
- 					}
- 				});
- 			}
- 		});
--		return new CacheElement(result, Futures.immediateFuture(Collections.<MatcherGroup>emptyList())); // TODO: Keep track of groups involved in inheritance
- 	}
- 
+-
 -	/**
 -	Special InheritanceAware comparator
 -	map<string, int> for inheritance level
@@ -283,12 +273,15 @@ index a0c3721..cf4abda 100644
 -			final int other = b.getQualifierTypeMask();
 -			if (me != other) {
 -				return me > other ? 1 : -1;
--			}
++						return result;
+ 					}
 -
 -			return 0; // TODO: Take inheritance into account
--		}
--	}
--
++				});
+ 			}
++		});
+ 	}
+ 
 -	public static final class CacheKey {
 -		private final String sectionName;
 -		private final Context context;
@@ -299,8 +292,9 @@ index a0c3721..cf4abda 100644
 -			this.context = context;
 -			this.inheritance = inheritance;
 -		}
--
--		@Override
++	// Context methods
+ 
+ 	@Override
 -		public boolean equals(Object o) {
 -			if (this == o) return true;
 -			if (o == null || getClass() != o.getClass()) return false;
@@ -312,21 +306,21 @@ index a0c3721..cf4abda 100644
 -			if (!inheritance == cacheKey.inheritance) return false;
 -
 -			return true;
--		}
-+	// Context methods
++	public Set<String> getServerTags() {
++		return manager.getConfiguration().getServerTags();
+ 	}
  
--		@Override
+ 	@Override
 -		public int hashCode() {
 -			int result = sectionName.hashCode();
 -			result = 31 * result + context.hashCode();
 -			result = 7 * result + (inheritance ? 1 : 0);
 -			return result;
--		}
-+	@Override
-+	public Set<String> getServerTags() {
-+		return manager.getConfiguration().getServerTags();
++	public String getEntityName() {
++		return primaryValue;
  	}
- 
+-	}
+-
 -	public static class CacheElement {
 -		private final ListenableFuture<List<MatcherGroup>> result, inheritanceGroups;
 -
@@ -356,13 +350,10 @@ index a0c3721..cf4abda 100644
 -			}
 -			return true;
 -		}
-+	@Override
-+	public String getEntityName() {
-+		return primaryValue;
- 	}
- 
--	// Context methods
+-	}
 -
+-	// Context methods
+ 
  	@Override
 -	public Collection<String> getValues(Qualifier qual) {
 -		Collection<String> ret = explicitValues.get(qual);

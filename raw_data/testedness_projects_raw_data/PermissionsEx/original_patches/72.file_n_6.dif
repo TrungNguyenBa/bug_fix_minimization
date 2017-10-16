@@ -25,9 +25,8 @@ index 2b8a516..120977f 100644
  					for (String entry : match.getEntriesList()) {
  						if (inherited.contains(entry)) {
 -							if (backend.isDebug()) {
--								backend.getLogger().warning("Potential circular inheritance detected while iterating " + qual + " " + inherited.get(0));
+ 							backend.getLogger().warning("Potential circular inheritance detected while iterating " + qual + " " + inherited.get(0));
 -							}
-+							backend.getLogger().warning("Potential circular inheritance detected while iterating " + qual + " " + inherited.get(0));
  							continue;
  						}
  

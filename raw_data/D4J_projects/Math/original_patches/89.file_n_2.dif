@@ -15,11 +15,10 @@ index 70d622dda..237c2f60b 100644
      @Deprecated
      public void addValue(Object v) {
 -        if (v instanceof Comparable<?>){
--            addValue((Comparable<?>) v);            
+         addValue((Comparable<?>) v);
 -        } else {
 -            throw new IllegalArgumentException("Object must implement Comparable");
 -        }
-+        addValue((Comparable<?>) v);
      }
      
      /**

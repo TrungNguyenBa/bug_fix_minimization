@@ -49,13 +49,12 @@ index 1dc5658..3963bab 100644
 -		return Futures.transform(super.setQualifiers(qualifiers), new Function<MatcherGroup, MatcherGroup>() {
 -			@Override
 -			public MatcherGroup apply(@Nullable MatcherGroup matcherGroup) {
--				save();
++	public MatcherGroup setQualifiers(Multimap<Qualifier, String> qualifiers) {
++		MatcherGroup ret = super.setQualifiers(qualifiers);
+ 		save();
 -				return matcherGroup;
 -			}
 -		}, listRef.getExecutor());
-+	public MatcherGroup setQualifiers(Multimap<Qualifier, String> qualifiers) {
-+		MatcherGroup ret = super.setQualifiers(qualifiers);
-+		save();
 +		return ret;
  	}
  
@@ -64,13 +63,12 @@ index 1dc5658..3963bab 100644
 -		return Futures.transform(super.setEntries(entries), new Function<MatcherGroup, MatcherGroup>() {
 -			@Override
 -			public MatcherGroup apply(@Nullable MatcherGroup matcherGroup) {
--				save();
++	public MatcherGroup setEntries(Map<String, String> entries) {
++		MatcherGroup ret = super.setEntries(entries);
+ 		save();
 -				return matcherGroup;
 -			}
 -		}, listRef.getExecutor());
-+	public MatcherGroup setEntries(Map<String, String> entries) {
-+		MatcherGroup ret = super.setEntries(entries);
-+		save();
 +		return ret;
  	}
  
@@ -79,7 +77,9 @@ index 1dc5658..3963bab 100644
 -		return Futures.transform(super.setEntries(entries), new Function<MatcherGroup, MatcherGroup>() {
 -			@Override
 -			public MatcherGroup apply(@Nullable MatcherGroup matcherGroup) {
--				save();
++	public MatcherGroup setEntries(List<String> entries) {
++		MatcherGroup ret = super.setEntries(entries);
+ 		save();
 -				return matcherGroup;
 -			}
 -		}, listRef.getExecutor());
@@ -96,9 +96,6 @@ index 1dc5658..3963bab 100644
 -				return val;
 -			}
 -		}, listRef.getExecutor());
-+	public MatcherGroup setEntries(List<String> entries) {
-+		MatcherGroup ret = super.setEntries(entries);
-+		save();
 +		return ret;
  	}
  

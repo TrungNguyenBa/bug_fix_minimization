@@ -48,16 +48,6 @@ index ada0a8fb0..bfa7f2692 100644
 -  v2 = new Vector3D(alpha, v1, beta, v2);
 -
 -  // preliminary computation
--  Vector3D uRef  = u1;
--  Vector3D vRef  = v1;
--  Vector3D v1Su1 = v1.subtract(u1);
--  Vector3D v2Su2 = v2.subtract(u2);
--  Vector3D k     = v1Su1.crossProduct(v2Su2);
--  Vector3D u3    = u1.crossProduct(u2);
--  double c       = k.dotProduct(u3);
--  final double inPlaneThreshold = 0.001;
--  if (c <= inPlaneThreshold * k.getNorm() * u3.getNorm()) {
--    // the (q1, q2, q3) vector is close to the (u1, u2) plane
 +  double v2x    = alpha * v1x + beta * v2.getX();
 +  double v2y    = alpha * v1y + beta * v2.getY();
 +  double v2z    = alpha * v1z + beta * v2.getZ();
@@ -66,8 +56,16 @@ index ada0a8fb0..bfa7f2692 100644
 +  // preliminary computation (we use explicit formulation instead
 +  // of relying on the Vector3D class in order to avoid building lots
 +  // of temporary objects)
-+  Vector3D uRef = u1;
-+  Vector3D vRef = v1;
+   Vector3D uRef = u1;
+   Vector3D vRef = v1;
+-  Vector3D v1Su1 = v1.subtract(u1);
+-  Vector3D v2Su2 = v2.subtract(u2);
+-  Vector3D k     = v1Su1.crossProduct(v2Su2);
+-  Vector3D u3    = u1.crossProduct(u2);
+-  double c       = k.dotProduct(u3);
+-  final double inPlaneThreshold = 0.001;
+-  if (c <= inPlaneThreshold * k.getNorm() * u3.getNorm()) {
+-    // the (q1, q2, q3) vector is close to the (u1, u2) plane
 +  double dx1 = v1x - u1.getX();
 +  double dy1 = v1y - u1.getY();
 +  double dz1 = v1z - u1.getZ();

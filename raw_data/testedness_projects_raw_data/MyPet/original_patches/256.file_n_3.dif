@@ -7,20 +7,17 @@ index b708f8fc..c37181e4 100644
      public void l_()
      {
 -        try
-+        super.l_();
-+        if (!world.getMaterial((int) locX, (int) locY, (int) locZ).isLiquid() && !world.getMaterial((int) locX, (int) (locY + 1.), (int) locZ).isSolid())
+-        {
+         super.l_();
+         if (!world.getMaterial((int) locX, (int) locY, (int) locZ).isLiquid() && !world.getMaterial((int) locX, (int) (locY + 1.), (int) locZ).isSolid())
          {
--            super.l_();
--            if (!world.getMaterial((int) locX, (int) locY, (int) locZ).isLiquid() && !world.getMaterial((int) locX, (int) (locY + 1.), (int) locZ).isSolid())
--            {
--                this.locY += 0.65;
--            }
--        }
+             this.locY += 0.65;
+         }
+     }
 -        catch (Exception e)
 -        {
 -            e.printStackTrace();
-+            this.locY += 0.65;
-         }
-     }
+-        }
+-    }
  }
 \ No newline at end of file

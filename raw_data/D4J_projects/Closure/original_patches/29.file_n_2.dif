@@ -2,38 +2,6 @@ diff --git a/src/com/google/javascript/jscomp/InlineObjectLiterals.java b/src/co
 index 8c3159d6..62ff35dd 100644
 --- a/src/com/google/javascript/jscomp/InlineObjectLiterals.java
 +++ b/src/com/google/javascript/jscomp/InlineObjectLiterals.java
-@@ -86,22 +86,22 @@ class InlineObjectLiterals implements CompilerPass {
-         Var v = it.next();
- 
-         if (isVarInlineForbidden(v)) {
--          continue;
-+            continue;
-         }
- 
-         ReferenceCollection referenceInfo = referenceMap.getReferences(v);
- 
-         if (isInlinableObject(referenceInfo.references)) {
--          // Blacklist the object itself, as well as any other values
--          // that it refers to, since they will have been moved around.
--          staleVars.add(v);
-+            // Blacklist the object itself, as well as any other values
-+            // that it refers to, since they will have been moved around.
-+            staleVars.add(v);
- 
--          Reference declaration = referenceInfo.references.get(0);
--          Reference init = referenceInfo.getInitializingReference();
-+            Reference declaration = referenceInfo.references.get(0);
-+            Reference init = referenceInfo.getInitializingReference();
- 
--          // Split up the object into individual variables if the object
--          // is never referenced directly in full.
--          splitObject(v, declaration, init, referenceInfo);
-+            // Split up the object into individual variables if the object
-+            // is never referenced directly in full.
-+            splitObject(v, declaration, init, referenceInfo);
-         }
-       }
-     }
 @@ -154,7 +154,6 @@ class InlineObjectLiterals implements CompilerPass {
       */
      private boolean isInlinableObject(List<Reference> refs) {

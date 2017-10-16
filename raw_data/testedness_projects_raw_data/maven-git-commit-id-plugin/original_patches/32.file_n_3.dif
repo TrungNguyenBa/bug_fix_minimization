@@ -26,7 +26,7 @@ index af78910..e06600b 100644
  import java.io.*;
  
  
-@@ -30,12 +40,12 @@ public class NativeGitProvider extends GitDataProvider {
+@@ -30,7 +40,7 @@ public class NativeGitProvider extends GitDataProvider {
      return new NativeGitProvider(dotGitDirectory);
    }
  
@@ -35,12 +35,6 @@ index af78910..e06600b 100644
      this.dotGitDirectory = dotGitDirectory;
    }
  
- 
--  @NotNull
-+ @NotNull
-   public NativeGitProvider withLoggerBridge(LoggerBridge bridge) {
-     super.loggerBridge = bridge;
-     return this;
 @@ -63,14 +73,14 @@ public class NativeGitProvider extends GitDataProvider {
      return this;
    }
@@ -106,9 +100,8 @@ index af78910..e06600b 100644
        return "";
      }
    }
--
+   
 -  private String getArgumentsForGitDescribeAndDescibeNotNull(GitDescribeConfig gitDescribe) {
-+  
 +  private String getArgumentsForGitDescribeAndDescibeNotNull(GitDescribeConfig gitDescribe){
      StringBuilder argumentsForGitDescribe = new StringBuilder();
  
@@ -175,9 +168,8 @@ index af78910..e06600b 100644
  
    @Override
 -  protected String getCommitMessageFull() {
--    return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%B\"");
 +  protected String getCommitMessageFull(){
-+     return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%B\"");
+      return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%B\"");
    }
  
    @Override
@@ -221,8 +213,7 @@ index af78910..e06600b 100644
 +          if (splited.length != REMOTE_COLS) {
 +            throw new MojoExecutionException("Unsupported GIT output - verbose remote address:" + line);
            }
--          remoteUrl = splited[1];
-+          remoteUrl =  splited[1];
+           remoteUrl =  splited[1];
          }
        }
 -    } catch (Exception e) {
@@ -259,10 +250,3 @@ index af78910..e06600b 100644
            throw new IOException(message);
          }
          output = commandResult.toString();
-@@ -284,5 +291,5 @@ public class NativeGitProvider extends GitDataProvider {
-       }
-       return output;
-     }
--  }
-+  } 
- }

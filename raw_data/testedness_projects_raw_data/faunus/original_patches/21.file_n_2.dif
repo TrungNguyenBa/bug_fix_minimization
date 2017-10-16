@@ -80,27 +80,6 @@ index 296c5e17..bd5d69b4 100755
 -              if(name == "M_x_box") {
 -                Average<double> M_x_boxt(average,sqsum,cnt);
 -                M_x_box = M_x_box + M_x_boxt;
--              }
--              if(name == "M_y_box") {
--                Average<double> M_y_boxt(average,sqsum,cnt);
--                M_y_box = M_y_box + M_y_boxt;
--              }
--              if(name == "M_z_box") {
--                Average<double> M_z_boxt(average,sqsum,cnt);
--                M_z_box = M_z_box + M_z_boxt;
--              }
--              if(name == "M2") {
--                Average<double> M2t(average,sqsum,cnt);
--                M2 = M2 + M2t;
--              }
--              if(name == "M2_box") {
--                Average<double> M2_boxt(average,sqsum,cnt);
--                M2_box = M2_box + M2_boxt;
--              }
--              if(name == "diel_std") {
--                Average<double> diel_stdt(average,sqsum,cnt);
--                diel_std = diel_std + diel_stdt;
--              }
 +              f >> name >> cnt >> average;
 +              if(name == "M_x")
 +                M_x.load(cnt,average);
@@ -121,8 +100,29 @@ index 296c5e17..bd5d69b4 100755
 +              if(name == "diel_std")
 +                diel_std.load(cnt,average);
              }
--            
+-              if(name == "M_y_box") {
+-                Average<double> M_y_boxt(average,sqsum,cnt);
+-                M_y_box = M_y_box + M_y_boxt;
            }
+-              if(name == "M_z_box") {
+-                Average<double> M_z_boxt(average,sqsum,cnt);
+-                M_z_box = M_z_box + M_z_boxt;
+-              }
+-              if(name == "M2") {
+-                Average<double> M2t(average,sqsum,cnt);
+-                M2 = M2 + M2t;
+-              }
+-              if(name == "M2_box") {
+-                Average<double> M2_boxt(average,sqsum,cnt);
+-                M2_box = M2_box + M2_boxt;
+-              }
+-              if(name == "diel_std") {
+-                Average<double> diel_stdt(average,sqsum,cnt);
+-                diel_std = diel_std + diel_stdt;
+-              }
+-            }
+-            
+-          }
 -          
          }
  

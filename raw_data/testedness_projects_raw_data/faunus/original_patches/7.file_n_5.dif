@@ -47,13 +47,13 @@ index 37a48d3d..edf53f3a 100644
  
      /** 
       * @brief Calculate mass center of cluster of particles in unbounded environment 
--     * 
++     * DOI:10.1080/2151237X.2008.10129266
+      *
 -     * @param geo Geometry to use
 -     * @param p Particle vector
 -     * @param g Molecular group
 -     * @param str Component(s) of the c-o-m to be calculated
-+     * DOI:10.1080/2151237X.2008.10129266
-      *
+-     *
 -     * [More info](http://dx.doi.org/10.1080/2151237X.2008.10129266)
       */
      template<class Tgeo, class Tpvec, class TGroup>

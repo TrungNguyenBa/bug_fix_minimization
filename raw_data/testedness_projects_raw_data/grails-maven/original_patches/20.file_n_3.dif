@@ -23,8 +23,7 @@ index db434b8..dc0d245 100755
 +            testDependencies.addAll( getTestFiles() );
  
              ec.setProvidedDependencies(providedDependencies);
--            ec.setCompileDependencies(compileDependencies);
-+            ec.setCompileDependencies(compileDependencies);            
+             ec.setCompileDependencies(compileDependencies);            
              ec.setTestDependencies( new ArrayList<File>(testDependencies) );
 -            ec.setRuntimeDependencies( new ArrayList<File>(runtimeDependencies) );
 +            ec.setRuntimeDependencies(getRuntimeFiles());

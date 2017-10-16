@@ -2,15 +2,6 @@ diff --git a/src/main/resources/applicationContext.xml b/src/main/resources/appl
 index 8ffb7b5..351dd1e 100644
 --- a/src/main/resources/applicationContext.xml
 +++ b/src/main/resources/applicationContext.xml
-@@ -43,7 +43,7 @@
- 			</list>
- 		</property>
- 	</bean>
--
-+	
- 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
- 		<property name="dataSource" ref="dataSource" />
- 	</bean>
 @@ -109,14 +109,13 @@
  		<rabbit:listener queues="dropFilterQueue" ref="dropFilterQueueConsumer"/>
  	</rabbit:listener-container>

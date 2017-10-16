@@ -27,19 +27,3 @@ index c6ba906..cd05a79 100644
          long timeStamp = Log4jVersionChecker.getTimeStamp(event);
          Level level = event.getLevel();
  
-@@ -85,6 +83,7 @@ public class GelfMessageFactory {
- 
-             if(mdc != null) {
-                 for(Map.Entry<String, Object> entry : mdc.entrySet()) {
-+
-                     gelfMessage.addField(entry.getKey(), entry.getValue().toString());
-                 }
-             }
-@@ -93,6 +92,7 @@ public class GelfMessageFactory {
-             String ndc = event.getNDC();
- 
-             if(ndc != null) {
-+
-                 gelfMessage.addField(LOGGER_NDC, ndc);
-             }
-         }

@@ -2,7 +2,7 @@ diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKut
 index e03be9ed0..34b3dc1ca 100644
 --- a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
 +++ b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
-@@ -292,16 +292,8 @@ public abstract class EmbeddedRungeKuttaIntegrator
+@@ -292,15 +292,7 @@ public abstract class EmbeddedRungeKuttaIntegrator
            if (manager.evaluateStep(interpolator)) {
                final double dt = manager.getEventTime() - stepStart;
                if (Math.abs(dt) <= Math.ulp(stepStart)) {
@@ -15,9 +15,7 @@ index e03be9ed0..34b3dc1ca 100644
 -                  System.arraycopy(y, 0, yTmp, 0, y0.length);
 -                  hNew     = 0;
 -                  stepSize = 0;
--                  loop     = false;
 +                  // rejecting the step would lead to a too small next step, we accept it
-+                  loop = false;
+                   loop = false;
                } else {
                    // reject the step to match exactly the next switch time
-                   hNew = dt;

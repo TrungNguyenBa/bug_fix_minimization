@@ -12,22 +12,13 @@ index 711852ec..6b8c2e45 100644
 +        if (bufSize <= 0) {
              return EMPTY;
          }
--        
+ 
 -        StringBuilder buf = new StringBuilder(noOfItems * 16);
-+
 +        bufSize *= ((array[startIndex] == null ? 16 : array[startIndex].toString().length()) + 1);
 +        StringBuilder buf = new StringBuilder(bufSize);
  
          for (int i = startIndex; i < endIndex; i++) {
              if (i > startIndex) {
-@@ -3308,6 +3309,7 @@ public class StringUtils {
-         return buf.toString();
-     }
- 
-+
-     /**
-      * <p>Joins the elements of the provided array into a single String
-      * containing the provided list of elements.</p>
 @@ -3375,12 +3377,15 @@ public class StringUtils {
  
          // endIndex - startIndex > 0:   Len = NofStrings *(len(firstString) + len(separator))

@@ -9,11 +9,11 @@ index 5850b561..4caa6e20 100644
 -        DateTimeZone zone = DateTimeZone.getDefault();
 -        try {
 -            DateTimeZone.setDefault(DateTimeZone.forID("Europe/Paris"));
--            long length =
--                (4L + (3L * 7L) + (2L * 30L) + 365L) * DateTimeConstants.MILLIS_PER_DAY +
--                5L * DateTimeConstants.MILLIS_PER_HOUR +
--                6L * DateTimeConstants.MILLIS_PER_MINUTE +
--                7L * DateTimeConstants.MILLIS_PER_SECOND + 8L;
+         long length =
+             (4L + (3L * 7L) + (2L * 30L) + 365L) * DateTimeConstants.MILLIS_PER_DAY +
+             5L * DateTimeConstants.MILLIS_PER_HOUR +
+             6L * DateTimeConstants.MILLIS_PER_MINUTE +
+             7L * DateTimeConstants.MILLIS_PER_SECOND + 8L;
 -            Duration dur = new Duration(length);
 -            Period test = dur.toPeriod();
 -            assertEquals(0, test.getYears());  // (4 + (3 * 7) + (2 * 30) + 365) == 450
@@ -51,11 +51,6 @@ index 5850b561..4caa6e20 100644
 -        } finally {
 -            DateTimeZone.setDefault(zone);
 -        }
-+        long length =
-+            (4L + (3L * 7L) + (2L * 30L) + 365L) * DateTimeConstants.MILLIS_PER_DAY +
-+            5L * DateTimeConstants.MILLIS_PER_HOUR +
-+            6L * DateTimeConstants.MILLIS_PER_MINUTE +
-+            7L * DateTimeConstants.MILLIS_PER_SECOND + 8L;
 +        Duration test = new Duration(length);
 +        Period result = test.toPeriod();
 +        assertEquals(new Period(test), result);

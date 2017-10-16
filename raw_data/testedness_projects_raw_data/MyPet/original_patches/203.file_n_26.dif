@@ -2,7 +2,7 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java 
 index b2c5879f..e5e91ce6 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java
-@@ -34,37 +34,6 @@ public class EntityMyGiant extends EntityMyPet
+@@ -34,30 +34,24 @@ public class EntityMyGiant extends EntityMyPet
          super(world, myPet);
      }
  
@@ -11,69 +11,80 @@ index b2c5879f..e5e91ce6 100644
 -     */
 -    @Override
 -    protected String getDeathSound()
--    {
++    public void setMyPet(MyPet myPet)
+     {
 -        return "mob.zombie.death";
 -    }
--
+ 
 -    /**
 -     * Returns the sound that is played when the MyPet get hurt
 -     */
 -    @Override
 -    protected String getHurtSound()
--    {
++        if (myPet != null)
+         {
 -        return "mob.zombie.hurt";
--    }
--
++            super.setMyPet(myPet);
++
++            this.height *= 6.0F;
++        }
+     }
+ 
 -    /**
 -     * Returns the default sound of the MyPet
 -     */
 -    protected String getLivingSound()
--    {
--        return !playIdleSound() ? null : "mob.zombie.say";
--    }
--
--    public void playStepSound()
--    {
--        makeSound("mob.zombie.step", 0.15F, 1.0F);
--    }
--
-     public void setMyPet(MyPet myPet)
++    public void setPathfinder()
      {
- 
-@@ -84,4 +53,35 @@ public class EntityMyGiant extends EntityMyPet
-             petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 8, 20));
-         }
+-        return !playIdleSound() ? null : "mob.zombie.say";
++        super.setPathfinder();
++        if (myPet.getDamage() > 0)
++        {
++            petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 8, 20));
++        }
      }
-+
-+    public void playStepSound()
-+    {
-+        makeSound("mob.zombie.step", 0.15F, 1.0F);
-+    }
-+
+ 
+     public void playStepSound()
+@@ -65,23 +59,29 @@ public class EntityMyGiant extends EntityMyPet
+         makeSound("mob.zombie.step", 0.15F, 1.0F);
+     }
+ 
+-    public void setMyPet(MyPet myPet)
 +    /**
 +     * Returns the sound that is played when the MyPet get hurt
 +     */
 +    @Override
 +    protected String getHurtSound()
-+    {
+     {
 +        return "mob.zombie.hurt";
 +    }
-+
+ 
+-        if (myPet != null)
 +    /**
 +     * Returns the sound that is played when the MyPet dies
 +     */
 +    @Override
 +    protected String getDeathSound()
-+    {
+     {
+-            super.setMyPet(myPet);
+-
+-            this.height *= 6.0F;
+-        }
 +        return "mob.zombie.death";
-+    }
-+
+     }
+ 
+-    public void setPathfinder()
+-    {
+-        super.setPathfinder();
+-        if (myPet.getDamage() > 0)
 +    /**
 +     * Returns the default sound of the MyPet
 +     */
 +    protected String getLivingSound()
-+    {
+     {
+-            petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 8, 20));
+-        }
 +        return !playIdleSound() ? null : "mob.zombie.say";
-+    }
+     }
  }
 \ No newline at end of file

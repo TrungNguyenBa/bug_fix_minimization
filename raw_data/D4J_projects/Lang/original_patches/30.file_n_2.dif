@@ -2,7 +2,7 @@ diff --git a/src/main/java/org/apache/commons/lang3/StringUtils.java b/src/main/
 index da86fdb1..c107e3a7 100644
 --- a/src/main/java/org/apache/commons/lang3/StringUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/StringUtils.java
-@@ -1372,22 +1372,11 @@ public class StringUtils {
+@@ -1372,25 +1372,14 @@ public class StringUtils {
          if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
              return INDEX_NOT_FOUND;
          }
@@ -22,12 +22,14 @@ index da86fdb1..c107e3a7 100644
 -                            return i;
 -                        }
 -                    } else {
--                        return i;
--                    }
-+                    return i;
+                     return i;
                  }
              }
          }
+-        }
+         return INDEX_NOT_FOUND;
+     }
+ 
 @@ -1448,24 +1437,21 @@ public class StringUtils {
       * <code>false</code> if no match or null input
       * @since 2.4
@@ -68,7 +70,7 @@ index da86fdb1..c107e3a7 100644
          if (searchChars == null) {
              return false;
          }
-@@ -1540,22 +1526,11 @@ public class StringUtils {
+@@ -1540,24 +1526,13 @@ public class StringUtils {
          if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
              return INDEX_NOT_FOUND;
          }
@@ -88,13 +90,14 @@ index da86fdb1..c107e3a7 100644
 -                            continue outer;
 -                        }
 -                    } else {
--                        continue outer;
--                    }
-+                    continue outer;
+                     continue outer;
                  }
              }
+-            }
              return i;
-@@ -1589,19 +1564,9 @@ public class StringUtils {
+         }
+         return INDEX_NOT_FOUND;
+@@ -1589,21 +1564,11 @@ public class StringUtils {
          if (isEmpty(str) || isEmpty(searchChars)) {
              return INDEX_NOT_FOUND;
          }
@@ -109,15 +112,16 @@ index da86fdb1..c107e3a7 100644
 -                }
 -            } else {
 -                if (!chFound) {
--                    return i;
--                }
 +        for (int i = 0; i < str.length(); i++) {
 +            if (searchChars.indexOf(str.charAt(i)) < 0) {
-+                return i;
+                 return i;
              }
          }
+-        }
          return INDEX_NOT_FOUND;
-@@ -1693,34 +1658,21 @@ public class StringUtils {
+     }
+ 
+@@ -1693,35 +1658,22 @@ public class StringUtils {
       * </pre>
       *
       * @param cs  the CharSequence to check, may be null
@@ -146,8 +150,10 @@ index da86fdb1..c107e3a7 100644
 -                    if (Character.isHighSurrogate(ch)) {
 -                        if (j == searchLast) {
 -                            // missing low surrogate, fine, like String.indexOf(String)
--                            return false;
--                        }
++            for (int j = 0; j < validSize; j++) {
++                if (invalidChars[j] == ch) {
+                     return false;
+                 }
 -                        if (i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
 -                            return false;
 -                        }
@@ -155,9 +161,7 @@ index da86fdb1..c107e3a7 100644
 -                        // ch is in the Basic Multilingual Plane
 -                        return false;
 -                    }
-+            for (int j = 0; j < validSize; j++) {
-+                if (invalidChars[j] == ch) {
-+                    return false;
-                 }
+-                }
              }
          }
+         return true;

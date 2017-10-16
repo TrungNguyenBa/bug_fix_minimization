@@ -2,29 +2,27 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGol
 index 5043a699..cce0ca27 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
-@@ -99,20 +99,12 @@ public class EntityMyIronGolem extends EntityMyPet
+@@ -99,21 +99,13 @@ public class EntityMyIronGolem extends EntityMyPet
  
      public boolean attack(Entity entity)
      {
 -        boolean flag = false;
 -        try
-+        this.world.broadcastEntityEffect(this, (byte) 4);
-+        boolean flag = super.attack(entity);
-+        if (CAN_THROW_UP && flag)
-         {
--            this.world.broadcastEntityEffect(this, (byte) 4);
+-        {
+         this.world.broadcastEntityEffect(this, (byte) 4);
 -            flag = super.attack(entity);
--            if (CAN_THROW_UP && flag)
--            {
--                entity.motY += 0.4000000059604645D;
--                this.world.makeSound(this, "mob.irongolem.throw", 1.0F, 1.0F);
--            }
++        boolean flag = super.attack(entity);
+         if (CAN_THROW_UP && flag)
+         {
+             entity.motY += 0.4000000059604645D;
+             this.world.makeSound(this, "mob.irongolem.throw", 1.0F, 1.0F);
+         }
 -        }
 -        catch (Exception e)
 -        {
 -            e.printStackTrace();
-+            entity.motY += 0.4000000059604645D;
-+            this.world.makeSound(this, "mob.irongolem.throw", 1.0F, 1.0F);
-         }
+-        }
          return flag;
      }
+ }
+\ No newline at end of file

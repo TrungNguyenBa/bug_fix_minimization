@@ -12,7 +12,7 @@ index b9413e85..9011bffa 100644
 +                                                            array1.length + array2.length);
          System.arraycopy(array1, 0, joinedArray, 0, array1.length);
 -        try {
--            System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
+         System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
 -        } catch (ArrayStoreException ase) {
 -            // Check if problem is incompatible types
 -            final Class<?> type2 = array2.getClass().getComponentType();
@@ -21,7 +21,6 @@ index b9413e85..9011bffa 100644
 -            }
 -            throw ase; // No, so rethrow original
 -        }
-+        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
          return joinedArray;
      }
  

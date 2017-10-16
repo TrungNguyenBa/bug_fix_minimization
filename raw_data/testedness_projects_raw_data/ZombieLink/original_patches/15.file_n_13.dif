@@ -24,9 +24,7 @@ index 12537f9..392ea32 100644
  	@Request(path = "/subpathwithparams")
 -	public String subpathWithParams(@QueryParam("firstName") String firstName, 
 -									@QueryParam("lastName") String lastName);
-+	public String subpathWithParams(@Param("firstName") String firstName, 
-+									@Param("lastName") String lastName);
- 	
+-	
 -//	TODO write fresh tests for RESTful requests
 -//	
 -//	/**
@@ -51,6 +49,9 @@ index 12537f9..392ea32 100644
 -//	 */
 -//	@Request(path = "/restfulsubpathwithparam/:id")
 -//	public String restfulSubpathWithParam(@PathParam("id") String id);
++	public String subpathWithParams(@Param("firstName") String firstName, 
++									@Param("lastName") String lastName);
++	
 +	/**
 +	 * <p>Sends a RESTful request with a subpath.
 +	 * 

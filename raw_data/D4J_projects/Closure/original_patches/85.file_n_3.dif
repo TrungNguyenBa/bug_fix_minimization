@@ -11,15 +11,13 @@ index f79beebb..68079253 100644
 -    test("switch (a) { case 'a': break; case 'b': case 'c': }",
           "switch (a) { case 'a': case 'b': case 'c': }");
 -
--    test("function foo() {" +
--      "  switch (a) { case 'a':return; case 'b':return; case 'c':return }}",
--      "function foo() { switch (a) { case 'a':return; case 'b': case 'c': }}");
      test("function foo() {" +
+          "  switch (a) { case 'a':return; case 'b':return; case 'c':return }}",
+-      "function foo() { switch (a) { case 'a':return; case 'b': case 'c': }}");
+-    test("function foo() {" +
 -      "  switch (a) { case 'a':return; case 'b': case 'c': }}",
--      "function foo() { switch (a) { case 'a': case 'b': case 'c': }}");
+          "function foo() { switch (a) { case 'a': case 'b': case 'c': }}");
 -
-+         "  switch (a) { case 'a':return; case 'b':return; case 'c':return }}",
-+         "function foo() { switch (a) { case 'a': case 'b': case 'c': }}");
      testSame("function foo() {" +
               "switch (a) { case 'a':return 2; case 'b':return 1}}");
    }

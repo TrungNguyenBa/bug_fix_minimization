@@ -1,0 +1,44 @@
+diff --git a/src/java/org/apache/commons/lang/builder/EqualsBuilder.java b/src/java/org/apache/commons/lang/builder/EqualsBuilder.java
+index 6901c8e5..afd16669 100644
+--- a/src/java/org/apache/commons/lang/builder/EqualsBuilder.java
++++ b/src/java/org/apache/commons/lang/builder/EqualsBuilder.java
+@@ -377,12 +377,8 @@ public class EqualsBuilder {
+         }
+         Class lhsClass = lhs.getClass();
+         if (!lhsClass.isArray()) {
+-            if (lhs instanceof java.math.BigDecimal) {
+-                isEquals = (((java.math.BigDecimal)lhs).compareTo(rhs) == 0);
+-            } else {
+             // The simple case, not an array, just test the element
+             isEquals = lhs.equals(rhs);
+-            }
+         } else if (lhs.getClass() != rhs.getClass()) {
+             // Here when we compare different dimensions, for example: a boolean[][] to a boolean[] 
+             this.setEquals(false);
+diff --git a/src/test/org/apache/commons/lang/builder/EqualsBuilderTest.java b/src/test/org/apache/commons/lang/builder/EqualsBuilderTest.java
+index 3455561f..57c64592 100644
+--- a/src/test/org/apache/commons/lang/builder/EqualsBuilderTest.java
++++ b/src/test/org/apache/commons/lang/builder/EqualsBuilderTest.java
+@@ -16,7 +16,6 @@
+  */
+ package org.apache.commons.lang.builder;
+ 
+-import java.math.BigDecimal;
+ import java.util.Arrays;
+ 
+ import junit.framework.Test;
+@@ -377,14 +376,6 @@ public class EqualsBuilderTest extends TestCase {
+         assertTrue(new EqualsBuilder().append(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY).isEquals());
+     }
+ 
+-    // https://issues.apache.org/jira/browse/LANG-393
+-    public void testBigDecimal() {
+-        BigDecimal o1 = new BigDecimal("2.0");
+-        BigDecimal o2 = new BigDecimal("2.00");
+-        assertTrue(new EqualsBuilder().append(o1, o1).isEquals());
+-        assertTrue(new EqualsBuilder().append(o1, o2).isEquals());
+-    }
+-
+     public void testAccessors() {
+         EqualsBuilder equalsBuilder = new EqualsBuilder();
+         assertTrue(equalsBuilder.isEquals());

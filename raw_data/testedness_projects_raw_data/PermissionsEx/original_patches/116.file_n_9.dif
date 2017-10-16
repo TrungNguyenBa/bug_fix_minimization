@@ -2,7 +2,7 @@ diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
 index 0c97175..3bb2783 100644
 --- a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
 +++ b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
-@@ -23,30 +23,24 @@ import ru.tehkode.permissions.PermissionsGroupData;
+@@ -23,17 +23,12 @@ import ru.tehkode.permissions.PermissionsGroupData;
  import ru.tehkode.permissions.PermissionsUserData;
  import ru.tehkode.permissions.backends.PermissionBackend;
  import ru.tehkode.permissions.PermissionManager;
@@ -20,9 +20,7 @@ index 0c97175..3bb2783 100644
  
  /**
   * @author code
-  */
- public class FileBackend extends PermissionBackend {
-+
+@@ -42,11 +38,9 @@ public class FileBackend extends PermissionBackend {
  	public final static char PATH_SEPARATOR = '/';
  	public FileConfig permissions;
  	public File permissionsFile;

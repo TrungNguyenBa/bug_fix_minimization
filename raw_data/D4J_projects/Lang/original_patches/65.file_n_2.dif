@@ -54,14 +54,14 @@ index 79c13f0a..f042237a 100644
          boolean roundUp = false;
          for (int i = 0; i < fields.length; i++) {
              for (int j = 0; j < fields[i].length; j++) {
-@@ -734,9 +689,7 @@ public class DateUtils {
+@@ -734,10 +689,8 @@ public class DateUtils {
                  roundUp = offset > ((max - min) / 2);
              }
              //We need to remove this field
 -            if (offset != 0) {
--                val.set(fields[i][0], val.get(fields[i][0]) - offset);
--            }
-+            val.set(fields[i][0], val.get(fields[i][0]) - offset);
+             val.set(fields[i][0], val.get(fields[i][0]) - offset);
          }
+-        }
          throw new IllegalArgumentException("The field " + field + " is not supported");
  
+     }

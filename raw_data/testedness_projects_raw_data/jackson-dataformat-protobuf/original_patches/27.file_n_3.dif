@@ -67,13 +67,10 @@ index f203bc7..c8d66fe 100644
      }
  
      @Override
-@@ -94,27 +61,6 @@ public class ProtobufFactory extends JsonFactory
-     public Version version() {
-         return PackageVersion.VERSION;
-     }
--    
--    /*
--    /**********************************************************
+@@ -97,261 +64,36 @@ public class ProtobufFactory extends JsonFactory
+ 
+     /*
+     /**********************************************************
 -    /* Format detection functionality
 -    /**********************************************************
 -     */
@@ -92,10 +89,10 @@ index f203bc7..c8d66fe 100644
 -        // TODO, if possible... probably isn't?
 -        return MatchStrength.INCONCLUSIVE;
 -    }
- 
-     /*
-     /**********************************************************
-@@ -122,236 +68,32 @@ public class ProtobufFactory extends JsonFactory
+-
+-    /*
+-    /**********************************************************
+     /* Capability introspection
      /**********************************************************
       */
  
@@ -111,9 +108,9 @@ index f203bc7..c8d66fe 100644
 -    public boolean canHandleBinaryNatively() {
          return true;
      }
--
--    /*
--    /**********************************************************
+     
+     /*
+     /**********************************************************
 -    /* Configuration, parser settings
 -    /**********************************************************
 -     */
@@ -235,15 +232,13 @@ index f203bc7..c8d66fe 100644
 -        return _createParser(data, offset, len, _createContext(data, true));
 -    }
 -
-+    
-     /*
-     /**********************************************************
+-    /*
+-    /**********************************************************
 -    /* Overridden generator factory methods
 +    /* Format detection functionality
      /**********************************************************
       */
--
-+    
+     
      @Override
 -    public ProtobufGenerator createGenerator(OutputStream out, JsonEncoding enc) throws IOException {
 -        IOContext ctxt = _createContext(out, false);
@@ -255,8 +250,7 @@ index f203bc7..c8d66fe 100644
 +    {
 +        return ProtobufSchema.FORMAT_NAME_PROTOBUF;
      }
--
-+    
+     
      /**
 -     * Method for constructing {@link JsonGenerator} for generating
 -     * CBOR-encoded output.
@@ -279,7 +273,7 @@ index f203bc7..c8d66fe 100644
 +     * Sub-classes need to override this method
       */
 -
--    @Override
+     @Override
 -    protected IOContext _createContext(Object srcRef, boolean resourceManaged) {
 -        return super._createContext(srcRef, resourceManaged);
 -    }
@@ -303,7 +297,7 @@ index f203bc7..c8d66fe 100644
 -        return _nonByteSource();
 -    }
 -
-     @Override
+-    @Override
 -    protected ProtobufParser _createParser(byte[] data, int offset, int len, IOContext ctxt) throws IOException
 -    {
 -        return new ProtobufParser(ctxt, _parserFeatures, _formatParserFeatures,

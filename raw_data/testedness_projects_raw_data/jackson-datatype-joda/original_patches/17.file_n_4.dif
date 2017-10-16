@@ -26,10 +26,9 @@ index f61d510..bc70a9a 100644
          JsonProcessingException
      {
 -        if (provider.isEnabled(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)) {
--            jgen.writeNumber(value.getMillis());
+         jgen.writeNumber(value.getMillis());
 -        } else {
 -            jgen.writeString(value.toString());
 -        }
-+        jgen.writeNumber(value.getMillis());
      }
  }

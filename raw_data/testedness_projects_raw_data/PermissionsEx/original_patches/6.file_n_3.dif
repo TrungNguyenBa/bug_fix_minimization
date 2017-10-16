@@ -2,14 +2,6 @@ diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backen
 index ea507cc..81c7bbf 100644
 --- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/ConversionUtils.java
 +++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/ConversionUtils.java
-@@ -26,7 +26,6 @@ import java.util.regex.Pattern;
- 
- public class ConversionUtils {
-     private static final Pattern MATCHER_GROUP_PATTERN = Pattern.compile("\\((.*?)\\)");
--
-     public static String convertLegacyPermission(String permission) {
-         final StringBuffer ret = new StringBuffer();
-         Matcher matcher = MATCHER_GROUP_PATTERN.matcher(permission); // Convert regex multimatches to shell globs
 @@ -40,21 +39,19 @@ public class ConversionUtils {
          return ret.toString();
      }

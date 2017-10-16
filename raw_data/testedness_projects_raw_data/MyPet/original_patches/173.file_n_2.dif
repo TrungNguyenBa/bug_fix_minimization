@@ -9,13 +9,13 @@ index 4af9de5d..caa3b244 100644
 -            Entity damager = event.getDamager();
 -
 -            if (damager instanceof Projectile)
-+            if (event.getDamager() instanceof Player)
-             {
+-            {
 -                damager = ((Projectile) damager).getShooter();
 -            }
 -
 -            if (damager instanceof Player)
--            {
++            if (event.getDamager() instanceof Player)
+             {
 -                Player player = (Player) damager;
 -                if (player.getItemInHand().getTypeId() == Configuration.LEASH_ITEM && damagedEntity instanceof CraftMyPet)
 +                Player damager = (Player) event.getDamager();

@@ -14,22 +14,20 @@ index 6ec31e0f..5017c623 100644
      public void upgrade(ISkillInfo upgrade, boolean quiet)
      {
          if (upgrade instanceof BehaviorInfo)
-@@ -244,14 +239,11 @@ public class Behavior extends BehaviorInfo implements ISkillInstance, IScheduler
+@@ -244,8 +239,6 @@ public class Behavior extends BehaviorInfo implements ISkillInstance, IScheduler
      {
          if (active)
          {
 -            if (behaviorActive.get(behaviorState))
-+            behavior = behaviorState;
-+            myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_BehaviorState")).replace("%petname%", myPet.petName).replace("%mode%", MyPetLanguage.getString("Name_" + behavior.name())));
-+            if (behavior == BehaviorState.Friendly)
-             {
--                behavior = behaviorState;
--                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_BehaviorState")).replace("%petname%", myPet.petName).replace("%mode%", MyPetLanguage.getString("Name_" + behavior.name())));
--                if (behavior == BehaviorState.Friendly)
--                {
--                    myPet.getCraftPet().getHandle().setGoalTarget(null);
--                }
-+                myPet.getCraftPet().getHandle().setGoalTarget(null);
+-            {
+             behavior = behaviorState;
+             myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_BehaviorState")).replace("%petname%", myPet.petName).replace("%mode%", MyPetLanguage.getString("Name_" + behavior.name())));
+             if (behavior == BehaviorState.Friendly)
+@@ -253,7 +246,6 @@ public class Behavior extends BehaviorInfo implements ISkillInstance, IScheduler
+                 myPet.getCraftPet().getHandle().setGoalTarget(null);
              }
          }
+-        }
          else
+         {
+             myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_NoSkill")).replace("%petname%", myPet.petName).replace("%skill%", this.getName()));

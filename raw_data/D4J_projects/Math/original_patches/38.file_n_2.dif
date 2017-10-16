@@ -34,27 +34,20 @@ index ba3fe26cb..e31b15621 100644
 +}
  
 -    /**
--     * Marker for code paths that are not explored with the current unit tests.
--     * If the path becomes explored, it should just be removed from the code.
--     */
--    private static class PathIsExploredException extends RuntimeException {
--        private static final long serialVersionUID = 745350979634801853L;
 +/**
-+ * Marker for code paths that are not explored with the current unit tests.
-+ * If the path becomes explored, it should just be removed from the code.
-+ */
+  * Marker for code paths that are not explored with the current unit tests.
+  * If the path becomes explored, it should just be removed from the code.
+  */
+-    private static class PathIsExploredException extends RuntimeException {
 +class PathIsExploredException extends RuntimeException {
-+    private static final long serialVersionUID = 745350979634801853L;
+     private static final long serialVersionUID = 745350979634801853L;
  
--        private static final String PATH_IS_EXPLORED
--            = "If this exception is thrown, just remove it from the code";
-+    private static final String PATH_IS_EXPLORED
-+        = "If this exception is thrown, just remove it from the code";
+     private static final String PATH_IS_EXPLORED
+         = "If this exception is thrown, just remove it from the code";
  
--        PathIsExploredException() {
+     PathIsExploredException() {
 -            super(PATH_IS_EXPLORED + " " + BOBYQAOptimizer.caller(3));
 -        }
-+    PathIsExploredException() {
 +        super(PATH_IS_EXPLORED);
      }
  }

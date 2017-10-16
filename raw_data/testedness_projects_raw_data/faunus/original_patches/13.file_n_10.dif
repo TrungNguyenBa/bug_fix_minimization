@@ -11,23 +11,15 @@ index 69ec37e2..835eb839 100644
  using namespace Faunus::Move;
  using namespace Faunus::Potential;
  
--typedef Space<Geometry::Cuboid,DipoleParticle> Tspace;
+ typedef Space<Geometry::Cuboid,DipoleParticle> Tspace; 
 -typedef CombinedPairPotential<LennardJonesLB,MultipoleWolf<true,true,true,false>> Tpairpot;
 -//typedef CombinedPairPotential<LennardJonesLB,Coulomb> Tpairpot1;
 -//typedef CombinedPairPotential<Tpairpot1,IonDipole> Tpairpot2;
 -//typedef CombinedPairPotential<Tpairpot2,DipoleDipole> Tpairpot;
--
--//typedef CombinedPairPotential<LennardJonesLB,IonIonGaussianDamping> Tpairpot1;
--//typedef CombinedPairPotential<Tpairpot1,IonDipoleGaussianDamping> Tpairpot2;
--//typedef CombinedPairPotential<Tpairpot2,DipoleDipoleGaussianDamping> Tpairpot;
-+typedef Space<Geometry::Cuboid,DipoleParticle> Tspace; 
 +typedef DipoleDipoleWolf TpairDDW;
 +typedef LennardJones TpairLJ;
 +typedef CombinedPairPotential<TpairLJ,TpairDDW> Tpair;
- 
--int main() {
--  InputMap mcp("water2.input");//read input file
--  slp_global.seed(mcp.get<int>("seed", -7));
++
 +#ifdef POLARIZE
 +typedef Move::PolarizeMove<AtomicTranslation<Tspace> > TmoveTran; 
 +typedef Move::PolarizeMove<AtomicRotation<Tspace> > TmoveRot;
@@ -35,25 +27,8 @@ index 69ec37e2..835eb839 100644
 +typedef Move::AtomicTranslation<Tspace> TmoveTran;   
 +typedef Move::AtomicRotation<Tspace> TmoveRot;
 +#endif
- 
--  // Energy functions and space
--  auto pot = Energy::NonbondedVector<Tspace,Tpairpot>(mcp)
--    + Energy::ExternalPressure<Tspace>(mcp);
--  Tspace spc(mcp);
- 
--  // Load and add polymer to Space
--  auto N    = mcp.get<int>("mol_N",1);
--  auto file = mcp.get<string>("mol_file");
--  vector<Group> water(N);
--  Tspace::ParticleVector v;                   // temporary, empty particle vector
--  FormatAAM::load(file,v);                    // load AAM structure into v
--  for (auto &i : water) {
--    Geometry::FindSpace f;
--    f.allowMatterOverlap=true;
--    f.find(spc.geo,spc.p,v);// find empty spot in particle vector
--    i = spc.insert(v);                          // Insert into Space
--    i.name="h2o";
--    spc.enroll(i);
++
++
 +template<class Tpairpot, class Tid>
 +bool savePotential(Tpairpot pot, TmoveRot rot, Tid ida, Tid idb, string file) {
 +  std::ofstream f(file.c_str());
@@ -69,28 +44,20 @@ index 69ec37e2..835eb839 100644
 +        << pot(a,b,Point(r,0,0)) << endl;
 +    }
 +    return true;
-   }
++  }
 +  return false;
 +}
  
--  // Markov moves and analysis
--  Move::PolarizeMove<TranslateRotate<Tspace> >  gmv(mcp,pot,spc);
--  //Move::TranslateRotate<Tspace> gmv(mcp,pot,spc);
--  Move::Isobaric<Tspace> iso(mcp,pot,spc);
+-//typedef CombinedPairPotential<LennardJonesLB,IonIonGaussianDamping> Tpairpot1;
+-//typedef CombinedPairPotential<Tpairpot1,IonDipoleGaussianDamping> Tpairpot2;
+-//typedef CombinedPairPotential<Tpairpot2,DipoleDipoleGaussianDamping> Tpairpot;
 +template<class Tpairpot, class Tid>
 +void getKeesomDD(Tpairpot pot, TmoveRot rot, Tid ida, Tid idb, string file) {
 +  std::ofstream f(file.c_str());
 +  DipoleParticle a,b;
 +  a=atom[ida];
 +  b=atom[idb];
-   
--  Analysis::RadialDistribution<> rdfOO(0.05);
--  Analysis::RadialDistribution<> rdfOH(0.05);
--  Analysis::RadialDistribution<> rdfHH(0.05);
--
--  spc.load("state"); // load old config. from disk (if any)
--  Analysis::DipoleAnalysis dian(spc,mcp);
--  dian.load(mcp.get<string>("dipole_data_ext", ""));
++  
 +  double stepA = 0.1;
 +  double stepR = 0.05;
 +  double sum_t = 0.0;
@@ -120,6 +87,43 @@ index 69ec37e2..835eb839 100644
 +  }
 +}
  
+-int main() {
+-  InputMap mcp("water2.input");//read input file
+-  slp_global.seed(mcp.get<int>("seed", -7));
+-
+-  // Energy functions and space
+-  auto pot = Energy::NonbondedVector<Tspace,Tpairpot>(mcp)
+-    + Energy::ExternalPressure<Tspace>(mcp);
+-  Tspace spc(mcp);
+-
+-  // Load and add polymer to Space
+-  auto N    = mcp.get<int>("mol_N",1);
+-  auto file = mcp.get<string>("mol_file");
+-  vector<Group> water(N);
+-  Tspace::ParticleVector v;                   // temporary, empty particle vector
+-  FormatAAM::load(file,v);                    // load AAM structure into v
+-  for (auto &i : water) {
+-    Geometry::FindSpace f;
+-    f.allowMatterOverlap=true;
+-    f.find(spc.geo,spc.p,v);// find empty spot in particle vector
+-    i = spc.insert(v);                          // Insert into Space
+-    i.name="h2o";
+-    spc.enroll(i);
+-  }
+-
+-  // Markov moves and analysis
+-  Move::PolarizeMove<TranslateRotate<Tspace> >  gmv(mcp,pot,spc);
+-  //Move::TranslateRotate<Tspace> gmv(mcp,pot,spc);
+-  Move::Isobaric<Tspace> iso(mcp,pot,spc);
+-  
+-  Analysis::RadialDistribution<> rdfOO(0.05);
+-  Analysis::RadialDistribution<> rdfOH(0.05);
+-  Analysis::RadialDistribution<> rdfHH(0.05);
+-
+-  spc.load("state"); // load old config. from disk (if any)
+-  Analysis::DipoleAnalysis dian(spc,mcp);
+-  dian.load(mcp.get<string>("dipole_data_ext", ""));
+-
 -  FormatPQR::save("initial.pqr", spc.p);
 +template<class Tpairpot, class Tid>
 +void getKeesomIQ(Tpairpot pot, TmoveRot rot, Tid ida, Tid idb, string file) {
@@ -156,14 +160,13 @@ index 69ec37e2..835eb839 100644
 +  }
 +}
  
--  EnergyDrift sys;   // class for tracking system energy drifts
--  sys.init( Energy::systemEnergy(spc,pot,spc.p)  ); // store total energy
 +int runSim(string name) {
 +  InputMap in(name);               // open parameter file for user input
 +  Energy::NonbondedVector<Tspace,Tpair> pot(in); // non-bonded only
 +  Energy::NonbondedVector<Tspace,TpairDDW> potDDW(in);
 +  Energy::NonbondedVector<Tspace,TpairLJ> potLJ(in);
-+  EnergyDrift sys;                               // class for tracking system energy drifts
+   EnergyDrift sys;                               // class for tracking system energy drifts
+-  sys.init( Energy::systemEnergy(spc,pot,spc.p)  ); // store total energy
 +  Tspace spc(in);                // create simulation space, particles etc.
 +  Group sol;
 +  sol.addParticles(spc, in);                     // group for particles
@@ -181,8 +184,7 @@ index 69ec37e2..835eb839 100644
 +  Average<double> EnergyLJ;
 +  FormatXTC xtc(spc.geo.len.norm());
 +  DipoleWRL sdp;
- 
--  cout << atom.info() + spc.info() + pot.info() + textio::header("MC Simulation Begins!");
++
 +  savePotential(TpairDDW(in),rot, atom["sol"].id, atom["sol"].id, "pot_dipdip.dat");
 +  //getKeesomIQ(TpairIQ(in),rot, atom["sol"].id, atom["ch"].id, "keesom_IQ.dat");
 +  //getKeesomDD(TpairDD(in),rot, atom["sol"].id, atom["sol"].id, "keesom_DD.dat");
@@ -198,9 +200,10 @@ index 69ec37e2..835eb839 100644
 +  EnergyDDW += DDW;
 +  EnergyLJ += LJ;
  
+-  cout << atom.info() + spc.info() + pot.info() + textio::header("MC Simulation Begins!");
+-
 -  MCLoop loop(mcp);            // class for handling mc loops
--  while ( loop.macroCnt() ) {  // Markov chain 
-+  while ( loop.macroCnt() ) {                         // Markov chain 
+   while ( loop.macroCnt() ) {                         // Markov chain 
      while ( loop.microCnt() ) {
 -      int i=slp_global.rand() % 2;
 -      int j,k=water.size();
@@ -216,10 +219,6 @@ index 69ec37e2..835eb839 100644
 -        case 1:
 -          sys+=iso.move();
 -          break;
--      }
--      dian.sampleDP(spc);
--      // sample oxygen-oxygen rdf
--      if (slp_global()>0.5) {
 +      if (slp_global() > 0.5)
 +        sys+=trans.move( sol.size() );                // translate
 +      else
@@ -232,14 +231,19 @@ index 69ec37e2..835eb839 100644
 +        ELJ.push_back(LJ);
 +        EnergyDDW += DDW;
 +        EnergyLJ += LJ;
-         dian.sampleMuCorrelationAndKirkwood(spc);
++        dian.sampleMuCorrelationAndKirkwood(spc);
++        xtc.save(textio::prefix+"xtcout.xtc", spc.p); 
+       }
+       dian.sampleDP(spc);
+-      // sample oxygen-oxygen rdf
+-      if (slp_global()>0.5) {
+-        dian.sampleMuCorrelationAndKirkwood(spc);
 -        auto idO = atom["OW"].id;
 -        auto idH = atom["HW"].id;
 -        rdfOO.sample(spc,idO,idO);
 -        rdfOH.sample(spc,idO,idH);
 -        rdfHH.sample(spc,idH,idH);
-+        xtc.save(textio::prefix+"xtcout.xtc", spc.p); 
-       }
+-      }
 -    } // end of micro loop
 -    //rdfOO.save("rdfOO.dat"+std::to_string(loop.count()));
 -    //rdfOH.save("rdfOH.dat"+std::to_string(loop.count()));
@@ -256,7 +260,6 @@ index 69ec37e2..835eb839 100644
 -  rdfOH.save("rdfOH.dat");
 -  rdfHH.save("rdfHH.dat");
 -  spc.save("state");
-+      dian.sampleDP(spc);
 +    }
 +    // Tpair.pairpot.second.updateDiel(dian.getDielTinfoil());
 +    dian.save(std::to_string(loop.count()));

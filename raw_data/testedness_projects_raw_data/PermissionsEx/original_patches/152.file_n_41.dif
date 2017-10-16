@@ -2,7 +2,7 @@ diff --git a/src/main/java/ru/tehkode/permissions/commands/CommandListener.java 
 index d85747f..d5f76d8 100644
 --- a/src/main/java/ru/tehkode/permissions/commands/CommandListener.java
 +++ b/src/main/java/ru/tehkode/permissions/commands/CommandListener.java
-@@ -25,10 +25,11 @@
+@@ -25,6 +25,7 @@
  package ru.tehkode.permissions.commands;
  
  /**
@@ -10,8 +10,3 @@ index d85747f..d5f76d8 100644
   * @author code
   */
  public interface CommandListener {
- 
- 	public void onRegistered(CommandsManager manager);
--
-+    
- }

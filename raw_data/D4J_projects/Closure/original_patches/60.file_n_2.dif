@@ -20,10 +20,9 @@ index 43a296f0..7abdbae0 100644
 -
        case Token.VOID:
 -        if (!mayHaveSideEffects(n.getFirstChild())) {
--          return TernaryValue.FALSE;
+         return TernaryValue.FALSE;
 -        }
 -        break;
-+        return TernaryValue.FALSE;
  
        case Token.NAME:
          String name = n.getString();

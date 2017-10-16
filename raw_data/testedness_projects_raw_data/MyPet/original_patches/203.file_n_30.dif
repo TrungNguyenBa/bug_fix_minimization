@@ -11,7 +11,8 @@ index 7894c393..1b5a7b38 100644
 -     */
 -    @Override
 -    protected String getDeathSound()
--    {
++    public void setMyPet(MyPet myPet)
+     {
 -        return "mob.magmacube." + (getSize() > 1 ? "big" : "small");
 -    }
 -
@@ -20,12 +21,10 @@ index 7894c393..1b5a7b38 100644
 -     */
 -    @Override
 -    protected String getHurtSound()
-+    public void setMyPet(MyPet myPet)
-     {
++        if (myPet != null)
+         {
 -        return getDeathSound();
 -    }
-+        if (myPet != null)
-+        {
 +            super.setMyPet(myPet);
  
 -    /**

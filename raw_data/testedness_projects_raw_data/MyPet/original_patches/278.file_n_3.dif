@@ -23,7 +23,7 @@ index 63442c49..8f496cfe 100644
          int newHealth = livingEntity.getHealth() - damage;
  
          switch (MyPetPlayer.getMyPetPlayer(attacker).getCaptureHelperMode())
-@@ -20,31 +21,32 @@ public class MyPetCaptureHelper
+@@ -20,29 +21,29 @@ public class MyPetCaptureHelper
              case Deactivated:
                  return;
              case Normal:
@@ -38,8 +38,7 @@ index 63442c49..8f496cfe 100644
 -                    attacker.sendMessage(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_TameNow")));
 +                    attacker.sendMessage(MyPetBukkitUtil.setColors("%green% Tame now!"));
                  }
--                break;
-+            break;
+             break;
              case Half:
                  if (newHealth <= 2)
                  {
@@ -52,8 +51,7 @@ index 63442c49..8f496cfe 100644
 -                    attacker.sendMessage(newHealth + "/" + livingEntity.getMaxHealth() + " " + MyPetLanguage.getString("Name_HP"));
 +                    attacker.sendMessage(newHealth + "/" + livingEntity.getMaxHealth() + " HP");
                  }
--                break;
-+            break;
+             break;
              case TameableOnly:
 -                if (newHealth <= 2)
 +                if(newHealth <= 2)
@@ -61,11 +59,5 @@ index 63442c49..8f496cfe 100644
 -                    attacker.sendMessage(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_TameNow")));
 +                    attacker.sendMessage(MyPetBukkitUtil.setColors("%green% Tame now!"));
                  }
--                break;
-+            break;
+             break;
          }
-     }
--}
-\ No newline at end of file
-+
-+}

@@ -2,34 +2,32 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java b/src/ma
 index e0808a5c..b717c104 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java
-@@ -48,6 +48,20 @@ public class MyWolf extends MyPet implements IMyPetBaby
+@@ -48,61 +48,46 @@ public class MyWolf extends MyPet implements IMyPetBaby
          super(petOwner);
      }
  
+-    public DyeColor getCollarColor()
 +    public boolean isSitting()
-+    {
-+        return isSitting;
-+    }
-+
-+    public void setSitting(boolean flag)
-+    {
-+        if (status == PetState.Here)
-+        {
-+            ((EntityMyWolf) getCraftPet().getHandle()).setSitting(flag);
-+        }
-+        this.isSitting = flag;
-+    }
-+
-     public DyeColor getCollarColor()
      {
-         return collarColor;
-@@ -62,47 +76,18 @@ public class MyWolf extends MyPet implements IMyPetBaby
-         this.collarColor = value;
+-        return collarColor;
++        return isSitting;
+     }
+ 
+-    public void setCollarColor(DyeColor value)
++    public void setSitting(boolean flag)
+     {
+         if (status == PetState.Here)
+         {
+-            ((EntityMyWolf) getCraftPet().getHandle()).setCollarColor(value.getDyeData());
++            ((EntityMyWolf) getCraftPet().getHandle()).setSitting(flag);
+         }
+-        this.collarColor = value;
++        this.isSitting = flag;
      }
  
 -    @Override
 -    public CompoundTag getExtendedInfo()
-+    public boolean isTamed()
++    public DyeColor getCollarColor()
      {
 -        CompoundTag info = super.getExtendedInfo();
 -        info.getValue().put("Sitting", new ByteTag("Sitting", isSitting()));
@@ -38,36 +36,44 @@ index e0808a5c..b717c104 100644
 -        info.getValue().put("Angry", new ByteTag("Angry", isAngry()));
 -        info.getValue().put("CollarColor", new ByteTag("CollarColor", getCollarColor().getDyeData()));
 -        return info;
-+        return isTamed;
++        return collarColor;
      }
  
 -    @Override
 -    public void setExtendedInfo(CompoundTag info)
-+    public void setTamed(boolean flag)
++    public void setCollarColor(DyeColor value)
      {
 -        if (info.getValue().containsKey("Sitting"))
--        {
++        if (status == PetState.Here)
+         {
 -            setSitting(((ByteTag) info.getValue().get("Sitting")).getBooleanValue());
--        }
++            ((EntityMyWolf) getCraftPet().getHandle()).setCollarColor(value.getDyeData());
+         }
 -        if (info.getValue().containsKey("CollarColor"))
 -        {
 -            setCollarColor(DyeColor.getByDyeData(((ByteTag) info.getValue().get("CollarColor")).getValue()));
--        }
++        this.collarColor = value;
+     }
 -        if (info.getValue().containsKey("Tamed"))
--        {
++
++    public boolean isTamed()
+     {
 -            setTamed(((ByteTag) info.getValue().get("Tamed")).getBooleanValue());
--        }
++        return isTamed;
+     }
 -        if (info.getValue().containsKey("Baby"))
--        {
++
++    public void setTamed(boolean flag)
+     {
 -            setBaby(((ByteTag) info.getValue().get("Baby")).getBooleanValue());
 -        }
 -        if (info.getValue().containsKey("Angry"))
 +        if (status == PetState.Here)
          {
 -            setAngry(((ByteTag) info.getValue().get("Angry")).getBooleanValue());
+-        }
 +            ((EntityMyWolf) getCraftPet().getHandle()).setTamed(flag);
          }
--    }
 -
 -    @Override
 -    public MyPetType getPetType()
@@ -104,40 +110,37 @@ index e0808a5c..b717c104 100644
          {
 -            ((EntityMyWolf) getCraftPet().getHandle()).setSitting(flag);
 +            setSitting(((ByteTag) info.getValue().get("Sitting")).getBooleanValue());
-+        }
+         }
+-        this.isSitting = flag;
 +        if (info.getValue().containsKey("CollarColor"))
 +        {
 +            setCollarColor(DyeColor.getByDyeData(((ByteTag) info.getValue().get("CollarColor")).getValue()));
-+        }
+         }
+-
+-    public boolean isTamed()
 +        if (info.getValue().containsKey("Tamed"))
-+        {
+         {
+-        return isTamed;
 +            setTamed(((ByteTag) info.getValue().get("Tamed")).getBooleanValue());
-+        }
+         }
+-
+-    public void setTamed(boolean flag)
 +        if (info.getValue().containsKey("Baby"))
-+        {
+         {
+-        if (status == PetState.Here)
 +            setBaby(((ByteTag) info.getValue().get("Baby")).getBooleanValue());
 +        }
 +        if (info.getValue().containsKey("Angry"))
-+        {
+         {
+-            ((EntityMyWolf) getCraftPet().getHandle()).setTamed(flag);
 +            setAngry(((ByteTag) info.getValue().get("Angry")).getBooleanValue());
          }
--        this.isSitting = flag;
--    }
--
--    public boolean isTamed()
--    {
--        return isTamed;
-     }
- 
--    public void setTamed(boolean flag)
+-        this.isTamed = flag;
++    }
++
 +    @Override
 +    public MyPetType getPetType()
-     {
--        if (status == PetState.Here)
--        {
--            ((EntityMyWolf) getCraftPet().getHandle()).setTamed(flag);
--        }
--        this.isTamed = flag;
++    {
 +        return MyPetType.Wolf;
      }
  

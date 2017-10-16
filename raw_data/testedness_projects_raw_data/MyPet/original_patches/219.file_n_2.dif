@@ -29,7 +29,7 @@ index 6e5f6ce6..54237030 100644
              {
                  if (itemStack.id == 329 && getOwner().getPlayer().isSneaking() && !hasSaddle() && getAge() >= 0 && canEquip())
                  {
-@@ -293,34 +291,21 @@ public class EntityMyHorse extends EntityMyPet
+@@ -293,12 +291,10 @@ public class EntityMyHorse extends EntityMyPet
                      }
                      return true;
                  }
@@ -39,24 +39,20 @@ index 6e5f6ce6..54237030 100644
                      if (isBaby())
                      {
 -                        if (getOwner().getPlayer().isSneaking())
-+                        if (!entityhuman.abilities.canInstantlyBuild)
+-                        {
+                         if (!entityhuman.abilities.canInstantlyBuild)
                          {
--                            if (!entityhuman.abilities.canInstantlyBuild)
-+                            if (--itemStack.count <= 0)
-                             {
--                                if (--itemStack.count <= 0)
--                                {
--                                    entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
--                                }
-+                                entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+                             if (--itemStack.count <= 0)
+@@ -306,22 +302,11 @@ public class EntityMyHorse extends EntityMyPet
+                                 entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
                              }
--                            this.setAge(getAge() + 3000);
--                            return true;
                          }
+-                            this.setAge(getAge() + 3000);
 +                        this.setAge(getAge() + 1000);
-+                        return true;
+                         return true;
                      }
                  }
+             }
 -                if (itemStack.id == Material.BREAD.getId() ||
 -                        itemStack.id == Material.WHEAT.getId() ||
 -                        itemStack.id == Material.GOLDEN_APPLE.getId() ||
@@ -67,9 +63,10 @@ index 6e5f6ce6..54237030 100644
 -                {
 -                    ageCounter = 5;
 -                }
-             }
+-            }
          }
          catch (Exception e)
+         {
 @@ -418,13 +403,6 @@ public class EntityMyHorse extends EntityMyPet
          if (rearCounter > -1 && rearCounter-- == 0)
          {

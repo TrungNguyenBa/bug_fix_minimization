@@ -10,12 +10,12 @@ index 4ffe1e5d..0aaab41e 100644
        }
        
      protected:
-@@ -1734,8 +1733,6 @@ namespace Faunus {
-           // in case of insertion
+@@ -1735,8 +1734,6 @@ namespace Faunus {
            
          }
--
--        return 0;
            
+-        return 0;
+-          
        }
        
+       void _trialMove() {

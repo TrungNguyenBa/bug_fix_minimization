@@ -2,19 +2,19 @@ diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java b/src/main/java/
 index c2123fea..1913a68f 100644
 --- a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
 +++ b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
-@@ -161,14 +161,7 @@ public class MyPetPlayer implements IScheduler, NBTStorage
+@@ -161,15 +161,8 @@ public class MyPetPlayer implements IScheduler, NBTStorage
          }
          else
          {
 -            try
 -            {
--                petWorldUUID.put(worldGroup, myPetUUID);
--            }
+             petWorldUUID.put(worldGroup, myPetUUID);
+         }
 -            catch (IllegalArgumentException e)
 -            {
 -                DebugLogger.warning("There are two pets registered for one worldgroup or vice versa!");
 -            }
-+            petWorldUUID.put(worldGroup, myPetUUID);
-         }
+-        }
      }
  
+     public UUID getMyPetForWorldGroup(String worldGroup)

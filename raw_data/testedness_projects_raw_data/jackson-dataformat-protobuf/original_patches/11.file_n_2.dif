@@ -11,14 +11,6 @@ index ce037d5..b8c3f07 100644
      @Override
      public JsonToken nextToken() throws IOException
      {
-@@ -561,6 +561,7 @@ public class ProtobufParser extends ParserMinimalBase
- 
-     public JsonToken nextTokenX() throws IOException {
- */
-+
-     @Override
-     public JsonToken nextToken() throws IOException
-     {
 @@ -765,20 +766,10 @@ public class ProtobufParser extends ParserMinimalBase
              return _skipUnknownField(tag>>3, wireType);
          }

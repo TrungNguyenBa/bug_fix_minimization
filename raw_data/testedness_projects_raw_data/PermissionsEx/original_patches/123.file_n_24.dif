@@ -27,7 +27,7 @@ index 18acd31..63a4919 100644
  				sender.sendMessage(" - " + item);
  			}
  		} else {
-@@ -148,11 +151,16 @@ public class UtilityCommands extends PermissionsCommand {
+@@ -148,6 +151,10 @@ public class UtilityCommands extends PermissionsCommand {
  			permission = "permissions.dump",
  			description = "Import data from <backend> as specified in the configuration")
  	public void dumpData(PermissionsEx plugin, CommandSender sender, Map<String, String> args) {
@@ -38,23 +38,3 @@ index 18acd31..63a4919 100644
  		try {
  			PermissionManager mgr = plugin.getPermissionsManager();
  			PermissionBackend backend = mgr.createBackend(args.get("backend"));
- 			mgr.getBackend().loadFrom(backend);
- 
-+
- 			sender.sendMessage(ChatColor.WHITE + "[PermissionsEx] Data from \"" + args.get("backend") + "\" loaded into currently active backend");
- 		} catch (RuntimeException e) {
- 			if (e.getCause() instanceof ClassNotFoundException) {
-@@ -176,10 +184,13 @@ public class UtilityCommands extends PermissionsCommand {
- 		PermissionManager manager = plugin.getPermissionsManager();
- 
- 		manager.setDebug(!manager.isDebug());
-+
- 		String debugStatusMessage = "Debug mode " + (manager.isDebug() ? "enabled" : "disabled");
-+
- 		if (sender instanceof Player) {
- 			sender.sendMessage(debugStatusMessage);
- 		}
-+
- 		plugin.getLogger().warning(debugStatusMessage);
- 	}
- 

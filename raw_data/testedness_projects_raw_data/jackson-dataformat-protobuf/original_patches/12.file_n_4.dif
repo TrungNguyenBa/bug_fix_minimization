@@ -2,7 +2,7 @@ diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleT
 index db5fc1e..15ee451 100644
 --- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java
 +++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java
-@@ -9,45 +9,8 @@ import com.fasterxml.jackson.dataformat.protobuf.schema.ProtobufSchemaLoader;
+@@ -9,43 +9,6 @@ import com.fasterxml.jackson.dataformat.protobuf.schema.ProtobufSchemaLoader;
  
  public class ReadSimpleTest extends ProtobufTestBase
  {
@@ -44,16 +44,12 @@ index db5fc1e..15ee451 100644
 -    }
 -    
      final ObjectMapper MAPPER = new ObjectMapper(new ProtobufFactory());
--    
-+
+ 
      /*
-     /**********************************************************
-     /* Test methods
-@@ -219,53 +182,6 @@ public class ReadSimpleTest extends ProtobufTestBase
-             assertEquals(input.values[i], result.values[i]);
+@@ -220,53 +183,6 @@ public class ReadSimpleTest extends ProtobufTestBase
          }
      }
--
+     
 -    public void testStringArrayWithName() throws Exception
 -    {
 -        ProtobufSchema schema = ProtobufSchemaLoader.std.parse(PROTOC_NAMED_STRINGS);
@@ -100,6 +96,7 @@ index db5fc1e..15ee451 100644
 -        assertToken(JsonToken.END_OBJECT, p.nextToken());
 -        p.close();
 -    }
-     
+-    
      public void testSearchMessage() throws Exception
      {
+         ProtobufSchema schema = ProtobufSchemaLoader.std.parse(PROTOC_SEARCH_REQUEST);

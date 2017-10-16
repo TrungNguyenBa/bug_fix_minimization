@@ -129,14 +129,6 @@ index 2bb0ceb..7ede1ed 100644
      }
      catch (IllegalArgumentException e) {
        if (e.getMessage().equals("Using constructor ZipFile(File, Charset) has failed")) {
-@@ -241,7 +236,6 @@ public class ZipsTest extends TestCase {
-         return;
-       }
-     }
--
-     ZipFile zf = null;
-     try {
-       zf = Zips.getZipFile(dest, charset);
 @@ -272,7 +266,7 @@ public class ZipsTest extends TestCase {
    public void testAddEntryFile() throws Exception {
      File fileToPack = new File("src/test/resources/TestFile.txt");

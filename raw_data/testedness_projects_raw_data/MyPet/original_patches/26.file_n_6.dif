@@ -2,29 +2,6 @@ diff --git a/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java b/src/main/java/d
 index 400237f2..a41a0007 100644
 --- a/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
 +++ b/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
-@@ -43,14 +43,14 @@ import java.util.Map;
- 
- public class BukkitUtil {
-     /**
--     * @param location the {@link Location} around which players must be to see the effect
--     * @param effect   list of effects: https://gist.github.com/riking/5759002
--     * @param offsetX  the amount to be randomly offset by in the X axis
--     * @param offsetY  the amount to be randomly offset by in the Y axis
--     * @param offsetZ  the amount to be randomly offset by in the Z axis
--     * @param speed    the speed of the particles
--     * @param count    the number of particles
--     * @param radius   the radius around the location
-+     * @param location   the {@link Location} around which players must be to see the effect
-+     * @param effect list of effects: https://gist.github.com/riking/5759002
-+     * @param offsetX    the amount to be randomly offset by in the X axis
-+     * @param offsetY    the amount to be randomly offset by in the Y axis
-+     * @param offsetZ    the amount to be randomly offset by in the Z axis
-+     * @param speed      the speed of the particles
-+     * @param count      the number of particles
-+     * @param radius     the radius around the location
-      */
-     public static void playParticleEffect(Location location, EnumParticle effect, float offsetX, float offsetY, float offsetZ, float speed, int count, int radius) {
-         Validate.notNull(location, "Location cannot be null");
 @@ -262,11 +262,4 @@ public class BukkitUtil {
              ((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(IChatBaseComponent.ChatSerializer.a(message)));
          }

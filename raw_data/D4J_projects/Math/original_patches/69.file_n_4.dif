@@ -2,12 +2,10 @@ diff --git a/src/test/java/org/apache/commons/math/stat/correlation/PearsonsCorr
 index 7c056864c..28a7b8e08 100644
 --- a/src/test/java/org/apache/commons/math/stat/correlation/PearsonsCorrelationTest.java
 +++ b/src/test/java/org/apache/commons/math/stat/correlation/PearsonsCorrelationTest.java
-@@ -160,27 +160,6 @@ public class PearsonsCorrelationTest extends TestCase {
-          fillUpper(rPMatrix, 0d);
-          TestUtils.assertEquals("correlation p values", rPMatrix, corrInstance.getCorrelationPValues(), 10E-15);
+@@ -162,27 +162,6 @@ public class PearsonsCorrelationTest extends TestCase {
      }
--    
--    /**
+ 
+     /**
 -     * Test p-value near 0. JIRA: MATH-371
 -     */
 -    public void testPValueNearZero() throws Exception {
@@ -27,6 +25,8 @@ index 7c056864c..28a7b8e08 100644
 -        assertTrue(corrInstance.getCorrelationPValues().getEntry(0, 1) > 0);
 -    }
 -    
- 
-     /**
+-
+-    /**
       * Constant column
+      */
+     public void testConstant() {

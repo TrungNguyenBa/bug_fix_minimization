@@ -2,13 +2,11 @@ diff --git a/include/faunus/average.h b/include/faunus/average.h
 index a96bcc11..fde47f18 100644
 --- a/include/faunus/average.h
 +++ b/include/faunus/average.h
-@@ -27,8 +27,7 @@ namespace Faunus {
-   template<class T> class Average {
+@@ -28,7 +28,6 @@ namespace Faunus {
    public:
      T sqsum;                                      ///< Square sum
--    Average();          
+     Average();                                 
 -    Average(T,T,int=1); 
-+    Average();                                 
      virtual ~Average() {} 
      T sum;                                        ///< Sum of all values
      unsigned long long int cnt;                   ///< Number of values
@@ -39,19 +37,19 @@ index a96bcc11..fde47f18 100644
    template<class T> T Average<T>::avg() const {
      if (cnt<=0) {
        std::cerr << "Warning average counter is empty.\n";
-@@ -75,6 +63,12 @@ namespace Faunus {
-     sum=sqsum=0;
+@@ -76,6 +64,12 @@ namespace Faunus {
      cnt=0;
    }
-+  
+   
 +  template<class T> void Average<T>::load(unsigned long long int cnt_in,T x) {
 +    reset();
 +    cnt = cnt_in - 1;
 +    add(cnt_in*x);
 +  }
- 
++
    template<class T> Average<T>& Average<T>::operator=(T x) {
      reset();
+     add(x);
 @@ -184,7 +178,7 @@ namespace Faunus {
        }
  

@@ -2,24 +2,18 @@ diff --git a/sample/src/main/res/layout/activity_main.xml b/sample/src/main/res/
 index 528fbeb..64e32e1 100644
 --- a/sample/src/main/res/layout/activity_main.xml
 +++ b/sample/src/main/res/layout/activity_main.xml
-@@ -1,11 +1,9 @@
+@@ -1,10 +1,8 @@
 -<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
--              xmlns:tools="http://schemas.android.com/tools"
--              xmlns:app="http://schemas.android.com/apk/res-auto"
--              android:id="@+id/frame"
--              android:layout_width="match_parent"
--              android:layout_height="match_parent"
--              android:orientation="vertical"
--              tools:context=".MainActivity">
 +<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-+             xmlns:tools="http://schemas.android.com/tools"
-+             android:id="@+id/frame"
-+             android:layout_width="match_parent"
-+             android:layout_height="match_parent"
-+             tools:context=".MainActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+-              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/frame"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+-              android:orientation="vertical"
+              tools:context=".MainActivity">
  
      <FrameLayout
-             android:id="@+id/subframe"
 @@ -16,20 +14,4 @@
  
      </FrameLayout>

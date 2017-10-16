@@ -2,12 +2,10 @@ diff --git a/test/com/google/javascript/jscomp/parsing/IRFactoryTest.java b/test
 index 6801b270..6b982b54 100644
 --- a/test/com/google/javascript/jscomp/parsing/IRFactoryTest.java
 +++ b/test/com/google/javascript/jscomp/parsing/IRFactoryTest.java
-@@ -1013,51 +1013,7 @@ public class IRFactoryTest extends BaseJSTypeTestCase {
-     assertNodePosition(2, 0, bName);
-     assertNodePosition(3, 8, fnNode);
+@@ -1015,50 +1015,6 @@ public class IRFactoryTest extends BaseJSTypeTestCase {
      assertNodePosition(3, 8, fnName);
--  }
--
+    }
+ 
 -  final String INVALID_ASSIGNMENT_TARGET = "invalid assignment target";
 -  final String INVALID_INCREMENT_TARGET = "invalid increment target";
 -  final String INVALID_DECREMENT_TARGET = "invalid decrement target";
@@ -51,10 +49,10 @@ index 6801b270..6b982b54 100644
 -    assertTrue("expected error were not reported",
 -        errorReporter.hasEncounteredAllErrors());
 -  }
-+   }
- 
+-
    private void assertMarkerPosition(Node n, int lineno, int charno) {
      int count = 0;
+     for (JSDocInfo.Marker marker : n.getJSDocInfo().getMarkers()) {
 @@ -1085,10 +1041,6 @@ public class IRFactoryTest extends BaseJSTypeTestCase {
    }
  

@@ -90,18 +90,16 @@ index 616a903..9a5170e 100644
 -	public HttpResponse execute(final HttpRequestBase httpRequestBase, final InvocationContext context)
 +	public HttpResponse execute(final HttpRequestBase httpRequestBase, final InvocationContext config)
  	throws RequestExecutionException {
--		
--		ASYNC_EXECUTOR_SERVICE.execute(new Runnable() {
  
-+		ASYNC_EXECUTOR_SERVICE.execute(new Runnable() {
-+			
+ 		ASYNC_EXECUTOR_SERVICE.execute(new Runnable() {
+ 			
 +			@SuppressWarnings("unchecked") //type-safe cast from Object to AsyncHandler
  			@Override
  			public void run() {
-+		
-+				AsyncHandler<Object> asyncHandler = null;
- 				
+ 		
 -				AsyncRequestExecutor.super.execute(httpRequestBase, context);
++				AsyncHandler<Object> asyncHandler = null;
++				
 +				try {
 +					
 +					List<Object> requestArgs = config.getArguments();

@@ -106,8 +106,7 @@ index d4f98ecf..c30c6637 100644
 -                    case '\'' :
 +                    case '\'':
                          if (escapeSingleQuote) {
--                            out.write('\\');
-+                          out.write('\\');
+                           out.write('\\');
                          }
                          out.write('\'');
                          break;
@@ -123,10 +122,9 @@ index d4f98ecf..c30c6637 100644
                          break;
 -                    case '/' :
 -                        if (escapeForwardSlash) {
--                            out.write('\\');
--                        }
 +                    case '/':
-+                        out.write('\\');
+                         out.write('\\');
+-                        }
                          out.write('/');
                          break;
                      default :

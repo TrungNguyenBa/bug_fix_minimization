@@ -32,13 +32,15 @@ index 57f64a974..01a9ee513 100644
 -                ret = max;
 -            } else {
 -                // neither value is close to zero and min and max do not bracket root.
--                throw new IllegalArgumentException
--                ("Function values at endpoints do not have different signs." +
--                        "  Endpoints: [" + min + "," + max + "]" + 
--                        "  Values: [" + yMin + "," + yMax + "]");
--            }
++        if (yMin * yMax >= 0) {
+             throw new IllegalArgumentException
+             ("Function values at endpoints do not have different signs." +
+                     "  Endpoints: [" + min + "," + max + "]" + 
+                     "  Values: [" + yMin + "," + yMax + "]");       
+         }
 -        } else if (sign < 0){
--            // solve using only the first endpoint as initial guess
++
+         // solve using only the first endpoint as initial guess
 -            ret = solve(min, yMin, max, yMax, min, yMin);
 -        } else {
 -            // either min or max is a root
@@ -47,17 +49,10 @@ index 57f64a974..01a9ee513 100644
 -            } else {
 -                ret = max;
 -            }
-+        if (yMin * yMax >= 0) {
-+            throw new IllegalArgumentException
-+            ("Function values at endpoints do not have different signs." +
-+                    "  Endpoints: [" + min + "," + max + "]" + 
-+                    "  Values: [" + yMin + "," + yMax + "]");       
-         }
+-        }
++        return solve(min, yMin, max, yMax, min, yMin);
  
 -        return ret;
-+        // solve using only the first endpoint as initial guess
-+        return solve(min, yMin, max, yMax, min, yMin);
-+
      }
          
      /**

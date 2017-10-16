@@ -8,15 +8,12 @@ index 611133b..f42b62b 100644
  
 -```xml
 -<dependency>
--  <groupId>com.fasterxml.jackson.datatype</groupId>
--  <artifactId>jackson-datatype-jsr353</artifactId>
--  <version>2.2.0</version>
++    <dependency>
+       <groupId>com.fasterxml.jackson.datatype</groupId>
+       <artifactId>jackson-datatype-jsr353</artifactId>
+       <version>2.2.0</version>
 -</dependency>
 -```
-+    <dependency>
-+      <groupId>com.fasterxml.jackson.datatype</groupId>
-+      <artifactId>jackson-datatype-jsr353</artifactId>
-+      <version>2.2.0</version>
 +    </dependency>    
  
  (or whatever version is most up-to-date at the moment)

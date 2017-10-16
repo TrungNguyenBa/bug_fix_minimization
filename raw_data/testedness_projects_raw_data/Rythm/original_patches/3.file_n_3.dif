@@ -52,7 +52,7 @@ index 890909c..a4ace1a 100644
      }
  
      /**
-@@ -80,24 +80,27 @@ public class RhythmConfig {
+@@ -80,11 +80,12 @@ public class RhythmConfig {
       *
       * @param title       Config title
       * @param scaleFactor px to dp ratio, obtained through {@link DisplayMetrics#density}
@@ -67,13 +67,10 @@ index 890909c..a4ace1a 100644
      }
  
      /**
-      * Make a square 8dp grid combined with differently colored baselines between horizontal grid lines. You can add
-      * layers atop this config
+@@ -93,11 +94,13 @@ public class RhythmConfig {
       *
--     * @param title       Config title
--     * @param scaleFactor px to dp ratio, obtained through {@link DisplayMetrics#density}
-+     * @param title         Config title
-+     * @param scaleFactor   px to dp ratio, obtained through {@link DisplayMetrics#density}
+      * @param title         Config title
+      * @param scaleFactor   px to dp ratio, obtained through {@link DisplayMetrics#density}
 +     * @param gridColor     Color of the 8dp grid, in the usual #AARRGGBB format
 +     * @param baselineColor Color of additional baselines, in the usual #AARRGGBB format
       * @return Rhythm config with pre-configured grid line layers

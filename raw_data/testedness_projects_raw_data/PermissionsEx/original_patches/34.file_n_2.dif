@@ -22,23 +22,21 @@ index d0f1585..26cfe99 100644
 +        Preconditions.checkNotNull(data, "data");
  
          if (data instanceof FileOptionSubjectData) {
--            ((FileOptionSubjectData) data).serialize(permissionsConfig.getNode(typeToSection(type), identifier));
 +            try {
-+                ((FileOptionSubjectData) data).serialize(permissionsConfig.getNode(typeToSection(type), identifier));
+                 ((FileOptionSubjectData) data).serialize(permissionsConfig.getNode(typeToSection(type), identifier));
 +            } catch (ObjectMappingException e) {
 +                return Futures.immediateFailedFuture(e);
 +            }
          } else {
 -            throw new IllegalArgumentException("Data passed was not a FileOptionSubjectData");
 +            return Futures.immediateFailedFuture(new IllegalArgumentException("Data passed was not a FileOptionSubjectData"));
-+        }
+         }
 +        try {
-+            save();
+             save();
+-        return data;
 +        } catch (PermissionsLoadingException e) {
 +            return Futures.immediateFailedFuture(e);
-         }
--        save();
--        return data;
++        }
 +        return Futures.immediateFuture(data);
      }
  

@@ -39,12 +39,3 @@ index 9d290a2..66dfcbc 100644
  		conn.setConnectTimeout(30 * 1000);
  		conn.setReadTimeout(80 * 1000);
  		conn.setUseCaches(false);
-@@ -154,7 +140,7 @@ public class LiveStripeResponseGetter implements StripeResponseGetter {
- 	}
- 
- 	private static java.net.HttpURLConnection createGetConnection(
--			String url, String query, RequestOptions options) throws IOException {
-+			String url, String query, RequestOptions options) throws IOException  {
- 		String getURL = formatURL(url, query);
- 		java.net.HttpURLConnection conn = createStripeConnection(getURL, options);
- 		conn.setRequestMethod("GET");

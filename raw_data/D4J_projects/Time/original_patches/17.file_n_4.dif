@@ -17,7 +17,7 @@ index d86b68e0..a7a5175d 100644
      public void testBug3192457_adjustOffset() {
          final DateTimeZone zone = DateTimeZone.forID("Europe/Paris");
          DateTime base = new DateTime(2007, 10, 28, 3, 15, zone);
-@@ -1238,46 +1237,13 @@ public class TestDateTimeZoneCutover extends TestCase {
+@@ -1238,44 +1237,11 @@ public class TestDateTimeZoneCutover extends TestCase {
          
          assertSame(base, base.withEarlierOffsetAtOverlap());
          assertSame(base, base.withLaterOffsetAtOverlap());
@@ -43,9 +43,8 @@ index d86b68e0..a7a5175d 100644
          
 -        assertSame(baseAfter, baseAfter.withLaterOffsetAtOverlap());
          assertEquals(baseBefore, baseAfter.withEarlierOffsetAtOverlap());
-+        assertEquals(baseAfter, baseAfter.withLaterOffsetAtOverlap());
-     }
- 
+-    }
+-
 -    public void testBug3476684_adjustOffset_springGap() {
 -      final DateTimeZone zone = DateTimeZone.forID("America/Sao_Paulo");
 -      DateTime base = new DateTime(2011, 10, 15, 22, 15, zone);
@@ -60,8 +59,7 @@ index d86b68e0..a7a5175d 100644
 -      
 -      assertSame(baseAfter, baseAfter.withLaterOffsetAtOverlap());
 -      assertEquals(baseAfter, baseAfter.withEarlierOffsetAtOverlap());
--  }
--
++        assertEquals(baseAfter, baseAfter.withLaterOffsetAtOverlap());
+     }
+ 
      // ensure Summer time picked
-     //-----------------------------------------------------------------------
-     public void testDateTimeCreation_athens() {

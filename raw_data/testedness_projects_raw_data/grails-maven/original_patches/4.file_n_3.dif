@@ -42,12 +42,3 @@ index d0db9a8..a01150b 100644
      public void fork() {
          ProcessBuilder processBuilder = new ProcessBuilder();
          StringBuilder cp = new StringBuilder();
-@@ -98,7 +65,7 @@ public class ForkedGrailsRuntime {
-             String baseName = executionContext.getBaseDir().getCanonicalFile().getName();
-             tempFile = File.createTempFile(baseName, "grails-execution-context");
-             tempFile.deleteOnExit();
--
-+            
-             fos = new FileOutputStream(tempFile);
-             ObjectOutputStream oos = new ObjectOutputStream(fos);
-             oos.writeObject(executionContext);

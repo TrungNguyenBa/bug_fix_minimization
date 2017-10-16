@@ -2,14 +2,7 @@ diff --git a/src/examples/stockmayer.run b/src/examples/stockmayer.run
 index ea11c6e1..a1e950d4 100755
 --- a/src/examples/stockmayer.run
 +++ b/src/examples/stockmayer.run
-@@ -10,22 +10,21 @@ cp -f $source_tests_dir/stockmayer.state state 2> /dev/null
- 
- echo '{ "atomlist" :
-   {
--    "sol" : { "sigma":1.0, "mu":"0 0 0.4141", "dp":0.3, "dprot":90, "alpha":"0 0 0 0 0 0", "theta":"0 0 0 0 0 0"}
-+    "sol" : { "sigma":1.0, "mu":"0 0  0.4141", "dp":0.3, "dprot":90, "alpha":"0 0 0 0 0 0", "theta":"0 0 0 0 0 0"}
-   }
- }' > stockmayer.json
+@@ -16,16 +16,15 @@ echo '{ "atomlist" :
  
  echo "
  atomlist           stockmayer.json   # atom properties

@@ -206,10 +206,10 @@ index 98489f9f..3ee159a2 100644
 +
 +    @Override
 +    public void setExtendedInfo(CompoundTag info)
-+    {
-+        if (info.getValue().containsKey("Type"))
-         {
+     {
 -            ((EntityMyHorse) getCraftPet().getHandle()).setSaddle(flag);
++        if (info.getValue().containsKey("Type"))
++        {
 +            setHorseType(((ByteTag) info.getValue().get("Type")).getValue());
          }
 -        this.saddle = flag;

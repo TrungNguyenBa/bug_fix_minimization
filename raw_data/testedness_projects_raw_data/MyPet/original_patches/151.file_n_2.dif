@@ -106,7 +106,7 @@ index b1a86c16..5161e101 100644
              SkillTreeMobType skillTreeMobType = SkillTreeMobType.getMobTypeByName(mobType.getTypeName());
              SkillTreeLoader.addDefault(skillTreeMobType);
              SkillTreeLoader.manageInheritance(skillTreeMobType);
-@@ -258,19 +272,21 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
+@@ -258,7 +272,8 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
          registerMyPetEntity(EntityMyVillager.class, "Villager", 120);
  
          DebugLogger.info("Pet type: ----------");
@@ -114,17 +114,9 @@ index b1a86c16..5161e101 100644
 +        for (MyPetType myPetType : MyPetType.values())
 +        {
              DebugLogger.info("  " + myPetType.getTypeName() + " { " +
--                                     "startHP:" + MyPet.getStartHP(myPetType.getMyPetClass()) + ", " +
--                                     "speed:" + MyPet.getStartSpeed(myPetType.getMyPetClass()) + ", " +
--                                     "food:" + MyPet.getFood(myPetType.getMyPetClass()) + ", " +
--                                     "leashFlags:" + MyPet.getLeashFlags(myPetType.getMyPetClass()) + " }");
-+                    "startHP:" + MyPet.getStartHP(myPetType.getMyPetClass()) + ", " +
-+                    "speed:" + MyPet.getStartSpeed(myPetType.getMyPetClass()) + ", " +
-+                    "food:" + MyPet.getFood(myPetType.getMyPetClass()) + ", " +
-+                    "leashFlags:" + MyPet.getLeashFlags(myPetType.getMyPetClass()) + " }");
-         }
- 
-         new Locales();
+                     "startHP:" + MyPet.getStartHP(myPetType.getMyPetClass()) + ", " +
+                     "speed:" + MyPet.getStartSpeed(myPetType.getMyPetClass()) + ", " +
+@@ -270,7 +285,8 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
  
          File groupsFile = new File(getPlugin().getDataFolder().getPath() + File.separator + "worldgroups.yml");
  

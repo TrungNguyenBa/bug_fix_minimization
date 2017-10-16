@@ -2,72 +2,20 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java b/sr
 index 04d33c54..f1cf5939 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
-@@ -86,51 +86,44 @@ public class EntityMyCow extends EntityMyPet
+@@ -86,8 +86,6 @@ public class EntityMyCow extends EntityMyPet
       */
      public boolean a_(EntityHuman entityhuman)
      {
 -        try
-+        if (super.a_(entityhuman))
+-        {
+         if (super.a_(entityhuman))
          {
--            if (super.a_(entityhuman))
--            {
--                return true;
--            }
-+            return true;
-+        }
- 
--            ItemStack itemStack = entityhuman.inventory.getItemInHand();
-+        ItemStack itemStack = entityhuman.inventory.getItemInHand();
- 
--            if (getOwner().equals(entityhuman) && itemStack != null)
-+        if (getOwner().equals(entityhuman) && itemStack != null)
-+        {
-+            if (itemStack.id == Item.BUCKET.id)
-             {
--                if (itemStack.id == Item.BUCKET.id)
-+                if (CAN_GIVE_MILK && !this.world.isStatic)
-                 {
--                    if (CAN_GIVE_MILK && !this.world.isStatic)
--                    {
--                        ItemStack milkBucket = new ItemStack(Item.BUCKET.id, 1, 0);
-+                    ItemStack milkBucket = new ItemStack(Item.BUCKET.id, 1, 0);
- 
--                        entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, milkBucket);
--                        return true;
--                    }
-+                    entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, milkBucket);
-+                    return true;
-                 }
-             }
--            else if (getOwner().equals(entityhuman) && itemStack != null)
-+        }
-+        else if (getOwner().equals(entityhuman) && itemStack != null)
-+        {
-+            if (itemStack.id == GROW_UP_ITEM.getId())
-             {
--                if (itemStack.id == GROW_UP_ITEM.getId())
-+                if (isBaby())
-                 {
--                    if (isBaby())
-+                    if (!entityhuman.abilities.canInstantlyBuild)
-                     {
--                        if (!entityhuman.abilities.canInstantlyBuild)
-+                        if (--itemStack.count <= 0)
-                         {
--                            if (--itemStack.count <= 0)
--                            {
--                                entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
--                            }
-+                            entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
-                         }
--                        this.setBaby(false);
--                        return true;
-                     }
-+                    this.setBaby(false);
-+                    return true;
+             return true;
+@@ -126,11 +124,6 @@ public class EntityMyCow extends EntityMyPet
                  }
              }
          }
+-        }
 -        catch (Exception e)
 -        {
 -            e.printStackTrace();

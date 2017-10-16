@@ -2,29 +2,24 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java b/sr
 index 10d287c3..6d2f2d4a 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
-@@ -75,14 +75,16 @@ public class EntityMyPig extends EntityMyPet {
+@@ -75,7 +75,8 @@ public class EntityMyPig extends EntityMyPet {
                  }
  
                  return true;
 -            } else if (MyPig.GROW_UP_ITEM.compare(itemStack) && getMyPet().isBaby() && getOwner().getPlayer().isSneaking()) {
--                if (!entityhuman.abilities.canInstantlyBuild) {
--                    if (--itemStack.count <= 0) {
--                        entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
 +            } else if (MyPig.GROW_UP_ITEM.compare(itemStack) && getOwner().getPlayer().isSneaking()) {
 +                if (isBaby()) {
-+                    if (!entityhuman.abilities.canInstantlyBuild) {
-+                        if (--itemStack.count <= 0) {
-+                            entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
-+                        }
-                     }
-+                    this.setBaby(false);
-+                    return true;
+                     if (!entityhuman.abilities.canInstantlyBuild) {
+                         if (--itemStack.count <= 0) {
+                             entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+@@ -85,6 +86,7 @@ public class EntityMyPig extends EntityMyPet {
+                     return true;
                  }
--                this.setBaby(false);
--                return true;
              }
-         }
++        }
          return false;
+     }
+ 
 @@ -94,12 +96,17 @@ public class EntityMyPig extends EntityMyPet {
          this.datawatcher.a(16, new Byte((byte) 0)); // saddle
      }

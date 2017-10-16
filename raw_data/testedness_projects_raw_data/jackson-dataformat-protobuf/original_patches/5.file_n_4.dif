@@ -2,25 +2,24 @@ diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/Prot
 index 76f24a2..39984a4 100644
 --- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
 +++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
-@@ -14,11 +14,15 @@ public class ProtobufMessage
+@@ -14,10 +14,14 @@ public class ProtobufMessage
  
      protected final String _name;
  
+-    protected final ProtobufField[] _fields;
 +    /**
 +     *<p>
 +     * NOTE: although final, entries are added straight into Map, after
 +     * constructor has finished. Same is true for <code>_fields</code>
 +     */
 +    protected final Map<String,ProtobufField> _fieldsByName;
-+
-     protected final ProtobufField[] _fields;
  
 -    // note: assigned on init()
 -    protected FieldLookup _fieldsByName;
--    
++    protected final ProtobufField[] _fields;
+ 
      /**
       * Arrays of fields indexed by id (offset by <code>_idOffset</code>), if
-      * fields ids are in contiguous (enough) range.
 @@ -29,9 +33,11 @@ public class ProtobufMessage
  
      protected int _idOffset = -1;

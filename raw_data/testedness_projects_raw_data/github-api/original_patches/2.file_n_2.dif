@@ -15,10 +15,3 @@ index 02e026f..9e83211 100644
  ```
  
  List organizations the autenticated user belongs to.
-@@ -269,4 +269,4 @@ Consider commit messages.
- 
- ### 0.1.X
- 
--Initial version.
-+Initial version.
-\ No newline at end of file

@@ -1,0 +1,32 @@
+diff --git a/src/com/google/javascript/jscomp/LiveVariablesAnalysis.java b/src/com/google/javascript/jscomp/LiveVariablesAnalysis.java
+index e107faa9..772d2511 100644
+--- a/src/com/google/javascript/jscomp/LiveVariablesAnalysis.java
++++ b/src/com/google/javascript/jscomp/LiveVariablesAnalysis.java
+@@ -203,12 +203,8 @@ class LiveVariablesAnalysis extends
+             // for(var x in y) {...}
+             lhs = lhs.getLastChild();
+           }
+-          if (NodeUtil.isName(lhs)) {
+           addToSetIfLocal(lhs, kill);
+           addToSetIfLocal(lhs, gen);
+-          } else {
+-            computeGenKill(lhs, gen, kill, conditional);
+-          }
+           computeGenKill(rhs, gen, kill, conditional);
+         }
+         return;
+diff --git a/test/com/google/javascript/jscomp/LiveVariableAnalysisTest.java b/test/com/google/javascript/jscomp/LiveVariableAnalysisTest.java
+index 1459bd49..f29e5a74 100644
+--- a/test/com/google/javascript/jscomp/LiveVariableAnalysisTest.java
++++ b/test/com/google/javascript/jscomp/LiveVariableAnalysisTest.java
+@@ -206,10 +206,6 @@ public class LiveVariableAnalysisTest extends TestCase {
+     assertNotLiveAfterX("var a;X:a();a(param2)", "param1");
+   }
+ 
+-  public void testExpressionInForIn() {
+-    assertLiveBeforeX("var a = [0]; X:for (a[1] in foo) { }", "a");
+-  }
+-
+   public void testArgumentsArray() {
+     // Check that use of arguments forces the parameters into the
+     // escaped set.

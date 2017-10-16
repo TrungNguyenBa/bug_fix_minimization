@@ -26,12 +26,11 @@ index ad43d218..fc24441b 100644
 +    testTypes("a={};/**@enum {string}*/ a.A = {ZOR:'b'};"
          + "/** @constructor */ a.A = function() {}",
 -        Lists.newArrayList(
--            "variable a.A redefined with type function (new:a.A): undefined, " +
+         "variable a.A redefined with type function (new:a.A): undefined, " +
 -            "original definition at [testcode]:1 with type enum{a.A}",
 -            "assignment to property A of a\n" +
 -            "found   : function (new:a.A): undefined\n" +
 -            "required: enum{a.A}"));
-+        "variable a.A redefined with type function (new:a.A): undefined, " +
 +        "original definition at [testcode]:1 with type enum{a.A}");
    }
  

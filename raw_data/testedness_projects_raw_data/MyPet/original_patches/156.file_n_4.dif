@@ -49,10 +49,10 @@ index f9251b4c..ce2ea016 100644
 -                {
 -                    return;
 -                }
-+                foodList.add(foodToAdd);
+-            }
+                 foodList.add(foodToAdd);
              }
--            foodList.add(foodToAdd);
-         }
++        }
          else
          {
 -            List<ConfigItem> foodList = new ArrayList<ConfigItem>();

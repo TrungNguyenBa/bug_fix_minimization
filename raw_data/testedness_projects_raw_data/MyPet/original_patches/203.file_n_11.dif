@@ -7,23 +7,21 @@ index 941275f9..fa812d1a 100644
      }
  
 -    public Class<? extends EntityMyPet> getEntityClass()
--    {
++    public static MyPetType getMyPetTypeByEntityType(EntityType type)
+     {
 -        return entityClass;
 -    }
 -
 -    public EntityType getEntityType()
--    {
++        for (MyPetType myPetType : MyPetType.values())
+         {
 -        return bukkitType;
 -    }
 -
 -    public Class<? extends MyPet> getMyPetClass()
-+    public static MyPetType getMyPetTypeByEntityType(EntityType type)
-     {
--        return myPetClass;
-+        for (MyPetType myPetType : MyPetType.values())
-+        {
 +            if (myPetType.bukkitType == type)
-+            {
+             {
+-        return myPetClass;
 +                return myPetType;
 +            }
 +        }

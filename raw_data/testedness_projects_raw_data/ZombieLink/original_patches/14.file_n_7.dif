@@ -2,20 +2,22 @@ diff --git a/src/main/java/com/lonepulse/zombielink/core/response/parser/Abstrac
 index 6a60ebe..4377d7e 100644
 --- a/src/main/java/com/lonepulse/zombielink/core/response/parser/AbstractResponseParser.java
 +++ b/src/main/java/com/lonepulse/zombielink/core/response/parser/AbstractResponseParser.java
-@@ -77,27 +77,42 @@ import com.lonepulse.zombielink.util.AnnotationExtractor;
-  * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
-  */
- public abstract class AbstractResponseParser<T> implements ResponseParser<T> {
-+	
+@@ -80,24 +80,39 @@ public abstract class AbstractResponseParser<T> implements ResponseParser<T> {
+ 	
  
-+	/**
+ 	/**
+-	 * {@inheritDoc}
 +	 * <p>The {@link Class} of the desired request return type.</p>
 +	 * <br><br> 
 +	 * @since 1.1.5
-+	 */
+ 	 */
+-	@Override
+-	public T parse(HttpResponse httpResponse, ProxyInvocationConfiguration config) {
 +	protected Class<? extends Object> requestReturnType = null; 
-+	
-+	
+ 	
+-		Class<?> requestReturnType = config.getRequest().getReturnType();
+ 	
+-		if(requestReturnType.equals(Void.TYPE) || httpResponse.getEntity() == null) {
 +	/**
 +	 * <p>Accessor for {@link #requestReturnType}.
 +	 * 
@@ -25,23 +27,18 @@ index 6a60ebe..4377d7e 100644
 +	 */
 +	protected Class<? extends Object> getRequestReturnType() {
  
-+		return requestReturnType;
-+	}
-+	
- 	/**
- 	 * {@inheritDoc}
- 	 */
- 	@Override
- 	public T parse(HttpResponse httpResponse, ProxyInvocationConfiguration config) {
- 		
--		Class<?> requestReturnType = config.getRequest().getReturnType();
--		
--		if(requestReturnType.equals(Void.TYPE) || httpResponse.getEntity() == null) {
--			
 -			return null; //a response body is not expected
--		}
++		return requestReturnType;
+ 	}
+ 	
++	/**
++	 * {@inheritDoc}
++	 */
++	@Override
++	public T parse(HttpResponse httpResponse, ProxyInvocationConfiguration config) {
++		
 +		this.requestReturnType = config.getRequest().getReturnType();
- 		
++		
  		throwIfNotAssignable(requestReturnType);
  		
  		try {

@@ -21,18 +21,18 @@ index f9b16ce..643e636 100644
  
  public class DateTimeTest extends JodaTestBase
  {
-@@ -53,11 +48,6 @@ public class DateTimeTest extends JodaTestBase
-           this.javaUtilDate = javaUtilDate;
+@@ -54,11 +49,6 @@ public class DateTimeTest extends JodaTestBase
          }
      }
--    
+ 
 -    static class FormattedDateTime {
 -        @JsonFormat(timezone="EST")
 -        public DateTime dateTime;
 -    }
- 
+-
      @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.WRAPPER_ARRAY, property = "@class")
      private static interface TypeInfoMixIn {
+     }
 @@ -169,28 +159,4 @@ public class DateTimeTest extends JodaTestBase
          // Timezone may (and most likely will) differ so...
          assertEquals(inputDate.getMillis(), output.date.getMillis());

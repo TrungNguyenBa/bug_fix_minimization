@@ -2,21 +2,10 @@ diff --git a/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java b
 index f89f10c0..cdacc5f7 100644
 --- a/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java
 +++ b/src/com/google/javascript/jscomp/ReferenceCollectingCallback.java
-@@ -423,7 +423,7 @@ class ReferenceCollectingCallback implements ScopedCallback,
-       if (ref == null) {
-         return false;
-       }
--      
-+
-       // Make sure this assignment is not in a loop.
-       for (BasicBlock block = ref.getBasicBlock();
-            block != null; block = block.getParent()) {
-@@ -436,29 +436,6 @@ class ReferenceCollectingCallback implements ScopedCallback,
- 
-       return true;
+@@ -438,29 +438,6 @@ class ReferenceCollectingCallback implements ScopedCallback,
      }
--    
--    /**
+ 
+     /**
 -     * @return Whether the variable is only assigned a value once for its
 -     *     lifetime.
 -     */
@@ -38,6 +27,8 @@ index f89f10c0..cdacc5f7 100644
 -
 -      return true;
 -    }
- 
-     /**
+-
+-    /**
       * @return The one and only assignment. Returns if there are 0 or 2+
+      *    assignments.
+      */

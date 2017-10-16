@@ -23,7 +23,7 @@ index fcb4509..56e4b8a 100644
  import ru.tehkode.permissions.events.PermissionEvent;
  import ru.tehkode.permissions.events.PermissionSystemEvent;
  import ru.tehkode.permissions.exceptions.PermissionBackendException;
-@@ -41,40 +48,127 @@ public class PermissionManager {
+@@ -41,39 +48,126 @@ public class PermissionManager {
  	public final static int TRANSIENT_PERMISSION = 0;
  	protected ConcurrentMap<String, PermissionUser> users = new ConcurrentHashMap<>();
  	protected ConcurrentMap<String, PermissionGroup> groups = new ConcurrentHashMap<>();
@@ -76,15 +76,13 @@ index fcb4509..56e4b8a 100644
  	public boolean shouldCreateUserRecords() {
 -		return config.createUserRecords();
 +		return plugin.getConfiguration().createUserRecords();
- 	}
- 
--	public PermissionsExConfig getConfiguration() {
--		return config;
++	}
++
 +	public PermissionsEx getPlugin() {
 +		return plugin;
- 	}
- 
- 
++	}
++
++
 +	private class RemoteEventListener implements Listener {
 +		@EventHandler(priority = EventPriority.LOWEST)
 +		public void onEntityEvent(PermissionEntityEvent event) {
@@ -129,8 +127,10 @@ index fcb4509..56e4b8a 100644
 +									it.remove();
 +								}
 +							}
-+						}
-+
+ 						}
+ 
+-	public PermissionsExConfig getConfiguration() {
+-		return config;
 +						break;
 +				}
 +			} else if (reloadAll) {
@@ -142,8 +142,8 @@ index fcb4509..56e4b8a 100644
 +		public void onSystemEvent(PermissionSystemEvent event) {
 +			if (isLocal(event)) {
 +				return;
-+			}
-+
+ 			}
+ 
 +			switch (event.getAction()) {
 +				case BACKEND_CHANGED:
 +				case DEBUGMODE_TOGGLE:
@@ -161,10 +161,9 @@ index fcb4509..56e4b8a 100644
 +			}
 +		}
 +	}
-+
+ 
  	/**
  	 * Check if specified player has specified permission
- 	 *
 @@ -148,14 +242,19 @@ public class PermissionManager {
  			}
  			return getUser(UUID.fromString(username)); // Username is uuid as string, just use it

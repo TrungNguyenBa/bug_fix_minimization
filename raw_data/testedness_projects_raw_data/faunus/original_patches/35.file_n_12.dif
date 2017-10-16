@@ -27,16 +27,12 @@ index c38d2e52..0baf8650 100755
  #
  if __name__=="__main__":
 -    if len(sys.argv[:]) > 1:
--        if sys.argv[1].lower()=='json':
--            writeJSON(dict, sys.argv[2], sys.argv[3])
--        elif sys.argv[1].lower()=="aam":
--            writeAAM(readFasta(sys.argv[2]), dict, sys.argv[3])
--        else:
--            Usage()
-+    if sys.argv[1].lower()=='json':
-+        writeJSON(dict, sys.argv[2], sys.argv[3])
-+    elif sys.argv[1].lower()=="aam":
-+        writeAAM(readFasta(sys.argv[2]), dict, sys.argv[3])
+     if sys.argv[1].lower()=='json':
+         writeJSON(dict, sys.argv[2], sys.argv[3])
+     elif sys.argv[1].lower()=="aam":
+         writeAAM(readFasta(sys.argv[2]), dict, sys.argv[3])
      else:
+-            Usage()
+-    else:
 -        Usage()
 +        print "\nYou're doing something wrong!\n"

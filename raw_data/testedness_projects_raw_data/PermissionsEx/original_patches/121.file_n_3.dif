@@ -29,12 +29,11 @@ index f4ca4a3..465e53a 100644
  	@Override
  	public boolean isMatches(String expression, String permission) {
 -		try {
--			Pattern permissionMatcher = patternCache.get(expression);
+ 		Pattern permissionMatcher = patternCache.get(expression);
 -			return permissionMatcher.matcher(permission).matches();
 -		} catch (ExecutionException e) {
 -			return false;
 -		}
-+		Pattern permissionMatcher = patternCache.get(expression);
  
 +		if (permissionMatcher == null) {
 +			patternCache.put(expression, permissionMatcher = createPattern(expression));

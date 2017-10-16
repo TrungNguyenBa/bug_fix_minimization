@@ -26,17 +26,17 @@ index 756290f9..ac96c588 100644
  
      //-----------------------------------------------------------------------
      /**
-@@ -1016,13 +1013,6 @@ public class FastDateFormat extends Format {
-     public String toString() {
+@@ -1017,13 +1014,6 @@ public class FastDateFormat extends Format {
          return "FastDateFormat[" + mPattern + "]";
      }
--
+     
 -    // Serializing
 -    //-----------------------------------------------------------------------
 -    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
 -        in.defaultReadObject();
 -        init();
 -    }
-     
+-    
      // Rules
      //-----------------------------------------------------------------------
+     /**

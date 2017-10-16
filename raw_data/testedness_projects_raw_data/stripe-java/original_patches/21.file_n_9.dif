@@ -6,7 +6,6 @@ index b8ca55e..5cd6077 100644
  package com.stripe.model;
  
 -public class DeletedAlipayAccount extends DeletedExternalAccount {
--}
 +public class DeletedAlipayAccount extends StripeObject implements DeletedStripeObject {
 +    String id;
 +    Boolean deleted;
@@ -23,5 +22,5 @@ index b8ca55e..5cd6077 100644
 +    public void setDeleted(Boolean deleted) {
 +        this.deleted = deleted;
 +    }
-+}
+ }
 \ No newline at end of file

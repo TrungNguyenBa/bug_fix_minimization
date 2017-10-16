@@ -29,7 +29,6 @@ index fbbf3af..0d32c54 100644
 -				return globalPrefix;
 -			} else if (option.equals("suffix")) {
 -				return globalSuffix;
--			}
 +			this.globalPrefix = prefix;
 +			this.updateInfo();
 +		} else {
@@ -50,7 +49,7 @@ index fbbf3af..0d32c54 100644
 +		} else {
 +			this.setOption("suffix", suffix, worldName);
  		}
-+	}
+ 	}
  
 +	@Override
 +	public String getOption(String option, String worldName) {

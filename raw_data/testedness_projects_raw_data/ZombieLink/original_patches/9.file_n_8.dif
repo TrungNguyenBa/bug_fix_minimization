@@ -55,23 +55,14 @@ index 0dd1b42..9446948 100644
  		}
  	}
  	
-@@ -265,6 +268,7 @@ public final class Zombie {
- 						Zombie.infect(instance); //constructor injection complete; now perform property injection 
- 						
- 						return instance;
-+						
- 					} 
- 					catch (Exception e) {
- 						
 @@ -314,9 +318,20 @@ public final class Zombie {
  	private static Object createAndRegisterProxy(Class<?> endpointClass) throws InstantiationException, IllegalAccessException {
  		
  		Object proxyInstance = EndpointProxyFactory.INSTANCE.create(endpointClass); 
 +				
  		EndpointDirectory.INSTANCE.put(endpointClass, proxyInstance);
--		
+ 
 -		RequestExecutors.CONFIGURATION.register(endpointClass);
-+
 +		if(endpointClass.isAnnotationPresent(com.lonepulse.zombielink.annotation.Configuration.class)) {
 +			
 +			HttpClient httpClient = endpointClass.getAnnotation(

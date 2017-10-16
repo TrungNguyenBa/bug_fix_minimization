@@ -2,14 +2,15 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.jav
 index db39823e..031b70bf 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
-@@ -54,8 +54,9 @@ public class EntityMyZombie extends EntityMyPet {
+@@ -54,9 +54,10 @@ public class EntityMyZombie extends EntityMyPet {
                  return true;
              }
              return false;
+-        }
 +        } else {
-+            return true;
+             return true;
          }
--        return true;
-     }
++    }
  
      /**
+      * Returns the sound that is played when the MyPet dies

@@ -2,7 +2,7 @@ diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/s
 index ba4a5f2f..e72a00ea 100644
 --- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
 +++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
-@@ -661,31 +661,19 @@ public class MyPetEntityListener implements Listener
+@@ -661,33 +661,21 @@ public class MyPetEntityListener implements Listener
      @EventHandler(priority = EventPriority.MONITOR)
      public void onEntityDamageByEntityDamageMonitor(final EntityDamageByEntityEvent event)
      {
@@ -32,9 +32,10 @@ index ba4a5f2f..e72a00ea 100644
 -            }
 -            if (damager != null)
 -            {
--                MyPetExperience.addDamageToEntity(damager, (LivingEntity) event.getEntity(), event.getDamage());
--            }
-+            MyPetExperience.addDamageToEntity(damager, (LivingEntity) event.getEntity(), event.getDamage());
+             MyPetExperience.addDamageToEntity(damager, (LivingEntity) event.getEntity(), event.getDamage());
          }
      }
+-    }
  
+     @EventHandler(priority = EventPriority.MONITOR)
+     public void onEntityDamageByEntityResult(final EntityDamageByEntityEvent event)

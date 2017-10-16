@@ -11,15 +11,6 @@ index 83a3937..537ff65 100644
      /*
      /**********************************************************
      /* Configuration
-@@ -111,7 +113,7 @@ public class ProtobufGenerator extends GeneratorBase
-      * Reference to the root context since that is needed for serialization
-      */
-     protected ProtobufWriteContext _rootContext;
--    
-+
-     protected boolean _inObject;
- 
-     /**
 @@ -130,7 +132,7 @@ public class ProtobufGenerator extends GeneratorBase
       * Type of protobuf message that is currently being output: usually
       * matches write context, but for arrays may indicate "parent" of array.
@@ -74,21 +65,16 @@ index 83a3937..537ff65 100644
          if (_currField == null) {
 -            // root?
 -            if (!_pbContext.inRoot()) {
--                _reportError("Can not write START_OBJECT without field (message type "+_currentMessage.getName()+")");
--            }
+             _reportError("Can not write START_OBJECT without field (message type "+_currentMessage.getName()+")");
+         }
 -            _currentMessage = _schema.getRootType();
 -        } else {
--            // but also, field value must be Message if so
--            if (!_currField.isObject()) {
--                _reportError("Can not write START_OBJECT: type of field '"+_currField.name+"' not Message but: "+_currField.type);
--            }
--            _currentMessage = _currField.getMessageType();
-+            _reportError("Can not write START_OBJECT without field (message type "+_currentMessage.getName()+")");
-+        }
-+        // but also, field value must be Message if so
-+        if (!_currField.isObject()) {
-+            _reportError("Can not write START_OBJECT: type of field '"+_currField.name+"' not Message but: "+_currField.type);
+         // but also, field value must be Message if so
+         if (!_currField.isObject()) {
+             _reportError("Can not write START_OBJECT: type of field '"+_currField.name+"' not Message but: "+_currField.type);
          }
+-            _currentMessage = _currField.getMessageType();
+-        }
          
          if (_inObject) {
 -            _pbContext = _pbContext.createChildObjectContext(_currentMessage);
@@ -102,7 +88,7 @@ index 83a3937..537ff65 100644
          }
          // even if within array, object fields use tags
          _writeTag = true; 
-@@ -463,21 +446,20 @@ public class ProtobufGenerator extends GeneratorBase
+@@ -463,19 +446,18 @@ public class ProtobufGenerator extends GeneratorBase
          if (!_inObject) {
              _reportError("Current context not an object but "+_pbContext.getTypeDesc());
          }
@@ -112,13 +98,12 @@ index 83a3937..537ff65 100644
          _pbContext = _pbContext.getParent();
 -        if (_pbContext.inRoot()) {
 -            if (!_complete) {
--                _complete();
--            }
++        if (_pbContext.inRoot() && !_complete) {
+             _complete();
+         }
 -        } else {
 -            _currentMessage = _pbContext.getMessageType();
-+        if (_pbContext.inRoot() && !_complete) {
-+            _complete();
-         }
+-        }
          _currField = _pbContext.getField();
          // possible that we might be within array, which might be packed:
 -        boolean inObj = _pbContext.inObject();
@@ -127,11 +112,8 @@ index 83a3937..537ff65 100644
 -        _writeTag = inObj || !_pbContext.inArray() || !_currField.packed;
 +        _writeTag = inObj || !_currField.packed;
      }
--
-+    
+     
      /*
-     /**********************************************************
-     /* Output method implementations, textual
 @@ -784,7 +766,6 @@ public class ProtobufGenerator extends GeneratorBase
      protected void _writeString(String v) throws IOException
      {

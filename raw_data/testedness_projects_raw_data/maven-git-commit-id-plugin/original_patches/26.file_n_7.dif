@@ -175,7 +175,7 @@ index d78ef07..c61d035 100644
    }
  
    @Override
-@@ -240,144 +284,58 @@ public class NativeGitProvider extends GitDataProvider {
+@@ -240,57 +284,34 @@ public class NativeGitProvider extends GitDataProvider {
      return retValue;
    }
  
@@ -229,42 +229,47 @@ index d78ef07..c61d035 100644
  
 -  public interface ProcessRunner {
 -    /** Run a command and return the entire output as a String - naive, we know. */
--    String run(File directory, String command) throws IOException;
++
++  // CLI RUNNER
++
++  public interface CliRunner {
+     String run(File directory, String command) throws IOException;
 -    /** Run a command and return false if it contains at least one output line*/
 -    boolean runEmpty(File directory, String command) throws IOException;
--  }
--
+   }
+ 
 -  protected static class JavaProcessRunner implements ProcessRunner {
--    @Override
--        public String run(File directory, String command) throws IOException {
--          String output = "";
--          try {
--            ProcessBuilder builder = new ProcessBuilder(command.split("\\s"));
--            final Process proc = builder.directory(directory).start();
--            proc.waitFor();
--            final InputStream is = proc.getInputStream();
++  protected static class Runner implements CliRunner {
+     @Override
+     public String run(File directory, String command) throws IOException {
+       String output = "";
+@@ -299,9 +320,7 @@ public class NativeGitProvider extends GitDataProvider {
+         final Process proc = builder.directory(directory).start();
+         proc.waitFor();
+         final InputStream is = proc.getInputStream();
 -            final InputStream err = proc.getErrorStream();
 -
 -            final BufferedReader reader = new BufferedReader(new InputStreamReader(is));
--            final StringBuilder commandResult = new StringBuilder();
--            String line;
--            while ((line = reader.readLine()) != null) {
--              commandResult.append(line);
--            }
--
--            if (proc.exitValue() != 0) {
++        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+         final StringBuilder commandResult = new StringBuilder();
+         String line;
+         while ((line = reader.readLine()) != null) {
+@@ -309,9 +328,7 @@ public class NativeGitProvider extends GitDataProvider {
+         }
+ 
+         if (proc.exitValue() != 0) {
 -              final StringBuilder errMsg = readStderr(err);
 -
 -              final String message = String.format("Git command exited with invalid status [%d]: stdout: `%s`, stderr: `%s`", proc.exitValue(), output, errMsg.toString());
--              throw new IOException(message);
--            }
--            output = commandResult.toString();
--          } catch (InterruptedException ex) {
--            throw new IOException(ex);
--          }
--          return output;
--        }
- 
++          String message = String.format("Git command exited with invalid status [%d]: `%s`", proc.exitValue(), output);
+           throw new IOException(message);
+         }
+         output = commandResult.toString();
+@@ -320,64 +337,5 @@ public class NativeGitProvider extends GitDataProvider {
+       }
+       return output;
+     }
+-
 -    private StringBuilder readStderr(InputStream err) throws IOException {
 -      String line;
 -      final BufferedReader errReader = new BufferedReader(new InputStreamReader(err));
@@ -274,8 +279,7 @@ index d78ef07..c61d035 100644
 -      }
 -      return errMsg;
 -    }
-+  // CLI RUNNER
- 
+-
 -//    @Override
 -//    public String run(File directory, String command) throws IOException {
 -//      String output;
@@ -303,43 +307,26 @@ index d78ef07..c61d035 100644
 -//      }
 -//      return output;
 -//    }
-+  public interface CliRunner {
-+    String run(File directory, String command) throws IOException;
-+  }
- 
-+  protected static class Runner implements CliRunner {
-     @Override
+-
+-    @Override
 -    public boolean runEmpty(File directory, String command) throws IOException {
 -      boolean empty = true;
 -
-+    public String run(File directory, String command) throws IOException {
-+      String output = "";
-       try {
+-      try {
 -        ProcessBuilder builder = new ProcessBuilder(Lists.asList("/bin/sh", "-c", command.split("\\s")));
-+        ProcessBuilder builder = new ProcessBuilder(command.split("\\s"));
-         final Process proc = builder.directory(directory).start();
-         proc.waitFor();
-         final InputStream is = proc.getInputStream();
-         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+-        final Process proc = builder.directory(directory).start();
+-        proc.waitFor();
+-        final InputStream is = proc.getInputStream();
+-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 -
 -        if (reader.readLine() != null) {
 -          empty = false;
-+        final StringBuilder commandResult = new StringBuilder();
-+        String line;
-+        while ((line = reader.readLine()) != null) {
-+          commandResult.append(line);
-         }
- 
-+        if (proc.exitValue() != 0) {
-+          String message = String.format("Git command exited with invalid status [%d]: `%s`", proc.exitValue(), output);
-+          throw new IOException(message);
-+        }
-+        output = commandResult.toString();
-       } catch (InterruptedException ex) {
-         throw new IOException(ex);
-       }
+-        }
+-
+-      } catch (InterruptedException ex) {
+-        throw new IOException(ex);
+-      }
 -      return empty; // was non-empty
-+      return output;
-     }
+-    }
    }
  }

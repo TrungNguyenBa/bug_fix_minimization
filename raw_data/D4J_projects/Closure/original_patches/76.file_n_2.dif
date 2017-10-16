@@ -2,7 +2,7 @@ diff --git a/src/com/google/javascript/jscomp/DeadAssignmentsElimination.java b/
 index aaab0d62..879056f7 100644
 --- a/src/com/google/javascript/jscomp/DeadAssignmentsElimination.java
 +++ b/src/com/google/javascript/jscomp/DeadAssignmentsElimination.java
-@@ -290,47 +290,18 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+@@ -290,41 +290,10 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
    private boolean isVariableStillLiveWithinExpression(
        Node n, Node exprRoot, String variable) {
      while (n != exprRoot) {
@@ -19,17 +19,7 @@ index aaab0d62..879056f7 100644
 -            if (state == VariableLiveness.KILL) {
 -              state = VariableLiveness.MAYBE_LIVE;
 -            }
-+      for(Node sibling = n.getNext(); sibling != null;
-+          sibling = sibling.getNext()) {
-+        if (!ControlFlowGraph.isEnteringNewCfgNode(sibling)) {
-+          VariableLiveness state = isVariableReadBeforeKill(sibling, variable);
-+
-+          // If we see a READ or KILL there is no need to continue.
-+          if (state == VariableLiveness.READ) {
-+            return true;
-+          } else if (state == VariableLiveness.KILL) {
-+            return false;
-           }
+-          }
 -          break;
 -
 -        case Token.HOOK:
@@ -43,24 +33,28 @@ index aaab0d62..879056f7 100644
 -          break;
 -
 -        default:
--          for(Node sibling = n.getNext(); sibling != null;
--              sibling = sibling.getNext()) {
+       for(Node sibling = n.getNext(); sibling != null;
+           sibling = sibling.getNext()) {
 -            state = isVariableReadBeforeKill(sibling, variable);
 -            if (state != VariableLiveness.MAYBE_LIVE) {
 -              break;
 -            }
 -          }
 -      }
--
--      // If we see a READ or KILL there is no need to continue.
--      if (state == VariableLiveness.READ) {
--        return true;
--      } else if (state == VariableLiveness.KILL) {
--        return false;
++        if (!ControlFlowGraph.isEnteringNewCfgNode(sibling)) {
++          VariableLiveness state = isVariableReadBeforeKill(sibling, variable);
+ 
+           // If we see a READ or KILL there is no need to continue.
+           if (state == VariableLiveness.READ) {
+@@ -332,6 +301,8 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+           } else if (state == VariableLiveness.KILL) {
+             return false;
+           }
 +        }
-       }
++      }
        n = n.getParent();
      }
+     return false;
 @@ -351,10 +322,6 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
     */
    private VariableLiveness isVariableReadBeforeKill(
@@ -103,26 +97,19 @@ index aaab0d62..879056f7 100644
 -            n.getFirstChild().getNext(), n.getLastChild(), variable);
 -
 -      default:
--        // Expressions are evaluated left-right, depth first.
--        for (Node child = n.getFirstChild();
--            child != null; child = child.getNext()) {
--          VariableLiveness state = isVariableReadBeforeKill(child, variable);
--          if (state != VariableLiveness.MAYBE_LIVE) {
--            return state;
--          }
-+    // Expressions are evaluated left-right, depth first.
-+    for (Node child = n.getFirstChild();
-+        child != null; child = child.getNext()) {
+     // Expressions are evaluated left-right, depth first.
+     for (Node child = n.getFirstChild();
+         child != null; child = child.getNext()) {
 +      if (!ControlFlowGraph.isEnteringNewCfgNode(child)) { // Not a FUNCTION
-+        VariableLiveness state = isVariableReadBeforeKill(child, variable);
-+        if (state != VariableLiveness.MAYBE_LIVE) {
-+          return state;
+         VariableLiveness state = isVariableReadBeforeKill(child, variable);
+         if (state != VariableLiveness.MAYBE_LIVE) {
+           return state;
          }
-+      }
+       }
      }
 -
-     return VariableLiveness.MAYBE_LIVE;
-   }
+-    return VariableLiveness.MAYBE_LIVE;
+-  }
 -
 -  private VariableLiveness checkHookBranchReadBeforeKill(
 -      Node trueCase, Node falseCase, String variable) {
@@ -138,7 +125,7 @@ index aaab0d62..879056f7 100644
 -    } else if (v1 == VariableLiveness.KILL && v2 == VariableLiveness.KILL) {
 -      return VariableLiveness.KILL;
 -    } else {
--      return VariableLiveness.MAYBE_LIVE;
--    }
+     return VariableLiveness.MAYBE_LIVE;
+   }
 -  }
  }

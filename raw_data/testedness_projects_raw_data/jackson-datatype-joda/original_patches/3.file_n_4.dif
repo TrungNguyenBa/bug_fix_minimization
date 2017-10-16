@@ -2,12 +2,9 @@ diff --git a/src/test/java/com/fasterxml/jackson/datatype/joda/deser/MiscDeseria
 index 47671f8..fe23b5e 100644
 --- a/src/test/java/com/fasterxml/jackson/datatype/joda/deser/MiscDeserializationTest.java
 +++ b/src/test/java/com/fasterxml/jackson/datatype/joda/deser/MiscDeserializationTest.java
-@@ -143,16 +143,8 @@ public class MiscDeserializationTest extends JodaTestBase
-         assertNull(MAPPER.readValue(quote(""), LocalDate.class));
-     }
+@@ -145,14 +145,6 @@ public class MiscDeserializationTest extends JodaTestBase
  
--	public void testLocalDateDeserWithTimeZone() throws IOException
-+	public void testLocalDateDeserWithTimeZone() throws IOException 
+ 	public void testLocalDateDeserWithTimeZone() throws IOException 
  	{
 -    final String trickyInstant = "1238558582001";
 -    // MAPPER is using default TimeZone (GMT)

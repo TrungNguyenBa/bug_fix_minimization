@@ -10,15 +10,15 @@ index 0ed85d5..64b7c56 100644
  import org.junit.Before;
  import org.junit.Test;
  import org.junit.runner.RunWith;
-@@ -58,8 +57,6 @@ public class DropFilterQueueConsumerTest {
- 	private RulesRegistry rulesRegistry;
+@@ -59,8 +58,6 @@ public class DropFilterQueueConsumerTest {
  	
  	private AmqpTemplate mockAmqpTemplate;
--	
--	private ObjectMapper objectMapper = new ObjectMapper();
  
+-	private ObjectMapper objectMapper = new ObjectMapper();
+-
  	@Captor
  	private ArgumentCaptor<ConcurrentMap<Long, Map<Long, Rule>>> rulesMapArgument;
+ 	
 @@ -75,7 +72,6 @@ public class DropFilterQueueConsumerTest {
  		dropFilterQueueConsumer.setRulesExecutor(mockRulesExecutor);
  		dropFilterQueueConsumer.setRulesRegistry(rulesRegistry);

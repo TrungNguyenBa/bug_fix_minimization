@@ -2,15 +2,16 @@ diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java b/s
 index 1288b153..38672484 100644
 --- a/src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java
 +++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java
-@@ -152,10 +152,7 @@ public class MyPetPlayerListener implements Listener
+@@ -152,12 +152,9 @@ public class MyPetPlayerListener implements Listener
                  }
              }
              myPet.removePet();
 -            if (MyPetConfiguration.STORE_PETS_ON_PLAYER_QUIT)
 -            {
--                MyPetPlugin.getPlugin().savePets(false);
--            }
-+            MyPetPlugin.getPlugin().savePets(false);
+             MyPetPlugin.getPlugin().savePets(false);
          }
      }
+-    }
  
+     @EventHandler
+     public void onMyPetPlayerChangeWorld(final PlayerChangedWorldEvent event)

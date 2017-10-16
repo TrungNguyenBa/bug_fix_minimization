@@ -2,15 +2,6 @@ diff --git a/include/faunus/energy.h b/include/faunus/energy.h
 index 3acd1734..8e44d992 100644
 --- a/include/faunus/energy.h
 +++ b/include/faunus/energy.h
-@@ -113,7 +113,7 @@ namespace Faunus {
- 
-           virtual double external(const Tpvec&)                // External energy - pressure, for example.
-           { return 0; }
--          
-+
-           virtual void field(const Tpvec&, Eigen::MatrixXd&) //!< Calculate electric field on all particles
-           { }
- 
 @@ -372,12 +372,11 @@ namespace Faunus {
       */
      template<class Tspace, class Tpairpot>
@@ -33,7 +24,7 @@ index 3acd1734..8e44d992 100644
            }
  
            void setSpace(Tspace &s) FOVERRIDE {
-@@ -510,23 +508,12 @@ namespace Faunus {
+@@ -510,16 +508,6 @@ namespace Faunus {
             */
            void field(const Tpvec &p, Eigen::MatrixXd &E) FOVERRIDE {
              assert((int)p.size()==E.cols());
@@ -47,19 +38,14 @@ index 3acd1734..8e44d992 100644
 -                      for (auto j : *gj) // loop ove
 -                        E.col(i) = E.col(i) + pairpot.field(p[j],geo.vdist(p[i],p[j]));
 -              } else {
--              size_t i=0;
--              for (auto &pi : p) {
--                for (auto &pj : p)
--                  if (&pi!=&pj)
--                    E.col(i) = E.col(i) + pairpot.field(pj,geo.vdist(pi,pj));
--                i++;
--              }
-+            size_t i=0;
-+            for (auto &pi : p) {
-+              for (auto &pj : p)
-+                if (&pi!=&pj)
-+                  E.col(i) = E.col(i) + pairpot.field(pj,geo.vdist(pi,pj));
-+              i++;
+             size_t i=0;
+             for (auto &pi : p) {
+               for (auto &pj : p)
+@@ -528,7 +516,6 @@ namespace Faunus {
+               i++;
              }
            }
+-          }
        };
+ 
+     /**

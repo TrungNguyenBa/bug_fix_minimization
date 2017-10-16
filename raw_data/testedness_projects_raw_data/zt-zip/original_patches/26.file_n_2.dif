@@ -13,12 +13,3 @@ index b9a5f86..f8888e3 100644
        if (preserveRoot) {
          entryPath = file.getName() + entryPath;
        }
-@@ -369,7 +365,7 @@ public class Zips {
-       finally {
-         IOUtils.closeQuietly(out);
-       }
--        handleInPlaceActions(destinationFile);
-+      handleInPlaceActions(destinationFile);
-     }
-     catch (IOException e) {
-       ZipExceptionUtil.rethrow(e);

@@ -2,12 +2,8 @@ diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
 index d5157e34..e47e1dee 100644
 --- a/RELEASE-NOTES.txt
 +++ b/RELEASE-NOTES.txt
-@@ -32,14 +32,12 @@ Source compatible - Yes
- Serialization compatible - Yes
- 
- Data compatible - Yes, except
-- - DateTimeZone data updated to version 2011h
-+  - DateTimeZone data updated to version 2011h
+@@ -35,11 +35,9 @@ Data compatible - Yes, except
+   - DateTimeZone data updated to version 2011h
  
  Semantic compatible - Yes, except
 - -  Date-time for time-zones with DST based on an offset of 00:00 now pick summer time when ambiguous

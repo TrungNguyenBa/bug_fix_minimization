@@ -2,106 +2,24 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.jav
 index 6cf5b0f2..b9bb1440 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
-@@ -140,65 +140,58 @@ public class EntityMyOcelot extends EntityMyPet
+@@ -140,8 +140,6 @@ public class EntityMyOcelot extends EntityMyPet
       */
      public boolean a_(EntityHuman entityhuman)
      {
 -        try
-+        if (super.a_(entityhuman))
+-        {
+         if (super.a_(entityhuman))
          {
--            if (super.a_(entityhuman))
--            {
--                return true;
--            }
-+            return true;
-+        }
- 
--            ItemStack itemStack = entityhuman.inventory.getItemInHand();
-+        ItemStack itemStack = entityhuman.inventory.getItemInHand();
- 
--            if (getOwner().equals(entityhuman))
-+        if (getOwner().equals(entityhuman))
-+        {
-+            if (itemStack != null)
-             {
--                if (itemStack != null)
-+                if (itemStack.id == 351)
-                 {
--                    if (itemStack.id == 351)
-+                    if (itemStack.getData() == 11)
-                     {
--                        if (itemStack.getData() == 11)
--                        {
--                            ((MyOcelot) myPet).setCatType(Type.WILD_OCELOT);
--                            return true;
--                        }
--                        else if (itemStack.getData() == 0)
--                        {
--                            ((MyOcelot) myPet).setCatType(Type.BLACK_CAT);
--                            return true;
--                        }
--                        else if (itemStack.getData() == 14)
--                        {
--                            ((MyOcelot) myPet).setCatType(Type.RED_CAT);
--                            return true;
--                        }
--                        else if (itemStack.getData() == 7)
--                        {
--                            ((MyOcelot) myPet).setCatType(Type.SIAMESE_CAT);
--                            return true;
--                        }
-+                        ((MyOcelot) myPet).setCatType(Type.WILD_OCELOT);
-+                        return true;
-+                    }
-+                    else if (itemStack.getData() == 0)
-+                    {
-+                        ((MyOcelot) myPet).setCatType(Type.BLACK_CAT);
-+                        return true;
-                     }
--                    else if (itemStack.id == GROW_UP_ITEM.getId())
-+                    else if (itemStack.getData() == 14)
-                     {
--                        if (isBaby())
-+                        ((MyOcelot) myPet).setCatType(Type.RED_CAT);
-+                        return true;
-+                    }
-+                    else if (itemStack.getData() == 7)
-+                    {
-+                        ((MyOcelot) myPet).setCatType(Type.SIAMESE_CAT);
-+                        return true;
-+                    }
-+                }
-+                else if (itemStack.id == GROW_UP_ITEM.getId())
-+                {
-+                    if (isBaby())
-+                    {
-+                        if (!entityhuman.abilities.canInstantlyBuild)
-                         {
--                            if (!entityhuman.abilities.canInstantlyBuild)
-+                            if (--itemStack.count <= 0)
-                             {
--                                if (--itemStack.count <= 0)
--                                {
--                                    entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
--                                }
-+                                entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
-                             }
--                            this.setBaby(false);
--                            return true;
-                         }
-+                        this.setBaby(false);
-+                        return true;
-                     }
-                 }
--                this.sitPathfinder.toogleSitting();
--                return true;
-             }
+             return true;
+@@ -195,11 +193,6 @@ public class EntityMyOcelot extends EntityMyPet
+             this.sitPathfinder.toogleSitting();
+             return true;
+         }
 -        }
 -        catch (Exception e)
 -        {
 -            e.printStackTrace();
-+            this.sitPathfinder.toogleSitting();
-+            return true;
-         }
+-        }
          return false;
      }
+ 

@@ -36,11 +36,10 @@ index 1319b6f..7f98b85 100644
              }
              Class cls = rootLoader.loadClass("org.springframework.util.Log4jConfigurer");
 -            try {
--                invokeStaticMethod(cls, "initLogging", new Object[]{"classpath:grails-maven/log4j.properties"});
+             invokeStaticMethod(cls, "initLogging", new Object[]{"classpath:grails-maven/log4j.properties"});
 -            } catch (Throwable e) {
 -                // ignore
 -            }
-+            invokeStaticMethod(cls, "initLogging", new Object[]{"classpath:grails-maven/log4j.properties"});
          }
      }
  

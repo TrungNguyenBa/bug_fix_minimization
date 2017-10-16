@@ -20,37 +20,21 @@ index 5a07ba6..8fdeaec 100644
  
          // implicitly add _id if not mentioned
          // http://docs.mongodb.org/manual/core/read-operations/#result-projections
-@@ -542,30 +533,44 @@ public class MemoryCollection extends MongoCollection {
+@@ -542,27 +533,41 @@ public class MemoryCollection extends MongoCollection {
          return newDocument;
      }
  
 -    private void projectField(BSONObject document, BSONObject newDocument, String key) {
 -
--        if (document == null)
++	private BSONObject projectDocumentSeparingDots(BSONObject document,
++			BSONObject fields) {
+ 		if (document == null)
 -            return;
 -
 -        int dotPos = key.indexOf('.');
 -        if (dotPos > 0) {
 -            String mainKey = key.substring(0, dotPos);
 -            String subKey = key.substring(dotPos + 1);
--
--            Object object = document.get(mainKey);
--            // do not project the subdocument if it is not of type BSONObject
--            if (object instanceof BSONObject) {
--                if (!newDocument.containsField(mainKey)) {
--                    newDocument.put(mainKey, new BasicBSONObject());
--                }
--                projectField((BSONObject) object, (BSONObject) newDocument.get(mainKey), subKey);
--            }
--        } else {
--            newDocument.put(key, document.get(key));
--        }
--    }
--
--    public synchronized Iterable<BSONObject> handleQuery(BSONObject queryObject, int numberToSkip, int numberToReturn)
-+	private BSONObject projectDocumentSeparingDots(BSONObject document,
-+			BSONObject fields) {
-+		if (document == null)
 +            return null;
 +        BSONObject newDocument = new BasicBSONObject();
 +        for (String key : fields.keySet()) {
@@ -59,7 +43,12 @@ index 5a07ba6..8fdeaec 100644
 +        }
 +		return newDocument;
 +	}
-+
+ 
+-            Object object = document.get(mainKey);
+-            // do not project the subdocument if it is not of type BSONObject
+-            if (object instanceof BSONObject) {
+-                if (!newDocument.containsField(mainKey)) {
+-                    newDocument.put(mainKey, new BasicBSONObject());
 +	private void projectField(BSONObject document, BSONObject newDocument,
 +			String key) {
 +		String[] splittedKeys = key.split("\\.");
@@ -74,18 +63,18 @@ index 5a07ba6..8fdeaec 100644
 +					mergeFields((BSONObject)newDocument.get(currentField), projectDocumentSeparingDots((BSONObject)document.get(currentField), remainingFields));
 +				else
 +					newDocument.put(currentField, projectDocumentSeparingDots((BSONObject)document.get(currentField), remainingFields));
-+			}
-+		}
-+	}
+ 			}
+-                projectField((BSONObject) object, (BSONObject) newDocument.get(mainKey), subKey);
+ 		}
+-        } else {
+-            newDocument.put(key, document.get(key));
+ 	}
 +
 +    private Object mergeFields(BSONObject object1,
 +			BSONObject object2) {
 +    	object1.putAll(object2);
 +    	
 +		return object1;
-+	}
-+
-+	public synchronized Iterable<BSONObject> handleQuery(BSONObject queryObject, int numberToSkip, int numberToReturn)
-             throws MongoServerException {
-         return handleQuery(queryObject, numberToSkip, numberToReturn, null);
-     }
+ 	}
+ 
+ 	public synchronized Iterable<BSONObject> handleQuery(BSONObject queryObject, int numberToSkip, int numberToReturn)

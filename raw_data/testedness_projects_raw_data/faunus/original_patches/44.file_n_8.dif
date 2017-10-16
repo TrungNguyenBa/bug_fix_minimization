@@ -105,13 +105,7 @@ index 0a583582..907e78e2 100644
              size_t n=atom.list.size(); // number of atom types
              c.resize(n);
              rc.resize(n);
-@@ -825,18 +803,11 @@ namespace Faunus {
-             return lB * a.charge * b.charge * (1/r2 - Rcinv + (r2*Rcinv-1)*Rcinv );
- #endif
-           }
--
-+          
-         template<class Tparticle>
+@@ -830,13 +808,6 @@ namespace Faunus {
            double operator() (const Tparticle &a, const Tparticle &b, const Point &r) {
              return operator()(a,b,r.squaredNorm());
            }

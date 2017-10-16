@@ -42,7 +42,7 @@ index 7d13622..2f98a4e 100644
      </properties>
  
      <prerequisites>
-@@ -129,81 +129,101 @@
+@@ -129,29 +129,20 @@
  
          <dependency>
              <groupId>org.grails</groupId>
@@ -67,27 +67,19 @@ index 7d13622..2f98a4e 100644
                  <exclusion>
 -                    <groupId>org.grails</groupId>
 -                    <artifactId>grails-hibernate</artifactId>
--                </exclusion>
--                <exclusion>
--                    <groupId>org.grails</groupId>
--                    <artifactId>grails-docs</artifactId>
 +                    <groupId>javax.servlet</groupId>
 +                    <artifactId>servlet-api</artifactId>
                  </exclusion>
                  <exclusion>
--                    <groupId>javax.persistence</groupId>
--                    <artifactId>persistence-api</artifactId>
+-                    <groupId>org.grails</groupId>
+-                    <artifactId>grails-docs</artifactId>
 +                    <groupId>org.hibernate.java-persistence</groupId>
 +                    <artifactId>jpa-api</artifactId>
                  </exclusion>
-+				<exclusion>
-+					<groupId>javax.persistence</groupId>
-+					<artifactId>persistence-api</artifactId>
-+				</exclusion>
-             </exclusions>
-         </dependency>
--
-+        
+ 				<exclusion>
+ 					<groupId>javax.persistence</groupId>
+@@ -162,40 +153,54 @@
+         
          <dependency>
              <groupId>org.grails</groupId>
 -            <artifactId>grails-core</artifactId>
@@ -111,10 +103,12 @@ index 7d13622..2f98a4e 100644
 +                    <groupId>org.hibernate.java-persistence</groupId>
 +                    <artifactId>jpa-api</artifactId>
                  </exclusion>
-+				<exclusion>
+ 				<exclusion>
+-                    <groupId>org.springframework</groupId>
+-                    <artifactId>spring-context</artifactId>
 +					<groupId>javax.persistence</groupId>
 +					<artifactId>persistence-api</artifactId>
-+				</exclusion>
+ 				</exclusion>
 +            </exclusions>
 +        </dependency>
 +        
@@ -126,47 +120,38 @@ index 7d13622..2f98a4e 100644
 +            <scope>runtime</scope>
 +            <exclusions>
                  <exclusion>
--                    <groupId>org.springframework</groupId>
--                    <artifactId>spring-context</artifactId>
-+                    <groupId>org.grails</groupId>
-+                    <artifactId>grails-plugin-log4j</artifactId>
-                 </exclusion>
-                 <exclusion>
 -                    <groupId>javax.servlet</groupId>
 -                    <artifactId>servlet-api</artifactId>
--                </exclusion>
++                    <groupId>org.grails</groupId>
++                    <artifactId>grails-plugin-log4j</artifactId>
++                </exclusion>
++                <exclusion>
 +                       <groupId>org.grails</groupId>
 +                       <artifactId>grails-plugin-tomcat</artifactId>
-+                   </exclusion>                
+                    </exclusion>                
                  <exclusion>
                      <groupId>org.grails</groupId>
 -                    <artifactId>grails-spring</artifactId>
--                </exclusion>
 +                    <artifactId>grails-web</artifactId>
-+                </exclusion>                
+                 </exclusion>                
                  <exclusion>
 -                    <groupId>org.aspectj</groupId>
 -                    <artifactId>aspectjrt</artifactId>
--                </exclusion>
 +                    <groupId>org.grails</groupId>
 +                    <artifactId>grails-hibernate</artifactId>
-+                </exclusion>                
+                 </exclusion>                
                  <exclusion>
 -                    <groupId>org.hibernate.java-persistence</groupId>
 -                    <artifactId>jpa-api</artifactId>
--                </exclusion>
 +                    <groupId>org.grails</groupId>
 +                    <artifactId>grails-docs</artifactId>
-+                </exclusion>                
+                 </exclusion>                
  				<exclusion>
  					<groupId>javax.persistence</groupId>
- 					<artifactId>persistence-api</artifactId>
- 				</exclusion>
--            </exclusions>
-+            </exclusions>            
-+        </dependency>
-+
-+        <dependency>
+@@ -205,6 +210,21 @@
+         </dependency>
+ 
+         <dependency>
 +            <groupId>org.grails</groupId>
 +            <artifactId>grails-resources</artifactId>
 +            <version>${grails-scripts.version}</version>
@@ -178,12 +163,13 @@ index 7d13622..2f98a4e 100644
 +            <artifactId>grails-project-api</artifactId>
 +            <version>${grails.version}</version>
 +            <scope>runtime</scope>
-         </dependency>
- 
++        </dependency>
++
 +        
-         <dependency>
++        <dependency>
              <groupId>org.eclipse.jdt.core.compiler</groupId>
              <artifactId>ecj</artifactId>
+             <version>3.7.1</version>            
 @@ -260,6 +280,13 @@
              <version>${maven.version}</version>
          </dependency>

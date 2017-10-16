@@ -2,19 +2,19 @@ diff --git a/include/faunus/point.h b/include/faunus/point.h
 index 84179985..055edc87 100644
 --- a/include/faunus/point.h
 +++ b/include/faunus/point.h
-@@ -117,12 +117,6 @@ namespace Faunus {
-         in >> (*this)[i];
+@@ -118,12 +118,6 @@ namespace Faunus {
        return *this;
      }
--    
+ 
 -    /** @brief Read from string */
 -    PointBase& operator<<(const std::string &in) {
 -      std::istringstream i(in);
 -      return operator<<(i);
 -    }
- 
+-
      /**
       * @brief Transform point (rotation etc)
+      * @param rot Functor that rotates a point and returns the rotated Point
 @@ -143,53 +137,6 @@ namespace Faunus {
        }
    };

@@ -162,7 +162,7 @@ index 63d995d1..8637247b 100644
                  MyPetLogger.write(ChatColor.RED + "getCurrentExp(exp) Method is missing!");
                  DebugLogger.warning("getCurrentExp(exp) Method is missing!");
                  isUsable = false;
-@@ -148,27 +182,33 @@ public class JavaScript extends Experience {
+@@ -148,21 +182,27 @@ public class JavaScript extends Experience {
          return lastCurrentExp;
      }
  
@@ -194,12 +194,4 @@ index 63d995d1..8637247b 100644
 +    {
          ScriptEngineManager manager = new ScriptEngineManager();
          scriptEngine = manager.getEngineByName("js");
- 
-         scriptEngine.eval("MyPet = new Object();" +
--                                  "MyPet.getType = function() { return \"" + getMyPet().getPetType().getTypeName() + "\"; };" +
--                                  "MyPet.getOwnerName = function() { return \"" + getMyPet().getOwner().getName() + "\"; };");
-+                "MyPet.getType = function() { return \"" + getMyPet().getPetType().getTypeName() + "\"; };" +
-+                "MyPet.getOwnerName = function() { return \"" + getMyPet().getOwner().getName() + "\"; };");
- 
-         scriptEngine.eval(expScript);
  

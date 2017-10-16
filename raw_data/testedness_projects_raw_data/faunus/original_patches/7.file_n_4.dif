@@ -7,14 +7,11 @@ index e056812a..1e7b9921 100644
            }
  
 -        /* Commented to allow for gcc 4.6 compatibility
--           auto getBondList() -> decltype(this->list) {
--           return Tbase::getBondList();
--           }
--           */
 +        //uncommented due to gcc 4.6
-+        auto getBondList() -> decltype(this->list) {
-+          return Tbase::getBondList();
-+        }
+         auto getBondList() -> decltype(this->list) {
+           return Tbase::getBondList();
+         }
+-           */
  
      };
  
@@ -92,7 +89,7 @@ index e056812a..1e7b9921 100644
             */
            double update(Tpair &coord, double &weight, bool &rejection) {
              _cnt++;
-@@ -1483,32 +1470,31 @@ namespace Faunus {
+@@ -1483,23 +1470,20 @@ namespace Faunus {
              }
              return _du;
            }
@@ -121,17 +118,6 @@ index e056812a..1e7b9921 100644
            void load(const string &filename) {
              Tbase::load(filename+"penalty");
              hist.load(filename+"histo");
-           }
-+
-           void test(UnitTest &t) {
-             auto it_max = Tbase::max();
-             auto it_min = Tbase::min();
-             t("penalty1D_range",it_max->second-it_min->second,0.1);
-           }
-+
-           string info() {
-             using namespace Faunus::textio;
-             std::ostringstream o;
 @@ -1548,16 +1534,11 @@ namespace Faunus {
          public:
            /**
@@ -172,7 +158,7 @@ index e056812a..1e7b9921 100644
             */
            void exchange() {
              if (!mpiPtr->isMaster()) {
-@@ -1607,11 +1586,11 @@ namespace Faunus {
+@@ -1607,10 +1586,10 @@ namespace Faunus {
                hist.buf2hist(sendBuf);
              }
            }
@@ -180,15 +166,13 @@ index e056812a..1e7b9921 100644
 -           *                               
 -           *  @details Penalty function is updated using histogram obtained 
 -           *  by merging contributions from all processes.                               
--           */ 
 +
 +          /** 
 +           * @brief Update histogram of the single process 
 +           * @brief Merge histograms from all processes and update the penalty function
-+           */
+            */
            double update(Tpair &coord) {
              _cnt++;
-             hist(coord.first, coord.second)++; // increment internal histogram
 @@ -1633,15 +1612,11 @@ namespace Faunus {
              }
              return _du;
@@ -209,7 +193,7 @@ index e056812a..1e7b9921 100644
             */
            double update(std::pair<Tpair,Tpair> &coord, double &weight, bool &rejection) {
              _cnt++;
-@@ -1670,32 +1645,31 @@ namespace Faunus {
+@@ -1670,23 +1645,20 @@ namespace Faunus {
              return _du;
            }
  
@@ -238,25 +222,6 @@ index e056812a..1e7b9921 100644
            void load(const string &filename) {
              Tbase::load(filename+"penalty");
              hist.load(filename+"histo");
-           }
-+
-           void test(UnitTest &t) {
-             auto it_max = Tbase::max();
-             auto it_min = Tbase::min();
-             t("penalty2D_range",it_max->second-it_min->second,0.1);
-           }
-+
-           string info() {
-             using namespace Faunus::textio;
-             std::ostringstream o;
-@@ -1776,6 +1750,7 @@ namespace Faunus {
-               assert(Ncheck>0);
-               _log="#   initial penalty energy = "+std::to_string(_du)+"\n";
-             }
-+
-           /** @brief Update penalty for coordinate */
-           double update(Tcoord coordinate) {
-             _cnt++;
 @@ -1811,8 +1786,7 @@ namespace Faunus {
  
      /**

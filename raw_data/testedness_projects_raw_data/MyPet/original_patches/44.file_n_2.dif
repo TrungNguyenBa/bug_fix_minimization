@@ -7,11 +7,10 @@ index 2c9d5085..7fe93911 100644
              Entity damager = event.getDamager();
              if (damager instanceof Projectile) {
 -                if (((Projectile) damager).getShooter() instanceof Entity) {
--                    damager = (Entity) ((Projectile) damager).getShooter();
+                 damager = (Entity) ((Projectile) damager).getShooter();
 -                } else {
 -                    return;
 -                }
-+                damager = (Entity) ((Projectile) damager).getShooter();
              }
              if (damager instanceof CraftMyPet && event.getEntity() instanceof LivingEntity) {
                  MyPet myPet = ((CraftMyPet) damager).getMyPet();

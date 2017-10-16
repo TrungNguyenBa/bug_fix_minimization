@@ -7,11 +7,10 @@ index 2c9bf0a5..33ff3243 100644
                          killer = Locales.getString("Name." + Util.capitalizeName(MyPetType.getMyPetTypeByEntityType(e.getDamager().getType()).getTypeName()), myPet.getOwner().getLanguage());
                      } else {
 -                        if (e.getDamager().getType().getName() != null) {
--                            killer = Locales.getString("Name." + Util.capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
+                         killer = Locales.getString("Name." + Util.capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
 -                        } else {
 -                            killer = Locales.getString("Name.Unknow", myPet.getOwner().getLanguage());
 -                        }
-+                        killer = Locales.getString("Name." + Util.capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
                      }
                  }
              } else {

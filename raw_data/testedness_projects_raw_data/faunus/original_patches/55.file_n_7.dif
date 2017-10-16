@@ -2,13 +2,11 @@ diff --git a/src/mpi.cpp b/src/mpi.cpp
 index 5d6880d0..55ff9fa8 100644
 --- a/src/mpi.cpp
 +++ b/src/mpi.cpp
-@@ -14,8 +14,10 @@ namespace Faunus {
-     MPIController::MPIController(MPI_Comm c) : comm(c), _master(0) {
+@@ -15,7 +15,9 @@ namespace Faunus {
        MPI_Init(NULL,NULL);
        MPI_Comm_size(comm, &_nproc);
--      MPI_Comm_rank(comm, &_rank);
+       MPI_Comm_rank(comm, &_rank);    
 -      id=std::to_string(_rank);
-+      MPI_Comm_rank(comm, &_rank);    
 +      std::ostringstream o;
 +      o << _rank;
 +      id = o.str();

@@ -38,30 +38,27 @@ index 272dd1d..d3b2deb 100644
  		try {
  			while (!isInterrupted()) {
 -				int k;
-+				SocketChannel channel;
- 				try {
+-				try {
 -					k = selector.select();
 -				} catch (IOException e1) {
 -					// TODO - Logging
 -					break;
 -				}
 -				if (k <= 0) {
-+					channel = serverChannel.accept();
-+				} catch (IOException e) {
- 					continue;
- 				}
+-					continue;
+-				}
 -				Set<SelectionKey> keys = selector.selectedKeys();
 -				Iterator<SelectionKey> i = keys.iterator();
 -				while (i.hasNext()) {
 -					SelectionKey key = i.next();
 -					ServerSocketChannel serverChannel = (ServerSocketChannel) key.channel();
--					SocketChannel channel;
--					try {
--						channel = serverChannel.accept();
--					} catch (IOException e) {
+ 				SocketChannel channel;
+ 				try {
+ 					channel = serverChannel.accept();
+ 				} catch (IOException e) {
 -						e.printStackTrace();
--						continue;
--					}
+ 					continue;
+ 				}
 -					// add to pool
 -				}
 +				

@@ -1,0 +1,88 @@
+diff --git a/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+index 468dca712..d1531a812 100644
+--- a/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
++++ b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+@@ -561,7 +561,7 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+                             z[ia][i] = c * z[ia][i] - s * p;
+                         }
+                     }
+-                    if (t == 0.0 && i >= j)
++                    if (e[i + 1] == 0.0 && i >= j)
+                         continue;
+                     realEigenvalues[j] -= u;
+                     e[j] = q;
+diff --git a/src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java b/src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java
+index 597f6c42f..3abf3f0d8 100644
+--- a/src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java
++++ b/src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java
+@@ -140,7 +141,7 @@ public class SingularValueDecompositionImpl implements
+             singularValues[i] = Math.sqrt(Math.abs(singularValues[i]));
+         }
+         // Up to this point, U and V are computed independently of each other.
+-        // There still a sign indetermination of each column of, say, U.
++        // There still an sign indetermination of each column of, say, U.
+         // The sign is set such that A.V_i=sigma_i.U_i (i<=p)
+         // The right sign corresponds to a positive dot product of A.V_i and U_i
+         for (int i = 0; i < p; i++) {
+diff --git a/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java b/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+index 5a60da853..10f776263 100644
+--- a/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
++++ b/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+@@ -237,20 +237,23 @@ public abstract class AbstractLeastSquaresOptimizer implements DifferentiableMul
+      * @return RMS value
+      */
+     public double getRMS() {
+-        return Math.sqrt(getChiSquare() / rows);
++        double criterion = 0;
++        for (int i = 0; i < rows; ++i) {
++            final double residual = residuals[i];
++            criterion += residualsWeights[i] * residual * residual;
++        }
++        return Math.sqrt(criterion / rows);
+     }
+ 
+     /**
+-     * Get a Chi-Square-like value assuming the N residuals follow N
+-     * distinct normal distributions centered on 0 and whose variances are
+-     * the reciprocal of the weights.
++     * Get the Chi-Square value.
+      * @return chi-square value
+      */
+     public double getChiSquare() {
+         double chiSquare = 0;
+         for (int i = 0; i < rows; ++i) {
+             final double residual = residuals[i];
+-            chiSquare += residual * residual * residualsWeights[i];
++            chiSquare += residual * residual / residualsWeights[i];
+         }
+         return chiSquare;
+     }
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index 5d5a42b93..e39870a36 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,9 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="2.2" date="TBD" description="TBD">
+-      <action dev="dimpbx" type="fix" issue="MATH-377">
+-        Fixed bug in chi-square computation in AbstractLeastSquaresOptimizer.
+-      </action>
+       <action dev="luc" type="add" issue="MATH-400" due-to="J. Lewis Muir">
+         Added support for Gaussian curve fitting.
+       </action>
+diff --git a/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java b/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java
+index 3c82eecec..f2b850f48 100644
+--- a/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java
++++ b/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java
+@@ -439,8 +439,8 @@ public class LevenbergMarquardtOptimizerTest
+         assertEquals(cov[0][1], cov[1][0], 1.0e-14);
+         assertEquals(0.0016, cov[1][1], 0.001);
+         errors = optimizer.guessParametersErrors();
+-        assertEquals(0.004, errors[0], 0.001);
+-        assertEquals(0.004, errors[1], 0.001);
++        assertEquals(0.002, errors[0], 0.001);
++        assertEquals(0.002, errors[1], 0.001);
+ 
+     }
+ 

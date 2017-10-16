@@ -42,14 +42,13 @@ index 488aec9..1b93900 100644
 -                            return false;
 -                    } else {
 -                        if (!checkMatchesAnyValue(queryValue, value) && !checkMatchesValue(queryValue, value, valueExists)) {
--                            return false;
--                        }
--                    }
 +                queryValue = new BasicBSONObject(((BSONObject) queryValue).toMap());
 +                Object allQuery = ((BSONObject) queryValue).removeField("$all");
 +                if (!checkMatchesAllValues(allQuery, value)) {
-+                    return false;
+                     return false;
                  }
+-                    }
+-                }
 -                return true;
 +                // continue matching the remainder of queryValue
              }

@@ -6,11 +6,10 @@ index 01eb6e37..67c03850 100644
          this.inheritanceComboBoxModel.removeAllElements();
  
          inheritanceCheckBox.setSelected(false);
--        inheritanceCheckBox.setEnabled(false);
--        if (skillTreeMobType.getSkillTreeNames().size() > 1 || (!skillTreeMobType.getMobTypeName().equals("default") && MyPetSkillTreeMobType.getMobTypeByName("default").getSkillTreeNames().size() > 0))
 +        if (skillTreeMobType.getSkillTreeNames().size() == 1 && MyPetSkillTreeMobType.getMobTypeByName("default").getSkillTreeNames().size() == 0)
 +        {
-+            inheritanceCheckBox.setEnabled(false);
+             inheritanceCheckBox.setEnabled(false);
+-        if (skillTreeMobType.getSkillTreeNames().size() > 1 || (!skillTreeMobType.getMobTypeName().equals("default") && MyPetSkillTreeMobType.getMobTypeByName("default").getSkillTreeNames().size() > 0))
 +            inheritanceComboBox.setEnabled(false);
 +        }
 +        else

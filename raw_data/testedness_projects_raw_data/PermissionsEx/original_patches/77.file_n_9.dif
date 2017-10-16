@@ -24,125 +24,90 @@ index d2c1c3b..7ad0e28 100644
  	private final Map<String, String> entries;
  	private final Multimap<Qualifier, String> qualifiers;
  
-@@ -67,28 +64,19 @@ public class SQLMatcherGroup extends MatcherGroup {
+@@ -67,10 +64,7 @@ public class SQLMatcherGroup extends MatcherGroup {
  
  	@Override
  	public MatcherGroup setQualifiers(Multimap<Qualifier, String> qualifiers) {
 -		if (valid.compareAndSet(State.VALID, State.UPDATING)) {
--			try (SQLConnection conn = backend.getSQL()) {
+ 		try (SQLConnection conn = backend.getSQL()) {
 -				conn.beginTransaction();
 -				try {
--					conn.prepAndBind("qualifiers.clear").execute();
--					PreparedStatement stmt = conn.prepAndBind("qualifiers.add", entityId, "", "");
--					for (Map.Entry<Qualifier, String> entry : qualifiers.entries()) {
--						stmt.setString(2, entry.getKey().getName());
--						stmt.setString(3, entry.getValue());
--						stmt.addBatch();
--					}
--					stmt.executeBatch();
+ 			conn.prepAndBind("qualifiers.clear").execute();
+ 			PreparedStatement stmt = conn.prepAndBind("qualifiers.add", entityId, "", "");
+ 			for (Map.Entry<Qualifier, String> entry : qualifiers.entries()) {
+@@ -79,18 +73,12 @@ public class SQLMatcherGroup extends MatcherGroup {
+ 				stmt.addBatch();
+ 			}
+ 			stmt.executeBatch();
 -				} finally {
 -					conn.endTransaction();
 -				}
--				backend.resetMatcherGroup(getEntityId());
--				return backend.getMatcherGroup(getName(), getEntityId());
--			} catch (SQLException | IOException e) {
--				e.printStackTrace();
--				return null;
-+		try (SQLConnection conn = backend.getSQL()) {
-+			conn.prepAndBind("qualifiers.clear").execute();
-+			PreparedStatement stmt = conn.prepAndBind("qualifiers.add", entityId, "", "");
-+			for (Map.Entry<Qualifier, String> entry : qualifiers.entries()) {
-+				stmt.setString(2, entry.getKey().getName());
-+				stmt.setString(3, entry.getValue());
-+				stmt.addBatch();
- 			}
--		} else {
-+			stmt.executeBatch();
-+			backend.resetMatcherGroup(getEntityId());
-+			return backend.getMatcherGroup(getName(), getEntityId());
-+		} catch (SQLException | IOException e) {
-+			e.printStackTrace();
+ 			backend.resetMatcherGroup(getEntityId());
+ 			return backend.getMatcherGroup(getName(), getEntityId());
+ 		} catch (SQLException | IOException e) {
+ 			e.printStackTrace();
  			return null;
  		}
+-		} else {
+-			return null;
+-		}
  	}
-@@ -106,75 +94,56 @@ public class SQLMatcherGroup extends MatcherGroup {
+ 
+ 	@Override
+@@ -106,10 +94,7 @@ public class SQLMatcherGroup extends MatcherGroup {
  
  	@Override
  	public MatcherGroup setEntries(Map<String, String> value) {
 -		if (valid.compareAndSet(State.VALID, State.UPDATING)) {
--			try (SQLConnection conn = backend.getSQL()) {
+ 		try (SQLConnection conn = backend.getSQL()) {
 -				conn.beginTransaction();
 -				try {
--					conn.prepAndBind("entries.clear").execute();
--					PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", "");
--					for (Map.Entry<String, String> entry : value.entrySet()) {
--						stmt.setString(2, entry.getKey());
--						stmt.setString(3, entry.getValue());
--						stmt.addBatch();
--					}
--					stmt.executeBatch();
+ 			conn.prepAndBind("entries.clear").execute();
+ 			PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", "");
+ 			for (Map.Entry<String, String> entry : value.entrySet()) {
+@@ -118,26 +103,17 @@ public class SQLMatcherGroup extends MatcherGroup {
+ 				stmt.addBatch();
+ 			}
+ 			stmt.executeBatch();
 -				} finally {
 -					conn.endTransaction();
 -				}
--				backend.resetMatcherGroup(getEntityId());
--				return backend.getMatcherGroup(getName(), getEntityId());
--			} catch (SQLException | IOException e) {
--				e.printStackTrace();
--				return null;
-+		try (SQLConnection conn = backend.getSQL()) {
-+			conn.prepAndBind("entries.clear").execute();
-+			PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", "");
-+			for (Map.Entry<String, String> entry : value.entrySet()) {
-+				stmt.setString(2, entry.getKey());
-+				stmt.setString(3, entry.getValue());
-+				stmt.addBatch();
- 			}
--		} else {
-+			stmt.executeBatch();
-+			backend.resetMatcherGroup(getEntityId());
-+			return backend.getMatcherGroup(getName(), getEntityId());
-+		} catch (SQLException | IOException e) {
-+			e.printStackTrace();
+ 			backend.resetMatcherGroup(getEntityId());
+ 			return backend.getMatcherGroup(getName(), getEntityId());
+ 		} catch (SQLException | IOException e) {
+ 			e.printStackTrace();
  			return null;
  		}
+-		} else {
+-			return null;
+-		}
  	}
  
  	@Override
  	public MatcherGroup setEntries(List<String> value) {
 -		if (valid.compareAndSet(State.VALID, State.UPDATING)) {
--			try (SQLConnection conn = backend.getSQL()) {
+ 		try (SQLConnection conn = backend.getSQL()) {
 -				conn.beginTransaction();
 -				try {
--					conn.prepAndBind("entries.clear").execute();
--					PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", null);
--					for (String entry : value) {
--						stmt.setString(2, entry);
--						stmt.addBatch();
--					}
--					stmt.executeBatch();
+ 			conn.prepAndBind("entries.clear").execute();
+ 			PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", null);
+ 			for (String entry : value) {
+@@ -145,36 +121,29 @@ public class SQLMatcherGroup extends MatcherGroup {
+ 				stmt.addBatch();
+ 			}
+ 			stmt.executeBatch();
 -				} finally {
 -					conn.endTransaction();
 -				}
--				backend.resetMatcherGroup(getEntityId());
--				return backend.getMatcherGroup(getName(), getEntityId());
--			} catch (SQLException | IOException e) {
--				e.printStackTrace();
--				return null;
-+		try (SQLConnection conn = backend.getSQL()) {
-+			conn.prepAndBind("entries.clear").execute();
-+			PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", null);
-+			for (String entry : value) {
-+				stmt.setString(2, entry);
-+				stmt.addBatch();
- 			}
--		} else {
-+			stmt.executeBatch();
-+			backend.resetMatcherGroup(getEntityId());
-+			return backend.getMatcherGroup(getName(), getEntityId());
-+		} catch (SQLException | IOException e) {
-+			e.printStackTrace();
+ 			backend.resetMatcherGroup(getEntityId());
+ 			return backend.getMatcherGroup(getName(), getEntityId());
+ 		} catch (SQLException | IOException e) {
+ 			e.printStackTrace();
  			return null;
  		}
+-		} else {
+-			return null;
+-		}
  	}
  
  	void invalidate() {

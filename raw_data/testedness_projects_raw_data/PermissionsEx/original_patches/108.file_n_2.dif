@@ -19,11 +19,10 @@ index 024df0d..e061d57 100644
  
  	@Override
  	public void setOption(String option, String value, String worldName) {
--		this.node.set(formatPath(worldName, "options", option), value);
 +		if (option.equals("prefix") || option.equals("suffix")) {
 +			this.node.set(formatPath(worldName, option), value);
 +		} else {
-+			this.node.set(formatPath(worldName, "options", option), value);
+ 			this.node.set(formatPath(worldName, "options", option), value);
 +		}
  		save();
  	}

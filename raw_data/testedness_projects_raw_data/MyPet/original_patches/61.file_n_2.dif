@@ -2,41 +2,18 @@ diff --git a/src/main/java/de/Keyle/MyPet/listeners/WorldListener.java b/src/mai
 index 340eb748..ba2337be 100644
 --- a/src/main/java/de/Keyle/MyPet/listeners/WorldListener.java
 +++ b/src/main/java/de/Keyle/MyPet/listeners/WorldListener.java
-@@ -35,22 +35,20 @@ import java.io.File;
+@@ -35,7 +35,6 @@ import java.io.File;
  public class WorldListener implements Listener {
      @EventHandler
      public void onWorldInit(final WorldInitEvent event) {
 -        if (WorldGroup.getGroupByWorld(event.getWorld().getName()) == null) {
--            WorldGroup defaultGroup = WorldGroup.getGroupByName("default");
--            if (defaultGroup == null) {
--                defaultGroup = new WorldGroup("default");
--                defaultGroup.registerGroup();
--            }
--            if (defaultGroup.addWorld(event.getWorld().getName())) {
--                File groupsFile = new File(MyPetPlugin.getPlugin().getDataFolder().getPath() + File.separator + "worldgroups.yml");
--                ConfigurationYAML yamlConfiguration = new ConfigurationYAML(groupsFile);
--                FileConfiguration config = yamlConfiguration.getConfig();
--                config.set("Groups.default", defaultGroup.getWorlds());
--                yamlConfiguration.saveConfig();
--                MyPetLogger.write("added " + ChatColor.YELLOW + event.getWorld().getName() + ChatColor.RESET + " to '" + ChatColor.YELLOW + "default" + ChatColor.RESET + "' group.");
--            } else {
--                MyPetLogger.write("An error occured while adding " + ChatColor.YELLOW + event.getWorld().getName() + ChatColor.RESET + " to '" + ChatColor.YELLOW + "default" + ChatColor.RESET + "' group. Please restart the server.");
--            }
-+        WorldGroup defaultGroup = WorldGroup.getGroupByName("default");
-+        if (defaultGroup == null) {
-+            defaultGroup = new WorldGroup("default");
-+            defaultGroup.registerGroup();
-+        }
-+        if (defaultGroup.addWorld(event.getWorld().getName())) {
-+            File groupsFile = new File(MyPetPlugin.getPlugin().getDataFolder().getPath() + File.separator + "worldgroups.yml");
-+            ConfigurationYAML yamlConfiguration = new ConfigurationYAML(groupsFile);
-+            FileConfiguration config = yamlConfiguration.getConfig();
-+            config.set("Groups.default", defaultGroup.getWorlds());
-+            yamlConfiguration.saveConfig();
-+            MyPetLogger.write("added " + ChatColor.YELLOW + event.getWorld().getName() + ChatColor.RESET + " to '" + ChatColor.YELLOW + "default" + ChatColor.RESET + "' group.");
-+        } else {
-+            MyPetLogger.write("An error occured while adding " + ChatColor.YELLOW + event.getWorld().getName() + ChatColor.RESET + " to '" + ChatColor.YELLOW + "default" + ChatColor.RESET + "' group. Please restart the server.");
+         WorldGroup defaultGroup = WorldGroup.getGroupByName("default");
+         if (defaultGroup == null) {
+             defaultGroup = new WorldGroup("default");
+@@ -52,5 +51,4 @@ public class WorldListener implements Listener {
+             MyPetLogger.write("An error occured while adding " + ChatColor.YELLOW + event.getWorld().getName() + ChatColor.RESET + " to '" + ChatColor.YELLOW + "default" + ChatColor.RESET + "' group. Please restart the server.");
          }
      }
+-    }
  }
 \ No newline at end of file

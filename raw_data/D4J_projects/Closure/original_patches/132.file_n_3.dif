@@ -33,11 +33,3 @@ index 263352c4..a421ac7e 100644
    public void testBindToCall1() {
      test("(goog.bind(f))()", "f()");
      test("(goog.bind(f,a))()", "f.call(a)");
-@@ -1096,5 +1072,7 @@ public class PeepholeSubstituteAlternateSyntaxTest extends CompilerTestCase {
-       // Don't rewrite if the bind isn't the immediate call target
-       testSame("goog.bind(f.m).call(g)");
-     }
-+
-+
-   }
- }

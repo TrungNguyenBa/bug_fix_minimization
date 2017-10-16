@@ -118,42 +118,41 @@ index 0b731b8e..b9121b54 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the sound that is played when the MyPet get hurt
 +     */
 +    @Override
 +    protected String getHurtSound()
      {
--        if (myPet != null)
--        {
 -            super.setMyPet(myPet);
-+        return "mob.pig.say";
-+    }
- 
+-
 -            this.setSaddle(((MyPig) myPet).hasSaddle());
 -            this.setBaby(((MyPig) myPet).isBaby());
 -        }
++        return "mob.pig.say";
+     }
+ 
+-    public void setSaddle(boolean flag)
+-    {
+-        if (flag)
 +    /**
 +     * Returns the sound that is played when the MyPet dies
 +     */
 +    @Override
 +    protected String getDeathSound()
-+    {
+     {
+-            this.datawatcher.watch(16, (byte) 1);
 +        return "mob.pig.death";
      }
- 
--    public void setSaddle(boolean flag)
+-        else
++
 +    /**
 +     * Returns the default sound of the MyPet
 +     */
 +    protected String getLivingSound()
      {
--        if (flag)
--        {
--            this.datawatcher.watch(16, (byte) 1);
--        }
--        else
--        {
 -            this.datawatcher.watch(16, (byte) 0);
 -        }
 -        ((MyPig) myPet).hasSaddle = flag;

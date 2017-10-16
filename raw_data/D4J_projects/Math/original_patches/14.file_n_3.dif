@@ -22,10 +22,8 @@ index ef5294324..b7bb6f575 100644
 -            }
 -            return sqrtM;
 -        } else {
--            final EigenDecomposition dec = new EigenDecomposition(m);
--            return dec.getSquareRoot();
--        }
-+        final EigenDecomposition dec = new EigenDecomposition(m);
-+        return dec.getSquareRoot();
+         final EigenDecomposition dec = new EigenDecomposition(m);
+         return dec.getSquareRoot();
      }
+-    }
  }

@@ -38,7 +38,8 @@ index 4761e074..bb83ce58 100755
             * @brief Merge histograms from all processes and update the penalty function
             */
 -          double update(Tpair coord) {
--            _cnt++;
++          double update(Tcoord coord1, Tcoord coord2) {
+             _cnt++;
 -            hist(coord.first, coord.second)++; // increment internal histogram
 -            _du = 0;
 -            if ((_cnt%_Nupdate)==0) { // if Nupdate'th time
@@ -65,8 +66,7 @@ index 4761e074..bb83ce58 100755
 -           * Merge histograms from all processes and update the penalty function
 -           */
 -          double update_recycle(std::pair<Tpair,Tpair> coord, double weight, bool rejection) {
-+          double update(Tcoord coord1, Tcoord coord2) {
-             _cnt++;
+-            _cnt++;
 -            if (weight < 1) {
 -              hist(coord.first.first, coord.first.second) += (1-weight);
 -              hist(coord.second.first, coord.second.second) += weight;

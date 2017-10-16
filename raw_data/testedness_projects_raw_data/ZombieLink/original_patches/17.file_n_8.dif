@@ -2,12 +2,7 @@ diff --git a/src/main/java/com/lonepulse/zombielink/core/request/RequestMethod.j
 index fa29ff6..01892c4 100644
 --- a/src/main/java/com/lonepulse/zombielink/core/request/RequestMethod.java
 +++ b/src/main/java/com/lonepulse/zombielink/core/request/RequestMethod.java
-@@ -126,12 +126,11 @@ public enum RequestMethod {
- 	 * <p>Translates a given {@link ProxyInvocationConfiguration} to its {@link RequestMethod}.</p>
- 	 * 
- 	 * <p>This implementation is solely dependent upon the {@link RequestMethod} property in the 
--	 * annotated metdata of the endpoint method definition.</p>
-+	 * annotated metdata of the endpoint method definition.</p> 
+@@ -130,8 +130,7 @@ public enum RequestMethod {
  	 * 
  	 * @since 1.2.4
  	 */

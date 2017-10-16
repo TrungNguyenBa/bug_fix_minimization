@@ -27,12 +27,10 @@ index 7977be80..e056812a 100644
            }
            void test(UnitTest &t) {
 -            if (_cnt/_Nupdate>=1) {
--              auto it_max = Tbase::max();
--              auto it_min = Tbase::min();
+             auto it_max = Tbase::max();
+             auto it_min = Tbase::min();
 -              t("penalty2D_range",it_max->second-it_min->second,0.1);
 -            }
-+            auto it_max = Tbase::max();
-+            auto it_min = Tbase::min();
 +            t("penalty1D_range",it_max->second-it_min->second,0.1);
            }
            string info() {
@@ -67,18 +65,16 @@ index 7977be80..e056812a 100644
                }
                double min = Tbase::min()->second;
                for (auto &m : Tbase::getMap()) {
-@@ -1716,11 +1692,9 @@ namespace Faunus {
+@@ -1716,12 +1692,10 @@ namespace Faunus {
              hist.load(filename+"histo");
            }
            void test(UnitTest &t) {
 -            if (_cnt/_Nupdate>=1) {
--              auto it_max = Tbase::max();
--              auto it_min = Tbase::min();
--              t("penalty2D_range",it_max->second-it_min->second,0.1);
--            }
-+            auto it_max = Tbase::max();
-+            auto it_min = Tbase::min();
-+            t("penalty2D_range",it_max->second-it_min->second,0.1);
+             auto it_max = Tbase::max();
+             auto it_min = Tbase::min();
+             t("penalty2D_range",it_max->second-it_min->second,0.1);
            }
+-          }
            string info() {
              using namespace Faunus::textio;
+             std::ostringstream o;

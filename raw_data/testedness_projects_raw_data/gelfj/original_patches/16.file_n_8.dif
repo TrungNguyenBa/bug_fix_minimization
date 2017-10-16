@@ -43,6 +43,5 @@ index 7b59c4d..f8ecadf 100644
 +    public void generateBallastMessage() {
 +        Date date = new Date();
      }
--}
-+}
+ }
 \ No newline at end of file

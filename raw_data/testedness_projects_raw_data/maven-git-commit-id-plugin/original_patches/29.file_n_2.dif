@@ -11,14 +11,6 @@ index 03eb6f6..6f71c0e 100644
  import org.apache.maven.project.MavenProject;
  import org.eclipse.jgit.lib.Constants;
  import org.jetbrains.annotations.NotNull;
-@@ -41,6 +43,7 @@ public class GitDirLocator {
- 
-   @Nullable
-   public File lookupGitDirectory(@NotNull File manuallyConfiguredDir) {
-+
-     if (manuallyConfiguredDir.exists()) {
- 
-       // If manuallyConfiguredDir is a directory then we can use it as the git path.
 @@ -74,25 +77,60 @@ public class GitDirLocator {
     */
    @Nullable
@@ -39,8 +31,16 @@ index 03eb6f6..6f71c0e 100644
 +      // If the linkPath was found from the file and it exists then use it.
 +      if (isExistingDirectory(gitDirLinkPath)) {
 +        return gitDirLinkPath;
-+      }
-+
+       }
+ 
+-    File basedir = mavenProject.getBasedir();
+-    while (basedir != null) {
+-      File gitdir = new File(basedir, Constants.DOT_GIT);
+-      if (gitdir != null && gitdir.exists()) {
+-        if (gitdir.isDirectory()) {
+-          return gitdir;
+-        } else if (gitdir.isFile()) {
+-          return processGitDirFile(gitdir);
 +      /**
 +       * project.getParent always returns NULL for me, but if getParentArtifact returns
 +       * not null then there is actually a parent - seems like a bug in maven to me.
@@ -51,24 +51,14 @@ index 03eb6f6..6f71c0e 100644
 +        if (maybeFoundParentProject.isPresent())
 +        currentProject = maybeFoundParentProject.get();
 +
-+      } else {
+       } else {
 +        // Get the parent, or NULL if no parent AND no parentArtifact.
 +        currentProject = currentProject.getParent();
 +      }
-     }
- 
--    File basedir = mavenProject.getBasedir();
--    while (basedir != null) {
--      File gitdir = new File(basedir, Constants.DOT_GIT);
--      if (gitdir != null && gitdir.exists()) {
--        if (gitdir.isDirectory()) {
--          return gitdir;
--        } else if (gitdir.isFile()) {
--          return processGitDirFile(gitdir);
--        } else {
--          return null;
-+    return null;
-+  }
++    }
++
+     return null;
+   }
 +
 +  /**
 +   * Find a project in the reactor by its artifact, I'm new to maven coding
@@ -85,10 +75,10 @@ index 03eb6f6..6f71c0e 100644
 +        if (reactorProject.getArtifactId().equals(parentArtifact.getArtifactId())) {
 +          return Optional.of(reactorProject);
          }
-       }
 -      basedir = basedir.getParentFile();
-     }
+       }
 -    return null;
++    }
 +
 +    return Optional.absent();
    }

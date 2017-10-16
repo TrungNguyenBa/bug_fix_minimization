@@ -2,7 +2,7 @@ diff --git a/src/test/org/apache/commons/math/util/MathUtilsTest.java b/src/test
 index 8b953579d..dd99e9135 100644
 --- a/src/test/org/apache/commons/math/util/MathUtilsTest.java
 +++ b/src/test/org/apache/commons/math/util/MathUtilsTest.java
-@@ -232,12 +232,11 @@ public final class MathUtilsTest extends TestCase {
+@@ -232,7 +232,7 @@ public final class MathUtilsTest extends TestCase {
      }
  
      public void testFactorial() {
@@ -11,8 +11,3 @@ index 8b953579d..dd99e9135 100644
              assertEquals(i + "! ", factorial(i), MathUtils.factorial(i));
              assertEquals(i + "! ", (double)factorial(i), MathUtils.factorialDouble(i), Double.MIN_VALUE);
              assertEquals(i + "! ", Math.log((double)factorial(i)), MathUtils.factorialLog(i), 10E-12);
-         }
--        
-         assertEquals("0", 1, MathUtils.factorial(0));
-         assertEquals("0", 1.0d, MathUtils.factorialDouble(0), 1E-14);
-         assertEquals("0", 0.0d, MathUtils.factorialLog(0), 1E-14);

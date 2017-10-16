@@ -2,26 +2,6 @@ diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.jav
 index 879c8e9..4a85efe 100644
 --- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
 +++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
-@@ -31,7 +31,6 @@ import java.util.logging.Level;
- import java.util.logging.Logger;
- import java.util.regex.Matcher;
- import java.util.regex.Pattern;
--
- import ru.tehkode.utils.StringUtils;
- 
- public class SQLConnection {
-@@ -75,9 +74,9 @@ public class SQLConnection {
- 		this.checkConnection();
- 
- 		SQLSelectQuery query = new SQLSelectQuery(sql, params);
--
-+		
- 		query.execute();
--
-+		
- 		return query.getResults();
- 	}
- 
 @@ -91,7 +90,7 @@ public class SQLConnection {
  				return fallback;
  			}

@@ -25,15 +25,7 @@ index 54ec0fe..f96f026 100644
      final ObjectMapper MAPPER = new ObjectMapper(new ProtobufFactory());
  
      /*
-@@ -32,14 +21,14 @@ public class WriteSimpleTest extends ProtobufTestBase
-                 .withSchema(schema);
-         byte[] bytes = w.writeValueAsBytes(new Point(7, 2));
-         assertNotNull(bytes);
--
-+        
-         // 4 bytes: 1 byte tags, 1 byte values
-         assertEquals(4, bytes.length);
-         assertEquals(8, bytes[0]); // wire type 0 (3 LSB), id of 1 (-> 0x8)
+@@ -39,7 +28,7 @@ public class WriteSimpleTest extends ProtobufTestBase
          assertEquals(7, bytes[1]); // VInt 7, no zig-zag
          assertEquals(0x10, bytes[2]); // wire type 0 (3 LSB), id of 2 (-> 0x10)
          assertEquals(4, bytes[3]); // VInt 2, but with zig-zag

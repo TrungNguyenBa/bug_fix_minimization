@@ -45,19 +45,19 @@ index 13e26ad..626bc92 100644
 +
 +		for (String worldName : this.getWorlds()) {
 +			allGroups.put(worldName, this.getWorldGroups(worldName));
-+		}
-+
+ 		}
+ 
 +		allGroups.put(null, this.getWorldGroups(null));
-+
+ 
+-	@Deprecated
+-	public Map<String, List<PermissionGroup>> getAllGroups() {
+-		return getAllParents();
 +		return allGroups;
  	}
  
 +	protected List<PermissionGroup> getWorldGroups(String worldName) {
 +		List<PermissionGroup> groups = new LinkedList<PermissionGroup>();
- 
--	@Deprecated
--	public Map<String, List<PermissionGroup>> getAllGroups() {
--		return getAllParents();
++
 +		for (String groupName : this.getData().getParents(worldName)) {
 +			if (groupName == null || groupName.isEmpty()) {
 +				continue;
@@ -73,8 +73,8 @@ index 13e26ad..626bc92 100644
 +		Collections.sort(groups);
 +
 +		return Collections.unmodifiableList(groups);
- 	}
- 
++	}
++
 +
 +
  	/**

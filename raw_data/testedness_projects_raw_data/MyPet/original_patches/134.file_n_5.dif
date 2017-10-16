@@ -31,19 +31,19 @@ index 7307b046..5211a345 100644
 +                if (!upgrade.getProperties().getValue().containsKey("addset_speed") || ((StringTag) upgrade.getProperties().getValue().get("addset_speed")).getValue().equals("add"))
 +                {
 +                    speed += ((FloatTag) upgrade.getProperties().getValue().get("speed")).getValue();
-+                }
+                 }
+-                if (active && !quiet) {
+-                    myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Skill.Ride.Upgrade", myPet.getOwner().getLanguage()), myPet.getPetName(), speedPercent));
 +                else
 +                {
 +                    speed = ((FloatTag) upgrade.getProperties().getValue().get("speed")).getValue();
                  }
--                if (active && !quiet) {
--                    myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Skill.Ride.Upgrade", myPet.getOwner().getLanguage()), myPet.getPetName(), speedPercent));
 +                if (!quiet)
 +                {
 +                    myPet.sendMessageToOwner(Colorizer.setColors(Locales.getString("Message.Skill.Ride.Upgrade", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%speed%",String.format("%1.3f", upgrade.getProperties().getDouble("add"))));
                  }
-             }
 -            active = true;
++            }
 +            */
          }
      }

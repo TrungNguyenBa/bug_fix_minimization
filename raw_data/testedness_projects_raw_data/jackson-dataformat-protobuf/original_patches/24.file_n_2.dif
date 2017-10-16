@@ -26,9 +26,8 @@ index e796d4e..6fd8493 100644
          if (_parent == null) {
 -            if (_typedTag != -1) {
 -                byte[] tagBytes = ProtobufUtil.lengthAsBytes(_typedTag);
--                out.write(tagBytes);
+             out.write(tagBytes);
 -            }
-+            out.write(tagBytes);
              out.write(lbytes);
              out.write(payload);
              if (len > 0) {
@@ -37,9 +36,8 @@ index e796d4e..6fd8493 100644
          } else {
 -            if (_typedTag != -1) {
 -                byte[] tagBytes = ProtobufUtil.lengthAsBytes(_typedTag);
--                _parent.append(tagBytes, 0, tagBytes.length);
+             _parent.append(tagBytes, 0, tagBytes.length);
 -            }
-+            _parent.append(tagBytes, 0, tagBytes.length);
              _parent.append(lbytes, 0, lbytes.length);
              _parent.append(payload, 0, payload.length);
              _parent.append(input, offset, len);

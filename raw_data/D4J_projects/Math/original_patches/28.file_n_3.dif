@@ -2,12 +2,10 @@ diff --git a/src/test/java/org/apache/commons/math3/optimization/linear/SimplexS
 index ad4f2fe51..b4bf643ad 100644
 --- a/src/test/java/org/apache/commons/math3/optimization/linear/SimplexSolverTest.java
 +++ b/src/test/java/org/apache/commons/math3/optimization/linear/SimplexSolverTest.java
-@@ -50,28 +50,7 @@ public class SimplexSolverTest {
-         Assert.assertEquals(1.0d, solution.getValue(), epsilon);
-         Assert.assertTrue(validSolution(solution, constraints, epsilon));
+@@ -52,27 +52,6 @@ public class SimplexSolverTest {
      }
--
--    @Test
+     
+     @Test
 -    public void testMath828Cycle() {
 -        LinearObjectiveFunction f = new LinearObjectiveFunction(
 -                new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0);
@@ -28,7 +26,7 @@ index ad4f2fe51..b4bf643ad 100644
 -        Assert.assertTrue(validSolution(solution, constraints, epsilon));        
 -    }
 -
-+    
-     @Test
+-    @Test
      public void testMath781() {
          LinearObjectiveFunction f = new LinearObjectiveFunction(new double[] { 2, 6, 7 }, 0);
+ 

@@ -38,9 +38,8 @@ index b6ab362..c5ba9b5 100644
  	public final void testMissingRequestAnnotation() {
  		
 -		expectedException.expect(Is.isA(strayRequestException));
--		EndpointProxyFactory.INSTANCE.create(MissingRequestAnnotationEndpoint.class);
 +		MissingRequestAnnotationEndpoint endpoint = 
-+			EndpointProxyFactory.INSTANCE.create(MissingRequestAnnotationEndpoint.class);
+ 			EndpointProxyFactory.INSTANCE.create(MissingRequestAnnotationEndpoint.class);
 +		
 +		expectedException.expectCause(Is.isA(missingRequestAnnotationException));
 +		

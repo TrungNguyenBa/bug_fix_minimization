@@ -8,8 +8,9 @@ index c45260ad..84bf0a9e 100644
              if (status == PetState.Here) {
 -                if (Configuration.USE_HUNGER_SYSTEM) {
 -                    if (hunger > 1 && --hungerTime <= 0) {
--                        hunger--;
--                        hungerTime = Configuration.HUNGER_SYSTEM_TIME;
++                if (Configuration.USE_HUNGER_SYSTEM && hunger > 1 && --hungerTime <= 0) {
+                     hunger--;
+                     hungerTime = Configuration.HUNGER_SYSTEM_TIME;
 -                        if (hunger == 66) {
 -                            sendMessageToOwner(Util.formatText(Locales.getString("Message.Hunger.Rumbling", getOwner()), getPetName()));
 -                        } else if (hunger == 33) {
@@ -21,9 +22,6 @@ index c45260ad..84bf0a9e 100644
 -                    if (hunger == 1 && getHealth() >= 2) {
 -                        getCraftPet().damage(1.);
 -                    }
-+                if (Configuration.USE_HUNGER_SYSTEM && hunger > 1 && --hungerTime <= 0) {
-+                    hunger--;
-+                    hungerTime = Configuration.HUNGER_SYSTEM_TIME;
                  }
              }
          }

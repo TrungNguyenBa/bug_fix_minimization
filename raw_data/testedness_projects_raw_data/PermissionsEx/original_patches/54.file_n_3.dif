@@ -31,28 +31,27 @@ index 0f9605f..fb8bb08 100644
 -					continue;
 -				}
 -				long groupLifetime = Long.parseLong(entry.getValue());
--				if (groupLifetime > 0 && groupLifetime < System.currentTimeMillis() / 1000) { // check for expiration
++	protected boolean checkMembership(PermissionGroup group, String worldName) {
++		int groupLifetime = this.getOwnOptionInteger("group-" + group.getIdentifier() + "-until", worldName, 0);
++
+ 		if (groupLifetime > 0 && groupLifetime < System.currentTimeMillis() / 1000) { // check for expiration
 -					this.setOption("group-" + group + "-until", null, world.getKey()); // remove option
 -					this.removeGroup(group, world.getKey()); // remove membership
--					// @TODO Make notification of player about expired memebership
++			this.setOption("group-" + group.getIdentifier() + "-until", null, worldName); // remove option
++			this.removeGroup(group, worldName); // remove membership
+ 			// @TODO Make notification of player about expired memebership
 -				} else {
 -					nextExpiration = Math.min(nextExpiration, groupLifetime);
 -				}
 -			}
 -		}
-+	protected boolean checkMembership(PermissionGroup group, String worldName) {
-+		int groupLifetime = this.getOwnOptionInteger("group-" + group.getIdentifier() + "-until", worldName, 0);
- 
+-
 -		if (nextExpiration < Long.MAX_VALUE) {
 -			// Schedule the next timed groups check with the permissions manager
 -			manager.scheduleTimedGroupsCheck(nextExpiration, getIdentifier());
-+		if (groupLifetime > 0 && groupLifetime < System.currentTimeMillis() / 1000) { // check for expiration
-+			this.setOption("group-" + group.getIdentifier() + "-until", null, worldName); // remove option
-+			this.removeGroup(group, worldName); // remove membership
-+			// @TODO Make notification of player about expired memebership
+-		}
 +			return false;
  		}
--	}
  
 -	static String getTimedGroupName(String option) {
 -		if (!option.startsWith("group-") && !option.endsWith("-until")) {

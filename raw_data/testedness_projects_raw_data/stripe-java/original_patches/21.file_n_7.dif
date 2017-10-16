@@ -11,20 +11,6 @@ index 43ee42c..871fd11 100644
  
  	public static final String FRAUD_DETAILS = "fraud_details";
  	FraudDetails fraudDetails;
-@@ -60,11 +60,11 @@ public class Charge extends APIResource implements MetadataStore<Charge> {
- 	public void setId(String id) {
- 		this.id = id;
- 	}
--
-+	
- 	public String getStatus() {
- 		return status;
- 	}
--
-+	
- 	public Integer getAmount() {
- 		return amount;
- 	}
 @@ -270,11 +270,11 @@ public class Charge extends APIResource implements MetadataStore<Charge> {
  		this.receiptEmail = receiptEmail;
  	}

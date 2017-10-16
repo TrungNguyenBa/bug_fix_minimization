@@ -12,9 +12,8 @@ index 40ae743c..b6f23337 100644
 -                }
 -                else
 -                {
--                    event.setDamage(myPet.getDamage());
+                 event.setDamage(myPet.getDamage());
 -                }
-+                event.setDamage(myPet.getDamage());
  
                  if (damagedEntity instanceof Player && event.isCancelled())
                  {

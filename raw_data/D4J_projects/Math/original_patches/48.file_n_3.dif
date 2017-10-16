@@ -44,9 +44,3 @@ index 47c340c01..ede0c2792 100644
       * @param functionValueAccuracy Maximum function value error.
       */
      public IllinoisSolver(final double relativeAccuracy,
-@@ -80,4 +78,5 @@ public class IllinoisSolver extends BaseSecantSolver {
-                           final double functionValueAccuracy) {
-         super(relativeAccuracy, absoluteAccuracy, functionValueAccuracy, Method.PEGASUS);
-     }
-+
- }

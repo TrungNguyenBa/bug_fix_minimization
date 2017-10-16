@@ -25,11 +25,9 @@ index 640569c..46fdf87 100644
    @NotNull
    public DescribeCommand match(@Nullable String pattern) {
 -    if (!"*".equals(pattern)) {
--      matchOption = Optional.fromNullable(pattern);
--      log("--match =", matchOption.or(""));
+     matchOption = Optional.fromNullable(pattern);
+     log("--match =", matchOption.or(""));
 -    }
-+    matchOption = Optional.fromNullable(pattern);
-+    log("--match =", matchOption.or(""));
      return this;
    }
  

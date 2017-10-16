@@ -10,12 +10,7 @@ index bf18ab4c..033ff1b1 100644
  
            /**
             *  @brief Replaces dipole moment with permanent dipole moment plus induced dipole moment
-@@ -107,11 +106,12 @@ namespace Faunus {
-                   Point mu_err = mu_trial - p[i].mu*p[i].muscalar;     // Difference between former and current state
-                   mu_err_norm[i] = mu_err.norm();// Get norm of previous row
-                   p[i].muscalar = mu_trial.norm();// Update dip scalar in particle
-+
-                   if (p[i].muscalar > 1e-6)
+@@ -111,7 +111,7 @@ namespace Faunus {
                      p[i].mu = mu_trial/p[i].muscalar;// Update article dip.
                  }
                  if(cnt > max_iter) {

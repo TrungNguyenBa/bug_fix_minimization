@@ -18,7 +18,7 @@ index dc4e7a5..039515e 100644
  import ninja.leaping.permissionsex.util.PEXProfileCache;
  import ninja.leaping.permissionsex.util.Translatable;
  import ninja.leaping.permissionsex.util.command.CommandSpec;
-@@ -261,45 +259,29 @@ public class PermissionsEx implements ImplementationInterface, Caching<ContextIn
+@@ -261,46 +259,30 @@ public class PermissionsEx implements ImplementationInterface, Caching<ContextIn
          if (expected == null) {
              return Futures.immediateFailedFuture(new IllegalArgumentException("Data store " + dataStoreIdentifier + " is not present"));
          }
@@ -29,15 +29,13 @@ index dc4e7a5..039515e 100644
 -        }
  
 -        return Futures.transform(activeDataStore.performBulkOperation(new Function<DataStore, ListenableFuture<Void>>() {
--            @Override
--            public ListenableFuture<Void> apply(@Nullable final DataStore store) {
++        try {
++            return activeDataStore.performBulkOperation(new Function<DataStore, ListenableFuture<Void>>() {
+                 @Override
+                 public ListenableFuture<Void> apply(@Nullable final DataStore store) {
 -                System.out.println("Performing bulk operation");
 -                try {
 -                    return Futures.immediateFuture(Futures.transform(Futures.allAsList(Iterables.transform(expected.getAll(), new Function<Map.Entry<Map.Entry<String, String>, ImmutableOptionSubjectData>, ListenableFuture<ImmutableOptionSubjectData>>() {
-+        try {
-+            return activeDataStore.performBulkOperation(new Function<DataStore, ListenableFuture<Void>>() {
-+                @Override
-+                public ListenableFuture<Void> apply(@Nullable final DataStore store) {
 +                    return Futures.transform(Futures.allAsList(Iterables.transform(expected.getAll(), new Function<Map.Entry<Map.Entry<String, String>, ImmutableOptionSubjectData>, ListenableFuture<ImmutableOptionSubjectData>>() {
                          @Nullable
                          @Override
@@ -56,21 +54,20 @@ index dc4e7a5..039515e 100644
                              return null;
                          }
 -                    }).get());
--                } catch (InterruptedException | ExecutionException e) {
--                    return Futures.immediateFailedFuture(e);
 +                    });
-                 }
--            }
++                }
++            }).get();
+         } catch (InterruptedException | ExecutionException e) {
+             return Futures.immediateFailedFuture(e);
+         }
+     }
 -        }), new AsyncFunction<ListenableFuture<Void>, Void>() {
 -            @Override
 -            public ListenableFuture<Void> apply(ListenableFuture<Void> input) throws Exception {
 -                return input;
 -            }
 -        });
-+            }).get();
-+        } catch (InterruptedException | ExecutionException e) {
-+            return Futures.immediateFailedFuture(e);
-+        }
-     }
+-    }
  
      public Set<String> getRegisteredSubjectTypes() {
+         return this.activeDataStore.getRegisteredTypes();

@@ -49,15 +49,13 @@ index 205be38..17a9f01 100644
          branch = branch.replace("refs/heads/", "");
        }
 -    } catch(NativeCommandException e) {
--        // it seems that git repro is in 'DETACHED HEAD'-State, using Commid-Id as Branch
--        if (e.getExitCode() == 1) {
--            branch = getCommitId();
--        }
--        throw Throwables.propagate(e);
 +    }catch(RuntimeException e){
-+      // it seems that git repro is in 'DETACHED HEAD'-State, using Commid-Id as Branch
-+      branch = getCommitId();
+       // it seems that git repro is in 'DETACHED HEAD'-State, using Commid-Id as Branch
+-        if (e.getExitCode() == 1) {
+       branch = getCommitId();
      }
+-        throw Throwables.propagate(e);
+-    }
      return branch;
    }
  
@@ -126,7 +124,7 @@ index 205be38..17a9f01 100644
      return result.replace('\n', ',');
    }
  
-@@ -207,23 +189,37 @@ public class NativeGitProvider extends GitDataProvider {
+@@ -207,7 +189,8 @@ public class NativeGitProvider extends GitDataProvider {
  
    private String getOriginRemote(File directory) throws MojoExecutionException {
      String remoteUrl = null;
@@ -134,28 +132,15 @@ index 205be38..17a9f01 100644
 +    try {
 +      String remotes = runGitCommand(directory, "remote -v");
  
--    // welcome to text output parsing hell! - no `\n` is not enough
--    for (String line : Splitter.onPattern("\\((fetch|push)\\)?").split(remotes)) {
-+      // welcome to text output parsing hell! - no `\n` is not enough
-+      for (String line : Splitter.onPattern("\\((fetch|push)\\)?").split(remotes)) {
-         String trimmed = line.trim();
- 
-         if (trimmed.startsWith("origin")) {
--            String[] splited = trimmed.split("\\s+");
--            if (splited.length != REMOTE_COLS - 1) { // because (fetch/push) was trimmed
--                throw new MojoExecutionException("Unsupported GIT output (verbose remote address): " + line);
--            }
--            remoteUrl = splited[1];
-+          String[] splited = trimmed.split("\\s+");
-+          if (splited.length != REMOTE_COLS - 1) { // because (fetch/push) was trimmed
-+            throw new MojoExecutionException("Unsupported GIT output (verbose remote address): " + line);
-+          }
-+          remoteUrl = splited[1];
+       // welcome to text output parsing hell! - no `\n` is not enough
+       for (String line : Splitter.onPattern("\\((fetch|push)\\)?").split(remotes)) {
+@@ -221,9 +204,22 @@ public class NativeGitProvider extends GitDataProvider {
+           remoteUrl = splited[1];
          }
-+      }
+       }
 +    } catch (Exception e) {
 +      throw new MojoExecutionException("Error while obtaining origin remote", e);
-     }
++    }
      return remoteUrl;
    }
  
@@ -172,7 +157,7 @@ index 205be38..17a9f01 100644
    /**
     * Runs a maven command and returns {@code true} if output was non empty.
     * Can be used to short cut reading output from command when we know it may be a rather long one.
-@@ -245,33 +241,24 @@ public class NativeGitProvider extends GitDataProvider {
+@@ -245,32 +241,23 @@ public class NativeGitProvider extends GitDataProvider {
      }
    }
  
@@ -181,7 +166,8 @@ index 205be38..17a9f01 100644
 -      final String exec = (env == null) ? "git" : env;
 -      final String command = String.format("%s %s", exec, gitCommand);
 -
--      try {
++  private String runGitCommand(File directory, String gitCommand) throws MojoExecutionException {
+     try {
 -          return getRunner().run(directory, command.trim()).trim();
 -      } catch (IOException e) {
 -          throw Throwables.propagate(e);
@@ -189,8 +175,6 @@ index 205be38..17a9f01 100644
 -  }
 -
 -  private String runGitCommand(File directory, String gitCommand) throws NativeCommandException {
-+  private String runGitCommand(File directory, String gitCommand) throws MojoExecutionException {
-+    try {
        final String env = System.getenv("GIT_PATH");
        final String exec = (env == null) ? "git" : env;
        final String command = String.format("%s %s", exec, gitCommand);
@@ -209,14 +193,13 @@ index 205be38..17a9f01 100644
 +      } else {
 +        throw new MojoExecutionException("Could not run GIT command - GIT is not installed or not exists in system path? " +
 +                                           "Tried to run: 'git " + gitCommand + "'", ex);
-       }
-+    }
++      }
+     }
    }
- 
 -
+ 
    private ProcessRunner getRunner() {
      if (runner == null) {
-       runner = new JavaProcessRunner();
 @@ -286,32 +273,6 @@ public class NativeGitProvider extends GitDataProvider {
      boolean runEmpty(File directory, String command) throws IOException;
    }

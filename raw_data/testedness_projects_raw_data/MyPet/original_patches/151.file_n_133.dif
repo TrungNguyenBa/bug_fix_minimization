@@ -438,7 +438,7 @@ index 1e6339ed..aacfdbd6 100644
          skilltreeListRightclickMenu = new JPopupMenu();
  
          copyMenuItem = new JMenuItem("Copy");
-@@ -378,38 +467,47 @@ public class SkilltreeCreator {
+@@ -378,36 +467,45 @@ public class SkilltreeCreator {
          saveButtonRightclickMenu.add(asAllMenuItem);
      }
  
@@ -493,7 +493,3 @@ index 1e6339ed..aacfdbd6 100644
                  popup.show(e.getComponent(), e.getX(), e.getY());
              }
          }
-     }
--}
-\ No newline at end of file
-+}

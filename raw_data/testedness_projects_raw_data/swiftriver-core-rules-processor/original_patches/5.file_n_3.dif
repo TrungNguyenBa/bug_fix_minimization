@@ -35,11 +35,10 @@ index 1f9c282..0ff719e 100644
  	
  	private ConcurrentMap<Long, List<Object>> dropRulesMap;
  	
-@@ -79,24 +74,9 @@ public class RulesUpdateQueueConsumer implements ChannelAwareMessageListener, Er
- 
+@@ -80,22 +75,7 @@ public class RulesUpdateQueueConsumer implements ChannelAwareMessageListener, Er
  		// Get the routing key
  		String routingKey = message.getMessageProperties().getReceivedRoutingKey();
--
+ 		
 -		// Deserialize the JSON message
 -		Map<String, Object> ruleMap = objectMapper.readValue(new String(message.getBody()),
 -				new TypeReference<Map<String, Object>>() {});
@@ -48,19 +47,18 @@ index 1f9c282..0ff719e 100644
 -		rule.setId(((Number) ruleMap.get("id")).longValue());
 -		rule.setRiverId(((Number) ruleMap.get("river_id")).longValue());
 -		rule.setMatchAllConditions((Boolean) ruleMap.get("all_conditions"));
- 		
+-		
 -		List<RuleCondition> ruleConditions = objectMapper.convertValue(ruleMap.get("conditions"), 
 -				new TypeReference<List<RuleCondition>>() {});
 -		rule.setConditions(ruleConditions);
-+		Rule rule = objectMapper.readValue(new String(message.getBody()), Rule.class);
- 
+-
 -		List<RuleAction> ruleActions = objectMapper.convertValue(ruleMap.get("actions"), 
 -				new TypeReference<List<RuleAction>>() {}); 
 -		rule.setActions(ruleActions);
--		
++		Rule rule = objectMapper.readValue(new String(message.getBody()), Rule.class);
+ 
  		if (routingKey.equals("web.river.rules.add")) {
  			rulesRegistry.addRule(rule);
- 		} else if (routingKey.equals("web.river.rules.delete")) {
 @@ -106,8 +86,4 @@ public class RulesUpdateQueueConsumer implements ChannelAwareMessageListener, Er
  		}
  	}

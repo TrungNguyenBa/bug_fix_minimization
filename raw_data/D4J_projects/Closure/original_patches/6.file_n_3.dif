@@ -2,12 +2,7 @@ diff --git a/src/com/google/javascript/rhino/jstype/FunctionType.java b/src/com/
 index ba82d2a5..5a6cf9a7 100644
 --- a/src/com/google/javascript/rhino/jstype/FunctionType.java
 +++ b/src/com/google/javascript/rhino/jstype/FunctionType.java
-@@ -1007,14 +1007,17 @@ public class FunctionType extends PrototypeObjectType {
-         // An interface function cannot be assigned to anything.
-         return false;
-       }
--
-       // If functionA is a subtype of functionB, then their "this" types
+@@ -1012,9 +1011,13 @@ public class FunctionType extends PrototypeObjectType {
        // should be contravariant. However, this causes problems because
        // of the way we enforce overrides. Because function(this:SubFoo)
        // is not a subtype of function(this:Foo), our override check treats

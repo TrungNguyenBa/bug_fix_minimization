@@ -42,12 +42,12 @@ index 2071378..3928d43 100644
 +            sb.append("Bob");
 +        } while (sb.length() < 128);
          final String LONG_NAME = sb.toString();
-+        final int longLen = LONG_NAME.length();
- 
+-
 -        final byte[] LONG_BYTES = LONG_NAME.getBytes("UTF-8");
 -        
 -        final int longLen = LONG_BYTES.length;
--        
++        final int longLen = LONG_NAME.length();
+ 
          byte[] bytes = w.writeValueAsBytes(new Name("Bill", LONG_NAME));
 -        // 4 or 5 bytes for fields (tag, length), 4 for first name, N for second
 -        int expLen = 8 + longLen;
@@ -65,9 +65,9 @@ index 2071378..3928d43 100644
          assertEquals((byte) 'l', bytes[4]);
          assertEquals((byte) 'l', bytes[5]);
 -        assertEquals(0x3A, bytes[6]); // length-prefixed (2), field 7
-     
+-    
 -        int offset = 7;
--
+     
 -        if (longLen <= 0x7F) {
 -            assertEquals((longLen & 0x7F), bytes[offset++] & 0xFF); // sign set for non-last length bytes
 -        } else {

@@ -12,18 +12,16 @@ index c952309a..cc1af9df 100644
          private final String mStandard;
          private final String mDaylight;
  
-@@ -1106,9 +1105,8 @@ public class FastDatePrinter implements DatePrinter, Serializable {
+@@ -1106,8 +1105,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
           * @param style the style
           */
          TimeZoneNameRule(TimeZone timeZone, Locale locale, int style) {
 -            mLocale = locale;
 -            mStyle = style;
--            
 +            mTimeZone = timeZone;
-+
+ 
              mStandard = getTimeZoneDisplay(timeZone, false, style, locale);
              mDaylight = getTimeZoneDisplay(timeZone, true, style, locale);
-         }
 @@ -1118,9 +1116,6 @@ public class FastDatePrinter implements DatePrinter, Serializable {
           */
          @Override

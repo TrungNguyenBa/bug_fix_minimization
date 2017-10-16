@@ -10,15 +10,6 @@ index 004465c..287dd16 100644
  import com.fasterxml.jackson.core.JsonGenerator;
  import com.fasterxml.jackson.core.JsonProcessingException;
  import com.fasterxml.jackson.databind.*;
-@@ -26,7 +24,7 @@ public class WriteSimpleTest extends ProtobufTestBase
-     /* Test methods
-     /**********************************************************
-      */
--
-+    
-     public void testWritePoint() throws Exception
-     {
-         ProtobufSchema schema = ProtobufSchemaLoader.std.parse(PROTOC_BOX, "Point");
 @@ -43,54 +41,6 @@ public class WriteSimpleTest extends ProtobufTestBase
          assertEquals(4, bytes[3]); // VInt 2, but with zig-zag
      }

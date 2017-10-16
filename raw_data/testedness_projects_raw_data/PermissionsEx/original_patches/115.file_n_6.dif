@@ -34,44 +34,39 @@ index 5ae9b28..7b14c19 100644
  	}
  
  	protected static String serializeNull(String obj) {
-@@ -51,51 +39,27 @@ public abstract class CachingData implements PermissionsData {
+@@ -51,28 +39,21 @@ public abstract class CachingData implements PermissionsData {
  	protected abstract PermissionsData getBackingData();
  
  	protected void loadPermissions() {
 -		synchronized (lock) {
--			this.permissions = new HashMap<>(getBackingData().getPermissionsMap());
--		}
-+		this.permissions = new HashMap<>(getBackingData().getPermissionsMap());
+ 		this.permissions = new HashMap<>(getBackingData().getPermissionsMap());
  	}
+-	}
  
  	protected void loadOptions() {
 -		synchronized (lock) {
--			this.options = new HashMap<>();
--			for (Map.Entry<String, Map<String, String>> e : getBackingData().getOptionsMap().entrySet()) {
--				this.options.put(e.getKey(), new HashMap<>(e.getValue()));
--			}
-+		this.options = new HashMap<>();
-+		for (Map.Entry<String, Map<String, String>> e : getBackingData().getOptionsMap().entrySet()) {
-+			this.options.put(e.getKey(), new HashMap<>(e.getValue()));
+ 		this.options = new HashMap<>();
+ 		for (Map.Entry<String, Map<String, String>> e : getBackingData().getOptionsMap().entrySet()) {
+ 			this.options.put(e.getKey(), new HashMap<>(e.getValue()));
  		}
  	}
+-	}
  
  	protected void loadInheritance() {
 -		synchronized (lock) {
--			this.parents = new HashMap<>(getBackingData().getParentsMap());
--		}
-+		this.parents = new HashMap<>(getBackingData().getParentsMap());
+ 		this.parents = new HashMap<>(getBackingData().getParentsMap());
  	}
+-	}
  
  	protected void clearCache() {
 -		synchronized (lock) {
--			permissions = null;
--			options = null;
--			parents = null;
--			prefixMap.clear();
--			suffixMap.clear();
--			clearWorldsCache();
--		}
+ 		permissions = null;
+ 		options = null;
+ 		parents = null;
+@@ -80,23 +61,6 @@ public abstract class CachingData implements PermissionsData {
+ 		suffixMap.clear();
+ 		clearWorldsCache();
+ 	}
 -	}
 -
 -	@Override
@@ -88,16 +83,11 @@ index 5ae9b28..7b14c19 100644
 -				getSuffix(world);
 -			}
 -		}
-+		permissions = null;
-+		options = null;
-+		parents = null;
-+		prefixMap.clear();
-+		suffixMap.clear();
-+		clearWorldsCache();
- 	}
+-	}
  
  	@Override
-@@ -114,18 +78,17 @@ public abstract class CachingData implements PermissionsData {
+ 	public String getIdentifier() {
+@@ -114,19 +78,18 @@ public abstract class CachingData implements PermissionsData {
  
  	@Override
  	public void setPermissions(List<String> permissions, final String worldName) {
@@ -113,13 +103,13 @@ index 5ae9b28..7b14c19 100644
  				getBackingData().setPermissions(safePermissions, worldName);
  			}
  		});
--		this.permissions.put(worldName, safePermissions);
 +		if (this.permissions != null) {
-+			this.permissions.put(worldName, safePermissions);
-+		}
- 	}
+ 			this.permissions.put(worldName, safePermissions);
+ 		}
++	}
  
  	@Override
+ 	public Map<String, List<String>> getPermissionsMap() {
 @@ -143,7 +106,7 @@ public abstract class CachingData implements PermissionsData {
  
  	@Override
@@ -143,9 +133,8 @@ index 5ae9b28..7b14c19 100644
  		String prefix = prefixMap.get(serializeNull(worldName));
  		if (prefix == null) {
 -			synchronized (lock) {
--				prefix = getBackingData().getPrefix(worldName);
+ 			prefix = getBackingData().getPrefix(worldName);
 -			}
-+			prefix = getBackingData().getPrefix(worldName);
  			prefixMap.put(serializeNull(worldName), serializeNull(prefix));
  		}
  		return deserializeNull(prefix);
@@ -163,9 +152,8 @@ index 5ae9b28..7b14c19 100644
  		String suffix = suffixMap.get(serializeNull(worldName));
  		if (suffix == null) {
 -			synchronized (lock) {
--				suffix = getBackingData().getPrefix(worldName);
+ 			suffix = getBackingData().getPrefix(worldName);
 -			}
-+			suffix = getBackingData().getPrefix(worldName);
  			suffixMap.put(serializeNull(worldName), serializeNull(suffix));
  		}
  		return deserializeNull(suffix);
@@ -198,7 +186,7 @@ index 5ae9b28..7b14c19 100644
  				optionsMap = new HashMap<>();
  				options.put(world, optionsMap);
  				clearWorldsCache();
-@@ -272,17 +227,16 @@ public abstract class CachingData implements PermissionsData {
+@@ -272,18 +227,17 @@ public abstract class CachingData implements PermissionsData {
  
  	@Override
  	public void setParents(final List<String> rawParents, final String worldName) {
@@ -213,13 +201,13 @@ index 5ae9b28..7b14c19 100644
  				getBackingData().setParents(safeParents, worldName);
  			}
  		});
--		this.parents.put(worldName, Collections.unmodifiableList(safeParents));
 +		if (this.parents != null) {
-+			this.parents.put(worldName, Collections.unmodifiableList(safeParents));
-+		}
- 	}
+ 			this.parents.put(worldName, Collections.unmodifiableList(safeParents));
+ 		}
++	}
  
  	@Override
+ 	public boolean isVirtual() {
 @@ -292,7 +246,7 @@ public abstract class CachingData implements PermissionsData {
  
  	@Override
@@ -229,16 +217,15 @@ index 5ae9b28..7b14c19 100644
  			@Override
  			public void run() {
  				getBackingData().save();
-@@ -302,10 +256,8 @@ public abstract class CachingData implements PermissionsData {
+@@ -302,11 +256,9 @@ public abstract class CachingData implements PermissionsData {
  
  	@Override
  	public void remove() {
 -		synchronized (lock) {
--			getBackingData().remove();
--			clearCache();
--		}
-+		getBackingData().remove();
-+		clearCache();
+ 		getBackingData().remove();
+ 		clearCache();
  	}
+-	}
  
  	@Override
+ 	public Map<String, List<String>> getParentsMap() {

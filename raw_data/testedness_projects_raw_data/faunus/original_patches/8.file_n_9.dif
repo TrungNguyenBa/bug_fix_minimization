@@ -247,7 +247,7 @@ index 539e7db8..0e461b95 100644
            base::runfraction=0;
        }
  
-@@ -2092,37 +2093,95 @@ namespace Faunus {
+@@ -2092,39 +2093,97 @@ namespace Faunus {
        string Isochoric<Tspace>::_info() {
          using namespace textio;
          std::ostringstream o;
@@ -295,9 +295,9 @@ index 539e7db8..0e461b95 100644
            g->setMassCenter(*spc);
 -          g->scale(*spc,s); // scale trial coordinates to new coordinates
 +          g->isoscale(*spc,factor_xy,factor_z); // scale trial coordinates to new coordinates
-+        }
-+      }
-+
+         }
+       }
+ 
 +    template<class Tspace>
 +      void Isochoric<Tspace>::_acceptMove() {
 +        Lz += newlen.z();
@@ -336,7 +336,7 @@ index 539e7db8..0e461b95 100644
 +          u += pot->g_external(p, *g);
 +          if (g->numMolecules()>1)
 +            u+=pot->g_internal(p, *g);
-         }
++        }
 +        return u + pot->external(p);
 +      }
 +
@@ -351,9 +351,11 @@ index 539e7db8..0e461b95 100644
 +        pot->setSpace(*spc); // potential must know about side lengths
 +        double unew = _energy(spc->trial);
 +        return unew-uold;
-       }
- 
++      }
++
      /**
+      * @brief Auxillary class for tracking atomic species
+      * @date Malmo 2011
 @@ -2785,13 +2844,9 @@ namespace Faunus {
        }
  

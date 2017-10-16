@@ -20,15 +20,14 @@ index aee29437..010d7245 100644
 +  MyPet.user.release:
      description: Allows usage of /petrelease
 -  MyPet.user.command.capturehelper:
--    description: Gives access to the CaptureHelper
--  MyPet.user.command.respawn:
--    description: Allows usage of /petrespawn
--  MyPet.user.command.name:
--    description: Allows usage of /petname
-\ No newline at end of file
 +  MyPet.admin:
 +    description: Gives access to admin MyPet features.
 +    default: op
 +  MyPet.user.capturehelper:
-+    description: Gives access to the CaptureHelper
+     description: Gives access to the CaptureHelper
+\ No newline at end of file
+-  MyPet.user.command.respawn:
+-    description: Allows usage of /petrespawn
+-  MyPet.user.command.name:
+-    description: Allows usage of /petname
 \ No newline at end of file

@@ -72,11 +72,10 @@ index 9daf24b..2b8a516 100644
 -			for (String test : until) {
 -				if (value <= Long.parseLong(test)) {
 -					return false;
--				}
++			return context.getUntil() == 0 || Long.parseLong(value) > context.getUntil();
+ 		}
 -			}
 -			return true;
-+			return context.getUntil() == 0 || Long.parseLong(value) > context.getUntil();
-+		}
 +	};
 +	public static final Qualifier SERVER = new Qualifier("server") {
 +		@Override

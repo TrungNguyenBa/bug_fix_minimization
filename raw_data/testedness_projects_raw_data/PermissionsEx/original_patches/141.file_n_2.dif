@@ -29,29 +29,20 @@ index a9f1968..88d0b2f 100644
  		String value = this.getOwnOption(optionName, worldName, null);
  		if (value != null) {
  			return value;
-@@ -673,13 +676,10 @@ public abstract class PermissionGroup extends PermissionEntity implements Compar
+@@ -673,15 +676,12 @@ public abstract class PermissionGroup extends PermissionEntity implements Compar
  		}
  
  		// Inheritance
 -		if (!alreadyVisited.contains(this)) {
 -			alreadyVisited.add(this);
--			for (PermissionGroup group : this.getParentGroups(worldName)) {
+ 		for (PermissionGroup group : this.getParentGroups(worldName)) {
 -				value = group.getOption(optionName, worldName, null, alreadyVisited);
--				if (value != null) {
--					return value;
--				}
-+		for (PermissionGroup group : this.getParentGroups(worldName)) {
 +			value = group.getOption(optionName, worldName, null);
-+			if (value != null) {
-+				return value;
+ 			if (value != null) {
+ 				return value;
  			}
  		}
+-		}
  
-@@ -687,7 +687,6 @@ public abstract class PermissionGroup extends PermissionEntity implements Compar
+ 		// Nothing found
  		return defaultValue;
- 	}
- 
--
- 	@Override
- 	public int compareTo(PermissionGroup o) {
- 		return this.getWeight() - o.getWeight();

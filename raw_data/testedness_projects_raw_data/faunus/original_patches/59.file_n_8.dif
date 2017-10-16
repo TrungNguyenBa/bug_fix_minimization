@@ -26,8 +26,7 @@ index 992c8682..2058db45 100644
 +    /**
       * @param i Particle type i
       * @param j Particle type j
--     * @param rc Cutoff distance (angstrom)
-+     * @param rc Cutoff distance (angstrom) 
+      * @param rc Cutoff distance (angstrom) 
 +     */
      void PairPotentialBase::setCutoff(size_t i, size_t j, float rcut) {
        rcut2(i,j)=rcut2(j,i)=rcut*rcut;

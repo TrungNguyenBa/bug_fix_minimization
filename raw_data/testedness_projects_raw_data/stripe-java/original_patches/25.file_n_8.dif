@@ -2,7 +2,7 @@ diff --git a/src/main/java/com/stripe/model/PaymentSourceDeserializer.java b/src
 index 1175bcb..10c3a88 100644
 --- a/src/main/java/com/stripe/model/PaymentSourceDeserializer.java
 +++ b/src/main/java/com/stripe/model/PaymentSourceDeserializer.java
-@@ -10,42 +10,25 @@ import com.google.gson.JsonParseException;
+@@ -10,40 +10,23 @@ import com.google.gson.JsonParseException;
  import com.google.gson.reflect.TypeToken;
  
  import java.lang.reflect.Type;
@@ -11,8 +11,8 @@ index 1175bcb..10c3a88 100644
  import java.util.List;
  
  public class PaymentSourceDeserializer implements JsonDeserializer<PaymentSource> {
--    private static final String SOURCE_OBJECT_PROP = "object";
--
+   private static final String SOURCE_OBJECT_PROP = "object";
+ 
 -    private static Map<String, Class<?>> typeToClazz;
 -
 -    public static Map<String, Class<?>> getTypeToClazz() {
@@ -29,13 +29,17 @@ index 1175bcb..10c3a88 100644
 -
 -    public static void setTypeToClazz(Map<String, Class<?>> mapping) {
 -        PaymentSourceDeserializer.typeToClazz = mapping;
-+  private static final String SOURCE_OBJECT_PROP = "object";
-+
-+  @Override
-+  public PaymentSource deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-+    throws JsonParseException {
-+
-+    String sourceObject = json.getAsJsonObject().getAsJsonPrimitive(SOURCE_OBJECT_PROP).getAsString();
+-    }
+-
+   @Override
+   public PaymentSource deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+     throws JsonParseException {
+ 
+     String sourceObject = json.getAsJsonObject().getAsJsonPrimitive(SOURCE_OBJECT_PROP).getAsString();
+-        Class<?> clazz = PaymentSourceDeserializer.getTypeToClazz().get(sourceObject);
+-
+-        if (clazz == null) {
+-            clazz = ConcretePaymentSource.class;
 +    Class<?> clazz;
 +    if (sourceObject.equals("bitcoin_receiver")) {
 +      clazz = BitcoinReceiver.class;
@@ -45,19 +49,4 @@ index 1175bcb..10c3a88 100644
 +      clazz = PaymentSource.class;
      }
  
--    @Override
--    public PaymentSource deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
--            throws JsonParseException {
--
--        String sourceObject = json.getAsJsonObject().getAsJsonPrimitive(SOURCE_OBJECT_PROP).getAsString();
--        Class<?> clazz = PaymentSourceDeserializer.getTypeToClazz().get(sourceObject);
--
--        if (clazz == null) {
--            clazz = ConcretePaymentSource.class;
--        }
--
--        return (PaymentSource) context.deserialize(json, clazz);
--    }
-+    return (PaymentSource) context.deserialize(json, clazz);
-+  }
- }
+     return (PaymentSource) context.deserialize(json, clazz);

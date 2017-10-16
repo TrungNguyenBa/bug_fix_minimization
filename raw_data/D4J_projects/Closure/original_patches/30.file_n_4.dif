@@ -10,7 +10,7 @@ index d3eeb7d0..839e00ea 100644
        "/** @nosideeffects */ function noSFX() {} \n" +
        "                      function hasSFX() {} \n";
  
-@@ -193,20 +192,14 @@ public class FlowSensitiveInlineVariablesTest extends CompilerTestCase  {
+@@ -193,19 +192,13 @@ public class FlowSensitiveInlineVariablesTest extends CompilerTestCase  {
  
    public void testInlineExpression8() {
      // The same variable inlined twice.
@@ -18,9 +18,8 @@ index d3eeb7d0..839e00ea 100644
 -        "var a,b;" +
 -        "var x = a + b; print(x);      x = a - b; print(x)",
 -        "var a,b;" +
--        "var x;         print(a + b);             print(a - b)");
 +    inline("var x = a + b; print(x);      x = a - b; print(x)",
-+           "var x;         print(a + b);             print(a - b)");
+            "var x;         print(a + b);             print(a - b)");
    }
  
    public void testInlineExpression9() {
@@ -29,12 +28,10 @@ index d3eeb7d0..839e00ea 100644
 -        "var a,b;" +
 -        "var x; if (g) { x= a + b; print(x)    }  x = a - b; print(x)",
 -        "var a,b;" +
--        "var x; if (g) {           print(a + b)}             print(a - b)");
 +    inline("var x; if (g) { x= a + b; print(x)    }  x = a - b; print(x)",
-+           "var x; if (g) {           print(a + b)}             print(a - b)");
+            "var x; if (g) {           print(a + b)}             print(a - b)");
    }
  
-   public void testInlineExpression10() {
 @@ -322,12 +315,7 @@ public class FlowSensitiveInlineVariablesTest extends CompilerTestCase  {
    }
  

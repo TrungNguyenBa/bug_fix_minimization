@@ -2,7 +2,7 @@ diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/s
 index a4f9f835..cc9cb53e 100644
 --- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
 +++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
-@@ -1063,27 +1063,13 @@ public class MyPetEntityListener implements Listener
+@@ -1063,29 +1063,15 @@ public class MyPetEntityListener implements Listener
                      }
                      else
                      {
@@ -26,9 +26,10 @@ index a4f9f835..cc9cb53e 100644
 -                    }
 -                    else
 -                    {
--                        killer = MyPetLocales.getString("Name." + capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
--                    }
-+                    killer = MyPetLocales.getString("Name." + capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
+                     killer = MyPetLocales.getString("Name." + capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
                  }
              }
+-            }
              else
+             {
+                 if (event.getEntity().getLastDamageCause() != null)

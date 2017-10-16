@@ -22,14 +22,12 @@ index 7dfd3764..8463b2eb 100644
    MyPet.user.command.release:
      default: true
      description: Allows usage of /petrelease
-@@ -141,7 +135,4 @@ permissions:
-     description: Allows usage of /petname
+@@ -142,6 +136,3 @@ permissions:
    MyPet.user.command.name.color:
      default: true
--    description: Allows to use colors in petnames
+     description: Allows to use colors in petnames
+\ No newline at end of file
 -  MyPet.user.command.options:
 -    default: true
 -    description: Allows to use the MyPet options command
-\ No newline at end of file
-+    description: Allows to use colors in petnames
 \ No newline at end of file

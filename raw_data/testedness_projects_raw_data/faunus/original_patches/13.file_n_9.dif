@@ -2,7 +2,7 @@ diff --git a/src/examples/water2.cpp b/src/examples/water2.cpp
 index e03ab207..92ede337 100644
 --- a/src/examples/water2.cpp
 +++ b/src/examples/water2.cpp
-@@ -1,40 +1,48 @@
+@@ -1,22 +1,25 @@
  #include <faunus/faunus.h>
  
  using namespace Faunus;
@@ -33,17 +33,13 @@ index e03ab207..92ede337 100644
    auto N    = mcp.get<int>("mol_N",1);
    auto file = mcp.get<string>("mol_file");
    vector<Group> water(N);
--  Tspace::ParticleVector v;      // temporary, empty particle vector
--  FormatAAM::load(file,v);       // load AAM structure into v
-+  Tspace::ParticleVector v;                   // temporary, empty particle vector
-+  FormatAAM::load(file,v);                    // load AAM structure into v
+@@ -25,16 +28,21 @@ int main() {
    for (auto &i : water) {
      Geometry::FindSpace f;
      f.allowMatterOverlap=true;
 -    f.find(spc.geo,spc.p,v);     // find empty spot in particle vector
--    i = spc.insert(v);           // Insert into Space
 +    f.find(spc.geo,spc.p,v);// find empty spot in particle vector
-+    i = spc.insert(v);                          // Insert into Space
+     i = spc.insert(v);                          // Insert into Space
      i.name="h2o";
      spc.enroll(i);
    }

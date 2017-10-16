@@ -24,7 +24,7 @@ class data:
 directory="/Users/trung/Documents/Umass_rs/bug_fix_minimization/raw_data"
 list_of_D4J_project_names = ["Closure", "Lang", "Math", "Time"]
 
-data_list = []
+data_list_full = []
 for project in list_of_D4J_project_names:
 	dir_project =  directory+ "/D4J_projects/"+project
 	dir_original=dir_project + "/original_patches"
@@ -60,7 +60,7 @@ with open("/Users/trung/Documents/Umass_rs/bug_fix_minimization/csv_data/"+"D4J_
 	writer=csv.DictWriter(csvfile, fieldnames=fieldnames)
 	writer.writeheader()
 	for d in data_list:
-		writer.writerow({'PID': d.get_project(), 'BID': d.get_bugnumber(),'FILE' : d.get_filename(),
+		writer.writerow({'PID': d.get_project(), 'BID': d.get_bugnumber(),'File' : d.get_filename(),
 						 'inserted' : d.get_inserted_num(), 'deleted': d.get_deleted_num(), 'modified' : d.get_modified_num()})
 
 

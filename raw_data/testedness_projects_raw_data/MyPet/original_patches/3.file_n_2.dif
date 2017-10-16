@@ -36,7 +36,7 @@ index d48f03ea..7da2bf3c 100644
  public class CommandRelease implements CommandExecutor, TabCompleter {
      private static List<String> emptyList = new ArrayList<String>();
  
-@@ -101,15 +94,15 @@ public class CommandRelease implements CommandExecutor, TabCompleter {
+@@ -101,16 +94,16 @@ public class CommandRelease implements CommandExecutor, TabCompleter {
                      sender.sendMessage(Util.formatText(Locales.getString("Message.Spawn.Respawn.In", petOwner), myPet.getPetName(), myPet.getRespawnTime()));
                      return true;
                  }
@@ -46,19 +46,16 @@ index d48f03ea..7da2bf3c 100644
 +                }
                  String name = "";
 -                if (args.length > 0) {
--                    for (String arg : args) {
--                        if (!name.equals("")) {
--                            name += " ";
--                        }
--                        name += arg;
-+                for (String arg : args) {
-+                    if (!name.equals("")) {
-+                        name += " ";
+                 for (String arg : args) {
+                     if (!name.equals("")) {
+                         name += " ";
                      }
-+                    name += arg;
+                     name += arg;
                  }
+-                }
                  if (ChatColor.stripColor(myPet.getPetName()).equalsIgnoreCase(name)) {
                      if (myPet.getSkills().isSkillActive(Inventory.class)) {
+                         CustomInventory inv = myPet.getSkills().getSkill(Inventory.class).inv;
 @@ -246,24 +239,7 @@ public class CommandRelease implements CommandExecutor, TabCompleter {
                      }
                      return true;

@@ -27,55 +27,32 @@ index a42ad244..845f3fdc 100644
  
      public static void registerSkill(Class<? extends SkillTreeSkill> clazz)
      {
-@@ -42,33 +42,35 @@ public class SkillsInfo
+@@ -42,6 +42,8 @@ public class SkillsInfo
              MyPetLogger.write(ChatColor.RED + clazz.getName() + " doesn't implements [ISkillInfo]!");
              return;
          }
--        try
 +        if (!registeredSkillsNames.containsKey(clazz))
-         {
--            //MyPetLogger.write("Skill Annotations: " + Arrays.toString(clazz.getAnnotations()));
--            SkillName sn = clazz.getAnnotation(SkillName.class);
--            if (sn != null)
-+            try
++        {
+             try
              {
--                String skillName = sn.value();
+                 //MyPetLogger.write("Skill Annotations: " + Arrays.toString(clazz.getAnnotations()));
+@@ -49,10 +51,9 @@ public class SkillsInfo
+                 if (sn != null)
+                 {
+                     String skillName = sn.value();
 -                if (!registeredNamesSkills.containsKey(skillName) && !registeredSkillsNames.containsKey(clazz))
-+                //MyPetLogger.write("Skill Annotations: " + Arrays.toString(clazz.getAnnotations()));
-+                SkillName sn = clazz.getAnnotation(SkillName.class);
-+                if (sn != null)
-                 {
--                    registeredSkillsNames.put(clazz, skillName);
--                    registeredNamesSkills.put(skillName, clazz);
--                    //DebugLogger.info("registered skill: " + clazz.getName());
-+                    String skillName = sn.value();
 +                    if (!registeredNamesSkills.containsKey(skillName))
-+                    {
-+                        registeredSkillsNames.put(clazz, skillName);
-+                        //DebugLogger.info("registered skill: " + clazz.getName());
-+                    }
-+                    else
-+                    {
-+                        MyPetLogger.write(ChatColor.RED + "There is already a skill registered with the the name " + skillName);
-+                    }
-                 }
-                 else
-                 {
--                    MyPetLogger.write(ChatColor.RED + "There is already a skill registered with the the name " + skillName);
-+                    MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not annotated with [SkillName]!");
-                 }
-             }
--            else
-+            catch (Exception e)
-             {
--                MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not annotated with [SkillName]!");
-+                MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not a valid skill!");
+                     {
+                         registeredSkillsNames.put(clazz, skillName);
+-                    registeredNamesSkills.put(skillName, clazz);
+                         //DebugLogger.info("registered skill: " + clazz.getName());
+                     }
+                     else
+@@ -70,6 +71,7 @@ public class SkillsInfo
+                 MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not a valid skill!");
              }
          }
--        catch (Exception e)
--        {
--            MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not a valid skill!");
--        }
-     }
++    }
  
      @SuppressWarnings("unchecked")
+     public static Set<Class<? extends SkillTreeSkill>> getRegisteredSkillsInfo()

@@ -2,19 +2,19 @@ diff --git a/src/com/google/javascript/jscomp/PeepholeReplaceKnownMethods.java b
 index afaf85a8..1c4a3458 100644
 --- a/src/com/google/javascript/jscomp/PeepholeReplaceKnownMethods.java
 +++ b/src/com/google/javascript/jscomp/PeepholeReplaceKnownMethods.java
-@@ -372,10 +372,8 @@ class PeepholeReplaceKnownMethods extends AbstractPeepholeOptimization{
+@@ -372,11 +372,9 @@ class PeepholeReplaceKnownMethods extends AbstractPeepholeOptimization{
      }
  
      Node right = callTarget.getNext();
 -    if (right != null) {
 -      if (right.getNext() != null || !NodeUtil.isImmutableValue(right)) {
--        return n;
--      }
 +    if (right != null && !NodeUtil.isImmutableValue(right)) {
-+      return n;
+       return n;
      }
+-    }
  
      Node arrayNode = callTarget.getFirstChild();
+     Node functionName = arrayNode.getNext();
 @@ -386,13 +384,6 @@ class PeepholeReplaceKnownMethods extends AbstractPeepholeOptimization{
        return n;
      }

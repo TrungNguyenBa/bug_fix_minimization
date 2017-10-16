@@ -2,15 +2,7 @@ diff --git a/include/faunus/energy.h b/include/faunus/energy.h
 index 1e7b9921..3f84e2f2 100644
 --- a/include/faunus/energy.h
 +++ b/include/faunus/energy.h
-@@ -16,6 +16,7 @@
- #endif
- 
- namespace Faunus {
-+
-   /**
-    * @brief Classes/templates that calculate the energy of particles, groups, system.
-    *
-@@ -1346,516 +1347,46 @@ namespace Faunus {
+@@ -1346,514 +1347,44 @@ namespace Faunus {
        };
  
  #ifdef ENABLE_MPI
@@ -386,18 +378,15 @@ index 1e7b9921..3f84e2f2 100644
 -      This threshold check is carried out every 1000th call to `update()`.
 -      Note also that when the penalty energy is scaled, so is the threshold
 -      (also by a factor of 0.5).
--      */
--    template<typename Tcoord=float>
--      class PenaltyFunction : public Table2D<Tcoord,double> {
 +     * @brief General energy class for handling penalty function methods in 1D or 2D with
 +     * user-defined reaction coordinate(s).
 +     * The penalty function class and the struct of the function that defines 
 +     * the reaction coordinate(s) are templated.
 +     * The return type of the function can be either float or pair of floats
-+     */
-+    template<class Tspace, class Tpenalty, class Tfunction>
-+      class PenaltyEnergy : public Energybase<Tspace> {
-         private:
+      */
+-    template<typename Tcoord=float>
+-      class PenaltyFunction : public Table2D<Tcoord,double> {
+-        private:
 -          unsigned long long _cnt;
 -          int _Ncheck;
 -          double _kTthreshold;
@@ -406,22 +395,8 @@ index 1e7b9921..3f84e2f2 100644
 -          Thist hist;
 -          Tcoord _du; //!< penalty energy
 -          std::string _log;
-+          string _info() { return "Energy from Penalty Function\n"; }
-+          std::vector<Group*> gvec; // vector of pointer(s) to group(s) needed to define reaction coordinate(s)
-+          Tfunction func;
-+          Tspace* spcPtr;
-+          typedef decltype(func(spcPtr,spcPtr->p,gvec)) Treturn;
-+          typedef Energybase<Tspace> Tbase;
-         public:
-+          std::pair<Treturn,Treturn> connected_pair;
-+          Tpenalty pf;
-+          PenaltyEnergy(Faunus::MPI::MPIController &mpi, InputMap &in) :
-+            pf(mpi,in.get<int>("loop_update",1e5),
-+                in.get<size_t>("hist_size",2000),
-+                in.get<float>("res1",0.1),
-+                in.get<float>("res2",0.1)
-+              ) { Tbase::name="Penalty Function"; }
-           /**
+-        public:
+-          /**
 -           * @brief Constructor
 -           * @param penalty Penalty energy for each update (kT)
 -           * @param Ncheck Check histogram every Nscale'th step
@@ -429,9 +404,7 @@ index 1e7b9921..3f84e2f2 100644
 -           * @param kTthreshold Half penalty energy once this
 -           *        threshold in distribution has been reached
 -           * @param res Resolution of the penalty function (default 0.1)
-+           * @brief The following member function takes as argument the function 
-+           * that defines the reaction coordinate(s)
-            */
+-           */
 -          PenaltyFunction(double penalty, int Ncheck=1e9, double kTthreshold=5, Tcoord res=0.1)
 -            : Tbase(res, Tbase::XYDATA), hist(res, Thist::HISTOGRAM) {
 -              Tbase::name="penalty";
@@ -469,20 +442,12 @@ index 1e7b9921..3f84e2f2 100644
 -          void save(const string &filename) {
 -            Tbase::save(filename);
 -            hist.save(filename+".dist");
-+          void setPenalized(Tspace *s, std::vector<Group*> &g) {
-+            spcPtr = s;
-+            gvec = g;
-           }
+-          }
 -
 -          string info() {
 -            return "# Penalty function log:\n" + _log;
-+          double external(const p_vec &p) {
-+            auto coor = func(spcPtr,p,gvec);
-+            if (!Tbase::isTrial(p)) connected_pair.first=coor;
-+            else connected_pair.second=coor;
-+            return pf.find(coor);
-           }
-       };
+-          }
+-      };
 -
 -    /**
 -     * @brief General energy class for handling penalty function (PF) methods.
@@ -504,21 +469,27 @@ index 1e7b9921..3f84e2f2 100644
 -     * `penalty_hi2`    | upper limit of 2nd coordinate
 -     */
 -    template<class Tspace, class Tfunction>
--       class PenaltyEnergy : public Energybase<Tspace> {
--         private:
--           string _info() { return "Energy from Penalty Function\n"; }
--           Tspace* spcPtr;
++    template<class Tspace, class Tpenalty, class Tfunction>
+       class PenaltyEnergy : public Energybase<Tspace> {
+         private:
+           string _info() { return "Energy from Penalty Function\n"; }
++          std::vector<Group*> gvec; // vector of pointer(s) to group(s) needed to define reaction coordinate(s)
++          Tfunction func;
+           Tspace* spcPtr;
 -           string pfx = "penalty";
 -           Tfunction f;
 -           typedef decltype(f(spcPtr->p)) Treturn; // type of coordinate
--           typedef Energybase<Tspace> Tbase;
++          typedef decltype(func(spcPtr,spcPtr->p,gvec)) Treturn;
+           typedef Energybase<Tspace> Tbase;
 -           typedef typename Energy::PenaltyFunction1D<double> Tone;
 -           typedef typename Energy::PenaltyFunction2D<double> Ttwo;
 -           typedef typename std::conditional<std::is_same<double,Treturn>::value,Tone,Ttwo>::type Tpf;
 -           Tpf pf;
--         public:
+         public:
 -           std::pair<Treturn,Treturn> coordpair; // current and trial coordinates
--           PenaltyEnergy(Faunus::MPI::MPIController &mpi, InputMap &in) :
++          std::pair<Treturn,Treturn> connected_pair;
++          Tpenalty pf;
+           PenaltyEnergy(Faunus::MPI::MPIController &mpi, InputMap &in) :
 -             pf(mpi,in.get<int>(pfx+"_update",1e5),
 -                 in.get<size_t>(pfx+"_size",2000),
 -                 in.get<float>(pfx+"_res1",0.1),
@@ -542,11 +513,20 @@ index 1e7b9921..3f84e2f2 100644
 -             return pf.update(c, w, r);
 -           }
 -           std::map<Treturn,double> getMap() { return pf.getMap(); }
--           /**
--            * @brief The following member function takes as argument the function 
--            * that defines the reaction coordinate(s)
--            */
--           double external(const p_vec &p) {
++            pf(mpi,in.get<int>("loop_update",1e5),
++                in.get<size_t>("hist_size",2000),
++                in.get<float>("res1",0.1),
++                in.get<float>("res2",0.1)
++              ) { Tbase::name="Penalty Function"; }
+           /**
+            * @brief The following member function takes as argument the function 
+            * that defines the reaction coordinate(s)
+            */
++          void setPenalized(Tspace *s, std::vector<Group*> &g) {
++            spcPtr = s;
++            gvec = g;
++          }
+           double external(const p_vec &p) {
 -             Treturn coor = f(p);
 -             double du;
 -             if (!Tbase::isTrial(p)) coordpair.first=coor; // trial coordinate is stored
@@ -554,8 +534,10 @@ index 1e7b9921..3f84e2f2 100644
 -             if (!pf.isInrange(coor)) du = std::numeric_limits<double>::max();
 -             else du = pf.find(coor);
 -             return du;
--           }
--       };
++            auto coor = func(spcPtr,p,gvec);
++            if (!Tbase::isTrial(p)) connected_pair.first=coor;
++            else connected_pair.second=coor;
++            return pf.find(coor);
+           }
+       };
  #endif
- 
-     /**

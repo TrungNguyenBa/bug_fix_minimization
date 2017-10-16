@@ -159,13 +159,9 @@ index 71f6ecb9b..8652af3d0 100644
 -    Assert.assertTrue(optimizer.getEvaluations() > 800);
 -    Assert.assertTrue(optimizer.getEvaluations() < 900);
 -    Assert.assertTrue(optimum.getValue() > 1.0e-2);
-+    assertEquals(count, optimizer.getEvaluations());
-+    assertTrue(optimizer.getEvaluations() > 800);
-+    assertTrue(optimizer.getEvaluations() < 900);
-+    assertTrue(optimum.getValue() > 1.0e-2);
- 
-   }
- 
+-
+-  }
+-
 -  @Test
 -  public void testMath283()
 -      throws FunctionEvaluationException, OptimizationException {
@@ -190,9 +186,13 @@ index 71f6ecb9b..8652af3d0 100644
 -      final double[] actualPosition = estimate.getPoint();
 -      Assert.assertEquals(expectedPosition[0], actualPosition[0], EPSILON );
 -      Assert.assertEquals(expectedPosition[1], actualPosition[1], EPSILON );
--      
--  }
--
++    assertEquals(count, optimizer.getEvaluations());
++    assertTrue(optimizer.getEvaluations() > 800);
++    assertTrue(optimizer.getEvaluations() < 900);
++    assertTrue(optimum.getValue() > 1.0e-2);
+ 
+   }
+ 
 -  private static class Gaussian2D implements MultivariateRealFunction {
 -
 -      private final double[] maximumPosition;

@@ -121,12 +121,3 @@ index 2302a45..3d1f043 100644
  	}
  	
  	/**
-@@ -317,7 +341,7 @@ public class MockEndpointTest {
- 		
- 		stubFor(get(urlEqualTo("/requestheader"))
- 				.willReturn(aResponse()
--						.withStatus(200)));
-+				.withStatus(200)));
- 		
- 		String header = "mobile";
- 		

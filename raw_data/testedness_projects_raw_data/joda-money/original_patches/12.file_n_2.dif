@@ -13,10 +13,3 @@ index b4d002b..c49bd99 100644
          Close resources after loading.
          Fixes #39.
        </action>
-@@ -89,4 +85,4 @@
-     </release>
- 
-   </body>
--</document>
-+</document>
-\ No newline at end of file

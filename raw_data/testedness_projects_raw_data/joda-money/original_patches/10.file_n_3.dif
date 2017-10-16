@@ -25,9 +25,8 @@ index fca7789..1eb5621 100644
              }
              if (activeStyle.getGroupingStyle() == GroupingStyle.BEFORE_DECIMAL_POINT) {
 -                if (decPoint >= 0) {
--                    appendable.append(str.substring(afterDecPoint));
+                 appendable.append(str.substring(afterDecPoint));
 -                }
-+                appendable.append(str.substring(afterDecPoint));
              } else {
                  for (int i = 0; i < post; i++) {
                      appendable.append(str.charAt(i + afterDecPoint));

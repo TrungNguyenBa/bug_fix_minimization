@@ -2,7 +2,7 @@ diff --git a/src/main/java/org/springframework/samples/petclinic/web/OwnerContro
 index ecbbce5..f311110 100644
 --- a/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
 +++ b/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
-@@ -92,23 +92,22 @@ public class OwnerController {
+@@ -92,20 +92,19 @@ public class OwnerController {
  
          // find owners by last name
          Collection<Owner> results = this.clinicService.findOwnerByLastName(owner.getLastName());
@@ -28,8 +28,4 @@ index ecbbce5..f311110 100644
 +            return "redirect:/owners/" + owner.getId();
          }
      }
--        
-+
-     @RequestMapping(value = "/owners/{ownerId}/edit", method = RequestMethod.GET)
-     public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model) {
-         Owner owner = this.clinicService.findOwnerById(ownerId);
+ 

@@ -2,11 +2,10 @@ diff --git a/src/test/java/org/apache/commons/math3/distribution/RealDistributio
 index c693b1404..1c41113fa 100644
 --- a/src/test/java/org/apache/commons/math3/distribution/RealDistributionAbstractTest.java
 +++ b/src/test/java/org/apache/commons/math3/distribution/RealDistributionAbstractTest.java
-@@ -338,38 +338,6 @@ public abstract class RealDistributionAbstractTest {
-                                     integrationTestPoints.get(i)), tol);
+@@ -339,38 +339,6 @@ public abstract class RealDistributionAbstractTest {
          }
      }
--    
+ 
 -    /**
 -     * Verify that isSupportLowerBoundInclusvie returns true iff the lower bound
 -     * is finite and density is non-NaN, non-infinite there.
@@ -38,6 +37,7 @@ index c693b1404..1c41113fa 100644
 -                distribution.isSupportUpperBoundInclusive());
 -         
 -    }
- 
+-
      //------------------ Getters / Setters for test instance data -----------
      /**
+      * @return Returns the cumulativeTestPoints.

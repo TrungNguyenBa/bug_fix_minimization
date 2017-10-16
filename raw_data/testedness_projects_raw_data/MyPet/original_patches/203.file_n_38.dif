@@ -137,12 +137,7 @@ index 14a12ddd..0767046e 100644
      }
  
 -    public void setMyPet(MyPet myPet)
-+    /**
-+     * Returns the sound that is played when the MyPet dies
-+     */
-+    @Override
-+    protected String getDeathSound()
-     {
+-    {
 -        if (myPet != null)
 -        {
 -            super.setMyPet(myPet);
@@ -160,7 +155,12 @@ index 14a12ddd..0767046e 100644
 -                        for (EquipmentSlot slot : EquipmentSlot.values())
 -                        {
 -                            if (myPigZombie.getEquipment(slot) != null)
--                            {
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
 -                                entityMyPigZombie.setPetEquipment(slot.getSlotId(), myPigZombie.getEquipment(slot));
 -                            }
 -                        }

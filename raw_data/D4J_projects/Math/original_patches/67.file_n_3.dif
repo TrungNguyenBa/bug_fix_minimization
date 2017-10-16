@@ -73,7 +73,7 @@ index 07d8c4f98..bf406ab6b 100644
       * @throws IllegalStateException if there is no result available, either
       * because no result was yet computed or the last attempt failed.
       */
-@@ -107,9 +107,10 @@ public interface UnivariateRealOptimizer extends ConvergingAlgorithm {
+@@ -107,7 +107,7 @@ public interface UnivariateRealOptimizer extends ConvergingAlgorithm {
      /**
       * Get the result of the last run of the optimizer.
       *
@@ -82,6 +82,3 @@ index 07d8c4f98..bf406ab6b 100644
       * @throws IllegalStateException if there is no result available, either
       * because no result was yet computed or the last attempt failed.
       */
-     double getFunctionValue();
-+
- }

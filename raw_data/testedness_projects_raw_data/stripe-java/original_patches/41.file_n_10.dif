@@ -2,15 +2,6 @@ diff --git a/src/test/java/com/stripe/model/DeserializerTest.java b/src/test/jav
 index a207445..98c3208 100644
 --- a/src/test/java/com/stripe/model/DeserializerTest.java
 +++ b/src/test/java/com/stripe/model/DeserializerTest.java
-@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
- 
- public class DeserializerTest {
- 
--	private static Gson gson = com.stripe.net.APIResource.GSON;
-+	private static Gson gson  = com.stripe.net.APIResource.GSON;
- 
- 	@Test
- 	public void deserializeEventDataPreviousAttributes() throws IOException {
 @@ -58,31 +58,6 @@ public class DeserializerTest {
  		assertEquals("re_104Buu4hAU1NpT8JMBAc564Q", refunds.get(0).getId());
  	}

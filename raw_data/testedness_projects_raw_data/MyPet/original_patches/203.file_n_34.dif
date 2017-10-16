@@ -2,14 +2,6 @@ diff --git a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.jav
 index 73fa0c2f..77f3d08c 100644
 --- a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
 +++ b/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
-@@ -34,6 +34,7 @@ import org.bukkit.entity.Ocelot.Type;
- public class EntityMyOcelot extends EntityMyPet
- {
-     public static int GROW_UP_ITEM = Material.POTION.getId();
-+
-     private MyPetAISit sitPathfinder;
- 
-     public EntityMyOcelot(World world, MyPet myPet)
 @@ -41,6 +42,41 @@ public class EntityMyOcelot extends EntityMyPet
          super(world, myPet);
      }
@@ -160,13 +152,13 @@ index 73fa0c2f..77f3d08c 100644
      }
  
 -    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
 +    /**
 +     * Returns the sound that is played when the MyPet dies
 +     */
 +    protected String getDeathSound()
      {
--        if (myPet != null)
--        {
 -            this.sitPathfinder = new MyPetAISit(this);
 -
 -            super.setMyPet(myPet);

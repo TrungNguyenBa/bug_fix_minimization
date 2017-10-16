@@ -7,9 +7,8 @@ index 23c749b..cdf4f61 100644
          final Set<Map.Entry<String, String>> visitedSubjects = new HashSet<>();
          visitSubject(subject, combos, visitedSubjects);
 -        if (!subject.equals(pex.getDefaultIdentifier())) {
--            visitSubject(pex.getDefaultIdentifier(), combos, visitedSubjects);
+         visitSubject(pex.getDefaultIdentifier(), combos, visitedSubjects);
 -        }
-+        visitSubject(pex.getDefaultIdentifier(), combos, visitedSubjects);
  
          return new BakedSubjectData(activeContexts, NodeTree.of(combinedPermissions, defaultValue), ImmutableList.copyOf(parents), ImmutableMap.copyOf(options));
      }

@@ -2,13 +2,11 @@ diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleT
 index 15ee451..a6c552a 100644
 --- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java
 +++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java
-@@ -16,8 +16,8 @@ public class ReadSimpleTest extends ProtobufTestBase
-     /* Test methods
+@@ -17,7 +17,7 @@ public class ReadSimpleTest extends ProtobufTestBase
      /**********************************************************
       */
--
+     
 -    public void testReadPointInt() throws Exception
-+    
 +    public void testReadPoint() throws Exception
      {
          ProtobufSchema schema = ProtobufSchemaLoader.std.parse(PROTOC_BOX, "Point");

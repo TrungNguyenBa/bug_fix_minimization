@@ -1,0 +1,129 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 1aae92a6..da5cd18f 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -22,7 +22,6 @@
+   <body>
+ 
+   <release version="3.2" date="TBA" description="Next release">
+-    <action issue="LANG-805" type="fix">RandomStringUtils.random(count, 0, 0, false, false, universe, random) always throws java.lang.ArrayIndexOutOfBoundsException</action>
+     <action issue="LANG-802" type="fix">LocaleUtils - unnecessary recursive call in SyncAvoid class.</action>
+     <action issue="LANG-800" type="fix">Javadoc bug in DateUtils#ceiling for Calendar and Object versions.</action>
+     <action issue="LANG-798" type="update">Use generics in SerializationUtils</action>  
+diff --git a/src/main/java/org/apache/commons/lang3/RandomStringUtils.java b/src/main/java/org/apache/commons/lang3/RandomStringUtils.java
+index a7990575..bded1540 100644
+--- a/src/main/java/org/apache/commons/lang3/RandomStringUtils.java
++++ b/src/main/java/org/apache/commons/lang3/RandomStringUtils.java
+@@ -211,13 +211,13 @@ public class RandomStringUtils {
+      * @param end  the position in set of chars to end before
+      * @param letters  only allow letters?
+      * @param numbers  only allow numbers?
+-     * @param chars  the set of chars to choose randoms from, must not be empty.
++     * @param chars  the set of chars to choose randoms from.
+      *  If {@code null}, then it will use the set of all chars.
+      * @param random  a source of randomness.
+      * @return the random string
+      * @throws ArrayIndexOutOfBoundsException if there are not
+      *  {@code (end - start) + 1} characters in the set array.
+-     * @throws IllegalArgumentException if {@code count} &lt; 0 or the provided chars array is empty.
++     * @throws IllegalArgumentException if {@code count} &lt; 0.
+      * @since 2.0
+      */
+     public static String random(int count, int start, int end, boolean letters, boolean numbers,
+@@ -227,20 +227,12 @@ public class RandomStringUtils {
+         } else if (count < 0) {
+             throw new IllegalArgumentException("Requested random string length " + count + " is less than 0.");
+         }
+-        if (chars != null && chars.length == 0) {
+-            throw new IllegalArgumentException("The chars array must not be empty");
+-        }
+-
+         if (start == 0 && end == 0) {
+-            if (chars != null) {
+-                end = chars.length;
+-            } else {
+-                if (!letters && !numbers) {
+-                    end = Integer.MAX_VALUE;
+-                } else {
+             end = 'z' + 1;
+             start = ' ';
+-                }
++            if (!letters && !numbers) {
++                start = 0;
++                end = Integer.MAX_VALUE;
+             }
+         }
+ 
+@@ -293,14 +285,13 @@ public class RandomStringUtils {
+      * specified.</p>
+      *
+      * <p>Characters will be chosen from the set of characters
+-     * specified by the string, must not be empty. 
+-     * If null, the set of all characters is used.</p>
++     * specified.</p>
+      *
+      * @param count  the length of random string to create
+      * @param chars  the String containing the set of characters to use,
+-     *  may be null, but must not be empty
++     *  may be null
+      * @return the random string
+-     * @throws IllegalArgumentException if {@code count} &lt; 0 or the string is empty.
++     * @throws IllegalArgumentException if {@code count} &lt; 0.
+      */
+     public static String random(int count, String chars) {
+         if (chars == null) {
+diff --git a/src/test/java/org/apache/commons/lang3/RandomStringUtilsTest.java b/src/test/java/org/apache/commons/lang3/RandomStringUtilsTest.java
+index 6c7b0c16..55ce99ad 100644
+--- a/src/test/java/org/apache/commons/lang3/RandomStringUtilsTest.java
++++ b/src/test/java/org/apache/commons/lang3/RandomStringUtilsTest.java
+@@ -123,15 +123,9 @@ public class RandomStringUtilsTest extends junit.framework.TestCase {
+ 
+         r1 = RandomStringUtils.random(0);
+         assertEquals("random(0).equals(\"\")", "", r1);
+-    }
+ 
+-    public void testLANG805() {
+-        long seed = System.currentTimeMillis();
+-        assertEquals("aaa", RandomStringUtils.random(3,0,0,false,false,new char[]{'a'},new Random(seed)));
+     }
+-
+     public void testExceptions() {
+-        final char[] DUMMY = new char[]{'a'}; // valid char array
+         try {
+             RandomStringUtils.random(-1);
+             fail();
+@@ -141,11 +135,7 @@ public class RandomStringUtilsTest extends junit.framework.TestCase {
+             fail();
+         } catch (IllegalArgumentException ex) {}
+         try {
+-            RandomStringUtils.random(-1, DUMMY);
+-            fail();
+-        } catch (IllegalArgumentException ex) {}
+-        try {
+-            RandomStringUtils.random(1, new char[0]); // must not provide empty array => IAE
++            RandomStringUtils.random(-1, new char[0]);
+             fail();
+         } catch (IllegalArgumentException ex) {}
+         try {
+@@ -153,19 +143,15 @@ public class RandomStringUtilsTest extends junit.framework.TestCase {
+             fail();
+         } catch (IllegalArgumentException ex) {}
+         try {
+-            RandomStringUtils.random(-1, (String)null);
+-            fail();
+-        } catch (IllegalArgumentException ex) {}
+-        try {
+             RandomStringUtils.random(-1, 'a', 'z', false, false);
+             fail();
+         } catch (IllegalArgumentException ex) {}
+         try {
+-            RandomStringUtils.random(-1, 'a', 'z', false, false, DUMMY);
++            RandomStringUtils.random(-1, 'a', 'z', false, false, new char[0]);
+             fail();
+         } catch (IllegalArgumentException ex) {}
+         try {
+-            RandomStringUtils.random(-1, 'a', 'z', false, false, DUMMY, new Random());
++            RandomStringUtils.random(-1, 'a', 'z', false, false, new char[0], new Random());
+             fail();
+         } catch (IllegalArgumentException ex) {}
+     }

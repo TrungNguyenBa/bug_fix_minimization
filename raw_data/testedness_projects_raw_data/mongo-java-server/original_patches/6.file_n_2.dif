@@ -12,15 +12,12 @@ index 1e355a3..f5bc140 100644
 -                newDocument.removeField(excludedField);
 -            }
 -        } else {
--            for (String key : fields.keySet()) {
--                if (Utils.isTrue(fields.get(key))) {
--                    projectField(document, newDocument, key);
--                }
-+        for (String key : fields.keySet()) {
-+            if (Utils.isTrue(fields.get(key))) {
-+                projectField(document, newDocument, key);
+         for (String key : fields.keySet()) {
+             if (Utils.isTrue(fields.get(key))) {
+                 projectField(document, newDocument, key);
              }
          }
+-        }
  
          // implicitly add _id if not mentioned
 -        // http://docs.mongodb.org/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only

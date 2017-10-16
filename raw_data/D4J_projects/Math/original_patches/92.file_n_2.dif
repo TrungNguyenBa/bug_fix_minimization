@@ -90,7 +90,8 @@ index 03c92eb20..8cb759075 100644
          }
          if ((k == 1) || (k == n - 1)) {
 -            return Math.log((double) n);
--        }
++            return Math.log((double)n);
+         }
 -        
 -        /*
 -         * For values small enough to do exact integer computation,
@@ -98,8 +99,7 @@ index 03c92eb20..8cb759075 100644
 -         */
 -        if (n < 67) {  
 -            return Math.log(binomialCoefficient(n,k));
-+            return Math.log((double)n);
-         }
+-        }
 -        
 -        /*
 -         * Return the log of binomialCoefficientDouble for values that will not
@@ -115,12 +115,3 @@ index 03c92eb20..8cb759075 100644
          double logSum = 0;
  
          // n!/k!
-@@ -338,7 +261,7 @@ public final class MathUtils {
-             logSum -= Math.log((double)i);
-         }
- 
--        return logSum;      
-+        return logSum;
-     }
-     
-     /**

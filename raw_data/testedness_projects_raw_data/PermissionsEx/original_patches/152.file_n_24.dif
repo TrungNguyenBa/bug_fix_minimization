@@ -2,12 +2,7 @@ diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLEntity.java b/
 index a7413d5..2f28791 100644
 --- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLEntity.java
 +++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLEntity.java
-@@ -26,11 +26,11 @@ import java.util.LinkedList;
- import java.util.List;
- import java.util.Map;
- import java.util.Set;
--
- import ru.tehkode.permissions.PermissionEntity;
+@@ -31,6 +30,7 @@ import ru.tehkode.permissions.PermissionEntity;
  import ru.tehkode.permissions.PermissionManager;
  
  /**
@@ -15,11 +10,3 @@ index a7413d5..2f28791 100644
   * @author code
   */
  public class SQLEntity extends PermissionEntity {
-@@ -39,7 +39,6 @@ public class SQLEntity extends PermissionEntity {
- 
- 		GROUP, USER
- 	}
--
- 	protected SQLConnection db;
- 	protected Map<String, List<String>> worldsPermissions = null;
- 	protected Map<String, Map<String, String>> worldsOptions = null;

@@ -1,0 +1,87 @@
+diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+index f67f195e..1938947f 100644
+--- a/RELEASE-NOTES.txt
++++ b/RELEASE-NOTES.txt
+@@ -66,9 +66,6 @@ Bug fixes since 2.1
+   Now it does, which means that DateTimeFormatter.isPrinter()/isParser() are now correct.
+   The formatter will also now throw UnsupportedOperationException when unable to print/parse.
+ 
+-- Period formatter [3564249]
+-  Formatting did not correctly output values for negative milliseconds between zero and -1 second
+-
+ - Parsing of US short time-zone names
+   The time-zone names EST/EDT/CST/CDT/MST/MDT/PST/PDT/UT/UTC/GMT can now be parsed in a limited way.
+   This is enabled for formatter patterns of "z" (and "zz" or "zzz").
+diff --git a/src/main/java/org/joda/time/format/PeriodFormatterBuilder.java b/src/main/java/org/joda/time/format/PeriodFormatterBuilder.java
+index 29b0872c..2471fce9 100644
+--- a/src/main/java/org/joda/time/format/PeriodFormatterBuilder.java
++++ b/src/main/java/org/joda/time/format/PeriodFormatterBuilder.java
+@@ -1094,8 +1094,8 @@ public class PeriodFormatterBuilder {
+             int sum = Math.max(FormatUtils.calculateDigitCount(valueLong), iMinPrintedDigits);
+             if (iFieldType >= SECONDS_MILLIS) {
+                 // valueLong contains the seconds and millis fields
+-                // the minimum output is 0.000, which is 4 or 5 digits with a negative
+-                sum = (valueLong < 0 ? Math.max(sum, 5) : Math.max(sum, 4));
++                // the minimum output is 0.000, which is 4 digits
++                sum = Math.max(sum, 4);
+                 // plus one for the decimal point
+                 sum++;
+                 if (iFieldType == SECONDS_OPTIONAL_MILLIS &&
+@@ -1130,7 +1130,6 @@ public class PeriodFormatterBuilder {
+             if (iPrefix != null) {
+                 iPrefix.printTo(buf, value);
+             }
+-            int bufLen = buf.length();
+             int minDigits = iMinPrintedDigits;
+             if (minDigits <= 1) {
+                 FormatUtils.appendUnpaddedInteger(buf, value);
+@@ -1140,9 +1139,6 @@ public class PeriodFormatterBuilder {
+             if (iFieldType >= SECONDS_MILLIS) {
+                 int dp = (int) (Math.abs(valueLong) % DateTimeConstants.MILLIS_PER_SECOND);
+                 if (iFieldType == SECONDS_MILLIS || dp > 0) {
+-                    if (valueLong < 0 && valueLong > -DateTimeConstants.MILLIS_PER_SECOND) {
+-                        buf.insert(bufLen, '-');
+-                    }
+                     buf.append('.');
+                     FormatUtils.appendPaddedInteger(buf, dp, 3);
+                 }
+diff --git a/src/test/java/org/joda/time/format/TestISOPeriodFormat.java b/src/test/java/org/joda/time/format/TestISOPeriodFormat.java
+index bef0d425..ff5e392f 100644
+--- a/src/test/java/org/joda/time/format/TestISOPeriodFormat.java
++++ b/src/test/java/org/joda/time/format/TestISOPeriodFormat.java
+@@ -99,7 +99,7 @@ public class TestISOPeriodFormat extends TestCase {
+ 
+     //-----------------------------------------------------------------------
+     public void testFormatStandard() {
+-        Period p = new Period(1, 2, 3, 4, 5, 6, 7, 8);
++        Period p = new Period(1, 2, 3, 4, 5, 6 ,7, 8);
+         assertEquals("P1Y2M3W4DT5H6M7.008S", ISOPeriodFormat.standard().print(p));
+         p = new Period(1, 2, 3, 4, 5, 6 ,7, 0);
+         assertEquals("P1Y2M3W4DT5H6M7S", ISOPeriodFormat.standard().print(p));
+@@ -115,26 +115,6 @@ public class TestISOPeriodFormat extends TestCase {
+         assertEquals("PT5H6M7.008S", ISOPeriodFormat.standard().print(TIME_PERIOD));
+     }
+ 
+-    public void testFormatStandard_negative() {
+-        Period p = new Period(-1, -2, -3, -4, -5, -6, -7, -8);
+-        assertEquals("P-1Y-2M-3W-4DT-5H-6M-7.008S", ISOPeriodFormat.standard().print(p));
+-        
+-        p = Period.years(-54);
+-        assertEquals("P-54Y", ISOPeriodFormat.standard().print(p));
+-        
+-        p = Period.seconds(4).withMillis(-8);
+-        assertEquals("PT3.992S", ISOPeriodFormat.standard().print(p));
+-        
+-        p = Period.seconds(-4).withMillis(8);
+-        assertEquals("PT-3.992S", ISOPeriodFormat.standard().print(p));
+-        
+-        p = Period.seconds(-23);
+-        assertEquals("PT-23S", ISOPeriodFormat.standard().print(p));
+-        
+-        p = Period.millis(-8);
+-        assertEquals("PT-0.008S", ISOPeriodFormat.standard().print(p));
+-    }
+-
+     //-----------------------------------------------------------------------
+     public void testFormatAlternate() {
+         Period p = new Period(1, 2, 3, 4, 5, 6 ,7, 8);

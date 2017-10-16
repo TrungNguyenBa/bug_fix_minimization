@@ -37,22 +37,16 @@ index 7ba1dbcf..c1581376 100644
          this.setPathTimer = 0;
      }
  
-@@ -109,41 +111,14 @@ public class FollowOwner extends AIGoal {
-         if (this.petEntity.canMove()) {
-             if (--this.setPathTimer <= 0) {
-                 this.setPathTimer = 10;
-+
-                 if (!this.nav.navigateTo(owner)) {
-                     if (owner.onGround && this.petEntity.f(owner) >= this.teleportDistance && controlPathfinderGoal.moveTo == null && petEntity.goalTarget == null && BukkitUtil.canSpawn(ownerLocation, this.petEntity)) {
+@@ -114,36 +117,8 @@ public class FollowOwner extends AIGoal {
                          this.petEntity.setPositionRotation(ownerLocation.getX(), ownerLocation.getY(), ownerLocation.getZ(), this.petEntity.yaw, this.petEntity.pitch);
                          this.nav.navigateTo(owner);
                      }
 -                } else {
 -                    applyWalkSpeed();
+-                }
                  }
              }
          }
-     }
 -
 -    private void applyWalkSpeed() {
 -        float walkSpeed = owner.abilities.walkSpeed;
@@ -78,6 +72,6 @@ index 7ba1dbcf..c1581376 100644
 -        walkSpeed += 0.07f;
 -
 -        nav.getParameters().addSpeedModifier("FollowOwner", walkSpeed);
--    }
+     }
  }
 \ No newline at end of file

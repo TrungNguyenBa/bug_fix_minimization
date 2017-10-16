@@ -47,7 +47,7 @@ index c5fdfbcc..b544b2ac 100644
     * @note
     * For simple JSON syntax highlighting in the VIM editor, add
     * the following to `.vimrc`:
-@@ -124,14 +115,12 @@ namespace Faunus {
+@@ -124,15 +115,13 @@ namespace Faunus {
     * `dprot`       | Rotational displacement parameter [degrees] (will be converted to radians)
     * `eps`         | Epsilon energy scaling commonly used for Lennard-Jones interactions etc. [kJ/mol] 
     * `hydrophobic` | Is the particle hydrophobic? [true/false]
@@ -59,7 +59,8 @@ index c5fdfbcc..b544b2ac 100644
     * `q`           | Valency / partial charge number [e]
     * `r`           | Radius = `sigma/2` [angstrom]
     * `sigma`       | `2*r` [angstrom] (overrides radius)
--   * 
     *
+-   *
     * Code example:
     *
+    *     AtomMap a;

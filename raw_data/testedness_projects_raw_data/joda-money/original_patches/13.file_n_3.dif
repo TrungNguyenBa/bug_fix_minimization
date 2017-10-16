@@ -10,7 +10,7 @@ index 09ee23a..a3e5e84 100644
  import java.io.InputStream;
  import java.io.InputStreamReader;
  import java.util.ArrayList;
-@@ -58,48 +57,29 @@ class DefaultCurrencyUnitDataProvider extends CurrencyUnitDataProvider {
+@@ -58,10 +57,7 @@ class DefaultCurrencyUnitDataProvider extends CurrencyUnitDataProvider {
       * @throws Exception if a necessary file is not found
       */
      private void loadCurrenciesFromFile(String fileName, boolean isNecessary) throws Exception {
@@ -18,46 +18,14 @@ index 09ee23a..a3e5e84 100644
 -        Exception resultEx = null;
 -        try {
 -            in = getClass().getResourceAsStream(fileName);
--            if (in == null && isNecessary) {
--                throw new FileNotFoundException("Data file " + fileName + " not found");
--            } else if (in == null && !isNecessary) {
--                return; // no extension file found, no problem. just return
--            }
--            BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
--            String line;
--            while ((line = reader.readLine()) != null) {
--                Matcher matcher = REGEX_LINE.matcher(line);
--                if (matcher.matches()) {
--                    List<String> countryCodes = new ArrayList<String>();
--                    String codeStr = matcher.group(4);
--                    String currencyCode = matcher.group(1);
--                    if (codeStr.length() % 2 == 1) {
--                        continue;  // invalid line
--                    }
--                    for (int i = 0; i < codeStr.length(); i += 2) {
--                        countryCodes.add(codeStr.substring(i, i + 2));
--                    }
--                    int numericCode = Integer.parseInt(matcher.group(2));
--                    int digits = Integer.parseInt(matcher.group(3));
--                    registerCurrency(currencyCode, numericCode, digits, countryCodes);
 +        InputStream in = getClass().getResourceAsStream(fileName);
-+        if (in == null && isNecessary) {
-+            throw new FileNotFoundException("Data file " + fileName + " not found");
-+        } else if (in == null && !isNecessary) {
-+            return; // no extension file found, no problem. just return
-+        }
-+        BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-+        String line;
-+        while ((line = reader.readLine()) != null) {
-+            Matcher matcher = REGEX_LINE.matcher(line);
-+            if (matcher.matches()) {
-+                List<String> countryCodes = new ArrayList<String>();
-+                String codeStr = matcher.group(4);
-+                String currencyCode = matcher.group(1);
-+                if (codeStr.length() % 2 == 1) {
-+                    continue;  // invalid line
-                 }
--            }
+         if (in == null && isNecessary) {
+             throw new FileNotFoundException("Data file " + fileName + " not found");
+         } else if (in == null && !isNecessary) {
+@@ -86,22 +82,6 @@ class DefaultCurrencyUnitDataProvider extends CurrencyUnitDataProvider {
+                 registerCurrency(currencyCode, numericCode, digits, countryCodes);
+             }
+         }
 -        } catch (Exception ex) {
 -            resultEx = ex;
 -            throw ex;
@@ -71,12 +39,9 @@ index 09ee23a..a3e5e84 100644
 -                    }
 -                } else {
 -                    in.close();
-+                for (int i = 0; i < codeStr.length(); i += 2) {
-+                    countryCodes.add(codeStr.substring(i, i + 2));
-                 }
-+                int numericCode = Integer.parseInt(matcher.group(2));
-+                int digits = Integer.parseInt(matcher.group(3));
-+                registerCurrency(currencyCode, numericCode, digits, countryCodes);
-             }
-         }
+-                }
+-            }
+-        }
      }
+ 
+ }

@@ -2,12 +2,10 @@ diff --git a/src/test/java/org/apache/commons/math/stat/descriptive/UnivariateSt
 index bc7069978..cbb81353a 100644
 --- a/src/test/java/org/apache/commons/math/stat/descriptive/UnivariateStatisticAbstractTest.java
 +++ b/src/test/java/org/apache/commons/math/stat/descriptive/UnivariateStatisticAbstractTest.java
-@@ -113,35 +113,6 @@ public abstract class UnivariateStatisticAbstractTest {
-         System.arraycopy(testArray, testArray.length - 5, arrayEnd, 0, 5);
-         Assert.assertEquals(stat.evaluate(arrayEnd), stat.evaluate(testArray, testArray.length - 5, 5), 0);
+@@ -115,35 +115,6 @@ public abstract class UnivariateStatisticAbstractTest {
      }
--    
--    @Test
+ 
+     @Test
 -    public void testEvaluateArraySegmentWeighted() {
 -        // See if this statistic computes weighted statistics
 -        // If not, skip this test
@@ -35,6 +33,8 @@ index bc7069978..cbb81353a 100644
 -        Assert.assertEquals(stat.evaluate(arrayEnd, weightEnd),
 -                stat.evaluate(testArray, testWeightsArray, testArray.length - 5, 5), 0);
 -    }
- 
-     @Test
+-
+-    @Test
      public void testCopy() throws Exception {
+         UnivariateStatistic original = getUnivariateStatistic();
+         UnivariateStatistic copy = original.copy();

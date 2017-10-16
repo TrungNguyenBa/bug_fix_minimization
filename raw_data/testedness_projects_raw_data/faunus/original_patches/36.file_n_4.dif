@@ -23,12 +23,11 @@ index 6c563bb5..008eb558 100644
              void induceDipoles(Tenergy &pot, Tparticles &p, Point E_ext=Point(0,0,0)) { 
                Eigen::VectorXd mu_err_norm((int)p.size());
 -              int cnt=0;
--              do {
--                cnt++;
 +              threshold = 0.001;
 +
 +              //int count = 0;
-+              do {  
+               do {  
+-                cnt++;
                  mu_err_norm.setZero();
                  field.setZero();
                  pot.field(p,field);
@@ -41,11 +40,10 @@ index 6c563bb5..008eb558 100644
                    p[i].muscalar = mu_trial.norm();// Update dip scalar in particle
 -
 -                  if (p[i].muscalar > 1e-6)
--                    p[i].mu = mu_trial/p[i].muscalar;// Update article dip.
 +                  if(p[i].muscalar < 1e-6) {
 +                    continue;
 +                  }
-+                  p[i].mu = mu_trial/p[i].muscalar;// Update article dip.
+                   p[i].mu = mu_trial/p[i].muscalar;// Update article dip.
                  }
 +                //count++;
                } while (mu_err_norm.maxCoeff() > threshold);                 // Check if threshold is ok

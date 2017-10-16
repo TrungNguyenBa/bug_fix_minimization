@@ -48,7 +48,7 @@ for nf in $(seq 1 $numprojects); do
     		file_name=${chunks[${#chunks[@]}-1]}
     		echo file_name is $file_name
     		#get the diff between versions for this file
-    		git -C $testedness_repos/$pid diff $fixed $faulted  -- "${file_name}" > $dir_original/${bid}.file_n_${fid}.dif
+    		git -C $testedness_repos/$pid diff --ignore-blank-lines -b $fixed $faulted  -- "${file_name}" > $dir_original/${bid}.file_n_${fid}.dif
     		#get the stat of the diff
     		diffstat -m -t -R $dir_original/${bid}.file_n_${fid}.dif > $dir_original/${bid}.file_n_${fid}.dif.stat
     	done

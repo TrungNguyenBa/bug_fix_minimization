@@ -40,17 +40,17 @@ index 0648cb3f7..8b953579d 100644
 -        } else {
 -            result = MathUtils.addAndCheck(binomialCoefficient(n - 1, k - 1),
 -                binomialCoefficient(n - 1, k));
--        }
++            return 1;
+         }
 -        if (result == -1) {
 -            throw new ArithmeticException(
 -                "error computing binomial coefficient");
-+            return 1;
-         }
--        for (int i = binomialCache.size(); i < n + 1; i++) {
--            binomialCache.add(new HashMap<Integer, Long>());
 +        if ((k == 1) || (k == n - 1)) {
 +            return n;
          }
+-        for (int i = binomialCache.size(); i < n + 1; i++) {
+-            binomialCache.add(new HashMap<Integer, Long>());
+-        }
 -        binomialCache.get(n).put(new Integer(k), new Long(result));
 -        return result;
 +        return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
@@ -68,7 +68,12 @@ index 0648cb3f7..8b953579d 100644
 -    /**
 -     * Tests correctness for large n and sharpness of upper bound in API doc
 -     * JIRA: MATH-241
--     */
++        /*
++         * Takes a long time for recursion to unwind, but succeeds and yields
++         * exact value = 2,333,606,220
++         * assertEquals(MathUtils.binomialCoefficient(34,17),
++         * binomialCoefficient(34,17));
+          */
 -    public void testBinomialCoefficientLarge() throws Exception {
 -        // This tests all legal and illegal values for n <= 200.
 -        for (int n = 0; n <= 200; n++) {
@@ -118,12 +123,6 @@ index 0648cb3f7..8b953579d 100644
 -            assertEquals(exactResult, ourResult);
 -        }
 -
-+        /*
-+         * Takes a long time for recursion to unwind, but succeeds and yields
-+         * exact value = 2,333,606,220
-+         * assertEquals(MathUtils.binomialCoefficient(34,17),
-+         * binomialCoefficient(34,17));
-+         */
      }
  
      public void testBinomialCoefficientFail() {

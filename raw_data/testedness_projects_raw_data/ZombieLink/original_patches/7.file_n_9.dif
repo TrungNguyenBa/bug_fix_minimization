@@ -20,19 +20,18 @@ index fbf653b..761a5e5 100644
 -		
 -		if(httpEntity != null) {
 -			
--			try {
-+		try {
-+
+ 		try {
+ 
+-				Method request = config.getRequest();
+-				Class<?> responseType = request.getReturnType();
 +			if(httpResponse != null) {
  				
- 				Method request = config.getRequest();
--				Class<?> responseType = request.getReturnType();
--				
 -				boolean handleAsync = (config.getEndpointClass().isAnnotationPresent(Asynchronous.class) 
 -									   || request.isAnnotationPresent(Asynchronous.class));
- 				
--				boolean responseExpected = !responseType.equals(void.class) && !responseType.equals(Void.class); 
 -				
+-				boolean responseExpected = !responseType.equals(void.class) && !responseType.equals(Void.class); 
++				Method request = config.getRequest();
+ 				
 -				if(handleAsync || responseExpected) {
 +				if(!request.getReturnType().equals(Void.class) && !(httpResponse.getEntity() == null)) {
  					
@@ -41,7 +40,7 @@ index fbf653b..761a5e5 100644
  			
  					Parser parser = null;
  					
-@@ -103,41 +92,32 @@ class EntityProcessor extends AbstractResponseProcessor {
+@@ -103,16 +92,12 @@ class EntityProcessor extends AbstractResponseProcessor {
  						
  						parser = endpoint.getAnnotation(Parser.class);
  					}
@@ -56,44 +55,31 @@ index fbf653b..761a5e5 100644
  					
 -					if(parser != null) {
 +					ResponseParser<?> responseParser = null;
-+					
-+					if(parser.value() == ParserType.UNDEFINED) {
+ 					
+ 					if(parser.value() == ParserType.UNDEFINED) {
  						
--						if(parser.value() == ParserType.UNDEFINED) {
--							
--							responseParser = ResponseParser.class.cast(parser.type().newInstance()); 
--						}
--						else {
--							
--							responseParser = ResponseParsers.RESOLVER.resolve(parser.value()); 
--						}
-+						responseParser = ResponseParser.class.cast(parser.type().newInstance());
-+					}
-+					else {
-+				
-+						responseParser = ResponseParsers.RESOLVER.resolve(parser.value());
+@@ -122,22 +107,17 @@ class EntityProcessor extends AbstractResponseProcessor {
+ 				
+ 						responseParser = ResponseParsers.RESOLVER.resolve(parser.value());
  					}
+-					}
  					
  					return responseParser.parse(httpResponse, config);
  				}
  			}
--			catch(Exception e) {
--				
--				throw (e instanceof ResponseProcessorException)? 
--						(ResponseProcessorException)e :new ResponseProcessorException(getClass(), config, e);
--			}
++			
++			return parsedResponse;
++		}
+ 		catch(Exception e) {
+ 			
+ 			throw (e instanceof ResponseProcessorException)? 
+ 					(ResponseProcessorException)e :new ResponseProcessorException(getClass(), config, e);
+ 		}
 -			finally {
 -				
 -				EntityUtils.consumeQuietly(httpEntity);
 -			}
-+			
-+			return parsedResponse;
-+		}
-+		catch(Exception e) {
-+			
-+			throw (e instanceof ResponseProcessorException)? 
-+					(ResponseProcessorException)e :new ResponseProcessorException(getClass(), config, e);
- 		}
+-		}
 -		
 -		return parsedResponse;
  	}

@@ -15,13 +15,11 @@ index 4fe1648..4c65be8 100644
      </table>
  
      <form:form modelAttribute="visit">
--    
--        <petclinic:inputField label="date" name="date" />
--        <petclinic:inputField label="description" name="description" />
--        
 +        <div class="control-group">
 +            <label class="control-label">Date </label>
-+
+ 
+-        <petclinic:inputField label="date" name="date" />
+-        <petclinic:inputField label="description" name="description" />
 +            <div class="controls">
 +                <form:input path="date"/>
 +                <span class="help-inline"><form:errors path="date"/></span>
@@ -29,7 +27,7 @@ index 4fe1648..4c65be8 100644
 +        </div>
 +        <div class="control-group">
 +            <label class="control-label">Description </label>
-+
+ 
 +            <div class="controls">
 +                <form:input path="description"/>
 +                <span class="help-inline"><form:errors path="description"/></span>

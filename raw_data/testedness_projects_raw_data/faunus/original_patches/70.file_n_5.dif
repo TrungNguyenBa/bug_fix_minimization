@@ -106,9 +106,7 @@ index 5a353833..4ca292a6 100644
 +      virtual void rotate(Space&, const Point&, double);//!< Rotate around a vector
 +      virtual void translate(Space&, const Point&);     //!< Translate along a vector
        virtual void scale(Space&, double);               //!< Volume scaling for NPT ensemble
-+      virtual void undo(Space&);                        //!< Undo move operation
-+      virtual void accept(Space&);                      //!< Accept a trial move
- 
+-
 -      /** @brief Undo move operation */
 -      template<class Tspace>
 -        void undo(Tspace &s) {
@@ -116,9 +114,7 @@ index 5a353833..4ca292a6 100644
 -            s.trial[i]=s.p[i];
 -          cm_trial=cm;
 -        }
-+      virtual bool isMolecular() const;                 //!< True if group represents a molecule
-+      virtual bool isAtomic() const;                    //!< True if group represents atomic species
- 
+-
 -      /** @brief Accept a trial move */
 -      template<class Tspace>
 -        void accept(Tspace &s) {
@@ -126,9 +122,12 @@ index 5a353833..4ca292a6 100644
 -            s.p[i] = s.trial[i];
 -          cm=cm_trial;
 -        }
--
--      virtual bool isMolecular() const; //!< True if group represents a molecule
--      virtual bool isAtomic() const;    //!< True if group represents atomic species
++      virtual void undo(Space&);                        //!< Undo move operation
++      virtual void accept(Space&);                      //!< Accept a trial move
+ 
+       virtual bool isMolecular() const;                 //!< True if group represents a molecule
+       virtual bool isAtomic() const;                    //!< True if group represents atomic species
++
        virtual int numMolecules() const; //!< Number of molecules in group
  
 +      bool operator==(const Group&) const;                   //!< Compare two Groups

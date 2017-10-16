@@ -1,0 +1,4 @@
+6849dfc8 : LANG-1162 StringUtils#equals fails with Index OOBE on non-Strings with identical leading prefix
+:100644 100644 fa53e127... 65e0b3d6... M	src/changes/changes.xml
+:100644 100644 5f167b93... 3f0314f6... M	src/main/java/org/apache/commons/lang3/StringUtils.java
+:100644 100644 dc8a513a... d2b6418b... M	src/test/java/org/apache/commons/lang3/StringUtilsEqualsIndexOfTest.java

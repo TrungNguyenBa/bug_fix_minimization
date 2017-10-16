@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index a47e7ff..96b2385 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -45,7 +45,6 @@ import ru.tehkode.permissions.bukkit.regexperms.RegexPermissions;
+ import ru.tehkode.permissions.commands.CommandsManager;
+ import ru.tehkode.permissions.exceptions.PermissionBackendException;
+ import ru.tehkode.permissions.exceptions.PermissionsNotAvailable;
+-import ru.tehkode.utils.StringUtils;
+ 
+ import java.util.logging.Level;
+ 
+@@ -175,7 +174,7 @@ public class PermissionsEx extends JavaPlugin {
+ 				}
+ 			}
+ 		} catch (Throwable t) {
+-			ErrorReport.handleError("While " + sender.getName() + " was executing /" + command.getName() + " " + StringUtils.implode(args, " "), t, sender);
++			ErrorReport.handleError("While " + sender.getName() + " was executing /" + command.getName(), t, sender);
+ 			return true;
+ 		}
+ 	}

@@ -1,0 +1,16 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+index 5863e9b..0f1f476 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+@@ -256,11 +256,6 @@ public class SQLBackend extends PermissionBackend {
+ 		}
+ 	}
+ 
+-	@Override
+-	protected <T> ListenableFuture<T> execute(Callable<T> func) {
+-		return super.execute(func);
+-	}
+-
+ 	SQLQueryCache getQueryCache() {
+ 		return queryCache;
+ 	}

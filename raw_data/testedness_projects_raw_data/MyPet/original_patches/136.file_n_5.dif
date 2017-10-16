@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/Experience.java b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+index 112532e5..115c513e 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/Experience.java
++++ b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+@@ -225,10 +225,6 @@ public class Experience {
+         return requiredExp;
+     }
+ 
+-    public double getExpByLevel(int level) {
+-        return expMode.getExpByLevel(level);
+-    }
+-
+     @SuppressWarnings("unchecked")
+     public static void addDamageToEntity(LivingEntity damager, LivingEntity victim, double damage) {
+         Map<Entity, Double> damageMap;

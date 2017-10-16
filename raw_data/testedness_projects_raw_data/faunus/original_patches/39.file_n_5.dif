@@ -1,0 +1,23 @@
+diff --git a/include/faunus/space.h b/include/faunus/space.h
+index 4976731d..2f74056e 100644
+--- a/include/faunus/space.h
++++ b/include/faunus/space.h
+@@ -158,8 +158,8 @@ namespace Faunus {
+ 
+   template<class Tgeometry, class Tparticle>
+     bool Space<Tgeometry,Tparticle>::checkSanity() {
+-      assert(p.size()==trial.size() && "Trial/P vector-size mismatch!");
+-      assert(p==trial && "Trial/P vector mismatch!");
++      assert(p.size()==trial.size() && "Trial/P vector mismatch!");
++      assert(p==trial);
+       bool rc=false;
+       if (p.size()==trial.size())
+         for (size_t i=0; i<p.size(); i++) {
+@@ -195,7 +195,6 @@ namespace Faunus {
+       }
+       if (rc==false)
+         std::exit(1);
+-      
+       return rc;
+     }
+ 

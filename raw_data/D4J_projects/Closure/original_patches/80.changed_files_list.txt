@@ -1,0 +1,3 @@
+58786c3f : "delete" operator with a boolean result. Fixes issue 364
+:100644 100644 477d444b... dfcd3eb6... M	src/com/google/javascript/jscomp/NodeUtil.java
+:100644 100644 98e8e922... 13e495f8... M	test/com/google/javascript/jscomp/NodeUtilTest.java

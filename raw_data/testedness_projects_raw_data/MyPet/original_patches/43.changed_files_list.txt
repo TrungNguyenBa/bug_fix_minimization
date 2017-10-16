@@ -1,0 +1,2 @@
+ccbef96d : replace formatText with own implementation
+:100644 100644 6e684f44... fa429af7... M	src/main/java/de/Keyle/MyPet/util/Util.java

@@ -1,0 +1,5 @@
+093489b : Change BigMoney to normalize negative scales
+:100644 100644 0df29bb... 9272fd7... M	src/changes/changes.xml
+:100644 100644 5d10b98... 6a739f0... M	src/main/java/org/joda/money/BigMoney.java
+:100644 100644 e732dea... 31d29a9... M	src/test/java/org/joda/money/TestBigMoney.java
+:100644 100644 34cff5e... 92ba624... M	src/test/java/org/joda/money/TestMoney.java

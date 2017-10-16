@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/apache/commons/math/ode/nonstiff/HighamHall54StepInterpolatorTest.java b/src/test/java/org/apache/commons/math/ode/nonstiff/HighamHall54StepInterpolatorTest.java
+index a2645b7ac..9094b2a87 100644
+--- a/src/test/java/org/apache/commons/math/ode/nonstiff/HighamHall54StepInterpolatorTest.java
++++ b/src/test/java/org/apache/commons/math/ode/nonstiff/HighamHall54StepInterpolatorTest.java
+@@ -49,7 +49,7 @@ public class HighamHall54StepInterpolatorTest {
+     HighamHall54Integrator integ = new HighamHall54Integrator(minStep, maxStep,
+                                                               scalAbsoluteTolerance,
+                                                               scalRelativeTolerance);
+-    StepInterpolatorTestUtils.checkDerivativesConsistency(integ, pb, 1.1e-10);
++    StepInterpolatorTestUtils.checkDerivativesConsistency(integ, pb, 1.0e-10);
+   }
+ 
+   @Test

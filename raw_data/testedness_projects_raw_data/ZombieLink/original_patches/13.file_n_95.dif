@@ -1,0 +1,15 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/test/service/MockService.java b/src/test/java/com/lonepulse/zombielink/test/service/MockService.java
+index 52528f3..1149c52 100644
+--- a/src/test/java/com/lonepulse/zombielink/test/service/MockService.java
++++ b/src/test/java/com/lonepulse/zombielink/test/service/MockService.java
+@@ -21,8 +21,8 @@ package com.lonepulse.zombielink.test.service;
+  */
+ 
+ 
+-import com.lonepulse.zombielink.annotation.Bite;
+-import com.lonepulse.zombielink.inject.Zombie;
++import com.lonepulse.zombielink.core.annotation.Bite;
++import com.lonepulse.zombielink.core.inject.Zombie;
+ import com.lonepulse.zombielink.test.endpoint.MockEndpoint;
+ 
+ /**

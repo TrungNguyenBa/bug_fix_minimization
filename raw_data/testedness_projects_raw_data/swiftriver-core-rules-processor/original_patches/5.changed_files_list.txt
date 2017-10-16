@@ -1,0 +1,3 @@
+a957f2f : Use Map object to deserialized mq message
+:100644 100644 0df9ec0... 86ba924... M	src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java
+:100644 100644 0ff719e... 1f9c282... M	src/main/java/com/ushahidi/swiftriver/core/rules/RulesUpdateQueueConsumer.java

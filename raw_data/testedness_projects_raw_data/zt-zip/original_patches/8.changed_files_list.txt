@@ -1,0 +1,2 @@
+41ed65d : don't close stream, as it's users responsibility to close the stream it started
+:100644 100644 e2975d6... 0a8aa97... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java

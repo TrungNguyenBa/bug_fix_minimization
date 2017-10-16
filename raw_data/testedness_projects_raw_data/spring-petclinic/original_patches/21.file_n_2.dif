@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/web/VetController.java b/src/main/java/org/springframework/samples/petclinic/web/VetController.java
+index ebbb8d6..ea844ec 100644
+--- a/src/main/java/org/springframework/samples/petclinic/web/VetController.java
++++ b/src/main/java/org/springframework/samples/petclinic/web/VetController.java
+@@ -41,7 +41,7 @@ public class VetController {
+         this.clinicService = clinicService;
+     }
+ 
+-    @RequestMapping(value={"/vets.xml","/vets.html"})
++    @RequestMapping(value="/vets.xml")
+     public String showVetList(Map<String, Object> model) {
+         // Here we are returning an object of type 'Vets' rather than a collection of Vet objects 
+         // so it is simpler for Object-Xml mapping

@@ -1,0 +1,23 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+index 90262dc8..3e6a70bb 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+@@ -145,18 +145,6 @@ public class BehaviorAggressiveTarget extends AIGoal
+         {
+             return true;
+         }
+-        else if (petEntity.getGoalTarget().world != petEntity.world)
+-        {
+-            return true;
+-        }
+-        else if (petEntity.e(petEntity.getGoalTarget()) > 400)
+-        {
+-            return true;
+-        }
+-        else if (petEntity.e(petEntity.getOwner().getEntityPlayer()) > 600)
+-        {
+-            return true;
+-        }
+         return false;
+     }
+ 

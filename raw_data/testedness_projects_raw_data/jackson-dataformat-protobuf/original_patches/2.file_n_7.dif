@@ -1,0 +1,25 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java
+index 76307b1..8005aab 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java
+@@ -97,10 +97,7 @@ public class WriteStringsTest extends ProtobufTestBase
+         g.writeStartObject();
+         g.writeStringField("first", null);
+         g.writeFieldName("last");
+-        int nameLen = longName.length();
+-        char[] ch = new char[nameLen + 10];
+-        longName.getChars(0, nameLen, ch, 5);
+-        g.writeString(ch, 5, nameLen);
++        g.writeString(longName);
+         g.writeEndObject();
+         g.close();
+ 
+@@ -113,7 +110,7 @@ public class WriteStringsTest extends ProtobufTestBase
+         // Note: nulls are never explicitly written, but simple lead to omission of the field...
+         assertEquals("last", p.getText());
+         assertToken(JsonToken.VALUE_STRING, p.nextToken());
+-        ch = p.getTextCharacters();
++        char[] ch = p.getTextCharacters();
+         String str = new String(ch, p.getTextOffset(), p.getTextLength());
+         assertEquals(longName, str);
+         assertToken(JsonToken.END_OBJECT, p.nextToken());

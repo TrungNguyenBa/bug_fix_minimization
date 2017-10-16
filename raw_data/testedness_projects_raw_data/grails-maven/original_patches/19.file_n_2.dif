@@ -1,0 +1,29 @@
+diff --git a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+index f802dd4..db434b8 100755
+--- a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
++++ b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+@@ -336,23 +336,12 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+             testDependencies.addAll( compileDependencies );
+             testDependencies.addAll( runtimeDependencies );
+             testDependencies.addAll( testDependencies );
+-            try {
+-            	testDependencies.addAll( getDependencyFiles( project.getTestClasspathElements() ) );
+-            } catch (DependencyResolutionRequiredException e) {
+-                throw new MojoExecutionException("Failed to create test classpath for Grails execution.", e);
+-            }
+-            
+ 
+             ec.setProvidedDependencies(providedDependencies);
+             ec.setCompileDependencies(compileDependencies);
+             ec.setTestDependencies( new ArrayList<File>(testDependencies) );
+             ec.setRuntimeDependencies( new ArrayList<File>(runtimeDependencies) );
+-            try {
+-            	testDependencies.addAll( getDependencyFiles( project.getRuntimeClasspathElements() ) );
+-            } catch (DependencyResolutionRequiredException e) {
+-                throw new MojoExecutionException("Failed to create runtime classpath for Grails execution.", e);
+-            }
+-            
++
+             ec.setGrailsWorkDir(new File(grailsWorkDir));
+             ec.setProjectWorkDir(new File(targetDir));
+             ec.setClassesDir(new File(targetDir, "classes"));

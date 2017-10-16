@@ -1,0 +1,5 @@
+3aaf698 : One more perf optimization, for efficient name-to-id lookup for fields
+:100644 100644 10fa10a... 1182d90... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java
+:000000 100644 0000000... 6192eee... A	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/FieldLookup.java
+:100644 100644 39984a4... 76f24a2... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
+:100644 100644 371619a... 8bdb731... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java

@@ -1,0 +1,11 @@
+diff --git a/src/main/resources/org/joda/money/MoneyData.csv b/src/main/resources/org/joda/money/MoneyData.csv
+index 6843f7c..239aeca 100644
+--- a/src/main/resources/org/joda/money/MoneyData.csv
++++ b/src/main/resources/org/joda/money/MoneyData.csv
+@@ -175,5 +175,5 @@ XTS,963,-1,
+ XXX,999,-1,
+ YER,886,0,YE
+ ZAR,710,2,ZA
+-ZMW,894,2,ZM
++ZMW,894,0,ZM
+ ZWL,932,2,ZW

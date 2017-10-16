@@ -1,0 +1,3 @@
+894fd0c6 : the LowHP leashflash is now scaled with the max health of the mob health of the mob has to be below 10% instead of 2HP fixes #360
+:100644 100644 c25a1b0e... 5b19e6fd... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:100644 100644 f83ad40a... 58cf3fa3... M	src/main/java/de/Keyle/MyPet/util/CaptureHelper.java

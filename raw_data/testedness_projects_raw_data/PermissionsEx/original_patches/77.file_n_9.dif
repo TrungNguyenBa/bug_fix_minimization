@@ -1,0 +1,169 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLMatcherGroup.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLMatcherGroup.java
+index d2c1c3b..7ad0e28 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLMatcherGroup.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLMatcherGroup.java
+@@ -13,19 +13,16 @@ import java.sql.ResultSet;
+ import java.sql.SQLException;
+ import java.util.List;
+ import java.util.Map;
+-import java.util.concurrent.atomic.AtomicReference;
++import java.util.concurrent.atomic.AtomicBoolean;
+ 
+ /**
+  * Matcher group that sources data from SQL
+  */
+ public class SQLMatcherGroup extends MatcherGroup {
+-	private static enum State {
+-		VALID, UPDATING, INVALID
+-	}
+ 	private final SQLBackend backend;
+ 	private final String name;
+ 	private final int entityId;
+-	private final AtomicReference<State> valid = new AtomicReference<>(State.VALID);
++	private final AtomicBoolean valid = new AtomicBoolean(true);
+ 	private final Map<String, String> entries;
+ 	private final Multimap<Qualifier, String> qualifiers;
+ 
+@@ -67,28 +64,19 @@ public class SQLMatcherGroup extends MatcherGroup {
+ 
+ 	@Override
+ 	public MatcherGroup setQualifiers(Multimap<Qualifier, String> qualifiers) {
+-		if (valid.compareAndSet(State.VALID, State.UPDATING)) {
+-			try (SQLConnection conn = backend.getSQL()) {
+-				conn.beginTransaction();
+-				try {
+-					conn.prepAndBind("qualifiers.clear").execute();
+-					PreparedStatement stmt = conn.prepAndBind("qualifiers.add", entityId, "", "");
+-					for (Map.Entry<Qualifier, String> entry : qualifiers.entries()) {
+-						stmt.setString(2, entry.getKey().getName());
+-						stmt.setString(3, entry.getValue());
+-						stmt.addBatch();
+-					}
+-					stmt.executeBatch();
+-				} finally {
+-					conn.endTransaction();
+-				}
+-				backend.resetMatcherGroup(getEntityId());
+-				return backend.getMatcherGroup(getName(), getEntityId());
+-			} catch (SQLException | IOException e) {
+-				e.printStackTrace();
+-				return null;
++		try (SQLConnection conn = backend.getSQL()) {
++			conn.prepAndBind("qualifiers.clear").execute();
++			PreparedStatement stmt = conn.prepAndBind("qualifiers.add", entityId, "", "");
++			for (Map.Entry<Qualifier, String> entry : qualifiers.entries()) {
++				stmt.setString(2, entry.getKey().getName());
++				stmt.setString(3, entry.getValue());
++				stmt.addBatch();
+ 			}
+-		} else {
++			stmt.executeBatch();
++			backend.resetMatcherGroup(getEntityId());
++			return backend.getMatcherGroup(getName(), getEntityId());
++		} catch (SQLException | IOException e) {
++			e.printStackTrace();
+ 			return null;
+ 		}
+ 	}
+@@ -106,75 +94,56 @@ public class SQLMatcherGroup extends MatcherGroup {
+ 
+ 	@Override
+ 	public MatcherGroup setEntries(Map<String, String> value) {
+-		if (valid.compareAndSet(State.VALID, State.UPDATING)) {
+-			try (SQLConnection conn = backend.getSQL()) {
+-				conn.beginTransaction();
+-				try {
+-					conn.prepAndBind("entries.clear").execute();
+-					PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", "");
+-					for (Map.Entry<String, String> entry : value.entrySet()) {
+-						stmt.setString(2, entry.getKey());
+-						stmt.setString(3, entry.getValue());
+-						stmt.addBatch();
+-					}
+-					stmt.executeBatch();
+-				} finally {
+-					conn.endTransaction();
+-				}
+-				backend.resetMatcherGroup(getEntityId());
+-				return backend.getMatcherGroup(getName(), getEntityId());
+-			} catch (SQLException | IOException e) {
+-				e.printStackTrace();
+-				return null;
++		try (SQLConnection conn = backend.getSQL()) {
++			conn.prepAndBind("entries.clear").execute();
++			PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", "");
++			for (Map.Entry<String, String> entry : value.entrySet()) {
++				stmt.setString(2, entry.getKey());
++				stmt.setString(3, entry.getValue());
++				stmt.addBatch();
+ 			}
+-		} else {
++			stmt.executeBatch();
++			backend.resetMatcherGroup(getEntityId());
++			return backend.getMatcherGroup(getName(), getEntityId());
++		} catch (SQLException | IOException e) {
++			e.printStackTrace();
+ 			return null;
+ 		}
+ 	}
+ 
+ 	@Override
+ 	public MatcherGroup setEntries(List<String> value) {
+-		if (valid.compareAndSet(State.VALID, State.UPDATING)) {
+-			try (SQLConnection conn = backend.getSQL()) {
+-				conn.beginTransaction();
+-				try {
+-					conn.prepAndBind("entries.clear").execute();
+-					PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", null);
+-					for (String entry : value) {
+-						stmt.setString(2, entry);
+-						stmt.addBatch();
+-					}
+-					stmt.executeBatch();
+-				} finally {
+-					conn.endTransaction();
+-				}
+-				backend.resetMatcherGroup(getEntityId());
+-				return backend.getMatcherGroup(getName(), getEntityId());
+-			} catch (SQLException | IOException e) {
+-				e.printStackTrace();
+-				return null;
++		try (SQLConnection conn = backend.getSQL()) {
++			conn.prepAndBind("entries.clear").execute();
++			PreparedStatement stmt = conn.prepAndBind("entries.add", entityId, "", null);
++			for (String entry : value) {
++				stmt.setString(2, entry);
++				stmt.addBatch();
+ 			}
+-		} else {
++			stmt.executeBatch();
++			backend.resetMatcherGroup(getEntityId());
++			return backend.getMatcherGroup(getName(), getEntityId());
++		} catch (SQLException | IOException e) {
++			e.printStackTrace();
+ 			return null;
+ 		}
+ 	}
+ 
+ 	void invalidate() {
+-		valid.set(State.INVALID);
++		valid.set(false);
+ 	}
+ 
+ 	@Override
+ 	public boolean isValid() {
+-		return valid.get() != State.INVALID;
++		return valid.get();
+ 	}
+ 
+ 	@Override
+ 	public boolean remove() {
+-		if (valid.compareAndSet(State.VALID, State.UPDATING)) {
++		if (valid.compareAndSet(true, false)) {
+ 			try (SQLConnection conn = backend.getSQL()) {
+ 				conn.prepAndBind("groups.delete", getEntityId()).execute();
+ 			} catch (SQLException | IOException e) {
+-				valid.set(State.VALID);
+ 				e.printStackTrace();
+ 			}
+ 			backend.resetMatcherGroup(this.entityId);

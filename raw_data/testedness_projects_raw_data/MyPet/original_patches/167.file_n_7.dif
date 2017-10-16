@@ -1,0 +1,23 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/info/RangedInfo.java b/src/main/java/de/Keyle/MyPet/skill/skills/info/RangedInfo.java
+index e42c0545..6acb39f0 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/info/RangedInfo.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/info/RangedInfo.java
+@@ -29,15 +29,14 @@ import de.Keyle.MyPet.skill.skilltree.SkillTreeSkill;
+ 
+ @SkillName("Ranged")
+ @SkillProperties(
+-        parameterNames = {"damage_double", "addset_damage", "projectile", "rateoffire", "addset_rateoffire"},
+-        parameterTypes = {NBTdatatypes.Double, NBTdatatypes.String, NBTdatatypes.String, NBTdatatypes.Int, NBTdatatypes.String},
+-        parameterDefaultValues = {"1.0", "add", "Arrow", "35", "add"})
++        parameterNames = {"damage_double", "addset_damage", "projectile"},
++        parameterTypes = {NBTdatatypes.Double, NBTdatatypes.String, NBTdatatypes.String},
++        parameterDefaultValues = {"1.0", "add", "Arrow"})
+ public class RangedInfo extends SkillTreeSkill implements ISkillInfo
+ {
+     private SkillPropertiesPanel panel = null;
+ 
+     protected double damage = 0;
+-    protected int rateOfFire = 0;
+ 
+     public enum Projectiles
+     {

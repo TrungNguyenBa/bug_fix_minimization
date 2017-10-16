@@ -1,0 +1,3 @@
+3778f3a : Use a single instance of JGitCommon
+:100644 100644 9b349e2... b04cd5a... M	src/main/java/pl/project13/jgit/DescribeCommand.java
+:100644 100644 9a79f48... 253393e... M	src/main/java/pl/project13/maven/git/JGitProvider.java

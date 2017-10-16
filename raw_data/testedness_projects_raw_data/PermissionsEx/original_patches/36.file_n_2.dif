@@ -1,0 +1,14 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+index 4a73195..4fc4838 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+@@ -94,8 +94,7 @@ public class SQLBackend extends PermissionBackend {
+ 		this.ds.setUrl("jdbc:" + dbUri);
+ 		this.ds.setUsername(dbUser);
+ 		this.ds.setPassword(dbPassword);
+-		// https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing
+-		this.ds.setMaxActive((Runtime.getRuntime().availableProcessors() * 2) + 1);
++		this.ds.setMaxActive(20);
+ 		this.ds.setMaxWait(200); // 4 ticks
+ 		this.ds.setValidationQuery("SELECT 1 AS dbcp_validate");
+ 		this.ds.setTestOnBorrow(true);

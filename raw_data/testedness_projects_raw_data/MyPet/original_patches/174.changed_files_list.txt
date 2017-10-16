@@ -1,0 +1,2 @@
+d3d2d0f8 : pet will now gain exp when using ranged attacks too fixes #172
+:100644 100644 6dcd8fda... caa3b244... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

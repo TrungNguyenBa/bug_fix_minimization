@@ -1,0 +1,7 @@
+d73e6a5c : added xyz format fixed bugs found in compilation of patchy spherocylinders
+:100644 100644 be52c095... 281c56ac... M	include/faunus/io.h
+:100644 100644 466f010c... 5108c93d... M	include/faunus/species.h
+:100644 100644 c68a7014... 471c796b... M	include/faunus/spherocylinder.h
+:100644 100644 18502109... d68cdb6e... M	src/playground/CMakeLists.txt
+:100644 100644 414a2918... d6da7554... M	src/playground/vacha/cigar-npt.cpp
+:100644 100644 ea433b14... 6e5b9e32... M	src/species.cpp

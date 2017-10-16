@@ -1,0 +1,13 @@
+diff --git a/include/faunus/energy.h b/include/faunus/energy.h
+index 5ec556b5..912abe9c 100644
+--- a/include/faunus/energy.h
++++ b/include/faunus/energy.h
+@@ -499,7 +499,7 @@ namespace Faunus {
+            * @param p Particle vector
+            * @param E Holds field on each particle. Must have N columns.
+            */
+-          void field(const Tpvec &p, Eigen::MatrixXd &E) FOVERRIDE {
++          void field(const p_vec &p, Eigen::MatrixXd &E) FOVERRIDE {
+             assert((int)p.size()==E.cols());
+             size_t i=0;
+             for (auto &pi : p) {

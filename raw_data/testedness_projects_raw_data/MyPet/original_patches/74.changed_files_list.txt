@@ -1,0 +1,13 @@
+8d0f279d : fix missing 1.7.5 diff fixes #283
+:100644 100644 069be6de... 1a63ddc9... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
+:100644 100644 5fa5ed37... 20006a03... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/RangedAttack.java
+:100644 100644 4161813e... fc812eed... M	src/main/java/de/Keyle/MyPet/entity/ai/movement/FollowOwner.java
+:100644 100644 183242ac... f3be50ad... M	src/main/java/de/Keyle/MyPet/entity/ai/movement/LookAtPlayer.java
+:100644 100644 6f451c49... 13a1abeb... M	src/main/java/de/Keyle/MyPet/entity/ai/movement/Sprint.java
+:100644 100644 218540db... c90478d2... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+:100644 100644 730568c6... 7be00063... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
+:100644 100644 ab4ff8cb... 22dc454b... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+:100644 100644 32cca1c2... ee935814... M	src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+:100644 100644 b7f724cb... 528bb432... M	src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+:100644 100644 0a116159... f91d5b3b... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtByTarget.java
+:100644 100644 d34e8ee0... e7127b39... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java

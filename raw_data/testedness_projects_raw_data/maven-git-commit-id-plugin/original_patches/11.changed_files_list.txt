@@ -1,0 +1,2 @@
+02fbc87 : More verbose error message for git.build.host property in case of exception
+:100644 100644 3acdb0e... 9706cce... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java

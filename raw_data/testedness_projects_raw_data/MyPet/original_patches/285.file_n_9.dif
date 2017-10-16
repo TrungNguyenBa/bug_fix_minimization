@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+index 7a6aab60..5e6c0c96 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+@@ -51,7 +51,7 @@ public class EntityMyMooshroom extends EntityMyPet
+ 
+     public boolean isBaby()
+     {
+-        return ((MyMooshroom) myPet).isBaby;
++        return this.datawatcher.getInt(12) < 0;
+     }
+ 
+     @SuppressWarnings("boxing")

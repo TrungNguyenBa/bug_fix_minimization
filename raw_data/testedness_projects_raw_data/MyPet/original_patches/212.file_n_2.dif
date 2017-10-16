@@ -1,0 +1,27 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index ecfac817..daecf1b0 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -287,20 +287,14 @@ public class MyPetEntityListener implements Listener
+                         {
+                             if (leashTarget instanceof IronGolem)
+                             {
+-                                //willBeLeashed = ((IronGolem) leashTarget).isPlayerCreated();
+-
+-                                //temporary fix
+-                                willBeLeashed = ((CraftIronGolem) leashTarget).getHandle().bW();
++                                willBeLeashed = ((IronGolem) leashTarget).isPlayerCreated();
+                             }
+                         }
+                         else if (flag == LeashFlag.Wild)
+                         {
+                             if (leashTarget instanceof IronGolem)
+                             {
+-                                //willBeLeashed = !((IronGolem) leashTarget).isPlayerCreated();
+-
+-                                //temporary fix
+-                                willBeLeashed = !((CraftIronGolem) leashTarget).getHandle().bW();
++                                willBeLeashed = !((IronGolem) leashTarget).isPlayerCreated();
+                             }
+                             else if (leashTarget instanceof Tameable)
+                             {

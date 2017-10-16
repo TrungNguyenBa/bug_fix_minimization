@@ -1,0 +1,28 @@
+diff --git a/src/main/java/ru/tehkode/permissions/commands/Command.java b/src/main/java/ru/tehkode/permissions/commands/Command.java
+index 9ca3f35..d628e77 100644
+--- a/src/main/java/ru/tehkode/permissions/commands/Command.java
++++ b/src/main/java/ru/tehkode/permissions/commands/Command.java
+@@ -28,17 +28,14 @@ import java.lang.annotation.Retention;
+ import java.lang.annotation.RetentionPolicy;
+ 
+ /**
++ *
+  * @author code
+  */
+ @Retention(RetentionPolicy.RUNTIME)
+ public @interface Command {
+-	String name();
+-
+-	String syntax();
+-
+-	String description();
+-
+-	String permission() default "";
+-
+-	boolean isPrimary() default false;
++    String name();
++    String syntax();
++    String description();
++    String permission() default "";
++    boolean isPrimary() default false;
+ }

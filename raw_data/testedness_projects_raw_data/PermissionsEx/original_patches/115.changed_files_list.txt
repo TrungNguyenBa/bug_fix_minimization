@@ -1,0 +1,11 @@
+a653175 : Thread-safety and ugly performance tweaks
+:100644 100644 dc3784e... e122bb9... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 baac14f... 62a7dff... M	src/main/java/ru/tehkode/permissions/PermissionsData.java
+:100644 100644 832a283... 6902d17... M	src/main/java/ru/tehkode/permissions/PermissionsGroupData.java
+:100644 100644 f4ca4a3... 02aaf97... M	src/main/java/ru/tehkode/permissions/RegExpMatcher.java
+:100644 100644 7b14c19... 5ae9b28... M	src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java
+:100644 100644 9292df6... c30fdff... M	src/main/java/ru/tehkode/permissions/backends/caching/CachingGroupData.java
+:100644 100644 41c52f8... 09068c2... M	src/main/java/ru/tehkode/permissions/backends/caching/CachingUserData.java
+:100644 100644 0c97175... 0f68586... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 ef27cf1... b38996c... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 4986368... 09a0e12... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

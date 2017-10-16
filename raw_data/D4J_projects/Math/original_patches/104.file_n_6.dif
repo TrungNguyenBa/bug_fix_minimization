@@ -1,0 +1,14 @@
+diff --git a/xdocs/changes.xml b/xdocs/changes.xml
+index 441a7a262..f8f088c0e 100644
+--- a/xdocs/changes.xml
++++ b/xdocs/changes.xml
+@@ -78,9 +78,6 @@ Commons Math Release Notes</title>
+       <action dev="brentworden" type="fix" issue="MATH-153" due-to="Remi Arntzen">
+         Corrected nextInt and nextLong to handle wide value ranges.
+       </action>
+-      <action dev="psteitz" type="fix" issue="MATH-166" due-to="Lukas Theussl">
+-        Increased default precision of Gamma and Beta functions.
+-      </action>
+     </release>
+     <release version="1.1" date="2005-12-17"  
+  description="This is a maintenance release containing bug fixes and enhancements.

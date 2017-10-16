@@ -1,0 +1,2 @@
+8b2f036 : Fix #72 AMQP channel not set to confirm.
+:100644 100644 645ea64... edaf3a4... M	src/main/java/org/graylog2/GelfAMQPSender.java

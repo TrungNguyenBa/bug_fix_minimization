@@ -1,0 +1,2 @@
+f776517 : Fixed the springloaded issues
+:100755 100755 245d4d5... 2b229f6... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

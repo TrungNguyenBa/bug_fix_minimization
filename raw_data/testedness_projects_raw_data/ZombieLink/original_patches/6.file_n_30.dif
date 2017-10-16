@@ -1,0 +1,53 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java b/src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java
+index 00c4447..ab6dd32 100644
+--- a/src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java
++++ b/src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java
+@@ -23,7 +23,7 @@ package com.lonepulse.zombielink.request;
+ import org.apache.http.HttpRequest;
+ 
+ import com.lonepulse.zombielink.ZombieLinkRuntimeException;
+-import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This runtime exception is thrown due to an unrecoverable error which occurred when 
+@@ -43,22 +43,22 @@ class RequestTranslationException extends ZombieLinkRuntimeException {
+ 	 * <p>Displays a detailed description along with the stacktrace.
+ 	 * 
+ 	 * @param config
+-	 * 			the {@link InvocationContext} which failed to be translated 
++	 * 			the {@link ProxyInvocationConfiguration} which failed to be translated 
+ 	 * 			to an {@link HttpRequest}
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+-	public RequestTranslationException(InvocationContext config) {
++	public RequestTranslationException(ProxyInvocationConfiguration config) {
+ 	
+ 		this("Failed to translate an HTTP request for the method <" + config.getRequest().getName() + 
+-			 "> on the endopint <" + config.getEndpoint().getName());
++			 "> on the endopint <" + config.getEndpointClass().getName());
+ 	}
+ 	
+ 	/**
+ 	 * <p>Displays a detailed description along with the stacktrace.
+ 	 * 
+ 	 * @param config
+-	 * 			the {@link InvocationContext} which failed to be translated 
++	 * 			the {@link ProxyInvocationConfiguration} which failed to be translated 
+ 	 * 			to an {@link HttpRequest}
+ 	 * 
+ 	 * @param rootCause
+@@ -66,10 +66,10 @@ class RequestTranslationException extends ZombieLinkRuntimeException {
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+-	public RequestTranslationException(InvocationContext config, Throwable rootCause) {
++	public RequestTranslationException(ProxyInvocationConfiguration config, Throwable rootCause) {
+ 		
+ 		this("Failed to translate an HTTP request for the method <" + config.getRequest().getName() + 
+-				"> on the endopint <" + config.getEndpoint().getName(), rootCause);
++				"> on the endopint <" + config.getEndpointClass().getName(), rootCause);
+ 	}
+ 	
+ 	/**

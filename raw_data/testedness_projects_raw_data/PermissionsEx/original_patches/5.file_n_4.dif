@@ -1,0 +1,26 @@
+diff --git a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java
+index bcec9b4..1590d01 100644
+--- a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java
++++ b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java
+@@ -21,7 +21,7 @@ import com.google.common.collect.HashMultimap;
+ import com.google.common.collect.ImmutableSet;
+ import com.google.common.collect.Multimap;
+ import com.google.common.collect.Multimaps;
+-import ninja.leaping.permissionsex.data.ImmutableSubjectData;
++import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ import org.bukkit.permissions.Permission;
+ import org.bukkit.permissions.PermissionDefault;
+ import org.bukkit.plugin.PluginManager;
+@@ -136,10 +136,10 @@ public class PermissionList extends HashMap<String, Permission> {
+         FieldReplacer<Permission, Map> repl = getFieldReplacer(v);
+         repl.set(v, new NotifyingChildrenMap(v));
+         if (v.getDefault() == PermissionDefault.TRUE || v.getDefault() == PermissionDefault.FALSE) {
+-            plugin.getManager().getTransientSubjects("system").doUpdate("default", new Function<ImmutableSubjectData, ImmutableSubjectData>() {
++            plugin.getManager().getTransientSubjects("system").doUpdate("default", new Function<ImmutableOptionSubjectData, ImmutableOptionSubjectData>() {
+                 @Nullable
+                 @Override
+-                public ImmutableSubjectData apply(ImmutableSubjectData input) {
++                public ImmutableOptionSubjectData apply(ImmutableOptionSubjectData input) {
+                     return input.setPermission(PermissionsExPlugin.GLOBAL_CONTEXT, v.getName(), v.getDefault() == PermissionDefault.TRUE ? 1 : -1);
+                 }
+             });

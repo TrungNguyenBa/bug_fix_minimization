@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java b/src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java
+index 1b7f7024..d94254a5 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java
+@@ -154,9 +154,6 @@ public class MyHorse extends MyPet implements IMyPetBaby {
+         if (info.getCompoundData().containsKey("Type")) {
+             setHorseType(info.getAs("Type", TagByte.class).getByteData());
+         }
+-        if (info.getCompoundData().containsKey("Baby")) {
+-            setBaby(info.getAs("Baby", TagByte.class).getBooleanData());
+-        }
+         if (info.getCompoundData().containsKey("Variant")) {
+             setVariant(info.getAs("Variant", TagInt.class).getIntData());
+         }

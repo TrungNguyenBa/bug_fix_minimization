@@ -1,0 +1,3 @@
+91d19d1 : #92 Fix column 'visits.id' not found on MySql
+:100644 100644 a923b76... 62bf430... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVisitRepositoryImpl.java
+:100644 100644 d6dd0cb... 0577182... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVisitRowMapper.java

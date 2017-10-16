@@ -1,0 +1,2 @@
+85b7d49 : Change RawDrop.Media#dropImage property to boolean
+:100644 100644 2ac05cc... 7044912... M	src/main/java/com/ushahidi/swiftriver/core/model/RawDrop.java

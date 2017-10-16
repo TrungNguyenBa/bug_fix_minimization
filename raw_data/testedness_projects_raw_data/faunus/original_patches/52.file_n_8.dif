@@ -1,0 +1,12 @@
+diff --git a/src/examples/membrane.cpp b/src/examples/membrane.cpp
+index 2932237d..8ea8bf14 100644
+--- a/src/examples/membrane.cpp
++++ b/src/examples/membrane.cpp
+@@ -71,7 +71,6 @@ int main() {
+   auto nonbonded = &pot.first.first.first;
+   auto bonded = &pot.first.first.second;
+   auto eqenergy = &pot.second;
+-  nonbonded->noPairPotentialCutoff=true;
+   Tspace spc(mcp);
+ 
+   // Load and add polymer to Space

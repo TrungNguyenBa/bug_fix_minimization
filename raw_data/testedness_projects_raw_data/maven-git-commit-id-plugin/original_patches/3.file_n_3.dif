@@ -1,0 +1,13 @@
+diff --git a/src/main/java/pl/project13/jgit/JGitCommon.java b/src/main/java/pl/project13/jgit/JGitCommon.java
+index a991ca7..ac8905f 100644
+--- a/src/main/java/pl/project13/jgit/JGitCommon.java
++++ b/src/main/java/pl/project13/jgit/JGitCommon.java
+@@ -217,7 +217,7 @@ public class JGitCommon {
+     } catch (Exception e) {
+       loggerBridge.log("Unable to locate tags\n[",Throwables.getStackTraceAsString(e),"]");
+     } finally {
+-      walk.close();
++      walk.release();
+     }
+     return Collections.emptyMap();
+   }

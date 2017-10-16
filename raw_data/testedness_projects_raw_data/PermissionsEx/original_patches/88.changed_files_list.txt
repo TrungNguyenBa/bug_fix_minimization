@@ -1,0 +1,2 @@
+a7972fd : Fix path to world inheritance
+:100644 100644 5965eef... 39c00d5... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java

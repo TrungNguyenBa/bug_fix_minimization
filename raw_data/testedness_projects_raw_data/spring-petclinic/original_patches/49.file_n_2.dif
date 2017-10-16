@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java b/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
+index b47d027..7068dd8 100644
+--- a/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
++++ b/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
+@@ -33,8 +33,6 @@ public class PetValidator {
+             errors.rejectValue("name", "required", "required");
+         } else if (pet.isNew() && pet.getOwner().getPet(name, true) != null) {
+             errors.rejectValue("name", "duplicate", "already exists");
+-        } else if (pet.isNew() && pet.getType() == null) {
+-            errors.rejectValue("type", "required", "required");
+         }
+     }
+ 

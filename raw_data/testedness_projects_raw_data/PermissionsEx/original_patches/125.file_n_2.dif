@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java b/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
+index 55fd8c8..68f1ca0 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
++++ b/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
+@@ -23,7 +23,7 @@ public class BackendDataTransfer {
+ 
+ 		for (Map.Entry<String, Map<String, String>> entry : from.getOptionsMap().entrySet()) {
+ 			for (Map.Entry<String, String> option : entry.getValue().entrySet()) {
+-				to.setOption(option.getKey(), option.getValue(), entry.getKey());
++				to.setOption(option.getKey(), entry.getKey(), option.getValue());
+ 			}
+ 		}
+ 

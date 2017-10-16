@@ -1,0 +1,2 @@
+10ae0f68 : fixed bug where pets got no XP because the max level was not set so it was smaller than the level of the pet
+:100644 100644 e6132fbc... b7d4b23c... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

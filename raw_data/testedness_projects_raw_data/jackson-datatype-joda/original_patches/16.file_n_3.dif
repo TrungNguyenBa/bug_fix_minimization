@@ -1,0 +1,28 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/DateTimeKeyDeserializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/DateTimeKeyDeserializer.java
+deleted file mode 100644
+index f7e162f..0000000
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/DateTimeKeyDeserializer.java
++++ /dev/null
+@@ -1,22 +0,0 @@
+-package com.fasterxml.jackson.datatype.joda.deser.key;
+-
+-import java.io.IOException;
+-
+-import org.joda.time.*;
+-
+-import com.fasterxml.jackson.core.JsonProcessingException;
+-import com.fasterxml.jackson.databind.DeserializationContext;
+-import com.fasterxml.jackson.databind.KeyDeserializer;
+-
+-public class DateTimeKeyDeserializer extends KeyDeserializer {
+-
+-  @Override
+-  public Object deserializeKey(final String key, final DeserializationContext ctxt) throws IOException,
+-      JsonProcessingException {
+-    if (key.length() == 0) { // [JACKSON-360]
+-        return null;
+-    }
+-    return new DateTime(key, DateTimeZone.forTimeZone(ctxt.getTimeZone()));
+-  }
+-
+-}

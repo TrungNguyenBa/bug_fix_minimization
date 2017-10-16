@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+index 0a96ac0b..03c69bab 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+@@ -57,7 +57,6 @@ import org.bukkit.event.player.*;
+ import org.bukkit.inventory.ItemStack;
+ import org.bukkit.inventory.meta.ItemMeta;
+ 
+-import java.util.Set;
+ import java.util.UUID;
+ 
+ public class PlayerListener implements Listener {
+@@ -86,7 +85,7 @@ public class PlayerListener implements Listener {
+                         myPet.sendMessageToOwner(Locales.getString("Message.No.CanUse", myPet.getOwner().getLanguage()));
+                         return;
+                     }
+-                    Block block = event.getPlayer().getTargetBlock((Set) null, 100);
++                    Block block = event.getPlayer().getTargetBlock(null, 100);
+                     if (block != null && block.getType() != Material.AIR) {
+                         for (int i : ControllIgnoreBlocks) {
+                             if (block.getTypeId() == i) {

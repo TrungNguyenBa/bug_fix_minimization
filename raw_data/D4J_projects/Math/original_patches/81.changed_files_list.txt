@@ -1,0 +1,4 @@
+7d903ca53 : fixed an ArrayIndexOutOfBoundsException Kudos to Dimitri who debugged this mess of fortran/java array indices translation JIRA: MATH-308
+:100644 100644 53a40f08c... 3fc328d8b... M	src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+:100644 100644 82b4e024b... 6e2774018... M	src/site/xdoc/changes.xml
+:100644 100644 9d7563921... 2ed181fe3... M	src/test/java/org/apache/commons/math/linear/EigenDecompositionImplTest.java

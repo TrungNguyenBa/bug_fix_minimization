@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java
+index 82feab6d..5ae1661b 100644
+--- a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java
++++ b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java
+@@ -164,7 +164,7 @@ public class ConfigItem
+             }
+         }
+ 
+-        String[] splitData = data.split("\\s+");
++        String[] splitData = data.split("\\s");
+ 
+         int itemId = 1;
+         int itemDamage = -1;

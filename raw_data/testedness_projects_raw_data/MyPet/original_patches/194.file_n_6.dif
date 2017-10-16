@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/CommandInventory.java b/src/main/java/de/Keyle/MyPet/commands/CommandInventory.java
+index a5d1f0e5..c0f3bfb1 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/CommandInventory.java
++++ b/src/main/java/de/Keyle/MyPet/commands/CommandInventory.java
+@@ -23,7 +23,7 @@ package de.Keyle.MyPet.commands;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+ import de.Keyle.MyPet.entity.types.MyPetList;
+-import de.Keyle.MyPet.skill.skills.ISkillActive;
++import de.Keyle.MyPet.skill.ISkillActive;
+ import de.Keyle.MyPet.skill.skills.implementation.Inventory;
+ import de.Keyle.MyPet.util.Permissions;
+ import de.Keyle.MyPet.util.Util;

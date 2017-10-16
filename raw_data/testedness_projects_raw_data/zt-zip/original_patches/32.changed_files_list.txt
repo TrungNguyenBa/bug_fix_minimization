@@ -1,0 +1,2 @@
+7f4928f : Fix testCharsetEntry on jdk6
+:100644 100644 e12cdb4... 0bd51ab... M	src/test/java/org/zeroturnaround/zip/ZipsTest.java

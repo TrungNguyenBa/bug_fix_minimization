@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+index a149f45..abb90e3 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+@@ -203,7 +203,7 @@ public class SuperpermsListener implements Listener {
+ 			if (event.getEntity() instanceof PermissionUser) { // update user only
+ 				updateSelective(event, (PermissionUser) event.getEntity());
+ 			} else if (event.getEntity() instanceof PermissionGroup) { // update all members of group, might be resource hog
+-				for (PermissionUser user : ((PermissionGroup) event.getEntity()).getActiveUsers(true)) {
++				for (PermissionUser user : plugin.getPermissionsManager().getUsers(event.getEntity().getIdentifier(), true)) {
+ 					updateSelective(event, user);
+ 				}
+ 			}

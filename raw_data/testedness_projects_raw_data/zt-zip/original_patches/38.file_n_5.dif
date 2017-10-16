@@ -1,0 +1,4 @@
+diff --git a/src/test/resources/demo-single-empty-root-dir.zip b/src/test/resources/demo-single-empty-root-dir.zip
+deleted file mode 100644
+index b1c8824..0000000
+Binary files a/src/test/resources/demo-single-empty-root-dir.zip and /dev/null differ

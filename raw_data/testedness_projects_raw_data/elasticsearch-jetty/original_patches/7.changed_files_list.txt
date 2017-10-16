@@ -1,0 +1,3 @@
+2bb50d4 : Fix NPE for boundAddress() in HttpServerTransports
+:100644 100644 d3845a0... f7c3ed0... M	src/main/java/com/sonian/elasticsearch/http/filter/FilterHttpServerTransport.java
+:100644 100644 557d206... 0dfd44c... M	src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerTransport.java

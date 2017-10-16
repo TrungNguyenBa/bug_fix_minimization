@@ -1,0 +1,42 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 9f6a4cd9..8fe3e35c 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -223,7 +223,7 @@ public class EntityListener implements Listener {
+         if (PvPChecker.USE_PlayerDamageEntityEvent) {
+             Entity damager = event.getDamager();
+             if (damager instanceof Projectile) {
+-                damager = (Entity) ((Projectile) damager).getShooter();
++                damager = ((Projectile) damager).getShooter();
+             }
+             if (damager instanceof CraftMyPet && event.getEntity() instanceof LivingEntity) {
+                 MyPet myPet = ((CraftMyPet) damager).getMyPet();
+@@ -493,9 +493,7 @@ public class EntityListener implements Listener {
+             LivingEntity damager = null;
+             if (event.getDamager() instanceof Projectile) {
+                 Projectile projectile = (Projectile) event.getDamager();
+-                if(projectile.getShooter() instanceof LivingEntity) {
+-                    damager = (LivingEntity) projectile.getShooter();
+-                }
++                damager = projectile.getShooter();
+             } else if (event.getDamager() instanceof LivingEntity) {
+                 damager = (LivingEntity) event.getDamager();
+             }
+@@ -520,7 +518,7 @@ public class EntityListener implements Listener {
+             Entity damager = event.getDamager();
+ 
+             if (damager instanceof Projectile) {
+-                damager = (Entity) ((Projectile) damager).getShooter();
++                damager = ((Projectile) damager).getShooter();
+             }
+ 
+             if (damager instanceof Player) {
+@@ -775,7 +773,7 @@ public class EntityListener implements Listener {
+ 
+             Entity damager = edbee.getDamager();
+             if (damager instanceof Projectile) {
+-                damager = (Entity) ((Projectile) damager).getShooter();
++                damager = ((Projectile) damager).getShooter();
+             }
+             if (damager instanceof CraftMyPet) {
+                 MyPet myPet = ((CraftMyPet) damager).getMyPet();

@@ -1,0 +1,3 @@
+37122da : Fix visibility of timed permissions in /pex user|group <name> commands
+:100644 100644 5839e1e... 8dd3ebb... M	src/main/java/ru/tehkode/permissions/PermissionEntity.java
+:100644 100644 1971f93... 2cef8fa... M	src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java

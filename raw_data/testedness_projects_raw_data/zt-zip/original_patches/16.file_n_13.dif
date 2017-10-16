@@ -1,0 +1,16 @@
+diff --git a/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java b/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
+index 4c4039c..270625e 100644
+--- a/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
++++ b/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
+@@ -30,9 +30,8 @@ import java.util.zip.ZipOutputStream;
+ 
+ import junit.framework.TestCase;
+ 
+-import org.zeroturnaround.zip.commons.FileUtils;
+-import org.zeroturnaround.zip.commons.IOUtils;
+-
++import org.apache.commons.io.FileUtils;
++import org.apache.commons.io.IOUtils;
+ 
+ /** @noinspection ResultOfMethodCallIgnored*/
+ public class ZipUtilTest extends TestCase {

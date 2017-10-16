@@ -1,0 +1,3 @@
+2088970 : backends: Fix data dump to include missing information
+:100644 100644 2f4cb40... d16f514... M	src/main/java/ru/tehkode/permissions/backends/FileBackend.java
+:100644 100644 e7c1074... a802f34... M	src/main/java/ru/tehkode/permissions/backends/SQLBackend.java

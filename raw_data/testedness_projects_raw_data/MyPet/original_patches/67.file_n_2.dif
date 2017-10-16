@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java b/src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java
+index 2e250c60..29967c1b 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java
++++ b/src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java
+@@ -87,7 +87,7 @@ public class CommandAdmin implements CommandExecutor, TabCompleter {
+ 
+     @Override
+     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
+-        if (commandSender instanceof Player && !Permissions.has((Player) commandSender, "MyPet.admin", false)) {
++        if (!Permissions.has((Player) commandSender, "MyPet.admin", false)) {
+             return emptyList;
+         }
+         if (strings.length == 1) {

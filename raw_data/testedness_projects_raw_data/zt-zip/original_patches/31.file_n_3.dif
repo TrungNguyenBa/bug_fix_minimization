@@ -1,0 +1,22 @@
+diff --git a/src/test/java/org/zeroturnaround/zip/ZipsTest.java b/src/test/java/org/zeroturnaround/zip/ZipsTest.java
+index 5e2ec5a..0bd51ab 100644
+--- a/src/test/java/org/zeroturnaround/zip/ZipsTest.java
++++ b/src/test/java/org/zeroturnaround/zip/ZipsTest.java
+@@ -355,7 +355,7 @@ public class ZipsTest extends TestCase {
+           return s.toUpperCase().getBytes();
+         }
+       };
+-      Zips.get(source).destination(destination).addTransformer(name, transformer).process();
++      Zips.get(source).destination(destination).addTransformer(name, transformer).transform();
+ 
+       // Test the ZipUtil
+       byte[] actual = ZipUtil.unpackEntry(destination, name);
+@@ -403,7 +403,7 @@ public class ZipsTest extends TestCase {
+           return true;
+         }
+       };
+-      Zips.get(source).destination(destination).preserveTimestamps().addTransformer(name, transformer).process();
++      Zips.get(source).destination(destination).preserveTimestamps().addTransformer(name, transformer).transform();
+ 
+       final ZipFile zf = new ZipFile(source);
+       try {

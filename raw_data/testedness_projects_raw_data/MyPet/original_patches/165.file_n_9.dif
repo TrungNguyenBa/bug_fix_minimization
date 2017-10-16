@@ -1,0 +1,55 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRespawn.java b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRespawn.java
+index f2bc2842..7d699a0e 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRespawn.java
++++ b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRespawn.java
+@@ -20,8 +20,7 @@
+ 
+ package de.Keyle.MyPet.commands.admin;
+ 
+-import de.Keyle.MyPet.api.commands.CommandOptionTabCompleter;
+-import de.Keyle.MyPet.commands.CommandAdmin;
++import de.Keyle.MyPet.api.commands.CommandOption;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+ import de.Keyle.MyPet.entity.types.MyPetList;
+@@ -33,19 +32,8 @@ import org.bukkit.ChatColor;
+ import org.bukkit.command.CommandSender;
+ import org.bukkit.entity.Player;
+ 
+-import java.util.ArrayList;
+-import java.util.List;
+-
+-public class CommandOptionRespawn implements CommandOptionTabCompleter
++public class CommandOptionRespawn implements CommandOption
+ {
+-    private static List<String> showList = new ArrayList<String>();
+-
+-    static
+-    {
+-        showList.add("show");
+-        showList.add("<number>");
+-    }
+-
+     @Override
+     public boolean onCommandOption(CommandSender sender, String[] args)
+     {
+@@ -95,18 +83,4 @@ public class CommandOptionRespawn implements CommandOptionTabCompleter
+ 
+         return true;
+     }
+-
+-    @Override
+-    public List<String> onTabComplete(CommandSender commandSender, String[] strings)
+-    {
+-        if (strings.length == 2)
+-        {
+-            return null;
+-        }
+-        if (strings.length == 3)
+-        {
+-            return showList;
+-        }
+-        return CommandAdmin.emptyList;
+-    }
+ }
+\ No newline at end of file

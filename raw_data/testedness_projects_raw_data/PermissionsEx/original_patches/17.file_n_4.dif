@@ -1,0 +1,19 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/util/command/args/GenericArguments.java b/src/main/java/ninja/leaping/permissionsex/util/command/args/GenericArguments.java
+index 8f6d4fc..1c0446d 100644
+--- a/src/main/java/ninja/leaping/permissionsex/util/command/args/GenericArguments.java
++++ b/src/main/java/ninja/leaping/permissionsex/util/command/args/GenericArguments.java
+@@ -354,13 +354,7 @@ public class GenericArguments {
+             } else {
+                 CommandElement element = longFlags.get(longFlag.toLowerCase());
+                 if (element == null) {
+-                    return ImmutableList.copyOf(Iterables.transform(Iterables.filter(longFlags.keySet(), new StartsWithPredicate(longFlag.toLowerCase())), new Function<String, String>() {
+-                        @Nullable
+-                        @Override
+-                        public String apply(@Nullable String input) {
+-                            return "--" + input;
+-                        }
+-                    }));
++                    return ImmutableList.copyOf(Iterables.filter(longFlags.keySet(), new StartsWithPredicate(longFlag.toLowerCase())));
+                 } else {
+                     boolean complete = false;
+                     int position = args.getPosition();

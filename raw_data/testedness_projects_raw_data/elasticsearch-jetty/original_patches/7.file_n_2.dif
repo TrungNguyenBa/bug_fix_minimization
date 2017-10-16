@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/sonian/elasticsearch/http/filter/FilterHttpServerTransport.java b/src/main/java/com/sonian/elasticsearch/http/filter/FilterHttpServerTransport.java
+index f7c3ed0..d3845a0 100644
+--- a/src/main/java/com/sonian/elasticsearch/http/filter/FilterHttpServerTransport.java
++++ b/src/main/java/com/sonian/elasticsearch/http/filter/FilterHttpServerTransport.java
+@@ -112,7 +112,7 @@ public class FilterHttpServerTransport extends AbstractLifecycleComponent<HttpSe
+ 
+     @Override
+     public HttpInfo info() {
+-        return new HttpInfo(boundAddress(), 0);
++        return new HttpInfo(null, 0);
+     }
+ 
+     @Override

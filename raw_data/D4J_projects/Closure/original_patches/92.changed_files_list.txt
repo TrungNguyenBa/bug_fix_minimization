@@ -1,0 +1,4 @@
+8980b600 : Fix bug with implicit namespaces across modules. Contributed by bolinfest Fixes issue 261
+:100644 100644 adec5c33... 7a31609c... M	build.xml
+:100644 100644 c929a363... 1d738b52... M	src/com/google/javascript/jscomp/ProcessClosurePrimitives.java
+:100644 100644 5be0a1f0... f392a6cc... M	test/com/google/javascript/jscomp/ProcessClosurePrimitivesTest.java

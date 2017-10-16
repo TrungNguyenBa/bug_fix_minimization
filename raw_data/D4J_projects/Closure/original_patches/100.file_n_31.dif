@@ -1,0 +1,18 @@
+diff --git a/src/com/google/javascript/rhino/jstype/ObjectType.java b/src/com/google/javascript/rhino/jstype/ObjectType.java
+index 78583fe1..2fcc8cff 100644
+--- a/src/com/google/javascript/rhino/jstype/ObjectType.java
++++ b/src/com/google/javascript/rhino/jstype/ObjectType.java
+@@ -42,11 +42,13 @@ package com.google.javascript.rhino.jstype;
+ import static com.google.javascript.rhino.jstype.TernaryValue.FALSE;
+ import static com.google.javascript.rhino.jstype.TernaryValue.UNKNOWN;
+ 
++import com.google.common.collect.ImmutableList;
+ import com.google.common.collect.ImmutableSet;
+ import com.google.common.collect.Sets;
+ import com.google.javascript.rhino.JSDocInfo;
+ 
+ import java.util.HashSet;
++import java.util.List;
+ import java.util.Set;
+ 
+ /**

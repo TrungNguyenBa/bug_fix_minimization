@@ -1,0 +1,15 @@
+d15367dc : save the "want to respawn" behavior it will reset on every reload/restart of the server fixes #145
+:100644 100644 40636948... 2a576c1f... M	src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+:100644 100644 b9d83f46... 185ab70a... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandCall.java
+:100644 100644 4ffac2ab... 84cda4d7... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandSendAway.java
+:100644 100644 e23079a4... 3b7a7eec... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 b049eb44... 0f4cf6a4... M	src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+:100644 100644 ab919192... 70734fd8... M	src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java
+:100644 100644 d16a32fe... ab25f639... M	src/main/java/de/Keyle/MyPet/listeners/MyPetVehicleListener.java
+:100644 100644 fd97ef40... 85f21767... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+:100644 100644 1a2412a4... 7d78f831... M	src/main/java/de/Keyle/MyPet/util/support/BattleArena.java
+:100644 100644 96045d91... 05b8fced... M	src/main/java/de/Keyle/MyPet/util/support/Minigames.java
+:100644 100644 ae175aca... f48cd0c7... M	src/main/java/de/Keyle/MyPet/util/support/MobArena.java
+:100644 100644 1927f7a3... 6549436c... M	src/main/java/de/Keyle/MyPet/util/support/MyHungerGames.java
+:100644 100644 21e99f8e... 0dcb9a93... M	src/main/java/de/Keyle/MyPet/util/support/PvPArena.java
+:100644 100644 9d778be4... 5e99738d... M	src/main/java/de/Keyle/MyPet/util/support/SurvivalGames.java

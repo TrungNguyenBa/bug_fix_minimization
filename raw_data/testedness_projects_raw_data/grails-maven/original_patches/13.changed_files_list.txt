@@ -1,0 +1,2 @@
+138fce8 : fix scope handling for compile+runtime
+:100755 100755 4716d84... 16bb38f... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

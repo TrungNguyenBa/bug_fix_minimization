@@ -1,0 +1,3 @@
+b2b02634 : catch exceptions thrown by by supported plugins to prevent server crashes
+:100644 100644 298e689d... 6473b652... M	src/main/java/de/Keyle/MyPet/util/support/Party.java
+:100644 100644 d95b986a... e7686d78... M	src/main/java/de/Keyle/MyPet/util/support/PvPChecker.java

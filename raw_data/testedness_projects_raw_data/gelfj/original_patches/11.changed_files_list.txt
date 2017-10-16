@@ -1,0 +1,2 @@
+ed800b3 : ensure that all resources are closed
+:100644 100644 103b852... 645ea64... M	src/main/java/org/graylog2/GelfAMQPSender.java

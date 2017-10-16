@@ -1,0 +1,26 @@
+diff --git a/src/main/java/com/stripe/model/DeletedConcretePaymentSource.java b/src/main/java/com/stripe/model/DeletedConcretePaymentSource.java
+deleted file mode 100644
+index 490ba45..0000000
+--- a/src/main/java/com/stripe/model/DeletedConcretePaymentSource.java
++++ /dev/null
+@@ -1,19 +0,0 @@
+-package com.stripe.model;
+-
+-public class DeletedConcretePaymentSource extends StripeObject implements DeletedStripeObject {
+-    String id;
+-    Boolean deleted;
+-
+-    public String getId() {
+-        return id;
+-    }
+-    public void setId(String id) {
+-        this.id = id;
+-    }
+-    public Boolean getDeleted() {
+-        return deleted;
+-    }
+-    public void setDeleted(Boolean deleted) {
+-        this.deleted = deleted;
+-    }
+-}
+\ No newline at end of file

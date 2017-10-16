@@ -1,0 +1,3 @@
+25829b03 : Delete the divide by zero error I've never heard of this catching any real bug. It seems like if you explicitly typed "1 / 0", you meant to do that. fixes issue 381
+:100644 100644 0df495dc... 1afb7a80... M	src/com/google/javascript/jscomp/PeepholeFoldConstants.java
+:100644 100644 7919be50... 848acbd5... M	test/com/google/javascript/jscomp/PeepholeFoldConstantsTest.java

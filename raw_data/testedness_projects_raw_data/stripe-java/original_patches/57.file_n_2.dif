@@ -1,0 +1,36 @@
+diff --git a/src/main/java/com/stripe/model/ApplicationFee.java b/src/main/java/com/stripe/model/ApplicationFee.java
+index de0de0a..9194714 100644
+--- a/src/main/java/com/stripe/model/ApplicationFee.java
++++ b/src/main/java/com/stripe/model/ApplicationFee.java
+@@ -148,14 +148,16 @@ public class ApplicationFee extends APIResource {
+ 	public static ApplicationFee retrieve(String id, String apiKey)
+ 			throws AuthenticationException, InvalidRequestException,
+ 			APIConnectionException, CardException, APIException {
+-		return request(RequestMethod.GET, instanceURL(ApplicationFee.class, id), null,
++		String url = String.format("%s/%s/%s", Stripe.getApiBase(), "v1/application_fees", id);
++		return request(RequestMethod.GET, url, null,
+ 				ApplicationFee.class, apiKey);
+ 	}
+ 
+ 	public static ApplicationFeeCollection all(Map<String, Object> params, String apiKey)
+ 			throws AuthenticationException, InvalidRequestException,
+ 			APIConnectionException, CardException, APIException {
+-		return request(RequestMethod.GET, classURL(ApplicationFee.class), params,
++		String url = String.format("%s/%s", Stripe.getApiBase(), "v1/application_fees");
++		return request(RequestMethod.GET, url, params,
+ 				ApplicationFeeCollection.class, apiKey);
+ 	}
+ 
+@@ -168,10 +170,8 @@ public class ApplicationFee extends APIResource {
+ 	public ApplicationFee refund(Map<String, Object> params, String apiKey)
+ 			throws AuthenticationException, InvalidRequestException,
+ 			APIConnectionException, CardException, APIException {
+-		return request(
+-				RequestMethod.POST,
+-				String.format("%s/refund",
+-						instanceURL(ApplicationFee.class, this.getId())), params,
++		String url = String.format("%s/%s/%s", Stripe.getApiBase(), "v1/application_fees", id);
++		return request(RequestMethod.POST, url, params,
+ 				ApplicationFee.class, apiKey);
+ 	}
+ }

@@ -1,0 +1,14 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
+index 07c07da..4326427 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
+@@ -107,9 +107,6 @@ public class RegexPermissions {
+ 							success = true;
+ 							break;
+ 						}
+-					} else {
+-						success = true;
+-						break;
+ 					}
+ 				}
+ 			}

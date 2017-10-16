@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/stripe/model/Charge.java b/src/main/java/com/stripe/model/Charge.java
+index 22388fb..dded611 100644
+--- a/src/main/java/com/stripe/model/Charge.java
++++ b/src/main/java/com/stripe/model/Charge.java
+@@ -162,8 +162,6 @@ public class Charge extends APIResource implements MetadataStore<Charge> {
+ 	}
+ 
+ 	public ChargeRefundCollection getRefunds() {
+-		// API versions 2014-05-19 and earlier render charge refunds as an array 
+-		// instead of an object, meaning there is no sublist URL.
+ 		if (refunds.getURL() == null) {
+ 			refunds.setURL(String.format("/v1/charges/%s/refunds", getId()));
+ 		}

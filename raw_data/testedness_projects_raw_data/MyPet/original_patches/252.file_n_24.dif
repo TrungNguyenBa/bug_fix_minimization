@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetLevelUpListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetLevelUpListener.java
+index 2a34e946..0d1af187 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetLevelUpListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetLevelUpListener.java
+@@ -48,7 +48,7 @@ public class MyPetLevelUpListener implements Listener
+         MyPet myPet = event.getPet();
+         if (!event.isQuiet())
+         {
+-            myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.LvlUp", event.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%lvl%", "" + event.getLevel()));
++            myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.LvlUp", event.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%lvl%", "" + event.getLevel()));
+ 
+             if (MyPetExperience.FIREWORK_ON_LEVELUP)
+             {

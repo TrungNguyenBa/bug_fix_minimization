@@ -1,0 +1,76 @@
+diff --git a/src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java b/src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java
+index 842aad7..584a96b 100644
+--- a/src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java
++++ b/src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java
+@@ -16,7 +16,7 @@ import org.junit.Test;
+ import org.tiernolan.nervous.network.NetworkManagerImpl;
+ import org.tiernolan.nervous.network.api.NetworkManager;
+ import org.tiernolan.nervous.network.api.protocol.Packet;
+-import org.tiernolan.nervous.network.connection.SimpleProtocol.GenericPacket;
++import org.tiernolan.nervous.network.connection.TestProtocol.GenericPacket;
+ import org.tiernolan.nervous.network.queue.Completable;
+ import org.tiernolan.nervous.network.queue.StripedQueue;
+ import org.tiernolan.nervous.network.queue.StripedQueueImpl;
+@@ -28,7 +28,7 @@ public class SelectorTest {
+ 	@Test
+ 	public void decodeTest() throws IOException, InterruptedException {
+ 		
+-		SimpleProtocol protocol = new SimpleProtocol();
++		TestProtocol protocol = new TestProtocol();
+ 
+ 		NetworkManager manager = new NetworkManagerImpl(protocol);
+ 
+@@ -71,7 +71,7 @@ public class SelectorTest {
+ 	@Test
+ 	public void encodeTest() throws IOException, InterruptedException {
+ 		
+-		SimpleProtocol protocol = new SimpleProtocol();
++		TestProtocol protocol = new TestProtocol();
+ 
+ 		NetworkManager manager = new NetworkManagerImpl(protocol);
+ 
+@@ -115,7 +115,7 @@ public class SelectorTest {
+ 	
+ 	@Test
+ 	public void shutdown() throws IOException, InterruptedException {
+-		SimpleProtocol protocol = new SimpleProtocol();
++		TestProtocol protocol = new TestProtocol();
+ 
+ 		NetworkManager manager = new NetworkManagerImpl(protocol);
+ 
+@@ -166,7 +166,7 @@ public class SelectorTest {
+ 	
+ 	@Test
+ 	public void randomDecodeTest() throws IOException, InterruptedException {
+-		SimpleProtocol protocol = new SimpleProtocol();
++		TestProtocol protocol = new TestProtocol();
+ 
+ 		NetworkManager manager = new NetworkManagerImpl(protocol);
+ 
+@@ -221,7 +221,7 @@ public class SelectorTest {
+ 	
+ 	@Test
+ 	public void randomEncodeTest() throws IOException, InterruptedException {
+-		SimpleProtocol protocol = new SimpleProtocol();
++		TestProtocol protocol = new TestProtocol();
+ 
+ 		NetworkManager manager = new NetworkManagerImpl(protocol);
+ 
+@@ -287,7 +287,7 @@ public class SelectorTest {
+ 		channelWrite(channel, 0xAA, 0x55, 0x00, 0x00, i >> 24, i >> 16, i >> 8, i);
+ 	}
+ 	
+-	private void writeLongPacket(SimpleFIFOChannel channel, long l) throws IOException {
++	private void writeLongPacket(FIFOChannel channel, long l) throws IOException {
+ 		channelWrite(channel, 0xAAL, 0x55L, 0x00L, 0x01L, l >> 56, l >> 48, l >> 40, l >> 32, l >> 24, l >> 16, l >> 8, l);
+ 	}
+ 	
+@@ -364,7 +364,7 @@ public class SelectorTest {
+ 		assertEquals("Packet data encode error", data, l);
+ 	}
+ 	
+-	public GenericPacket getPacket(final Object data, SimpleProtocol protocol) {
++	public GenericPacket getPacket(final Object data, TestProtocol protocol) {
+ 		int type = (data instanceof Long) ? 1 : 0;
+ 		return protocol.new GenericPacket(type) {
+ 			@Override

@@ -1,0 +1,22 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+index e1cbbd9..bc7c00a 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+@@ -228,17 +228,6 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 		this.save();
+ 	}
+ 
+-	@Override
+-	public Map<String, List<String>> getParentsMap() {
+-		Map<String, List<String>> ret = new HashMap<>();
+-		ret.put(null, getParents(null));
+-
+-		for (String world : getWorlds()) {
+-			ret.put(world, getParents(world));
+-		}
+-		return Collections.unmodifiableMap(ret);
+-	}
+-
+ 
+ 	@Override
+ 	public List<String> getParents(String worldName) {

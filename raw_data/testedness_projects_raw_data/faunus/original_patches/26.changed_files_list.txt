@@ -1,0 +1,5 @@
+a145c642 : Damped gaussian Wolf works!
+:100644 100644 f8b1b294... c8be0b68... M	include/faunus/multipole.h
+:100644 100644 625bd45e... 59709ae0... M	include/faunus/species.h
+:100644 100644 bc5c0ab7... 1c7e4ba7... M	src/playground/stenqvist/nemo.cpp
+:100644 100644 e4779a90... 1e28a1dc... M	src/species.cpp

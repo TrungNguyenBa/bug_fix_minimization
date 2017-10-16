@@ -1,0 +1,26 @@
+diff --git a/src/main/java/com/stripe/model/Coupon.java b/src/main/java/com/stripe/model/Coupon.java
+index a4023ed..7f40623 100644
+--- a/src/main/java/com/stripe/model/Coupon.java
++++ b/src/main/java/com/stripe/model/Coupon.java
+@@ -20,7 +20,6 @@ public class Coupon extends APIResource {
+ 	Integer maxRedemptions;
+ 	Long redeemBy;
+ 	Integer timesRedeemed;
+-	Boolean valid;
+ 
+ 	public static Coupon create(Map<String, Object> params)
+ 			throws AuthenticationException, InvalidRequestException,
+@@ -154,12 +153,4 @@ public class Coupon extends APIResource {
+ 	public void setTimesRedeemed(Integer timesRedeemed) {
+ 		this.timesRedeemed = timesRedeemed;
+ 	}
+-
+-	public Boolean getValid() {
+-		return valid;
+-	}
+-
+-	public void setValid(Boolean valid) {
+-		this.valid = valid;
+-	}
+ }
+\ No newline at end of file

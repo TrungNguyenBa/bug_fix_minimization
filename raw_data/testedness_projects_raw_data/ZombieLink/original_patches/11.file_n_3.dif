@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java b/src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java
+index ca9ea6e..3df273c 100644
+--- a/src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java
++++ b/src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java
+@@ -28,8 +28,8 @@ import org.apache.http.HttpResponse;
+ import org.apache.http.client.methods.HttpRequestBase;
+ import org.apache.http.protocol.HttpContext;
+ 
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.annotation.Stateful;
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>A concrete implementation of {@link RequestExecutor} which executes {@link HttpRequest}s. 

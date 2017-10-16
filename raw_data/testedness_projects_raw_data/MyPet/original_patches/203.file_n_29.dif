@@ -1,0 +1,86 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java b/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
+index 088a2d3c..467d37ce 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
+@@ -56,13 +56,30 @@ public class EntityMyIronGolem extends EntityMyPet
+         return flag;
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
++    protected void setPlayerCreated(boolean flag)
++    {
++        byte b0 = this.datawatcher.getByte(16);
++
++        if (flag)
++        {
++            this.datawatcher.watch(16, (byte) (b0 | 0x1));
++        }
++        else
++        {
++            this.datawatcher.watch(16, (byte) (b0 & 0xFFFFFFFE));
++        }
++    }
++
++    protected void initDatawatcher()
++    {
++        super.initDatawatcher();
++        this.datawatcher.a(16, new Byte((byte) 0)); // flower???
++    }
++
+     @Override
+-    protected String getDeathSound()
++    public void playStepSound()
+     {
+-        return "mob.irongolem.death";
++        makeSound("mob.irongolem.walk", 1.0F, 1.0F);
+     }
+ 
+     /**
+@@ -75,36 +92,19 @@ public class EntityMyIronGolem extends EntityMyPet
+     }
+ 
+     /**
+-     * Returns the default sound of the MyPet
++     * Returns the sound that is played when the MyPet dies
+      */
+-    protected String getLivingSound()
+-    {
+-        return null;
+-    }
+-
+-    protected void initDatawatcher()
+-    {
+-        super.initDatawatcher();
+-        this.datawatcher.a(16, new Byte((byte) 0)); // flower???
+-    }
+-
+     @Override
+-    public void playStepSound()
++    protected String getDeathSound()
+     {
+-        makeSound("mob.irongolem.walk", 1.0F, 1.0F);
++        return "mob.irongolem.death";
+     }
+ 
+-    protected void setPlayerCreated(boolean flag)
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        byte b0 = this.datawatcher.getByte(16);
+-
+-        if (flag)
+-        {
+-            this.datawatcher.watch(16, (byte) (b0 | 0x1));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(16, (byte) (b0 & 0xFFFFFFFE));
+-        }
++        return null;
+     }
+ }
+\ No newline at end of file

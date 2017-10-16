@@ -1,0 +1,18 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java b/src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+index c67f5820..9a0763d8 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+@@ -33,8 +33,13 @@ public class EntityMySheep extends EntityMyPet {
+         super(world, myPet);
+     }
+ 
++    public DyeColor getColor() {
++        return ((MySheep) myPet).color;
++    }
++
+     public void setColor(byte color) {
+         this.datawatcher.watch(16, color);
++        ((MySheep) myPet).color = DyeColor.getByWoolData(color);
+     }
+ 
+     @Override

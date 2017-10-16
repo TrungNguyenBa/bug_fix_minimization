@@ -1,0 +1,2 @@
+a196739 : Correct CommandsManager exception handling
+:100644 100644 5484794... 1954305... M	src/main/java/ru/tehkode/permissions/commands/CommandsManager.java

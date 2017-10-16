@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/IMyPetSlimeSize.java b/src/main/java/de/Keyle/MyPet/entity/types/IMyPetSlimeSize.java
+index 137f2cd4..0279be55 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/IMyPetSlimeSize.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/IMyPetSlimeSize.java
+@@ -20,7 +20,8 @@
+ 
+ package de.Keyle.MyPet.entity.types;
+ 
+-public interface IMyPetSlimeSize {
++public interface IMyPetSlimeSize
++{
+     public int getSize();
+ 
+     public void setSize(int value);

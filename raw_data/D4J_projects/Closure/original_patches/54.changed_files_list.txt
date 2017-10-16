@@ -1,0 +1,7 @@
+7e9b8336 : Support chrome-team's style of defining prototypes. Fixes issue 537
+:100644 100644 dc7b2b08... 5bccc06d... M	src/com/google/javascript/jscomp/TypedScopeCreator.java
+:100644 100644 0499e5ec... a87be07f... M	src/com/google/javascript/rhino/jstype/FunctionType.java
+:100644 100644 e07dcbf6... 4938193d... M	src/com/google/javascript/rhino/jstype/JSTypeRegistry.java
+:100644 100644 3af33366... 2faffbd1... M	src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+:100644 100644 c18ecd7d... 2d3be5d2... M	test/com/google/javascript/jscomp/TypeCheckTest.java
+:100644 100644 048fc9eb... 4fe01a07... M	test/com/google/javascript/jscomp/TypedScopeCreatorTest.java

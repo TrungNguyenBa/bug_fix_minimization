@@ -1,0 +1,29 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/LocalDateSerializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/LocalDateSerializer.java
+index 3674a6c..3b866fc 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/LocalDateSerializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/LocalDateSerializer.java
+@@ -36,17 +36,17 @@ public final class LocalDateSerializer
+     */
+ 
+     @Override
+-    public void serialize(LocalDate value, JsonGenerator gen, SerializerProvider provider) throws IOException
++    public void serialize(LocalDate value, JsonGenerator jgen, SerializerProvider provider) throws IOException
+     {
+         if (_useTimestamp(provider)) {
+             // Timestamp here actually means an array of values
+-            gen.writeStartArray();
+-            gen.writeNumber(value.year().get());
+-            gen.writeNumber(value.monthOfYear().get());
+-            gen.writeNumber(value.dayOfMonth().get());
+-            gen.writeEndArray();
++            jgen.writeStartArray();
++            jgen.writeNumber(value.year().get());
++            jgen.writeNumber(value.monthOfYear().get());
++            jgen.writeNumber(value.dayOfMonth().get());
++            jgen.writeEndArray();
+         } else {
+-            gen.writeString(_format.createFormatter(provider).print(value));
++            jgen.writeString(_format.createFormatter(provider).print(value));
+         }
+     }
+ }

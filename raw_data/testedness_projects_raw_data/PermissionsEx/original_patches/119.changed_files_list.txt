@@ -1,0 +1,2 @@
+31fb79f : Revise caching of PermissionUser objects to only occur for online users
+:100644 100644 fc40cc4... e8537c9... M	src/main/java/ru/tehkode/permissions/PermissionManager.java

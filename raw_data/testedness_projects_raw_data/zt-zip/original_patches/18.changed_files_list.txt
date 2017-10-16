@@ -1,0 +1,3 @@
+341c721 : Fixed testCharsetEntry().
+:100644 100644 72f1acb... 0bb1319... M	src/main/java/org/zeroturnaround/zip/ZipFileUtil.java
+:100644 100644 5c4a23a... 3ab9351... M	src/test/java/org/zeroturnaround/zip/ZipsTest.java

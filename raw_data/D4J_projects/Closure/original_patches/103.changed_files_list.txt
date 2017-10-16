@@ -1,0 +1,6 @@
+2f5cb162 : Make the CFA recognize possible ON_EX edges for instanceof operations. Fixes issue 113. (Alan)
+:100644 100644 d5bcabe1... 6ef25483... M	src/com/google/javascript/jscomp/ControlFlowAnalysis.java
+:100644 100644 9d9de035... ca5edbd6... M	src/com/google/javascript/jscomp/DisambiguateProperties.java
+:100644 100644 a76b4a49... 82d7bd9a... M	test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java
+:100644 100644 4175682a... f63e9370... M	test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java
+:100644 100644 3c2f0eaf... 7facdb34... M	test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java

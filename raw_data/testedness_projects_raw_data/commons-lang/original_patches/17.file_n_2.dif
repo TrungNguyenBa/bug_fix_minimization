@@ -1,0 +1,10 @@
+diff --git a/checkstyle.xml b/checkstyle.xml
+index 79943fb2..97b34af7 100644
+--- a/checkstyle.xml
++++ b/checkstyle.xml
+@@ -44,3 +44,5 @@ limitations under the License.
+     </module>
+  </module>
+ </module>
++                        
++

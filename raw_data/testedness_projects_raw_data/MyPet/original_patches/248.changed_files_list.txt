@@ -1,0 +1,5 @@
+c065e21d : fixed bug in admin reloadskills command
+:100644 100644 bf36cf74... 780620aa... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
+:100644 100644 96bf37b5... e6e7b13d... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
+:100644 100644 69ca73a3... d199c7d5... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandSkill.java
+:100644 100644 471014c8... 2041a3bc... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java

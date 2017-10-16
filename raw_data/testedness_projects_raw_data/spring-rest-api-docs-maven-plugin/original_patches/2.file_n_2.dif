@@ -1,0 +1,30 @@
+diff --git a/run-test.sh b/run-test.sh
+index ef3e3c1..a313099 100755
+--- a/run-test.sh
++++ b/run-test.sh
+@@ -2,25 +2,10 @@
+ 
+ # make sure the plugin is installed
+ mvn install
+-RESULT="$?"
+-if test "${RESULT}" != "0"; then
+-    echo "Test FAILED";
+-    exit 1;
+-fi
+ # Compile the test project
+ mvn -f pom-test.xml compile
+-RESULT="$?"
+-if test "${RESULT}" != "0"; then
+-    echo "Test FAILED";
+-    exit 1;
+-fi
+ # Run the plutin
+ mvn -f pom-test.xml com.pehrs:spring-rest-api-docs-maven-plugin:docs
+-RESULT="$?"
+-if test "${RESULT}" != "0"; then
+-    echo "Test FAILED";
+-    exit 1;
+-fi
+ 
+ # Check the result
+ diff docs/sample-rest-api/com.pehrs.spring-rest-api-docs-maven-plugin-test-1.0.0.html target/sample-rest-api/com.pehrs.spring-rest-api-docs-maven-plugin-test-1.0.0.html

@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java
+index 309d45d7..28de3530 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java
+@@ -65,12 +65,12 @@ public class Ranged extends RangedInfo implements ISkillInstance
+         if (upgrade instanceof RangedInfo)
+         {
+             boolean isPassive = damage <= 0;
+-            if (upgrade.getProperties().getValue().containsKey("damage"))
++            if (getProperties().getValue().containsKey("damage"))
+             {
+-                int damage = ((IntTag) upgrade.getProperties().getValue().get("damage")).getValue();
+-                upgrade.getProperties().getValue().remove("damage");
++                int damage = ((IntTag) getProperties().getValue().get("damage")).getValue();
++                getProperties().getValue().remove("damage");
+                 DoubleTag doubleTag = new DoubleTag("damage_double", damage);
+-                upgrade.getProperties().getValue().put("damage_double", doubleTag);
++                getProperties().getValue().put("damage_double", doubleTag);
+             }
+             if (upgrade.getProperties().getValue().containsKey("damage_double"))
+             {

@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java b/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
+index d24b55ac..10d427f7 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
+@@ -29,6 +29,8 @@ import net.minecraft.server.v1_7_R1.World;
+ 
+ @EntitySize(width = 1.4F, height = 2.9F)
+ public class EntityMyIronGolem extends EntityMyPet {
++    public static boolean CAN_THROW_UP = true;
++
+     public EntityMyIronGolem(World world, MyPet myPet) {
+         super(world, myPet);
+     }
+@@ -38,7 +40,7 @@ public class EntityMyIronGolem extends EntityMyPet {
+         try {
+             this.world.broadcastEntityEffect(this, (byte) 4);
+             flag = super.attack(entity);
+-            if (MyIronGolem.CAN_THROW_UP && flag) {
++            if (CAN_THROW_UP && flag) {
+                 entity.motY += 0.4000000059604645D;
+                 this.world.makeSound(this, "mob.irongolem.throw", 1.0F, 1.0F);
+             }

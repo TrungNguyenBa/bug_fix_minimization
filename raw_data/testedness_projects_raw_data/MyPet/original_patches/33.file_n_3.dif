@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java b/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java
+index 06f20eb3..d3aac201 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java
+@@ -54,7 +54,7 @@ public class MyWolf extends MyPet implements IMyPetBaby {
+ 
+     public void setCollarColor(DyeColor value) {
+         if (status == PetState.Here) {
+-            ((EntityMyWolf) getCraftPet().getHandle()).setCollarColor(value.getWoolData());
++            ((EntityMyWolf) getCraftPet().getHandle()).setCollarColor(value.getDyeData());
+         }
+         this.collarColor = value;
+     }

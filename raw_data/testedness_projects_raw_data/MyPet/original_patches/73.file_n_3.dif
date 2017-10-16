@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/Experience.java b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+index a7419df5..c08080ec 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/Experience.java
++++ b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+@@ -73,8 +73,8 @@ public class Experience {
+     }
+ 
+     public void setExp(double exp) {
+-        exp = Math.max(0, exp);
+-        MyPetExpEvent expEvent = new MyPetExpEvent(myPet, this.exp, exp);
++        exp = exp < 0 ? 0 : exp;
++        MyPetExpEvent expEvent = new MyPetExpEvent(myPet, this.getExp(), exp);
+         if (Configuration.ENABLE_EVENTS) {
+             Bukkit.getServer().getPluginManager().callEvent(expEvent);
+             if (expEvent.isCancelled()) {

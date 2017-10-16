@@ -1,0 +1,5 @@
+ba0d21a : Move source files into package net.gini.*
+:100644 100644 01893c5... a87aa95... R097	src/main/java/com/smarchive/dropwizard/gelf/bundles/GelfLoggingBundle.java	src/main/java/net/gini/dropwizard/gelf/bundles/GelfLoggingBundle.java
+:100644 100644 3d3ff39... 49fcff8... R092	src/main/java/com/smarchive/dropwizard/gelf/config/GelfConfiguration.java	src/main/java/net/gini/dropwizard/gelf/config/GelfConfiguration.java
+:100644 100644 4e174dd... 7f29dc3... R099	src/main/java/com/smarchive/dropwizard/gelf/filters/GelfLoggingFilter.java	src/main/java/net/gini/dropwizard/gelf/filters/GelfLoggingFilter.java
+:100644 100644 f1e09ef... 79b4374... R094	src/test/java/com/smarchive/dropwizard/gelf/config/GelfConfigurationTest.java	src/test/java/net/gini/dropwizard/gelf/config/GelfConfigurationTest.java

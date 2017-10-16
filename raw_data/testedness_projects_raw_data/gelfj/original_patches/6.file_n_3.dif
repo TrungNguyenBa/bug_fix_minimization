@@ -1,0 +1,13 @@
+diff --git a/README.md b/README.md
+index 9fa47b1..d76b788 100644
+--- a/README.md
++++ b/README.md
+@@ -11,7 +11,7 @@ Add the following dependency section to your pom.xml:
+       <dependency>
+         <groupId>org.graylog2</groupId>
+         <artifactId>gelfj</artifactId>
+-        <version>1.1.7</version>
++        <version>1.1.5</version>
+         <scope>compile</scope>
+       </dependency>
+       ...

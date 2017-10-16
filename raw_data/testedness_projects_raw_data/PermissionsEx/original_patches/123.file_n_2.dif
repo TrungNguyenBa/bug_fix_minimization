@@ -1,0 +1,26 @@
+diff --git a/src/main/java/ru/tehkode/permissions/HierarchyTraverser.java b/src/main/java/ru/tehkode/permissions/HierarchyTraverser.java
+index a2c599b..22585fa 100644
+--- a/src/main/java/ru/tehkode/permissions/HierarchyTraverser.java
++++ b/src/main/java/ru/tehkode/permissions/HierarchyTraverser.java
+@@ -38,8 +38,8 @@ public abstract class HierarchyTraverser<Return> {
+ 	 * @return a value if any found
+ 	 */
+ 	public Return traverse() {
+-		LinkedList<PermissionEntity> entities = new LinkedList<>();
+-		Set<PermissionEntity> visited = new HashSet<>();
++		LinkedList<PermissionEntity> entities = new LinkedList<PermissionEntity>();
++		Set<PermissionEntity> visited = new HashSet<PermissionEntity>();
+ 		entities.add(start);
+ 		Return ret = null;
+ 		while (!entities.isEmpty()) {
+@@ -92,8 +92,8 @@ public abstract class HierarchyTraverser<Return> {
+ 	private Return traverseWorldInheritance(PermissionEntity entity) {
+ 		List<String> worldInheritance = entity.manager.getWorldInheritance(world);
+ 		if (worldInheritance.size() > 0) {
+-			Deque<String> worlds = new LinkedList<>(worldInheritance);
+-			Set<String> visitedWorlds = new HashSet<>();
++			Deque<String> worlds = new LinkedList<String>(worldInheritance);
++			Set<String> visitedWorlds = new HashSet<String>();
+ 			Return ret = null;
+ 			while (!worlds.isEmpty()) {
+ 				String current = worlds.removeFirst();

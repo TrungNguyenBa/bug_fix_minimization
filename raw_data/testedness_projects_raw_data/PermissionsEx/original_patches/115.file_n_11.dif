@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index 09a0e12..4986368 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -24,7 +24,6 @@ import org.bukkit.command.CommandSender;
+ import org.bukkit.entity.Player;
+ import org.bukkit.event.EventHandler;
+ import org.bukkit.event.Listener;
+-import org.bukkit.event.player.PlayerJoinEvent;
+ import org.bukkit.event.player.PlayerLoginEvent;
+ import org.bukkit.event.player.PlayerQuitEvent;
+ import org.bukkit.plugin.Plugin;
+@@ -283,7 +282,7 @@ public class PermissionsEx extends JavaPlugin {
+ 
+ 	public class PlayerEventsListener implements Listener {
+ 		@EventHandler
+-		public void onPlayerLogin(PlayerJoinEvent event) {
++		public void onPlayerLogin(PlayerLoginEvent event) {
+ 			try {
+ 				PermissionUser user = getPermissionsManager().getUser(event.getPlayer());
+ 				if (!user.isVirtual()) { // Update name only if user exists in config

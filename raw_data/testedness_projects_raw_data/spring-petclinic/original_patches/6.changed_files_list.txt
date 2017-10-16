@@ -1,0 +1,4 @@
+4bb829c : Fix #101 display the pet type when using the JDBC profile
+:100644 100644 0a471b4... 7103dc4... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcOwnerRepositoryImpl.java
+:100644 100644 0621c98... 5784278... M	src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
+:100644 100644 428c285... 473acdc... M	src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java

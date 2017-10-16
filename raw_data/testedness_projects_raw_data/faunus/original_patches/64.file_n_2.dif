@@ -1,0 +1,35 @@
+diff --git a/include/faunus/analysis.h b/include/faunus/analysis.h
+index 5992d148..d086adbd 100755
+--- a/include/faunus/analysis.h
++++ b/include/faunus/analysis.h
+@@ -324,8 +324,6 @@ namespace Faunus {
+             assert( this->count()>0 );
+ 
+             if (bulkconc.cnt==0) bulkconc+=1;
+-            if (bulkconc.avg()<1e-6) bulkconc+=1;
+-            if (Npart.cnt==0) Npart+=1;
+ 
+             return ((double)this->operator()(x)*Npart.avg()) / (volume(x) *(double)this->count() * bulkconc.avg())
+               ;
+@@ -364,20 +362,13 @@ namespace Faunus {
+                     if (r<=maxdist)
+                       this->operator() (r)++;
+                   }
+-              int bulk=0;
++              double bulk=0;
+               for (auto i : g)
+                 if (spc.p[i].id==ida || spc.p[i].id==idb)
+                   bulk++;
+               Npart+=bulk;
+               bulkconc += bulk / spc.geo.getVolume();
+             }
+-
+-          template<class Tspace>
+-            void sample(Tspace &spc, short ida, short idb) {
+-              Group all(0, spc.p.size()-1);
+-              assert(all.size()==spc.p.size());
+-              return sample(spc,all,ida,idb);
+-            }
+       };
+ 
+     template<typename Tx=double, typename Ty=unsigned long>

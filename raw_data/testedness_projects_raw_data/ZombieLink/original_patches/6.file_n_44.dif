@@ -1,0 +1,31 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java b/src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java
+index 35334c9..eb26a2b 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java
++++ b/src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java
+@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.util.EntityUtils;
+ 
+-import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This is an extension of {@link AbstractResponseParser} which allows an <b>XML response entity</b> 
+@@ -64,7 +64,7 @@ class XmlResponseParser extends AbstractResponseParser<Object> {
+      * <p>Parses the XML content in the {@link HttpResponse} entity using JAXB and returns the constructed 
+      * instance of the model.</p>
+      * 
+-     * <p>See {@link AbstractResponseParser#processResponse(HttpResponse, InvocationContext)}.
++     * <p>See {@link AbstractResponseParser#processResponse(HttpResponse, ProxyInvocationConfiguration)}.
+      * 
+      * @throws JAXBException 
+      * 			if the response XML content failed to be deserialized into the specified model
+@@ -72,7 +72,7 @@ class XmlResponseParser extends AbstractResponseParser<Object> {
+      * @since 1.2.4
+ 	 */
+ 	@Override
+-	protected Object processResponse(HttpResponse httpResponse, InvocationContext config) 
++	protected Object processResponse(HttpResponse httpResponse, ProxyInvocationConfiguration config) 
+ 	throws Exception {
+ 		
+ 		JAXBContext jaxbContext = JAXBContext.newInstance(config.getRequest().getReturnType());

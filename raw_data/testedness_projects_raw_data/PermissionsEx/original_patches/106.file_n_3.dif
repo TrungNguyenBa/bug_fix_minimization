@@ -1,0 +1,16 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionGroup.java b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+index 16146cd..ea2232c 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionGroup.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+@@ -126,11 +126,6 @@ public class PermissionGroup extends PermissionEntity implements Comparable<Perm
+ 		this.callEvent(PermissionEntityEvent.Action.RANK_CHANGED);
+ 	}
+ 
+-	@Override
+-	protected List<String> getPermissionsInternal(String worldName, boolean filterNonInheritable) {
+-		return super.getPermissionsInternal(worldName, true);
+-	}
+-
+ 	/**
+ 	 * Check if this group is descendant of specified group
+ 	 *

@@ -1,0 +1,5 @@
+7cd80278 : xcode build fix; scatter checks; early rejection energy
+:100644 100644 d95c43d4... 3eedb9a0... M	include/faunus/energy.h
+:100644 100644 3cfa69df... 527bf490... M	include/faunus/json.h
+:100644 100644 8c1e4809... db76ebd6... M	include/faunus/scatter.h
+:100644 100644 334618d1... b3d3bf8a... M	src/examples/manybody.cpp

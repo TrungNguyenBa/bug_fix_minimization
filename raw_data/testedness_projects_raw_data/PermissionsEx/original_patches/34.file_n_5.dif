@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java b/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+index c2df00e..e30286c 100644
+--- a/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
++++ b/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+@@ -80,8 +80,4 @@ public class SubjectCache {
+     public String getType() {
+         return type;
+     }
+-
+-    public Iterable<String> getAllIdentifiers() {
+-        return dataStore.getAllIdentifiers(type);
+-    }
+ }

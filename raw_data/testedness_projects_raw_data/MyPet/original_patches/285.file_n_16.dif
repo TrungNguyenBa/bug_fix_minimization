@@ -1,0 +1,40 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java b/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+index 544f757b..cad3997e 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+@@ -82,7 +82,7 @@ public class EntityMyWolf extends EntityMyPet
+ 
+     public boolean isSitting()
+     {
+-        return ((MyWolf) myPet).isSitting;
++        return this.sitPathfinder.isSitting();
+     }
+ 
+     public void applySitting(boolean sitting)
+@@ -101,7 +101,7 @@ public class EntityMyWolf extends EntityMyPet
+ 
+     public boolean isTamed()
+     {
+-        return ((MyWolf) myPet).isTamed;
++        return (this.datawatcher.getByte(16) & 0x4) != 0;
+     }
+ 
+     public void setTamed(boolean flag)
+@@ -120,7 +120,7 @@ public class EntityMyWolf extends EntityMyPet
+ 
+     public boolean isAngry()
+     {
+-        return ((MyWolf) myPet).isAngry;
++        return (this.datawatcher.getByte(16) & 0x2) != 0;
+     }
+ 
+     public void setAngry(boolean flag)
+@@ -139,7 +139,7 @@ public class EntityMyWolf extends EntityMyPet
+ 
+     public boolean isBaby()
+     {
+-        return ((MyWolf) myPet).isBaby;
++        return this.datawatcher.getInt(12) < 0;
+     }
+ 
+     @SuppressWarnings("boxing")

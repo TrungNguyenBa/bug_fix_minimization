@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/utils/Interval.java b/src/main/java/ru/tehkode/utils/Interval.java
+index a71216a..1150d1d 100644
+--- a/src/main/java/ru/tehkode/utils/Interval.java
++++ b/src/main/java/ru/tehkode/utils/Interval.java
+@@ -39,7 +39,7 @@ public enum Interval {
+         }
+     }
+ 
+-    private final static Map<String, Interval> intervalMap = new HashMap<>();
++    private final static Map<String, Interval> intervalMap = new HashMap<String, Interval>();
+ 
+     static {
+         for(Interval type : Interval.values()) {

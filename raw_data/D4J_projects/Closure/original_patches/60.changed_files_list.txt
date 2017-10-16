@@ -1,0 +1,5 @@
+fbaadc73 : fix a mishandling of the void keyword also fix a bunch of apis fixes issue 504
+:100644 100644 7abdbae0... 43a296f0... M	src/com/google/javascript/jscomp/NodeUtil.java
+:100644 100644 a9c12507... d8be2fd8... M	src/com/google/javascript/jscomp/PeepholeRemoveDeadCode.java
+:100644 100644 9a5c9b76... b0bcbacc... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java
+:100644 100644 238013e4... 67571d6b... M	test/com/google/javascript/jscomp/NodeUtilTest.java

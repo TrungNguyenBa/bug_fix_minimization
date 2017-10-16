@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ride.form b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ride.form
+index dab6d895..e611ed36 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ride.form
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ride.form
+@@ -124,7 +124,7 @@
+               <font style="1"/>
+               <horizontalAlignment value="0"/>
+               <horizontalTextPosition value="0"/>
+-              <text value="Jump Height"/>
++              <text value="Ride Speed"/>
+             </properties>
+           </component>
+           <component id="8d1f8" class="javax.swing.JLabel">

@@ -1,0 +1,5 @@
+615ca9a00 : Fixed Levenberg-Marquardt optimizer that did not use the vectorial convergence checker. Now this optimizer can use either the general vectorial convergence checker or its own specialized convergence settings. Minor changes had to be introduced in the test data, they have been validated JIRA: MATH-362
+:100644 100644 ea0f20da1... 28aee4348... M	src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+:100644 100644 69b7f604b... e6611f35d... M	src/site/xdoc/changes.xml
+:100644 100644 aabeab6bc... 06f1721fb... M	src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java
+:100644 100644 7ff333113... 59467b224... M	src/test/java/org/apache/commons/math/optimization/general/MinpackTest.java

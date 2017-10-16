@@ -1,0 +1,30 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/CraftMyPetInventoryBeacon.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/CraftMyPetInventoryBeacon.java
+index e1963d09..4a375455 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/CraftMyPetInventoryBeacon.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/CraftMyPetInventoryBeacon.java
+@@ -24,16 +24,20 @@ import org.bukkit.craftbukkit.v1_6_R2.inventory.CraftInventory;
+ import org.bukkit.inventory.BeaconInventory;
+ import org.bukkit.inventory.ItemStack;
+ 
+-public class CraftMyPetInventoryBeacon extends CraftInventory implements BeaconInventory {
+-    public CraftMyPetInventoryBeacon(MyPetCustomBeaconInventory beaconInv) {
++public class CraftMyPetInventoryBeacon extends CraftInventory implements BeaconInventory
++{
++    public CraftMyPetInventoryBeacon(MyPetCustomBeaconInventory beaconInv)
++    {
+         super(beaconInv);
+     }
+ 
+-    public void setItem(ItemStack item) {
++    public void setItem(ItemStack item)
++    {
+         setItem(0, item);
+     }
+ 
+-    public ItemStack getItem() {
++    public ItemStack getItem()
++    {
+         return getItem(0);
+     }
+ }
+\ No newline at end of file

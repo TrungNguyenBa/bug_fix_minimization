@@ -1,0 +1,17 @@
+diff --git a/pom.xml b/pom.xml
+index c28fad3..329a88f 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -30,9 +30,9 @@ abstractions.
+   </description>
+   <url>http://wiki.fasterxml.com/JacksonExtensionProtobuf</url>
+   <scm>
+-    <connection>scm:git:git@github.com:FasterXML/jackson-dataformat-protobuf.git</connection>
+-    <developerConnection>scm:git:git@github.com:FasterXML/jackson-dataformat-protobuf.git</developerConnection>
+-    <url>http://github.com/FasterXML/jackson-dataformat-protobuf</url>    
++    <connection>scm:git:git@github.com:FasterXML/jackson-dataformat-avro.git</connection>
++    <developerConnection>scm:git:git@github.com:FasterXML/jackson-dataformat-avro.git</developerConnection>
++    <url>http://github.com/FasterXML/jackson-dataformat-avro</url>    
+     <tag>HEAD</tag>
+   </scm>
+ 

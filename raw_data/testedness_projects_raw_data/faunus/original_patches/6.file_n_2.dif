@@ -1,0 +1,84 @@
+diff --git a/include/faunus/energy.h b/include/faunus/energy.h
+index 7977be80..e056812a 100644
+--- a/include/faunus/energy.h
++++ b/include/faunus/energy.h
+@@ -1436,9 +1436,6 @@ namespace Faunus {
+               exchange();
+               for (auto &m : hist.getMap()) { // update penalty function
+                 Tbase::operator()(m.first) += std::log(m.second);
+-                double log2 = std::log(2); // half bin width compensation
+-                if (m.first==_lo1 || m.first==_hi1) 
+-                  Tbase::operator()(m.first) += log2;
+               }
+               double min = Tbase::min()->second;
+               for (auto &m : Tbase::getMap()) {
+@@ -1473,9 +1470,6 @@ namespace Faunus {
+               exchange();
+               for (auto &m : hist.getMap()) { // update penalty function
+                 Tbase::operator()(m.first) += std::log(m.second);
+-                double log2 = std::log(2); // half bin width compensation
+-                if (m.first==_lo1 || m.first==_hi1) 
+-                  Tbase::operator()(m.first) += log2;
+               }
+               double min = Tbase::min()->second;
+               for (auto &m : Tbase::getMap()) {
+@@ -1511,11 +1505,9 @@ namespace Faunus {
+             hist.load(filename+"histo");
+           }
+           void test(UnitTest &t) {
+-            if (_cnt/_Nupdate>=1) {
+-              auto it_max = Tbase::max();
+-              auto it_min = Tbase::min();
+-              t("penalty2D_range",it_max->second-it_min->second,0.1);
+-            }
++            auto it_max = Tbase::max();
++            auto it_min = Tbase::min();
++            t("penalty1D_range",it_max->second-it_min->second,0.1);
+           }
+           string info() {
+             using namespace Faunus::textio;
+@@ -1628,14 +1620,6 @@ namespace Faunus {
+               exchange();
+               for (auto &m : hist.getMap()) { // update penalty function
+                 Tbase::operator()(m.first.first, m.first.second) += std::log(m.second);
+-                double log2 = std::log(2); // half bin width compensation
+-                if (m.first.first==_lo1 || m.first.first==_hi1) {
+-                  Tbase::operator()(m.first.first, m.first.second) += log2;
+-                  if (m.first.second==_lo2 || m.first.second==_hi2)
+-                    Tbase::operator()(m.first.first, m.first.second) += log2;
+-                }
+-                else if (m.first.second==_lo2 || m.first.second==_hi2)
+-                  Tbase::operator()(m.first.first, m.first.second) += log2;
+               }
+               double min = Tbase::min()->second;
+               for (auto &m : Tbase::getMap()) {
+@@ -1671,14 +1655,6 @@ namespace Faunus {
+               exchange();
+               for (auto &m : hist.getMap()) { // update penalty function
+                 Tbase::operator()(m.first.first, m.first.second) += std::log(m.second);
+-                double log2 = std::log(2); // half bin width compensation
+-                if (m.first.first==_lo1 || m.first.first==_hi1) {
+-                  Tbase::operator()(m.first.first, m.first.second) += log2;
+-                  if (m.first.second==_lo2 || m.first.second==_hi2)
+-                    Tbase::operator()(m.first.first, m.first.second) += log2;
+-                }
+-                else if (m.first.second==_lo2 || m.first.second==_hi2)
+-                  Tbase::operator()(m.first.first, m.first.second) += log2;
+               }
+               double min = Tbase::min()->second;
+               for (auto &m : Tbase::getMap()) {
+@@ -1716,11 +1692,9 @@ namespace Faunus {
+             hist.load(filename+"histo");
+           }
+           void test(UnitTest &t) {
+-            if (_cnt/_Nupdate>=1) {
+-              auto it_max = Tbase::max();
+-              auto it_min = Tbase::min();
+-              t("penalty2D_range",it_max->second-it_min->second,0.1);
+-            }
++            auto it_max = Tbase::max();
++            auto it_min = Tbase::min();
++            t("penalty2D_range",it_max->second-it_min->second,0.1);
+           }
+           string info() {
+             using namespace Faunus::textio;

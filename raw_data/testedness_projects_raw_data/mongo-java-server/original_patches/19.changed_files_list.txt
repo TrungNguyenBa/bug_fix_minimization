@@ -1,0 +1,4 @@
+df6facb : Fix query matcher for negative $in queries. Closes #7.
+:100644 100644 1b93900... 488aec9... M	src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java
+:100644 100644 3135fba... d569904... M	src/test/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcherTest.java
+:000000 100644 0000000... 528b626... A	src/test/java/de/bwaldvogel/mongo/backend/QueryOperator.java

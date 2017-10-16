@@ -1,0 +1,25 @@
+diff --git a/test/com/google/javascript/jscomp/NormalizeTest.java b/test/com/google/javascript/jscomp/NormalizeTest.java
+index adbfc8d9..fe21010b 100644
+--- a/test/com/google/javascript/jscomp/NormalizeTest.java
++++ b/test/com/google/javascript/jscomp/NormalizeTest.java
+@@ -381,11 +381,6 @@ public class NormalizeTest extends CompilerTestCase {
+          "}");
+   }
+ 
+-  public void testIssue() {
+-    super.allowExternsChanges(true);
+-    test("var a,b,c; var a,b", "a(), b()", "a(), b()", null, null);
+-  }
+-
+   public void testNormalizeSyntheticCode() {
+     Compiler compiler = new Compiler();
+     compiler.init(
+@@ -433,7 +428,7 @@ public class NormalizeTest extends CompilerTestCase {
+ 
+   public void testGetterPropertyIsConstant() throws Exception {
+     testSame("var a = { get CONST() {return 3} }; " +
+-             "var b = a.CONST;");
++    		 "var b = a.CONST;");
+     Node n = getLastCompiler().getRoot();
+ 
+     Set<Node> constantNodes = findNodesWithProperty(n, Node.IS_CONSTANT_NAME);

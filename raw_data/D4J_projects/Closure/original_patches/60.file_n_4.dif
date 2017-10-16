@@ -1,0 +1,28 @@
+diff --git a/test/com/google/javascript/jscomp/CommandLineRunnerTest.java b/test/com/google/javascript/jscomp/CommandLineRunnerTest.java
+index b0bcbacc..9a5c9b76 100644
+--- a/test/com/google/javascript/jscomp/CommandLineRunnerTest.java
++++ b/test/com/google/javascript/jscomp/CommandLineRunnerTest.java
+@@ -360,12 +360,6 @@ public class CommandLineRunnerTest extends TestCase {
+          "}");
+   }
+ 
+-  public void testIssue504() {
+-    args.add("--compilation_level=ADVANCED_OPTIMIZATIONS");
+-    test("void function() { alert('hi'); }();",
+-         "alert('hi');", CheckSideEffects.USELESS_CODE_ERROR);
+-  }
+-
+   public void testDebugFlag1() {
+     args.add("--compilation_level=SIMPLE_OPTIMIZATIONS");
+     args.add("--debug=false");
+@@ -871,10 +865,6 @@ public class CommandLineRunnerTest extends TestCase {
+     test(new String[] { original }, warning);
+   }
+ 
+-  private void test(String original, String expected, DiagnosticType warning) {
+-    test(new String[] { original }, new String[] { expected }, warning);
+-  }
+-
+   /**
+    * Asserts that when compiling, there is an error or warning.
+    */

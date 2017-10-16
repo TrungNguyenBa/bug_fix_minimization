@@ -1,0 +1,4 @@
+a2711c189 : Fixed loss of significance error in PersonsCorrelation p-value computation causing p-values smaller than the machine epsilon (~1E-16) to be reported as 0. JIRA: MATH-371 Reported and patched by Kevin Childs
+:100644 100644 83b4c4130... dc83314f6... M	src/main/java/org/apache/commons/math/stat/correlation/PearsonsCorrelation.java
+:100644 100644 ad616b3e3... 69b7f604b... M	src/site/xdoc/changes.xml
+:100644 100644 28a7b8e08... 7c056864c... M	src/test/java/org/apache/commons/math/stat/correlation/PearsonsCorrelationTest.java

@@ -1,0 +1,3 @@
+9959716b : Fix edge case in InlineObjectLiteral. Fixes issue 545
+:100644 100644 a7544505... d92b16cb... M	src/com/google/javascript/jscomp/InlineObjectLiterals.java
+:100644 100644 2d764291... 2e15d4f4... M	test/com/google/javascript/jscomp/InlineObjectLiteralsTest.java

@@ -1,0 +1,3 @@
+33ab4df8 : When declaring @const vars initialized to a type-casted value, prefer the type-cast as the declared type. fixes issue 688
+:100644 100644 0a2d6eb5... 8bc7bdad... M	src/com/google/javascript/jscomp/TypedScopeCreator.java
+:100644 100644 b8760e15... aeb98a4d... M	test/com/google/javascript/jscomp/TypeCheckTest.java

@@ -1,0 +1,2 @@
+e8b307e : Fixed issue 251: setEnableHeartBeat could not work
+:100644 100644 e051ad1... 2130f95... M	src/main/java/net/rubyeye/xmemcached/impl/MemcachedHandler.java

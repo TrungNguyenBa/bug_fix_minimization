@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+index 368fbdcd..4cd7abdc 100644
+--- a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
++++ b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+@@ -389,7 +389,6 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
+         Skills.registerSkill(Knockback.class);
+         Skills.registerSkill(Ranged.class);
+         Skills.registerSkill(Sprint.class);
+-        Skills.registerSkill(Stomp.class);
+     }
+ 
+     public static void registerSkillsInfo() {
+@@ -411,7 +410,6 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
+         SkillsInfo.registerSkill(KnockbackInfo.class);
+         SkillsInfo.registerSkill(RangedInfo.class);
+         SkillsInfo.registerSkill(SprintInfo.class);
+-        SkillsInfo.registerSkill(StompInfo.class);
+     }
+ 
+     @SuppressWarnings("unchecked")

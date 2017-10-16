@@ -1,0 +1,13 @@
+diff --git a/src/main/java/pl/project13/maven/git/JGitProvider.java b/src/main/java/pl/project13/maven/git/JGitProvider.java
+index 92968de..5564632 100644
+--- a/src/main/java/pl/project13/maven/git/JGitProvider.java
++++ b/src/main/java/pl/project13/maven/git/JGitProvider.java
+@@ -106,8 +106,6 @@ public class JGitProvider extends GitDataProvider {
+       revWalk = new RevWalk(git);
+       headCommit = revWalk.parseCommit(HEAD.getObjectId());
+       revWalk.markStart(headCommit);
+-    } catch (MojoExecutionException e) {
+-      throw e;
+     } catch (Exception e) {
+       throw new MojoExecutionException("Error", e);
+     }

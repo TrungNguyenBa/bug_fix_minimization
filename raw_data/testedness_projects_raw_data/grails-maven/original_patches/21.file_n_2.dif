@@ -1,0 +1,22 @@
+diff --git a/pom.xml b/pom.xml
+index e4439ee..027bd06 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -287,7 +287,7 @@
+ 
+     <build>
+         <plugins>
+-            <plugin>
++  <!--           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-gpg-plugin</artifactId>
+               <executions>
+@@ -299,7 +299,7 @@
+                   </goals>
+                 </execution>
+               </executions>
+-            </plugin>
++            </plugin> -->
+                         
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>

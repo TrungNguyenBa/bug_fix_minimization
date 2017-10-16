@@ -1,0 +1,4 @@
+4e47245 : cleanup and avoid deprecation warning
+:100644 100644 f25d3ca... e0ec2ce... M	.gitignore
+:100644 100644 3aebe6a... d210a64... M	pom.xml
+:100644 100644 6335ee8... af25cec... M	src/main/java/de/bwaldvogel/mongo/wire/MongoExceptionHandler.java

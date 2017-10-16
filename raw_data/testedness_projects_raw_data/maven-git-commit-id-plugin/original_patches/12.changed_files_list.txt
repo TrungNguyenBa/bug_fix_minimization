@@ -1,0 +1,2 @@
+df27e70 : Hide IP address. Return just host name.
+:100644 100644 14b9251... 3acdb0e... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java

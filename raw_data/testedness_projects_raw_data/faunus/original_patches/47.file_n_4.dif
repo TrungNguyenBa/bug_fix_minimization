@@ -1,0 +1,15 @@
+diff --git a/include/faunus/mpi.h b/include/faunus/mpi.h
+index b7be3059..56df108d 100644
+--- a/include/faunus/mpi.h
++++ b/include/faunus/mpi.h
+@@ -67,8 +67,8 @@ namespace Faunus {
+     /**
+      * @brief Split N items into nproc parts
+      *
+-     * This returns a pair with the first and last
+-     * item for the current rank.
++     * This will a pair with the first and last
++     * item for the i'th part.
+      */
+     template<class T=int>
+       std::pair<T,T> splitEven(MPIController &mpi, T N) {

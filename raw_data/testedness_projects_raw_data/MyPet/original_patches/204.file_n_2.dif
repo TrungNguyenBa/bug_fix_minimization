@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
+index e0bb7595..0ad312a6 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
+@@ -83,7 +83,7 @@ public class CommandRelease implements CommandExecutor, TabCompleter
+             {
+                 MyPet myPet = MyPetList.getMyPet(petOwner);
+ 
+-                if (!MyPetPermissions.has(petOwner, "MyPet.user.command.release"))
++                if (!MyPetPermissions.has(petOwner, "MyPet.user.release"))
+                 {
+                     return true;
+                 }

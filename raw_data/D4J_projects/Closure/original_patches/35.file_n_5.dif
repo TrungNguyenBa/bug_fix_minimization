@@ -1,0 +1,14 @@
+diff --git a/src/com/google/javascript/rhino/jstype/ProxyObjectType.java b/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+index 66898e24..e025d519 100644
+--- a/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
++++ b/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+@@ -419,9 +419,4 @@ class ProxyObjectType extends ObjectType {
+     }
+     return this;
+   }
+-
+-  @Override
+-  public void matchConstraint(ObjectType contraint) {
+-    referencedType.matchConstraint(contraint);
+-  }
+ }

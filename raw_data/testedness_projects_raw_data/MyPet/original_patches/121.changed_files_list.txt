@@ -1,0 +1,2 @@
+e90239ac : remove unchanged buff values
+:100644 100644 ce167b21... d22692be... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Beacon.java

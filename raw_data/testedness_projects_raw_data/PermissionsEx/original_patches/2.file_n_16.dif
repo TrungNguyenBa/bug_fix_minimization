@@ -1,0 +1,16 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ImmutableSubjectData.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ImmutableSubjectData.java
+index 9d734c2..969841e 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ImmutableSubjectData.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ImmutableSubjectData.java
+@@ -23,6 +23,11 @@ import java.util.Map;
+ import java.util.Set;
+ 
+ public interface ImmutableSubjectData {
++    /**
++     * Provide this set to indicate global contexts
++     */
++    Set<Map.Entry<String, String>> GLOBAL_CTX = ImmutableSet.of();
++
+     Map<Set<Map.Entry<String, String>>, Map<String, String>> getAllOptions();
+ 
+     Map<String, String> getOptions(Set<Map.Entry<String, String>> contexts);

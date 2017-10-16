@@ -1,0 +1,23 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/FileBackend.java b/src/main/java/ru/tehkode/permissions/backends/FileBackend.java
+index 0cc8729..ddef0c0 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/FileBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/FileBackend.java
+@@ -41,6 +41,7 @@ import ru.tehkode.permissions.PermissionEntity;
+ import ru.tehkode.permissions.PermissionGroup;
+ import ru.tehkode.permissions.PermissionManager;
+ import ru.tehkode.permissions.PermissionUser;
++import ru.tehkode.permissions.backends.file.FileEntity;
+ import ru.tehkode.permissions.backends.file.FileGroup;
+ import ru.tehkode.permissions.backends.file.FileUser;
+ 
+@@ -240,9 +241,7 @@ public class FileBackend extends PermissionBackend {
+ 				initNewConfiguration();
+ 			}
+ 		} catch (Throwable e) {
+-			Logger.getLogger("PermissionsEx").warning("===================================\n" +
+-					"Error loading permissions file:\n " + e.getMessage() +
+-					"===================================\n");
++			Logger.getLogger("Minecraft").warning("Error loading permissions file:\n " + e.getMessage());
+ 
+ 			if (this.permissions == null) {
+ 				// this is required to drop PEX plugin on first faulty initialization

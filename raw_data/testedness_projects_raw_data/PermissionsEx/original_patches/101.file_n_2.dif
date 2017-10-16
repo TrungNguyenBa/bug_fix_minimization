@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionEntity.java b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+index 5839e1e..ce77439 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionEntity.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+@@ -44,6 +44,7 @@ public abstract class PermissionEntity {
+ 
+ 	protected PermissionManager manager;
+ 	private String name;
++	protected boolean virtual = true;
+ 	protected Map<String, List<String>> timedPermissions = new ConcurrentHashMap<>();
+ 	protected Map<String, Long> timedPermissionsTime = new ConcurrentHashMap<>();
+ 	protected boolean debugMode = false;
+@@ -607,7 +608,7 @@ public abstract class PermissionEntity {
+ 	 * @return true if entity is only in-memory
+ 	 */
+ 	public boolean isVirtual() {
+-		return getData().isVirtual();
++		return this.virtual;
+ 	}
+ 
+ 	/**

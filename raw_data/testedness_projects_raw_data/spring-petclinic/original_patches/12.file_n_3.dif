@@ -1,0 +1,43 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java b/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
+index 0621c98..03a1bca 100644
+--- a/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
++++ b/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
+@@ -18,22 +18,16 @@ package org.springframework.samples.petclinic.web;
+ import org.springframework.samples.petclinic.model.Pet;
+ import org.springframework.util.StringUtils;
+ import org.springframework.validation.Errors;
+-import org.springframework.validation.Validator;
+ 
+ /**
+  * <code>Validator</code> for <code>Pet</code> forms.
+- * <p>
+- * We're not using Bean Validation annotations here because it is easier to define such validation rule in Java.
+- * </p>
+  *
+  * @author Ken Krebs
+  * @author Juergen Hoeller
+  */
+-public class PetValidator implements Validator {
++public class PetValidator {
+ 
+-    @Override
+-    public void validate(Object obj, Errors errors) {
+-        Pet pet = (Pet) obj;
++    public void validate(Pet pet, Errors errors) {
+         String name = pet.getName();
+         // name validation
+         if (!StringUtils.hasLength(name)) {
+@@ -53,13 +47,4 @@ public class PetValidator implements Validator {
+         }
+     }
+ 
+-    /**
+-     * This Validator validates *just* Pet instances
+-     */
+-    @Override
+-    public boolean supports(Class<?> clazz) {
+-        return Pet.class.equals(clazz);
+-    }
+-
+-
+ }

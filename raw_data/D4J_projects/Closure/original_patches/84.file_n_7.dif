@@ -1,0 +1,13 @@
+diff --git a/test/com/google/javascript/jscomp/LooseTypeCheckTest.java b/test/com/google/javascript/jscomp/LooseTypeCheckTest.java
+index 7488dec8..b2b3dded 100644
+--- a/test/com/google/javascript/jscomp/LooseTypeCheckTest.java
++++ b/test/com/google/javascript/jscomp/LooseTypeCheckTest.java
+@@ -82,7 +82,7 @@ public class LooseTypeCheckTest extends CompilerTypeTestCase {
+   }
+ 
+   public void testTypeCheck2() throws Exception {
+-    testTypes("/**@return {void}*/function foo(){ var x=foo(); x--; }",
++    testTypes("/**@return {void}*/function foo(){ foo()--; }",
+         "increment/decrement\n" +
+         "found   : undefined\n" +
+         "required: number");

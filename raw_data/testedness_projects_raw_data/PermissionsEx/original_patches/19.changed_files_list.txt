@@ -1,0 +1,16 @@
+8864e7d : Buggy initial implementation of command flags, various fixes
+:100644 100644 9959b95... 7bb8ac1... M	pom.xml
+:100644 100644 ad6bfd5... 69acb4a... M	src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryOptionSubjectData.java
+:100644 100644 d5881a6... cc6edc1... M	src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
+:100644 100644 1347d26... 21f3d9f... M	src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+:100644 100644 7554ef4... 1e5a1dd... M	src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
+:100644 100644 b5cd643... e9797a3... M	src/main/java/ninja/leaping/permissionsex/command/PermissionsExCommands.java
+:100644 100644 6ea5772... ffac06d... M	src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+:100644 100644 1626dce... 53eaa56... M	src/main/java/ninja/leaping/permissionsex/sponge/SpongeMessageFormatter.java
+:100644 100644 8f3b2d2... bdc020c... M	src/main/java/ninja/leaping/permissionsex/util/command/args/CommandArgs.java
+:100644 100644 66bf4d7... 6af19aa... M	src/main/java/ninja/leaping/permissionsex/util/command/args/GameArguments.java
+:100644 100644 5ab92f7... 1d47482... M	src/main/java/ninja/leaping/permissionsex/util/command/args/GenericArguments.java
+:100644 100644 c5f3c11... 0b8a13d... M	src/main/po/de.po
+:100644 100644 109d8a1... 8061494... M	src/main/po/keys.pot
+:100644 100644 84c18cb... f0fa56f... M	src/test/java/ninja/leaping/permissionsex/util/command/CommandFlagsTest.java
+:100644 100644 6aa51c0... e40f467... M	src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java

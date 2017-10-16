@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/executor/ZombieConfig.java b/zombielink/src/test/java/com/lonepulse/zombielink/executor/ZombieConfig.java
+index d7d6ece..6c511ef 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/executor/ZombieConfig.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/executor/ZombieConfig.java
+@@ -30,7 +30,7 @@ import org.apache.http.params.BasicHttpParams;
+ import org.apache.http.params.HttpConnectionParams;
+ import org.apache.http.params.HttpParams;
+ 
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>An implementation of {@link Zombie.Configuration} which configures a custom {@link HttpClient} 

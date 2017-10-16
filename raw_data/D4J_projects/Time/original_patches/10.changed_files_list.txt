@@ -1,0 +1,5 @@
+3a413d78 : Days.daysBetween fails for MonthDay
+:100644 100644 6095d3a8... ec9d30c2... M	RELEASE-NOTES.txt
+:100644 100644 79283b5b... 839d3b8e... M	src/main/java/org/joda/time/base/BaseSingleFieldPeriod.java
+:100644 100644 f99db348... 073f8e02... M	src/test/java/org/joda/time/TestDays.java
+:100644 100644 e5623915... ec44f9e1... M	src/test/java/org/joda/time/TestMonths.java

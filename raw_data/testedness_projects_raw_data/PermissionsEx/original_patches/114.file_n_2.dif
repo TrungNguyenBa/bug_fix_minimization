@@ -1,0 +1,40 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionEntity.java b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+index 8ad338d..61910b6 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionEntity.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+@@ -96,7 +96,7 @@ public abstract class PermissionEntity {
+ 	}
+ 
+ 	public String getOwnPrefix(String worldName) {
+-		return getOwnOption("prefix", worldName);
++		return getData().getPrefix(worldName);
+ 	}
+ 
+ 	/**
+@@ -111,7 +111,7 @@ public abstract class PermissionEntity {
+ 	}
+ 
+ 	public String getOwnSuffix(String worldName) {
+-		return getOwnOption("suffix", worldName);
++		return getData().getSuffix(worldName);
+ 	}
+ 
+ 	/**
+@@ -145,7 +145,7 @@ public abstract class PermissionEntity {
+ 	 * @param prefix new prefix
+ 	 */
+ 	public void setPrefix(String prefix, String worldName) {
+-		getData().setOption("prefix", prefix, worldName);
++		getData().setPrefix(prefix, worldName);
+ 		this.callEvent(PermissionEntityEvent.Action.INFO_CHANGED);
+ 	}
+ 
+@@ -175,7 +175,7 @@ public abstract class PermissionEntity {
+ 	 * @param suffix new suffix
+ 	 */
+ 	public void setSuffix(String suffix, String worldName) {
+-		getData().setOption("suffix", suffix, worldName);
++		getData().setSuffix(suffix, worldName);
+ 		this.callEvent(PermissionEntityEvent.Action.INFO_CHANGED);
+ 	}
+ 

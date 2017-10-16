@@ -1,0 +1,16 @@
+diff --git a/src/main/java/org/graylog2/GelfUDPSender.java b/src/main/java/org/graylog2/GelfUDPSender.java
+index 8684df1..5404b47 100644
+--- a/src/main/java/org/graylog2/GelfUDPSender.java
++++ b/src/main/java/org/graylog2/GelfUDPSender.java
+@@ -10,10 +10,7 @@ public class GelfUDPSender implements GelfSender {
+ 	private int port;
+ 	private DatagramChannel channel;
+ 
+-    public GelfUDPSender() {
+-    }
+-
+-    public GelfUDPSender(String host) throws IOException {
++	public GelfUDPSender(String host) throws IOException {
+ 		this(host, DEFAULT_PORT);
+ 	}
+ 

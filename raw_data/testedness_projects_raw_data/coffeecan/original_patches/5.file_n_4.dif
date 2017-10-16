@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/allogy/coffeecan/statements/ContextActivity.java b/src/main/java/com/allogy/coffeecan/statements/ContextActivity.java
+index 7fb69ef..05145f0 100644
+--- a/src/main/java/com/allogy/coffeecan/statements/ContextActivity.java
++++ b/src/main/java/com/allogy/coffeecan/statements/ContextActivity.java
+@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
+ public class ContextActivity implements Identifiable
+ {
+     @NotNull
+-    private final String id;
++    private String id;
+ 
+     public ContextActivity(@JsonProperty("id") String id)
+     {

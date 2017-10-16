@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index 0f4cf6a4..b049eb44 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -594,7 +594,7 @@ public class MyPetEntityListener implements Listener
+             {
+                 MyPet myPet = craftMyPet.getMyPet();
+ 
+-                myPet.removePet(true);
++                myPet.removePet();
+                 myPet.setLocation(myPet.getOwner().getPlayer().getLocation());
+ 
+                 switch (myPet.createPet())

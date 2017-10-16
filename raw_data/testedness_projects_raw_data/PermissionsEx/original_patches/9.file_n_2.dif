@@ -1,0 +1,21 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/SchemaMigrations.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/SchemaMigrations.java
+index a645ad9..16b8f38 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/SchemaMigrations.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/SchemaMigrations.java
+@@ -37,7 +37,6 @@ import java.util.Map;
+ import static ninja.leaping.configurate.transformation.ConfigurationTransformation.WILDCARD_OBJECT;
+ 
+ public class SchemaMigrations {
+-    public static final int LATEST_VERSION = 3;
+     private SchemaMigrations() {
+     }
+ 
+@@ -49,7 +48,7 @@ public class SchemaMigrations {
+     static ConfigurationTransformation versionedMigration(final Logger logger) {
+         return ConfigurationTransformation.versionedBuilder()
+                 .setVersionKey("schema-version")
+-                .addVersion(LATEST_VERSION, twoTo3())
++                .addVersion(3, twoTo3())
+                 .addVersion(2, oneTo2(logger))
+                 .addVersion(1, initialTo1())
+                 .build();

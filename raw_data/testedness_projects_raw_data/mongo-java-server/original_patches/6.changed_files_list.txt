@@ -1,0 +1,3 @@
+8f12144 : fix field selection. closes #16
+:100644 100644 f5bc140... 1e355a3... M	core/src/main/java/de/bwaldvogel/mongo/backend/AbstractMongoCollection.java
+:100644 100644 8b3ab41... ad99935... M	test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java

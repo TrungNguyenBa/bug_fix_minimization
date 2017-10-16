@@ -1,0 +1,3 @@
+cea7e88 : Permissible: Correct ordering of permissions (again)
+:100644 100644 2b31e2c... 00649b6... M	src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+:100644 100644 9ce22c0... 4944c71... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java

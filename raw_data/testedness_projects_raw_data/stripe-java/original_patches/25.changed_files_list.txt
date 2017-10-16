@@ -1,0 +1,9 @@
+d4d90d3 : Add concrete class for non-implemented payment sources to fallback on.
+:100644 100644 6eb71eb... bb3441c... M	.gitignore
+:000000 100644 0000000... 5c5fe4c... A	src/main/java/com/stripe/model/AlipayAccount.java
+:000000 100644 0000000... 04e6e2a... A	src/main/java/com/stripe/model/ConcretePaymentSource.java
+:000000 100644 0000000... 5cd6077... A	src/main/java/com/stripe/model/DeletedAlipayAccount.java
+:000000 100644 0000000... 490ba45... A	src/main/java/com/stripe/model/DeletedConcretePaymentSource.java
+:100644 100644 9988e7d... 7880602... M	src/main/java/com/stripe/model/PaymentSource.java
+:100644 100644 10c3a88... 1175bcb... M	src/main/java/com/stripe/model/PaymentSourceDeserializer.java
+:100644 100644 049600d... b0ededa... M	src/test/java/com/stripe/StripeTest.java

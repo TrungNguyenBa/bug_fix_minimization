@@ -1,0 +1,39 @@
+diff --git a/permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java b/permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
+index 6c85e58..c30376b 100644
+--- a/permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
++++ b/permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
+@@ -16,6 +16,7 @@
+  */
+ package ninja.leaping.permissionsex.data;
+ 
++import com.google.common.collect.ImmutableSet;
+ import ninja.leaping.configurate.ConfigurationNode;
+ import ninja.leaping.permissionsex.PermissionsExTest;
+ import ninja.leaping.permissionsex.exception.PermissionsLoadingException;
+@@ -23,7 +24,7 @@ import org.junit.Test;
+ 
+ import java.util.concurrent.ExecutionException;
+ 
+-import static ninja.leaping.permissionsex.data.ImmutableSubjectData.GLOBAL_CTX;
++import static ninja.leaping.permissionsex.data.ImmutableOptionSubjectData.GLOBAL_CTX;
+ import static org.junit.Assert.assertEquals;
+ 
+ public class SubjectDataBakerTest extends PermissionsExTest {
+@@ -44,14 +45,14 @@ public class SubjectDataBakerTest extends PermissionsExTest {
+     @Test
+     public void testIgnoredInheritancePermissions() throws ExecutionException, PermissionsLoadingException {
+         SubjectCache groupCache = getManager().getSubjects("group");
+-        ImmutableSubjectData parentData = groupCache.getData("parent", null);
++        ImmutableOptionSubjectData parentData = groupCache.getData("parent", null);
+         parentData = parentData.setPermission(GLOBAL_CTX, "#test.permission.parent", 1);
+         groupCache.update("parent", parentData);
+-        ImmutableSubjectData childData = groupCache.getData("child", null);
++        ImmutableOptionSubjectData childData = groupCache.getData("child", null);
+         childData = childData.addParent(GLOBAL_CTX, groupCache.getType(), "parent")
+                              .setPermission(GLOBAL_CTX, "#test.permission.child", 1);
+         groupCache.update("child", childData);
+-        ImmutableSubjectData subjectData = groupCache.getData("subject", null);
++        ImmutableOptionSubjectData subjectData = groupCache.getData("subject", null);
+         subjectData = subjectData.addParent(GLOBAL_CTX, groupCache.getType(), "child");
+         groupCache.update("subject", subjectData);
+ 

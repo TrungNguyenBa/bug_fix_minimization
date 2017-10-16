@@ -1,0 +1,3 @@
+9fac3ccd : Don't attempt to inline aliases of external names during collapse properties as all the sets can not be accounted for. Fixes issue 931 ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=43187988
+:100644 100644 ab2d2c7c... f86625f7... M	src/com/google/javascript/jscomp/CollapseProperties.java
+:100644 100644 77e5e95c... bda75f7b... M	test/com/google/javascript/jscomp/CollapsePropertiesTest.java

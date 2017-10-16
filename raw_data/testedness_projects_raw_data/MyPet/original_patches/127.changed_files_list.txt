@@ -1,0 +1,2 @@
+0d1abff0 : some beacon related skilltree changes
+:100644 100644 48e409cc... a660a0ab... M	src/main/resources/skilltrees/default.st

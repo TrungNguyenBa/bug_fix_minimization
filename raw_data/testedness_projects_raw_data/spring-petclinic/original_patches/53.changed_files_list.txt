@@ -1,0 +1,5 @@
+80159fa : fixed bug in JPA implementation: "save" methods were implemented using "merge" instead of "persist"
+:100644 100644 dfa00ce... fd0f217... M	src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaOwnerRepositoryImpl.java
+:100644 100644 ea185cc... 4823aab... M	src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaPetRepositoryImpl.java
+:100644 100644 58d3709... fccf795... M	src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVisitRepositoryImpl.java
+:100644 100644 b29fb94... e3c5f0a... M	src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java

@@ -1,0 +1,19 @@
+diff --git a/src/main/java/com/stripe/model/RecipientCardCollection.java b/src/main/java/com/stripe/model/RecipientCardCollection.java
+index a2e47fa..07b71ec 100644
+--- a/src/main/java/com/stripe/model/RecipientCardCollection.java
++++ b/src/main/java/com/stripe/model/RecipientCardCollection.java
+@@ -34,6 +34,7 @@ public class RecipientCardCollection extends StripeColllectionAPIResource<Card>
+   public Card retrieve(String id, String apiKey) throws AuthenticationException,
+       InvalidRequestException, APIConnectionException, CardException,
+       APIException {
++        // TODO: URL-encode!
+     String url = String.format("%s%s/%s", Stripe.getApiBase(), this.getURL(), id);
+     return request(RequestMethod.GET, url, null,
+         Card.class, apiKey);
+@@ -53,4 +54,4 @@ public class RecipientCardCollection extends StripeColllectionAPIResource<Card>
+     return request(RequestMethod.POST, url, params,
+         RecipientCardCollection.class, apiKey);
+   }
+-}
++}
+\ No newline at end of file

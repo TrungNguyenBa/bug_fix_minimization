@@ -1,0 +1,12 @@
+diff --git a/src/main/java/org/joda/money/CurrencyMismatchException.java b/src/main/java/org/joda/money/CurrencyMismatchException.java
+index 92f8960..eb6c85b 100644
+--- a/src/main/java/org/joda/money/CurrencyMismatchException.java
++++ b/src/main/java/org/joda/money/CurrencyMismatchException.java
+@@ -37,7 +37,6 @@ public class CurrencyMismatchException extends IllegalArgumentException {
+      * Constructor.
+      * 
+      * @param firstCurrency  the first currency, may be null
+-     * @param secondCurrency  the second currency, not null
+      */
+     public CurrencyMismatchException(CurrencyUnit firstCurrency, CurrencyUnit secondCurrency) {
+         super("Currencies differ: " +

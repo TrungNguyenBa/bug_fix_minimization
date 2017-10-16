@@ -1,0 +1,26 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/RawResponseParser.java b/src/main/java/com/lonepulse/zombielink/response/RawResponseParser.java
+index 415c2f0..b11bc6b 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/RawResponseParser.java
++++ b/src/main/java/com/lonepulse/zombielink/response/RawResponseParser.java
+@@ -23,7 +23,7 @@ package com.lonepulse.zombielink.response;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.util.EntityUtils;
+ 
+-import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This is an extension of {@link AbstractResponseParser} which extracts the response 
+@@ -51,10 +51,10 @@ public class RawResponseParser extends AbstractResponseParser<CharSequence> {
+ 	 * <p> Parses the content in the {@link HttpResponse} to any type which is 
+ 	 * assignable to a {@link CharSequence}.
+ 	 * 
+-	 * @see AbstractResponseParser#parse(HttpResponse, com.lonepulse.zombielink.inject.InvocationContext)
++	 * @see AbstractResponseParser#parse(HttpResponse, com.lonepulse.zombielink.inject.ProxyInvocationConfiguration)
+ 	 */
+ 	@Override
+-	public CharSequence processResponse(HttpResponse httpResponse, InvocationContext config) throws Exception {
++	public CharSequence processResponse(HttpResponse httpResponse, ProxyInvocationConfiguration config) throws Exception {
+ 
+ 		String responseString = EntityUtils.toString(httpResponse.getEntity());
+ 		return responseString.subSequence(0, responseString.length());

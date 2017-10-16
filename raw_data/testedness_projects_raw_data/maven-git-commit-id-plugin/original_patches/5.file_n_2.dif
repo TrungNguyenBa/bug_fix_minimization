@@ -1,0 +1,25 @@
+diff --git a/src/main/java/pl/project13/jgit/DescribeCommand.java b/src/main/java/pl/project13/jgit/DescribeCommand.java
+index a9fd2ee..b04cd5a 100644
+--- a/src/main/java/pl/project13/jgit/DescribeCommand.java
++++ b/src/main/java/pl/project13/jgit/DescribeCommand.java
+@@ -105,7 +105,6 @@ public class DescribeCommand extends GitCommand<DescribeResult> {
+     super(repo);
+     initDefaultLoggerBridge(verbose);
+     setVerbose(verbose);
+-    this.jGitCommon = new JGitCommon();
+   }
+ 
+   private void initDefaultLoggerBridge(boolean verbose) {
+@@ -124,6 +123,12 @@ public class DescribeCommand extends GitCommand<DescribeResult> {
+     return this;
+   }
+ 
++  @NotNull
++  public DescribeCommand withJGitCommon(JGitCommon jGitCommon) {
++    this.jGitCommon = jGitCommon;
++    return this;
++  }
++
+   /**
+    * <pre>--always</pre>
+    *

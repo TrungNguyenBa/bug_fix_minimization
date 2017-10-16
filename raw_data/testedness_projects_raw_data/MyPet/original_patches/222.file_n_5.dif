@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java b/src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java
+index 27e81ddb..8e3795ca 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java
+@@ -48,7 +48,6 @@ public class MySlime extends MyPet implements IMyPetSlimeSize
+ 
+     public void setSize(int value)
+     {
+-        value = Math.max(1, value);
+         if (status == PetState.Here)
+         {
+             ((EntityMySlime) getCraftPet().getHandle()).setSize(value);

@@ -1,0 +1,16 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeZoneSerializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeZoneSerializer.java
+index 1fa1771..f1e641a 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeZoneSerializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeZoneSerializer.java
+@@ -15,8 +15,9 @@ public class DateTimeZoneSerializer extends JodaSerializerBase<DateTimeZone>
+     public DateTimeZoneSerializer() { super(DateTimeZone.class); }
+ 
+     @Override
+-    public void serialize(DateTimeZone value, JsonGenerator gen, SerializerProvider provider) throws IOException
++    public void serialize(DateTimeZone value, JsonGenerator jgen, SerializerProvider provider) throws IOException
+     {
+-        gen.writeString(value.getID());
++        jgen.writeString(value.getID());
+     }
++
+ }

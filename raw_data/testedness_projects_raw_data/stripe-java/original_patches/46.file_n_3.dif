@@ -1,0 +1,13 @@
+diff --git a/README.md b/README.md
+index e0f7262..21abeb1 100644
+--- a/README.md
++++ b/README.md
+@@ -17,7 +17,7 @@ Add this dependency to your project's POM:
+     <dependency>
+       <groupId>com.stripe</groupId>
+       <artifactId>stripe-java</artifactId>
+-      <version>1.14.1</version>
++      <version>1.14.0</version>
+     </dependency>
+ 
+ ### Others

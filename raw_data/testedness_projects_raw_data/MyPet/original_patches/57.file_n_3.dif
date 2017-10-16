@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java
+index a48f61a1..5b0a8033 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java
+@@ -355,7 +355,7 @@ public class SkilltreeCreator {
+         }
+     }
+ 
+-    public static class PopupListener extends MouseAdapter {
++    class PopupListener extends MouseAdapter {
+         JPopupMenu popup;
+ 
+         PopupListener(JPopupMenu popupMenu) {

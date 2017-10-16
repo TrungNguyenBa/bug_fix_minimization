@@ -1,0 +1,34 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java b/src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java
+index b39bdb78..a745e55b 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java
++++ b/src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java
+@@ -281,24 +281,19 @@ public class CommandAdmin implements CommandExecutor, TabCompleter
+             }
+             else if (strings[0].equalsIgnoreCase("create"))
+             {
+-                int forceOffset = 0;
+-                if (strings.length >= 2 && strings[1].equalsIgnoreCase("-f"))
+-                {
+-                    forceOffset = 1;
+-                }
+-                if (strings.length == 2 + forceOffset)
++                if (strings.length == 2)
+                 {
+                     return null;
+                 }
+-                if (strings.length == 3 + forceOffset)
++                if (strings.length == 3)
+                 {
+                     return petTypeList;
+                 }
+-                if (strings.length >= 4 + forceOffset)
++                if (strings.length >= 4)
+                 {
+-                    if (petTypeOptionMap.containsKey(strings[2 + forceOffset].toLowerCase()))
++                    if (petTypeOptionMap.containsKey(strings[2].toLowerCase()))
+                     {
+-                        return petTypeOptionMap.get(strings[2 + forceOffset].toLowerCase());
++                        return petTypeOptionMap.get(strings[2].toLowerCase());
+                     }
+                     return emptyList;
+                 }

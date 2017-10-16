@@ -1,0 +1,2 @@
+ddd3a16 : Fix configuration sample in README. [skip ci]
+:100644 100644 e756f14... b983a1f... M	README.md

@@ -1,0 +1,3 @@
+99f6c09 : change chargeEnabled/transferEnabled to their plural
+:100644 100644 2c3c73f... 0c3f52c... M	src/main/java/com/stripe/model/Account.java
+:100644 100644 f2ef905... 45021fa... M	src/test/java/com/stripe/StripeTest.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/allogy/coffeecan/statements/Activity.java b/src/main/java/com/allogy/coffeecan/statements/Activity.java
+index 399fc6d..9a03133 100644
+--- a/src/main/java/com/allogy/coffeecan/statements/Activity.java
++++ b/src/main/java/com/allogy/coffeecan/statements/Activity.java
+@@ -24,6 +24,8 @@ import javax.validation.constraints.NotNull;
+ public class Activity extends StatementObject implements Identifiable
+ {
+     public static final String OBJECT_TYPE = "Activity";
++    @Deprecated
++    public static final String ObjectType = OBJECT_TYPE;
+ 
+     @NotNull
+     private final String id;

@@ -1,0 +1,8 @@
+3f9907a : Mostly separate PermissionManager + backends from requiring a running Bukkit instance
+:000000 100644 0000000... 0e155c3... A	src/main/java/ru/tehkode/permissions/NativeInterface.java
+:100644 100644 56e4b8a... fcb4509... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 fb8bb08... 1de4c76... M	src/main/java/ru/tehkode/permissions/PermissionUser.java
+:100644 100644 a0b750a... 95969a7... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 ea293c6... f6d8b8e... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+:100644 100644 27da3f0... 8db9f19... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
+:000000 100644 0000000... 803ab45... A	src/main/java/ru/tehkode/permissions/bukkit/RemoteEventListener.java

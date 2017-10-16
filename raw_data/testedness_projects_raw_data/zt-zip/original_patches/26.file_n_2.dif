@@ -1,0 +1,24 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/Zips.java b/src/main/java/org/zeroturnaround/zip/Zips.java
+index b9a5f86..f8888e3 100644
+--- a/src/main/java/org/zeroturnaround/zip/Zips.java
++++ b/src/main/java/org/zeroturnaround/zip/Zips.java
+@@ -206,10 +206,6 @@ public class Zips {
+         continue;
+       }
+       String entryPath = getRelativePath(file, entryFile);
+-      if (File.separator.equals("\\")) {
+-        // replace directory separators on windows as at least 7zip packs zip with entries having "/" like on linux
+-        entryPath = entryPath.replace('\\', '/');
+-      }
+       if (preserveRoot) {
+         entryPath = file.getName() + entryPath;
+       }
+@@ -369,7 +365,7 @@ public class Zips {
+       finally {
+         IOUtils.closeQuietly(out);
+       }
+-        handleInPlaceActions(destinationFile);
++      handleInPlaceActions(destinationFile);
+     }
+     catch (IOException e) {
+       ZipExceptionUtil.rethrow(e);

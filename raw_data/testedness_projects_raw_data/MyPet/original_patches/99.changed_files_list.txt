@@ -1,0 +1,2 @@
+135c0ad5 : fix permission of the /petrespawn command
+:100644 100644 0d41e807... 16898245... M	src/main/java/de/Keyle/MyPet/commands/CommandRespawn.java

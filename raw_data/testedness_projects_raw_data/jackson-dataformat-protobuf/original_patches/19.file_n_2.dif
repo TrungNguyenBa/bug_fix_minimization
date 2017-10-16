@@ -1,0 +1,128 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+index 542ffd7..d8b7503 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+@@ -511,11 +511,7 @@ public class ProtobufGenerator extends GeneratorBase
+         }
+ 
+         if (_currField.wireType != WireType.LENGTH_PREFIXED) {
+-            if (_currField.type == FieldType.ENUM) {
+-                _writeEnum(text);
+-            } else {
+-                _reportWrongWireType("string");
+-            }
++            _reportWrongWireType("string");
+             return;
+         }
+ 
+@@ -610,11 +606,8 @@ public class ProtobufGenerator extends GeneratorBase
+             return;
+         }
+         if (_currField.wireType != WireType.LENGTH_PREFIXED) {
+-            if (_currField.type == FieldType.ENUM) {
+-                _writeEnum(new String(text, offset, clen));
+-            } else {
+-                _reportWrongWireType("string");
+-            }
++            _reportWrongWireType("string");
++            return;
+         }
+ 
+         // Could guarantee with 42 chars or less; but let's do bit more speculative
+@@ -692,15 +685,11 @@ public class ProtobufGenerator extends GeneratorBase
+     @Override
+     public final void writeString(SerializableString sstr) throws IOException
+     {
++        _verifyValueWrite();
+         if (_currField.wireType != WireType.LENGTH_PREFIXED) {
+-            if (_currField.type == FieldType.ENUM) {
+-                _writeEnum(sstr);
+-            } else {
+-                _reportWrongWireType("string");
+-            }
++            _reportWrongWireType("string");
+             return;
+         }
+-        _verifyValueWrite();
+         byte[] b = sstr.asUnquotedUTF8();
+         _writeLengthPrefixed(b,  0, b.length);
+     }
+@@ -708,49 +697,27 @@ public class ProtobufGenerator extends GeneratorBase
+     @Override
+     public void writeRawUTF8String(byte[] text, int offset, int len) throws IOException
+     {
++        _verifyValueWrite();
+         if (_currField.wireType != WireType.LENGTH_PREFIXED) {
+             _reportWrongWireType("string");
+             return;
+         }
+-        _verifyValueWrite();
+         _writeLengthPrefixed(text, offset, len);
+     }
+ 
+     @Override
+     public final void writeUTF8String(byte[] text, int offset, int len) throws IOException
+     {
++        _verifyValueWrite();
+         if (_currField.wireType != WireType.LENGTH_PREFIXED) {
+             _reportWrongWireType("string");
+             return;
+         }
+-        _verifyValueWrite();
+         _writeLengthPrefixed(text, offset, len);
+     }
+ 
+-    protected void _writeEnum(String str) throws IOException
+-    {
+-        int index = _currField.findEnumIndex(str);
+-        if (index < 0) {
+-            _reportEnumError(str);
+-        }
+-        _writeVInt(index);
+-    }
+-
+-    protected void _writeEnum(SerializableString sstr) throws IOException
+-    {
+-        int index = _currField.findEnumIndex(sstr);
+-        if (index < 0) {
+-            _reportEnumError(sstr.getValue());
+-        }
+-        _writeVInt(index);
+-    }
+-
+-    protected void _reportEnumError(String enumStr) throws IOException
+-    {
+-        _reportError("No Enum '"+enumStr+"' found for property '"+_currField.name+"'; valid values = "
+-                +_currField.getEnumValues());
+-    }
+-
++    private final static Charset UTF8 = Charset.forName("UTF-8");
++    
+     /*
+     /**********************************************************
+     /* Output method implementations, unprocessed ("raw")
+@@ -999,13 +966,13 @@ public class ProtobufGenerator extends GeneratorBase
+             _reportError("Can not write value without indicating field first (in message of type "+_currMessage.getName()+")");
+         }
+     }
+-
++    
+     /*
+     /**********************************************************
+     /* Implementations for methods from base class
+     /**********************************************************
+      */
+-
++    
+     @Override
+     protected void _verifyValueWrite(String typeMsg) throws IOException {
+         _throwInternal();
+@@ -1026,8 +993,6 @@ public class ProtobufGenerator extends GeneratorBase
+     /**********************************************************
+      */
+ 
+-    private final static Charset UTF8 = Charset.forName("UTF-8");
+-    
+     protected void _encodeLongerString(char[] text, int offset, int clen) throws IOException
+     {
+         _verifyValueWrite();

@@ -1,0 +1,28 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index f12f474d..9bfb3188 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -25,15 +25,11 @@ import de.Keyle.MyPet.api.event.MyPetLevelUpEvent;
+ import de.Keyle.MyPet.api.event.MyPetSpoutEvent;
+ import de.Keyle.MyPet.api.event.MyPetSpoutEvent.MyPetSpoutEventReason;
+ import de.Keyle.MyPet.entity.EntitySize;
+-import de.Keyle.MyPet.skill.Experience;
+-import de.Keyle.MyPet.skill.skills.ISkillStorage;
+-import de.Keyle.MyPet.skill.skills.Skills;
++import de.Keyle.MyPet.skill.*;
+ import de.Keyle.MyPet.skill.skills.implementation.Damage;
+ import de.Keyle.MyPet.skill.skills.implementation.HP;
+ import de.Keyle.MyPet.skill.skills.implementation.ISkillInstance;
+ import de.Keyle.MyPet.skill.skills.implementation.Ranged;
+-import de.Keyle.MyPet.skill.skilltree.SkillTree;
+-import de.Keyle.MyPet.skill.skilltree.SkillTreeMobType;
+ import de.Keyle.MyPet.util.*;
+ import de.Keyle.MyPet.util.locale.Locales;
+ import de.Keyle.MyPet.util.support.*;
+@@ -780,4 +776,4 @@ public abstract class MyPet implements IMyPet, NBTStorage
+     {
+         return wantToRespawn;
+     }
+-}
+\ No newline at end of file
++}

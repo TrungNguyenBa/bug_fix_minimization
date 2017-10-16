@@ -1,0 +1,13 @@
+diff --git a/src/test/java/com/stripe/StripeTest.java b/src/test/java/com/stripe/StripeTest.java
+index baff83f..e9c7c8d 100644
+--- a/src/test/java/com/stripe/StripeTest.java
++++ b/src/test/java/com/stripe/StripeTest.java
+@@ -775,7 +775,7 @@ public class StripeTest {
+ 		Transfer createdTransfer = Transfer.create(getTransferParams());
+ 		createdTransfer.cancel();
+ 
+-		// post-condition: we expect an InvalidRequestException here (caught by JUnit),
++		// post-cndition: we except a InvalidRequestException here (caught by JUnit) 
+ 		// because in test mode, transfers are automatically sent
+ 	}
+ 

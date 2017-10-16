@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+index 434e047d..42077e37 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+@@ -69,7 +69,7 @@ public class EntityMySkeleton extends EntityMyPet
+ 
+     public boolean isWither()
+     {
+-        return ((MySkeleton) myPet).isWither;
++        return this.datawatcher.getByte(13) == 1;
+     }
+ 
+     public void setWither(boolean flag)

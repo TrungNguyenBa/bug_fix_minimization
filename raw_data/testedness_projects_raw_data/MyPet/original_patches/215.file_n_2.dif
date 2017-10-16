@@ -1,0 +1,34 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index a4f9f835..cc9cb53e 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -1063,27 +1063,13 @@ public class MyPetEntityListener implements Listener
+                     }
+                     else
+                     {
+-                        if (MyPetType.isLeashableEntityType(e.getDamager().getType()))
+-                        {
+-                            killer = MyPetLocales.getString("Name." + capitalizeName(MyPetType.getMyPetTypeByEntityType(e.getDamager().getType()).getTypeName()), myPet.getOwner().getLanguage());
+-                        }
+-                        else
+-                        {
+-                            killer = MyPetLocales.getString("Name." + capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
+-                        }
++                        killer += MyPetLocales.getString("Name." + capitalizeName(e.getDamager().getType().name()), myPet.getOwner().getLanguage());
+                     }
+                     killer += ")";
+                 }
+                 else
+                 {
+-                    if (MyPetType.isLeashableEntityType(e.getDamager().getType()))
+-                    {
+-                        killer = MyPetLocales.getString("Name." + capitalizeName(MyPetType.getMyPetTypeByEntityType(e.getDamager().getType()).getTypeName()), myPet.getOwner().getLanguage());
+-                    }
+-                    else
+-                    {
+-                        killer = MyPetLocales.getString("Name." + capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
+-                    }
++                    killer = MyPetLocales.getString("Name." + capitalizeName(e.getDamager().getType().getName()), myPet.getOwner().getLanguage());
+                 }
+             }
+             else

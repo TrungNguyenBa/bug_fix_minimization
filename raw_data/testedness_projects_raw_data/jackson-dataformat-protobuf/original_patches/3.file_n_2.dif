@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java
+index 7edb283..1182d90 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java
+@@ -413,7 +413,7 @@ public abstract class EnumLookup
+             int i = hashSize + (hashSize>>1);
+             for (int end = i + _spillCount; i < end; ++i) {
+                 if (key.equals(_keys[i])) {
+-                    return _indices[i];
++                    return _indices[1];
+                 }
+             }
+             return -1;

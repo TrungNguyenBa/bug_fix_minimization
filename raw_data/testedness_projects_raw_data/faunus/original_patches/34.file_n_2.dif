@@ -1,0 +1,39 @@
+diff --git a/src/playground/jmhenriques/template.run b/src/playground/jmhenriques/template.run
+index 821586b3..f8da0be3 100755
+--- a/src/playground/jmhenriques/template.run
++++ b/src/playground/jmhenriques/template.run
+@@ -1,10 +1,7 @@
+ #!/bin/sh
+ #
+ # Joao Henriques
+-# 2013.11.11
+-#
+-# Script is not ready to use, some values are ill-defined on purpose.
+-# It's just a template.
++# 2013.11.06
+ #
+ function mkinput() {
+ echo "##### files needed #####
+@@ -47,19 +44,18 @@ pivot_minlen             1
+ pivot_maxlen             210              # N-1
+ 
+ ##### misc #####
+-test_stable              no" > simulation.input
++test_stable            no" > simulation.input
+ }
+ # ext params
+-dens=zzz     # g/L
++dens=www
+ pH=kkk
+ # run stuff
+ scr="path_to_script"
+ exe="path_to_program"
+-mdl="path_to_peptide_model"
+ if [ -x $exe ]; then
+     rm -f param.json simulation.{input,gro,pqr,state} molecule.aam surfmcdist.dat netq_dist.dat rg2_dist.dat rg_step.dat
+     $scr/mkinput.py json $dens $pH > param.json
+-    $scr/mkinput.py aam $mdl/"name".fasta $dens > molecule.aam
++    $scr/mkinput.py aam "path_to_model"/"name".fasta $dens > molecule.aam
+     mkinput
+     $exe
+     rc=$?

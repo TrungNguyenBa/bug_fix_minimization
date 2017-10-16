@@ -1,0 +1,3 @@
+b73d487 : Fix URL formatting issue that was breaking getting lines of upcoming invoice
+:100644 100644 21fdc96... 8033f4e... M	src/main/java/com/stripe/net/APIResource.java
+:100644 100644 249219a... 931e830... M	src/test/java/com/stripe/StripeTest.java

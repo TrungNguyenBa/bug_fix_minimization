@@ -1,0 +1,12 @@
+diff --git a/src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java b/src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java
+index 86ba924..0df9ec0 100644
+--- a/src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java
++++ b/src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java
+@@ -114,6 +114,7 @@ public class DropFilterQueueConsumer implements ChannelAwareMessageListener, Err
+ 		logger.debug("Drop with correlation id {} has completed rules processing", correlationId);
+ 	}
+ 
++	@Override
+ 	public void handleError(Throwable t) {
+ 		logger.error("An error was encountered while processing the drop", t);
+ 	}

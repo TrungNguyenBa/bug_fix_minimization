@@ -1,0 +1,39 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 4c9cec19..822d2656 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -46,10 +46,7 @@ import org.bukkit.ChatColor;
+ import org.bukkit.GameMode;
+ import org.bukkit.Location;
+ import org.bukkit.Material;
+-import org.bukkit.craftbukkit.v1_6_R2.entity.CraftEnderman;
+-import org.bukkit.craftbukkit.v1_6_R2.entity.CraftHorse;
+-import org.bukkit.craftbukkit.v1_6_R2.entity.CraftLivingEntity;
+-import org.bukkit.craftbukkit.v1_6_R2.entity.CraftSkeleton;
++import org.bukkit.craftbukkit.v1_6_R2.entity.*;
+ import org.bukkit.craftbukkit.v1_6_R2.inventory.CraftItemStack;
+ import org.bukkit.entity.*;
+ import org.bukkit.entity.Skeleton.SkeletonType;
+@@ -315,14 +312,20 @@ public class EntityListener implements Listener
+                         {
+                             if (leashTarget instanceof IronGolem)
+                             {
+-                                willBeLeashed = ((IronGolem) leashTarget).isPlayerCreated();
++                                //willBeLeashed = ((IronGolem) leashTarget).isPlayerCreated();
++
++                                //temporary fix
++                                willBeLeashed = ((CraftIronGolem) leashTarget).getHandle().bW();
+                             }
+                         }
+                         else if (flag == LeashFlag.Wild)
+                         {
+                             if (leashTarget instanceof IronGolem)
+                             {
+-                                willBeLeashed = !((IronGolem) leashTarget).isPlayerCreated();
++                                //willBeLeashed = !((IronGolem) leashTarget).isPlayerCreated();
++
++                                //temporary fix
++                                willBeLeashed = !((CraftIronGolem) leashTarget).getHandle().bW();
+                             }
+                             else if (leashTarget instanceof Tameable)
+                             {

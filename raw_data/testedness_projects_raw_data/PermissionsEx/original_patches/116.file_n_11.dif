@@ -1,0 +1,16 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java b/src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
+index e480594..790e195 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
+@@ -144,11 +144,6 @@ public class MemoryData implements PermissionsGroupData, PermissionsUserData {
+ 	}
+ 
+ 	@Override
+-	public Map<String, List<String>> getParentsMap() {
+-		return Collections.unmodifiableMap(parents);
+-	}
+-
+-	@Override
+ 	public boolean setIdentifier(String identifier) {
+ 		this.name = identifier;
+ 		return true;

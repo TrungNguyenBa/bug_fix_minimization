@@ -1,0 +1,3 @@
+c9b35d4 : Fix differences in the output of native and jgit
+:100644 100644 891b0d6... 6db53af... M	src/main/java/pl/project13/maven/git/JGitProvider.java
+:100644 100644 87413e8... 17a9f01... M	src/main/java/pl/project13/maven/git/NativeGitProvider.java

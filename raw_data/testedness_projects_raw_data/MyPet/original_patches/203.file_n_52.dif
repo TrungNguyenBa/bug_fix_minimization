@@ -1,0 +1,64 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java b/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
+index 27748ff9..a2a86c4c 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
+@@ -33,13 +33,18 @@ public class EntityMyWitch extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return "mob.witch.death";
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
++        }
++    }
++
++    protected void initDatawatcher()
++    {
++        super.initDatawatcher();
++        getDataWatcher().a(21, new Byte((byte) 0)); // N/A
+     }
+ 
+     /**
+@@ -52,24 +57,19 @@ public class EntityMyWitch extends EntityMyPet
+     }
+ 
+     /**
+-     * Returns the default sound of the MyPet
++     * Returns the sound that is played when the MyPet dies
+      */
+-    protected String getLivingSound()
+-    {
+-        return !playIdleSound() ? null : "mob.witch.idle";
+-    }
+-
+-    protected void initDatawatcher()
++    @Override
++    protected String getDeathSound()
+     {
+-        super.initDatawatcher();
+-        getDataWatcher().a(21, new Byte((byte) 0)); // N/A
++        return "mob.witch.death";
+     }
+ 
+-    public void setMyPet(MyPet myPet)
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-        }
++        return !playIdleSound() ? null : "mob.witch.idle";
+     }
+ }
+\ No newline at end of file

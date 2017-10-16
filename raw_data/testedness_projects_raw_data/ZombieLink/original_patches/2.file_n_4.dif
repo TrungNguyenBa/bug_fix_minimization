@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/XmlDeserializer.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/XmlDeserializer.java
+index 18a08af..6c35601 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/XmlDeserializer.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/XmlDeserializer.java
+@@ -148,7 +148,7 @@ final class XmlDeserializer extends AbstractDeserializer<Object> {
+ 			HttpEntity entity = response.getEntity();
+ 			
+ 			return entity == null? null :Persister_read.invoke(persister, 
+-					context.getRequest().getGenericReturnType(), EntityUtils.toString(entity));
++					context.getRequest().getReturnType(), EntityUtils.toString(entity));
+ 		} 
+ 		catch(Exception e) {
+ 			

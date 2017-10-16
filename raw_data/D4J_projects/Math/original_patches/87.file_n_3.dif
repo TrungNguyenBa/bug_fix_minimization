@@ -1,0 +1,14 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index a1fe400a6..4f53d0cb4 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -39,9 +39,6 @@ The <action> type attribute can be add,update,fix,remove.
+   </properties>
+   <body>
+     <release version="2.0" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-273" due-to="Benjamin McCann">
+-        Fixed a wrong check for basic variables
+-      </action>
+       <action dev="luc" type="fix" issue="MATH-272" due-to="Benjamin McCann">
+         Fixed a problem when setting some variables (several variables were set
+         instead of only one)

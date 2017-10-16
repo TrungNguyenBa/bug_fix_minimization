@@ -1,0 +1,5 @@
+e323b879 : Label names must be made unique when inlining a function. Fixes issue 435
+:100644 100644 3e0fb1ec... 3fee1a9e... M	src/com/google/javascript/jscomp/FunctionToBlockMutator.java
+:100644 100644 01ad5362... 28e52ee4... M	src/com/google/javascript/jscomp/RenameLabels.java
+:100644 100644 d9a413f3... 2811bc05... M	test/com/google/javascript/jscomp/InlineFunctionsTest.java
+:100644 100644 ccfa8e21... 55281135... M	test/com/google/javascript/jscomp/RenameLabelsTest.java

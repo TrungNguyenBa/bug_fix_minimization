@@ -1,0 +1,34 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/util/command/CommandSpec.java b/src/main/java/ninja/leaping/permissionsex/util/command/CommandSpec.java
+index 5615a7f..8a9a0e5 100644
+--- a/src/main/java/ninja/leaping/permissionsex/util/command/CommandSpec.java
++++ b/src/main/java/ninja/leaping/permissionsex/util/command/CommandSpec.java
+@@ -21,7 +21,6 @@ import ninja.leaping.permissionsex.util.Translatable;
+ import ninja.leaping.permissionsex.util.command.args.ArgumentParseException;
+ import ninja.leaping.permissionsex.util.command.args.CommandArgs;
+ import ninja.leaping.permissionsex.util.command.args.CommandElement;
+-import ninja.leaping.permissionsex.util.command.args.GenericArguments;
+ import ninja.leaping.permissionsex.util.command.args.QuotedStringParser;
+ 
+ import java.util.Collections;
+@@ -62,7 +61,7 @@ public class CommandSpec {
+     }
+ 
+     public static final class Builder {
+-        private CommandElement args = GenericArguments.none();
++        private CommandElement args;
+         private List<String> aliases;
+         private Translatable description, extendedDescription;
+         private String permission;
+@@ -189,12 +188,6 @@ public class CommandSpec {
+         }
+ 
+         public CommandSpec build() {
+-            if (this.executor == null) {
+-                throw new IllegalArgumentException("An executor is required");
+-            }
+-            if (this.aliases == null || this.aliases.isEmpty()) {
+-                throw new IllegalArgumentException("A command may not have no aliases");
+-            }
+             return new CommandSpec(args, executor, aliases, description, extendedDescription, permission, rawArgs, parseQuotedArgs, parseLenient);
+         }
+     }

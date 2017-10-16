@@ -1,0 +1,34 @@
+diff --git a/include/faunus/point.h b/include/faunus/point.h
+index 55673ca9..aecb6599 100644
+--- a/include/faunus/point.h
++++ b/include/faunus/point.h
+@@ -97,14 +97,26 @@ namespace Faunus {
+       }
+ 
+     /**
+-     * @brief Coordinate scaling used for NPT and NVT ensemble
++     * @brief Coordinate scaling used for NPT ensemble
+      *
+      * This will perform a volume scaling of the Point by
+      * following the algorithm specified in the Geometry.
+      */
+     template<typename Tgeometry>
+-      void scale(const Tgeometry &geo, PointBase &s, double xyz=1, double xy=1) {
+-        geo.scale(*this,s,xyz,xy);
++      void scale(const Tgeometry &geo, double newvol) {
++        geo.scale(*this, newvol);
++      }
++
++    /**
++     * @brief Coordinate scaling used for isochoric-anisotropic scaling moves
++     *
++     * This will perform a scaling of the Point by
++     * following the algorithm specified in the Cuboid Geometry.
++     */
++
++    template<typename Tgeometry>
++      void isoscale(const Tgeometry &geo, double xy, double z) {
++        geo.isoscale(*this,xy,z);
+       }
+ 
+     Tcoord len() const {

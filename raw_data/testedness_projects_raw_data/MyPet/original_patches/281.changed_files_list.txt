@@ -1,0 +1,5 @@
+649ab14c : Added config option to disable pet store Saving the pets will cause long runtimes when used in events like PlayerQuitEvent. With this change you will be able to disable this. Fixes #105
+:100644 100644 420fb7d4... cc791c01... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
+:100644 100644 9f635df3... d1697761... M	src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+:100644 100644 38672484... 1288b153... M	src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java
+:100644 100644 ce0a9685... 54041917... M	src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java

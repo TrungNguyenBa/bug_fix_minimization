@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/bufferpool/FlexibleReference.java b/src/main/java/org/tiernolan/nervous/network/bufferpool/FlexibleReference.java
+index a4dbd11..dc05fa2 100644
+--- a/src/main/java/org/tiernolan/nervous/network/bufferpool/FlexibleReference.java
++++ b/src/main/java/org/tiernolan/nervous/network/bufferpool/FlexibleReference.java
+@@ -12,7 +12,7 @@ public class FlexibleReference<T> extends SoftReference<T> {
+ 	}
+ 	
+ 	public boolean setHard() {
+-		hardReference = super.get();
++		hardReference = get();
+ 		return hardReference != null;
+ 	}
+ 	

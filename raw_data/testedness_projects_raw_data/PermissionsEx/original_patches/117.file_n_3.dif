@@ -1,0 +1,53 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index e42907b..a97473b 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -28,6 +28,7 @@ import org.bukkit.event.EventHandler;
+ import org.bukkit.event.EventPriority;
+ import org.bukkit.event.Listener;
+ import org.bukkit.plugin.Plugin;
++import ru.tehkode.permissions.backends.BackendDataTransfer;
+ import ru.tehkode.permissions.backends.PermissionBackend;
+ import ru.tehkode.permissions.bukkit.PermissionsEx;
+ import ru.tehkode.permissions.events.PermissionEntityEvent;
+@@ -66,10 +67,10 @@ public class PermissionManager {
+ 				plugin.getServer().getPluginManager().registerEvents(new RemoteEventListener(), plugin);
+ 			}
+ 		}
++		this.initBackend();
+ 		this.debugMode = plugin.getConfiguration().isDebug();
+ 		this.allowOps = plugin.getConfiguration().allowOps();
+ 		this.userAddGroupsLast = plugin.getConfiguration().userAddGroupsLast();
+-		this.initBackend();
+ 	}
+ 
+ 	UUID getServerUUID() {
+@@ -474,7 +475,6 @@ public class PermissionManager {
+ 					group.initialize();
+ 				} catch (Exception e) {
+ 					this.groups.remove(groupname.toLowerCase());
+-					throw new IllegalStateException("Error initializing group " + groupname, e);
+ 				}
+ 			} else {
+ 				throw new IllegalStateException("Group " + groupname + " is null");
+@@ -580,12 +580,6 @@ public class PermissionManager {
+ 		this.groups.remove(groupName);
+ 	}
+ 
+-	void preloadGroups() {
+-		for (PermissionGroup group : getGroupList()) {
+-			group.getData().load();
+-		}
+-	}
+-
+ 	/**
+ 	 * Set debug mode
+ 	 *
+@@ -667,7 +661,6 @@ public class PermissionManager {
+ 		synchronized (this) {
+ 			this.clearCache();
+ 			this.backend = createBackend(backendName);
+-			this.preloadGroups();
+ 		}
+ 
+ 		this.callEvent(PermissionSystemEvent.Action.BACKEND_CHANGED);

@@ -1,0 +1,7 @@
+22784dc9 : push reverse-inference into the type system fixes issue 669
+:100644 100644 13e10920... fb6be1eb... M	src/com/google/javascript/jscomp/TypeInference.java
+:100644 100644 8592ca60... 7317e947... M	src/com/google/javascript/rhino/jstype/JSType.java
+:100644 100644 f4b537d2... 1a51afb6... M	src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+:100644 100644 e025d519... 66898e24... M	src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+:100644 100644 f54d8d48... fcb01729... M	src/com/google/javascript/rhino/jstype/UnionType.java
+:100644 100644 4989d6b6... fad6c28e... M	test/com/google/javascript/jscomp/TypeCheckTest.java

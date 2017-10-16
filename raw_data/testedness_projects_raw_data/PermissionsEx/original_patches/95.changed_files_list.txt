@@ -1,0 +1,2 @@
+41c4181 : Another attempt at fixing autoreconnect issues
+:100644 100644 8906dad... 9225ad6... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java

@@ -1,0 +1,41 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionGroup.java b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+index 88d0b2f..9885246 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionGroup.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+@@ -18,8 +18,6 @@
+  */
+ package ru.tehkode.permissions;
+ 
+-import ru.tehkode.permissions.events.PermissionEntityEvent;
+-
+ import java.util.Arrays;
+ import java.util.Collections;
+ import java.util.HashMap;
+@@ -30,6 +28,8 @@ import java.util.Map;
+ import java.util.Set;
+ import java.util.logging.Logger;
+ 
++import ru.tehkode.permissions.events.PermissionEntityEvent;
++
+ /**
+  * @author t3hk0d3
+  */
+@@ -588,12 +588,14 @@ public abstract class PermissionGroup extends PermissionEntity implements Compar
+ 			}
+ 		}
+ 
+-		// Group inhertance
+-		if (groupInheritance && !visitedGroups.contains(this)) {
++		if (!visitedGroups.contains(this)) {
+ 			visitedGroups.add(this);
+ 
+-			for (PermissionGroup group : this.getParentGroups(worldName)) {
+-				group.getInheritedPermissions(worldName, permissions, true, false, visitedGroups);
++			// Group inhertance
++			if (groupInheritance) {
++				for (PermissionGroup group : this.getParentGroups(worldName)) {
++					group.getInheritedPermissions(worldName, permissions, true, false, visitedGroups);
++				}
+ 			}
+ 		}
+ 	}

@@ -1,0 +1,9 @@
+45c08af : Created a wrapper view (RhythmicFrameLayout) that can be used to easily add grids to view hierarchy. TBD: fix invalidation issue
+:100644 100644 fbb6828... 5d19981... M	.idea/misc.xml
+:100644 100644 71f7bf6... ee462a6... M	library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
+:100644 100644 4c5f9a1... 9ab6feb... M	library/src/main/java/com/actinarium/rhythm/layers/GridLinesLayer.java
+:000000 100644 0000000... 76037d8... A	library/src/main/java/com/actinarium/rhythm/widget/RhythmicFrameLayout.java
+:000000 100644 0000000... b545183... A	library/src/main/res/values/attrs.xml
+:100644 100644 eb85095... 0b70a0c... M	sample/src/main/java/com/actinarium/rhythm/sample/MainActivity.java
+:100644 100644 f4a2b6f... da269db... M	sample/src/main/java/com/actinarium/rhythm/sample/RhythmSampleApplication.java
+:100644 100644 64e32e1... 528fbeb... M	sample/src/main/res/layout/activity_main.xml

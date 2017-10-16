@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java b/src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
+index 70c341f..3d95d5c 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
+@@ -42,7 +42,7 @@ public class JodaModule extends SimpleModule
+         addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());
+         addSerializer(LocalDate.class, new LocalDateSerializer());
+         addSerializer(LocalTime.class, new LocalTimeSerializer());
+-        addSerializer(Period.class, new PeriodSerializer());
++        addSerializer(Period.class, stringSer);
+         addSerializer(Interval.class, new IntervalSerializer());
+         addSerializer(MonthDay.class, stringSer);
+         addSerializer(YearMonth.class, stringSer);

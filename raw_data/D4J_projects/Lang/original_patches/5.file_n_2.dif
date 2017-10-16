@@ -1,0 +1,12 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index a8a37693..4263d9ac 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -22,7 +22,6 @@
+   <body>
+ 
+   <release version="3.2" date="TBA" description="Next release">
+-    <action issue="LANG-865" type="fix">LocaleUtils.toLocale does not parse strings starting with an underscore</action>
+     <action issue="LANG-835" type="add">StrBuilder should support StringBuilder as an input parameter</action>
+     <action issue="LANG-858" type="fix">StringEscapeUtils.escapeJava() and escapeEcmaScript() do not output the escaped surrogate pairs that are Java parsable</action>
+     <action issue="LANG-857" type="add">StringIndexOutOfBoundsException in CharSequenceTranslator</action>

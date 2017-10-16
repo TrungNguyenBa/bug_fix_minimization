@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java b/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+index 9c85d86a..4fbc92db 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+@@ -50,7 +50,7 @@ public class EntityMyVillager extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.villager.default";
++        return !playIdleSound() ? null : "mob.villager.default";
+     }
+ 
+     public int getProfession()

@@ -1,0 +1,13 @@
+diff --git a/include/faunus/geometry.h b/include/faunus/geometry.h
+index c1d839d2..1515d314 100644
+--- a/include/faunus/geometry.h
++++ b/include/faunus/geometry.h
+@@ -633,7 +633,7 @@ namespace Faunus {
+      *
+      */
+     template<class Tgeo, class Tpvec, class TGroup>
+-      Point trigoCom(const Tgeo &geo, const Tpvec &p, const TGroup &g, string str="Z") {
++      Point unboundedCom(const Tgeo &geo, const Tpvec &p, const TGroup &g, string str="Z") {
+         double N = g.size(),
+                lx = geo.len.x(), xhi_x=0, zeta_x=0, theta_x=0, com_x=0,
+                ly = geo.len.y(), xhi_y=0, zeta_y=0, theta_y=0, com_y=0,

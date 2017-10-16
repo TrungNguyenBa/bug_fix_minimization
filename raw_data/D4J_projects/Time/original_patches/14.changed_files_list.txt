@@ -1,0 +1,4 @@
+2ea85632 : Fix MonthDay add/subtract around Feb29 [3528941]
+:100644 100644 700e0f05... 32653691... M	RELEASE-NOTES.txt
+:100644 100644 42a32e7e... 2892a2d7... M	src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java
+:100644 100644 65f30b86... 38f97a7f... M	src/test/java/org/joda/time/TestMonthDay_Basics.java

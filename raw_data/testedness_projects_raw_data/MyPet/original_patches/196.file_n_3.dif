@@ -1,0 +1,33 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java
+index 2519f8c2..6d8d8adb 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java
+@@ -60,7 +60,9 @@ public class SkilltreeCreator
+ 
+     DefaultTreeModel skilltreeTreeModel;
+ 
+-    SkillTree skilltreeCopyPaste;
++    private static String[] petTypes = new String[]{"default", "Bat", "Blaze", "CaveSpider", "Chicken", "Cow", "Creeper", "Enderman", "Ghast", "Giant", "Horse", "IronGolem", "MagmaCube", "Mooshroom", "Ocelot", "Pig", "PigZombie", "Sheep", "Silverfish", "Skeleton", "Slime", "Snowman", "Spider", "Squid", "Witch", "Wither", "Wolf", "Villager", "Zombie"};
++
++    private SkillTree skilltreeCopyPaste;
+     SkillTreeMobType selectedMobtype;
+ 
+     public SkilltreeCreator()
+@@ -268,7 +270,7 @@ public class SkilltreeCreator
+                 String savedPetsString = "";
+                 List<String> savedPetTypes;
+ 
+-                savedPetTypes = SkillTreeLoaderNBT.getSkilltreeLoader().saveSkillTrees(GuiMain.configPath + "skilltrees", GuiMain.petTypes);
++                savedPetTypes = SkillTreeLoaderNBT.getSkilltreeLoader().saveSkillTrees(GuiMain.configPath + "skilltrees", petTypes);
+                 for (String petType : savedPetTypes)
+                 {
+                     savedPetsString += "\n   " + petType.toLowerCase() + ".st";
+@@ -424,7 +426,7 @@ public class SkilltreeCreator
+ 
+         createRightclickMenus();
+ 
+-        mobTypeComboBox = new JComboBox(GuiMain.petTypes);
++        mobTypeComboBox = new JComboBox(petTypes);
+         selectedMobtype = SkillTreeMobType.getMobTypeByName("default");
+         skilltreeTreeSetSkilltrees();
+     }

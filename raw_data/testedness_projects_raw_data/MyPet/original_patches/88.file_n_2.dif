@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/ConfigItem.java b/src/main/java/de/Keyle/MyPet/util/ConfigItem.java
+index f4e90506..6cf27bb1 100644
+--- a/src/main/java/de/Keyle/MyPet/util/ConfigItem.java
++++ b/src/main/java/de/Keyle/MyPet/util/ConfigItem.java
+@@ -147,7 +147,7 @@ public class ConfigItem {
+         String[] splitData = data.split("\\s+");
+ 
+         int itemId = 1;
+-        int itemDamage = 0;
++        int itemDamage = -1;
+         DurabilityMode mode = DurabilityMode.NotUsed;
+ 
+         if (splitData.length == 0) {

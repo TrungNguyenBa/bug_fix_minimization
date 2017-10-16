@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
+index f236b9b2..9e2061dc 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
+@@ -70,7 +70,7 @@ public class Damage extends DamageInfo implements ISkillInstance
+                 }
+                 if (!quiet)
+                 {
+-                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddDamage", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%dmg%", "" + damageIncrease));
++                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddDamage", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%dmg%", "" + damageIncrease));
+                 }
+             }
+             if (isPassive != (damageIncrease <= 0))

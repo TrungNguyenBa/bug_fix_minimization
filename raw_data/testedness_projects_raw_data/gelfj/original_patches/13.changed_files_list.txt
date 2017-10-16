@@ -1,0 +1,2 @@
+3046606 : [maven-release-plugin] prepare for next development iteration
+:100644 100644 85a071a... 75e2081... M	pom.xml

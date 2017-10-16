@@ -1,0 +1,2 @@
+76ed9f8 : Include number of users in a group when listing users
+:100644 100644 c07efd7... 166e5b8... M	src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java

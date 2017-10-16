@@ -1,0 +1,13 @@
+diff --git a/JodaTime/src/test/java/org/joda/time/chrono/TestLenientChronology.java b/JodaTime/src/test/java/org/joda/time/chrono/TestLenientChronology.java
+index 3e3db7df..531ed1cc 100644
+--- a/JodaTime/src/test/java/org/joda/time/chrono/TestLenientChronology.java
++++ b/JodaTime/src/test/java/org/joda/time/chrono/TestLenientChronology.java
+@@ -120,7 +120,7 @@ public class TestLenientChronology extends TestCase {
+     /** Mock zone simulating America/Grand_Turk cutover at midnight 2007-04-01 */
+     private static long CUTOVER_TURK = 1175403600000L;
+     private static int OFFSET_TURK = -18000000;  // -05:00
+-    private static final DateTimeZone MOCK_TURK = new MockZone(CUTOVER_TURK, OFFSET_TURK, 3600);
++    private static final DateTimeZone MOCK_TURK = new MockZone(CUTOVER_TURK, OFFSET_TURK);
+ 
+     //-----------------------------------------------------------------------
+     public void test_MockTurkIsCorrect() {

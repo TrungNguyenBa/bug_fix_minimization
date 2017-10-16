@@ -1,0 +1,68 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java b/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+index caa11b83..f93fc626 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+@@ -37,13 +37,14 @@ import java.util.Map;
+ public class EntityMySnowman extends EntityMyPet
+ {
+     public static boolean FIX_SNOW_TRACK = true;
+-    Map<Location, Integer> snowMap = new HashMap<Location, Integer>();
+ 
+     public EntityMySnowman(World world, MyPet myPet)
+     {
+         super(world, myPet);
+     }
+ 
++    Map<Location, Integer> snowMap = new HashMap<Location, Integer>();
++
+     private void addAirBlocksInBB(org.bukkit.World world, AxisAlignedBB axisalignedbb)
+     {
+         int minX = MathHelper.floor(axisalignedbb.a - 0.1);
+@@ -73,13 +74,10 @@ public class EntityMySnowman extends EntityMyPet
+         }
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+     @Override
+-    protected String getDeathSound()
++    public void playStepSound()
+     {
+-        return "step.snow";
++        makeSound("step.snow", 0.15F, 1.0F);
+     }
+ 
+     /**
+@@ -92,11 +90,12 @@ public class EntityMySnowman extends EntityMyPet
+     }
+ 
+     /**
+-     * Returns the default sound of the MyPet
++     * Returns the sound that is played when the MyPet dies
+      */
+-    protected String getLivingSound()
++    @Override
++    protected String getDeathSound()
+     {
+-        return !playIdleSound() ? null : "step.snow";
++        return "step.snow";
+     }
+ 
+     public void onLivingUpdate()
+@@ -138,9 +137,11 @@ public class EntityMySnowman extends EntityMyPet
+         }
+     }
+ 
+-    @Override
+-    public void playStepSound()
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        makeSound("step.snow", 0.15F, 1.0F);
++        return !playIdleSound() ? null : "step.snow";
+     }
+ }
+\ No newline at end of file

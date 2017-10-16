@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java b/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+index 8521ad03..79ccf78c 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+@@ -50,7 +50,7 @@ public class LevelUpListener implements Listener {
+         int lvl = event.getLevel();
+ 
+         if (!event.isQuiet()) {
+-            int maxlevel = myPet.getSkillTree() != null ? myPet.getSkillTree().getMaxLevel() : 0;
++            int maxlevel = myPet.getSkillTree().getMaxLevel();
+             if (maxlevel != 0 && lvl >= maxlevel) {
+                 myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.LevelSystem.ReachedMaxLevel", event.getOwner().getLanguage()), myPet.getPetName(), maxlevel));
+             } else {

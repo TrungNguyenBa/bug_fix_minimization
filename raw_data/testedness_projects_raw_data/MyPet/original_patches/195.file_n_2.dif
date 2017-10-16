@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+index 672b80e2..a89f3aa6 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+@@ -447,7 +447,7 @@ public class LevelCreator
+ 
+             public void keyReleased(KeyEvent arg0)
+             {
+-                if (levelUpMessageCheckBox.isSelected() && selectedLevel != null && (selectedLevel.getLevelupMessage() == null || !selectedLevel.getLevelupMessage().equals(levelUpMessageInput.getText())))
++                if (levelUpMessageCheckBox.isSelected() && selectedLevel != null && !selectedLevel.getLevelupMessage().equals(levelUpMessageInput.getText()))
+                 {
+                     if (!levelUpMessageInput.getText().equalsIgnoreCase(""))
+                     {

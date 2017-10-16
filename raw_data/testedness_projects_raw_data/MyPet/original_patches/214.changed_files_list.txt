@@ -1,0 +1,4 @@
+a2c43e62 : rounded some damage and hp values to 2 decimal places
+:100644 100644 3db76a8d... 8f6ff26b... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
+:100644 100644 e3a8998d... 70bb870d... M	src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+:100644 100644 760a8878... 4851bfbc... M	src/main/java/de/Keyle/MyPet/util/MyPetCaptureHelper.java

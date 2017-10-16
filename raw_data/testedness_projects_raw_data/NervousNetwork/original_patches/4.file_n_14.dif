@@ -1,0 +1,17 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/bufferpool/ByteBufferPool.java b/src/main/java/org/tiernolan/nervous/network/bufferpool/ByteBufferPool.java
+index cb1d54f..8b76237 100644
+--- a/src/main/java/org/tiernolan/nervous/network/bufferpool/ByteBufferPool.java
++++ b/src/main/java/org/tiernolan/nervous/network/bufferpool/ByteBufferPool.java
+@@ -34,11 +34,7 @@ public class ByteBufferPool {
+ 	public Reference<ByteBuffer> get(int size) {
+ 		ThreadLocalByteBufferPool pool = getThreadLocalByteBufferPool(size);
+ 		ByteBufferQueue queue = pool.get();
+-		Reference<ByteBuffer> ref = queue.get();
+-		ByteBuffer buf = ref.get();
+-		buf.rewind();
+-		buf.limit(size);
+-		return ref;
++		return queue.get();
+ 	}
+ 	
+ 	public void put(Reference<ByteBuffer> ref) {

@@ -1,0 +1,25 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/memory/MemoryBackend.java b/src/main/java/ru/tehkode/permissions/backends/memory/MemoryBackend.java
+index 54f7f8a..85d4e10 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/memory/MemoryBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/memory/MemoryBackend.java
+@@ -38,13 +38,19 @@ import ru.tehkode.permissions.exceptions.PermissionBackendException;
+  */
+ public class MemoryBackend extends PermissionBackend {
+ 
+-    public MemoryBackend(PermissionManager manager, ConfigurationSection config) throws PermissionBackendException {
++    public MemoryBackend(PermissionManager manager, ConfigurationSection config) {
+         super(manager, config);
+     }
+ 
+ 
+ 	@Override
+ 	public void reload() throws PermissionBackendException {
++
++	}
++
++	@Override
++	public void validate() throws PermissionBackendException {
++
+ 	}
+ 
+ 	@Override

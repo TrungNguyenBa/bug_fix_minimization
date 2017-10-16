@@ -1,0 +1,12 @@
+diff --git a/src/com/google/javascript/jscomp/VarCheck.java b/src/com/google/javascript/jscomp/VarCheck.java
+index f8ebfa33..c8196b12 100644
+--- a/src/com/google/javascript/jscomp/VarCheck.java
++++ b/src/com/google/javascript/jscomp/VarCheck.java
+@@ -218,7 +218,6 @@ class VarCheck extends AbstractPostOrderCallback implements CompilerPass {
+     getSynthesizedExternsRoot().addChildToBack(
+         new Node(Token.VAR, nameNode));
+     varsToDeclareInExterns.remove(varName);
+-    compiler.reportCodeChange();
+   }
+ 
+   /**

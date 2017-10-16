@@ -1,0 +1,7 @@
+c6efb53 : Rough initial implementation of inheritance. Fixes #1519
+:100644 100644 bf30090... dad047c... M	src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+:100644 100644 217ee60... d7c15b5... M	src/main/java/ru/tehkode/permissions/backends/memory/AbstractMemoryBackend.java
+:100644 100644 0ea0d45... 8f6ecda... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 443bae9... dd6512f... M	src/main/java/ru/tehkode/permissions/data/MatcherGroup.java
+:100644 100644 120977f... 2b8a516... M	src/main/java/ru/tehkode/permissions/data/Qualifier.java
+:100644 100644 4bd6887... cf4abda... M	src/main/java/ru/tehkode/permissions/query/PermissionQuery.java

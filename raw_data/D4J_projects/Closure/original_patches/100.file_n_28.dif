@@ -1,0 +1,15 @@
+diff --git a/src/com/google/javascript/rhino/jstype/InstanceObjectType.java b/src/com/google/javascript/rhino/jstype/InstanceObjectType.java
+index 256f0147..ba1e47bf 100644
+--- a/src/com/google/javascript/rhino/jstype/InstanceObjectType.java
++++ b/src/com/google/javascript/rhino/jstype/InstanceObjectType.java
+@@ -41,6 +41,10 @@ package com.google.javascript.rhino.jstype;
+ 
+ 
+ import com.google.common.base.Preconditions;
++import com.google.javascript.rhino.ErrorReporter;
++
++import java.util.List;
++import java.util.Set;
+ 
+ /**
+  * An object type that is an instance of some function constructor.

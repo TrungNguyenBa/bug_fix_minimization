@@ -1,0 +1,3 @@
+a82c94d : fix for MAVEN-243 "Unable to deploy Grails 2.3.8 application build with grails-maven 2.4.1 plugin"
+:100644 100644 a615aff... 4b53a0f... M	pom.xml
+:100755 100755 dec50f5... b504db8... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

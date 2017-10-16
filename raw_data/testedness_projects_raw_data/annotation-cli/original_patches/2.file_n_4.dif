@@ -1,0 +1,479 @@
+diff --git a/src/main/java/org/valhalla/cli/Options.java b/src/main/java/org/valhalla/cli/Options.java
+index b5051a8..983d8c6 100644
+--- a/src/main/java/org/valhalla/cli/Options.java
++++ b/src/main/java/org/valhalla/cli/Options.java
+@@ -57,7 +57,6 @@ import org.valhalla.cli.annotations.OptionReference;
+  */
+ public class Options {
+ 	
+-	private static final String FOUR_SPACE_TAB = "    ";
+ 	private static final Logger logger = LoggerFactory.getLogger(Options.class);
+ 
+ 	/**
+@@ -69,7 +68,7 @@ public class Options {
+ 	 * @author Claudio Corsi
+ 	 * 
+ 	 */
+-	private static interface ConvertCommand {
++	public interface ConvertCommand {
+ 		/**
+ 		 * This method will convert the passed string value into the required
+ 		 * type instance.
+@@ -84,158 +83,6 @@ public class Options {
+ 		Object execute(String value) throws Exception;
+ 	}
+ 
+-	private static class StringConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return value;
+-		}
+-
+-	}
+-
+-	private static class IntegerConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return Integer.valueOf(value);
+-		}
+-
+-	}
+-	
+-	private static class LongConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return Long.valueOf(value);
+-		}
+-
+-	}
+-	
+-	private static class DoubleConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return Double.valueOf(value);
+-		}
+-
+-	}
+-	
+-	private static class FloatConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return Float.valueOf(value);
+-		}
+-
+-	}
+-	
+-	private static class ShortConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return Short.valueOf(value);
+-		}
+-
+-	}
+-	
+-	private static class ByteConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return Byte.valueOf(value);
+-		}
+-
+-	}
+-	
+-	private static class AtomicLongConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return new AtomicLong(Long.parseLong(value));
+-		}
+-
+-	}
+-	
+-	private static class AtomicIntegerConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return new AtomicInteger(Integer.parseInt(value));
+-		}
+-
+-	}
+-	
+-	private static class BigIntegerConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return new BigInteger(value);
+-		}
+-
+-	}
+-	
+-	private static class BigDecimalConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return new BigDecimal(value);
+-		}
+-
+-	}
+-
+-	private static class BooleanConvertCommand implements ConvertCommand {
+-
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			return Boolean.valueOf(value);
+-		}
+-
+-	}
+-
+-	private static class ClassConvertCommand implements ConvertCommand {
+-
+-		private Class<?> type;
+-
+-		ClassConvertCommand(Class<?> type) {
+-			this.type = type;
+-		}
+-		
+-		@Override
+-		public Object execute(String value) throws Exception {
+-			// We are assuming that whatever class instance is being
+-			// created it contains a constructor that expects a String
+-			// as a parameter.
+-			Constructor<?> constructor = type
+-					.getConstructor(String.class);
+-			return constructor.newInstance(value);
+-		}
+-
+-	}
+-
+-	private static Map<Class<?>, ConvertCommand> converters = new HashMap<Class<?>, ConvertCommand>();
+-
+-	static {
+-		converters.put(String.class, new StringConvertCommand());
+-		converters.put(Integer.class, new IntegerConvertCommand());
+-		converters.put(Integer.TYPE, converters.get(Integer.class));
+-		converters.put(Long.class, new LongConvertCommand());
+-		converters.put(Long.TYPE, converters.get(Long.class));
+-		converters.put(Double.class, new DoubleConvertCommand());
+-		converters.put(Double.TYPE, converters.get(Double.class));
+-		converters.put(Float.class, new FloatConvertCommand());
+-		converters.put(Float.TYPE, converters.get(Float.class));
+-		converters.put(Short.class, new ShortConvertCommand());
+-		converters.put(Short.TYPE, converters.get(Short.class));
+-		converters.put(Byte.class, new ByteConvertCommand());
+-		converters.put(Byte.TYPE, converters.get(Byte.class));
+-		converters.put(AtomicLong.class, new AtomicLongConvertCommand());
+-		converters.put(AtomicInteger.class, new AtomicIntegerConvertCommand());
+-		converters.put(BigInteger.class, new BigIntegerConvertCommand());
+-		converters.put(BigDecimal.class, new BigDecimalConvertCommand());
+-		converters.put(Boolean.class, new BooleanConvertCommand());
+-		converters.put(Boolean.TYPE, converters.get(Boolean.class));
+-	}
+-	
+ 	private Map<String, OptionProcessor> shortNames = new HashMap<String, OptionProcessor>();
+ 	private Map<String, OptionProcessor> longNames = new HashMap<String, OptionProcessor>();
+ 	private Map<Class<?>, Collection<OptionProcessor>> defaultValues = new HashMap<Class<?>, Collection<OptionProcessor>>();
+@@ -738,7 +585,6 @@ public class Options {
+ 						private Method method;
+ 						private Class<?> clz;
+ 
+-						@Override
+ 						public void execute(Object object, String value)
+ 								throws Exception {
+ 							method.invoke(object);
+@@ -908,11 +754,145 @@ public class Options {
+ 	 * @return A ConvertCommand instance
+ 	 */
+ 	private ConvertCommand convert(Class<?> type) {
+-		ConvertCommand convertCommand = converters.get(type);
+-		if (convertCommand == null) {
+-			convertCommand = new ClassConvertCommand(type);
++		if (type == String.class) {
++			return new ConvertCommand() {
++
++				@Override
++				public Object execute(String value) throws Exception {
++					return value;
++				}
++
++			};
++		} else if (Number.class.isAssignableFrom(type)
++				|| primitiveTypes.contains(type)) {
++			// This is a Number type instance...
++			if (type == Integer.class || type == Integer.TYPE) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return Integer.valueOf(value);
++					}
++
++				};
++			} else if (type == Long.class || type == Long.TYPE) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return Long.valueOf(value);
++					}
++
++				};
++			} else if (type == Double.class || type == Double.TYPE) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return Double.valueOf(value);
++					}
++
++				};
++			} else if (type == Float.class || type == Float.TYPE) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return Float.valueOf(value);
++					}
++
++				};
++			} else if (type == Short.class || type == Short.TYPE) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return Short.valueOf(value);
++					}
++
++				};
++			} else if (type == Byte.class || type == Byte.TYPE) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return Byte.valueOf(value);
++					}
++
++				};
++			} else if (type == AtomicLong.class) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return new AtomicLong(Long.parseLong(value));
++					}
++
++				};
++			} else if (type == AtomicInteger.class) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return new AtomicInteger(Integer.parseInt(value));
++					}
++
++				};
++			} else if (type == BigInteger.class) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return new BigInteger(value);
++					}
++
++				};
++			} else if (type == BigDecimal.class) {
++				return new ConvertCommand() {
++
++					@Override
++					public Object execute(String value) throws Exception {
++						return new BigDecimal(value);
++					}
++
++				};
++			} else {
++				logger.error("Unknown class type {}", type.getName());
++				throw new RuntimeException("Unknown class type "
++						+ type.getName());
++			}
++		} else if (type == Boolean.class || type == Boolean.TYPE) {
++			return new ConvertCommand() {
++
++				@Override
++				public Object execute(String value) throws Exception {
++					return Boolean.valueOf(value);
++				}
++
++			};
++		} else {
++
++			return new ConvertCommand() {
++
++				private Class<?> type;
++
++				@Override
++				public Object execute(String value) throws Exception {
++					// We are assuming that whatever class instance is being
++					// created it contains a constructor that expects a String
++					// as a parameter.
++					Constructor<?> constructor = type
++							.getConstructor(String.class);
++					return constructor.newInstance(value);
++				}
++
++				public ConvertCommand setFields(Class<?> type) {
++					this.type = type;
++					return this;
++				}
++
++			}.setFields(type);
+ 		}
+-		return convertCommand;
+ 	}
+ 
+ 	/**
+@@ -932,10 +912,7 @@ public class Options {
+ 	/**
+ 	 * This method is used to display the usage command with all of the
+ 	 * available options. It will return a string that will contain a printable
+-	 * string with consistent spacing. </p>
+-	 * 
+-	 * This method will assume that the screen will only display 120 characters
+-	 * per line and will format the returning string accordingly.
++	 * string with consistent spacing.
+ 	 * 
+ 	 * @param mainClass
+ 	 *            The main class that a user calls and passed the command line
+@@ -947,59 +924,15 @@ public class Options {
+ 	 */
+ 	public String usage(Class<?> mainClass, String message) {
+ 		String lineSep = System.getProperty("line.separator");
+-		StringBuffer str = new StringBuffer("usage: java ");
+-		int startIndex = str.length();
+-		String className = mainClass.getName();
+-		if ( ( (str.length() - startIndex) + className.length() + message.length() ) <= 120 ) {
+-			str.append(className).append(" ").append(message).append(lineSep);
+-		} else if (((str.length() - startIndex) + className.length()) <= 120) {
+-			str.append(className).append(" ").append(lineSep);
+-			int maxLength = 120 - str.length() + startIndex;
+-			while (message.charAt(--maxLength) != ' ' && maxLength > 0)
+-				;
+-			if (maxLength != 0) {
+-				str.append(message, 0, maxLength);
+-			}
+-			// Add the line separator and continue to process the message string... 
+-			str.append(lineSep);
+-			// It is possible that we are just copying the whole string into the truncatedMessage string which is fine...
+-			String truncatedMessage = message.substring(maxLength);
+-			while (truncatedMessage.length() > 116) {
+-				logger.debug("Message is greater than 116 characters: " + truncatedMessage);
+-				maxLength = 120;
+-				while (truncatedMessage.charAt(--maxLength) != ' '
+-						&& maxLength > 0)
+-					;
+-				// Prepend each string with four spaces...
+-				str.append(FOUR_SPACE_TAB);
+-				if (maxLength != 0) {
+-					str.append(truncatedMessage, 0, maxLength);
+-					truncatedMessage = truncatedMessage.substring(maxLength);
+-				} else {
+-					// What, this single set of characters does not contain a
+-					// space for 120 characters!!!!!
+-					str.append(truncatedMessage);
+-					truncatedMessage = "";
+-				}
+-				// Always include the line separator...
+-				str.append(lineSep);
+-			}
+-			// Check if there is any remaining message information that needs to be displayed...
+-			if ( ! truncatedMessage.isEmpty() ) {
+-				str.append(FOUR_SPACE_TAB).append(truncatedMessage).append(lineSep);
+-			}
+-		} else {
+-			// What am I going to do here!!!!
+-			// For now, just display the extended method name and move on...
+-			str.append(className).append(" ").append(lineSep).append(message).append(lineSep);
+-		}
+-		// Let us process all of the different options and generate a standard output....
++		StringBuffer str = new StringBuffer();
++		str.append("usage: java ").append(mainClass.getName()).append(" ")
++				.append(message).append(lineSep);
+ 		for (Entry<Method, Option> methodOption : this.methodOptions) {
+ 			Option option = methodOption.getValue();
+ 			Method method = methodOption.getKey();
+-			startIndex = str.length();
+-			logger.debug("startIndex=" + startIndex);
++			boolean started = false;
+ 			if (option.shortName() != ' ') {
++				started = true;
+ 				str.append("  ");
+ 				if (!option.propertyValue()) {
+ 					str.append("-").append(option.shortName());
+@@ -1014,10 +947,8 @@ public class Options {
+ 					str.append(option.shortName()).append("=[value]");
+ 				}
+ 			}
+-			logger.debug("After short check str=[[" + str.toString() + "]]");
+ 			if (option.longName().length() > 0) {
+-				// We've already included an option definition and add some spaces instead of a comma...
+-				if (startIndex == str.length()) {
++				if (!started) {
+ 					str.append("  ");
+ 				} else {
+ 					str.append(", ");
+@@ -1032,50 +963,13 @@ public class Options {
+ 					str.append(option.longName()).append("=[value]");
+ 				}
+ 			}
+-			logger.debug("After long check str=[[" + str.toString() + "]]");
+ 			if (option.defaultValue().length() > 0) {
+ 				str.append(", default=").append(option.defaultValue());
+ 			}
+-			logger.debug("After default value check str=[[" + str.toString() + "]]");
+ 			if (option.description().length() > 0) {
+-				String description = option.description();
+-				if (description.length() + (str.length() - startIndex) < 116) {
+-					str.append(FOUR_SPACE_TAB).append(option.description());
+-				} else {
+-					while(description.length() > 0) {
+-						logger.debug("Processing descrition: " + description);
+-						// Setup the current length of the current display string....
+-						int curLen = str.length() - startIndex;
+-						// Determine the last character that can be displayed on the screen
+-						int maxSize = 116 - curLen;
+-						// Find the end of the last space before the max
+-						if( description.length() >= maxSize) {
+-							while(description.charAt(--maxSize) != ' ' && maxSize > 0);
+-							if (maxSize == 0) {
+-								str.append(FOUR_SPACE_TAB).append(description);
+-								description = "";
+-							} else {
+-								str.append(FOUR_SPACE_TAB).append(description.substring(0, maxSize));
+-								int max = description.length();
+-								while(description.charAt(maxSize) == ' ' && ++maxSize < max);
+-								if (maxSize != max) {
+-									// Extract the smaller string and append a line separator...
+-									description = description.substring(maxSize);
+-									str.append(lineSep);
+-									startIndex = str.length();
+-								} else {
+-									description = "";
+-								}
+-							}
+-						} else {
+-							str.append(FOUR_SPACE_TAB).append(description);
+-							description = "";
+-						}
+-					}
+-				}
++				str.append('\t').append(option.description());
+ 			}
+ 			str.append(lineSep);
+-			logger.debug("After description check str=[[" + str.toString() + "]]");
+ 		}
+ 		return str.toString();
+ 	}

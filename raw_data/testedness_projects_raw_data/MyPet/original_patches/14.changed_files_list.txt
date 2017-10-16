@@ -1,0 +1,2 @@
+5f99cbb7 : Prevent players from changing the behavior when the pet is dead fixes #508
+:100644 100644 d1ab52ad... d51635b9... M	src/main/java/de/Keyle/MyPet/commands/CommandBehavior.java

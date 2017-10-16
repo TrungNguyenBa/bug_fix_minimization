@@ -1,0 +1,2 @@
+e15e45b : Spring MVC should server static resources (*.html, ...) located in src/main/webapp instead of returning "404 Not Found"
+:100644 100644 426f123... 170fbdb... M	src/main/resources/spring/mvc-core-config.xml

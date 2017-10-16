@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/request/RequestMethod.java b/src/main/java/com/lonepulse/zombielink/request/RequestMethod.java
+index e1e2f66..e583820 100644
+--- a/src/main/java/com/lonepulse/zombielink/request/RequestMethod.java
++++ b/src/main/java/com/lonepulse/zombielink/request/RequestMethod.java
+@@ -31,8 +31,8 @@ import org.apache.http.client.methods.HttpPut;
+ import org.apache.http.client.methods.HttpRequestBase;
+ import org.apache.http.client.methods.HttpTrace;
+ 
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.annotation.Request;
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.util.Resolver;
+ 
+ /**

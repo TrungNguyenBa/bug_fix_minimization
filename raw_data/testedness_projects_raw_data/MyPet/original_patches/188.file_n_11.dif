@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+index 38bf2d50..c64a0b13 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+@@ -52,7 +52,7 @@ public class EntityMyMooshroom extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.cow.say";
++        return !playIdleSound() ? null : "mob.cow.say";
+     }
+ 
+     public boolean handlePlayerInteraction(EntityHuman entityhuman)

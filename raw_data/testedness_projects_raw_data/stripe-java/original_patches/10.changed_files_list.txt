@@ -1,0 +1,2 @@
+9716001 : Change the type to a long because the API is returning a number larger than an Integer
+:100644 100644 d5adace... 72327ad... M	src/main/java/com/stripe/model/Money.java

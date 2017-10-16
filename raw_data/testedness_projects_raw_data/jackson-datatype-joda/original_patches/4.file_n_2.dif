@@ -1,0 +1,12 @@
+diff --git a/release-notes/CREDITS b/release-notes/CREDITS
+index 4c83e7e..08354a5 100644
+--- a/release-notes/CREDITS
++++ b/release-notes/CREDITS
+@@ -40,7 +40,3 @@ Jerry Yang (islanerman@github)
+   * Contributed #68: TimeZone in DeserializationContext is ignored with
+    `SerializationFeature.WRITE_DATES_WITH_ZONE_ID`
+   (2.6.0)
+-
+-jamesmcmillan@github
+-  * Reported #70: Default DateTime parser format is stricter than
+-   previous versions, causing incompatibility

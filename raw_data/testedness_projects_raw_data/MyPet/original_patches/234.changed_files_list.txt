@@ -1,0 +1,3 @@
+d483eca3 : fixed ranged-damage in info command
+:100644 100644 9c255597... d6d11c77... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
+:100644 100644 352ff9ef... ca958a55... M	src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java

@@ -1,0 +1,82 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 584f2d4..56e4b8a 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -38,10 +38,6 @@ import ru.tehkode.permissions.exceptions.PermissionBackendException;
+ import java.util.*;
+ import java.util.concurrent.ConcurrentHashMap;
+ import java.util.concurrent.ConcurrentMap;
+-import java.util.concurrent.Executors;
+-import java.util.concurrent.ScheduledExecutorService;
+-import java.util.concurrent.ScheduledFuture;
+-import java.util.concurrent.TimeUnit;
+ import java.util.logging.Logger;
+ 
+ /**
+@@ -55,8 +51,7 @@ public class PermissionManager {
+ 	protected Map<String, PermissionGroup> defaultGroups = new ConcurrentHashMap<>();
+ 	protected PermissionBackend backend = null;
+ 	private final PermissionsEx plugin;
+-	protected ScheduledExecutorService executor;
+-	private final Map<String, ScheduledFuture<?>> clearTimedGroupsTasks = new HashMap<>();
++	protected Timer timer;
+ 	protected boolean debugMode = false;
+ 	protected boolean allowOps = false;
+ 	protected boolean userAddGroupsLast = false;
+@@ -96,21 +91,6 @@ public class PermissionManager {
+ 		return plugin;
+ 	}
+ 
+-	void scheduleTimedGroupsCheck(long nextExpiration, final String identifier) {
+-		ScheduledFuture<?> future = clearTimedGroupsTasks.get(identifier);
+-		long newDelay = (nextExpiration - (System.currentTimeMillis() / 1000));
+-
+-		if (future == null || future.isDone() || future.getDelay(TimeUnit.SECONDS) > newDelay) {
+-			clearTimedGroupsTasks.put(identifier, executor.schedule(new Runnable() {
+-				@Override
+-				public void run() {
+-					getUser(identifier).updateTimedGroups();
+-					clearTimedGroupsTasks.remove(identifier);
+-				}
+-			}, newDelay, TimeUnit.SECONDS));
+-		}
+-	}
+-
+ 
+ 	private class RemoteEventListener implements Listener {
+ 		@EventHandler(priority = EventPriority.LOWEST)
+@@ -740,11 +720,11 @@ public class PermissionManager {
+ 	 * @param delay delay in seconds
+ 	 */
+ 	protected void registerTask(TimerTask task, int delay) {
+-		if (executor == null || delay == TRANSIENT_PERMISSION) {
++		if (timer == null || delay == TRANSIENT_PERMISSION) {
+ 			return;
+ 		}
+ 
+-		executor.schedule(task, delay, TimeUnit.SECONDS);
++		timer.schedule(task, delay * 1000);
+ 	}
+ 
+ 	/**
+@@ -769,16 +749,15 @@ public class PermissionManager {
+ 		} catch (PermissionBackendException ignore) {
+ 			// Ignore because we're shutting down so who cares
+ 		}
+-		executor.shutdown();
+-		executor = null;
++		timer.cancel();
+ 	}
+ 
+ 	public void initTimer() {
+-		if (executor != null) {
+-			executor.shutdown();
++		if (timer != null) {
++			timer.cancel();
+ 		}
+ 
+-		executor = Executors.newSingleThreadScheduledExecutor();
++		timer = new Timer("PermissionsEx-Cleaner");
+ 	}
+ 
+ 	protected void clearCache() {

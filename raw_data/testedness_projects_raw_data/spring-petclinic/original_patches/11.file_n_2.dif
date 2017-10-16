@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index 201f6dd..e15e6ab 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -11,7 +11,7 @@
+ 	<properties>
+ 
+ 		<!-- Generic properties -->
+-		<java.version>1.7</java.version>
++		<java.version>1.8</java.version>
+ 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+ 

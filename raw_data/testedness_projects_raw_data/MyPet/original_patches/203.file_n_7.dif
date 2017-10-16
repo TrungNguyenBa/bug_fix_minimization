@@ -1,0 +1,17 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/IMyPetEquipment.java b/src/main/java/de/Keyle/MyPet/entity/types/IMyPetEquipment.java
+index 4ba52690..42e765de 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/IMyPetEquipment.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/IMyPetEquipment.java
+@@ -25,9 +25,9 @@ import net.minecraft.server.v1_6_R2.ItemStack;
+ 
+ public interface IMyPetEquipment
+ {
++    public void setEquipment(EquipmentSlot slot, ItemStack item);
++
+     public ItemStack[] getEquipment();
+ 
+     public ItemStack getEquipment(EquipmentSlot slot);
+-
+-    public void setEquipment(EquipmentSlot slot, ItemStack item);
+ }
+\ No newline at end of file

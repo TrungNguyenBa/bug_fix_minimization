@@ -1,0 +1,6 @@
+76fcbc838 : MATH-395: Another bug uncovered; all things being equal, the code now behaves like the Puthon implementation. MATH-397: Modified "BrentOptimizer" following the changes in "AbstractUnivariateRealOptimizer".
+:100644 100644 883578b64... 0c4eabeda... M	src/main/java/org/apache/commons/math/ConvergingAlgorithmImpl.java
+:100644 100644 d312243bc... c6eeb53d0... M	src/main/java/org/apache/commons/math/optimization/univariate/AbstractUnivariateRealOptimizer.java
+:100644 100644 62f2fcb6a... 46c4afae0... M	src/main/java/org/apache/commons/math/optimization/univariate/BrentOptimizer.java
+:100644 100644 159588d1e... a865bdafb... M	src/test/java/org/apache/commons/math/optimization/MultiStartUnivariateRealOptimizerTest.java
+:100644 100644 9c73d21f0... 176b9ad8b... M	src/test/java/org/apache/commons/math/optimization/univariate/BrentOptimizerTest.java

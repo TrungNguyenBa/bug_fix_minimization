@@ -1,0 +1,5 @@
+3ba9ba79 : Prevent creation of invalid partials via Partial.with(DateTimeFieldType,int)
+:100644 100644 69ff24bc... 64b87dca... M	RELEASE-NOTES.txt
+:100644 100644 aaf0a0fd... 8e8e6034... M	src/main/java/org/joda/time/Partial.java
+:100644 100644 715d2c19... ceaa1500... M	src/test/java/org/joda/time/TestPartial_Basics.java
+:100644 100644 f302fa58... 9a91bfad... M	src/test/java/org/joda/time/TestPartial_Constructors.java

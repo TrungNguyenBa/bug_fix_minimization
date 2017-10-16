@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+index e28f54c..aa44d9a 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+@@ -3,6 +3,7 @@ package ru.tehkode.permissions.backends.sql;
+ import ru.tehkode.permissions.PermissionsGroupData;
+ import ru.tehkode.permissions.PermissionsUserData;
+ 
++import javax.swing.plaf.synth.SynthSplitPaneUI;
+ import java.sql.PreparedStatement;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;

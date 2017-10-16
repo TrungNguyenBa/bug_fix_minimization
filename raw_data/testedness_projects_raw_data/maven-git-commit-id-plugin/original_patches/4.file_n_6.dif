@@ -1,0 +1,14 @@
+diff --git a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/config b/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/config
+deleted file mode 100755
+index a375846..0000000
+--- a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/config
++++ /dev/null
+@@ -1,8 +0,0 @@
+-[core]
+-	repositoryformatversion = 0
+-	filemode = true
+-	bare = false
+-	logallrefupdates = true
+-[user]
+-	name = S L
+-	email = s.lange@mailbox.tu-berlin.de

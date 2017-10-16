@@ -1,0 +1,6 @@
+13d22f456 : MATH-631 Early detection of "Regula Falsi" algorithm being stuck due to finite precision. Javadoc makes it clear that either the Pegasus or the Illinois solver should be preferred over the Regula Falsi one (due to D. Hendriks).
+:100644 100644 c781a9011... 034752553... M	src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+:100644 100644 ede0c2792... 47c340c01... M	src/main/java/org/apache/commons/math/analysis/solvers/IllinoisSolver.java
+:100644 100644 08fb0c7d0... 457c9580d... M	src/main/java/org/apache/commons/math/analysis/solvers/PegasusSolver.java
+:100644 100644 89c50dfd0... 71224a0da... M	src/main/java/org/apache/commons/math/analysis/solvers/RegulaFalsiSolver.java
+:100644 100644 fea0abcc8... db098975f... M	src/test/java/org/apache/commons/math/analysis/solvers/RegulaFalsiSolverTest.java

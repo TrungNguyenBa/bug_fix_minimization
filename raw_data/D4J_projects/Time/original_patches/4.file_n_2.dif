@@ -1,0 +1,15 @@
+diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+index 64b87dca..69ff24bc 100644
+--- a/RELEASE-NOTES.txt
++++ b/RELEASE-NOTES.txt
+@@ -63,10 +63,6 @@ Bug fixes since 2.3
+ - Period.normalizedStandard(PeriodType) [#79]
+   Fix handling of PeriodType when either years or months missing
+ 
+-- Partial.with(DateTimeFieldType,int) [#88]
+-  Validation in this method was not as thorough as that in the constructor
+-  This allowed invalid partials to be created
+-
+ - Better Javadoc for parsing of numbers in format patterns [#60]
+ 
+ - Remove uncaughtException calls [#59]

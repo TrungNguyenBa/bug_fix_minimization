@@ -1,0 +1,3 @@
+be397ee0 : Remove addSingletonGetter stragglers. Fixes issue 668
+:100644 100644 857845bb... 47b8e8a3... M	src/com/google/javascript/jscomp/InlineVariables.java
+:100644 100644 d1ffc4c5... 35bda042... M	test/com/google/javascript/jscomp/IntegrationTest.java

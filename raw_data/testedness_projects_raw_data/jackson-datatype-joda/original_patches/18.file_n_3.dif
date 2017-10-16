@@ -1,0 +1,21 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java b/src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
+index 3d95d5c..84fc6cd 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
+@@ -18,8 +18,6 @@ public class JodaModule extends SimpleModule
+         // first deserializers
+         addDeserializer(DateMidnight.class, new DateMidnightDeserializer());
+         addDeserializer(DateTime.class, DateTimeDeserializer.forType(DateTime.class));
+-        addDeserializer(DateTimeZone.class, new DateTimeZoneDeserializer());
+-                
+         addDeserializer(Duration.class, new DurationDeserializer());
+         addDeserializer(Instant.class, new InstantDeserializer());
+         addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());
+@@ -36,7 +34,6 @@ public class JodaModule extends SimpleModule
+         final JsonSerializer<Object> stringSer = ToStringSerializer.instance;
+         addSerializer(DateMidnight.class, new DateMidnightSerializer());
+         addSerializer(DateTime.class, new DateTimeSerializer());
+-        addSerializer(DateTimeZone.class, new DateTimeZoneSerializer());
+         addSerializer(Duration.class, new DurationSerializer());
+         addSerializer(Instant.class, new InstantSerializer());
+         addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());

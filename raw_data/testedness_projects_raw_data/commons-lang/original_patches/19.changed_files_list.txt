@@ -1,0 +1,2 @@
+fad946a1 : fix ExceptionUtilsTest to compile with java 1.6
+:100644 100644 ec4875bb... 97a2bfc3... M	src/test/java/org/apache/commons/lang3/exception/ExceptionUtilsTest.java

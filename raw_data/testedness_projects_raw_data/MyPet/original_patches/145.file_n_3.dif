@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+index af445730..28178236 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+@@ -25,7 +25,6 @@ import de.Keyle.MyPet.entity.types.EntityMyPet;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.skill.skills.implementation.Behavior;
+ import de.Keyle.MyPet.skill.skills.info.BehaviorInfo.BehaviorState;
+-import de.Keyle.MyPet.util.PvPChecker;
+ import net.minecraft.server.v1_6_R3.EntityLiving;
+ import net.minecraft.server.v1_6_R3.EntityMonster;
+ import net.minecraft.server.v1_6_R3.EntityPlayer;
+@@ -69,9 +68,6 @@ public class BehaviorFarmTarget extends AIGoal {
+             if (!entityMonster.isAlive() || petEntity.e(entityMonster) > 91) {
+                 continue;
+             }
+-            if (!PvPChecker.canHurtCitizens(entityMonster.getBukkitEntity())) {
+-                continue;
+-            }
+             this.target = entityMonster;
+             return true;
+         }

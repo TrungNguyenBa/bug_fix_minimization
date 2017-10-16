@@ -1,0 +1,14 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryOptionSubjectData.java
+index e2e013a..1e723d5 100644
+--- a/src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryOptionSubjectData.java
+@@ -50,9 +50,6 @@ public class MemoryOptionSubjectData implements ImmutableOptionSubjectData {
+     }
+ 
+     protected static <K, V> Map<K, V> updateImmutable(Map<K, V> input, K newKey, V newVal) {
+-        if (input == null) {
+-            return ImmutableMap.of(newKey, newVal);
+-        }
+         Map<K, V> ret = new HashMap<>(input);
+         ret.put(newKey, newVal);
+         return Collections.unmodifiableMap(ret);

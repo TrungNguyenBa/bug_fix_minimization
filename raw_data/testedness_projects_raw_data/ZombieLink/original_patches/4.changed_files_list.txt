@@ -1,0 +1,5 @@
+7f0b151 : Tweak explicit identification of static query and form params (issue #14)
+:100644 100644 051114e... 47bb667... M	src/main/java/com/lonepulse/zombielink/annotation/Param.java
+:100644 100644 1fb2427... 59a53f0... M	src/main/java/com/lonepulse/zombielink/request/FormParamProcessor.java
+:100644 100644 a3828e2... 49629aa... M	src/main/java/com/lonepulse/zombielink/request/QueryParamProcessor.java
+:100644 100644 f7d256f... 9ebc8e4... M	src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpointTest.java

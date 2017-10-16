@@ -1,0 +1,16 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java b/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
+index e97a4a08..afef8f77 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
+@@ -61,9 +61,6 @@ public class EntityMyWither extends EntityMyPet {
+         }
+     }
+ 
+-    /**
+-     * -> disable falldamage
+-     */
+-    public void e(float f, float f1) {
++    protected void b(float f) {
+     }
+ }
+\ No newline at end of file

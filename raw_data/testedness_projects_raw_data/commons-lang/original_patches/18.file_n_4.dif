@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/apache/commons/lang3/StringUtilsEqualsIndexOfTest.java b/src/test/java/org/apache/commons/lang3/StringUtilsEqualsIndexOfTest.java
+index d2b6418b..dc8a513a 100644
+--- a/src/test/java/org/apache/commons/lang3/StringUtilsEqualsIndexOfTest.java
++++ b/src/test/java/org/apache/commons/lang3/StringUtilsEqualsIndexOfTest.java
+@@ -535,7 +535,7 @@ public void testCustomCharSequence() {
+ 
+     @Test
+     public void testEquals() {
+-        final CharSequence fooCs = new StringBuilder(FOO), barCs = new StringBuilder(BAR), foobarCs = new StringBuilder(FOOBAR);
++        final CharSequence fooCs = FOO, barCs = BAR, foobarCs = FOOBAR;
+         assertTrue(StringUtils.equals(null, null));
+         assertTrue(StringUtils.equals(fooCs, fooCs));
+         assertTrue(StringUtils.equals(fooCs, new StringBuilder(FOO)));

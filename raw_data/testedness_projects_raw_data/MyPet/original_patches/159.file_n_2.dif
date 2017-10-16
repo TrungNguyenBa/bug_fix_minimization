@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java b/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
+index e5947256..2a9ed4c2 100644
+--- a/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
++++ b/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
+@@ -165,10 +165,6 @@ public class BukkitUtil
+ 
+     public static String getPlayerLanguage(Player player)
+     {
+-        if (!(player instanceof CraftPlayer))
+-        {
+-            return "en_US";
+-        }
+         EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
+         try
+         {

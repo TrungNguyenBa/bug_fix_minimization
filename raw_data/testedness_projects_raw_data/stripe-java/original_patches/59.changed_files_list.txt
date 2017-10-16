@@ -1,0 +1,2 @@
+494a929 : remove plan from customer, fixes #42
+:100644 100644 c1e93db... 747eaf9... M	src/main/java/com/stripe/model/Customer.java

@@ -1,0 +1,26 @@
+diff --git a/src/main/java/com/stripe/model/DeletedCard.java b/src/main/java/com/stripe/model/DeletedCard.java
+index 78c3b7e..149dcde 100644
+--- a/src/main/java/com/stripe/model/DeletedCard.java
++++ b/src/main/java/com/stripe/model/DeletedCard.java
+@@ -1,4 +1,20 @@
+ package com.stripe.model;
+ 
+-public class DeletedCard extends DeletedExternalAccount {
++
++public class DeletedCard extends StripeObject implements DeletedStripeObject {
++  String id;
++  Boolean deleted;
++
++  public String getId() {
++    return id;
++  }
++  public void setId(String id) {
++    this.id = id;
++  }
++  public Boolean getDeleted() {
++    return deleted;
++  }
++  public void setDeleted(Boolean deleted) {
++    this.deleted = deleted;
++  }
+ }

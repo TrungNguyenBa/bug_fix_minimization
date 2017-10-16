@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 40ae743c..b6f23337 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -764,14 +764,7 @@ public class EntityListener implements Listener
+                 MyPet myPet = ((CraftMyPet) damager).getMyPet();
+ 
+                 // fix influence of other plugins
+-                if (event.getDamager() instanceof Projectile)
+-                {
+-                    event.setDamage(myPet.getRangedDamage());
+-                }
+-                else
+-                {
+-                    event.setDamage(myPet.getDamage());
+-                }
++                event.setDamage(myPet.getDamage());
+ 
+                 if (damagedEntity instanceof Player && event.isCancelled())
+                 {

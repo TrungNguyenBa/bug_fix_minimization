@@ -1,0 +1,4 @@
+3c319db49 : Fixed a wrong detection of rotation axis versus vectors plane in Rotation constructor using two vectors pairs.
+:100644 100644 bfa7f2692... ada0a8fb0... M	src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java
+:100644 100644 d5bc37896... bb053c095... M	src/site/xdoc/changes.xml
+:100644 100644 b8c11c321... fe125ceb3... M	src/test/java/org/apache/commons/math/geometry/euclidean/threed/RotationTest.java

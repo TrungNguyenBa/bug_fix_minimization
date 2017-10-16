@@ -1,0 +1,42 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandPickup.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandPickup.java
+index c0491b4d..e02aa9f0 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandPickup.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandPickup.java
+@@ -24,6 +24,7 @@ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+ import de.Keyle.MyPet.entity.types.MyPetList;
+ import de.Keyle.MyPet.skill.ISkillActive;
++import de.Keyle.MyPet.util.Colorizer;
+ import de.Keyle.MyPet.util.MyPetPermissions;
+ import de.Keyle.MyPet.util.locale.MyPetLocales;
+ import org.bukkit.command.Command;
+@@ -44,17 +45,17 @@ public class CommandPickup implements CommandExecutor
+ 
+                 if (!MyPetPermissions.hasExtended(myPet.getOwner().getPlayer(), "MyPet.user.extended.Pickup"))
+                 {
+-                    sender.sendMessage(MyPetLocales.getString("Message.NotAllowed", owner));
++                    sender.sendMessage(Colorizer.setColors(MyPetLocales.getString("Message.NotAllowed", owner)));
+                     return true;
+                 }
+                 else if (myPet.getStatus() == PetState.Despawned)
+                 {
+-                    sender.sendMessage(MyPetLocales.getString("Message.CallFirst", owner).replace("%petname%", myPet.getPetName()));
++                    sender.sendMessage(Colorizer.setColors(MyPetLocales.getString("Message.CallFirst", owner)).replace("%petname%", myPet.getPetName()));
+                     return true;
+                 }
+                 else if (myPet.getStatus() == PetState.Dead)
+                 {
+-                    sender.sendMessage(MyPetLocales.getString("Message.CallWhenDead", owner).replace("%petname%", myPet.getPetName()).replace("%time%", "" + myPet.getRespawnTime()));
++                    sender.sendMessage(Colorizer.setColors(MyPetLocales.getString("Message.CallWhenDead", owner)).replace("%petname%", myPet.getPetName()).replace("%time%", "" + myPet.getRespawnTime()));
+                     return true;
+                 }
+                 if (myPet.getSkills().hasSkill("Pickup"))
+@@ -64,7 +65,7 @@ public class CommandPickup implements CommandExecutor
+             }
+             else
+             {
+-                sender.sendMessage(MyPetLocales.getString("Message.DontHavePet", owner));
++                sender.sendMessage(Colorizer.setColors(MyPetLocales.getString("Message.DontHavePet", owner)));
+             }
+             return true;
+         }

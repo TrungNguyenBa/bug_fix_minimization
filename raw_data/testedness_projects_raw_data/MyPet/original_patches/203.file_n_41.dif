@@ -1,0 +1,89 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/sheep/MySheep.java b/src/main/java/de/Keyle/MyPet/entity/types/sheep/MySheep.java
+index c1aee4b7..6cb09c4d 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/sheep/MySheep.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/sheep/MySheep.java
+@@ -46,18 +46,46 @@ public class MySheep extends MyPet implements IMyPetBaby
+         super(petOwner);
+     }
+ 
++    public void setColor(DyeColor color)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMySheep) getCraftPet().getHandle()).setColor(color.getDyeData());
++        }
++        this.color = color;
++    }
++
+     public DyeColor getColor()
+     {
+         return color;
+     }
+ 
+-    public void setColor(DyeColor color)
++    public void setSheared(boolean flag)
+     {
+         if (status == PetState.Here)
+         {
+-            ((EntityMySheep) getCraftPet().getHandle()).setColor(color.getDyeData());
++            ((EntityMySheep) getCraftPet().getHandle()).setSheared(flag);
+         }
+-        this.color = color;
++        this.isSheared = flag;
++    }
++
++    public boolean isSheared()
++    {
++        return isSheared;
++    }
++
++    public boolean isBaby()
++    {
++        return isBaby;
++    }
++
++    public void setBaby(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMySheep) getCraftPet().getHandle()).setBaby(flag);
++        }
++        this.isBaby = flag;
+     }
+ 
+     @Override
+@@ -102,34 +130,6 @@ public class MySheep extends MyPet implements IMyPetBaby
+         return MyPetType.Sheep;
+     }
+ 
+-    public boolean isBaby()
+-    {
+-        return isBaby;
+-    }
+-
+-    public void setBaby(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMySheep) getCraftPet().getHandle()).setBaby(flag);
+-        }
+-        this.isBaby = flag;
+-    }
+-
+-    public boolean isSheared()
+-    {
+-        return isSheared;
+-    }
+-
+-    public void setSheared(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMySheep) getCraftPet().getHandle()).setSheared(flag);
+-        }
+-        this.isSheared = flag;
+-    }
+-
+     @Override
+     public String toString()
+     {

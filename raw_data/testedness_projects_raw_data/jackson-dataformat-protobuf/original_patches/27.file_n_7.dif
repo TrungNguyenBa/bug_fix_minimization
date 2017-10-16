@@ -1,0 +1,15 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufWriteContext.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufWriteContext.java
+index 6217595..fba752c 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufWriteContext.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufWriteContext.java
+@@ -77,10 +77,6 @@ public class ProtobufWriteContext
+         return _field;
+     }
+ 
+-    public ProtobufMessage getMessageType() {
+-        return _message;
+-    }
+-    
+     public StringBuilder appendDesc(StringBuilder sb) {
+         if (_parent != null) {
+             sb = _parent.appendDesc(sb);

@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/jscomp/RemoveTryCatch.java b/src/com/google/javascript/jscomp/RemoveTryCatch.java
+index 23ec299a..c4a55229 100644
+--- a/src/com/google/javascript/jscomp/RemoveTryCatch.java
++++ b/src/com/google/javascript/jscomp/RemoveTryCatch.java
+@@ -29,8 +29,6 @@ import java.util.Set;
+  * Removes try catch finally blocks from a parse tree for easier debugging
+  * (these statements impact both debugging in IE and sometimes even in FF).
+  *
+- * This changes the semantics of the code and should not be used in production!
+- *
+  */
+ class RemoveTryCatch implements CompilerPass {
+   private final AbstractCompiler compiler;

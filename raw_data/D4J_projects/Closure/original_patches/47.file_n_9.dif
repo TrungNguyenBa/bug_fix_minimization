@@ -1,0 +1,14 @@
+diff --git a/test/com/google/javascript/jscomp/SourceMapTest.java b/test/com/google/javascript/jscomp/SourceMapTest.java
+index 84f4492d..10fcfd12 100644
+--- a/test/com/google/javascript/jscomp/SourceMapTest.java
++++ b/test/com/google/javascript/jscomp/SourceMapTest.java
+@@ -31,9 +31,6 @@ import java.util.List;
+  */
+ public class SourceMapTest extends SourceMapTestCase {
+ 
+-  public SourceMapTest() {
+-  }
+-
+   private List<SourceMap.LocationMapping> mappings;
+ 
+   public void testPrefixReplacement1() throws IOException {

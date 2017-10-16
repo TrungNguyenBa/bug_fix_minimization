@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java b/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
+index 473acdc..428c285 100644
+--- a/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
++++ b/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
+@@ -69,8 +69,6 @@ public abstract class AbstractClinicServiceTests {
+         Owner owner = this.clinicService.findOwnerById(1);
+         assertThat(owner.getLastName()).startsWith("Franklin");
+         assertThat(owner.getPets().size()).isEqualTo(1);
+-		assertThat(owner.getPets().get(0).getType()).isNotNull();
+-		assertThat(owner.getPets().get(0).getType().getName()).isEqualTo("cat");
+     }
+ 
+     @Test

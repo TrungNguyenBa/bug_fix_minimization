@@ -1,0 +1,4 @@
+a4a45505 : LANG-818 FastDateFormat's "z" pattern does not respect timezone of Calendar instances passed to format()
+:100644 100644 47345b56... d0c5d36f... M	src/changes/changes.xml
+:100644 100644 cc1af9df... c952309a... M	src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java
+:100644 100644 85ac8a98... bcea1a03... M	src/test/java/org/apache/commons/lang3/time/FastDatePrinterTest.java

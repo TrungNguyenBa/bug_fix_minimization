@@ -1,0 +1,10 @@
+8aec1c0 : Fixing tests and made default params for describe config really work
+:100644 100644 46fdf87... 640569c... M	src/main/java/pl/project13/jgit/DescribeCommand.java
+:100644 100644 95dae01... a19fcac... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+:100644 100644 3ea21db... 0290562... M	src/main/java/pl/project13/maven/git/GitDataProvider.java
+:100644 100644 3b09064... 3e9597d... M	src/main/java/pl/project13/maven/git/GitDescribeConfig.java
+:100644 100644 7e80e9c... 891b0d6... M	src/main/java/pl/project13/maven/git/JGitProvider.java
+:100644 100644 c61d035... d78ef07... M	src/main/java/pl/project13/maven/git/NativeGitProvider.java
+:100644 100644 952df5f... 67b313c... M	src/test/java/pl/project13/jgit/DescribeCommandOptionsTest.java
+:100644 100644 4eda20e... 6a6b35b... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+:100644 100644 a267e23... 7f0df7d... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java

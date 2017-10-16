@@ -1,0 +1,12 @@
+diff --git a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+index 1537b93..f1959d3 100644
+--- a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
++++ b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+@@ -234,6 +234,7 @@ public class PermissionsExPlugin implements PermissionService, ImplementationInt
+         logger.debug(lf(_("Disabling %s", PomData.NAME)));
+         if (manager != null) {
+             manager.close();
++            manager = null;
+         }
+     }
+ 

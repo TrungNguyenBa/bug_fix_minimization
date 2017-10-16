@@ -1,0 +1,13 @@
+diff --git a/src/examples/water2.cpp b/src/examples/water2.cpp
+index 8c0b4fb5..e03ab207 100644
+--- a/src/examples/water2.cpp
++++ b/src/examples/water2.cpp
+@@ -90,8 +90,6 @@ int main() {
+ 
+   // print information
+   cout << loop.info() + sys.info() + gmv.info() + iso.info() + test.info();
+-
+-  return test.numFailed();
+ }
+ 
+ /**  @page example_water2 Example: SPC Water (V2)

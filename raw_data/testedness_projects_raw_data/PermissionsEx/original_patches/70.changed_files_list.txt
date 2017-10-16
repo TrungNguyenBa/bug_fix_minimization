@@ -1,0 +1,16 @@
+acde1ea : Really rough implementation of caching
+:100644 100644 49d6bae... 79f2294... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 bb8ffa8... d210967... M	src/main/java/ru/tehkode/permissions/backends/MultiBackend.java
+:100644 100644 dad047c... ef4e3ec... M	src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+:100644 100644 0d5f6b4... 011605f... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryBackend.java
+:100644 100644 8f6ecda... dbfb4d7... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 15b0b89... 4d24652... M	src/main/java/ru/tehkode/permissions/backends/yaml/YamlBackend.java
+:100644 100644 db61ae3... 930cb48... M	src/main/java/ru/tehkode/permissions/data/Context.java
+:100644 100644 dd6512f... b54bccf... M	src/main/java/ru/tehkode/permissions/data/MatcherGroup.java
+:100644 000000 3ef51fd... 0000000... D	src/main/java/ru/tehkode/permissions/data/MutableContext.java
+:100644 100644 2b8a516... 9daf24b... M	src/main/java/ru/tehkode/permissions/data/Qualifier.java
+:000000 100644 0000000... f4c1951... A	src/main/java/ru/tehkode/permissions/data/StaticContext.java
+:100644 100644 8346caf... f5703b0... M	src/main/java/ru/tehkode/permissions/query/GetQuery.java
+:100644 100644 cf4abda... a0c3721... M	src/main/java/ru/tehkode/permissions/query/PermissionQuery.java
+:100644 100644 7d172a6... ccf9341... M	src/main/java/ru/tehkode/permissions/query/SetQuery.java
+:100644 100644 7a5a31b... d7c6de9... M	src/main/resources/sql/default/queries.properties

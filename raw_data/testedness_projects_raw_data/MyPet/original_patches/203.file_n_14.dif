@@ -1,0 +1,88 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+index 4fff2845..4ec9f03c 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+@@ -33,30 +33,24 @@ public class EntityMyBlaze extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return "mob.blaze.death";
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
++            setOnFire(((MyBlaze) myPet).isOnFire());
++        }
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public boolean isOnFire()
+     {
+-        return "mob.blaze.hit";
++        return ((MyBlaze) myPet).isOnFire;
+     }
+ 
+-    /**
+-     * Returns the default sound of the MyPet
+-     */
+-    protected String getLivingSound()
++    public void setOnFire(boolean flag)
+     {
+-        return !playIdleSound() ? null : "mob.blaze.breathe";
++        this.datawatcher.watch(16, (byte) (flag ? 1 : 0));
++        ((MyBlaze) myPet).isOnFire = flag;
+     }
+ 
+     protected void initDatawatcher()
+@@ -65,23 +59,29 @@ public class EntityMyBlaze extends EntityMyPet
+         getDataWatcher().a(16, new Byte((byte) 0)); // burning
+     }
+ 
+-    public boolean isOnFire()
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
+     {
+-        return ((MyBlaze) myPet).isOnFire;
++        return "mob.blaze.hit";
+     }
+ 
+-    public void setOnFire(boolean flag)
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
+-        this.datawatcher.watch(16, (byte) (flag ? 1 : 0));
+-        ((MyBlaze) myPet).isOnFire = flag;
++        return "mob.blaze.death";
+     }
+ 
+-    public void setMyPet(MyPet myPet)
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-            setOnFire(((MyBlaze) myPet).isOnFire());
+-        }
++        return !playIdleSound() ? null : "mob.blaze.breathe";
+     }
+ }
+\ No newline at end of file

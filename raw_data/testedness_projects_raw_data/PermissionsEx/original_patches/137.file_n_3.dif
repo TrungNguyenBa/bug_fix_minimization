@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
+index 8a349db..44e3738 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
+@@ -162,7 +162,7 @@ public class UtilityCommands extends PermissionsCommand {
+ 		try {
+ 			PermissionBackend backend = PermissionBackend.getBackend(args.get("backend"), PermissionsEx.getPermissionManager(), plugin.getConfig(), null);
+ 
+-			File dstFile = new File(plugin.getDataFolder(), args.get("filename"));
++			File dstFile = new File("plugins/PermissionsEx/", args.get("filename"));
+ 
+ 			FileOutputStream outStream = new FileOutputStream(dstFile);
+ 

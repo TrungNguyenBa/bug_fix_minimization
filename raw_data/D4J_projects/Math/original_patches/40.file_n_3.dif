@@ -1,0 +1,14 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index 40adb29cb..d6a1857d3 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,9 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="3.0" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-716">
+-        Fixed bracketing interval balancing in BracketingNthOrderBrentSolver.
+-      </action>
+       <action dev="erans" type="fix" issue="MATH-690">
+         Removed unused or duplicate utility methods from "MathUtils".
+         Math functions with "double" arguments were moved to class "FastMath".

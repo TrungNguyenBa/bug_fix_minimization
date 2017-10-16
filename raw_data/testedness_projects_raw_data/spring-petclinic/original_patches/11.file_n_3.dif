@@ -1,0 +1,20 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/model/Owner.java b/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+index ca7c97e..840a965 100644
+--- a/src/main/java/org/springframework/samples/petclinic/model/Owner.java
++++ b/src/main/java/org/springframework/samples/petclinic/model/Owner.java
+@@ -91,13 +91,13 @@ public class Owner extends Person {
+ 
+     protected Set<Pet> getPetsInternal() {
+         if (this.pets == null) {
+-            this.pets = new HashSet<>();
++            this.pets = new HashSet<Pet>();
+         }
+         return this.pets;
+     }
+ 
+     public List<Pet> getPets() {
+-        List<Pet> sortedPets = new ArrayList<>(getPetsInternal());
++        List<Pet> sortedPets = new ArrayList<Pet>(getPetsInternal());
+         PropertyComparator.sort(sortedPets, new MutableSortDefinition("name", true, true));
+         return Collections.unmodifiableList(sortedPets);
+     }

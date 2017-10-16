@@ -1,0 +1,2 @@
+67dd75b : Also attempt to initialize user name on logout
+:100644 100644 cfb63da... ea293c6... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

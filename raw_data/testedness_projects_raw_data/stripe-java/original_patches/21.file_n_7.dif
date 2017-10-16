@@ -1,0 +1,41 @@
+diff --git a/src/main/java/com/stripe/model/Charge.java b/src/main/java/com/stripe/model/Charge.java
+index 43ee42c..871fd11 100644
+--- a/src/main/java/com/stripe/model/Charge.java
++++ b/src/main/java/com/stripe/model/Charge.java
+@@ -40,7 +40,7 @@ public class Charge extends APIResource implements MetadataStore<Charge> {
+ 	@Deprecated
+ 	String statementDescription;
+ 	ShippingDetails shipping;
+-	ExternalAccount source;
++	PaymentSource source;
+ 
+ 	public static final String FRAUD_DETAILS = "fraud_details";
+ 	FraudDetails fraudDetails;
+@@ -60,11 +60,11 @@ public class Charge extends APIResource implements MetadataStore<Charge> {
+ 	public void setId(String id) {
+ 		this.id = id;
+ 	}
+-
++	
+ 	public String getStatus() {
+ 		return status;
+ 	}
+-
++	
+ 	public Integer getAmount() {
+ 		return amount;
+ 	}
+@@ -270,11 +270,11 @@ public class Charge extends APIResource implements MetadataStore<Charge> {
+ 		this.receiptEmail = receiptEmail;
+ 	}
+ 
+-	public ExternalAccount getSource() {
++	public PaymentSource getSource() {
+ 		return source;
+ 	}
+ 
+-	public void setSource(ExternalAccount source) {
++	public void setSource(PaymentSource source) {
+ 		this.source = source;
+ 	}
+ 

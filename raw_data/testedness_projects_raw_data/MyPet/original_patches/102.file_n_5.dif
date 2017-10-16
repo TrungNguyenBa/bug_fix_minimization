@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java b/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
+index a38afae3..15afbaba 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
+@@ -51,7 +51,7 @@ public class MyPig extends MyPet implements IMyPetBaby {
+     public TagCompound getExtendedInfo() {
+         TagCompound info = super.getExtendedInfo();
+         if (hasSaddle()) {
+-            info.getCompoundData().put("Saddle", ItemStackNBTConverter.itemStackToCompund(CraftItemStack.asNMSCopy(getSaddle())));
++            info.getCompoundData().put("Saddle", ItemStackNBTConverter.ItemStackToCompund(CraftItemStack.asNMSCopy(getSaddle())));
+         }
+         info.getCompoundData().put("Baby", new TagByte(isBaby()));
+         return info;
+@@ -67,7 +67,7 @@ public class MyPig extends MyPet implements IMyPetBaby {
+             }
+         } else if (info.containsKeyAs("Saddle", TagCompound.class)) {
+             TagCompound itemTag = info.get("Saddle");
+-            ItemStack item = CraftItemStack.asBukkitCopy(ItemStackNBTConverter.compundToItemStack(itemTag));
++            ItemStack item = CraftItemStack.asBukkitCopy(ItemStackNBTConverter.CompundToItemStack(itemTag));
+             setSaddle(item);
+         }
+         if (info.getCompoundData().containsKey("Baby")) {

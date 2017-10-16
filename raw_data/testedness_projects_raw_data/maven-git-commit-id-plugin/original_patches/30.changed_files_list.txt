@@ -1,0 +1,3 @@
+ca10920 : Write git.json file with UTF-8 encoding.
+:100644 100644 0830596... 882330f... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+:100644 100644 5efce47... a19e16a... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java

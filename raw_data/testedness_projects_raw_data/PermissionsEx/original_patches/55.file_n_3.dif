@@ -1,0 +1,20 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissionList.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissionList.java
+index f218509..838c35d 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissionList.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissionList.java
+@@ -1,7 +1,6 @@
+ package ru.tehkode.permissions.bukkit.regexperms;
+ 
+ import com.google.common.collect.HashMultimap;
+-import com.google.common.collect.ImmutableSet;
+ import com.google.common.collect.Multimap;
+ import com.google.common.collect.Multimaps;
+ import org.bukkit.permissions.Permission;
+@@ -126,6 +125,6 @@ public class PermissionList extends HashMap<String, Permission> {
+ 	}
+ 
+ 	public Collection<Map.Entry<String, Boolean>> getParents(String permission) {
+-		return ImmutableSet.copyOf(childParentMapping.get(permission.toLowerCase()));
++		return childParentMapping.get(permission.toLowerCase());
+ 	}
+ }

@@ -1,0 +1,4 @@
+9272a517 : fixed formatting and usa messages from language file
+:100644 100644 44b71d1b... 1333a914... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandCaptureHelper.java
+:100644 100644 8f496cfe... 63442c49... M	src/main/java/de/Keyle/MyPet/util/MyPetCaptureHelper.java
+:100644 100644 b19d491f... 5bfcf346... M	src/main/java/de/Keyle/MyPet/util/MyPetLanguage.java

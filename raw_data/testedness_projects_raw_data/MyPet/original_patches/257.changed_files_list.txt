@@ -1,0 +1,2 @@
+3c823450 : fixed bug where server kicks player with invalid BeaconData because the player selected only one buff
+:100644 100644 9382025b... 5455b727... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java

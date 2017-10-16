@@ -1,0 +1,3 @@
+c92b586 : Fixed issue 49
+:100644 100644 bde188e... 8fbbab4... M	src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
+:100644 100644 8bb85e7... 3744616... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateMidnightSerializer.java

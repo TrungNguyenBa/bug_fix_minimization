@@ -1,0 +1,163 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+index 0b731b8e..b9121b54 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+@@ -36,30 +36,58 @@ public class EntityMyPig extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return "mob.pig.death";
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
++
++            this.setSaddle(((MyPig) myPet).hasSaddle());
++            this.setBaby(((MyPig) myPet).isBaby());
++        }
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public boolean hasSaddle()
+     {
+-        return "mob.pig.say";
++        return ((MyPig) myPet).hasSaddle;
+     }
+ 
+-    /**
+-     * Returns the default sound of the MyPet
+-     */
+-    protected String getLivingSound()
++    public void setSaddle(boolean flag)
+     {
+-        return !playIdleSound() ? null : "mob.pig.say";
++        if (flag)
++        {
++            this.datawatcher.watch(16, (byte) 1);
++        }
++        else
++        {
++            this.datawatcher.watch(16, (byte) 0);
++        }
++        ((MyPig) myPet).hasSaddle = flag;
++    }
++
++    public boolean isBaby()
++    {
++        return ((MyPig) myPet).isBaby;
++    }
++
++    public void setBaby(boolean flag)
++    {
++        if (flag)
++        {
++            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
++        }
++        else
++        {
++            this.datawatcher.watch(12, new Integer(0));
++        }
++        ((MyPig) myPet).isBaby = flag;
++    }
++
++    protected void initDatawatcher()
++    {
++        super.initDatawatcher();
++        this.datawatcher.a(12, new Integer(0));     // age
++        this.datawatcher.a(16, new Byte((byte) 0)); // saddle
+     }
+ 
+     /**
+@@ -124,62 +152,34 @@ public class EntityMyPig extends EntityMyPet
+         return false;
+     }
+ 
+-    public boolean hasSaddle()
+-    {
+-        return ((MyPig) myPet).hasSaddle;
+-    }
+-
+-    protected void initDatawatcher()
+-    {
+-        super.initDatawatcher();
+-        this.datawatcher.a(12, new Integer(0));     // age
+-        this.datawatcher.a(16, new Byte((byte) 0)); // saddle
+-    }
+-
+-    public boolean isBaby()
+-    {
+-        return ((MyPig) myPet).isBaby;
+-    }
+-
+-    public void setBaby(boolean flag)
+-    {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(12, new Integer(0));
+-        }
+-        ((MyPig) myPet).isBaby = flag;
+-    }
+-
+     public void playStepSound()
+     {
+         makeSound("mob.pig.step", 0.15F, 1.0F);
+     }
+ 
+-    public void setMyPet(MyPet myPet)
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
+     {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
++        return "mob.pig.say";
++    }
+ 
+-            this.setSaddle(((MyPig) myPet).hasSaddle());
+-            this.setBaby(((MyPig) myPet).isBaby());
+-        }
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
++    {
++        return "mob.pig.death";
+     }
+ 
+-    public void setSaddle(boolean flag)
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(16, (byte) 1);
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(16, (byte) 0);
+-        }
+-        ((MyPig) myPet).hasSaddle = flag;
++        return !playIdleSound() ? null : "mob.pig.say";
+     }
+ }
+\ No newline at end of file

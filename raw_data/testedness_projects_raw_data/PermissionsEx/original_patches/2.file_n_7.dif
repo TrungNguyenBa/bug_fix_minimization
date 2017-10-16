@@ -1,0 +1,13 @@
+diff --git a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionsExPlugin.java b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionsExPlugin.java
+index 4ddc9ac..8604a1d 100644
+--- a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionsExPlugin.java
++++ b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionsExPlugin.java
+@@ -200,7 +200,7 @@ public class PermissionsExPlugin extends JavaPlugin implements Listener {
+     public void onPlayerJoin(final PlayerJoinEvent event) {
+         final String identifier = event.getPlayer().getUniqueId().toString();
+         if (getUserSubjects().isRegistered(identifier)) {
+-            getUserSubjects().update(identifier, new Function<ImmutableSubjectData, ImmutableSubjectData>() {
++            getUserSubjects().doUpdate(identifier, new Function<ImmutableSubjectData, ImmutableSubjectData>() {
+                 @Nullable
+                 @Override
+                 public ImmutableSubjectData apply(@Nullable ImmutableSubjectData input) {

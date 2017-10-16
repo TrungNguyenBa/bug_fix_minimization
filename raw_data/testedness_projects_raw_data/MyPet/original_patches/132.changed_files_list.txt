@@ -1,0 +1,3 @@
+bbe7b58d : fixed incompatibility to Echopet because caused by the /petadmin command
+:100644 100644 4000376f... 4e36ced8... M	src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+:100644 100644 211a689c... b8551609... M	src/main/resources/plugin.yml

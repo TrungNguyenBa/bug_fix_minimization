@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/allogy/coffeecan/statements/StatementObject.java b/src/main/java/com/allogy/coffeecan/statements/StatementObject.java
+index d31d9be..77217af 100644
+--- a/src/main/java/com/allogy/coffeecan/statements/StatementObject.java
++++ b/src/main/java/com/allogy/coffeecan/statements/StatementObject.java
+@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
+         visible = true,
+         defaultImpl = Activity.class)
+ @JsonSubTypes({
+-        @JsonSubTypes.Type(value = Activity.class, name = Activity.OBJECT_TYPE),
++        @JsonSubTypes.Type(value = Activity.class, name = Activity.ObjectType),
+ })
+ public abstract class StatementObject
+ {

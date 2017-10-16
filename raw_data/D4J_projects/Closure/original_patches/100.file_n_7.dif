@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/jscomp/AbstractCommandLineRunner.java b/src/com/google/javascript/jscomp/AbstractCommandLineRunner.java
+index 4e0d0d8b..dd9a87df 100644
+--- a/src/com/google/javascript/jscomp/AbstractCommandLineRunner.java
++++ b/src/com/google/javascript/jscomp/AbstractCommandLineRunner.java
+@@ -750,6 +750,8 @@ abstract class AbstractCommandLineRunner<A extends Compiler,
+    * exists.
+    *
+    * @param options The options to the Compiler.
++   * @param path The path of the generated file for which the source map was
++   *        created.
+    */
+   private void outputSourceMap(B options)
+       throws IOException {

@@ -1,0 +1,25 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/api/protocol/Encoder.java b/src/main/java/org/tiernolan/nervous/network/api/protocol/Encoder.java
+deleted file mode 100644
+index 9a2ed57..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/api/protocol/Encoder.java
++++ /dev/null
+@@ -1,19 +0,0 @@
+-package org.tiernolan.nervous.network.api.protocol;
+-
+-import java.nio.ByteBuffer;
+-
+-import org.tiernolan.nervous.network.api.connection.Connection;
+-
+-public interface Encoder<T extends Packet> extends ProtocolComponent {
+-	
+-	/**
+-	 * Encodes a packet to a header and body
+-	 * 
+-	 * @param connection the connection
+-	 * @param packet the packet
+-	 * @param header a ByteBuffer for the header
+-	 * @param body a ByteBuffer for the body
+-	 */
+-	public void encode(Connection connection, T packet, ByteBuffer header, ByteBuffer body);
+-	
+-}

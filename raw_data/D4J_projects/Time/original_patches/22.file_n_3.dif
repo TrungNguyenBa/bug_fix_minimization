@@ -1,0 +1,13 @@
+diff --git a/JodaTime/src/main/java/org/joda/time/MutablePeriod.java b/JodaTime/src/main/java/org/joda/time/MutablePeriod.java
+index 78db7917..4e40d551 100644
+--- a/JodaTime/src/main/java/org/joda/time/MutablePeriod.java
++++ b/JodaTime/src/main/java/org/joda/time/MutablePeriod.java
+@@ -177,7 +177,7 @@ public class MutablePeriod
+      * @param duration  the duration, in milliseconds
+      */
+     public MutablePeriod(long duration) {
+-        super(duration);
++        super(duration, null, null);
+     }
+ 
+     /**

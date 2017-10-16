@@ -1,0 +1,5 @@
+1dfad504 : In simple mode, do not remove unreferenced function arguments. Fixes issue 253
+:100644 100644 a0520d2c... 4c84735a... M	src/com/google/javascript/jscomp/RemoveUnusedVars.java
+:100644 100644 03437250... 3b729294... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java
+:100644 100644 5a86db17... 47604bc8... M	test/com/google/javascript/jscomp/IntegrationTest.java
+:100644 100644 aa922570... 02d13de2... M	test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java

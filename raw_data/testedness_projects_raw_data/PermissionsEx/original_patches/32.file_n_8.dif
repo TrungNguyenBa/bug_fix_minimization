@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+index 026d1a6..d21e9e4 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+@@ -212,8 +212,4 @@ public class PEXOptionSubjectData implements OptionSubjectData, Caching {
+     public ImmutableOptionSubjectData getCurrent() {
+         return this.data;
+     }
+-
+-    public void addListener(Caching caching) {
+-        cache.addListener(this.identifier, caching);
+-    }
+ }

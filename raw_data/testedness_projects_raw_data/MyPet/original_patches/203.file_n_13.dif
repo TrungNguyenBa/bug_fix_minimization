@@ -1,0 +1,46 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java b/src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java
+index f8bb19e1..5a4e2d44 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java
+@@ -123,6 +123,20 @@ public class MyBat extends MyPet
+         }
+     }
+ 
++    public void setHanging(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyBat) getCraftPet().getHandle()).setHanging(flag);
++        }
++        this.hanging = flag;
++    }
++
++    public boolean ishanging()
++    {
++        return hanging;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -146,20 +160,6 @@ public class MyBat extends MyPet
+         return MyPetType.Bat;
+     }
+ 
+-    public boolean ishanging()
+-    {
+-        return hanging;
+-    }
+-
+-    public void setHanging(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyBat) getCraftPet().getHandle()).setHanging(flag);
+-        }
+-        this.hanging = flag;
+-    }
+-
+     @Override
+     public String toString()
+     {

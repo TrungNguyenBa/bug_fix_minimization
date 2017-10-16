@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java b/src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
+index f1cf5939..6c4cbf65 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
+@@ -93,7 +93,7 @@ public class EntityMyCow extends EntityMyPet
+ 
+         ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-        if (getOwner().equals(entityhuman) && itemStack != null)
++        if (entityhuman == getOwner() && itemStack != null)
+         {
+             if (itemStack.id == Item.BUCKET.id)
+             {
+@@ -106,7 +106,7 @@ public class EntityMyCow extends EntityMyPet
+                 }
+             }
+         }
+-        else if (getOwner().equals(entityhuman) && itemStack != null)
++        else if (entityhuman == getOwner() && itemStack != null)
+         {
+             if (itemStack.id == GROW_UP_ITEM.getId())
+             {

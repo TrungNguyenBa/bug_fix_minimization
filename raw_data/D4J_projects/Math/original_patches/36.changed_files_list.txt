@@ -1,0 +1,4 @@
+1a15d5f4c : MATH-744 Fixed "doubleValue()" and "floatValue()" when numerator and denominator are larger than the range of the corresponding primitive type.
+:100644 100644 e93d76d46... a6672e426... M	src/main/java/org/apache/commons/math/fraction/BigFraction.java
+:100644 100644 51d89fd4e... e7005bbf8... M	src/site/xdoc/changes.xml
+:100644 100644 42051ca8a... f2fbe0d2a... M	src/test/java/org/apache/commons/math/fraction/BigFractionTest.java

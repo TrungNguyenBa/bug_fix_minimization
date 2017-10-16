@@ -1,0 +1,7 @@
+5b3e2f84 : fix equipment of pets not showing all the time
+:100644 100644 7a4cd4bf... 2997c471... M	pom.xml
+:100644 100644 6edaafb4... be32ffa7... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 8e6cc582... 21a4de63... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 d54ad31e... 2b5fb48e... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+:100644 100644 ca432f76... 2cfdfa94... M	src/main/java/de/Keyle/MyPet/util/MyPetVersion.java
+:100644 100644 523d25d2... da8c976b... M	src/main/java/de/Keyle/MyPet/util/Util.java

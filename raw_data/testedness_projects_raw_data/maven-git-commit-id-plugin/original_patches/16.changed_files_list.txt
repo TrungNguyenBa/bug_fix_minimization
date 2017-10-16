@@ -1,0 +1,2 @@
+9677d3d : As discussed in https://github.com/ktoso/maven-git-commit-id-plugin/pull/150 a fix for the travis tests
+:100644 100644 3894305... 8271955... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java

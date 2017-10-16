@@ -1,0 +1,26 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+index b708f8fc..c37181e4 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+@@ -116,17 +116,10 @@ public class EntityMyBat extends EntityMyPet
+ 
+     public void l_()
+     {
+-        try
++        super.l_();
++        if (!world.getMaterial((int) locX, (int) locY, (int) locZ).isLiquid() && !world.getMaterial((int) locX, (int) (locY + 1.), (int) locZ).isSolid())
+         {
+-            super.l_();
+-            if (!world.getMaterial((int) locX, (int) locY, (int) locZ).isLiquid() && !world.getMaterial((int) locX, (int) (locY + 1.), (int) locZ).isSolid())
+-            {
+-                this.locY += 0.65;
+-            }
+-        }
+-        catch (Exception e)
+-        {
+-            e.printStackTrace();
++            this.locY += 0.65;
+         }
+     }
+ }
+\ No newline at end of file

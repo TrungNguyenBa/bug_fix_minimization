@@ -1,0 +1,24 @@
+diff --git a/pom.xml b/pom.xml
+index d7a5aba..2c2335d 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -25,7 +25,7 @@
+ 
+     <properties>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-        <java.version>1.5</java.version>
++        <java.version>1.6</java.version>
+     </properties>
+ 
+     <licenses>
+@@ -74,8 +74,8 @@
+                 <artifactId>maven-compiler-plugin</artifactId>
+                 <version>2.0.2</version>
+                 <configuration>
+-                    <source>1.5</source>
+-                    <target>1.5</target>
++                    <source>1.6</source>
++                    <target>1.6</target>
+                 </configuration>
+             </plugin>
+             <plugin>

@@ -1,0 +1,17 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/Zips.java b/src/main/java/org/zeroturnaround/zip/Zips.java
+index f8888e3..f24882a 100644
+--- a/src/main/java/org/zeroturnaround/zip/Zips.java
++++ b/src/main/java/org/zeroturnaround/zip/Zips.java
+@@ -361,11 +361,11 @@ public class Zips {
+       }
+       try {
+         processAllEntries(zipEntryAdapter);
++        handleInPlaceActions(destinationFile);
+       }
+       finally {
+         IOUtils.closeQuietly(out);
+       }
+-      handleInPlaceActions(destinationFile);
+     }
+     catch (IOException e) {
+       ZipExceptionUtil.rethrow(e);

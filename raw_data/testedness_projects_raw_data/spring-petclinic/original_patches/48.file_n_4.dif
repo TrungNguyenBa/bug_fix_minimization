@@ -1,0 +1,13 @@
+diff --git a/src/main/resources/spring/tools-config.xml b/src/main/resources/spring/tools-config.xml
+index 1be7e3b..e64c189 100644
+--- a/src/main/resources/spring/tools-config.xml
++++ b/src/main/resources/spring/tools-config.xml
+@@ -42,7 +42,7 @@
+     </bean>
+ 
+     <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+-        <property name="configLocation" value="classpath:cache/ehcache.xml"/>
++        <property name="configLocation" value="classpath:ehcache.xml"/>
+     </bean>
+ 
+ 

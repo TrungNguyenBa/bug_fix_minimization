@@ -1,0 +1,13 @@
+diff --git a/src/main/java/pl/project13/maven/git/GitDataProvider.java b/src/main/java/pl/project13/maven/git/GitDataProvider.java
+index 3ea21db..eef6bd8 100644
+--- a/src/main/java/pl/project13/maven/git/GitDataProvider.java
++++ b/src/main/java/pl/project13/maven/git/GitDataProvider.java
+@@ -67,7 +67,7 @@ public abstract class GitDataProvider {
+       // git.commit.id.abbrev      
+       put(properties, GitCommitIdMojo.COMMIT_ID_ABBREV, getAbbrevCommitId());
+       // git.files.dirty
+-      put(properties, GitCommitIdMojo.FILES_DIRTY, Boolean.toString(isDirty()));
++      put(properties, GitCommitIdMojo.FILES_DIRTY, isDirty()? "true" : "false");
+       // git.commit.author.name
+       put(properties, GitCommitIdMojo.COMMIT_AUTHOR_NAME, getCommitAuthorName());
+       // git.commit.author.email

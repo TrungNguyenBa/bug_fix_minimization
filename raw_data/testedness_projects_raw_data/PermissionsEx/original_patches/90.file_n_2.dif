@@ -1,0 +1,34 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionUser.java b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+index fb8bb08..9cc8015 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionUser.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+@@ -64,20 +64,6 @@ public class PermissionUser extends PermissionEntity {
+ 	}
+ 
+ 	@Override
+-	public String getName() {
+-		String name = getOwnOption("name", null, null);
+-		if (name == null) {
+-			Player player = getPlayer();
+-			if (player != null) {
+-				name = player.getName();
+-				setOption("name", name);
+-				return name;
+-			}
+-		}
+-		return super.getName();
+-	}
+-
+-	@Override
+ 	public Type getType() {
+ 		return Type.USER;
+ 	}
+@@ -474,7 +460,7 @@ public class PermissionUser extends PermissionEntity {
+ 			promoterRank = promoter.getRank(ladderName);
+ 
+ 			if (promoterRank >= rank) {
+-				throw new RankingException("Promoter don't have high enough rank to change " + this.getIdentifier() + "/" + getName() + "'s rank", this, promoter);
++				throw new RankingException("Promoter don't have high enough rank to change " + this.getIdentifier() + "'s rank", this, promoter);
+ 			}
+ 		}
+ 

@@ -1,0 +1,2 @@
+ea2ae8d : Include data for any backend in error report
+:100644 100644 99a9263... d7c5a4f... M	src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java

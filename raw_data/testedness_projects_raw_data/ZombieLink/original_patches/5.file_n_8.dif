@@ -1,0 +1,21 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java b/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+index 4ac2d28..b876cdf 100644
+--- a/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
++++ b/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+@@ -45,14 +45,14 @@ public enum RequestExecutors implements RequestExecutor {
+ 	 * 
+ 	 * @since 1.1.0
+ 	 */
+-	BASIC(new BasicRequestExecutor(new BasicExecutionHandler())),
++	BASIC(new BasicRequestExecutor()),
+ 	
+ 	/**
+ 	 * See {@link AsyncRequestExecutor}.
+ 	 * 
+ 	 * @since 1.1.0
+ 	 */
+-	ASYNC(new AsyncRequestExecutor(new AsyncExecutionHandler()));
++	ASYNC(new AsyncRequestExecutor());
+ 	
+ 	
+ 	/**

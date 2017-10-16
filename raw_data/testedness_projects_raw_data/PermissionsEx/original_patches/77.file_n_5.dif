@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLWriter.java b/src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLWriter.java
+index 7bae5f7..f0e1c2e 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLWriter.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLWriter.java
+@@ -135,7 +135,6 @@ public class PEXMLWriter implements Closeable {
+ 	}
+ 
+ 	public void close() throws IOException {
+-		flush();
+ 		writer.close();
+ 	}
+ 

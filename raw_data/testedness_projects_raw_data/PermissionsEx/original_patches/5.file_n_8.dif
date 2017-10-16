@@ -1,0 +1,24 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/ConversionUtils.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/ConversionUtils.java
+index c2e3288..ea507cc 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/ConversionUtils.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/ConversionUtils.java
+@@ -16,7 +16,7 @@
+  */
+ package ninja.leaping.permissionsex.backend;
+ 
+-import ninja.leaping.permissionsex.data.ImmutableSubjectData;
++import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ 
+ import java.util.List;
+ import java.util.Map;
+@@ -41,8 +41,8 @@ public class ConversionUtils {
+     }
+ 
+     @SuppressWarnings("unchecked")
+-    public static <T extends ImmutableSubjectData> T transfer(ImmutableSubjectData old, T newData) {
+-        ImmutableSubjectData tempRet = newData;
++    public static <T extends ImmutableOptionSubjectData> T transfer(ImmutableOptionSubjectData old, T newData) {
++        ImmutableOptionSubjectData tempRet = newData;
+         for (Map.Entry<Set<Map.Entry<String, String>>, Map<String, Integer>> ent : old.getAllPermissions().entrySet()) {
+             tempRet = tempRet.setPermissions(ent.getKey(), ent.getValue());
+         }

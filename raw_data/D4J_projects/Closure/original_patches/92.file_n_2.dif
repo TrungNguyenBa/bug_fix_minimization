@@ -1,0 +1,13 @@
+diff --git a/build.xml b/build.xml
+index 7a31609c..adec5c33 100644
+--- a/build.xml
++++ b/build.xml
+@@ -163,7 +163,7 @@
+         <pathelement location="${build.dir}/test" />
+       </classpath>
+       <formatter type="plain" usefile="false" />
+-      <batchtest haltonfailure="true">
++      <batchtest>
+         <fileset dir="${build.dir}/test">
+           <include name="**/*Test.class" />
+         </fileset>

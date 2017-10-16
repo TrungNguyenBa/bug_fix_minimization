@@ -1,0 +1,2 @@
+ae934ac : Replace deprecated Objects' method firstNonNull.
+:100644 100644 838068b... 9778217... M	src/main/java/pl/project13/maven/git/JGitProvider.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+index 5844a09b..3119909f 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+@@ -56,7 +56,7 @@ public class EntityMyChicken extends EntityMyPet
+ 
+     public boolean isBaby()
+     {
+-        return ((MyChicken) myPet).isBaby;
++        return this.datawatcher.getInt(12) < 0;
+     }
+ 
+     @SuppressWarnings("boxing")

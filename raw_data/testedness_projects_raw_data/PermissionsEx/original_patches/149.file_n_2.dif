@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
+index f74ed8d..d9164c5 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
+@@ -183,7 +183,7 @@ public class PermissiblePEX extends PermissibleBase {
+ 					}
+ 			}
+ 			cache.put(permission, res);
+-			if (res == PermissionCheckResult.UNDEFINED && plugin.isDebug()) {
++			if (res == PermissionCheckResult.UNDEFINED) {
+ 				plugin.getLogger().info("User " + player.getName() + " checked for permission '" + permission + "', no match found (CACHE MISS)");
+ 			}
+ 			LAST_CALL_ERRORED.set(false);

@@ -1,0 +1,14 @@
+diff --git a/src/examples/water2.cpp b/src/examples/water2.cpp
+index 9a28a1eb..732dcdda 100644
+--- a/src/examples/water2.cpp
++++ b/src/examples/water2.cpp
+@@ -65,7 +65,8 @@ int main() {
+       // sample oxygen-oxygen rdf
+       if (slp_global()>0.9) {
+         auto id = atom["OW"].id;
+-        rdf.sample(spc,id,id);
++        //rdf.sample(spc,id,id);
++        rdf.sampleMolecule(spc,water,"sol");
+       }
+ 
+     } // end of micro loop

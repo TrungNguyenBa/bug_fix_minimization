@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/executor/HttpClientDirectory.java b/src/main/java/com/lonepulse/zombielink/executor/HttpClientDirectory.java
+index 4d5932a..66220df 100644
+--- a/src/main/java/com/lonepulse/zombielink/executor/HttpClientDirectory.java
++++ b/src/main/java/com/lonepulse/zombielink/executor/HttpClientDirectory.java
+@@ -38,7 +38,7 @@ import com.lonepulse.zombielink.util.Directory;
+  * <br><br>
+  * @author <a href="mailto:sahan@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
+-enum HttpClientDirectory implements Directory<Class<?>, HttpClient> {
++public enum HttpClientDirectory implements Directory<Class<?>, HttpClient> {
+ 	
+ 	/**
+ 	 * <p>The instance of {@link HttpClientDirectory} which caches {@link HttpClient}s that are uniquely configured 

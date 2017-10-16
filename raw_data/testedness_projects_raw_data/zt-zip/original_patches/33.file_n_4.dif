@@ -1,0 +1,8 @@
+diff --git a/src/test/resources/testDirectory/testSubdirectory/testFileInTestSubdirectory.txt b/src/test/resources/testDirectory/testSubdirectory/testFileInTestSubdirectory.txt
+deleted file mode 100644
+index 086e92c..0000000
+--- a/src/test/resources/testDirectory/testSubdirectory/testFileInTestSubdirectory.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-badaboom
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index 1cb1bbd8..abcdc5ce 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -99,7 +99,7 @@ public class MyPetEntityListener implements Listener
+     @EventHandler
+     public void onEntityDamageByLightning(final EntityDamageByEntityEvent event)
+     {
+-        if (event.getCause() == DamageCause.LIGHTNING && event.getDamager() instanceof LightningStrike)
++        if (event.getCause() == DamageCause.LIGHTNING)
+         {
+             LightningStrike bolt = (LightningStrike) event.getDamager();
+             if (Lightning.isSkillLightning(bolt))

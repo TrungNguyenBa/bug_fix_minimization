@@ -1,0 +1,3 @@
+43c5bb5b : added temporary fix for old colorcodes
+:100644 100644 cfd1e27b... e582341e... M	src/main/java/de/Keyle/MyPet/util/Colorizer.java
+:100644 100644 6d50e5ef... 4634fbb7... M	src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java

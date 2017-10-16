@@ -1,0 +1,15 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationService.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationService.java
+index f0b1c62..6bb5ab6 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationService.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationService.java
+@@ -28,8 +28,8 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
+ import org.apache.http.impl.client.DefaultHttpClient;
+ import org.apache.http.impl.conn.PoolingClientConnectionManager;
+ 
+-import com.lonepulse.zombielink.proxy.Zombie;
+-import com.lonepulse.zombielink.proxy.Zombie.Configuration;
++import com.lonepulse.zombielink.inject.Zombie;
++import com.lonepulse.zombielink.inject.Zombie.Configuration;
+ 
+ /**
+  * <p>This is a concrete implementation of {@link ConfigurationManager} which manages request execution 

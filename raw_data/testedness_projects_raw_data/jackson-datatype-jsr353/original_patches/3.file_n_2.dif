@@ -1,0 +1,9 @@
+diff --git a/.gitignore b/.gitignore
+index c3bde80..84914ec 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -19,4 +19,3 @@ target
+ *.iml
+ *.ipr
+ *.iws
+-.idea

@@ -1,0 +1,23 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java b/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+index 8112529..4b0c353 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+@@ -26,18 +26,4 @@ public class FileConfig extends YamlConfiguration {
+ 	public void save() throws IOException {
+ 		this.save(file);
+ 	}
+-
+-	@Override
+-	public void loadFromString(String contents) throws InvalidConfigurationException {
+-		synchronized (this) {
+-			super.loadFromString(contents);
+-		}
+-	}
+-
+-	@Override
+-	public String saveToString() {
+-		synchronized (this) {
+-			return super.saveToString();
+-		}
+-	}
+ }

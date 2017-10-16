@@ -1,0 +1,2 @@
+e8e8705 : Fix a problem, now passes simple Point decoding
+:100644 100644 f0c6b32... 7738e60... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java

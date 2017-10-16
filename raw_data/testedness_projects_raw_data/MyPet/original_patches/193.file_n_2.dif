@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+index 3614caf6..3eabd83c 100644
+--- a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
++++ b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+@@ -221,11 +221,10 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler
+             }
+         }
+ 
+-        String[] petTypes = new String[MyPetType.values().length + 1];
+-        petTypes[0] = "default";
+-        for (int i = 1 ; i <= MyPetType.values().length ; i++)
++        String[] petTypes = new String[MyPetType.values().length];
++        for (int i = 0 ; i < MyPetType.values().length ; i++)
+         {
+-            petTypes[i] = MyPetType.values()[i - 1].getTypeName();
++            petTypes[i] = MyPetType.values()[i].getTypeName();
+         }
+ 
+         SkillTreeMobType.clearMobTypes();

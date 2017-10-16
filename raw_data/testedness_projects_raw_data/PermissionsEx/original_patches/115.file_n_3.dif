@@ -1,0 +1,16 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionsData.java b/src/main/java/ru/tehkode/permissions/PermissionsData.java
+index 62a7dff..baac14f 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionsData.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionsData.java
+@@ -6,11 +6,6 @@ import java.util.Set;
+ 
+ public interface PermissionsData {
+ 	/**
+-	 * Preload data from entity
+-	 */
+-	public void load();
+-
+-	/**
+ 	 * Returns the current identifier of the user
+ 	 * @return
+ 	 */

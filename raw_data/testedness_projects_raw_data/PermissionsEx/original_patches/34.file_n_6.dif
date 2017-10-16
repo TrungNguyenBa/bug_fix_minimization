@@ -1,0 +1,97 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+index 3ec75c3..db99747 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+@@ -46,17 +46,6 @@ public class PEXOptionSubjectData implements OptionSubjectData, Caching {
+ 		clearCache(cache.getData(identifier, this));
+ 	}
+ 
+-	private boolean updateIfChanged(ImmutableOptionSubjectData old, ImmutableOptionSubjectData newData) {
+-		if (newData == null) {
+-			return false; // Change unsuccessful
+-		} else if (old == newData) {
+-			return false; // Nothing to do?
+-		}
+-
+-		cache.update(identifier, newData);
+-		return true;
+-	}
+-
+ 	@Override
+ 	public void clearCache(ImmutableOptionSubjectData newData) {
+ 		this.data = newData;
+@@ -74,17 +63,20 @@ public class PEXOptionSubjectData implements OptionSubjectData, Caching {
+ 
+ 	@Override
+ 	public boolean setOption(Set<Context> contexts, String key, String value) {
+-		return updateIfChanged(data, data.setOption(contexts, key, value));
++		this.cache.update(identifier, data.setOption(contexts, key, value));
++		return true;
+ 	}
+ 
+ 	@Override
+ 	public boolean clearOptions(Set<Context> contexts) {
+-		return updateIfChanged(data, data.clearOptions(contexts));
++		this.cache.update(identifier, data.clearOptions(contexts));
++		return false;
+ 	}
+ 
+ 	@Override
+ 	public boolean clearOptions() {
+-		return updateIfChanged(data, data.clearOptions());
++		this.cache.update(identifier, data.clearOptions());
++		return false;
+ 	}
+ 
+ 	@Override
+@@ -132,17 +124,20 @@ public class PEXOptionSubjectData implements OptionSubjectData, Caching {
+ 				throw new IllegalStateException("Unknown tristate provided " + tristate);
+ 		}
+ 
+-		return updateIfChanged(data, data.setPermission(set, s, val));
++		this.cache.update(identifier, data.setPermission(set, s, val));
++		return false;
+ 	}
+ 
+ 	@Override
+ 	public boolean clearPermissions() {
+-		return updateIfChanged(data, data.clearPermissions());
++		this.cache.update(identifier, data.clearPermissions());
++		return false;
+ 	}
+ 
+ 	@Override
+ 	public boolean clearPermissions(Set<Context> set) {
+-		return updateIfChanged(data, data.clearPermissions(set));
++		this.cache.update(identifier, data.clearPermissions(set));
++		return false;
+ 	}
+ 
+ 	@Override
+@@ -157,22 +152,22 @@ public class PEXOptionSubjectData implements OptionSubjectData, Caching {
+ 
+ 	@Override
+ 	public boolean addParent(Set<Context> set, Subject subject) {
+-		return updateIfChanged(data, data.addParent(set, subject));
++		return false;
+ 	}
+ 
+ 	@Override
+ 	public boolean removeParent(Set<Context> set, Subject subject) {
+-		return updateIfChanged(data, data.removeParent(set, subject));
++		return false;
+ 	}
+ 
+ 	@Override
+ 	public boolean clearParents() {
+-		return updateIfChanged(data, data.clearParents());
++		return false;
+ 	}
+ 
+ 	@Override
+ 	public boolean clearParents(Set<Context> set) {
+-		return updateIfChanged(data, data.clearParents(set));
++		return false;
+ 	}
+ 
+ 	public ImmutableOptionSubjectData getCurrent() {

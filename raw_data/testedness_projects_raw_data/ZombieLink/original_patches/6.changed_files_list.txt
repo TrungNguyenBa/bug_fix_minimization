@@ -1,0 +1,57 @@
+6d000df : Refactor design for proxy generation and invocation; restrict knowledge of validations
+:100644 100644 d81991c... 0a629d1... R061	src/main/java/com/lonepulse/zombielink/validator/ValidationFailedException.java	src/main/java/com/lonepulse/zombielink/ValidationFailedException.java
+:000000 100644 0000000... 0b8409b... A	src/main/java/com/lonepulse/zombielink/Validator.java
+:100644 100644 48ca336... 9a5170e... M	src/main/java/com/lonepulse/zombielink/executor/AsyncRequestExecutor.java
+:100644 100644 099fc48... 622d95b... M	src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java
+:100644 100644 55f4535... f3aac11... M	src/main/java/com/lonepulse/zombielink/executor/RequestExecutor.java
+:100644 100644 e781a89... b876cdf... M	src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+:100644 000000 ba066a3... 0000000... D	src/main/java/com/lonepulse/zombielink/inject/EndpointDirectory.java
+:100644 100644 7350940... 44cb796... M	src/main/java/com/lonepulse/zombielink/inject/EndpointProxyFactory.java
+:100644 100644 31c4bf3... ea02f3c... R063	src/main/java/com/lonepulse/zombielink/validator/EndpointValidationFailedException.java	src/main/java/com/lonepulse/zombielink/inject/EndpointValidationFailedException.java
+:000000 100644 0000000... 64fab77... A	src/main/java/com/lonepulse/zombielink/inject/Invocation.java
+:000000 100644 0000000... 3e642f7... A	src/main/java/com/lonepulse/zombielink/inject/InvocationContext.java
+:100644 100644 989f473... c8b05e5... R056	src/main/java/com/lonepulse/zombielink/validator/MissingEndpointAnnotationException.java	src/main/java/com/lonepulse/zombielink/inject/MissingEndpointAnnotationException.java
+:100644 100644 e55225f... 37f615d... R069	src/main/java/com/lonepulse/zombielink/validator/MissingEndpointHostException.java	src/main/java/com/lonepulse/zombielink/inject/MissingEndpointHostException.java
+:000000 100644 0000000... 6c03c55... A	src/main/java/com/lonepulse/zombielink/inject/ProxyInvocation.java
+:100644 000000 8dda1bc... 0000000... D	src/main/java/com/lonepulse/zombielink/inject/ProxyInvocationConfiguration.java
+:000000 100644 0000000... 9aa389b... A	src/main/java/com/lonepulse/zombielink/inject/StrayEndpointRequestException.java
+:000000 100644 0000000... 469ad19... A	src/main/java/com/lonepulse/zombielink/inject/Validators.java
+:100644 100644 c807379... 1e4dda3... M	src/main/java/com/lonepulse/zombielink/inject/Zombie.java
+:100644 100644 0c8089f... 95c46c9... M	src/main/java/com/lonepulse/zombielink/request/AbstractRequestProcessor.java
+:100644 100644 a98789c... 3caaacd... M	src/main/java/com/lonepulse/zombielink/request/EntityProcessor.java
+:100644 100644 a4c79a8... 3d0de6d... M	src/main/java/com/lonepulse/zombielink/request/FormParamProcessor.java
+:100644 100644 c4205da... 21c09fe... M	src/main/java/com/lonepulse/zombielink/request/HeaderProcessor.java
+:100644 100644 c88cd69... 927968c... M	src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java
+:100644 100644 89a62f9... 8c2f5bb... M	src/main/java/com/lonepulse/zombielink/request/MultipleEntityException.java
+:100644 100644 3e80c89... 5552b5d... M	src/main/java/com/lonepulse/zombielink/request/PathParamProcessor.java
+:100644 100644 1a3adef... 64b9622... M	src/main/java/com/lonepulse/zombielink/request/QueryParamProcessor.java
+:100644 100644 e1e2f66... d2bc216... M	src/main/java/com/lonepulse/zombielink/request/RequestMethod.java
+:100644 100644 ecde956... 276fed8... M	src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java
+:100644 100644 ab6dd32... 00c4447... M	src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java
+:100644 100644 01de6a5... 6ed5ff0... M	src/main/java/com/lonepulse/zombielink/request/RequestTranslator.java
+:100644 100644 50c785e... 05b7ed3... M	src/main/java/com/lonepulse/zombielink/request/RequestUtils.java
+:100644 100644 4eecbdd... 17fe94e... M	src/main/java/com/lonepulse/zombielink/request/UriProcessor.java
+:100644 100644 f2b5013... 16367d8... M	src/main/java/com/lonepulse/zombielink/response/AbstractResponseParser.java
+:100644 100644 1a46c23... a9a9cc8... M	src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java
+:100644 100644 fbf653b... 7e506f3... M	src/main/java/com/lonepulse/zombielink/response/EntityProcessor.java
+:100644 100644 ec2b375... 0daf810... M	src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
+:100644 100644 bf108d9... b9b463e... M	src/main/java/com/lonepulse/zombielink/response/JsonResponseParser.java
+:100644 100644 b11bc6b... 415c2f0... M	src/main/java/com/lonepulse/zombielink/response/RawResponseParser.java
+:100644 100644 bf272c0... 695dcd7... M	src/main/java/com/lonepulse/zombielink/response/ResponseParser.java
+:100644 100644 941818a... 5a217f2... M	src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java
+:100644 100644 d8d57bd... f0ac94e... M	src/main/java/com/lonepulse/zombielink/response/ResponseProcessorException.java
+:100644 100644 1d93fee... 6e8c7f2... M	src/main/java/com/lonepulse/zombielink/response/ResponseUtils.java
+:100644 100644 eb26a2b... 35334c9... M	src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java
+:000000 100644 0000000... fb1e978... A	src/main/java/com/lonepulse/zombielink/util/Assert.java
+:100644 000000 c28861b... 0000000... D	src/main/java/com/lonepulse/zombielink/validator/EndpointValidator.java
+:100644 000000 2005db1... 0000000... D	src/main/java/com/lonepulse/zombielink/validator/MissingRequestAnnotationException.java
+:100644 000000 16d3346... 0000000... D	src/main/java/com/lonepulse/zombielink/validator/RequestValidationFailedException.java
+:100644 000000 5663f35... 0000000... D	src/main/java/com/lonepulse/zombielink/validator/RequestValidator.java
+:100644 000000 91d1a03... 0000000... D	src/main/java/com/lonepulse/zombielink/validator/Validator.java
+:100644 000000 285b505... 0000000... D	src/main/java/com/lonepulse/zombielink/validator/Validators.java
+:100644 000000 49a3bb3... 0000000... D	src/main/java/com/lonepulse/zombielink/validator/package-info.java
+:100644 100644 bb93a31... 97e1307... M	src/test/java/com/lonepulse/zombielink/inject/EndpointValidationTest.java
+:100644 100644 098dc7d... 0c991db... M	src/test/java/com/lonepulse/zombielink/inject/ProcessorInvocationTest.java
+:100644 100644 c5ba9b5... b6ab362... M	src/test/java/com/lonepulse/zombielink/inject/RequestValidationTest.java
+:100644 100644 129cc03... 98dc11e... M	src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
+:100644 100644 3344c46... 34cf1ac... M	src/test/java/com/lonepulse/zombielink/processor/AsyncEndpointTest.java

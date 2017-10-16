@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandSendAway.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandSendAway.java
+index 84cda4d7..4ffac2ab 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandSendAway.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandSendAway.java
+@@ -47,7 +47,7 @@ public class CommandSendAway implements CommandExecutor
+                 MyPet myPet = MyPetList.getMyPet(petOwner);
+                 if (myPet.getStatus() == PetState.Here)
+                 {
+-                    myPet.removePet(false);
++                    myPet.removePet();
+                     sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.SendAway", petOwner)).replace("%petname%", myPet.getPetName()));
+                     if (MyPetConfiguration.ENABLE_EVENTS)
+                     {

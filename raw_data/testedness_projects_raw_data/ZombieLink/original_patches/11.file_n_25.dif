@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java b/src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java
+index ab6dd32..2615a74 100644
+--- a/src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java
++++ b/src/main/java/com/lonepulse/zombielink/request/RequestTranslationException.java
+@@ -22,8 +22,8 @@ package com.lonepulse.zombielink.request;
+ 
+ import org.apache.http.HttpRequest;
+ 
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.ZombieLinkRuntimeException;
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This runtime exception is thrown due to an unrecoverable error which occurred when 

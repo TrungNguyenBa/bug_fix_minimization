@@ -1,0 +1,2 @@
+e54fa14 : Unbreak group inheritance. Fixes #959
+:100644 100644 9885246... 88d0b2f... M	src/main/java/ru/tehkode/permissions/PermissionGroup.java

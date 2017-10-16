@@ -1,0 +1,105 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+index 7894c393..1b5a7b38 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+@@ -38,30 +38,14 @@ public class EntityMyMagmaCube extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
+-    {
+-        return "mob.magmacube." + (getSize() > 1 ? "big" : "small");
+-    }
+-
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return getDeathSound();
+-    }
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
+ 
+-    /**
+-     * Returns the default sound of the MyPet
+-     */
+-    protected String getLivingSound()
+-    {
+-        return null;
++            setSize(((MyMagmaCube) myPet).getSize());
++        }
+     }
+ 
+     public int getSize()
+@@ -85,6 +69,12 @@ public class EntityMyMagmaCube extends EntityMyPet
+         ((MyMagmaCube) myPet).size = value;
+     }
+ 
++    public void setPathfinder()
++    {
++        super.setPathfinder();
++        petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 2 + getSize(), 20));
++    }
++
+     protected void initDatawatcher()
+     {
+         super.initDatawatcher();
+@@ -92,6 +82,24 @@ public class EntityMyMagmaCube extends EntityMyPet
+     }
+ 
+     /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
++    {
++        return getDeathSound();
++    }
++
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
++    {
++        return "mob.magmacube." + (getSize() > 1 ? "big" : "small");
++    }
++
++    /**
+      * Method is called when pet moves
+      * Is used to create the hopping motion
+      */
+@@ -108,19 +116,11 @@ public class EntityMyMagmaCube extends EntityMyPet
+         }
+     }
+ 
+-    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-
+-            setSize(((MyMagmaCube) myPet).getSize());
+-        }
+-    }
+-
+-    public void setPathfinder()
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        super.setPathfinder();
+-        petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 2 + getSize(), 20));
++        return null;
+     }
+ }
+\ No newline at end of file

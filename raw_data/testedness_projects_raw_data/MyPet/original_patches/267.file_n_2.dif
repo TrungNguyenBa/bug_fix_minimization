@@ -1,0 +1,33 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index 4225ed6d..0446f20e 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -550,7 +550,7 @@ public abstract class MyPet implements IMyPet
+ 
+     public static boolean hasLeashFlag(Class<? extends MyPet> myPetClass, LeashFlag flag)
+     {
+-        if (leashFlags.containsKey(myPetClass))
++        if(leashFlags.containsKey(myPetClass))
+         {
+             return leashFlags.get(myPetClass).contains(flag);
+         }
+@@ -635,19 +635,6 @@ public abstract class MyPet implements IMyPet
+         customRespawnTimeFixed.put(myPetClass, factor);
+     }
+ 
+-    public static void resetOptions()
+-    {
+-        customRespawnTimeFactor.clear();
+-        customRespawnTimeFixed.clear();
+-        leashFlags.clear();
+-        food.clear();
+-        startSpeed.clear();
+-        for (MyPetType petType : MyPetType.values())
+-        {
+-            startHP.put(petType.getMyPetClass(), 20);
+-        }
+-    }
+-
+     @Override
+     public String toString()
+     {

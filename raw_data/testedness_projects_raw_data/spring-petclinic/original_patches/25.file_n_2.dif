@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java b/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
+index 61ed545..5088c7d 100644
+--- a/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
++++ b/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
+@@ -148,7 +148,7 @@ public abstract class AbstractClinicServiceTests {
+ 
+ 	@Test
+ 	@Transactional
+-	public void shouldUpdatePetName() throws Exception {
++	public void sholdUpdatePetName() throws Exception {
+ 	    Pet pet7 = this.clinicService.findPetById(7);
+ 	    String oldName = pet7.getName();
+ 	    

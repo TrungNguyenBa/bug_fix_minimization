@@ -1,0 +1,23 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java b/src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java
+index bc39f46..873e9b7 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java
+@@ -22,6 +22,7 @@ import org.spongepowered.api.util.command.CommandCallable;
+ import org.spongepowered.api.util.command.CommandException;
+ import org.spongepowered.api.util.command.CommandSource;
+ 
++import java.util.Collections;
+ import java.util.List;
+ 
+ /**
+@@ -69,6 +70,9 @@ public class PEXSpongeCommand implements CommandCallable {
+ 
+     @Override
+     public List<String> getSuggestions(CommandSource commandSource, String commandLine) throws CommandException {
+-        return command.tabComplete(new SpongeCommander(plugin, commandSource), commandLine);
++        System.out.println("Requesting tab completions for " + command.getAliases() + " " + commandLine);
++        List<String> ret = command.tabComplete(new SpongeCommander(plugin, commandSource), commandLine);
++        System.out.println("Final tab completions were: " + ret);
++        return ret;
+     }
+ }

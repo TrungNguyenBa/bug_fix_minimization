@@ -1,0 +1,13 @@
+diff --git a/src/examples/stockmayer.cpp b/src/examples/stockmayer.cpp
+index 9b0532e6..1b1202e1 100644
+--- a/src/examples/stockmayer.cpp
++++ b/src/examples/stockmayer.cpp
+@@ -29,7 +29,7 @@ int main() {
+   trans.setGroup(sol);                                // tells move class to act on sol group
+   rot.setGroup(sol);                                  // tells move class to act on sol group
+   spc.load("state");
+-  spc.trial = spc.p;
++  spc.p = spc.trial;
+   UnitTest test(in);               // class for unit testing
+   Analysis::DipoleAnalysis dian(spc);
+   DipoleWRL sdp;

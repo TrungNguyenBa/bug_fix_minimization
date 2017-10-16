@@ -1,0 +1,5 @@
+a4ef8bae : external() energy function now takes particle vector as argument
+:100644 100644 ea3210e8... d49edd61... M	include/faunus/energy.h
+:100644 100644 f8be7e8d... 03d1fd86... M	include/faunus/move.h
+:100644 100644 56df108d... b7be3059... M	include/faunus/mpi.h
+:100644 100644 408d8089... 0b235ed7... M	include/faunus/scatter.h

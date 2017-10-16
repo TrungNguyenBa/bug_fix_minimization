@@ -1,0 +1,6 @@
+b35e191 : Fix #24
+:100644 100644 4cfce8d... be25265... M	release-notes/VERSION
+:100644 100644 3d95d5c... 70c341f... M	src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
+:100644 100644 bc70a9a... f61d510... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DurationSerializer.java
+:000000 100644 0000000... f778db0... A	src/main/java/com/fasterxml/jackson/datatype/joda/ser/PeriodSerializer.java
+:100644 100644 8a7617a... e980f0b... M	src/test/java/com/fasterxml/jackson/datatype/joda/JodaSerializationTest.java

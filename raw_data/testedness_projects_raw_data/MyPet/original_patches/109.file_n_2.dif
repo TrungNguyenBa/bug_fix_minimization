@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
+index d6ef2350..a79bcdb3 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
+@@ -54,7 +54,7 @@ public class Inventory extends InventoryInfo implements ISkillInstance, ISkillSt
+     }
+ 
+     public MyPet getMyPet() {
+-        return myPet;
++        return null;
+     }
+ 
+     public void upgrade(ISkillInfo upgrade, boolean quiet) {

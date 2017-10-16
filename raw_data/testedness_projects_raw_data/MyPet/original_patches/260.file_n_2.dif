@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index b181ab0b..5342e4df 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -297,7 +297,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster
+         {
+             if (this.hasRider())
+             {
+-                ((CraftPlayer) owner).getHandle().setPassengerOf(null);
++                ((CraftPlayer) owner).getHandle().mount(null);
+                 return true;
+             }
+             if (myPet.getSkills().isSkillActive("Ride"))
+@@ -306,7 +306,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster
+                 {
+                     if (MyPetPermissions.hasExtended(owner, "MyPet.user.extended.Ride"))
+                     {
+-                        ((CraftPlayer) owner).getHandle().setPassengerOf(this);
++                        ((CraftPlayer) owner).getHandle().mount(this);
+                         return true;
+                     }
+                     else

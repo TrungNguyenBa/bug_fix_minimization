@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+index a4c90f1..95f8f2a 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+@@ -132,6 +132,7 @@ public class PEXOptionSubjectData implements OptionSubjectData, Caching {
+ 
+     @Override
+     public Map<Set<Context>, Map<String, Boolean>> getAllPermissions() {
++
+         return Maps.transformValues(tKeys(data.getAllPermissions()), new Function<Map<String, Integer>, Map<String, Boolean>>() {
+             @Nullable
+             @Override

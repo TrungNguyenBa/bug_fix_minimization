@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+index 1913a68f..1460ab12 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+@@ -157,7 +157,7 @@ public class MyPetPlayer implements IScheduler, NBTStorage
+         }
+         if (myPetUUID == null)
+         {
+-            petWorldUUID.remove(worldGroup);
++            petUUIDWorld.remove(myPetUUID);
+         }
+         else
+         {

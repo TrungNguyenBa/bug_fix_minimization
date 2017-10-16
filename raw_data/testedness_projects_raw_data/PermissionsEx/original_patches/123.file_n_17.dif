@@ -1,0 +1,87 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+index 2844305..5c893c3 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+@@ -83,7 +83,7 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 					if (!world.isEmpty()) {
+ 						List<String> worldPermissions = this.worldsPermissions.get(world);
+ 						if (worldPermissions == null) {
+-							worldPermissions = new LinkedList<>();
++							worldPermissions = new LinkedList<String>();
+ 							this.worldsPermissions.put(world, worldPermissions);
+ 						}
+ 
+@@ -95,7 +95,7 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 					if (!world.isEmpty()) {
+ 						Map<String, String> worldOptions = this.worldsOptions.get(world);
+ 						if (worldOptions == null) {
+-							worldOptions = new HashMap<>();
++							worldOptions = new HashMap<String, String>();
+ 							worldsOptions.put(world, worldOptions);
+ 						}
+ 
+@@ -168,7 +168,7 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public List<String> getPermissions(String worldName) {
+-		List<String> permissions = new LinkedList<>();
++		List<String> permissions = new LinkedList<String>();
+ 
+ 		if (commonPermissions == null) {
+ 			this.fetchPermissions();
+@@ -222,7 +222,7 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public Map<String, List<String>> getPermissionsMap() {
+-		Map<String, List<String>> allPermissions = new HashMap<>();
++		Map<String, List<String>> allPermissions = new HashMap<String, List<String>>();
+ 
+ 		if (this.commonPermissions == null) {
+ 			this.fetchPermissions();
+@@ -239,7 +239,7 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public Set<String> getWorlds() {
+-		Set<String> worlds = new HashSet<>();
++		Set<String> worlds = new HashSet<String>();
+ 
+ 		worlds.addAll(worldsOptions.keySet());
+ 		worlds.addAll(worldsPermissions.keySet());
+@@ -352,17 +352,8 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 			this.save();
+ 		}
+ 
+-		if (worldName.isEmpty()) {
+-			commonOptions.put(option, value);
+-		} else {
+-			Map<String, Map<String, String>> worldsOptions = this.worldsOptions;
+-			Map<String, String> options = worldsOptions.get(worldName);
+-			if (options == null) {
+-				options = new HashMap<>();
+-				worldsOptions.put(worldName, options);
+-			}
+-			options.put(option, value);
+-		}
++		// Refetch options
++		this.fetchPermissions();
+ 	}
+ 
+ 	@Override
+@@ -374,7 +365,7 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public Map<String, Map<String, String>> getOptionsMap() {
+-		Map<String, Map<String, String>> allOptions = new HashMap<>();
++		Map<String, Map<String, String>> allOptions = new HashMap<String, Map<String, String>>();
+ 
+ 		if (this.commonOptions == null) {
+ 			this.fetchPermissions();
+@@ -489,7 +480,7 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 	}
+ 
+ 	public static Set<String> getEntitiesNames(SQLConnection sql, Type type, boolean defaultOnly) throws SQLException {
+-		Set<String> entities = new HashSet<>();
++		Set<String> entities = new HashSet<String>();
+ 
+ 		ResultSet result = sql.prepAndBind("SELECT name FROM `{permissions_entity}` WHERE `type` = ? " + (defaultOnly ? " AND `default` = 1" : ""), type.ordinal()).executeQuery();
+ 

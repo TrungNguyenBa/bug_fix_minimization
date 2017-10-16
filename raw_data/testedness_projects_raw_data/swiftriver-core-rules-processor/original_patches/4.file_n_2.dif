@@ -1,0 +1,34 @@
+diff --git a/src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java b/src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java
+index 659244f..86ba924 100644
+--- a/src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java
++++ b/src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java
+@@ -48,7 +48,7 @@ import com.ushahidi.swiftriver.core.model.Rule;
+  */
+ public class DropFilterQueueConsumer implements ChannelAwareMessageListener, ErrorHandler {
+ 	
+-	private ObjectMapper objectMapper;
++	private ObjectMapper mapper = new ObjectMapper();
+ 	
+ 	private RulesRegistry rulesRegistry;
+ 
+@@ -72,17 +72,14 @@ public class DropFilterQueueConsumer implements ChannelAwareMessageListener, Err
+ 
+ 	public void setAmqpTemplate(AmqpTemplate amqpTemplate) {
+ 		this.amqpTemplate = amqpTemplate;
+-	}
+-
+-	public void setObjectMapper(ObjectMapper mapper) {
+-		this.objectMapper = mapper;
++		
+ 	}
+ 
+ 	public synchronized void onMessage(Message message, Channel channel) 
+-			throws JsonGenerationException, JsonMappingException, IOException {
++			throws Exception, JsonGenerationException, JsonMappingException, IOException {
+ 		
+ 		// Serialize the message into a Drop POJO
+-		RawDrop drop = objectMapper.readValue(new String(message.getBody()), RawDrop.class);
++		RawDrop drop = mapper.readValue(new String(message.getBody()), RawDrop.class);
+ 
+ 		ConcurrentMap<Long, Map<Long, Rule>> rulesMap = rulesRegistry.getRulesMap();
+ 

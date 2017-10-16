@@ -1,0 +1,3 @@
+13308a4 : Tweak disabling so that permissions are available until the last moment
+:100644 100644 f1959d3... 1537b93... M	permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+:100644 100644 41259c6... 2ac0045... M	permissionsex-sponge/src/main/po/keys.pot

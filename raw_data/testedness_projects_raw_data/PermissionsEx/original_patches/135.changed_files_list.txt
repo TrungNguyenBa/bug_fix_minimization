@@ -1,0 +1,7 @@
+94d17b4 : Use only names for autocompletion and add # prefix to use exact name
+:100644 100644 c4db3ad... 524cd38... M	src/main/java/ru/tehkode/permissions/PermissionBackend.java
+:100644 100644 930213c... 1800595... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 9783e45... 848992d... M	src/main/java/ru/tehkode/permissions/backends/FileBackend.java
+:100644 100644 a802f34... 0c69182... M	src/main/java/ru/tehkode/permissions/backends/SQLBackend.java
+:100644 100644 73f1e46... c45221d... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLEntity.java
+:100644 100644 d20856d... 674b0d6... M	src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java

@@ -1,0 +1,220 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index 9bfb3188..9d38f35b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -31,7 +31,7 @@ import de.Keyle.MyPet.skill.skills.implementation.HP;
+ import de.Keyle.MyPet.skill.skills.implementation.ISkillInstance;
+ import de.Keyle.MyPet.skill.skills.implementation.Ranged;
+ import de.Keyle.MyPet.util.*;
+-import de.Keyle.MyPet.util.locale.Locales;
++import de.Keyle.MyPet.util.locale.MyPetLocales;
+ import de.Keyle.MyPet.util.support.*;
+ import org.bukkit.ChatColor;
+ import org.bukkit.Location;
+@@ -73,9 +73,9 @@ public abstract class MyPet implements IMyPet, NBTStorage
+     protected String worldGroup = "";
+     protected PetState status = PetState.Despawned;
+     protected boolean wantToRespawn = false;
+-    protected SkillTree skillTree = null;
+-    protected Skills skills;
+-    protected Experience experience;
++    protected MyPetSkillTree skillTree = null;
++    protected MyPetSkills skills;
++    protected MyPetExperience experience;
+ 
+     public static enum LeashFlag
+     {
+@@ -107,22 +107,22 @@ public abstract class MyPet implements IMyPet, NBTStorage
+     public MyPet(MyPetPlayer Owner)
+     {
+         this.petOwner = Owner;
+-        skills = new Skills(this);
+-        experience = new Experience(this);
+-        hungerTime = Configuration.HUNGER_SYSTEM_TIME;
++        skills = new MyPetSkills(this);
++        experience = new MyPetExperience(this);
++        hungerTime = MyPetConfiguration.HUNGER_SYSTEM_TIME;
+         autoAssignSkilltree();
+-        petName = Locales.getString("Name." + getPetType().getTypeName(), petOwner.getLanguage());
++        petName = MyPetLocales.getString("Name." + getPetType().getTypeName(), petOwner.getLanguage());
+     }
+ 
+     public boolean autoAssignSkilltree()
+     {
+-        if (Configuration.AUTOMATIC_SKILLTREE_ASSIGNMENT && skillTree == null && this.petOwner.isOnline())
++        if (MyPetConfiguration.AUTOMATIC_SKILLTREE_ASSIGNMENT && skillTree == null && this.petOwner.isOnline())
+         {
+-            if (SkillTreeMobType.getSkillTreeNames(this.getPetType()).size() > 0)
++            if (MyPetSkillTreeMobType.getSkillTreeNames(this.getPetType()).size() > 0)
+             {
+-                for (SkillTree skillTree : SkillTreeMobType.getSkillTrees(this.getPetType()))
++                for (MyPetSkillTree skillTree : MyPetSkillTreeMobType.getSkillTrees(this.getPetType()))
+                 {
+-                    if (Permissions.has(this.petOwner.getPlayer(), "MyPet.custom.skilltree." + skillTree.getPermission()))
++                    if (MyPetPermissions.has(this.petOwner.getPlayer(), "MyPet.custom.skilltree." + skillTree.getPermission()))
+                     {
+                         return setSkilltree(skillTree);
+                     }
+@@ -143,7 +143,7 @@ public abstract class MyPet implements IMyPet, NBTStorage
+                 EntityMyPet petEntity = getPetType().getNewEntityInstance(mcWorld, this);
+                 craftMyPet = (CraftMyPet) petEntity.getBukkitEntity();
+                 petEntity.setLocation(loc);
+-                if (!BukkitUtil.canSpawn(loc, petEntity))
++                if (!MyPetBukkitUtil.canSpawn(loc, petEntity))
+                 {
+                     status = PetState.Despawned;
+                     return SpawnFlags.NoSpace;
+@@ -185,7 +185,7 @@ public abstract class MyPet implements IMyPet, NBTStorage
+ 
+                 if (worldGroup == null || worldGroup.equals(""))
+                 {
+-                    setWorldGroup(WorldGroup.getGroup(craftMyPet.getWorld().getName()).getName());
++                    setWorldGroup(MyPetWorldGroup.getGroup(craftMyPet.getWorld().getName()).getName());
+                 }
+ 
+                 autoAssignSkilltree();
+@@ -247,7 +247,7 @@ public abstract class MyPet implements IMyPet, NBTStorage
+         return getExperience().getExp();
+     }
+ 
+-    public Experience getExperience()
++    public MyPetExperience getExperience()
+     {
+         return experience;
+     }
+@@ -301,7 +301,7 @@ public abstract class MyPet implements IMyPet, NBTStorage
+ 
+     public int getHungerValue()
+     {
+-        if (Configuration.USE_HUNGER_SYSTEM)
++        if (MyPetConfiguration.USE_HUNGER_SYSTEM)
+         {
+             return hunger;
+         }
+@@ -325,9 +325,9 @@ public abstract class MyPet implements IMyPet, NBTStorage
+         {
+             hunger = value;
+         }
+-        hungerTime = Configuration.HUNGER_SYSTEM_TIME;
++        hungerTime = MyPetConfiguration.HUNGER_SYSTEM_TIME;
+ 
+-        if (Configuration.ENABLE_EVENTS)
++        if (MyPetConfiguration.ENABLE_EVENTS)
+         {
+             MyPetSpoutEvent spoutEvent = new MyPetSpoutEvent(this, MyPetSpoutEventReason.HungerChange);
+             getServer().getPluginManager().callEvent(spoutEvent);
+@@ -362,7 +362,7 @@ public abstract class MyPet implements IMyPet, NBTStorage
+ 
+     public void setLocation(Location loc)
+     {
+-        if (status == PetState.Here && BukkitUtil.canSpawn(loc, this.craftMyPet.getHandle()))
++        if (status == PetState.Here && MyPetBukkitUtil.canSpawn(loc, this.craftMyPet.getHandle()))
+         {
+             craftMyPet.teleport(loc);
+         }
+@@ -388,13 +388,13 @@ public abstract class MyPet implements IMyPet, NBTStorage
+         this.petName = newName;
+         if (status == PetState.Here)
+         {
+-            if (Configuration.PET_INFO_OVERHEAD_NAME)
++            if (MyPetConfiguration.PET_INFO_OVERHEAD_NAME)
+             {
+                 getCraftPet().getHandle().setCustomNameVisible(true);
+-                getCraftPet().getHandle().setCustomName(Util.cutString(Configuration.PET_INFO_OVERHEAD_PREFIX + petName + Configuration.PET_INFO_OVERHEAD_SUFFIX, 64));
++                getCraftPet().getHandle().setCustomName(MyPetUtil.cutString(MyPetConfiguration.PET_INFO_OVERHEAD_PREFIX + petName + MyPetConfiguration.PET_INFO_OVERHEAD_SUFFIX, 64));
+             }
+         }
+-        if (Configuration.ENABLE_EVENTS)
++        if (MyPetConfiguration.ENABLE_EVENTS)
+         {
+             getPluginManager().callEvent(new MyPetSpoutEvent(this, MyPetSpoutEventReason.Name));
+         }
+@@ -417,12 +417,12 @@ public abstract class MyPet implements IMyPet, NBTStorage
+         respawnTime = time > 0 ? time : 0;
+     }
+ 
+-    public SkillTree getSkillTree()
++    public MyPetSkillTree getSkillTree()
+     {
+         return skillTree;
+     }
+ 
+-    public Skills getSkills()
++    public MyPetSkills getSkills()
+     {
+         return skills;
+     }
+@@ -514,7 +514,7 @@ public abstract class MyPet implements IMyPet, NBTStorage
+         {
+             return;
+         }
+-        if (WorldGroup.getGroup(worldGroup) == null)
++        if (MyPetWorldGroup.getGroup(worldGroup) == null)
+         {
+             worldGroup = "default";
+         }
+@@ -583,16 +583,16 @@ public abstract class MyPet implements IMyPet, NBTStorage
+             switch (createPet())
+             {
+                 case Success:
+-                    sendMessageToOwner(Util.formatText(Locales.getString("Message.OnRespawn", petOwner.getLanguage()), petName));
++                    sendMessageToOwner(MyPetUtil.formatText(MyPetLocales.getString("Message.OnRespawn", petOwner.getLanguage()), petName));
+                     break;
+                 case Canceled:
+-                    sendMessageToOwner(Util.formatText(Locales.getString("Message.SpawnPrevent", petOwner.getLanguage()), petName));
++                    sendMessageToOwner(MyPetUtil.formatText(MyPetLocales.getString("Message.SpawnPrevent", petOwner.getLanguage()), petName));
+                     break;
+                 case NoSpace:
+-                    sendMessageToOwner(Util.formatText(Locales.getString("Message.SpawnNoSpace", petOwner.getLanguage()), petName));
++                    sendMessageToOwner(MyPetUtil.formatText(MyPetLocales.getString("Message.SpawnNoSpace", petOwner.getLanguage()), petName));
+                     break;
+             }
+-            if (Configuration.USE_HUNGER_SYSTEM)
++            if (MyPetConfiguration.USE_HUNGER_SYSTEM)
+             {
+                 setHealth((int) Math.ceil(getMaxHealth() / 100. * (hunger + 1 - (hunger % 10))));
+             }
+@@ -658,13 +658,13 @@ public abstract class MyPet implements IMyPet, NBTStorage
+             if (status == PetState.Dead)
+             {
+                 respawnTime--;
+-                if (Economy.canUseEconomy() && getOwner().hasAutoRespawnEnabled() && respawnTime >= getOwner().getAutoRespawnMin() && Permissions.has(getOwner().getPlayer(), "MyPet.user.respawn"))
++                if (MyPetEconomy.canUseEconomy() && getOwner().hasAutoRespawnEnabled() && respawnTime >= getOwner().getAutoRespawnMin() && MyPetPermissions.has(getOwner().getPlayer(), "MyPet.user.respawn"))
+                 {
+-                    double cost = respawnTime * Configuration.RESPAWN_COSTS_FACTOR + Configuration.RESPAWN_COSTS_FIXED;
+-                    if (Economy.canPay(getOwner(), cost))
++                    double cost = respawnTime * MyPetConfiguration.RESPAWN_COSTS_FACTOR + MyPetConfiguration.RESPAWN_COSTS_FIXED;
++                    if (MyPetEconomy.canPay(getOwner(), cost))
+                     {
+-                        Economy.pay(getOwner(), cost);
+-                        sendMessageToOwner(Util.formatText(Locales.getString("Message.RespawnPaid", petOwner.getLanguage()), petName, cost + " " + Economy.getEconomy().currencyNameSingular()));
++                        MyPetEconomy.pay(getOwner(), cost);
++                        sendMessageToOwner(MyPetUtil.formatText(MyPetLocales.getString("Message.RespawnPaid", petOwner.getLanguage()), petName, cost + " " + MyPetEconomy.getEconomy().currencyNameSingular()));
+                         respawnTime = 1;
+                     }
+                 }
+@@ -673,12 +673,12 @@ public abstract class MyPet implements IMyPet, NBTStorage
+                     respawnPet();
+                 }
+             }
+-            if (Configuration.USE_HUNGER_SYSTEM && hunger > 1 && --hungerTime <= 0)
++            if (MyPetConfiguration.USE_HUNGER_SYSTEM && hunger > 1 && --hungerTime <= 0)
+             {
+                 hunger--;
+-                hungerTime = Configuration.HUNGER_SYSTEM_TIME;
++                hungerTime = MyPetConfiguration.HUNGER_SYSTEM_TIME;
+ 
+-                if (Configuration.ENABLE_EVENTS)
++                if (MyPetConfiguration.ENABLE_EVENTS)
+                 {
+                     MyPetSpoutEvent spoutEvent = new MyPetSpoutEvent(this, MyPetSpoutEventReason.HungerChange);
+                     getServer().getPluginManager().callEvent(spoutEvent);
+@@ -741,7 +741,7 @@ public abstract class MyPet implements IMyPet, NBTStorage
+         }
+     }
+ 
+-    public boolean setSkilltree(SkillTree skillTree)
++    public boolean setSkilltree(MyPetSkillTree skillTree)
+     {
+         if (skillTree == null || this.skillTree == skillTree)
+         {

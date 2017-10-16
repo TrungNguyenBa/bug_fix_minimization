@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index 1e01d72a..66f8846f 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -87,7 +87,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster {
+ 
+             if (jump == null) {
+                 try {
+-                    jump = EntityLiving.class.getDeclaredField("aY");
++                    jump = EntityLiving.class.getDeclaredField("aW");
+                     jump.setAccessible(true);
+                 } catch (NoSuchFieldException e) {
+                     e.printStackTrace();

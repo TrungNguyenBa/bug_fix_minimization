@@ -1,0 +1,49 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+index 20c7472..8aa15aa 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+@@ -70,7 +70,7 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public Map<String, List<String>> getPermissionsMap() {
+-		Map<String, List<String>> allPermissions = new HashMap<>();
++		Map<String, List<String>> allPermissions = new HashMap<String, List<String>>();
+ 
+ 		// Common permissions
+ 		List<String> commonPermissions = this.node.getStringList("permissions");
+@@ -97,7 +97,7 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 		ConfigurationSection worldsSection = this.node.getConfigurationSection("worlds");
+ 
+ 		if (worldsSection == null) {
+-			return new HashSet<>();
++			return new HashSet<String>();
+ 		}
+ 
+ 		return worldsSection.getKeys(false);
+@@ -141,7 +141,7 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 		ConfigurationSection optionsSection = this.node.getConfigurationSection(formatPath(worldName, "options"));
+ 
+ 		if (optionsSection == null) {
+-			return new HashMap<>(0);
++			return new HashMap<String, String>(0);
+ 		}
+ 
+ 		return collectOptions(optionsSection);
+@@ -149,7 +149,7 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public Map<String, Map<String, String>> getOptionsMap() {
+-		Map<String, Map<String, String>> allOptions = new HashMap<>();
++		Map<String, Map<String, String>> allOptions = new HashMap<String, Map<String, String>>();
+ 
+ 		allOptions.put(null, this.getOptions(null));
+ 
+@@ -219,7 +219,7 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 	}
+ 
+ 	private Map<String, String> collectOptions(ConfigurationSection section) {
+-		Map<String, String> options = new LinkedHashMap<>();
++		Map<String, String> options = new LinkedHashMap<String, String>();
+ 
+ 		for (String key : section.getKeys(true)) {
+ 			if (section.isConfigurationSection(key)) {

@@ -1,0 +1,48 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java b/src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java
+index ed297808..c63cd15a 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java
+@@ -41,6 +41,21 @@ public class MySlime extends MyPet implements IMyPetSlimeSize
+         super(petOwner);
+     }
+ 
++    public int getSize()
++    {
++        return size;
++    }
++
++    public void setSize(int value)
++    {
++        value = Math.max(1, value);
++        if (status == PetState.Here)
++        {
++            ((EntityMySlime) getCraftPet().getHandle()).setSize(value);
++        }
++        this.size = value;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -64,21 +79,6 @@ public class MySlime extends MyPet implements IMyPetSlimeSize
+         return MyPetType.Slime;
+     }
+ 
+-    public int getSize()
+-    {
+-        return size;
+-    }
+-
+-    public void setSize(int value)
+-    {
+-        value = Math.max(1, value);
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMySlime) getCraftPet().getHandle()).setSize(value);
+-        }
+-        this.size = value;
+-    }
+-
+     @Override
+     public String toString()
+     {

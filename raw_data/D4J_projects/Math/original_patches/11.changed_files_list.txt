@@ -1,0 +1,4 @@
+aa2bd1d06 : MATH-929 Fixed truncated value. Thanks to Piotr Wydrych. Added unit test: comparing density values with univariate normal distribution.
+:100644 100644 a61254cfa... fb58f546a... M	src/changes/changes.xml
+:100644 100644 15706811b... fd18c281b... M	src/main/java/org/apache/commons/math3/distribution/MultivariateNormalDistribution.java
+:100644 100644 756c009c6... 96666187a... M	src/test/java/org/apache/commons/math3/distribution/MultivariateNormalDistributionTest.java

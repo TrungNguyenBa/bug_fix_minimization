@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Poison.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Poison.java
+index d6ca4ff5..039c4190 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Poison.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Poison.java
+@@ -87,7 +87,7 @@ public class Poison extends PoisonInfo implements ISkillInstance, ISkillActive
+             }
+             if (!quiet && valuesEdit)
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.PoisonChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%chance%", "" + chance).replace("%duration%", "" + duration));
++                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.PoisonChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%chance%", "" + chance).replace("%duration%", "" + duration));
+             }
+         }
+     }

@@ -1,0 +1,22 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/RankingCommands.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/RankingCommands.java
+index 79b8e7f..1825ef3 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/RankingCommands.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/RankingCommands.java
+@@ -154,7 +154,7 @@ public class RankingCommands {
+                 .setArguments(flags()
+                         .flag("r", "-relative")
+                         .setUnknownShortFlagBehavior(UnknownFlagBehavior.IGNORE)
+-                        .buildWith(seq(optional(integer(_("position"))), subject(_("subject"), pex, PermissionsEx.SUBJECTS_GROUP))))
++                        .buildWith(seq(optional(integer(_("position"))), subject(_("subject"), pex, "group"))))
+                 .setExecutor(new PermissionsExExecutor(pex) {
+                     @Override
+                     public <TextType> void execute(Commander<TextType> src, CommandContext args) throws CommandException {
+@@ -185,7 +185,7 @@ public class RankingCommands {
+     private static CommandSpec getRankRemoveCommand(PermissionsEx pex) {
+         return CommandSpec.builder()
+                 .setAliases("remove", "rem", "-")
+-                .setArguments(subject(_("subject"), pex, PermissionsEx.SUBJECTS_GROUP))
++                .setArguments(subject(_("subject"), pex, "group"))
+                 .setExecutor(new PermissionsExExecutor(pex) {
+                     @Override
+                     public <TextType> void execute(Commander<TextType> src, CommandContext args) throws CommandException {

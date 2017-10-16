@@ -1,0 +1,14 @@
+diff --git a/pom.xml b/pom.xml
+index 8969cd5a6..b26a13d34 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -151,9 +151,6 @@
+       <name>Michael Bjorkegren</name>
+     </contributor>
+     <contributor>
+-      <name>Brian Bloniarz</name>
+-    </contributor>
+-    <contributor>
+       <name>John Bollinger</name>
+     </contributor>
+     <contributor>

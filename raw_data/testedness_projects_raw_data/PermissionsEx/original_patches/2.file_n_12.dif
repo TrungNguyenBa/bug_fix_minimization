@@ -1,0 +1,22 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+index baa7411..fe2549d 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+@@ -54,7 +54,7 @@ public class ParentCommands {
+                         ImmutableSubjectData data = getSubjectData(dataCache, subject.getValue());
+                         Map.Entry<String, String> parent = args.getOne("parent");
+                         messageSubjectOnFuture(
+-                                dataCache.set(subject.getValue(), data.addParent(contexts, parent.getKey(), parent.getValue())), src,
++                                dataCache.update(subject.getValue(), data.addParent(contexts, parent.getKey(), parent.getValue())), src,
+                                 _("Added parent %s for %s in %s context", src.fmt().subject(parent), src.fmt().hl(src.fmt().subject(subject)), formatContexts(src, contexts)));
+                     }
+                 })
+@@ -75,7 +75,7 @@ public class ParentCommands {
+                         ImmutableSubjectData data = getSubjectData(dataCache, subject.getValue());
+                         Map.Entry<String, String> parent = args.getOne("parent");
+                         messageSubjectOnFuture(
+-                                dataCache.set(subject.getValue(), data.removeParent(contexts, parent.getKey(), parent.getValue())), src,
++                                dataCache.update(subject.getValue(), data.removeParent(contexts, parent.getKey(), parent.getValue())), src,
+                                 _("Removed parent %s for %s in %s context", src.fmt().subject(parent), src.fmt().hl(src.fmt().subject(subject)), formatContexts(src, contexts)));
+                     }
+                 })

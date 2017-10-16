@@ -1,0 +1,16 @@
+65b8f99 : Separate caching data into wrapper class & make most data updates async.
+:100644 100644 e69aa78... ee34685... M	src/main/java/ru/tehkode/permissions/PermissionGroup.java
+:100644 100644 e42907b... dc3784e... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 0ad0024... b6000f0... M	src/main/java/ru/tehkode/permissions/PermissionUser.java
+:100644 100644 2b9117e... baac14f... M	src/main/java/ru/tehkode/permissions/PermissionsData.java
+:000000 100644 0000000... 7b14c19... A	src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java
+:000000 100644 0000000... 9292df6... A	src/main/java/ru/tehkode/permissions/backends/caching/CachingGroupData.java
+:000000 100644 0000000... 41c52f8... A	src/main/java/ru/tehkode/permissions/backends/caching/CachingUserData.java
+:100644 100644 3bb2783... 0c97175... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 bc7c00a... e1cbbd9... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+:100644 100644 790e195... e480594... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
+:100644 100644 267f8a4... ef27cf1... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 32f6ef3... d010570... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
+:100644 100644 11c8873... 0d32c54... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+:100644 100644 abb90e3... a149f45... M	src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+:100644 100644 c64c495... 1971f93... M	src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java

@@ -1,0 +1,18 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderNBT.java b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderNBT.java
+index c016e572..69e35b0f 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderNBT.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderNBT.java
+@@ -191,6 +191,13 @@ public class MyPetSkillTreeLoaderNBT extends MyPetSkillTreeLoader
+             }
+         }
+ 
++        skillFile = new File(configPath + File.separator + "default.st");
++        nbtConfig = new NBT_Configuration(skillFile);
++        if (saveSkillTree(nbtConfig, "default"))
++        {
++            savedPetTypes.add("default");
++        }
++
+         return savedPetTypes;
+     }
+ 

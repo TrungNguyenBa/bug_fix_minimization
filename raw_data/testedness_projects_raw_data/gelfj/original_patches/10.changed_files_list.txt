@@ -1,0 +1,3 @@
+32681b2 : Minor R1.1.4 to fix resource handling for AMQP transport
+:100644 100644 f558012... 24f27b5... M	CHANGELOG.md
+:100644 100644 61d8d7d... cccb4d6... M	README.md

@@ -1,0 +1,22 @@
+diff --git a/src/test/java/com/stripe/StripeTest.java b/src/test/java/com/stripe/StripeTest.java
+index 3110013..a1ef88f 100644
+--- a/src/test/java/com/stripe/StripeTest.java
++++ b/src/test/java/com/stripe/StripeTest.java
+@@ -42,7 +42,6 @@ import com.stripe.model.Token;
+ import com.stripe.model.Transfer;
+ import com.stripe.model.Recipient;
+ import com.stripe.model.DeletedRecipient;
+-import com.stripe.model.Refund;
+ 
+ public class StripeTest {
+ 	static HashMap<String, Object> defaultCardParams = new HashMap<String, Object>();
+@@ -205,9 +204,6 @@ public class StripeTest {
+ 		Charge createdCharge = Charge.create(defaultChargeParams);
+ 		Charge refundedCharge = createdCharge.refund();
+ 		assertTrue(refundedCharge.getRefunded());
+-		assertTrue(refundedCharge.getRefunds() instanceof List);
+-		assertEquals(1, refundedCharge.getRefunds().size());
+-		assertTrue(refundedCharge.getRefunds().get(0) instanceof Refund);
+ 	}
+ 
+ 	@Test

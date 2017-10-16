@@ -1,0 +1,13 @@
+diff --git a/JodaTime/src/main/java/org/joda/time/Period.java b/JodaTime/src/main/java/org/joda/time/Period.java
+index 7ec80720..1e0a6d82 100644
+--- a/JodaTime/src/main/java/org/joda/time/Period.java
++++ b/JodaTime/src/main/java/org/joda/time/Period.java
+@@ -379,7 +379,7 @@ public final class Period
+      * @param duration  the duration, in milliseconds
+      */
+     public Period(long duration) {
+-        super(duration);
++        super(duration, null, null);
+     }
+ 
+     /**

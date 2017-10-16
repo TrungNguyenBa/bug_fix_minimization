@@ -1,0 +1,14 @@
+diff --git a/src/main/resources/spring/mvc-core-config.xml b/src/main/resources/spring/mvc-core-config.xml
+index 170fbdb..426f123 100644
+--- a/src/main/resources/spring/mvc-core-config.xml
++++ b/src/main/resources/spring/mvc-core-config.xml
+@@ -33,9 +33,6 @@
+ 
+     <mvc:view-controller path="/" view-name="welcome" />
+ 
+-    <!-- serve static resources (*.html, ...) from src/main/webapp/ -->
+-    <mvc:default-servlet-handler/>
+-
+     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+         <property name="formatters">
+             <set>

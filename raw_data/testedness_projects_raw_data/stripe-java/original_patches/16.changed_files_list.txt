@@ -1,0 +1,2 @@
+66394ef : allow reset porxy and auth config by setting them to null
+:100644 100644 56e5931... 931fb77... M	src/main/java/com/stripe/Stripe.java

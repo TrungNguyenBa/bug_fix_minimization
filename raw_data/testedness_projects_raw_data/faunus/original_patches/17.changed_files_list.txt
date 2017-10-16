@@ -1,0 +1,3 @@
+cb24aef8 : Some wolf-constants were zero, now fixed.
+:100644 100644 1eceb46c... b71faef2... M	include/faunus/multipole.h
+:100755 100755 3445b35d... 7ac65782... M	src/playground/stenqvist/stockmayer.run

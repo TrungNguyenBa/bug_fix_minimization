@@ -1,0 +1,64 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionGroup.java b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+index e69aa78..465e438 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionGroup.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+@@ -66,6 +66,7 @@ public class PermissionGroup extends PermissionEntity implements Comparable<Perm
+ 		this.setOption("weight", Integer.toString(weight));
+ 
+ 		this.dirtyWeight = true;
++
+ 		this.clearMembersCache();
+ 		this.callEvent(PermissionEntityEvent.Action.WEIGHT_CHANGED);
+ 	}
+@@ -268,44 +269,44 @@ public class PermissionGroup extends PermissionEntity implements Comparable<Perm
+ 	 */
+ 	@Override
+ 	public void addTimedPermission(String permission, String world, int lifeTime) {
+-		this.clearMembersCache();
+ 		super.addTimedPermission(permission, world, lifeTime);
++		this.clearMembersCache();
+ 	}
+ 
+ 	@Override
+ 	public void removeTimedPermission(String permission, String world) {
+-		this.clearMembersCache();
+ 		super.removeTimedPermission(permission, world);
++		this.clearMembersCache();
+ 	}
+ 
+ 	@Override
+ 	public void setPrefix(String prefix, String worldName) {
+-		clearMembersCache();
+ 		super.setPrefix(prefix, worldName);
++		clearMembersCache();
+ 	}
+ 
+ 	@Override
+ 	public void setSuffix(String suffix, String worldName) {
+-		clearMembersCache();
+ 		super.setSuffix(suffix, worldName);
++		clearMembersCache();
+ 	}
+ 
+ 	@Override
+ 	public void setPermissions(List<String> permissions, String world) {
+-		clearMembersCache();
+ 		super.setPermissions(permissions, world);
++		clearMembersCache();
+ 	}
+ 
+ 	@Override
+ 	public void setOption(String option, String value, String world) {
+-		clearMembersCache();
+ 		super.setOption(option, value, world);
++		clearMembersCache();
+ 	}
+ 
+ 	@Override
+ 	public void setParents(List<PermissionGroup> parents, String world) {
+-		clearMembersCache();
+ 		super.setParents(parents, world);
++		clearMembersCache();
+ 	}
+ 
+ 	protected void clearMembersCache() {

@@ -1,0 +1,26 @@
+diff --git a/test/com/google/javascript/jscomp/CommandLineRunnerTest.java b/test/com/google/javascript/jscomp/CommandLineRunnerTest.java
+index fd8f632b..f1898834 100644
+--- a/test/com/google/javascript/jscomp/CommandLineRunnerTest.java
++++ b/test/com/google/javascript/jscomp/CommandLineRunnerTest.java
+@@ -1046,7 +1046,9 @@ public class CommandLineRunnerTest extends TestCase {
+     args.add("--common_js_entry_module=foo/bar");
+     setFilename(0, "foo/bar.js");
+     test("exports.test = 1",
+-        "var module$foo$bar={test:1};");
++        "var module$foo$bar={test:1}; " +
++        "module$foo$bar.module$exports && " +
++        "(module$foo$bar=module$foo$bar.module$exports)");
+   }
+ 
+   public void testTransformAMDAndProcessCJS() {
+@@ -1055,7 +1057,9 @@ public class CommandLineRunnerTest extends TestCase {
+     args.add("--common_js_entry_module=foo/bar");
+     setFilename(0, "foo/bar.js");
+     test("define({foo: 1})",
+-        "var module$foo$bar={}, module$foo$bar={foo:1};");
++        "var module$foo$bar={}, module$foo$bar={foo:1}; " +
++        "module$foo$bar.module$exports && " +
++        "(module$foo$bar=module$foo$bar.module$exports)");
+   }
+ 
+   /* Helper functions */

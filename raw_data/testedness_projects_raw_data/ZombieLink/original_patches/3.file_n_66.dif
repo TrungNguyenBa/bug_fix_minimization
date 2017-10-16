@@ -1,0 +1,17 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/DeserializerNotAssignableException.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/DeserializerNotAssignableException.java
+index d70e114..9192ed6 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/DeserializerNotAssignableException.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/DeserializerNotAssignableException.java
+@@ -20,9 +20,11 @@ package com.lonepulse.zombielink.response;
+  * #L%
+  */
+ 
++import com.lonepulse.zombielink.annotation.Deserializer;
++
+ /**
+  * <p>This runtime exception is thrown when the return type of a request method definition cannot be 
+- * assigned to the designated {@link Deserializer}'s return type.</p>
++ * assigned to the designated {@link Deserializer}'s return type. 
+  * 
+  * @version 1.1.1
+  * <br><br>

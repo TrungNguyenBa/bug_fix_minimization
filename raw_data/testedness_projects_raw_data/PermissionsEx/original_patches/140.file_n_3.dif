@@ -1,0 +1,23 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
+index 0c14d7a..d6ef16f 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
+@@ -28,7 +28,6 @@ import org.bukkit.permissions.PermissionAttachmentInfo;
+ import ru.tehkode.permissions.PermissionCheckResult;
+ import ru.tehkode.permissions.PermissionMatcher;
+ import ru.tehkode.permissions.PermissionUser;
+-import ru.tehkode.permissions.bukkit.ErrorReport;
+ import ru.tehkode.permissions.bukkit.PermissionsEx;
+ import ru.tehkode.utils.FieldReplacer;
+ 
+@@ -270,8 +269,8 @@ public class PermissiblePEX extends PermissibleBase {
+ 			LAST_CALL_ERRORED.set(false);
+ 			return res;
+ 		} catch (Throwable t) {
+-			if (LAST_CALL_ERRORED.compareAndSet(false, true)) {
+-				ErrorReport.handleError("Permissible permissionValue for " + player.getName(), t);
++			if (!isDebug() && LAST_CALL_ERRORED.compareAndSet(false, true)) {
++				t.printStackTrace();
+ 			}
+ 			return PermissionCheckResult.UNDEFINED;
+ 		} finally {

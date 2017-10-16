@@ -1,0 +1,12 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsExExecutor.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsExExecutor.java
+index 1935140..e72f1f1 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsExExecutor.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsExExecutor.java
+@@ -39,6 +39,7 @@ import static ninja.leaping.permissionsex.util.Translations._;
+ 
+ public abstract class PermissionsExExecutor implements CommandExecutor {
+     protected final PermissionsEx pex;
++    static final Set<Map.Entry<String, String>> GLOBAL = ImmutableSet.of();
+ 
+     protected PermissionsExExecutor(PermissionsEx pex) {
+         this.pex = pex;

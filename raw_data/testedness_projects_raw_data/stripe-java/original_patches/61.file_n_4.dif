@@ -1,0 +1,18 @@
+diff --git a/src/test/resources/com/stripe/model/account_event.json b/src/test/resources/com/stripe/model/account_event.json
+index a2a9689..21d7543 100644
+--- a/src/test/resources/com/stripe/model/account_event.json
++++ b/src/test/resources/com/stripe/model/account_event.json
+@@ -14,11 +14,10 @@
+       "currencies_supported":[
+         "CAD"
+       ],
+-      "default_currency":"CAD",
+       "object":"account"
+     },
+     "previous_attributes":{
+       "details_submitted":false
+     }
+   }
+-}
++}
+\ No newline at end of file

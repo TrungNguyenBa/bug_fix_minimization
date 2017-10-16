@@ -1,0 +1,2 @@
+5415175f : Blazed can be on fire now (Flit'n'Steel) to remove the fire use a water Bottle
+:100644 100644 9fce1f6e... 4653de75... M	src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java

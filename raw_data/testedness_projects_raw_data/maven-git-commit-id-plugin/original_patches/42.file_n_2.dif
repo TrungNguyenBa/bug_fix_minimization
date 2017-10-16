@@ -1,0 +1,13 @@
+diff --git a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+index 3cff065..b548476 100644
+--- a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
++++ b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+@@ -529,7 +529,7 @@ public class GitCommitIdMojo extends AbstractMojo {
+   }
+ 
+   void log(String message, String... interpolations) {
+-    loggerBridge.log(logPrefix + message, (Object[]) interpolations);
++	loggerBridge.log(logPrefix + message, (Object[]) interpolations);    
+   }
+ 
+   void alwaysLog(String message, String... interpolations) {

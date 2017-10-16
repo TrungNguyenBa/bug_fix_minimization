@@ -1,0 +1,8 @@
+542bd8f : Make backends present prefix/suffix as options rather than separate methods
+:100644 100644 61910b6... 8ad338d... M	src/main/java/ru/tehkode/permissions/PermissionEntity.java
+:100644 100644 62a7dff... 2b92839... M	src/main/java/ru/tehkode/permissions/PermissionsData.java
+:100644 100644 2da8bd0... 89e20b9... M	src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
+:100644 100644 7ab8de8... 33c7d1f... M	src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java
+:100644 100644 e1cbbd9... ff6c233... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+:100644 100644 e480594... e754d65... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
+:100644 100644 0d32c54... fbbf3af... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java

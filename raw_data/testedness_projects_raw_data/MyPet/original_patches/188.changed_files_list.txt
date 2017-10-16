@@ -1,0 +1,24 @@
+a69a9a9f : fixed MyPet sounds not playerd at all moved sound check for idle sounds to MyPetEntity class
+:100644 100644 0bd054a2... 683db132... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 15b83517... 58b9522c... M	src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+:100644 100644 4653de75... 2f46a495... M	src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+:100644 100644 91da0696... f620b79d... M	src/main/java/de/Keyle/MyPet/entity/types/cavespider/EntityMyCaveSpider.java
+:100644 100644 511dca0b... df63e2c4... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+:100644 100644 bcb8e882... e3432d92... M	src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
+:100644 100644 2c450e70... bd25bcf6... M	src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+:100644 100644 71e55c0d... 33100049... M	src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
+:100644 100644 fa3972ff... b24cfa03... M	src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java
+:100644 100644 c64a0b13... 38bf2d50... M	src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+:100644 100644 c8bfd62d... 016956ce... M	src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+:100644 100644 ae63a150... f7deee7b... M	src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+:100644 100644 db0bb4a5... 4892e00e... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 08dac8e9... 846fc79f... M	src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+:100644 100644 3d12416e... 3d4ae9b1... M	src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
+:100644 100644 77eeec2f... fd53733c... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 a82857be... 28e0470e... M	src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+:100644 100644 1b24eec5... ad83c728... M	src/main/java/de/Keyle/MyPet/entity/types/spider/EntityMySpider.java
+:100644 100644 4fbc92db... 9c85d86a... M	src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+:100644 100644 3908e3e1... 994b6ec8... M	src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
+:100644 100644 5ef7841f... ae9cc52e... M	src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
+:100644 100644 33fb35de... 34af2399... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+:100644 100644 afbfc701... 9f467e5c... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java

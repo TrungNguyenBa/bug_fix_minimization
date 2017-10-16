@@ -1,0 +1,4 @@
+6982d64d : water2 example now returns numFailed; suppress cmake 3 policy warning on macos
+:100644 100644 af54d3c2... edcd15cf... M	CMakeLists.txt
+:100644 100644 d4823018... b8d33dd1... M	src/examples/bulk.cpp
+:100644 100644 e03ab207... 8c0b4fb5... M	src/examples/water2.cpp

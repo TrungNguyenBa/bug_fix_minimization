@@ -1,0 +1,35 @@
+diff --git a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+index 91ba7e7..26508f9 100755
+--- a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
++++ b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+@@ -18,7 +18,6 @@ package org.grails.maven.plugin;
+ 
+ import org.apache.maven.artifact.Artifact;
+ import org.apache.maven.artifact.repository.ArtifactRepository;
+-import org.apache.maven.model.Dependency;
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.project.*;
+@@ -631,16 +630,16 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+ 
+     private String findArtefactVersionFromPlugin(String group, String name) throws ProjectBuildingException {
+         MavenProject pluginProject = getPluginProject();
+-        List<Dependency> dependencyArtifacts = pluginProject.getDependencies();
++        Set<Artifact> dependencyArtifacts = pluginProject.getArtifacts();
+         if(dependencyArtifacts != null) {
+-            for (Dependency d : dependencyArtifacts) {
+-                if (d.getArtifactId().equals(name) &&
+-                        d.getGroupId().equals(group)) {
+-                    return d.getVersion();
++            for (Artifact artifact : dependencyArtifacts) {
++                if (artifact.getArtifactId().equals(name) &&
++                        artifact.getGroupId().equals(group)) {
++                    return artifact.getVersion();
+                 }
+             }
+         }
+-        return null;
++        return pluginProject.getVersion();
+     }
+ 
+ 

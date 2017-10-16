@@ -1,0 +1,2 @@
+ecd9ccb : fixed POM configuration issue for Spring Data
+:100644 100644 0e06f8d... b38c87c... M	pom.xml

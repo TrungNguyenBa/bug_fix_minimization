@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 68c94ae6..ea4f9821 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -271,7 +271,7 @@ public class EntityListener implements Listener
+ 
+                     Class<? extends MyPet> myPetClass = MyPetType.getMyPetTypeByEntityType(leashTarget.getType()).getMyPetClass();
+ 
+-                    if (!Configuration.LEASH_ITEM.compare(damager.getItemInHand()) || !Permissions.has(damager, "MyPet.user.leash." + MyPetType.getMyPetTypeByEntityType(leashTarget.getType()).getTypeName()))
++                    if (Configuration.LEASH_ITEM.compare(damager.getItemInHand()) || !Permissions.has(damager, "MyPet.user.leash." + MyPetType.getMyPetTypeByEntityType(leashTarget.getType()).getTypeName()))
+                     {
+                         return;
+                     }

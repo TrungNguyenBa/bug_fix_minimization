@@ -1,0 +1,12 @@
+diff --git a/CONTRIBUTORS b/CONTRIBUTORS
+index 428c76a5..addc8e6b 100644
+--- a/CONTRIBUTORS
++++ b/CONTRIBUTORS
+@@ -30,7 +30,6 @@ signed for them. Congratulations!
+ We've also received CLAs from the following people:
+ amattie [gmail.com] (Andrew Mattie)
+ benjamin.j.mccann [gmail.com]
+-cpeisert [gmail.com] (Christopher Peisert)
+ chadkillingsworth [missouristate.edu] (Chad Killingsworth)
+ edo999 [gmail.com]
+ franck.routier [gmail.com] (Franck Routier)

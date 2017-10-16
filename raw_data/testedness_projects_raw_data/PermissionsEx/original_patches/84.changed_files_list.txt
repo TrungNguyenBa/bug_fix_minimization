@@ -1,0 +1,2 @@
+27f2fe3 : Fix group suffix command
+:100644 100644 de84649... 4159bc9... M	src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java

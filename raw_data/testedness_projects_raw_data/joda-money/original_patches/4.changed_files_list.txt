@@ -1,0 +1,2 @@
+b60f756 : Fixing the constructor parameter to match the field name to help with serialization/deserialization based on field name.
+:100644 100644 53d65e5... f089e47... M	src/main/java/org/joda/money/CurrencyUnit.java

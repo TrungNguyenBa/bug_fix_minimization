@@ -1,0 +1,22 @@
+diff --git a/src/com/google/javascript/jscomp/DefaultPassConfig.java b/src/com/google/javascript/jscomp/DefaultPassConfig.java
+index 9d8e963a..9398f9ec 100644
+--- a/src/com/google/javascript/jscomp/DefaultPassConfig.java
++++ b/src/com/google/javascript/jscomp/DefaultPassConfig.java
+@@ -1027,7 +1027,7 @@ public class DefaultPassConfig extends PassConfig {
+           /* warn about message dupes */
+           true,
+           /* allow messages with goog.getMsg */
+-          JsMessage.Style.CLOSURE,
++          JsMessage.Style.getFromParams(true, false),
+           /* if we can't find a translation, don't worry about it. */
+           false);
+     }
+@@ -1042,7 +1042,7 @@ public class DefaultPassConfig extends PassConfig {
+           /* warn about message dupes */
+           true,
+           /* allow messages with goog.getMsg */
+-          JsMessage.Style.CLOSURE);
++          JsMessage.Style.getFromParams(true, false));
+     }
+   };
+ 

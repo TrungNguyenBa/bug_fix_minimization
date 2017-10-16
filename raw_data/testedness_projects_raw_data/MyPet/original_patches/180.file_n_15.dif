@@ -1,0 +1,28 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java b/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
+index 2a9ed4c2..ee7adaae 100644
+--- a/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
++++ b/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
+@@ -25,7 +25,6 @@ import org.apache.commons.lang.Validate;
+ import org.bukkit.Location;
+ import org.bukkit.Material;
+ import org.bukkit.World;
+-import org.bukkit.command.CommandSender;
+ import org.bukkit.craftbukkit.v1_6_R2.CraftWorld;
+ import org.bukkit.craftbukkit.v1_6_R2.entity.CraftPlayer;
+ import org.bukkit.craftbukkit.v1_6_R2.util.UnsafeList;
+@@ -178,14 +177,4 @@ public class BukkitUtil
+             return "en_US";
+         }
+     }
+-
+-    public static String getCommandSenderLanguage(CommandSender sender)
+-    {
+-        String lang = "en";
+-        if (sender instanceof Player)
+-        {
+-            lang = getPlayerLanguage((Player) sender);
+-        }
+-        return lang;
+-    }
+ }
+\ No newline at end of file

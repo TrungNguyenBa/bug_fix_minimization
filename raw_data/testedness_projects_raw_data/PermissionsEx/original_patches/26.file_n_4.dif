@@ -1,0 +1,75 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java b/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
+index 991ea17..8b418d0 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
+@@ -23,9 +23,7 @@ import com.google.common.cache.CacheLoader;
+ import com.google.common.cache.LoadingCache;
+ import com.google.common.collect.ImmutableMap;
+ import com.google.common.collect.Iterables;
+-import ninja.leaping.permissionsex.data.CalculatedSubject;
+ import ninja.leaping.permissionsex.data.SubjectCache;
+-import ninja.leaping.permissionsex.exception.PermissionsLoadingException;
+ import org.spongepowered.api.service.permission.Subject;
+ import org.spongepowered.api.service.permission.SubjectCollection;
+ import org.spongepowered.api.service.permission.context.Context;
+@@ -41,42 +39,28 @@ import java.util.concurrent.ExecutionException;
+  * Subject collection
+  */
+ public class PEXSubjectCollection implements SubjectCollection {
+-    private final String identifier;
+     private final PermissionsExPlugin plugin;
+-    private volatile SubjectCache cache, transientCache;
++    private final SubjectCache cache, transientCache;
+ 
+     private final LoadingCache<String, PEXSubject> subjectCache = CacheBuilder.newBuilder().build(new CacheLoader<String, PEXSubject>() {
+         @Override
+         public PEXSubject load(String identifier) throws Exception {
+-            return new PEXSubject(identifier, PEXSubjectCollection.this);
++            return new PEXSubject(identifier, plugin.getManager().getCalculatedSubject(getIdentifier(), identifier),
++                    new PEXOptionSubjectData(cache, identifier, plugin),
++                    new PEXOptionSubjectData(transientCache, identifier, plugin),
++                    PEXSubjectCollection.this);
+         }
+     });
+ 
+-    public PEXSubjectCollection(final String identifier, final PermissionsExPlugin plugin) throws ExecutionException, PermissionsLoadingException {
+-        this.identifier = identifier;
++    public PEXSubjectCollection(PermissionsExPlugin plugin, SubjectCache cache, SubjectCache transientCache) {
+         this.plugin = plugin;
+-        updateCaches();
+-    }
+-
+-    SubjectCache getCache() {
+-        return cache;
+-    }
+-
+-    SubjectCache getTransientCache() {
+-        return transientCache;
+-    }
+-
+-    void updateCaches() throws PermissionsLoadingException, ExecutionException {
+-        this.cache = plugin.getManager().getSubjects(identifier);
+-        this.transientCache = plugin.getManager().getTransientSubjects(identifier);
+-        for (Map.Entry<String, PEXSubject> subject : subjectCache.asMap().entrySet()) {
+-            subject.getValue().update(getCalculatedSubject(subject.getKey()), getCache(), getTransientCache());
+-        }
++        this.cache = cache;
++        this.transientCache = transientCache;
+     }
+ 
+     @Override
+     public String getIdentifier() {
+-        return identifier;
++        return cache.getType();
+     }
+ 
+     PermissionsExPlugin getPlugin() {
+@@ -142,8 +126,4 @@ public class PEXSubjectCollection implements SubjectCollection {
+     Iterable<PEXSubject> getActiveSubjects() {
+         return subjectCache.asMap().values();
+     }
+-
+-    public CalculatedSubject getCalculatedSubject(String identifier) throws PermissionsLoadingException {
+-        return plugin.getManager().getCalculatedSubject(this.identifier, identifier);
+-    }
+ }

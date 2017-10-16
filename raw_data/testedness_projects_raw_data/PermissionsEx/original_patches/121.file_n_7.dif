@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+index 267f8a4..75c9292 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+@@ -119,8 +119,8 @@ public class SQLBackend extends PermissionBackend {
+ 
+ 	@Override
+ 	public boolean hasUser(String userName) {
+-		try (SQLConnection conn = getSQL()) {
+-			ResultSet res = conn.prepAndBind("SELECT `id` FROM `{permissions_entity}` WHERE `type` = ? AND `name` = ?", SQLData.Type.USER.ordinal(), userName).executeQuery();
++		try {
++			ResultSet res = getSQL().prepAndBind("SELECT `id` FROM `{permissions_entity}` WHERE `type` = ? AND `name` = ?", SQLData.Type.USER.ordinal(), userName).executeQuery();
+ 			return res.next();
+ 		} catch (SQLException e) {
+ 			return false;

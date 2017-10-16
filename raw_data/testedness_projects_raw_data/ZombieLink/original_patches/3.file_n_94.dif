@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/processor/StateEndpointTest.java b/zombielink/src/test/java/com/lonepulse/zombielink/processor/StateEndpointTest.java
+index 2f3e69f..f3b0b05 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/processor/StateEndpointTest.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/processor/StateEndpointTest.java
+@@ -37,7 +37,7 @@ import org.junit.Test;
+ import com.github.tomakehurst.wiremock.junit.WireMockRule;
+ import com.lonepulse.zombielink.annotation.Bite;
+ import com.lonepulse.zombielink.annotation.Stateful;
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>Performs unit testing on {@link StateEndpoint}.</p>

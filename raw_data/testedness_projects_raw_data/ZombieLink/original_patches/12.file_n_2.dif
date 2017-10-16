@@ -1,0 +1,20 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/request/HeaderProcessor.java b/src/main/java/com/lonepulse/zombielink/request/HeaderProcessor.java
+index 9aefd7a..2752f60 100644
+--- a/src/main/java/com/lonepulse/zombielink/request/HeaderProcessor.java
++++ b/src/main/java/com/lonepulse/zombielink/request/HeaderProcessor.java
+@@ -99,13 +99,11 @@ class HeaderProcessor extends AbstractRequestProcessor {
+ 				if(!(value instanceof CharSequence)) {
+ 					
+ 					StringBuilder errorContext = new StringBuilder()
+-					.append("Header values can only be of type ")
++					.append("Dynamic header values can only be of type ")
+ 					.append(CharSequence.class.getName())
+ 					.append(". Please consider using an implementation of CharSequence for the header <")
+ 					.append(header.getKey())
+-					.append("> and providing a meaningful toString() implementation for the header-value. ")
+-					.append("Furthermore, response headers should be of the specialized type ")
+-					.append(StringBuilder.class.getName());
++					.append("> and providing a meaningful toString() implementation for the header-value. ");
+ 					
+ 					throw new IllegalArgumentException(errorContext.toString());
+ 				}

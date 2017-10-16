@@ -1,0 +1,13 @@
+diff --git a/include/faunus/energy.h b/include/faunus/energy.h
+index d95c43d4..f019657a 100644
+--- a/include/faunus/energy.h
++++ b/include/faunus/energy.h
+@@ -696,7 +696,7 @@ namespace Faunus {
+           using namespace Faunus::textio;
+           std::ostringstream o;
+           o << pad(SUB,30,"Look for group-group bonds:")
+-            << std::boolalpha << CrossGroupBonds << endl
++            << (CrossGroupBonds ? "yes (slow)" : "no (faster)") << endl << endl
+             << indent(SUBSUB) << std::left
+             << setw(7) << "i" << setw(7) << "j" << endl;
+           return o.str() + _infolist;

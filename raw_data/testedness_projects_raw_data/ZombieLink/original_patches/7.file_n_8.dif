@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java b/src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java
+index 8d0e0a0..30a5257 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java
++++ b/src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java
+@@ -30,7 +30,7 @@ import com.lonepulse.zombielink.annotation.Parser;
+  * <p>This is the <i>strategy</i> for a handler which can be used to process an 
+  * HTTP request <b>asynchronously</b>. It executes an HTTP request on a separate 
+  * thread and invokes either{@link AsyncHandler#onSuccess(HttpResponse, Object)} 
+- * or {@link AsyncHandler#onFailure(HttpResponse)} depending on whether the request 
++ * or {@link AsyncHandler#onFailure(HttpResponse) depending on whether the request 
+  * executed successfully or not.</p>
+  * 
+  * @version 1.1.3

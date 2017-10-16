@@ -1,0 +1,6 @@
+fa4088a : Tweaks to properly convert defaults, add method to import data from a secondary backend
+:100644 100644 f65afb5... 9048a14... M	src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+:100644 100644 958ae88... 815bf3c... M	src/main/java/ninja/leaping/permissionsex/backends/DataStore.java
+:100644 100644 9764c60... 9d15d91... M	src/main/java/ninja/leaping/permissionsex/backends/file/FileDataStore.java
+:100644 100644 f989e32... a7ec8ee... M	src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
+:100644 100644 ba530d4... a5888ed... M	src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryDataStore.java

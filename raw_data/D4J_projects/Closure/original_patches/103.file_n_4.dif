@@ -1,0 +1,16 @@
+diff --git a/test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java b/test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java
+index 82d7bd9a..a76b4a49 100644
+--- a/test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java
++++ b/test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java
+@@ -136,11 +136,6 @@ public class CheckUnreachableCodeTest extends CompilerTestCase {
+     testSame("switch (x) { default: throw x; break; }");
+   }
+ 
+-  public void testInstanceOfThrowsException() {
+-    testSame("function f() {try { if (value instanceof type) return true; } " +
+-             "catch (e) { }}");
+-  }
+-  
+   private void assertUnreachable(String js) {
+     test(js, js, CheckUnreachableCode.UNREACHABLE_CODE);
+   }

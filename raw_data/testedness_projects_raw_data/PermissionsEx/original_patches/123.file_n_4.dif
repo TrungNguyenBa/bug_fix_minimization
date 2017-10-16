@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionGroup.java b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+index 465e438..556ff42 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionGroup.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+@@ -327,7 +327,7 @@ public class PermissionGroup extends PermissionEntity implements Comparable<Perm
+ 
+ 	private void clearChildren(String worldName) {
+ 		for (PermissionGroup group : this.getChildGroups(worldName)) {
+-			List<PermissionGroup> parentGroups = new LinkedList<>(group.getOwnParents(worldName));
++			List<PermissionGroup> parentGroups = new LinkedList<PermissionGroup>(group.getOwnParents(worldName));
+ 			parentGroups.remove(this);
+ 
+ 			group.setParents(parentGroups, worldName);

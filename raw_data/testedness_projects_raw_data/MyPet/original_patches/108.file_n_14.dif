@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuInventory.java b/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuInventory.java
+index 2f3805c0..316c2521 100644
+--- a/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuInventory.java
++++ b/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuInventory.java
+@@ -29,7 +29,6 @@ import org.bukkit.craftbukkit.v1_7_R1.inventory.CraftInventory;
+ import org.bukkit.entity.HumanEntity;
+ import org.bukkit.inventory.InventoryHolder;
+ 
+-import javax.annotation.Nullable;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+@@ -78,7 +77,6 @@ public class IconMenuInventory {
+             return this.items[position];
+         }
+ 
+-        @Nullable
+         public ItemStack getItem(int position) {
+             if (this.items[position] != null) {
+                 return this.items[position].createNmsItemStack();

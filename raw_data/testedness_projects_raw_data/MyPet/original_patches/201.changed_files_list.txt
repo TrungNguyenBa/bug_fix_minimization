@@ -1,0 +1,2 @@
+3d063f90 : mounting a pet with bare hands is now possible (set Ride item in config to 0)
+:100644 100644 48c5b6ba... 5869f444... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java

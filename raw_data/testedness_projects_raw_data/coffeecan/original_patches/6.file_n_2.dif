@@ -1,0 +1,24 @@
+diff --git a/src/main/java/com/allogy/coffeecan/statements/Activity.java b/src/main/java/com/allogy/coffeecan/statements/Activity.java
+index 8776c0b..224eead 100644
+--- a/src/main/java/com/allogy/coffeecan/statements/Activity.java
++++ b/src/main/java/com/allogy/coffeecan/statements/Activity.java
+@@ -23,9 +23,7 @@ import javax.validation.constraints.NotNull;
+ 
+ public class Activity extends StatementObject implements Identifiable
+ {
+-    public static final String OBJECT_TYPE = "Activity";
+-    @Deprecated
+-    public static final String ObjectType = OBJECT_TYPE;
++    public final static String ObjectType = "Activity";
+ 
+     @NotNull
+     private String id;
+@@ -35,7 +33,7 @@ public class Activity extends StatementObject implements Identifiable
+     public Activity(@JsonProperty("id") String id)
+     {
+         this.id = id;
+-        objectType = OBJECT_TYPE;
++        objectType = ObjectType;
+     }
+ 
+     @JsonProperty("id")

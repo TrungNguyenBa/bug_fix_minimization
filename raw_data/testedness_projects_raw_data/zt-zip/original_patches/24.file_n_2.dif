@@ -1,0 +1,12 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipEntryUtil.java b/src/main/java/org/zeroturnaround/zip/ZipEntryUtil.java
+index 0fec984..304ce5d 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipEntryUtil.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipEntryUtil.java
+@@ -49,6 +49,7 @@ class ZipEntryUtil {
+     }
+ 
+     copy.setComment(original.getComment());
++    copy.setCompressedSize(original.getCompressedSize());
+     copy.setTime(original.getTime());
+     return copy;
+   }

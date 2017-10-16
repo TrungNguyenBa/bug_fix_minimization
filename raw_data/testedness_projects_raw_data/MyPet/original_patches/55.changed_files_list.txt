@@ -1,0 +1,3 @@
+7a1752d3 : fix getOnlinePlayers() incompatibility for builds below Bukkit #3096 fixes #367
+:100644 100644 274050f0... c96daed4... M	src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+:100644 100644 2f11c16b... a7e5b0b6... M	src/main/java/de/Keyle/MyPet/util/BukkitUtil.java

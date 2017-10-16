@@ -1,0 +1,16 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/FileSource.java b/src/main/java/org/zeroturnaround/zip/FileSource.java
+index e034e26..3741a56 100644
+--- a/src/main/java/org/zeroturnaround/zip/FileSource.java
++++ b/src/main/java/org/zeroturnaround/zip/FileSource.java
+@@ -20,6 +20,11 @@ import java.io.File;
+ import java.io.FileInputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.nio.file.FileSystem;
++import java.nio.file.FileSystems;
++import java.nio.file.Files;
++import java.nio.file.LinkOption;
++import java.nio.file.spi.FileSystemProvider;
+ import java.util.zip.ZipEntry;
+ 
+ /**

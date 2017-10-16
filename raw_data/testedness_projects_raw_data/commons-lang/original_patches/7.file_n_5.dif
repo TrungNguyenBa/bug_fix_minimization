@@ -1,0 +1,22 @@
+diff --git a/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java b/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java
+index abb51987..c2907b27 100644
+--- a/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java
++++ b/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java
+@@ -550,7 +550,16 @@ public Date parse(final String source) throws ParseException {
+      */
+     @Override
+     public Date parse(final String source, final ParsePosition pos) {
+-            return parser.parse(source, pos);
++        return parser.parse(source, pos);
++    }
++
++    /*
++     * (non-Javadoc)
++     * @see org.apache.commons.lang3.time.DateParser#parse(java.lang.String, java.text.ParsePosition, java.util.Calendar)
++     */
++    @Override
++    public boolean parse(final String source, final ParsePosition pos, final Calendar calendar) {
++        return parser.parse(source, pos, calendar);
+     }
+ 
+     /* (non-Javadoc)

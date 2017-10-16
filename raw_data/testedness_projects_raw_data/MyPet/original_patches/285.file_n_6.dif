@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java b/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
+index 913d9cd2..5b87c07f 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
+@@ -60,7 +60,7 @@ public class EntityMyCreeper extends EntityMyPet
+ 
+     public boolean isPowered()
+     {
+-        return ((MyCreeper) myPet).isPowered;
++        return this.datawatcher.getByte(17) == 1;
+     }
+ 
+     // Obfuscated Methods -------------------------------------------------------------------------------------------

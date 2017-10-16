@@ -1,0 +1,21 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/processor/StateEndpoint.java b/src/test/java/com/lonepulse/zombielink/processor/StateEndpoint.java
+index 426e029..ca58c6b 100644
+--- a/src/test/java/com/lonepulse/zombielink/processor/StateEndpoint.java
++++ b/src/test/java/com/lonepulse/zombielink/processor/StateEndpoint.java
+@@ -25,6 +25,8 @@ import org.apache.http.HttpResponse;
+ 
+ import com.lonepulse.zombielink.annotation.Endpoint;
+ import com.lonepulse.zombielink.annotation.Header;
++import com.lonepulse.zombielink.annotation.Parser;
++import com.lonepulse.zombielink.annotation.Parser.ParserType;
+ import com.lonepulse.zombielink.annotation.Request;
+ import com.lonepulse.zombielink.annotation.Stateful;
+ 
+@@ -41,6 +43,7 @@ import com.lonepulse.zombielink.annotation.Stateful;
+  * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
+ @Stateful
++@Parser(ParserType.STRING)
+ @Endpoint(host = "0.0.0.0", port = "8080")
+ public interface StateEndpoint {
+ 	

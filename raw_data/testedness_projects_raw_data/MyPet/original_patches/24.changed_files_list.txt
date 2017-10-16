@@ -1,0 +1,3 @@
+d1e1569f : fix nametag bug fixes #441
+:100644 100644 bd9657a4... f91a5e70... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 2da1814b... ed5ed8e5... M	src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java

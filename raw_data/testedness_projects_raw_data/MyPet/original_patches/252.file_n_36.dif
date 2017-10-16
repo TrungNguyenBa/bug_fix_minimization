@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Lightning.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Lightning.java
+index 8132d7f1..18908596 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Lightning.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Lightning.java
+@@ -78,7 +78,7 @@ public class Lightning extends LightningInfo implements ISkillInstance, ISkillAc
+             }
+             if (!quiet && valuesEdit)
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.LightningChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%chance%", "" + chance));
++                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.LightningChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%chance%", "" + chance));
+             }
+         }
+     }

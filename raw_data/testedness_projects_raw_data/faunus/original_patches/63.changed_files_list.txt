@@ -1,0 +1,8 @@
+d72ad721 : Fixed compilation error; Stockmayer state and plot added
+:100755 100755 ff93f10f... 2695489b... M	include/faunus/analysis.h
+:100644 100644 f38b99c8... 32aae115... M	include/faunus/geometry.h
+:000000 100644 00000000... 8132751e... A	src/examples/stockmayer.agr
+:100755 100755 a5322b4d... 73fe95ba... M	src/examples/stockmayer.run
+:000000 100644 00000000... be09b2f4... A	src/examples/stockmayer.state
+:100644 100644 9e9f7dc3... 58637bb3... M	src/examples/stockmayer.test
+:100644 100644 58a7b977... 0e7915d0... M	src/examples/water.cpp

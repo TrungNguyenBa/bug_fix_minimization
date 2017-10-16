@@ -1,0 +1,6 @@
+d4a4519 : Use ObjectMapper bean in spring config
+:100644 100644 86ba924... 659244f... M	src/main/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumer.java
+:100644 100644 e19ba86... 03b65f8... M	src/main/java/com/ushahidi/swiftriver/core/rules/RulesUpdateQueueConsumer.java
+:100644 100644 8ffb7b5... 02a3a6a... M	src/main/resources/applicationContext.xml
+:100644 100644 64b7c56... 0ed85d5... M	src/test/java/com/ushahidi/swiftriver/core/rules/DropFilterQueueConsumerTest.java
+:100644 100644 16ac2df... 833c5c3... M	src/test/java/com/ushahidi/swiftriver/core/rules/RulesUpdateQueueConsumerTest.java

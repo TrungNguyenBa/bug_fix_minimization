@@ -1,0 +1,10 @@
+a850c2e : Various cleanup
+:100644 100644 8e2770a... 730202d... M	src/main/java/ru/tehkode/permissions/backends/MultiBackend.java
+:100644 100644 282c7e9... 45513ad... M	src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+:100644 100644 d616cb1... 3672dfb... M	src/main/java/ru/tehkode/permissions/backends/file/FileMatcherList.java
+:100644 100644 f0e1c2e... 7bae5f7... M	src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLWriter.java
+:100644 100644 800801e... a73c299... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryMatcherList.java
+:100644 100644 6100ce1... 0f1f476... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 0db3f72... b82a3a9... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
+:100644 100644 7ad0e28... d2c1c3b... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLMatcherGroup.java
+:100644 100644 ec99a4e... 4c4c5d5... M	src/main/java/ru/tehkode/permissions/backends/yaml/YamlBackend.java

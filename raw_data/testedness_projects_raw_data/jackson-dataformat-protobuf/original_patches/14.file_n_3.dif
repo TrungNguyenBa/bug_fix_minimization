@@ -1,0 +1,23 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
+index 03a466f..101b077 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
+@@ -83,18 +83,6 @@ public final class ProtobufReadContext
+         return ctxt;
+     }
+ 
+-    public ProtobufReadContext createChildArrayContext(int endOffset)
+-    {
+-        ProtobufReadContext ctxt = _child;
+-        if (ctxt == null) {
+-            _child = ctxt = new ProtobufReadContext(this, _messageType,
+-                    TYPE_ARRAY, 0);
+-        } else {
+-            ctxt.reset(_messageType, TYPE_ARRAY, endOffset);
+-        }
+-        return ctxt;
+-    }
+-    
+     public ProtobufReadContext createChildObjectContext(ProtobufMessage messageType, int endOffset)
+     {
+         ProtobufReadContext ctxt = _child;

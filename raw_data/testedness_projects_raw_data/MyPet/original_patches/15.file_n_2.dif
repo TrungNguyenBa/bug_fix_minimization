@@ -1,0 +1,50 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 40601612..ac93cc14 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -214,16 +214,6 @@ public class EntityListener implements Listener {
+                     event.setCancelled(true);
+                 }
+             }
+-            if (((CraftEntity) event.getDamager()).getHandle() instanceof MyPetProjectile) {
+-                MyPetProjectile projectile = (MyPetProjectile) ((CraftEntity) event.getDamager()).getHandle();
+-
+-                if (myPet == projectile.getShooter().getMyPet()) {
+-                    event.setCancelled(true);
+-                }
+-                if (!PvPChecker.canHurt(projectile.getShooter().getOwner().getPlayer(), myPet.getOwner().getPlayer(), true)) {
+-                    event.setCancelled(true);
+-                }
+-            }
+             if (!event.isCancelled() && event.getDamager() instanceof LivingEntity) {
+                 LivingEntity damager = (LivingEntity) event.getDamager();
+                 if (damager instanceof Player) {
+@@ -231,11 +221,7 @@ public class EntityListener implements Listener {
+                         return;
+                     }
+                 }
+-
+                 if (myPet.getSkills().isSkillActive(Thorns.class)) {
+-                    if (damager instanceof Creeper) {
+-                        return;
+-                    }
+                     Thorns thornsSkill = myPet.getSkills().getSkill(Thorns.class);
+                     if (thornsSkill.activate()) {
+                         isSkillActive = true;
+@@ -244,6 +230,16 @@ public class EntityListener implements Listener {
+                     }
+                 }
+             }
++            if (((CraftEntity) event.getDamager()).getHandle() instanceof MyPetProjectile) {
++                MyPetProjectile projectile = (MyPetProjectile) ((CraftEntity) event.getDamager()).getHandle();
++
++                if (myPet == projectile.getShooter().getMyPet()) {
++                    event.setCancelled(true);
++                }
++                if (!PvPChecker.canHurt(projectile.getShooter().getOwner().getPlayer(), myPet.getOwner().getPlayer(), true)) {
++                    event.setCancelled(true);
++                }
++            }
+         }
+     }
+ 

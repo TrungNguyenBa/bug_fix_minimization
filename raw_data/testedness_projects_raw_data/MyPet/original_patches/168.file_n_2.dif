@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTree.java b/src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTree.java
+index 1790d4e1..389184fd 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTree.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTree.java
+@@ -173,16 +173,11 @@ public class SkillTree
+ 
+     public void addSkillToLevel(int level, ISkillInfo skill)
+     {
+-        addSkillToLevel(level, skill, false);
+-    }
+-
+-    public void addSkillToLevel(int level, ISkillInfo skill, boolean top)
+-    {
+         if (skill == null)
+         {
+             MyPetLogger.write("Skills->null:level " + level);
+         }
+-        addLevel(level).addSkill(skill, top);
++        addLevel(level).addSkill(skill);
+     }
+ 
+     public void addSkillToLevel(int level, List<ISkillInfo> skillList)

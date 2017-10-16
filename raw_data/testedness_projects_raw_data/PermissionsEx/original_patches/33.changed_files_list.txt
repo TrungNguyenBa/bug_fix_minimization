@@ -1,0 +1,6 @@
+a8dbc87 : Implement methods needed to get parents as subjects
+:100644 100644 4763652... b5e44da... M	src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
+:100644 100644 9bb964d... 8acb589... M	src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
+:100644 100644 c2df00e... 1f52265... M	src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+:100644 100644 3ec75c3... d21e9e4... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+:100644 100644 43d60ac... 71f8083... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java

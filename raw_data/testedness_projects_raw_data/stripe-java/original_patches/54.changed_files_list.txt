@@ -1,0 +1,2 @@
+f5e8078 : URL-encode object ids (fixes #62)
+:100644 100644 4799398... 6c2388d... M	src/main/java/com/stripe/net/APIResource.java

@@ -1,0 +1,5 @@
+4b15b25f : when handling a finally block like so, try { alert(1) } finally { } There needs to be 2 edges: an unconditional edge to the statement after the 'finally', and an edge for the code path that continues handling the exception. Label the second edge with ON_EX instead of UNCOND. Fixes issue 779
+:100644 100644 5c6927f9... 980deff1... M	src/com/google/javascript/jscomp/ControlFlowAnalysis.java
+:100644 100644 56ed9d79... 49bbdd89... M	src/com/google/javascript/jscomp/ControlFlowGraph.java
+:100644 100644 5b43e178... 3a33aae7... M	test/com/google/javascript/jscomp/CheckMissingReturnTest.java
+:100644 100644 90422d58... 5560e2cc... M	test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java

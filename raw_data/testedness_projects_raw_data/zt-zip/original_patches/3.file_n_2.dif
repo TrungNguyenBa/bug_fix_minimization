@@ -1,0 +1,28 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipUtil.java b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+index 506a385..d455a7c 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipUtil.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+@@ -960,10 +960,8 @@ public final class ZipUtil {
+    * Unpacks each ZIP entries. Presumes they are packed with the backslash separator.
+    * Some archives can have this problem if they are created with some software
+    * that is not following the ZIP specification.
+-   * 
+-   * @since zt-zip 1.9
+    */
+-  public static class BackslashUnpacker implements ZipEntryCallback {
++  protected static class BackslashUnpacker implements ZipEntryCallback {
+ 
+     private final File outputDir;
+     private final NameMapper mapper;
+@@ -973,11 +971,6 @@ public final class ZipUtil {
+       this.mapper = mapper;
+     }
+ 
+-    public BackslashUnpacker(File outputDir) {
+-      this.outputDir = outputDir;
+-      this.mapper = IdentityNameMapper.INSTANCE;
+-    }
+-
+     public void process(InputStream in, ZipEntry zipEntry) throws IOException {
+       String name = mapper.map(zipEntry.getName());
+       if (name != null) {

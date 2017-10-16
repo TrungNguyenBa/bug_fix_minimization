@@ -1,0 +1,32 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/spider/MySpider.java b/src/main/java/de/Keyle/MyPet/entity/types/spider/MySpider.java
+index 5636b1fb..b0238553 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/spider/MySpider.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/spider/MySpider.java
+@@ -29,18 +29,22 @@ import org.bukkit.ChatColor;
+ import static org.bukkit.Material.ROTTEN_FLESH;
+ 
+ @MyPetInfo(food = {ROTTEN_FLESH})
+-public class MySpider extends MyPet {
+-    public MySpider(MyPetPlayer petOwner) {
++public class MySpider extends MyPet
++{
++    public MySpider(MyPetPlayer petOwner)
++    {
+         super(petOwner);
+     }
+ 
+     @Override
+-    public MyPetType getPetType() {
++    public MyPetType getPetType()
++    {
+         return MyPetType.Spider;
+     }
+ 
+     @Override
+-    public String toString() {
++    public String toString()
++    {
+         return "MySpider{owner=" + getOwner().getName() + ", name=" + ChatColor.stripColor(petName) + ", exp=" + experience.getExp() + "/" + experience.getRequiredExp() + ", lv=" + experience.getLevel() + ", status=" + status.name() + ", skilltree=" + (skillTree != null ? skillTree.getName() : "-") + ", worldgroup=" + worldGroup + "}";
+     }
+ }
+\ No newline at end of file

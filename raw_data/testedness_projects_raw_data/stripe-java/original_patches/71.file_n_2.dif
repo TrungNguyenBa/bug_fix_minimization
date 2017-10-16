@@ -1,0 +1,29 @@
+diff --git a/src/main/java/com/stripe/model/TransferTransaction.java b/src/main/java/com/stripe/model/TransferTransaction.java
+index 0348e69..5e68834 100644
+--- a/src/main/java/com/stripe/model/TransferTransaction.java
++++ b/src/main/java/com/stripe/model/TransferTransaction.java
+@@ -7,7 +7,7 @@ public class TransferTransaction extends StripeObject {
+ 	String type;
+ 	Long created;
+ 	String description;
+-	Long fee;
++	Long fees;
+ 
+ 	public String getId() {
+ 		return id;
+@@ -57,11 +57,11 @@ public class TransferTransaction extends StripeObject {
+ 		this.description = description;
+ 	}
+ 
+-	public Long getFee() {
+-		return fee;
++	public Long getFees() {
++		return fees;
+ 	}
+ 
+-	public void setFee(Long fee) {
+-		this.fee = fee;
++	public void setFees(Long fees) {
++		this.fees = fees;
+ 	}
+ }

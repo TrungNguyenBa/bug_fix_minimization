@@ -1,0 +1,25 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java b/src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+index e74814a1..12fb9c4f 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+@@ -59,9 +59,9 @@ public class EntityMySheep extends EntityMyPet
+         }
+     }
+ 
+-    public DyeColor getColor()
++    public int getColor()
+     {
+-        return ((MySheep) myPet).color;
++        return this.datawatcher.getByte(16) & 15;
+     }
+ 
+     public void setColor(DyeColor color)
+@@ -77,7 +77,7 @@ public class EntityMySheep extends EntityMyPet
+ 
+     public boolean isSheared()
+     {
+-        return ((MySheep) myPet).isSheared;
++        return (this.datawatcher.getByte(16) & 16) != 0;
+     }
+ 
+     public void setSheared(boolean flag)

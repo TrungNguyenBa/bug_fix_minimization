@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/inject/ProxyInvocationConfiguration.java b/src/main/java/com/lonepulse/zombielink/inject/ProxyInvocationConfiguration.java
+index 8dda1bc..8af6393 100644
+--- a/src/main/java/com/lonepulse/zombielink/inject/ProxyInvocationConfiguration.java
++++ b/src/main/java/com/lonepulse/zombielink/inject/ProxyInvocationConfiguration.java
+@@ -26,7 +26,7 @@ import java.net.URI;
+ /**
+  * <p>This is a wrapper class which encompasses the <i>configuration</i> of a 
+  * particular proxy invocation. It serves to consolidate method parameters for 
+- * the functionality in the endpoint proxy factory.</p>
++ * the functionality in {@link EndpointProxyFactory}.</p>
+  * 
+  * @version 1.1.2
+  * <br><br>

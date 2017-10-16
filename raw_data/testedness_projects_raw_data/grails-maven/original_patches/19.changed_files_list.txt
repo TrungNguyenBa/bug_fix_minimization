@@ -1,0 +1,2 @@
+1641470 : #MAVEN-221 - fixes bug with testing any REST Url Mappings. Specifically, the Maven classpath was no longer being forwarded along to Gradle causing some configuration issues.
+:100755 100755 db434b8... f802dd4... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

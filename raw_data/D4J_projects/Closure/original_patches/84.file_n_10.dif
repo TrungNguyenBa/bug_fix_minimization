@@ -1,0 +1,15 @@
+diff --git a/test/com/google/javascript/jscomp/parsing/ParserTest.java b/test/com/google/javascript/jscomp/parsing/ParserTest.java
+index e09390d2..0d7e9eb5 100644
+--- a/test/com/google/javascript/jscomp/parsing/ParserTest.java
++++ b/test/com/google/javascript/jscomp/parsing/ParserTest.java
+@@ -622,9 +622,7 @@ public class ParserTest extends BaseJSTypeTestCase {
+   }
+ 
+   public void testDestructuringAssignForbidden4() {
+-    parseError("[x, y] = foo();",
+-        "destructuring assignment forbidden",
+-        "invalid assignment target");
++    parseError("[x, y] = foo();", "destructuring assignment forbidden");
+   }
+ 
+   public void testLetForbidden() {

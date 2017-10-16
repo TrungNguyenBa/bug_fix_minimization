@@ -1,0 +1,5 @@
+f39a4771 : Fixed nasty bug in `NonbondedVector::i2all`; fixed xcode compilation error; added NaN check to `Movebase`; Stockmayer example no longer returns nan energy but still minor problem with acceptance when comparing to test case.
+:100644 100644 d688b6d1... 51c50520... M	include/faunus/energy.h
+:100644 100644 04a85e38... 24dee5fc... M	include/faunus/move.h
+:100644 100644 1aea2f65... 1eceb46c... M	include/faunus/multipole.h
+:100644 100644 1b1202e1... 9b0532e6... M	src/examples/stockmayer.cpp

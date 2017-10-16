@@ -1,0 +1,3 @@
+6bd8d39 : Fix handling of nested objects, now passes 'Box' test (Box has 2 points). Getting there.
+:100644 100644 3cb355a... e0d1324... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 e0a6c3b... 4705b38... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java

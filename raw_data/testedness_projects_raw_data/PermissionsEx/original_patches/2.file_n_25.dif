@@ -1,0 +1,30 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/util/PEXProfileCache.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/util/PEXProfileCache.java
+index e8eccaa..a74611e 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/util/PEXProfileCache.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/util/PEXProfileCache.java
+@@ -22,7 +22,6 @@ import com.google.common.collect.ImmutableSet;
+ import com.google.common.collect.Maps;
+ import com.sk89q.squirrelid.Profile;
+ import com.sk89q.squirrelid.cache.ProfileCache;
+-import ninja.leaping.permissionsex.PermissionsEx;
+ import ninja.leaping.permissionsex.data.ImmutableSubjectData;
+ import ninja.leaping.permissionsex.data.SubjectCache;
+ 
+@@ -45,7 +44,7 @@ public class PEXProfileCache implements ProfileCache  {
+     public void put(Profile profile) {
+         final String identifier = profile.getUniqueId().toString();
+         try {
+-            this.subjects.set(identifier, this.subjects.getData(identifier, null).setOption(PermissionsEx.GLOBAL_CONTEXT, "name", profile.getName()));
++            this.subjects.update(identifier, this.subjects.getData(identifier, null).setOption(ImmutableSet.<Map.Entry<String, String>>of(), "name", profile.getName()));
+         } catch (ExecutionException e) {
+             throw new RuntimeException(e);
+         }
+@@ -63,7 +62,7 @@ public class PEXProfileCache implements ProfileCache  {
+     public Profile getIfPresent(UUID uuid) {
+         try {
+             final ImmutableSubjectData data = subjects.getData(uuid.toString(), null);
+-            final String name = data.getOptions(PermissionsEx.GLOBAL_CONTEXT).get("name");
++            final String name = data.getOptions(ImmutableSet.<Map.Entry<String, String>>of()).get("name");
+             if (name == null) {
+                 return null;
+             }

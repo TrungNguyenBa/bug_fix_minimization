@@ -1,0 +1,14 @@
+diff --git a/src/main/resources/plugin.yml b/src/main/resources/plugin.yml
+index b8551609..211a689c 100644
+--- a/src/main/resources/plugin.yml
++++ b/src/main/resources/plugin.yml
+@@ -42,8 +42,7 @@ commands:
+     aliases: [pskill]
+     description: Shows the Skill-levels of your MyPet
+     usage: '/<command> <Playername>'
+-  mypetadmin:
+-    aliases: [petadmin]
++  petadmin:
+     description: MyPet-Admin-Command -> http://mypet.keyle.de/doku.php?id=en:commands
+     permission: MyPet.admin
+   petskilltree:

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
+index d44341e..a5d9d97 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
+@@ -54,7 +54,7 @@ public class UtilityCommands extends PermissionsCommand {
+ 			description = "Reload environment")
+ 	public void reload(PermissionsEx plugin, CommandSender sender, Map<String, String> args) {
+ 		try {
+-			plugin.getPermissionsManager().reset(true);
++			plugin.getPermissionsManager().reset();
+ 			sender.sendMessage(ChatColor.WHITE + "Permissions reloaded");
+ 		} catch (PermissionBackendException e) {
+ 			sender.sendMessage(ChatColor.RED + "Failed to reload permissions! Check configuration!\n" +

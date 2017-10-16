@@ -1,0 +1,58 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionEntity.java b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+index 8dd3ebb..5839e1e 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionEntity.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+@@ -27,6 +27,7 @@ import java.util.Map;
+ import java.util.Set;
+ import java.util.TimerTask;
+ import java.util.concurrent.ConcurrentHashMap;
++import java.util.logging.Logger;
+ 
+ import org.bukkit.Bukkit;
+ import org.bukkit.permissions.Permission;
+@@ -209,7 +210,7 @@ public abstract class PermissionEntity {
+ 		String expression = getMatchingExpression(permission, world);
+ 
+ 		if (this.isDebug()) {
+-			manager.getLogger().info("User " + this.getIdentifier() + " checked for \"" + permission + "\", " + (expression == null ? "no permission found" : "\"" + expression + "\" found"));
++			Logger.getLogger("Minecraft").info("User " + this.getIdentifier() + " checked for \"" + permission + "\", " + (expression == null ? "no permission found" : "\"" + expression + "\" found"));
+ 		}
+ 
+ 		return explainExpression(expression);
+@@ -241,18 +242,7 @@ public abstract class PermissionEntity {
+ 	 * @return Map with world name as key and permissions array as value
+ 	 */
+ 	public Map<String, List<String>> getAllPermissions() {
+-		Map<String, List<String>> ret = new HashMap<>(getData().getPermissionsMap());
+-		for (Map.Entry<String, List<String>> timedEnt : timedPermissions.entrySet()) {
+-			String worldKey = timedEnt.getKey().isEmpty() ? null : timedEnt.getKey();
+-			List<String> addTo = new LinkedList<>();
+-			addTo.addAll(timedEnt.getValue());
+-			List<String> permanentPerms = ret.get(worldKey);
+-			if (permanentPerms != null) {
+-				addTo.addAll(permanentPerms);
+-			}
+-			ret.put(worldKey, Collections.unmodifiableList(addTo));
+-		}
+-		return Collections.unmodifiableMap(ret);
++		return getData().getPermissionsMap();
+ 	}
+ 
+ 	protected List<String> getPermissionsInternal(String worldName, final boolean filterNonInheritable) {
+@@ -348,7 +338,6 @@ public abstract class PermissionEntity {
+ 	 * @param worldName      World name to remove permission for
+ 	 */
+ 	public void removePermission(String permission, String worldName) {
+-		removeTimedPermission(permission, worldName);
+ 		List<String> permissions = new LinkedList<>(this.getOwnPermissions(worldName));
+ 		permissions.remove(permission);
+ 		this.setPermissions(permissions, worldName);
+@@ -721,7 +710,7 @@ public abstract class PermissionEntity {
+ 		}
+ 
+ 		this.timedPermissions.get(world).remove(permission);
+-		this.timedPermissionsTime.remove(world + ":" + permission);
++		this.timedPermissions.remove(world + ":" + permission);
+ 
+ 		clearCache();
+ 		this.callEvent(PermissionEntityEvent.Action.PERMISSIONS_CHANGED);

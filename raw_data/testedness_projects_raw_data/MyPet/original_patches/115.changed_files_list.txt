@@ -1,0 +1,11 @@
+aeb7d4f5 : some cleanup of the My<Type>Entity classes
+:100644 100644 26a359d1... 304d99db... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+:100644 100644 e2c0448c... eba6e723... M	src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+:100644 100644 cd0d19f5... 5df0aadf... M	src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
+:100644 100644 6d2f2d4a... 10d287c3... M	src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+:100644 100644 d7147e81... 8008aaae... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 9a0763d8... c67f5820... M	src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+:100644 100644 5c63a735... 91da06a7... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 02b5238f... f0d4ba5d... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+:100644 100644 14ffd6ce... 8f848db9... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+:100644 100644 7ebed878... e3e264c9... M	src/main/java/de/Keyle/MyPet/util/BukkitUtil.java

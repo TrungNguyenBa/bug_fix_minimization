@@ -1,0 +1,20 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileGroup.java b/src/main/java/ru/tehkode/permissions/backends/file/FileGroup.java
+index 4dd495f..527b0a1 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileGroup.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileGroup.java
+@@ -19,7 +19,6 @@
+ package ru.tehkode.permissions.backends.file;
+ 
+ import java.util.*;
+-
+ import org.bukkit.configuration.ConfigurationSection;
+ 
+ import ru.tehkode.permissions.PermissionManager;
+@@ -28,6 +27,7 @@ import ru.tehkode.permissions.backends.FileBackend;
+ import ru.tehkode.permissions.events.PermissionEntityEvent;
+ 
+ /**
++ *
+  * @author code
+  */
+ public class FileGroup extends ProxyPermissionGroup {

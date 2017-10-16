@@ -1,0 +1,6 @@
+dfbd529 : Various commands system tweaks
+:100644 100644 cc6edc1... 53f913c... M	src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
+:100644 100644 1e5a1dd... 81b1ab9... M	src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
+:100644 100644 1c0446d... 8f6d4fc... M	src/main/java/ninja/leaping/permissionsex/util/command/args/GenericArguments.java
+:100644 100644 50e39db... 19edd5d... M	src/main/po/de.po
+:100644 100644 6c8081d... f62d2a9... M	src/main/po/keys.pot

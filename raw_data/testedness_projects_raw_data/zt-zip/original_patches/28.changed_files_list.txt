@@ -1,0 +1,2 @@
+e6669a0 : Refactor copying entry method Zips
+:100644 100644 46563be... 0014b9e... M	src/main/java/org/zeroturnaround/zip/Zips.java

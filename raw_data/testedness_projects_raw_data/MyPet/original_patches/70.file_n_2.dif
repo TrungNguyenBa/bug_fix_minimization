@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index 199e1d65..1236ec05 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -59,7 +59,7 @@
+         <!-- http://spoutcraft.org/resources/heroes.2/updates -->
+ 
+         <metrics.version>R7</metrics.version>
+-        <knbt.version>0.0.1</knbt.version>
++        <knbt.version>0.0.1-SNAPSHOT</knbt.version>
+         <forms_rt.version>7.0.3</forms_rt.version>
+ 
+         <junit.version>4.8.2</junit.version>

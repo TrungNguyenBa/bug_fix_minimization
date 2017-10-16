@@ -1,0 +1,2 @@
+c6c69bda : fix error in rabbit creation (again) fixes #439
+:100644 100644 3c5f518c... 0e4c6076... M	src/main/java/de/Keyle/MyPet/entity/types/rabbit/MyRabbit.java

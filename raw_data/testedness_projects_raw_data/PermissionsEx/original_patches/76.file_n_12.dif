@@ -1,0 +1,57 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/yaml/YamlMatcherGroup.java b/src/main/java/ru/tehkode/permissions/backends/yaml/YamlMatcherGroup.java
+index 50ee73c..0c7270a 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/yaml/YamlMatcherGroup.java
++++ b/src/main/java/ru/tehkode/permissions/backends/yaml/YamlMatcherGroup.java
+@@ -1,8 +1,6 @@
+ package ru.tehkode.permissions.backends.yaml;
+ 
+ import com.google.common.collect.Multimap;
+-import com.google.common.util.concurrent.Futures;
+-import com.google.common.util.concurrent.ListenableFuture;
+ import ru.tehkode.permissions.data.MatcherGroup;
+ import ru.tehkode.permissions.data.Qualifier;
+ 
+@@ -43,13 +41,9 @@ public final class YamlMatcherGroup extends MatcherGroup {
+ 		return qualifiers;
+ 	}
+ 
+-	private <T> ListenableFuture<T> readOnly() {
+-		return Futures.immediateFailedFuture(new UnsupportedOperationException("YAAML backend is read-only").fillInStackTrace());
+-	}
+-
+ 	@Override
+-	public ListenableFuture<MatcherGroup> setQualifiers(Multimap<Qualifier, String> qualifiers) {
+-		return readOnly();
++	public MatcherGroup setQualifiers(Multimap<Qualifier, String> qualifiers) {
++		throw new UnsupportedOperationException("YAML backend is read-only");
+ 	}
+ 
+ 	@Override
+@@ -63,13 +57,13 @@ public final class YamlMatcherGroup extends MatcherGroup {
+ 	}
+ 
+ 	@Override
+-	public ListenableFuture<MatcherGroup> setEntries(Map<String, String> value) {
+-		return readOnly();
++	public MatcherGroup setEntries(Map<String, String> value) {
++		throw new UnsupportedOperationException("YAML backend is read-only");
+ 	}
+ 
+ 	@Override
+-	public ListenableFuture<MatcherGroup> setEntries(List<String> value) {
+-		return readOnly();
++	public MatcherGroup setEntries(List<String> value) {
++		throw new UnsupportedOperationException("YAML backend is read-only");
+ 	}
+ 
+ 	@Override
+@@ -78,7 +72,7 @@ public final class YamlMatcherGroup extends MatcherGroup {
+ 	}
+ 
+ 	@Override
+-	public ListenableFuture<Boolean> remove() {
+-		return readOnly();
++	public boolean remove() {
++		throw new UnsupportedOperationException("YAML backend is read-only");
+ 	}
+ }

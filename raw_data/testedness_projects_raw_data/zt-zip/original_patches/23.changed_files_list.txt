@@ -1,0 +1,2 @@
+94a4af4 : Some small changes to make SONAR happy
+:100644 100644 2d61b9d... bf13789... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java

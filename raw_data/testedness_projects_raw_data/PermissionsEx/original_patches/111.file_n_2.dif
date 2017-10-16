@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index d4fd989..6d83682 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -242,7 +242,7 @@ public class PermissionManager {
+ 			OfflinePlayer player = plugin.getServer().getOfflinePlayer(username);
+ 			UUID userUUID = null;
+ 			try {
+-				userUUID = player instanceof Player ? ((Player) player).getUniqueId() : player.getUniqueId();
++				userUUID = player.getUniqueId();
+ 			} catch (Throwable t) {
+ 				// Handle cases where the plugin is not running on a uuid-aware Bukkit by just not converting here
+ 			}

@@ -1,0 +1,2 @@
+23fcfb2 : Fixed a bug in AbstractGrailsMojo.java that caused it to look for the Groovy dependency using the wrong criteria (comparing artifactId with groupId and vice versa).
+:100755 100755 b504db8... 8eeea4a... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

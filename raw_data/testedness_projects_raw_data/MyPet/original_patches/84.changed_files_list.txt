@@ -1,0 +1,5 @@
+4eb33bbb : don't spawn pet when owner is flying fixes #257
+:100644 100644 441451fe... 0f0aaf8a... M	src/main/java/de/Keyle/MyPet/commands/CommandCall.java
+:100644 100644 28d39644... 394abe44... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 9f6a4cd9... 8085baf0... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:100644 100644 f78d3990... d1ad79c8... M	src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java

@@ -1,0 +1,21 @@
+diff --git a/src/test/java/org/zeroturnaround/zip/ZipUtilInPlaceTest.java b/src/test/java/org/zeroturnaround/zip/ZipUtilInPlaceTest.java
+index 454459e..119d601 100644
+--- a/src/test/java/org/zeroturnaround/zip/ZipUtilInPlaceTest.java
++++ b/src/test/java/org/zeroturnaround/zip/ZipUtilInPlaceTest.java
+@@ -21,12 +21,12 @@ import java.io.IOException;
+ import java.util.zip.ZipEntry;
+ import java.util.zip.ZipOutputStream;
+ 
+-import junit.framework.TestCase;
+-
+-import org.zeroturnaround.zip.commons.FileUtils;
+-import org.zeroturnaround.zip.commons.IOUtils;
++import org.apache.commons.io.FileUtils;
++import org.apache.commons.io.IOUtils;
+ import org.zeroturnaround.zip.transform.ByteArrayZipEntryTransformer;
+ 
++import junit.framework.TestCase;
++
+ public class ZipUtilInPlaceTest extends TestCase {
+ 
+   /** @noinspection ConstantConditions*/

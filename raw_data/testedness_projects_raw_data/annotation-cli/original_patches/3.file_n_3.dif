@@ -1,0 +1,14 @@
+diff --git a/TODO b/TODO
+index 0ad0480..1c76a57 100644
+--- a/TODO
++++ b/TODO
+@@ -8,7 +8,4 @@
+ - Add more javadoc that includes a package.html file with information on how to use this library [in-progress]
+ - Add an examples directory or maybe added detailed examples to the README file.
+ - Add a usage method to the Options class that will print all of the option to standard options [done]
+-- Update the Option annotation so that it can state that an option is required [done]
+-- Update the processing of Option such that you can just pass a top-level Class which contain references to fields that have
+-  options associated to it.
+-- Create wiki pages that describe what this tool can do and how to use the tool. [in-progress]
++- Update the Option annotation so that it can state that an option is required [done]
+\ No newline at end of file

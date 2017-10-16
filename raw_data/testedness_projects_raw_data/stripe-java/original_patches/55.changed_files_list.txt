@@ -1,0 +1,2 @@
+73e3951 : Add 'valid' to coupon (Fixes #65)
+:100644 100644 7f40623... a4023ed... M	src/main/java/com/stripe/model/Coupon.java

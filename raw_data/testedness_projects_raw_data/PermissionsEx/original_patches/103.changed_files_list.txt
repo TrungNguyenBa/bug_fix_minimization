@@ -1,0 +1,3 @@
+43dc458 : Fix issue with certain option configurations breaking prefixes and suffixes
+:100644 100644 0f35265... 97024be... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+:100644 100644 8543513... cb52947... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java

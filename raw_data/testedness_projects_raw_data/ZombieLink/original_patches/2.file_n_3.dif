@@ -1,0 +1,22 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/JsonDeserializer.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/JsonDeserializer.java
+index 41f65b0..59ab684 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/JsonDeserializer.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/JsonDeserializer.java
+@@ -92,7 +92,7 @@ final class JsonDeserializer extends AbstractDeserializer<Object> {
+ 			Gson_fromJson = Gson.getDeclaredMethod("fromJson", String.class, Type.class);
+ 			
+ 			TypeToken = Class.forName("com.google.gson.reflect.TypeToken");
+-			TypeToken_GET = TypeToken.getDeclaredMethod("get", java.lang.reflect.Type.class);
++			TypeToken_GET = TypeToken.getDeclaredMethod("get", Class.class);
+ 			TypeToken_getType = TypeToken.getDeclaredMethod("getType");
+ 			
+ 			gson = Gson.newInstance();
+@@ -158,7 +158,7 @@ final class JsonDeserializer extends AbstractDeserializer<Object> {
+ 		try {
+ 			
+ 			return entity == null? null :Gson_fromJson.invoke(gson, EntityUtils.toString(entity), 
+-					TypeToken_getType.invoke(TypeToken_GET.invoke(null, context.getRequest().getGenericReturnType())));
++					TypeToken_getType.invoke(TypeToken_GET.invoke(null, context.getRequest().getReturnType())));
+ 		} 
+ 		catch(Exception e) {
+ 			

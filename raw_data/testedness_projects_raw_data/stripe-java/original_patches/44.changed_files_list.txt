@@ -1,0 +1,3 @@
+46b52a8 : Allow users to disable SSL cert checking
+:100644 100644 975d3e2... 69aea72... M	src/main/java/com/stripe/Stripe.java
+:100644 100644 dc420f7... ac85b15... M	src/main/java/com/stripe/net/APIResource.java

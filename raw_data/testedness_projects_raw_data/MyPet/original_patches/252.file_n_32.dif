@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/HP.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/HP.java
+index 91871d6f..ca922d98 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/HP.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/HP.java
+@@ -75,7 +75,7 @@ public class HP extends HPInfo implements ISkillInstance
+ 
+                 if (!quiet)
+                 {
+-                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddHp", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%maxhealth%", "" + (MyPet.getStartHP(myPet.getClass()) + hpIncrease)));
++                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddHp", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%maxhealth%", "" + (MyPet.getStartHP(myPet.getClass()) + hpIncrease)));
+                 }
+             }
+         }

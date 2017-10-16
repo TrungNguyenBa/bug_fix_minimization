@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/Economy.java b/src/main/java/de/Keyle/MyPet/util/Economy.java
+index 3afeca7c..aee37568 100644
+--- a/src/main/java/de/Keyle/MyPet/util/Economy.java
++++ b/src/main/java/de/Keyle/MyPet/util/Economy.java
+@@ -73,7 +73,8 @@ public class Economy
+         {
+             if (economy.has(petOwner.getName(), costs))
+             {
+-                return economy.withdrawPlayer(petOwner.getName(), costs).transactionSuccess();
++                economy.withdrawPlayer(petOwner.getName(), costs);
++                return true;
+             }
+             else
+             {

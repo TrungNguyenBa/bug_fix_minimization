@@ -1,0 +1,4 @@
+f3517938 : retry auto skilltree assignment when skilltree is still null
+:100644 100644 e6e7b13d... 8f31a652... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
+:100644 100644 d199c7d5... 02d6605c... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandSkill.java
+:100644 100644 d6d4363b... 29934838... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java

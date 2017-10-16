@@ -1,0 +1,8 @@
+ea5d8f88 : fixed entity sizes
+:100644 100644 3df94d44... be5775bc... M	src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+:100644 100644 45b71d12... 2b116db1... M	src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
+:100644 100644 4a09413a... 17b65e72... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 f5f12685... 06327522... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 0472a252... cca3f02a... M	src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+:100644 100644 c5e9d6f3... 27b9b432... M	src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
+:100644 100644 444d6002... 12a52bae... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java

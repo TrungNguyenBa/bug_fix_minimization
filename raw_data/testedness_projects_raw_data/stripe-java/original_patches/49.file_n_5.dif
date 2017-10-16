@@ -1,0 +1,12 @@
+diff --git a/src/main/java/com/stripe/model/CustomerSubscriptionCollection.java b/src/main/java/com/stripe/model/CustomerSubscriptionCollection.java
+index 7b0c7e2..9224c9f 100644
+--- a/src/main/java/com/stripe/model/CustomerSubscriptionCollection.java
++++ b/src/main/java/com/stripe/model/CustomerSubscriptionCollection.java
+@@ -34,6 +34,7 @@ public class CustomerSubscriptionCollection extends StripeColllectionAPIResource
+ 	  public Subscription retrieve(String id, String apiKey) throws AuthenticationException,
+ 	      InvalidRequestException, APIConnectionException, CardException,
+ 	      APIException {
++	        // TODO: URL-encode!
+ 	    String url = String.format("%s%s/%s", Stripe.getApiBase(), this.getURL(), id);
+ 	    return request(RequestMethod.GET, url, null,
+ 	        Subscription.class, apiKey);

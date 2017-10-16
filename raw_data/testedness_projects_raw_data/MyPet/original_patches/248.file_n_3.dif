@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
+index e6e7b13d..96bf37b5 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
+@@ -79,16 +79,6 @@ public class CommandChooseSkilltree implements CommandExecutor, TabCompleter
+                             if (myPet.setSkilltree(skillTree))
+                             {
+                                 sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.SkilltreeSwitchedTo", player).replace("%name%", skillTree.getName())));
+-                                if (myPet.getOwner().isMyPetAdmin() && MyPetConfiguration.SKILLTREE_SWITCH_PENALTY_ADMIN)
+-                                {
+-                                    myPet.getExperience().removeExp(MyPetConfiguration.SKILLTREE_SWITCH_PENALTY_FIXED);
+-                                    myPet.getExperience().removeExp(myPet.getExperience().getExp() * MyPetConfiguration.SKILLTREE_SWITCH_PENALTY_PERCENT / 100.);
+-                                }
+-                                else
+-                                {
+-                                    myPet.getExperience().removeExp(MyPetConfiguration.SKILLTREE_SWITCH_PENALTY_FIXED);
+-                                    myPet.getExperience().removeExp(myPet.getExperience().getExp() * MyPetConfiguration.SKILLTREE_SWITCH_PENALTY_PERCENT / 100.);
+-                                }
+                             }
+                             else
+                             {

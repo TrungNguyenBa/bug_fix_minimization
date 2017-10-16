@@ -1,0 +1,12 @@
+diff --git a/include/faunus/textio.h b/include/faunus/textio.h
+index b15dd754..f93d3d4b 100644
+--- a/include/faunus/textio.h
++++ b/include/faunus/textio.h
+@@ -2,7 +2,6 @@
+ #define FAUNUS_TEXTIO_H
+ 
+ #include <faunus/common.h>
+-#include <iterator>
+ 
+ namespace Faunus {
+   /*!

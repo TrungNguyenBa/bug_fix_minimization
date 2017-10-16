@@ -1,0 +1,4 @@
+d7a5b7f : Fix collections returning the wrong type on create
+:100644 100644 c3e9267... 04f4919... M	src/main/java/com/stripe/model/CustomerCardCollection.java
+:100644 100644 7b0c7e2... 510e383... M	src/main/java/com/stripe/model/CustomerSubscriptionCollection.java
+:100644 100644 ca7d139... 777087f... M	src/test/java/com/stripe/StripeTest.java

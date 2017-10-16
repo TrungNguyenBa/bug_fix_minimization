@@ -1,0 +1,4 @@
+c9d786a4 : LANG-805 RandomStringUtils.random(count, 0, 0, false, false, universe, random) always throws java.lang.ArrayIndexOutOfBoundsException
+:100644 100644 da5cd18f... 1aae92a6... M	src/changes/changes.xml
+:100644 100644 bded1540... a7990575... M	src/main/java/org/apache/commons/lang3/RandomStringUtils.java
+:100644 100644 55ce99ad... 6c7b0c16... M	src/test/java/org/apache/commons/lang3/RandomStringUtilsTest.java

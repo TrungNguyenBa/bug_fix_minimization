@@ -1,0 +1,12 @@
+diff --git a/src/com/google/javascript/jscomp/SanityCheck.java b/src/com/google/javascript/jscomp/SanityCheck.java
+index a363a9bc..aa554273 100644
+--- a/src/com/google/javascript/jscomp/SanityCheck.java
++++ b/src/com/google/javascript/jscomp/SanityCheck.java
+@@ -18,6 +18,7 @@ package com.google.javascript.jscomp;
+ 
+ import com.google.common.base.Preconditions;
+ import com.google.javascript.rhino.Node;
++import com.google.javascript.rhino.Token;
+ 
+ /**
+  * A compiler pass that verifies the structure of the AST conforms

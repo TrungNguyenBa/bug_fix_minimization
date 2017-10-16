@@ -1,0 +1,36 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java
+index 4965a099..4b3817ac 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java
+@@ -27,23 +27,23 @@ import java.util.UUID;
+ 
+ public interface IMyPet
+ {
+-    public double getExp();
++    public UUID getUUID();
+ 
+     public double getHealth();
+ 
+-    public int getHungerValue();
++    public String getPetName();
+ 
+     public MyPetPlayer getOwner();
+ 
+-    public String getPetName();
+-
+-    public MyPetType getPetType();
++    public MyPetSkillTree getSkillTree();
+ 
+     public int getRespawnTime();
+ 
+-    public MyPetSkillTree getSkillTree();
++    public double getExp();
+ 
+-    public UUID getUUID();
++    public int getHungerValue();
++
++    public MyPetType getPetType();
+ 
+     public String getWorldGroup();
+ }
+\ No newline at end of file

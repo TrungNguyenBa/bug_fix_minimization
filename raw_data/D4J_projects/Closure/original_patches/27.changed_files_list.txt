@@ -1,0 +1,3 @@
+7a898304 : Correct IR helpers for TRY nodes. Fixes issue 727.
+:100644 100644 6ffc95f0... 002acd6c... M	src/com/google/javascript/rhino/IR.java
+:000000 100644 00000000... 751c9e5f... A	test/com/google/javascript/rhino/IRTest.java

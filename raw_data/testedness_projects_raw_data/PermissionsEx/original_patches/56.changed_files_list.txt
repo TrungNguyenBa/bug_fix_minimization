@@ -1,0 +1,3 @@
+a8c77b7 : Fix handling of changed unique key
+:100644 100644 64885c0... bde2784... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 1a7cbde... 79dcd88... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java

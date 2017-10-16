@@ -1,0 +1,2 @@
+bec868a : [#eng-3896] Wall hack to work around composing a non-public method.
+:100644 100644 b5d0d7f... e87fe82... M	src/test/java/com/sonian/elasticsearch/http/filter/logging/MockESLoggerFactory.java

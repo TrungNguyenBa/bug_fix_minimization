@@ -1,0 +1,3 @@
+bbef00eb : fix problem with vanilla to own NBT List fixes #387
+:100644 100644 43289229... 65bceaf5... M	pom.xml
+:100644 100644 f76b3f7d... 0f5dcbd2... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/ItemStackNBTConverter.java

@@ -1,0 +1,23 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
+index e624dd4c..93714763 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
+@@ -125,18 +125,6 @@ public class BehaviorDuelTarget extends AIGoal
+         {
+             return true;
+         }
+-        else if (petEntity.getGoalTarget().world != petEntity.world)
+-        {
+-            return true;
+-        }
+-        else if (petEntity.e(petEntity.getGoalTarget()) > 400)
+-        {
+-            return true;
+-        }
+-        else if (petEntity.e(petEntity.getOwner().getEntityPlayer()) > 600)
+-        {
+-            return true;
+-        }
+         return false;
+     }
+ 

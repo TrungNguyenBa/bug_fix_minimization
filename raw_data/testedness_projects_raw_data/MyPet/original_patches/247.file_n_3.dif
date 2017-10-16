@@ -1,0 +1,17 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetWorldGroup.java b/src/main/java/de/Keyle/MyPet/util/MyPetWorldGroup.java
+index b6039c4f..a91e4504 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetWorldGroup.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetWorldGroup.java
+@@ -28,11 +28,11 @@ import java.util.Map;
+ public class MyPetWorldGroup
+ {
+     private static List<MyPetWorldGroup> allGroups = new ArrayList<MyPetWorldGroup>();
+-    private static Map<String, MyPetWorldGroup> groupWorlds = new HashMap<String, MyPetWorldGroup>();
+ 
+     private String name;
+     private List<String> worlds = new ArrayList<String>();
+ 
++    private static Map<String, MyPetWorldGroup> groupWorlds = new HashMap<String, MyPetWorldGroup>();
+ 
+     public MyPetWorldGroup(String groupName)
+     {

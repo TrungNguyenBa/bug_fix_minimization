@@ -1,0 +1,3 @@
+da513fd : add static method to FileSource to map an array of files to array of their names
+:100644 100644 1699676... 3bfbc58... M	src/main/java/org/zeroturnaround/zip/FileSource.java
+:000000 100644 0000000... 09179b3... A	src/test/java/org/zeroturnaround/zip/FileSourceTest.java

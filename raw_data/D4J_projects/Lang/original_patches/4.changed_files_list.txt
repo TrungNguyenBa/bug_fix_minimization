@@ -1,0 +1,4 @@
+fb47b96a : Allow LookupTranslator to support CharSequence properly; previously it was working only for CharSequence's that implemented hashCode and equals(Object). LANG-882
+:100644 100644 80161590... 62fb4180... M	src/changes/changes.xml
+:100644 100644 d6cb0776... 9cf45f8f... M	src/main/java/org/apache/commons/lang3/text/translate/LookupTranslator.java
+:100644 100644 af4d6843... 67419f86... M	src/test/java/org/apache/commons/lang3/text/translate/LookupTranslatorTest.java

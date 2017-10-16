@@ -1,0 +1,4 @@
+afe5dff7 : LANG-831 FastDateParser does not handle white-space properly
+:100644 100644 82b036ae... b0244500... M	src/changes/changes.xml
+:100644 100644 a01159bd... 8df302f9... M	src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+:100644 100644 5bbbfbed... ee5a5008... M	src/test/java/org/apache/commons/lang3/time/FastDateParserTest.java

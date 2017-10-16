@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/bwaldvogel/mongo/backend/memory/index/UniqueIndex.java b/src/main/java/de/bwaldvogel/mongo/backend/memory/index/UniqueIndex.java
+index 2a00c00..aa348f4 100644
+--- a/src/main/java/de/bwaldvogel/mongo/backend/memory/index/UniqueIndex.java
++++ b/src/main/java/de/bwaldvogel/mongo/backend/memory/index/UniqueIndex.java
+@@ -117,8 +117,7 @@ public class UniqueIndex extends Index {
+ 
+     @Override
+     public synchronized Iterable<Integer> getPositions(BSONObject query) {
+-        // Do not use getKeyValue, it's only valid for document.
+-        Object keyValue = Utils.normalizeValue(query.get(key));
++        Object keyValue = getKeyValue(query);
+ 
+         if (keyValue instanceof BSONObject) {
+             BSONObject keyObj = (BSONObject) keyValue;

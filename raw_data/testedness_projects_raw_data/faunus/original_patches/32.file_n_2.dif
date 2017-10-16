@@ -1,0 +1,71 @@
+diff --git a/src/playground/jmhenriques/peptide.cpp b/src/playground/jmhenriques/peptide.cpp
+index 541daf5f..9672f907 100644
+--- a/src/playground/jmhenriques/peptide.cpp
++++ b/src/playground/jmhenriques/peptide.cpp
+@@ -5,7 +5,7 @@
+  *         (charged and/or hydrophobic  surface). Implicit salt.
+  *        
+  * @author Joao Henriques
+- * @date   2013/11/24
++ * @date   2013/11/22
+  */
+ 
+ using namespace Faunus;
+@@ -92,11 +92,10 @@ int main() {
+   Move::SwapMove<Tspace> tit(mcp, pot, spc, pot.first.second);
+ 
+   Analysis::PolymerShape shape;
+-  Average<double> avrg2;
++  std::map<string, Average<double> > Rg2;
+   Analysis::ChargeMultipole mp;
+ #ifdef SLIT
+   Analysis::LineDistribution<> surfmcdist;
+-  int cntr = 0;
+   std::map<int, Analysis::LineDistribution<> > surfresdist;
+   Analysis::Table2D<double, Average<double> > netqtable;
+   Analysis::Table2D<double, Average<double> > rg2table;
+@@ -121,7 +120,7 @@ int main() {
+   
+   std::ofstream f1("rg_step.dat");
+   std::ofstream f2("surf_res_dist.dat");
+-  
++
+   MCLoop loop(mcp);
+   while (loop.macroCnt()) {
+     while (loop.microCnt()) {
+@@ -153,7 +152,7 @@ int main() {
+ 	shape.sample(pol, spc);
+ 	Point r2 = shape.vectorgyrationRadiusSquared(pol, spc);
+ 	double rg2 = r2.x()+r2.y()+r2.z();
+-	avrg2 += rg2;
++	Rg2[pol.name] += rg2;
+       }
+ 
+ #ifdef SLIT
+@@ -170,7 +169,6 @@ int main() {
+ 	  // res prob distr along the z axis
+ 	  surfresdist[i](resdist)++;
+ 	}
+-	cntr += 1;
+       }
+ #endif
+ 
+@@ -179,7 +177,8 @@ int main() {
+     sys.checkDrift(Energy::systemEnergy(spc, pot, spc.p));
+     cout << loop.timing();
+ 
+-    f1 << loop.count() << " " << sqrt(avrg2.avg()) << "\n";
++    for (auto &m : Rg2)
++      f1 << loop.count() << " " << sqrt(m.second.avg()) << "\n";
+     
+ #ifdef SLIT  
+     netqtable.save("netq_dist.dat");
+@@ -197,7 +196,7 @@ int main() {
+   surfmcdist.save("surf_mc_dist.dat");
+   for (double d = 0; d <= spc.geo.len.z(); d += 0.25) {
+     for (int i = pol.front(); i <= pol.back(); i++)  
+-      f2 << d << " " << i + 1 << " " << -log(double(surfresdist[i](d))/double(cntr)) << endl;
++      f2 << d << " " << i + 1 << " " << -log(surfresdist[i](d)) << endl;
+     f2 << endl;
+   }
+ #endif

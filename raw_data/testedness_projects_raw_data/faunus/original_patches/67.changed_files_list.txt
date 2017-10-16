@@ -1,0 +1,11 @@
+adfe0caf : Stockmayer example working, also the polarizable case. Started with white noise test in analyzis.
+:100755 100755 0c3d0be0... 37026898... M	include/faunus/analysis.h
+:100644 100644 33d455bc... 1c20d985... M	include/faunus/geometry.h
+:100644 100644 3e8b07af... 3f54cfda... M	include/faunus/move.h
+:100644 100644 055edc87... 84179985... M	include/faunus/point.h
+:100644 100644 b544b2ac... c5fdfbcc... M	include/faunus/species.h
+:100644 100644 aeed1304... 3d35c963... M	src/examples/CMakeLists.txt
+:100644 100644 9c6fade0... c056a962... M	src/examples/stockmayer.cpp
+:100755 100755 d7f3325d... 55fc404d... M	src/examples/stockmayer.run
+:100644 100644 22cdf424... b8c3d0c2... M	src/examples/unittests.cpp
+:100644 100644 19e54ab3... ee108e13... M	src/species.cpp

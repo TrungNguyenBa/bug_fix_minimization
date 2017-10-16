@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+index 6f90eb39..b424be26 100644
+--- a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
++++ b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+@@ -187,7 +187,6 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
+         getCommand("petrespawn").setExecutor(new CommandRespawn());
+         getCommand("pettype").setExecutor(new CommandPetType());
+         getCommand("petcapturehelper").setExecutor(new CommandCaptureHelper());
+-        getCommand("petoptions").setExecutor(new CommandOptions());
+ 
+         registerSkillsInfo();
+         registerSkills();

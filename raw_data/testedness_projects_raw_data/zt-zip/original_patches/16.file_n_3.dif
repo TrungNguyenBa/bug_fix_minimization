@@ -1,0 +1,14 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/Zips.java b/src/main/java/org/zeroturnaround/zip/Zips.java
+index e02ca9f..03df11f 100644
+--- a/src/main/java/org/zeroturnaround/zip/Zips.java
++++ b/src/main/java/org/zeroturnaround/zip/Zips.java
+@@ -199,8 +199,7 @@ public class Zips {
+       this.changedEntries.add(new FileSource(file.getName(), file));
+       return this;
+     }
+-    
+-    Collection files = ZTFileUtil.listFiles(file);
++    Collection files = FileUtils.listFiles(file, null, true);
+     for (Iterator iter = files.iterator(); iter.hasNext();) {
+       File entryFile = (File) iter.next();
+       if (filter != null && !filter.accept(entryFile)) {

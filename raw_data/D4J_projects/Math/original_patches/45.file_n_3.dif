@@ -1,0 +1,14 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index e6dd4d12c..29f713266 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,9 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="3.0" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-679" due-to="Christopher Berner">
+-         Fixed an integer overflow in OpenMapRealMatrix.
+-      </action>
+       <action dev="erans" type="fix" issue="MATH-688">
+         "FastMath": Use constant fields instead of recomputing them at method
+         call.

@@ -1,0 +1,16 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+index b610322a..250acd55 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+@@ -109,9 +109,6 @@ public class EntityMyBlaze extends EntityMyPet {
+         return (MyBlaze) myPet;
+     }
+ 
+-    /**
+-     * -> disable falldamage
+-     */
+-    public void e(float f, float f1) {
++    protected void b(float f) {
+     }
+ }
+\ No newline at end of file

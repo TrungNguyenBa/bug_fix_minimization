@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/GuiMain.java b/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
+index 5df45960..ef20a999 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
++++ b/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
+@@ -40,7 +40,7 @@ public class GuiMain {
+     public static SkillPropertyEditor skillPropertyEditor;
+     public static String configPath;
+ 
+-    public static String[] petTypes = new String[]{"default", "Bat", "Blaze", "CaveSpider", "Chicken", "Cow", "Creeper", "Enderman", "Endermite", "Ghast", "Giant", "Guardian", "Horse", "IronGolem", "MagmaCube", "Mooshroom", "Ocelot", "Pig", "PigZombie", "Rabbit", "Sheep", "Silverfish", "Skeleton", "Slime", "Snowman", "Spider", "Squid", "Witch", "Wither", "Wolf", "Villager", "Zombie"};
++    public static String[] petTypes = new String[]{"default", "Bat", "Blaze", "CaveSpider", "Chicken", "Cow", "Creeper", "Enderman", "Ghast", "Giant", "Horse", "IronGolem", "MagmaCube", "Mooshroom", "Ocelot", "Pig", "PigZombie", "Sheep", "Silverfish", "Skeleton", "Slime", "Snowman", "Spider", "Squid", "Witch", "Wither", "Wolf", "Villager", "Zombie"};
+ 
+     public static void main(String[] args) {
+         String path = "";

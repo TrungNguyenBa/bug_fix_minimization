@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index 2d13e60..6007cee 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -128,7 +128,7 @@
+         <dependency>
+             <groupId>org.bukkit</groupId>
+             <artifactId>bukkit</artifactId>
+-            <version>1.8-R0.1-SNAPSHOT</version>
++            <version>1.7.9-R0.1</version>
+             <type>jar</type>
+             <scope>provided</scope>
+         </dependency>

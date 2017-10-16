@@ -1,0 +1,35 @@
+diff --git a/src/main/resources/plugin.yml b/src/main/resources/plugin.yml
+index 7dfd3764..8463b2eb 100644
+--- a/src/main/resources/plugin.yml
++++ b/src/main/resources/plugin.yml
+@@ -70,11 +70,6 @@ commands:
+     description: Toogles CaptureHelper on/off
+     usage: '/<command>'
+     permission: MyPet.user.command.capturehelper
+-  petoptions:
+-    aliases: [po, peto, petoption]
+-    description: MyPet player options
+-    usage: '/<command>'
+-    permission: MyPet.user.command.options
+ 
+ permissions:
+   MyPet.user.leash.*:
+@@ -126,7 +121,6 @@ permissions:
+       MyPet.user.command.capturehelper: true
+       MyPet.user.command.name: true
+       MyPet.user.command.name.color: true
+-      MyPet.user.command.options: true
+   MyPet.user.command.release:
+     default: true
+     description: Allows usage of /petrelease
+@@ -141,7 +135,4 @@ permissions:
+     description: Allows usage of /petname
+   MyPet.user.command.name.color:
+     default: true
+-    description: Allows to use colors in petnames
+-  MyPet.user.command.options:
+-    default: true
+-    description: Allows to use the MyPet options command
+\ No newline at end of file
++    description: Allows to use colors in petnames
+\ No newline at end of file

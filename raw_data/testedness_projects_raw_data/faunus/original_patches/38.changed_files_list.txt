@@ -1,0 +1,5 @@
+97d21e1c : Added grand canonical example; fixed widom analysis; documentation; fixed nan problem with DebyeHuckelShift w. inspecified cutoff.
+:000000 100644 00000000... cec8da08... A	src/examples/grand.cpp
+:000000 100755 00000000... f5aeca04... A	src/examples/grand.run
+:000000 100644 00000000... c23edf97... A	src/examples/grand.state
+:000000 100644 00000000... d1f50280... A	src/examples/grand.test

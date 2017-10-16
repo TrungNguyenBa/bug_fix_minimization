@@ -1,0 +1,14 @@
+ffbc4aa : Make matcher group modification methods properly async
+:100644 100644 45513ad... 58cb410... M	src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+:100644 100644 51f942b... ebc4262... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 7152448... 1653e16... M	src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+:100644 100644 3963bab... 1dc5658... M	src/main/java/ru/tehkode/permissions/backends/file/FileMatcherGroup.java
+:100644 100644 3672dfb... d2d74fd... M	src/main/java/ru/tehkode/permissions/backends/file/FileMatcherList.java
+:100644 100644 3a595a4... d97a925... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryMatcherGroup.java
+:100644 100644 a73c299... 1290011... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryMatcherList.java
+:100644 100644 a693748... 8e8845c... M	src/main/java/ru/tehkode/permissions/backends/memory/impl/MemoryMatcherGroupImpl.java
+:100644 100644 0f1f476... 5863e9b... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 d2c1c3b... 0bce1ef... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLMatcherGroup.java
+:100644 100644 0c7270a... 50ee73c... M	src/main/java/ru/tehkode/permissions/backends/yaml/YamlMatcherGroup.java
+:100644 100644 315e7d6... 991181f... M	src/main/java/ru/tehkode/permissions/data/MatcherGroup.java
+:100644 100644 f308973... 378f022... M	src/main/java/ru/tehkode/utils/ConcurrentProvider.java

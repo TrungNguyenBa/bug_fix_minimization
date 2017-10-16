@@ -1,0 +1,3 @@
+381fd5d : Restore player permissions in join event to use correct player world
+:100644 100644 0bbf53d... fff0cc0... M	src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+:100644 100644 952b86f... cece667... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java

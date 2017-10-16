@@ -1,0 +1,13 @@
+d85c448 : Update test cases; fix bugs
+:100644 000000 cef945d... 0000000... D	src/main/java/com/lonepulse/zombielink/core/annotation/Param.java
+:100644 100644 a06adf8... 0835ff9... M	src/main/java/com/lonepulse/zombielink/core/processor/ProxyFactory.java
+:100644 100644 cdbf0ca... 04c3c7f... M	src/main/java/com/lonepulse/zombielink/core/request/PathParamProcessor.java
+:100644 100644 f9c2ca9... 08e09b6... M	src/main/java/com/lonepulse/zombielink/core/request/QueryParamProcessor.java
+:100644 100644 3e7aa70... 2a67efc... M	src/main/java/com/lonepulse/zombielink/core/request/RequestUtils.java
+:100644 100644 4377d7e... 6a60ebe... M	src/main/java/com/lonepulse/zombielink/core/response/parser/AbstractResponseParser.java
+:100644 100644 323a5e0... c694f2a... M	src/main/java/com/lonepulse/zombielink/core/response/parser/JsonResponseParser.java
+:100644 100644 a6c08d3... def129e... M	src/main/java/com/lonepulse/zombielink/core/response/parser/ObjectResponseParser.java
+:100644 100644 2764f2f... 41e9b5b... M	src/main/java/com/lonepulse/zombielink/core/response/parser/StringResponseParser.java
+:100644 100644 03e1f57... d5bd9f6... M	src/main/java/com/lonepulse/zombielink/util/AnnotationExtractor.java
+:100644 100644 12537f9... eab8354... M	src/test/java/com/lonepulse/zombielink/test/endpoint/MockEndpoint.java
+:100644 100644 3d1f043... 2302a45... M	src/test/java/com/lonepulse/zombielink/test/endpoint/MockEndpointTest.java

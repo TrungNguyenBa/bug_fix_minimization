@@ -1,0 +1,38 @@
+diff --git a/src/main/java/com/pehrs/spring/api/doc/jackson/JacksonTypeModule.java b/src/main/java/com/pehrs/spring/api/doc/jackson/JacksonTypeModule.java
+index 509cef9..ffcac51 100644
+--- a/src/main/java/com/pehrs/spring/api/doc/jackson/JacksonTypeModule.java
++++ b/src/main/java/com/pehrs/spring/api/doc/jackson/JacksonTypeModule.java
+@@ -7,9 +7,12 @@ import java.util.HashMap;
+ import java.util.Map;
+ import java.util.Properties;
+ 
++import org.apache.log4j.Logger;
+ import org.joda.time.DateTime;
+ 
++import com.fasterxml.jackson.annotation.JsonInclude.Include;
+ import com.fasterxml.jackson.core.Version;
++import com.fasterxml.jackson.databind.ObjectMapper;
+ import com.fasterxml.jackson.databind.module.SimpleDeserializers;
+ import com.fasterxml.jackson.databind.module.SimpleModule;
+ import com.fasterxml.jackson.databind.module.SimpleSerializers;
+@@ -17,7 +20,7 @@ import com.fasterxml.jackson.databind.module.SimpleSerializers;
+ public class JacksonTypeModule extends SimpleModule {
+ 	
+ 
+-	public static final String SYSARG_JACKSON_VALUES = "jackson.values";
++	private static final Logger log = Logger.getLogger(JacksonTypeModule.class);
+ 
+ 	private static Version version = new Version(1, 0, 0, "SNAPSHOT",
+ 			"com.pehrs.json", "pehrs-module");
+@@ -37,9 +40,9 @@ public class JacksonTypeModule extends SimpleModule {
+  		if(preconfigValues==null) {
+ 			preconfigValues=new HashMap<Class<?>, String>();
+ 			
+-			String preconfigValuesFile = System.getProperty(SYSARG_JACKSON_VALUES);
++			String preconfigValuesFile = System.getProperty("jackson.values");
+ 			if(preconfigValuesFile==null) {
+-				throw new RuntimeException("You must set the -D"+SYSARG_JACKSON_VALUES+" property");
++				throw new RuntimeException("You must set the -Djackson.values property");
+ 			}
+ 			Properties props = new Properties();
+ 			FileInputStream in = null;

@@ -1,0 +1,29 @@
+diff --git a/src/main/java/pl/project13/maven/git/log/MavenLoggerBridge.java b/src/main/java/pl/project13/maven/git/log/MavenLoggerBridge.java
+index 8bd4cd6..406a1e6 100644
+--- a/src/main/java/pl/project13/maven/git/log/MavenLoggerBridge.java
++++ b/src/main/java/pl/project13/maven/git/log/MavenLoggerBridge.java
+@@ -32,14 +32,14 @@ public class MavenLoggerBridge implements LoggerBridge {
+   @Override
+   public void log(String msg, Object... interpolations) {
+     if(verbose) {
+-      logger.info(String.format(escaped(msg), interpolations));
++      logger.info(String.format(msg, interpolations));
+     }
+   }
+ 
+   @Override
+   public void error(String msg, Object... interpolations) {
+     if(verbose) {
+-      logger.error(String.format(escaped(msg), interpolations));
++      logger.error(String.format(msg, interpolations));
+     }
+   }
+ 
+@@ -48,7 +48,4 @@ public class MavenLoggerBridge implements LoggerBridge {
+     this.verbose = verbose;
+   }
+ 
+-  private String escaped(String msg) {
+-    return msg.replaceAll("%", "%%");
+-  }
+ }

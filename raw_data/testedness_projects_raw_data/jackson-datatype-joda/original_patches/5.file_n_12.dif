@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/JodaSerializerBase.java b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/JodaSerializerBase.java
+index b24701e..8be5d80 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/JodaSerializerBase.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/JodaSerializerBase.java
+@@ -1,8 +1,8 @@
+ package com.fasterxml.jackson.datatype.joda.ser;
+ 
++import com.fasterxml.jackson.core.JsonGenerator;
+ import java.io.IOException;
+ 
+-import com.fasterxml.jackson.core.JsonGenerator;
+ import com.fasterxml.jackson.core.JsonProcessingException;
+ import com.fasterxml.jackson.databind.SerializerProvider;
+ import com.fasterxml.jackson.databind.jsontype.TypeSerializer;

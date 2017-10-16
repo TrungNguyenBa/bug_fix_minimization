@@ -1,0 +1,4 @@
+d712bf0 : Fix NetEvents compatibility
+:100644 100644 cfbfbd3... f74086b... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 803ab45... d1721d4... M	src/main/java/ru/tehkode/permissions/bukkit/RemoteEventListener.java
+:100644 100644 a5d9d97... d44341e... M	src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java

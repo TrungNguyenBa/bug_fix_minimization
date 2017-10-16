@@ -1,0 +1,22 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+index ebc4262..51f942b 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+@@ -71,7 +71,7 @@ public class FileBackend extends PermissionBackend {
+ 			baseDirectory.mkdirs();
+ 		}
+ 
+-		this.loader = new FileConfig(new File(baseDir, permissionFilename), getExecutor());
++		this.loader = new FileConfig(new File(baseDir, permissionFilename));
+ 		if (oldFilename != null && !loader.getFile().exists()) {
+ 			try {
+ 				loader.getFile().createNewFile();
+@@ -223,7 +223,7 @@ public class FileBackend extends PermissionBackend {
+ 		} catch (FileNotFoundException e) {
+ 			if (this.matcherGroups == null) {
+ 				// First load, load even if the file doesn't exist
+-				this.matcherGroups = new FileMatcherList(this.loader, getExecutor());
++				this.matcherGroups = new FileMatcherList(this.loader);
+ 				initializeDefaultConfiguration();
+ 			}
+ 		} catch (Throwable e) {

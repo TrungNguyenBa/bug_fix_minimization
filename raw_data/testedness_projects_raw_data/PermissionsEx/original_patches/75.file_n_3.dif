@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+index ca71239..ebc4262 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+@@ -28,7 +28,6 @@ import ru.tehkode.permissions.backends.yaml.YamlBackend;
+ import ru.tehkode.permissions.data.MatcherGroup;
+ import ru.tehkode.permissions.data.Qualifier;
+ import ru.tehkode.permissions.exceptions.PermissionBackendException;
+-import ru.tehkode.utils.PrefixedThreadFactory;
+ 
+ import java.io.File;
+ import java.io.FileNotFoundException;
+@@ -48,7 +47,7 @@ public class FileBackend extends PermissionBackend {
+ 	private final Object loadSaveLock = new Object();
+ 
+ 	public FileBackend(PermissionManager manager, ConfigurationSection config) throws PermissionBackendException {
+-		super(manager, config, Executors.newSingleThreadExecutor(new PrefixedThreadFactory("PEX-file")));
++		super(manager, config, Executors.newSingleThreadExecutor());
+ 		String permissionFilename = getConfig().getString("file");
+ 		String oldFilename = null;
+ 

@@ -1,0 +1,2 @@
+c2eb7db1 : fixed problem with skilltree descriptions fixes #213
+:100644 100644 64865011... 5e626231... M	src/main/java/de/Keyle/MyPet/commands/CommandChooseSkilltree.java

@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form
+index 29e416f2..6db44a1a 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form
+@@ -65,7 +65,6 @@
+               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+             </constraints>
+             <properties>
+-              <font style="1"/>
+               <horizontalAlignment value="0"/>
+               <horizontalTextPosition value="0"/>
+               <text value="Heal Increase"/>
+@@ -121,7 +120,6 @@
+               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+             </constraints>
+             <properties>
+-              <font style="1"/>
+               <horizontalAlignment value="0"/>
+               <horizontalTextPosition value="0"/>
+               <text value="Decrease/Set Heal Interval"/>

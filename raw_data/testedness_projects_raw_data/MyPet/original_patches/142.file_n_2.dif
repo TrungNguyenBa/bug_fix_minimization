@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+index 13b99a7c..dbba715e 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+@@ -221,7 +221,6 @@ public class PlayerListener implements Listener {
+             WorldGroup toGroup = WorldGroup.getGroupByWorld(event.getPlayer().getWorld().getName());
+ 
+             boolean callAfterSwap = myPetPlayer.hasMyPet() && myPetPlayer.getMyPet().getStatus() == PetState.Here;
+-            myPetPlayer.getMyPet().removePet(callAfterSwap);
+ 
+             if (fromGroup != toGroup) {
+                 if (myPetPlayer.hasMyPet()) {

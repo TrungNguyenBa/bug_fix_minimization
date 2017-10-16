@@ -1,0 +1,26 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
+index 6610c212..3a5e0db0 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
+@@ -102,10 +102,10 @@ public class Inventory extends InventoryInfo implements ISkillInstance, ISkillSt
+         {
+             if (myPet.getOwner().getPlayer().getGameMode() == GameMode.CREATIVE && !OPEN_IN_CREATIVEMODE && !MyPetPermissions.has(myPet.getOwner().getPlayer(), "MyPet.admin", false))
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_InventoryCreative")));
++                myPet.sendMessageToOwner(MyPetLanguage.getString("Msg_InventoryCreative"));
+                 return false;
+             }
+-            if (!myPet.getLocation().getBlock().isLiquid())
++            if (myPet.getLocation().getBlock().isLiquid())
+             {
+                 inv.setName(myPet.petName);
+                 openInventory(myPet.getOwner().getPlayer());
+@@ -113,7 +113,7 @@ public class Inventory extends InventoryInfo implements ISkillInstance, ISkillSt
+             }
+             else
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_InventorySwimming").replace("%petname%", myPet.petName)));
++                myPet.sendMessageToOwner(MyPetLanguage.getString("Msg_InventorySwimming"));
+                 return false;
+             }
+         }

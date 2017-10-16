@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufEnum.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufEnum.java
+index 1253bd1..a31be8e 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufEnum.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufEnum.java
+@@ -17,8 +17,4 @@ public class ProtobufEnum
+     public Integer findEnum(String name) {
+         return _valuesByName.get(name);
+     }
+-
+-    public Map<String,Integer> valueMapping() {
+-        return _valuesByName;
+-    }
+ }

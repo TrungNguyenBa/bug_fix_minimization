@@ -1,0 +1,26 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+index 41c09595..d6d0f5d3 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+@@ -222,10 +222,6 @@ public class MyPetList
+         lInactivePets.remove(inactiveMyPet);
+         if (mInctivePets.containsKey(inactiveMyPet.getOwner()))
+         {
+-            // remove pet from world groups
+-            String wg = inactiveMyPet.getOwner().getWorldGroupForMyPet(inactiveMyPet.getUUID());
+-            inactiveMyPet.getOwner().setMyPetForWorldGroup(wg, null);
+-
+             List<InactiveMyPet> myPetList = mInctivePets.get(inactiveMyPet.getOwner());
+             if (myPetList.contains(inactiveMyPet))
+             {
+@@ -308,6 +304,10 @@ public class MyPetList
+             }
+             activeMyPet.removePet();
+ 
++            // remove pet from world groups
++            String wg = owner.getWorldGroupForMyPet(activeMyPet.getUUID());
++            activeMyPet.getOwner().setMyPetForWorldGroup(wg, null);
++
+             InactiveMyPet inactiveMyPet = getInactiveMyPetFromMyPet(activeMyPet);
+             removeMyPet(activeMyPet);
+             addInactiveMyPet(inactiveMyPet);

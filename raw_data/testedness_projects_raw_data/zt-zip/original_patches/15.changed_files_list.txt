@@ -1,0 +1,3 @@
+dbe640a : Make get_release_commands.sh spit shell-script.
+:100644 100644 6a3c9d1... 105f29e... M	.gitignore
+:100755 100755 a2bc08e... 5489283... M	get_release_commands.sh

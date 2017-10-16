@@ -1,0 +1,7 @@
+d71b69f : Fix up SQL issues, remove requirement of one configuration per backend type
+:100644 100644 71cac35... cf37f34... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 15d708f... ef11b55... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 205a6c6... fc7f0d9... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+:100644 100644 4ae2e38... 1060da4... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+:100644 100644 fe840ed... c7ec1c5... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
+:100644 100644 3706890... 5bb9f8c... M	src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java

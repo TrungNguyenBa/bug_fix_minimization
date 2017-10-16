@@ -1,0 +1,2 @@
+d8ec3ae : Make logo a bit less awful
+:100644 100644 7f50cc9... 97e781c... M	etc/logo.svg

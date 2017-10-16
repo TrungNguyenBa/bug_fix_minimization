@@ -1,0 +1,12 @@
+00af26ca : Revision #1 (Mikael's comments)
+:100644 100644 08dd2f8c... d4bd672b... M	include/faunus/energy.h
+:100644 100644 819ad903... cb5c1cfd... M	include/faunus/externalpotential.h
+:100755 100755 b59438d1... 236f43b4... M	src/examples/cigars2fibrils
+:100755 100755 d0116608... 1cd30fa6... M	src/examples/cigarsenergy
+:100755 100755 af9bef7f... a124e6c9... M	src/examples/grand
+:100755 100755 b54d5e97... cba9f81f... M	src/examples/membrane
+:100755 100755 e96832b8... 2f08e31f... M	src/examples/stockmayer
+:100755 100755 3a8bd833... 5abf9768... M	src/examples/water
+:100755 100755 426082c0... b3afaf4b... M	src/examples/water2
+:100644 100644 25980d0e... 20d660b6... M	src/playground/jmhenriques/CMakeLists.txt
+:100755 100755 0baf8650... c38d2e52... M	src/playground/jmhenriques/mkinput.py

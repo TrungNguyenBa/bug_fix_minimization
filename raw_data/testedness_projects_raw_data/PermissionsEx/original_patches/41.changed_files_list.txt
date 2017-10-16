@@ -1,0 +1,4 @@
+0a259db : Update to Minecraft 1.8 / fix compilation with Guava 17
+:100644 100644 6007cee... 2d13e60... M	pom.xml
+:100644 100644 e8a5af1... a807918... M	src/main/java/ru/tehkode/permissions/RegExpMatcher.java
+:100644 100644 ae354f4... f7ffcb4... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java

@@ -1,0 +1,10 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+index b6dbac6..97c3e3d 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+@@ -1,5 +1,4 @@
+ package com.fasterxml.jackson.dataformat.protobuf;
+-
+ import java.util.Arrays;
+ 
+ import com.fasterxml.jackson.core.*;

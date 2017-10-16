@@ -1,0 +1,13 @@
+diff --git a/core/src/main/java/de/bwaldvogel/mongo/backend/QueryMatcher.java b/core/src/main/java/de/bwaldvogel/mongo/backend/QueryMatcher.java
+index 6c288e5..b79b747 100644
+--- a/core/src/main/java/de/bwaldvogel/mongo/backend/QueryMatcher.java
++++ b/core/src/main/java/de/bwaldvogel/mongo/backend/QueryMatcher.java
+@@ -8,8 +8,6 @@ public interface QueryMatcher {
+ 
+     boolean matches(BSONObject document, BSONObject query) throws MongoServerException;
+ 
+-    boolean matchesValue(Object queryValue, Object value) throws MongoServerException;
+-
+     Integer matchPosition(BSONObject document, BSONObject query) throws MongoServerException;
+ 
+ }

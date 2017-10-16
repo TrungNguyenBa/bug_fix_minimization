@@ -1,0 +1,3 @@
+f79d271 : Don't put prefix and suffix in options map when they're null
+:100644 100644 ff6c233... e061d57... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+:100644 100644 fbbf3af... 8543513... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java

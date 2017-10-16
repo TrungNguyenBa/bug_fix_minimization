@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java
+index 23014ef..0662e25 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java
+@@ -1,8 +1,7 @@
+ package com.fasterxml.jackson.datatype.joda.cfg;
+ 
+ import org.joda.time.DateTimeZone;
+-import org.joda.time.format.ISODateTimeFormat;
+-import org.joda.time.format.ISOPeriodFormat;
++import org.joda.time.format.*;
+ 
+ /**
+  * Simple container class that holds both default formatter information

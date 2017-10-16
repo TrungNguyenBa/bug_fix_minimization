@@ -1,0 +1,47 @@
+diff --git a/src/main/java/net/gini/dropwizard/gelf/config/GelfConfiguration.java b/src/main/java/net/gini/dropwizard/gelf/config/GelfConfiguration.java
+index f7963f5..d56b9a5 100644
+--- a/src/main/java/net/gini/dropwizard/gelf/config/GelfConfiguration.java
++++ b/src/main/java/net/gini/dropwizard/gelf/config/GelfConfiguration.java
+@@ -2,9 +2,7 @@ package net.gini.dropwizard.gelf.config;
+ 
+ import ch.qos.logback.classic.Level;
+ import com.fasterxml.jackson.annotation.JsonProperty;
+-import com.google.common.base.Optional;
+ import com.google.common.collect.ImmutableMap;
+-import com.yammer.dropwizard.validation.PortRange;
+ import org.hibernate.validator.constraints.NotEmpty;
+ 
+ import javax.validation.constraints.Max;
+@@ -38,12 +36,13 @@ public class GelfConfiguration {
+     private String host = "localhost";
+ 
+     @JsonProperty
+-    @PortRange(min = 1)
+-    private int port = 12201;
++    @NotEmpty
++    private String hostName;
+ 
+     @JsonProperty
+-    @NotNull
+-    private Optional<String> hostName = Optional.absent();
++    @Min(1)
++    @Max(65535)
++    private int port = 12201;
+ 
+     @JsonProperty
+     private boolean useLoggerName = true;
+@@ -116,11 +115,12 @@ public class GelfConfiguration {
+         this.host = host;
+     }
+ 
+-    public Optional<String> getHostName() {
++    public String getHostName()
++    {
+         return hostName;
+     }
+ 
+-    public void setHostName(final Optional<String> hostName)
++    public void setHostName(final String hostName)
+     {
+         this.hostName = hostName;
+     }

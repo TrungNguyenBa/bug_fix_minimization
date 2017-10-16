@@ -1,0 +1,12 @@
+diff --git a/src/main/java/com/stripe/model/PaymentSource.java b/src/main/java/com/stripe/model/PaymentSource.java
+index 7880602..9988e7d 100644
+--- a/src/main/java/com/stripe/model/PaymentSource.java
++++ b/src/main/java/com/stripe/model/PaymentSource.java
+@@ -18,7 +18,6 @@ public interface PaymentSource {
+ 	public void setStatus(String status);
+ 	public String getCustomer();
+ 	public void setCustomer(String customer);
+-	public String getInstanceURL();
+ 
+ 	public PaymentSource update(Map<String, Object> params) throws
+ 			AuthenticationException, InvalidRequestException,

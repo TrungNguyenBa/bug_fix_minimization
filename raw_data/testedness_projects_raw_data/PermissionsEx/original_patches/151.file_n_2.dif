@@ -1,0 +1,28 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 095b784..84a4377 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -420,13 +420,17 @@ public class PermissionManager {
+ 	 * @param backendName name of backend to set to
+ 	 */
+ 	public void setBackend(String backendName) {
+-		synchronized (this) {
+-			this.clearCache();
+-			this.backend = PermissionBackend.getBackend(backendName, this, config);
+-			this.backend.initialize();
+-		}
++		try {
++			synchronized (this) {
++				this.clearCache();
++				this.backend = PermissionBackend.getBackend(backendName, this, config);
++				this.backend.initialize();
++			}
+ 
+-		this.callEvent(PermissionSystemEvent.Action.BACKEND_CHANGED);
++			this.callEvent(PermissionSystemEvent.Action.BACKEND_CHANGED);
++		} catch (Throwable t) {
++			ErrorReport.handleError("While setting backend", t);
++		}
+ 	}
+ 
+ 	/**

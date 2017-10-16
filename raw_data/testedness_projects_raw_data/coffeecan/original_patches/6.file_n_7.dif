@@ -1,0 +1,17 @@
+diff --git a/src/main/java/com/allogy/coffeecan/vocabulary/ADLVerbs.java b/src/main/java/com/allogy/coffeecan/vocabulary/ADLVerbs.java
+index ba572ad..321d070 100644
+--- a/src/main/java/com/allogy/coffeecan/vocabulary/ADLVerbs.java
++++ b/src/main/java/com/allogy/coffeecan/vocabulary/ADLVerbs.java
+@@ -18,11 +18,5 @@ package com.allogy.coffeecan.vocabulary;
+ 
+ public class ADLVerbs
+ {
+-    public static final String COMPLETED_ID = "http://adlnet.gov/expapi/verbs/completed";
+-
+-    /**
+-     * Use {@link ADLVerbs.COMPLETED_ID}
+-     */
+-    @Deprecated
+-    public static final String CompletedID = COMPLETED_ID;
++    public static final String CompletedID = "http://adlnet.gov/expapi/verbs/completed";
+ }

@@ -1,0 +1,2 @@
+040ac11e : fixed the textfields for the max level and level requirement
+:100644 100644 c4d0eb16... c317d6d9... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java

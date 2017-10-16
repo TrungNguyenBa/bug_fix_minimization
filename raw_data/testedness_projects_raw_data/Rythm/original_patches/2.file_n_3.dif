@@ -1,0 +1,47 @@
+diff --git a/library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java b/library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
+index ee462a6..71f7bf6 100644
+--- a/library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
++++ b/library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
+@@ -42,17 +42,8 @@ public final class RhythmDrawable extends Drawable {
+     }
+ 
+     /**
+-     * Get current pattern
+-     *
+-     * @return Currently active Rhythm pattern, or <code>null</code> if no pattern is set
+-     */
+-    public RhythmPattern getPattern() {
+-        return mPattern;
+-    }
+-
+-    /**
+-     * Set a {@link RhythmPattern} to draw by this drawable. Will request redraw of the view where this drawable is
+-     * used.
++     * Set a {@link RhythmPattern} to draw by this drawable; will request redraw of the view where this drawable is
++     * used
+      *
+      * @param pattern Pattern to draw. Provide <code>null</code> to disable overlay.
+      */
+@@ -62,20 +53,10 @@ public final class RhythmDrawable extends Drawable {
+     }
+ 
+     /**
+-     * Get decorated background drawable (i.e. the one drawn under the pattern), if present
+-     *
+-     * @return Background drawable or <code>null</code>
+-     */
+-    public Drawable getBackgroundDrawable() {
+-        return mBackgroundDrawable;
+-    }
+-
+-    /**
+      * Set background {@link Drawable}. Should be used when decorating existing views, which already have background
+-     * &mdash; this way the background will be preserved and the pattern will be drawn atop. <b>Note:</b> for background
+-     * drawable to function properly you must ensure that its {@link Drawable#setCallback(Callback)} has been called.
++     * &mdash; this way the background will be preserved and the pattern will be drawn atop.
+      *
+-     * @param backgroundDrawable Background drawable to draw below the pattern, can be <code>null</code>
++     * @param backgroundDrawable View's background
+      */
+     public void setBackgroundDrawable(@Nullable Drawable backgroundDrawable) {
+         mBackgroundDrawable = backgroundDrawable;

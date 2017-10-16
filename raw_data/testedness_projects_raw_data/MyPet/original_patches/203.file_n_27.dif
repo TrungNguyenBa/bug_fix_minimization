@@ -1,0 +1,455 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java b/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
+index b78e757a..0ed838b6 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
+@@ -30,6 +30,7 @@ import org.bukkit.Material;
+ public class EntityMyHorse extends EntityMyPet
+ {
+     public static int GROW_UP_ITEM = Material.BREAD.getId();
++
+     int soundCounter = 0;
+     int rearCounter = -1;
+     int ageCounter = -1;
+@@ -40,70 +41,52 @@ public class EntityMyHorse extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Possible visual horse effects:
+-     * 4 saddle
+-     * 8 chest
+-     * 32 head down
+-     * 64 rear
+-     * 128 mouth open
+-     */
+-    private void applyVisual(int value, boolean flag)
++    public void setMyPet(MyPet myPet)
+     {
+-        int i = this.datawatcher.getInt(16);
+-        if (flag)
+-        {
+-            this.datawatcher.watch(16, Integer.valueOf(i | value));
+-        }
+-        else
++        if (myPet != null)
+         {
+-            this.datawatcher.watch(16, Integer.valueOf(i & (~value)));
++            super.setMyPet(myPet);
++
++            this.setAge(((MyHorse) myPet).getAge());
++            this.setHorseType(((MyHorse) myPet).getHorseType());
++            this.setVariant(((MyHorse) myPet).getVariant());
++            this.setSaddle(((MyHorse) myPet).hasSaddle());
++            this.setChest(((MyHorse) myPet).hasChest());
++            this.setArmor(((MyHorse) myPet).getArmor());
+         }
+     }
+ 
+-    public boolean attack(Entity entity)
++    public void setChest(boolean flag)
+     {
+-        boolean flag = false;
+-        try
+-        {
+-            flag = super.attack(entity);
+-            if (flag)
+-            {
+-                applyVisual(64, true);
+-                rearCounter = 10;
+-                if (getHorseType() == 0)
+-                {
+-                    this.world.makeSound(this, "mob.horse.angry", 1.0F, 1.0F);
+-                }
+-                else if (getHorseType() == 2 || getHorseType() == 1)
+-                {
+-                    this.world.makeSound(this, "mob.horse.donkey.angry", 1.0F, 1.0F);
+-                }
+-            }
+-        }
+-        catch (Exception e)
+-        {
+-            e.printStackTrace();
+-        }
+-        return flag;
++        applyVisual(8, flag);
++        ((MyHorse) myPet).chest = flag;
+     }
+ 
+-    public int getAge()
++    public boolean hasChest()
+     {
+-        return ((MyHorse) myPet).age;
++        return ((MyHorse) myPet).chest;
+     }
+ 
+-    public void setAge(int value)
++    public void setSaddle(boolean flag)
+     {
+-        value = Math.min(0, (Math.max(-24000, value)));
+-        value -= value % 1000;
+-        ((MyHorse) myPet).age = value;
+-        this.datawatcher.watch(12, new Integer(value));
++        applyVisual(4, flag);
++        ((MyHorse) myPet).saddle = flag;
+     }
+ 
+-    public int getArmor()
++    public boolean hasSaddle()
+     {
+-        return ((MyHorse) myPet).armor;
++        return ((MyHorse) myPet).saddle;
++    }
++
++    public void setHorseType(byte horseType)
++    {
++        this.datawatcher.watch(19, Byte.valueOf(horseType));
++        ((MyHorse) myPet).horseType = horseType;
++    }
++
++    public byte getHorseType()
++    {
++        return ((MyHorse) myPet).horseType;
+     }
+ 
+     public void setArmor(int value)
+@@ -112,95 +95,111 @@ public class EntityMyHorse extends EntityMyPet
+         ((MyHorse) myPet).armor = value;
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public int getArmor()
+     {
+-        int horseType = ((MyHorse) myPet).horseType;
+-        if (horseType == 3)
+-        {
+-            return "mob.horse.zombie.death";
+-        }
+-        if (horseType == 4)
++        return ((MyHorse) myPet).armor;
++    }
++
++    public void setVariant(int variant)
++    {
++        this.datawatcher.watch(20, Integer.valueOf(variant));
++        ((MyHorse) myPet).variant = variant;
++    }
++
++    public int getVariant()
++    {
++        return ((MyHorse) myPet).variant;
++    }
++
++    public void setBaby(boolean flag)
++    {
++        if (flag)
+         {
+-            return "mob.horse.skeleton.death";
++            this.datawatcher.watch(12, Integer.valueOf(-24000));
++            ((MyHorse) myPet).age = -24000;
+         }
+-        if ((horseType == 1) || (horseType == 2))
++        else
+         {
+-            return "mob.horse.donkey.death";
++            this.datawatcher.watch(12, new Integer(0));
++            ((MyHorse) myPet).age = 0;
+         }
+-        return "mob.horse.death";
+     }
+ 
+-    public byte getHorseType()
++    public boolean isBaby()
+     {
+-        return ((MyHorse) myPet).horseType;
++        return ((MyHorse) myPet).age < 0;
+     }
+ 
+-    public void setHorseType(byte horseType)
++    public void setAge(int value)
+     {
+-        this.datawatcher.watch(19, Byte.valueOf(horseType));
+-        ((MyHorse) myPet).horseType = horseType;
++        value = Math.min(0, (Math.max(-24000, value)));
++        value -= value % 1000;
++        ((MyHorse) myPet).age = value;
++        this.datawatcher.watch(12, new Integer(value));
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public int getAge()
+     {
+-        int horseType = ((MyHorse) myPet).horseType;
+-        if (horseType == 3)
+-        {
+-            return "mob.horse.zombie.hit";
+-        }
+-        if (horseType == 4)
++        return ((MyHorse) myPet).age;
++    }
++
++    public boolean attack(Entity entity)
++    {
++        boolean flag = false;
++        try
+         {
+-            return "mob.horse.skeleton.hit";
++            flag = super.attack(entity);
++            if (flag)
++            {
++                applyVisual(64, true);
++                rearCounter = 10;
++                if (getHorseType() == 0)
++                {
++                    this.world.makeSound(this, "mob.horse.angry", 1.0F, 1.0F);
++                }
++                else if (getHorseType() == 2 || getHorseType() == 1)
++                {
++                    this.world.makeSound(this, "mob.horse.donkey.angry", 1.0F, 1.0F);
++                }
++            }
+         }
+-        if ((horseType == 1) || (horseType == 2))
++        catch (Exception e)
+         {
+-            return "mob.horse.donkey.hit";
++            e.printStackTrace();
+         }
+-        return "mob.horse.hit";
++        return flag;
+     }
+ 
+     /**
+-     * Returns the default sound of the MyPet
++     * Possible visual horse effects:
++     * 4 saddle
++     * 8 chest
++     * 32 head down
++     * 64 rear
++     * 128 mouth open
+      */
+-    protected String getLivingSound()
++    private void applyVisual(int value, boolean flag)
+     {
+-        if (playIdleSound())
++        int i = this.datawatcher.getInt(16);
++        if (flag)
+         {
+-            int horseType = ((MyHorse) myPet).horseType;
+-            if (horseType == 3)
+-            {
+-                return "mob.horse.zombie.idle";
+-            }
+-            if (horseType == 4)
+-            {
+-                return "mob.horse.skeleton.idle";
+-            }
+-            if ((horseType == 1) || (horseType == 2))
+-            {
+-                return "mob.horse.donkey.idle";
+-            }
+-            return "mob.horse.idle";
++            this.datawatcher.watch(16, Integer.valueOf(i | value));
++        }
++        else
++        {
++            this.datawatcher.watch(16, Integer.valueOf(i & (~value)));
+         }
+-        return null;
+-    }
+-
+-    public int getVariant()
+-    {
+-        return ((MyHorse) myPet).variant;
+     }
+ 
+-    public void setVariant(int variant)
++    protected void initDatawatcher()
+     {
+-        this.datawatcher.watch(20, Integer.valueOf(variant));
+-        ((MyHorse) myPet).variant = variant;
++        super.initDatawatcher();
++        this.datawatcher.a(12, Integer.valueOf(0));     // age
++        this.datawatcher.a(16, Integer.valueOf(0));     // saddle & chest
++        this.datawatcher.a(19, Byte.valueOf((byte) 0)); // horse type
++        this.datawatcher.a(20, Integer.valueOf(0));     // variant
++        this.datawatcher.a(21, String.valueOf(""));     // N/A
++        this.datawatcher.a(22, Integer.valueOf(0));     // armor
+     }
+ 
+     /**
+@@ -322,62 +321,6 @@ public class EntityMyHorse extends EntityMyPet
+         return false;
+     }
+ 
+-    public boolean hasChest()
+-    {
+-        return ((MyHorse) myPet).chest;
+-    }
+-
+-    public boolean hasSaddle()
+-    {
+-        return ((MyHorse) myPet).saddle;
+-    }
+-
+-    protected void initDatawatcher()
+-    {
+-        super.initDatawatcher();
+-        this.datawatcher.a(12, Integer.valueOf(0));     // age
+-        this.datawatcher.a(16, Integer.valueOf(0));     // saddle & chest
+-        this.datawatcher.a(19, Byte.valueOf((byte) 0)); // horse type
+-        this.datawatcher.a(20, Integer.valueOf(0));     // variant
+-        this.datawatcher.a(21, String.valueOf(""));     // N/A
+-        this.datawatcher.a(22, Integer.valueOf(0));     // armor
+-    }
+-
+-    public boolean isBaby()
+-    {
+-        return ((MyHorse) myPet).age < 0;
+-    }
+-
+-    public void setBaby(boolean flag)
+-    {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(12, Integer.valueOf(-24000));
+-            ((MyHorse) myPet).age = -24000;
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(12, new Integer(0));
+-            ((MyHorse) myPet).age = 0;
+-        }
+-    }
+-
+-    public void onLivingUpdate()
+-    {
+-        super.onLivingUpdate();
+-        if (rearCounter > -1 && rearCounter-- == 0)
+-        {
+-            applyVisual(64, false);
+-            rearCounter = -1;
+-        }
+-        if (ageCounter > -1 && ageCounter-- == 0)
+-        {
+-            this.datawatcher.watch(12, new Integer(getAge() + ageFailCounter++));
+-            ageCounter = -1;
+-            ageFailCounter %= 1000;
+-        }
+-    }
+-
+     @Override
+     public void playStepSound(int i, int j, int k, int l)
+     {
+@@ -416,30 +359,88 @@ public class EntityMyHorse extends EntityMyPet
+         }
+     }
+ 
+-    public void setChest(boolean flag)
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
+     {
+-        applyVisual(8, flag);
+-        ((MyHorse) myPet).chest = flag;
++        int horseType = ((MyHorse) myPet).horseType;
++        if (horseType == 3)
++        {
++            return "mob.horse.zombie.hit";
++        }
++        if (horseType == 4)
++        {
++            return "mob.horse.skeleton.hit";
++        }
++        if ((horseType == 1) || (horseType == 2))
++        {
++            return "mob.horse.donkey.hit";
++        }
++        return "mob.horse.hit";
+     }
+ 
+-    public void setMyPet(MyPet myPet)
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
+-        if (myPet != null)
++        int horseType = ((MyHorse) myPet).horseType;
++        if (horseType == 3)
+         {
+-            super.setMyPet(myPet);
++            return "mob.horse.zombie.death";
++        }
++        if (horseType == 4)
++        {
++            return "mob.horse.skeleton.death";
++        }
++        if ((horseType == 1) || (horseType == 2))
++        {
++            return "mob.horse.donkey.death";
++        }
++        return "mob.horse.death";
++    }
+ 
+-            this.setAge(((MyHorse) myPet).getAge());
+-            this.setHorseType(((MyHorse) myPet).getHorseType());
+-            this.setVariant(((MyHorse) myPet).getVariant());
+-            this.setSaddle(((MyHorse) myPet).hasSaddle());
+-            this.setChest(((MyHorse) myPet).hasChest());
+-            this.setArmor(((MyHorse) myPet).getArmor());
++    public void onLivingUpdate()
++    {
++        super.onLivingUpdate();
++        if (rearCounter > -1 && rearCounter-- == 0)
++        {
++            applyVisual(64, false);
++            rearCounter = -1;
++        }
++        if (ageCounter > -1 && ageCounter-- == 0)
++        {
++            this.datawatcher.watch(12, new Integer(getAge() + ageFailCounter++));
++            ageCounter = -1;
++            ageFailCounter %= 1000;
+         }
+     }
+ 
+-    public void setSaddle(boolean flag)
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        applyVisual(4, flag);
+-        ((MyHorse) myPet).saddle = flag;
++        if (playIdleSound())
++        {
++            int horseType = ((MyHorse) myPet).horseType;
++            if (horseType == 3)
++            {
++                return "mob.horse.zombie.idle";
++            }
++            if (horseType == 4)
++            {
++                return "mob.horse.skeleton.idle";
++            }
++            if ((horseType == 1) || (horseType == 2))
++            {
++                return "mob.horse.donkey.idle";
++            }
++            return "mob.horse.idle";
++        }
++        return null;
+     }
+ }
+\ No newline at end of file

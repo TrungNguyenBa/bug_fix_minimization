@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/lang3/builder/ReflectionToStringBuilder.java b/src/main/java/org/apache/commons/lang3/builder/ReflectionToStringBuilder.java
+index b2b63a65..6c2199b7 100644
+--- a/src/main/java/org/apache/commons/lang3/builder/ReflectionToStringBuilder.java
++++ b/src/main/java/org/apache/commons/lang3/builder/ReflectionToStringBuilder.java
+@@ -346,7 +346,7 @@ public static String toStringExclude(final Object object, final Collection<Strin
+                 list.add(e.toString());
+             }
+         }
+-        return list.toArray(ArrayUtils.EMPTY_STRING_ARRAY);
++        return list.toArray(new String[list.size()]);
+     }
+ 
+ 

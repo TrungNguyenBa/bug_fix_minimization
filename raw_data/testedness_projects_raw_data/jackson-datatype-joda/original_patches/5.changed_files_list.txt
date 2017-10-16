@@ -1,0 +1,16 @@
+6da8f42 : Fix #68
+:100644 100644 0662e25... 23014ef... M	src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java
+:100644 100644 38f6798... 6b34b83... M	src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
+:100644 100644 9fce8d4... daaa1b9... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateMidnightDeserializer.java
+:100644 100644 317a10c... a77ab2b... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java
+:100644 100644 feefd7d... 244df57... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
+:100644 100644 2661d44... d333e78... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalTimeDeserializer.java
+:100644 100644 db39b35... 77cd814... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/DateTimeKeyDeserializer.java
+:100644 100644 1fa1771... 79e779b... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeZoneSerializer.java
+:100644 100644 3e7c68d... dbb29c2... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DurationSerializer.java
+:100644 100644 3b2a415... d4fb687... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/InstantSerializer.java
+:100644 100644 8be5d80... b24701e... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/JodaSerializerBase.java
+:100644 100644 a7d1aef... 7a56867... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/LocalTimeSerializer.java
+:100644 100644 6223035... e405395... M	src/test/java/com/fasterxml/jackson/datatype/joda/DateMidnightTest.java
+:100644 100644 643e636... f9b16ce... M	src/test/java/com/fasterxml/jackson/datatype/joda/DateTimeTest.java
+:100644 100644 45f426d... fe23b5e... M	src/test/java/com/fasterxml/jackson/datatype/joda/deser/MiscDeserializationTest.java

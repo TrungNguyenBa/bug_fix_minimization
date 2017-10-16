@@ -1,0 +1,23 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+index 1c09e291..458c663c 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+@@ -26,7 +26,6 @@ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.skill.skills.implementation.Behavior;
+ import de.Keyle.MyPet.skill.skills.info.BehaviorInfo.BehaviorState;
+ import de.Keyle.MyPet.util.hooks.PvPChecker;
+-import net.minecraft.server.v1_8_R2.EntityArmorStand;
+ import net.minecraft.server.v1_8_R2.EntityLiving;
+ import net.minecraft.server.v1_8_R2.EntityPlayer;
+ import net.minecraft.server.v1_8_R2.EntityTameableAnimal;
+@@ -59,10 +58,6 @@ public class OwnerHurtTarget extends AIGoal {
+         if (this.petEntity.goalTarget == null) {
+             return false;
+         }
+-        if (this.petEntity.goalTarget instanceof EntityArmorStand) {
+-            this.petEntity.goalTarget = null;
+-            return false;
+-        }
+         if (behaviorSkill != null && behaviorSkill.isActive()) {
+             if (behaviorSkill.getBehavior() == Behavior.BehaviorState.Friendly) {
+                 this.petEntity.goalTarget = null;

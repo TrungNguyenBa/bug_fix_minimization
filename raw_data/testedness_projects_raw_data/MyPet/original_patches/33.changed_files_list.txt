@@ -1,0 +1,3 @@
+a4202ce8 : fix wolf collars fixes #437
+:100644 100644 7c655a8f... d0555e25... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+:100644 100644 d3aac201... 06f20eb3... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java

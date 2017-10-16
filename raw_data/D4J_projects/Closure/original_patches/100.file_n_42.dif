@@ -1,0 +1,25 @@
+diff --git a/test/com/google/javascript/rhino/jstype/JSTypeTest.java b/test/com/google/javascript/rhino/jstype/JSTypeTest.java
+index f26fa455..eb429f85 100644
+--- a/test/com/google/javascript/rhino/jstype/JSTypeTest.java
++++ b/test/com/google/javascript/rhino/jstype/JSTypeTest.java
+@@ -4863,8 +4863,7 @@ public class JSTypeTest extends BaseJSTypeTestCase {
+   }
+ 
+   /**
+-   * Tests
+-   * {@link JSTypeRegistry#getGreatestSubtypeWithProperty(JSType, String)}.
++   * Tests {@link JSTypeRegistry#getGreatestSubtypeWithProperty(JSType)}.
+    */
+   public void testGreatestSubtypeWithProperty() {
+     ObjectType foo = registry.createObjectType("foo", null, OBJECT_TYPE);
+@@ -5265,6 +5264,10 @@ public class JSTypeTest extends BaseJSTypeTestCase {
+     return registry.createArrowType(params);
+   }
+ 
++  private ArrowType createArrowType(Node params, JSType retType) {
++    return registry.createArrowType(params, retType);
++  }
++
+   private void assertTypeEquals(JSType a, JSType b) {
+     Asserts.assertTypeEquals(a, b);
+   }

@@ -1,0 +1,44 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index fc40cc4..c93e930 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -158,6 +158,7 @@ public class PermissionManager {
+ 
+ 			try {
+ 				if (backend != null) {
++					backend.close();
+ 					backend.reload();
+ 				}
+ 				clearCache();
+@@ -429,9 +430,8 @@ public class PermissionManager {
+ 		this.users.remove(userName.toLowerCase());
+ 	}
+ 
+-	public void resetUser(Player ply) {
+-		this.users.remove(ply.getUniqueId().toString());
+-		resetUser(ply.getName());
++	public void resetUser(UUID uid) {
++		this.users.remove(uid.toString());
+ 	}
+ 
+ 	/**
+@@ -688,7 +688,8 @@ public class PermissionManager {
+ 			config.set("type", backendType = backendName);
+ 		}
+ 
+-		return PermissionBackend.getBackend(backendType, this, config);
++		PermissionBackend backend = PermissionBackend.getBackend(backendType, this, config);
++		return backend;
+ 	}
+ 
+ 	/**
+@@ -712,7 +713,8 @@ public class PermissionManager {
+ 		this.clearCache();
+ 
+ 		if (this.backend != null) {
+-			this.backend.reload();
++			this.backend.close();
++			initBackend();
+ 		}
+ 		this.callEvent(PermissionSystemEvent.Action.RELOADED);
+ 	}

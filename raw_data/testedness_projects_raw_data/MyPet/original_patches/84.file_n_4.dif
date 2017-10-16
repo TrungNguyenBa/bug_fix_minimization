@@ -1,0 +1,24 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 8085baf0..9f6a4cd9 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -466,16 +466,13 @@ public class EntityListener implements Listener {
+                             MyPet runMyPet = myPetPlayer.getMyPet();
+                             switch (runMyPet.createPet()) {
+                                 case Canceled:
+-                                    runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Prevent", myPet.getOwner()), runMyPet.getPetName()));
++                                    runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Prevent", myPet.getOwner().getLanguage()), runMyPet.getPetName()));
+                                     break;
+                                 case NoSpace:
+-                                    runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.NoSpace", myPet.getOwner()), runMyPet.getPetName()));
++                                    runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.NoSpace", myPet.getOwner().getLanguage()), runMyPet.getPetName()));
+                                     break;
+                                 case NotAllowed:
+-                                    runMyPet.sendMessageToOwner(Locales.getString("Message.No.AllowedHere", myPet.getOwner()).replace("%petname%", myPet.getPetName()));
+-                                    break;
+-                                case Flying:
+-                                    runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner())));
++                                    runMyPet.sendMessageToOwner(Locales.getString("Message.No.AllowedHere", myPet.getOwner().getLanguage()).replace("%petname%", myPet.getPetName()));
+                                     break;
+                                 case Success:
+                                     if (runMyPet != myPet) {

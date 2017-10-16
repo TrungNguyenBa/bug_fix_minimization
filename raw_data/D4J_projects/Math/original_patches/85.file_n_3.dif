@@ -1,0 +1,13 @@
+diff --git a/src/java/org/apache/commons/math/distribution/AbstractContinuousDistribution.java b/src/java/org/apache/commons/math/distribution/AbstractContinuousDistribution.java
+index 419fbfa37..808a573f1 100644
+--- a/src/java/org/apache/commons/math/distribution/AbstractContinuousDistribution.java
++++ b/src/java/org/apache/commons/math/distribution/AbstractContinuousDistribution.java
+@@ -65,7 +65,7 @@ public abstract class AbstractContinuousDistribution
+         }
+ 
+         // by default, do simple root finding using bracketing and default solver.
+-        // subclasses can override if there is a better method.
++        // subclasses can overide if there is a better method.
+         UnivariateRealFunction rootFindingFunction =
+             new UnivariateRealFunction() {
+             public double value(double x) throws FunctionEvaluationException {

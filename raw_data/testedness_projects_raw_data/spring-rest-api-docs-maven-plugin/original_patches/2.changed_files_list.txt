@@ -1,0 +1,6 @@
+fec2fee : More constants and some small fixes to the test script
+:100755 100755 a313099... ef3e3c1... M	run-test.sh
+:100644 100644 d7a9f1c... 3acad0f... M	src/main/java/com/pehrs/spring/api/doc/LogUtils.java
+:100644 100644 5a8b8af... dd359b5... M	src/main/java/com/pehrs/spring/api/doc/SpringRESTAPIDoclet.java
+:100644 100644 ffcac51... 509cef9... M	src/main/java/com/pehrs/spring/api/doc/jackson/JacksonTypeModule.java
+:100644 100644 d888c6b... 352d68c... M	src/main/java/com/pehrs/spring/api/doc/mvn/MVNMojo.java

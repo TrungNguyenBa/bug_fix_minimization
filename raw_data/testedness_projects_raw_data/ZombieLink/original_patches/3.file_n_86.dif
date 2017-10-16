@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/processor/HttpMethodEndpointTest.java b/zombielink/src/test/java/com/lonepulse/zombielink/processor/HttpMethodEndpointTest.java
+index 4076f7d..d5b1e38 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/processor/HttpMethodEndpointTest.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/processor/HttpMethodEndpointTest.java
+@@ -54,7 +54,7 @@ import com.github.tomakehurst.wiremock.http.RequestMethod;
+ import com.github.tomakehurst.wiremock.junit.WireMockRule;
+ import com.github.tomakehurst.wiremock.verification.LoggedRequest;
+ import com.lonepulse.zombielink.annotation.Bite;
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>Performs unit testing on {@link HttpMethodEndpoint}.</p>

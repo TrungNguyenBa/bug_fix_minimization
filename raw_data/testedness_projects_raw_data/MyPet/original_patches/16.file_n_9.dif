@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+index 8f452b88..3c88a150 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+@@ -187,7 +187,7 @@ public class PlayerListener implements Listener {
+                         }
+                     }
+                 }
+-                if (!PvPChecker.canHurt(projectile.getShooter().getOwner().getPlayer(), victim, true)) {
++                if (!PvPChecker.canHurt(projectile.getShooter().getOwner().getPlayer(), victim)) {
+                     event.setCancelled(true);
+                 }
+             }

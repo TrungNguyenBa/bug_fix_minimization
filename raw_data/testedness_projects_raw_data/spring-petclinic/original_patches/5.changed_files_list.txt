@@ -1,0 +1,2 @@
+8b5d980 : Fix #95 migrate to AssertJ 3.2.0
+:100644 100644 3e56f09... 7ec264d... M	pom.xml

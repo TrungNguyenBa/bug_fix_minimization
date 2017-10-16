@@ -1,0 +1,16 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+index 7529f2a7..b0839443 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+@@ -69,9 +69,6 @@ public class EntityMyBat extends EntityMyPet {
+         }
+     }
+ 
+-    /**
+-     * -> disable falldamage
+-     */
+-    public void e(float f, float f1) {
++    protected void b(float f) {
+     }
+ }
+\ No newline at end of file

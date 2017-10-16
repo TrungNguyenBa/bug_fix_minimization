@@ -1,0 +1,4 @@
+e6449cccd : Changed the Complex.equals() method so that it considers +0 and -0 are equal, as required by IEEE-754 standard. JIRA: MATH-221
+:100644 100644 16b387332... 8b622cb29... M	src/java/org/apache/commons/math/complex/Complex.java
+:100644 100644 ee0980f1f... a38c39c21... M	src/site/xdoc/changes.xml
+:100644 100644 4ba7a6513... 61ff86f52... M	src/test/org/apache/commons/math/complex/ComplexTest.java

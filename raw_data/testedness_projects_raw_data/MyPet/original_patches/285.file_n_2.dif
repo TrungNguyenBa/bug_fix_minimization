@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+index 22d4814e..b48564e1 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+@@ -61,7 +61,7 @@ public class EntityMyBat extends EntityMyPet
+ 
+     public boolean isHanging()
+     {
+-        return ((MyBat) myPet).hanging;
++        return (this.datawatcher.getByte(16) & 0x1) != 0;
+     }
+ 
+     // Obfuscated Methods -------------------------------------------------------------------------------------------

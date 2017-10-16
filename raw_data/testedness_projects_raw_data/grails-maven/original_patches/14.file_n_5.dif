@@ -1,0 +1,46 @@
+diff --git a/src/main/java/org/grails/maven/plugin/tools/ForkedGrailsRuntime.java b/src/main/java/org/grails/maven/plugin/tools/ForkedGrailsRuntime.java
+index 1319b6f..7f98b85 100644
+--- a/src/main/java/org/grails/maven/plugin/tools/ForkedGrailsRuntime.java
++++ b/src/main/java/org/grails/maven/plugin/tools/ForkedGrailsRuntime.java
+@@ -1,8 +1,6 @@
+ package org.grails.maven.plugin.tools;
+ 
+ import groovy.lang.GroovyRuntimeException;
+-import org.codehaus.groovy.grails.io.support.GrailsIOUtils;
+-import org.codehaus.groovy.grails.io.support.MultiplexingOutputStream;
+ import org.grails.launcher.GrailsLauncher;
+ import org.grails.launcher.RootLoader;
+ import org.grails.maven.plugin.AbstractGrailsMojo;
+@@ -54,9 +52,8 @@ public class ForkedGrailsRuntime {
+     public void fork() {
+         ProcessBuilder processBuilder = new ProcessBuilder();
+         StringBuilder cp = new StringBuilder();
+-        cp.append(GrailsIOUtils.findJarFile(ForkedGrailsRuntime.class)).append(File.pathSeparatorChar);
+         for (File file : executionContext.getBuildDependencies()) {
+-            cp.append(file).append(File.pathSeparatorChar);
++            cp.append(file).append(File.pathSeparator);
+         }
+ 
+ 
+@@ -116,8 +113,6 @@ public class ForkedGrailsRuntime {
+                 try { es.close(); } catch (IOException ignore) {}
+                 try { is.close(); } catch (IOException ignore) {}
+ 
+-                System.out.flush();
+-                System.err.flush();
+ 
+                 throw new RuntimeException("Forked Grails VM exited with error");
+             }
+@@ -209,11 +204,7 @@ public class ForkedGrailsRuntime {
+                 rootLoader.addURL(loggingBootstrapJar.toURI().toURL());
+             }
+             Class cls = rootLoader.loadClass("org.springframework.util.Log4jConfigurer");
+-            try {
+-                invokeStaticMethod(cls, "initLogging", new Object[]{"classpath:grails-maven/log4j.properties"});
+-            } catch (Throwable e) {
+-                // ignore
+-            }
++            invokeStaticMethod(cls, "initLogging", new Object[]{"classpath:grails-maven/log4j.properties"});
+         }
+     }
+ 

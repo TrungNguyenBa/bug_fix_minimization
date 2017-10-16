@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java b/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
+index 71f8083..43d60ac 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
+@@ -57,7 +57,7 @@ public class PEXSubjectCollection implements SubjectCollection {
+     public Subject get(String identifier) {
+         System.out.println("Getting subject for " + identifier);
+         try {
+-            return new PEXSubject(identifier, new PEXOptionSubjectData(cache, identifier, plugin), this);
++            return new PEXSubject(identifier, new PEXOptionSubjectData(cache, identifier), this);
+         } catch (ExecutionException e) {
+             throw new RuntimeException(e);
+         }

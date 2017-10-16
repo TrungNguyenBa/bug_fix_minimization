@@ -1,0 +1,2 @@
+988b92b : Fix deserializer's bank account object mapping
+:100644 100644 11b9bfc... 0ec9a91... M	src/main/java/com/stripe/model/EventDataDeserializer.java

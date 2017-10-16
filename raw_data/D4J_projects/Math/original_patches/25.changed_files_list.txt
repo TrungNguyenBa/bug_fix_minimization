@@ -1,0 +1,5 @@
+996dd998e : MATH-844 Generate an exception when the parameter guessing procedure cannot perform correctly (in rare ill-conditioned cases).
+:100644 100644 ee30a686f... 234086c5d... M	src/changes/changes.xml
+:100644 100644 1ca563575... 04edd0b46... M	src/main/java/org/apache/commons/math3/exception/util/LocalizedFormats.java
+:100644 100644 ebb36d310... c7af9ae56... M	src/main/java/org/apache/commons/math3/optimization/fitting/HarmonicFitter.java
+:100644 100644 910ba1ba6... 5bbad9f37... M	src/test/java/org/apache/commons/math3/optimization/fitting/HarmonicFitterTest.java

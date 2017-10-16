@@ -1,0 +1,2 @@
+63f013d : Fix a different type of login cancelling. Fixes #1660
+:100644 100644 879b1da... 0062799... M	src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/commands/CommandsManager.java b/src/main/java/ru/tehkode/permissions/commands/CommandsManager.java
+index 1954305..5484794 100644
+--- a/src/main/java/ru/tehkode/permissions/commands/CommandsManager.java
++++ b/src/main/java/ru/tehkode/permissions/commands/CommandsManager.java
+@@ -114,7 +114,7 @@ public class CommandsManager {
+ 				sender.sendMessage("Autocomplete for <" + autocomplete.getArgName() + ">:");
+ 				sender.sendMessage("    " + StringUtils.implode(autocomplete.getChoices(), "   "));
+ 			} else {
+-				throw new RuntimeException(e.getCause());
++				throw new RuntimeException(e.getTargetException());
+ 			}
+ 		} catch (Exception e) {
+ 			plugin.getLogger().severe("There is bogus command handler for " + command.getName() + " command. (Is appropriate plugin is update?)");

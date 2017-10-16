@@ -1,0 +1,2 @@
+f32b2d9 : fix broken logic for establishing Groovy version
+:100755 100755 26508f9... 91ba7e7... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

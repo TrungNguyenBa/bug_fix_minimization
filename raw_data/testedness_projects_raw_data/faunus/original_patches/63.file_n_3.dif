@@ -1,0 +1,13 @@
+diff --git a/include/faunus/geometry.h b/include/faunus/geometry.h
+index 32aae115..f38b99c8 100644
+--- a/include/faunus/geometry.h
++++ b/include/faunus/geometry.h
+@@ -333,7 +333,7 @@ namespace Faunus {
+       
+      template<class Tspace, class Tgroup>
+         Point dipoleMoment(const Tspace &s, const Tgroup &g, double cutoff=1e9,Point mu=Point(0,0,0)) {
+-          assert(g.size()<=s.p.size());
++          assert(g.size()<=spc.p.size());
+           for (auto i : g) {
+             Point t=s.p[i] - g.cm;
+             s.geo.boundary(t);

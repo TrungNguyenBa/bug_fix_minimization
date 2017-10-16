@@ -1,0 +1,2 @@
+0a1772ec : catch exceptions thrown while receiving the data that will be stored to prevent the loss of all pets
+:100644 100644 3b426bb1... f5d8b31c... M	src/main/java/de/Keyle/MyPet/MyPetPlugin.java

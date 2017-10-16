@@ -1,0 +1,24 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index b284d9ba..ce15ce3a 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -70,7 +70,6 @@ import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
+ import org.bukkit.inventory.ItemStack;
+ import org.bukkit.metadata.FixedMetadataValue;
+ import org.bukkit.metadata.MetadataValue;
+-import org.bukkit.projectiles.ProjectileSource;
+ 
+ import java.lang.reflect.Field;
+ import java.util.ArrayList;
+@@ -544,10 +543,7 @@ public class EntityListener implements Listener {
+             Entity damager = event.getDamager();
+ 
+             if (damager instanceof Projectile) {
+-                ProjectileSource source = ((Projectile) damager).getShooter();
+-                if (source instanceof Entity) {
+-                    damager = (Entity) source;
+-                }
++                damager = (Entity) ((Projectile) damager).getShooter();
+             }
+ 
+             if (damager instanceof Player) {

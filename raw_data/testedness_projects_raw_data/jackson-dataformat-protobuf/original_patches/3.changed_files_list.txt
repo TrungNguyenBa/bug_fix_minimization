@@ -1,0 +1,3 @@
+e75b63a : Minor fix to handling of lookups from hash maps
+:100644 100644 1182d90... 7edb283... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java
+:100644 100644 6192eee... d42b90c... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/FieldLookup.java

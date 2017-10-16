@@ -1,0 +1,2 @@
+f41b666 : Explicitly cast the double object.
+:100644 100644 d229f08... b8eb8d9... M	src/main/java/com/stripe/net/APIResource.java

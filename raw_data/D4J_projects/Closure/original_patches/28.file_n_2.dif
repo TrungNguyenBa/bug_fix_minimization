@@ -1,0 +1,27 @@
+diff --git a/src/com/google/javascript/jscomp/CodeConsumer.java b/src/com/google/javascript/jscomp/CodeConsumer.java
+index 5b5ab44d..3522e89e 100644
+--- a/src/com/google/javascript/jscomp/CodeConsumer.java
++++ b/src/com/google/javascript/jscomp/CodeConsumer.java
+@@ -257,19 +257,15 @@ abstract class CodeConsumer {
+         }
+       }
+       if (exp > 2) {
+-        addConstant(Long.toString(mantissa) + "E" + Integer.toString(exp));
++        add(Long.toString(mantissa) + "E" + Integer.toString(exp));
+       } else {
+-        addConstant(Long.toString(value));
++        add(Long.toString(value));
+       }
+     } else {
+-      addConstant(String.valueOf(x));
++      add(String.valueOf(x));
+     }
+   }
+ 
+-  void addConstant(String newcode) {
+-    add(newcode);
+-  }
+-
+   static boolean isNegativeZero(double x) {
+     return x == 0.0 && Math.copySign(1, x) == -1.0;
+   }

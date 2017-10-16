@@ -1,0 +1,30 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/inject/ZombieTest.java b/src/test/java/com/lonepulse/zombielink/inject/ZombieTest.java
+index dc2afbb..3b82554 100644
+--- a/src/test/java/com/lonepulse/zombielink/inject/ZombieTest.java
++++ b/src/test/java/com/lonepulse/zombielink/inject/ZombieTest.java
+@@ -26,6 +26,7 @@ import static org.junit.Assert.assertNull;
+ import org.junit.BeforeClass;
+ import org.junit.Test;
+ 
++import com.lonepulse.zombielink.Zombie;
+ 
+ 
+ /**
+@@ -83,7 +84,7 @@ public class ZombieTest {
+ 	}
+ 	
+ 	/**
+-	 * Test method for {@link com.lonepulse.zombielink.inject.Zombie#infect(Object)}.
++	 * Test method for {@link com.lonepulse.zombielink.Zombie#infect(Object)}.
+ 	 */
+ 	@Test
+ 	public final void testPropertyInjection() {
+@@ -97,7 +98,7 @@ public class ZombieTest {
+ 	}
+ 	
+ 	/**
+-	 * Test method for {@link com.lonepulse.zombielink.inject.Zombie#infect(java.lang.Class)}.
++	 * Test method for {@link com.lonepulse.zombielink.Zombie#infect(java.lang.Class)}.
+ 	 */
+ 	@Test
+ 	public final void testConstructorInstantiation() {

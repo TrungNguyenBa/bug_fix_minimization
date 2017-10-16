@@ -1,0 +1,12 @@
+diff --git a/test/com/google/javascript/rhino/jstype/FunctionTypeTest.java b/test/com/google/javascript/rhino/jstype/FunctionTypeTest.java
+index e58037d7..76eb0133 100644
+--- a/test/com/google/javascript/rhino/jstype/FunctionTypeTest.java
++++ b/test/com/google/javascript/rhino/jstype/FunctionTypeTest.java
+@@ -38,6 +38,7 @@
+ 
+ package com.google.javascript.rhino.jstype;
+ 
++import com.google.javascript.rhino.Node;
+ import com.google.javascript.rhino.testing.BaseJSTypeTestCase;
+ 
+ 

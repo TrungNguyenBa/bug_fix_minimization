@@ -1,0 +1,31 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+index 0128203d..b6801f48 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+@@ -89,7 +89,7 @@ public class OwnerHurtTarget extends AIGoal {
+             if (myPet.getOwner().equals(targetPlayer)) {
+                 this.petEntity.goalTarget = null;
+                 return false;
+-            } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer, true)) {
++            } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer)) {
+                 this.petEntity.goalTarget = null;
+                 return false;
+             }
+@@ -100,7 +100,7 @@ public class OwnerHurtTarget extends AIGoal {
+                 if (myPet.getOwner().equals(tameableOwner)) {
+                     this.petEntity.goalTarget = null;
+                     return false;
+-                } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), tameableOwner, true)) {
++                } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), tameableOwner)) {
+                     this.petEntity.goalTarget = null;
+                     return false;
+                 }
+@@ -111,7 +111,7 @@ public class OwnerHurtTarget extends AIGoal {
+                 this.petEntity.goalTarget = null;
+                 return false;
+             }
+-            if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer(), true)) {
++            if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer())) {
+                 this.petEntity.goalTarget = null;
+                 return false;
+             }

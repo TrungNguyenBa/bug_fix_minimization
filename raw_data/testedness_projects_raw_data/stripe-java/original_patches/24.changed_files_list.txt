@@ -1,0 +1,2 @@
+4def4ac : Missing field in Card object
+:100644 100644 8b865f9... d4f4925... M	src/main/java/com/stripe/model/Card.java

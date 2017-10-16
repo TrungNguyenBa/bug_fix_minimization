@@ -1,0 +1,2 @@
+90cd0408 : fixed bug in admin command that creates the pet always for the command sender fixes #135
+:100644 100644 cf16cfa6... bf36cf74... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java

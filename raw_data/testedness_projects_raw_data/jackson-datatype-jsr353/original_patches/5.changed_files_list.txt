@@ -1,0 +1,2 @@
+6e1456d : Improvements in OSGi manifest generation. Fixes #1.
+:100644 100644 feb81c1... 4b7137f... M	pom.xml

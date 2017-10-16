@@ -1,0 +1,2 @@
+f79f1aca : check for null after activating a pet fixes #545
+:100644 100644 1e808c6a... 5f8e559a... M	src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java

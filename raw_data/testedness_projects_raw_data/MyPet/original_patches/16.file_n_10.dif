@@ -1,0 +1,29 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Stomp.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Stomp.java
+index b93608fe..c3f339bd 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Stomp.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Stomp.java
+@@ -119,7 +119,7 @@ public class Stomp extends StompInfo implements ISkillInstance, ISkillActive {
+                         Player targetPlayer = (Player) livingEntity.getBukkitEntity();
+                         if (myPet.getOwner().equals(targetPlayer)) {
+                             continue;
+-                        } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer, true)) {
++                        } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer)) {
+                             continue;
+                         }
+                     } else if (livingEntity instanceof EntityTameableAnimal) {
+@@ -128,13 +128,13 @@ public class Stomp extends StompInfo implements ISkillInstance, ISkillActive {
+                             Player tameableOwner = (Player) tameable.getOwner().getBukkitEntity();
+                             if (myPet.getOwner().equals(tameableOwner)) {
+                                 continue;
+-                            } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), tameableOwner, true)) {
++                            } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), tameableOwner)) {
+                                 continue;
+                             }
+                         }
+                     } else if (livingEntity instanceof EntityMyPet) {
+                         MyPet targetMyPet = ((EntityMyPet) livingEntity).getMyPet();
+-                        if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer(), true)) {
++                        if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer())) {
+                             continue;
+                         }
+                     }

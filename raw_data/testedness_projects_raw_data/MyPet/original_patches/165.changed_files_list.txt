@@ -1,0 +1,10 @@
+514b3a0f : moved TabCompleter to command option classes
+:000000 100644 00000000... 05563fb2... A	src/main/java/de/Keyle/MyPet/api/commands/CommandOptionTabCompleter.java
+:100644 100644 b39bdb78... 6bb3f244... M	src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java
+:100644 100644 146cb9fc... 50c8ad44... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionClone.java
+:100644 100644 a915c300... 2fb40e82... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java
+:100644 100644 538c1f28... 3327713d... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionExp.java
+:100644 100644 64ed50b6... fbe84e95... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionName.java
+:100644 100644 7b690efe... 12960f4d... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRemove.java
+:100644 100644 7d699a0e... f2bc2842... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRespawn.java
+:100644 100644 195e5585... fc29c736... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionSkilltree.java

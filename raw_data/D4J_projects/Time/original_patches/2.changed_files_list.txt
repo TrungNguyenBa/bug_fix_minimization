@@ -1,0 +1,5 @@
+8612f9e5 : Fix NPE in Partial.with()
+:100644 100644 0cad3156... 2a7f9b5e... M	RELEASE-NOTES.txt
+:100644 100644 8e8e6034... 3b84fdc6... M	src/main/java/org/joda/time/Partial.java
+:100644 100644 bf44e013... 7e0ce57a... M	src/main/java/org/joda/time/field/UnsupportedDurationField.java
+:100644 100644 ceaa1500... 5c154a38... M	src/test/java/org/joda/time/TestPartial_Basics.java

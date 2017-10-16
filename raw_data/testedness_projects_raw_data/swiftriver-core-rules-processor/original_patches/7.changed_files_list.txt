@@ -1,0 +1,3 @@
+4f4b7c2 : Remove name property from the Rule pogo
+:100644 100644 4ad4815... f6898a6... M	src/main/java/com/ushahidi/swiftriver/core/model/Rule.java
+:100644 100644 2aa9d66... 16ac2df... M	src/test/java/com/ushahidi/swiftriver/core/rules/RulesUpdateQueueConsumerTest.java

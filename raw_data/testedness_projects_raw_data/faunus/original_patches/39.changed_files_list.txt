@@ -1,0 +1,8 @@
+b8afec93 : Minor fixes. Sample molecules works for example water2.
+:100755 100755 480e7da0... 5f063ec8... M	include/faunus/analysis.h
+:100644 100644 8a83478b... 19ef65e0... M	include/faunus/io.h
+:100644 100644 2dff15e6... 0b1b7480... M	include/faunus/multipole.h
+:100644 100644 2f74056e... 4976731d... M	include/faunus/space.h
+:100644 100644 7a834996... e662033e... M	src/playground/stenqvist/nemo.cpp
+:100755 000000 5cc99c4e... 00000000... D	src/playground/stenqvist/nemo.run
+:100644 100644 e4779a90... f73ffb32... M	src/species.cpp

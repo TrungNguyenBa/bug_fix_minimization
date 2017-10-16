@@ -1,0 +1,47 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java b/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
+index 675b94ff..c2a7a280 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
+@@ -33,13 +33,10 @@ public class EntityMySilverfish extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+     @Override
+-    protected String getDeathSound()
++    public void playStepSound()
+     {
+-        return "mob.silverfish.kill";
++        makeSound("mob.silverfish.step", 1.0F, 1.0F);
+     }
+ 
+     /**
+@@ -52,16 +49,19 @@ public class EntityMySilverfish extends EntityMyPet
+     }
+ 
+     /**
+-     * Returns the default sound of the MyPet
++     * Returns the sound that is played when the MyPet dies
+      */
+-    protected String getLivingSound()
++    @Override
++    protected String getDeathSound()
+     {
+-        return !playIdleSound() ? null : "mob.silverfish.say";
++        return "mob.silverfish.kill";
+     }
+ 
+-    @Override
+-    public void playStepSound()
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        makeSound("mob.silverfish.step", 1.0F, 1.0F);
++        return !playIdleSound() ? null : "mob.silverfish.say";
+     }
+ }
+\ No newline at end of file

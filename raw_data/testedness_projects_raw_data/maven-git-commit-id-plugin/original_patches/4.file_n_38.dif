@@ -1,0 +1,7 @@
+diff --git a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/refs/heads/master b/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/refs/heads/master
+deleted file mode 100644
+index 969c69c..0000000
+--- a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/refs/heads/master
++++ /dev/null
+@@ -1 +0,0 @@
+-b0c6d28b3b83bf7b905321bae67d9ca4c75a203f

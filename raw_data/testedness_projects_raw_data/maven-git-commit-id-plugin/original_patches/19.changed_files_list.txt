@@ -1,0 +1,3 @@
+c38736a : fix indenting to 2 spaces
+:100644 100644 82eb8ad... 3cfdd6e... M	src/main/java/pl/project13/maven/git/NativeGitProvider.java
+:100644 100644 278fcf7... 2ec18d9... M	src/test/java/pl/project13/maven/git/NativeAndJGitProviderTest.java

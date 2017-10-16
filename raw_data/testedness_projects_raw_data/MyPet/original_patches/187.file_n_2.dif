@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index 651f5afd..5608d584 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -145,8 +145,6 @@ public abstract class MyPet implements IMyPet, NBTStorage
+                 net.minecraft.server.v1_6_R2.World mcWorld = ((CraftWorld) loc.getWorld()).getHandle();
+                 EntityMyPet petEntity = getPetType().getNewEntityInstance(mcWorld, this);
+                 craftMyPet = (CraftMyPet) petEntity.getBukkitEntity();
+-                loc.setPitch(0);
+-                loc.setYaw(0);
+                 petEntity.setLocation(loc);
+                 if (!BukkitUtil.canSpawn(loc, petEntity))
+                 {

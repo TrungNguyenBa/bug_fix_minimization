@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java
+index 7af1eb9c..762ec643 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java
+@@ -151,6 +151,7 @@ public class SkillTreeLoaderNBT extends SkillTreeLoader {
+                 savedPetTypes.add(petType);
+             }
+         }
++
+         return savedPetTypes;
+     }
+ 

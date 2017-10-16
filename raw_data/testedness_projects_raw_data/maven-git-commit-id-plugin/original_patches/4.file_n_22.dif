@@ -1,0 +1,4 @@
+diff --git a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/objects/1b/7216a5d803dbdbbbb3512fcdde464699f20432 b/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/objects/1b/7216a5d803dbdbbbb3512fcdde464699f20432
+deleted file mode 100644
+index ef62801..0000000
+Binary files a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/objects/1b/7216a5d803dbdbbbb3512fcdde464699f20432 and /dev/null differ

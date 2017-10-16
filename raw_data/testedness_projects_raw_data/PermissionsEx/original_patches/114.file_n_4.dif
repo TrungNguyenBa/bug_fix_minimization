@@ -1,0 +1,16 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java b/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
+index 89e20b9..2da8bd0 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
++++ b/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
+@@ -29,7 +29,11 @@ public class BackendDataTransfer {
+ 		}
+ 
+ 		to.setParents(from.getParents(null), null);
++		to.setPrefix(from.getPrefix(null), null);
++		to.setSuffix(from.getSuffix(null), null);
+ 		for (String world : from.getWorlds()) {
++			to.setPrefix(from.getPrefix(world), world);
++			to.setSuffix(from.getSuffix(world), world);
+ 			List<String> groups =  from.getParents(world);
+ 			if (groups == null || groups.isEmpty()) {
+ 				continue;

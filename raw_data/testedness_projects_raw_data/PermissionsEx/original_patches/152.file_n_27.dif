@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLUser.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLUser.java
+index e9819b7..3d37bd9 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLUser.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLUser.java
+@@ -23,6 +23,7 @@ import ru.tehkode.permissions.ProxyPermissionUser;
+ import ru.tehkode.permissions.events.PermissionEntityEvent;
+ 
+ /**
++ *
+  * @author code
+  */
+ public class SQLUser extends ProxyPermissionUser {

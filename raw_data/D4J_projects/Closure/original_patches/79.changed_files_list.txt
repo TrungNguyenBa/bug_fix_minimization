@@ -1,0 +1,7 @@
+5d397618 : Normalize extern VAR declarations Fixes issue 367.
+:100644 100644 3d4951fa... 8bee886d... M	src/com/google/javascript/jscomp/Normalize.java
+:100644 100644 c8196b12... f8ebfa33... M	src/com/google/javascript/jscomp/VarCheck.java
+:100644 100644 d0cf9fc1... b4124163... M	test/com/google/javascript/jscomp/CompilerTestCase.java
+:100644 100644 fe21010b... adbfc8d9... M	test/com/google/javascript/jscomp/NormalizeTest.java
+:100644 100644 6e481c09... a5d110c9... M	test/com/google/javascript/jscomp/ObjectPropertyStringPreprocessTest.java
+:100644 100644 d62d33d1... 438c3497... M	test/com/google/javascript/jscomp/VarCheckTest.java

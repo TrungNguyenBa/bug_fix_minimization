@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/SkillPropertiesPanel.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/SkillPropertiesPanel.java
+index f00af8a0..6e56275b 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/SkillPropertiesPanel.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/SkillPropertiesPanel.java
+@@ -24,7 +24,8 @@ import de.Keyle.MyPet.util.NBTStorage;
+ 
+ import javax.swing.*;
+ 
+-public interface SkillPropertiesPanel extends NBTStorage {
++public interface SkillPropertiesPanel extends NBTStorage
++{
+     public JPanel getMainPanel();
+ 
+     public void verifyInput();

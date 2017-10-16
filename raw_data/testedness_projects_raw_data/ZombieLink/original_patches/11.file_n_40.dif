@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/validator/EndpointValidator.java b/src/main/java/com/lonepulse/zombielink/validator/EndpointValidator.java
+index c28861b..6f6f7e7 100644
+--- a/src/main/java/com/lonepulse/zombielink/validator/EndpointValidator.java
++++ b/src/main/java/com/lonepulse/zombielink/validator/EndpointValidator.java
+@@ -25,8 +25,8 @@ import java.net.URI;
+ 
+ import org.apache.http.client.utils.URIBuilder;
+ 
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.annotation.Endpoint;
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>A concrete implementation of {@link Validator} which validates an endpoint definition 

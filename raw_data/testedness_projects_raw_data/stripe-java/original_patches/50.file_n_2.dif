@@ -1,0 +1,27 @@
+diff --git a/src/main/java/com/stripe/model/Coupon.java b/src/main/java/com/stripe/model/Coupon.java
+index 8bb073b..a4023ed 100644
+--- a/src/main/java/com/stripe/model/Coupon.java
++++ b/src/main/java/com/stripe/model/Coupon.java
+@@ -17,7 +17,7 @@ public class Coupon extends APIResource {
+ 	String id;
+ 	Boolean livemode;
+ 	Integer durationInMonths;
+-	Long maxRedemptions;
++	Integer maxRedemptions;
+ 	Long redeemBy;
+ 	Integer timesRedeemed;
+ 	Boolean valid;
+@@ -131,11 +131,11 @@ public class Coupon extends APIResource {
+ 		this.durationInMonths = durationInMonths;
+ 	}
+ 
+-	public Long getMaxRedemptions() {
++	public Integer getMaxRedemptions() {
+ 		return maxRedemptions;
+ 	}
+ 
+-	public void setMaxRedemptions(Long maxRedemptions) {
++	public void setMaxRedemptions(Integer maxRedemptions) {
+ 		this.maxRedemptions = maxRedemptions;
+ 	}
+ 

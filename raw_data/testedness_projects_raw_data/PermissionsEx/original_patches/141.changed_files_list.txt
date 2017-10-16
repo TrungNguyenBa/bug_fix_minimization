@@ -1,0 +1,2 @@
+f4390cd : Fix handling circular inheritance for options
+:100644 100644 88d0b2f... a9f1968... M	src/main/java/ru/tehkode/permissions/PermissionGroup.java

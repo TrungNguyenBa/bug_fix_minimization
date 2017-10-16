@@ -1,0 +1,2 @@
+d65d7dc : Avoid looking into subdocument for query. ref #9
+:100644 100644 aa348f4... 2a00c00... M	src/main/java/de/bwaldvogel/mongo/backend/memory/index/UniqueIndex.java

@@ -1,0 +1,2 @@
+818a5441 : Fixed line ending issues once and for all
+:000000 100644 00000000... a3546495... A	.gitattributes

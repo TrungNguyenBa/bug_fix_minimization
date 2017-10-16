@@ -1,0 +1,3 @@
+836a670 : enable proxy w/ auth for Stripe http connection
+:100644 100644 049f6be... 56e5931... M	src/main/java/com/stripe/Stripe.java
+:100644 100644 66dfcbc... 9d290a2... M	src/main/java/com/stripe/net/LiveStripeResponseGetter.java

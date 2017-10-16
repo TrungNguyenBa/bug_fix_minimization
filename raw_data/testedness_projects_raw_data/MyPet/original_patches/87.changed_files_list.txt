@@ -1,0 +1,4 @@
+fa3689f8 : use Bukkit static method
+:100644 100644 eceb7450... c8babba3... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 8b80e0c0... 51f412c2... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 bb6eed84... bc6b21cd... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java

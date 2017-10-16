@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java
+index 0c1fdfbc..e87c5348 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java
+@@ -72,7 +72,7 @@ public class Thorns extends ThornsInfo implements ISkillInstance, ISkillActive
+                 }
+                 if (!quiet)
+                 {
+-                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.ThornsChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%chance%", "" + chance));
++                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.ThornsChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%chance%", "" + chance));
+                 }
+             }
+         }

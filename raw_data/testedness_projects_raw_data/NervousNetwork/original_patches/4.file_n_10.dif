@@ -1,0 +1,22 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/api/protocol/Packet.java b/src/main/java/org/tiernolan/nervous/network/api/protocol/Packet.java
+deleted file mode 100644
+index fc99b1b..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/api/protocol/Packet.java
++++ /dev/null
+@@ -1,16 +0,0 @@
+-package org.tiernolan.nervous.network.api.protocol;
+-
+-import org.tiernolan.nervous.network.api.queue.Striped;
+-
+-public interface Packet extends ProtocolComponent, Striped {
+-	
+-	/**
+-	 * Gets the stripe of the packet.<br>
+-	 * <br>
+-	 * Packets with the same stripe id are handled serially.
+-	 * 
+-	 * @return the stripe, or -1 for asynchronous
+-	 */
+-	public int getStripeId();
+-
+-}

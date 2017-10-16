@@ -1,0 +1,20 @@
+diff --git a/include/faunus/analysis.h b/include/faunus/analysis.h
+index 70da31c8..de3f74fd 100755
+--- a/include/faunus/analysis.h
++++ b/include/faunus/analysis.h
+@@ -92,14 +92,8 @@ namespace Faunus {
+ 
+           if (cnt>0) {
+             vector<double> P(3);
+-#ifdef __INTEL_COMPILER
+-            vector<string> id(3);
+-            id[0]="Ideal";
+-            id[1]="Excess";
+-            id[2]="Total";
+-#else
+             vector<string> id = {"Ideal", "Excess", "Total"};
+-#endif
++
+             P[0] = Pid;             // ideal
+             P[1] = (T/cnt).trace(); // excess
+             P[2] = P[0] + P[1];     // total

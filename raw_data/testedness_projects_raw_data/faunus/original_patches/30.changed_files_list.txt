@@ -1,0 +1,2 @@
+67b6b572 : Fixed stockmayer-state file
+:000000 100644 00000000... be09b2f4... A	src/examples/stockmayer.state

@@ -1,0 +1,60 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java
+index 44d6b149..51e488e8 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java
+@@ -71,45 +71,45 @@ public class CommandBehavior implements CommandExecutor, TabCompleter
+                     Behavior behaviorSkill = (Behavior) myPet.getSkills().getSkill("Behavior");
+                     if (args.length == 1)
+                     {
+-                        if ((args[0].equalsIgnoreCase("friendly") || args[0].equalsIgnoreCase("friend")))
++                        if ((args[0].equalsIgnoreCase("friendly") || args[0].equalsIgnoreCase("friend")) && BehaviorState.Friendly.isActive())
+                         {
+-                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Friendly") || !behaviorSkill.isModeUsable(BehaviorState.Friendly))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Friendly"))
+                             {
+                                 myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_NotAllowed")));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(Behavior.BehaviorState.Friendly);
+                         }
+-                        else if ((args[0].equalsIgnoreCase("aggressive") || args[0].equalsIgnoreCase("Aggro")))
++                        else if ((args[0].equalsIgnoreCase("aggressive") || args[0].equalsIgnoreCase("Aggro")) && BehaviorState.Aggressive.isActive())
+                         {
+-                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.aggressive") || !behaviorSkill.isModeUsable(BehaviorState.Aggressive))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.aggressive"))
+                             {
+                                 myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_NotAllowed")));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(Behavior.BehaviorState.Aggressive);
+                         }
+-                        else if (args[0].equalsIgnoreCase("farm"))
++                        else if (args[0].equalsIgnoreCase("farm") && BehaviorState.Farm.isActive())
+                         {
+-                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Farm") || !behaviorSkill.isModeUsable(BehaviorState.Farm))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Farm"))
+                             {
+                                 myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_NotAllowed")));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(BehaviorState.Farm);
+                         }
+-                        else if (args[0].equalsIgnoreCase("raid"))
++                        else if (args[0].equalsIgnoreCase("raid") && BehaviorState.Raid.isActive())
+                         {
+-                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Raid") || !behaviorSkill.isModeUsable(BehaviorState.Raid))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Raid"))
+                             {
+                                 myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_NotAllowed")));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(Behavior.BehaviorState.Raid);
+                         }
+-                        else if (args[0].equalsIgnoreCase("duel"))
++                        else if (args[0].equalsIgnoreCase("duel") && BehaviorState.Duel.isActive())
+                         {
+-                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Duel") || !behaviorSkill.isModeUsable(BehaviorState.Duel))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Duel"))
+                             {
+                                 myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_NotAllowed")));
+                                 return true;

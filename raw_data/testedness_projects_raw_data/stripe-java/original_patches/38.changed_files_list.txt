@@ -1,0 +1,2 @@
+783cefb : Compare created recipient with retrieved recipient directly
+:100644 100644 fe1df78... f2ef905... M	src/test/java/com/stripe/StripeTest.java

@@ -1,0 +1,22 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionEntity.java b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+index ce77439..d7ad1bf 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionEntity.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+@@ -259,7 +259,7 @@ public abstract class PermissionEntity {
+ 					}
+ 
+ 					ret.add(perm);
+-					entity.getInheritedChildPermissions(perm, ret);
++					getInheritedChildPermissions(perm, ret);
+ 				}
+ 
+ 				for (String perm : entity.getTimedPermissions(world)) {
+@@ -268,7 +268,7 @@ public abstract class PermissionEntity {
+ 					}
+ 
+ 					ret.add(perm);
+-					entity.getInheritedChildPermissions(perm, ret);
++					getInheritedChildPermissions(perm, ret);
+ 				}
+ 				return null;
+ 			}

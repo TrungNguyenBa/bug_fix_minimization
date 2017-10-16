@@ -1,0 +1,231 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/CraftMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/CraftMyPet.java
+index a3ed8f56..5b817078 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/CraftMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/CraftMyPet.java
+@@ -45,145 +45,145 @@ public class CraftMyPet extends CraftCreature implements MyPetEntity
+         petEntity = entityMyPet;
+     }
+ 
+-    @Override
+-    public void _INVALID_damage(int amount)
++    public void setTarget(LivingEntity target)
+     {
+-        damage((double) amount);
++        EntityCreature entity = getHandle();
++        if (target == null)
++        {
++            entity.target = null;
++        }
++        else if (target instanceof CraftLivingEntity)
++        {
++            if (!getHandle().isMyPet)
++            {
++                return;
++            }
++            if (getHandle().myPet.getSkills().isSkillActive("Behavior"))
++            {
++                Behavior behaviorSkill = (Behavior) getMyPet().getSkills().getSkill("Behavior");
++                if (behaviorSkill.getBehavior() == Behavior.BehaviorState.Friendly)
++                {
++                    return;
++                }
++            }
++            petEntity.setGoalTarget(((CraftLivingEntity) target).getHandle());
++        }
+     }
+ 
+     @Override
+-    public void _INVALID_damage(int amount, Entity source)
++    public void remove()
+     {
+-        damage((double) amount, source);
++        if (getMyPet().getStatus() != PetState.Despawned)
++        {
++            getMyPet().removePet();
++            getMyPet().sendMessageToOwner(MyPetUtil.formatText(MyPetLocales.getString("Message.Despawn", getOwner().getLanguage()), getMyPet().petName));
++        }
++        else
++        {
++            super.remove();
++        }
+     }
+ 
+     @Override
+-    public int _INVALID_getHealth()
++    public void setHealth(double health)
+     {
+-        return (int) getHealth();
++        if (health < 0)
++        {
++            health = 0;
++        }
++        if (health > getMaxHealth())
++        {
++            health = getMaxHealth();
++        }
++        super.setHealth(health);
+     }
+ 
+-    @Override
+-    public int _INVALID_getLastDamage()
++    public MyPetPlayer getOwner()
+     {
+-        return (int) getLastDamage();
++        if (petOwner == null)
++        {
++            petOwner = getMyPet().getOwner();
++        }
++        return petOwner;
+     }
+ 
+-    @Override
+-    public int _INVALID_getMaxHealth()
++    public MyPet getMyPet()
+     {
+-        return (int) getMaxHealth();
++        return petEntity.getMyPet();
+     }
+ 
+     @Override
+-    public void _INVALID_setHealth(int health)
++    public EntityMyPet getHandle()
+     {
+-        setHealth((double) health);
++        return petEntity;
+     }
+ 
+-    @Override
+-    public void _INVALID_setLastDamage(int damage)
++    public boolean canMove()
+     {
+-        setLastDamage((double) damage);
++        return petEntity.canMove();
+     }
+ 
+-    @Override
+-    public void _INVALID_setMaxHealth(int health)
++    public MyPetType getPetType()
+     {
++        return getMyPet().getPetType();
+     }
+ 
+-    public boolean canMove()
++    @Override
++    public EntityType getType()
+     {
+-        return petEntity.canMove();
++        return EntityType.UNKNOWN;
+     }
+ 
+     @Override
+-    public EntityMyPet getHandle()
++    public String toString()
+     {
+-        return petEntity;
++        return "CraftMyPet{MyPet=" + getHandle().isMyPet() + ",owner=" + getOwner() + ",type=" + getPetType() + "}";
+     }
+ 
+-    public MyPet getMyPet()
++    @Override
++    public void _INVALID_damage(int amount)
+     {
+-        return petEntity.getMyPet();
++        damage((double) amount);
+     }
+ 
+-    public MyPetPlayer getOwner()
++    @Override
++    public void _INVALID_damage(int amount, Entity source)
+     {
+-        if (petOwner == null)
+-        {
+-            petOwner = getMyPet().getOwner();
+-        }
+-        return petOwner;
++        damage((double) amount, source);
+     }
+ 
+-    public MyPetType getPetType()
++    @Override
++    public int _INVALID_getHealth()
+     {
+-        return getMyPet().getPetType();
++        return (int) getHealth();
+     }
+ 
+     @Override
+-    public EntityType getType()
++    public void _INVALID_setHealth(int health)
+     {
+-        return EntityType.UNKNOWN;
++        setHealth((double) health);
+     }
+ 
+     @Override
+-    public void remove()
++    public int _INVALID_getMaxHealth()
+     {
+-        if (getMyPet().getStatus() != PetState.Despawned)
+-        {
+-            getMyPet().removePet();
+-            getMyPet().sendMessageToOwner(MyPetUtil.formatText(MyPetLocales.getString("Message.Despawn", getOwner().getLanguage()), getMyPet().petName));
+-        }
+-        else
+-        {
+-            super.remove();
+-        }
++        return (int) getMaxHealth();
+     }
+ 
+     @Override
+-    public void setHealth(double health)
++    public void _INVALID_setMaxHealth(int health)
+     {
+-        if (health < 0)
+-        {
+-            health = 0;
+-        }
+-        if (health > getMaxHealth())
+-        {
+-            health = getMaxHealth();
+-        }
+-        super.setHealth(health);
+     }
+ 
+-    public void setTarget(LivingEntity target)
++    @Override
++    public int _INVALID_getLastDamage()
+     {
+-        EntityCreature entity = getHandle();
+-        if (target == null)
+-        {
+-            entity.target = null;
+-        }
+-        else if (target instanceof CraftLivingEntity)
+-        {
+-            if (!getHandle().isMyPet)
+-            {
+-                return;
+-            }
+-            if (getHandle().myPet.getSkills().isSkillActive("Behavior"))
+-            {
+-                Behavior behaviorSkill = (Behavior) getMyPet().getSkills().getSkill("Behavior");
+-                if (behaviorSkill.getBehavior() == Behavior.BehaviorState.Friendly)
+-                {
+-                    return;
+-                }
+-            }
+-            petEntity.setGoalTarget(((CraftLivingEntity) target).getHandle());
+-        }
++        return (int) getLastDamage();
+     }
+ 
+     @Override
+-    public String toString()
++    public void _INVALID_setLastDamage(int damage)
+     {
+-        return "CraftMyPet{MyPet=" + getHandle().isMyPet() + ",owner=" + getOwner() + ",type=" + getPetType() + "}";
++        setLastDamage((double) damage);
+     }
+ }
+\ No newline at end of file

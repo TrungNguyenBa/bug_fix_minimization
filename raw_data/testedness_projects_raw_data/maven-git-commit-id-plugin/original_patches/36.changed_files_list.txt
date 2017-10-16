@@ -1,0 +1,3 @@
+399b9bb : Empty prefix setting should not keep the leading "." Resolves #101
+:100644 100644 bc777c0... 36e5d65... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+:100644 100644 aee00fc... 865569e... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java

@@ -1,0 +1,3 @@
+39cf5e692 : MATH-631 Reverted to original behaviour.
+:100644 100644 b3a23a1d4... c781a9011... M	src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+:100644 100644 df729f7b6... fea0abcc8... M	src/test/java/org/apache/commons/math/analysis/solvers/RegulaFalsiSolverTest.java

@@ -1,0 +1,7 @@
+2bc5a0e : Fix argument order issues with setOption
+:100644 100644 cdd3aab... c7cd4aa... M	src/main/java/ru/tehkode/permissions/PermissionEntity.java
+:100644 100644 805c3c5... 42ce2c7... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 a4d4eb5... 4f29b0d... M	src/main/java/ru/tehkode/permissions/PermissionsData.java
+:100644 100644 d904017... d1040b7... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+:100644 100644 805b472... 16fb4a6... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+:100644 100644 fb30fa1... 720a97c... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

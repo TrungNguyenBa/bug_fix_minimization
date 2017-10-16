@@ -1,0 +1,14 @@
+diff --git a/test/com/google/javascript/jscomp/RemoveTryCatchTest.java b/test/com/google/javascript/jscomp/RemoveTryCatchTest.java
+index 53e3add5..943950e9 100644
+--- a/test/com/google/javascript/jscomp/RemoveTryCatchTest.java
++++ b/test/com/google/javascript/jscomp/RemoveTryCatchTest.java
+@@ -73,9 +73,4 @@ public class RemoveTryCatchTest extends CompilerTestCase {
+   public void testIfTryCatch() {
+     test("if(x)try{y;z}catch(e){}", "if(x){y;z}");
+   }
+-
+-  public void testRemoveTryCatchIsNotAnOptimization() {
+-    test("try { throw fire } finally { putOutFire() }",
+-         "throw fire;putOutFire()");
+-  }
+ }

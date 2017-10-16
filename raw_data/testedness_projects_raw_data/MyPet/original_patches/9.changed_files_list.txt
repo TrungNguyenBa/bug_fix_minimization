@@ -1,0 +1,3 @@
+3625f756 : fix slime attack range fixes #486
+:100644 100644 a461f01f... d868cc54... M	src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+:100644 100644 1f5895a0... 23600003... M	src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java

@@ -1,0 +1,31 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
+index 81acd49..53e4055 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
+@@ -54,8 +54,7 @@ public class RegexPermissions {
+ 	}
+ 
+ 	public void injectPermissible(Player player) {
+-		if (player.hasPermission("permissionsex.disabled")) { // this user shouldn't get permissionsex matching
+-			System.out.println("User has permissionsex.disable set, do not register!");
++		if (player.hasPermission("permissionsex.disable")) { // this user shouldn't get permissionsex matching
+ 			return;
+ 		}
+ 
+@@ -98,7 +97,7 @@ public class RegexPermissions {
+ 	}
+ 
+ 	private void uninjectPermissible(Player player) {
+-		if (player.hasPermission("permissionsex.disabled")) { // this user shouldn't get permissionsex matching
++		if (player.hasPermission("permissionsex.disable")) { // this user shouldn't get permissionsex matching
+ 			return;
+ 		}
+ 
+@@ -135,7 +134,6 @@ public class RegexPermissions {
+ 	private class EventListener implements Listener {
+ 		@EventHandler(priority = EventPriority.LOWEST)
+ 		public void onPlayerLogin(PlayerLoginEvent event) {
+-			System.out.println("Injecting permissible for " + event.getPlayer().getName());
+ 			injectPermissible(event.getPlayer());
+ 		}
+ 

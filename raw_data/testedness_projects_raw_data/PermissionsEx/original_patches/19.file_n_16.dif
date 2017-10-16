@@ -1,0 +1,22 @@
+diff --git a/src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java b/src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java
+index e40f467..6aa51c0 100644
+--- a/src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java
++++ b/src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java
+@@ -17,7 +17,7 @@
+ package ninja.leaping.permissionsex.util.command;
+ 
+ import com.google.common.base.Joiner;
+-import com.google.common.base.Strings;
++import joptsimple.internal.Strings;
+ import ninja.leaping.permissionsex.util.Translatable;
+ 
+ import java.util.Locale;
+@@ -51,7 +51,7 @@ class TestMessageFormatter implements MessageFormatter<String> {
+ 
+     @Override
+     public String header(String text) {
+-        return text + '\n' + Strings.repeat("=", text.length());
++        return text + '\n' + Strings.repeat('=', text.length());
+     }
+ 
+     @Override

@@ -1,0 +1,30 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index ac93cc14..04dfc248 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -210,14 +210,14 @@ public class EntityListener implements Listener {
+                     event.setCancelled(true);
+                 } else if (myPet.getOwner().equals(damager) && (!Configuration.OWNER_CAN_ATTACK_PET || !PvPChecker.canHurt(myPet.getOwner().getPlayer()))) {
+                     event.setCancelled(true);
+-                } else if (!myPet.getOwner().equals(damager) && !PvPChecker.canHurt(damager, myPet.getOwner().getPlayer(), true)) {
++                } else if (!myPet.getOwner().equals(damager) && !PvPChecker.canHurt(damager, myPet.getOwner().getPlayer())) {
+                     event.setCancelled(true);
+                 }
+             }
+             if (!event.isCancelled() && event.getDamager() instanceof LivingEntity) {
+                 LivingEntity damager = (LivingEntity) event.getDamager();
+                 if (damager instanceof Player) {
+-                    if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), (Player) damager, true)) {
++                    if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), (Player) damager)) {
+                         return;
+                     }
+                 }
+@@ -236,7 +236,7 @@ public class EntityListener implements Listener {
+                 if (myPet == projectile.getShooter().getMyPet()) {
+                     event.setCancelled(true);
+                 }
+-                if (!PvPChecker.canHurt(projectile.getShooter().getOwner().getPlayer(), myPet.getOwner().getPlayer(), true)) {
++                if (!PvPChecker.canHurt(projectile.getShooter().getOwner().getPlayer(), myPet.getOwner().getPlayer())) {
+                     event.setCancelled(true);
+                 }
+             }

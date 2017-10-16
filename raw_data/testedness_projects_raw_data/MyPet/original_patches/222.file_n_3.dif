@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java
+index 680fa462..e7332e0c 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java
+@@ -48,7 +48,6 @@ public class MyMagmaCube extends MyPet implements IMyPetSlimeSize
+ 
+     public void setSize(int value)
+     {
+-        value = Math.max(1, value);
+         if (status == PetState.Here)
+         {
+             ((EntityMyMagmaCube) getCraftPet().getHandle()).setSize(value);

@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java
+index cc01e4fc..1f7157c6 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java
+@@ -188,9 +188,7 @@ public class Beacon extends BeaconInfo implements ISkillInstance, IScheduler, IS
+                         if (buffPositionItems.containsKey(event.getPosition())) {
+                             int newSelectedBuff = buffPositionItems.get(event.getPosition());
+                             if (newSelectedBuff != selectedBuff) {
+-                                if (selectedBuff != 0 && menu.getOption(buffItemPositions.get(selectedBuff)) != null) {
+-                                    menu.getOption(buffItemPositions.get(selectedBuff)).setGlowing(false);
+-                                }
++                                menu.getOption(buffItemPositions.get(selectedBuff)).setGlowing(false);
+                                 selectedBuff = newSelectedBuff;
+                                 menu.getOption(buffItemPositions.get(selectedBuff)).setGlowing(true);
+                                 menu.update();

@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/info/BeaconInfo.java b/src/main/java/de/Keyle/MyPet/skill/skills/info/BeaconInfo.java
+index fc796a80..9f48a7e7 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/info/BeaconInfo.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/info/BeaconInfo.java
+@@ -22,10 +22,10 @@ package de.Keyle.MyPet.skill.skills.info;
+ 
+ import de.Keyle.MyPet.gui.skilltreecreator.skills.Beacon;
+ import de.Keyle.MyPet.gui.skilltreecreator.skills.SkillPropertiesPanel;
+-import de.Keyle.MyPet.skill.skills.SkillName;
+-import de.Keyle.MyPet.skill.skills.SkillProperties;
+-import de.Keyle.MyPet.skill.skills.SkillProperties.NBTdatatypes;
+-import de.Keyle.MyPet.skill.skilltree.SkillTreeSkill;
++import de.Keyle.MyPet.skill.SkillName;
++import de.Keyle.MyPet.skill.SkillProperties;
++import de.Keyle.MyPet.skill.SkillProperties.NBTdatatypes;
++import de.Keyle.MyPet.skill.SkillTreeSkill;
+ 
+ @SkillName("Beacon")
+ @SkillProperties(

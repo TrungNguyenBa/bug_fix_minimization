@@ -1,0 +1,14 @@
+diff --git a/include/faunus/io.h b/include/faunus/io.h
+index 6373f7d5..fe6a0b54 100644
+--- a/include/faunus/io.h
++++ b/include/faunus/io.h
+@@ -316,8 +316,7 @@ namespace Faunus {
+         static Tparticle& s2p(const std::string &s, Tparticle &a) {
+           std::stringstream o;
+           o << s;
+-          o >> a.x() >> a.y() >> a.z() >> a.dir.x() >> a.dir.y() >> a.dir.z()
+-            >> a.patchdir.x() >> a.patchdir.y() >> a.patchdir.z();
++          o >> a.x() >> a.y() >> a.z() >> a.dir.x() >> a.dir.y() >> a.dir.z() >> a.patchdir.x() >> a.patchdir.y() >> a.patchdir.z();
+           return a;
+         }
+     public:

@@ -1,0 +1,49 @@
+diff --git a/src/main/java/pl/project13/jgit/DescribeResult.java b/src/main/java/pl/project13/jgit/DescribeResult.java
+index 767235a..8817a8d 100644
+--- a/src/main/java/pl/project13/jgit/DescribeResult.java
++++ b/src/main/java/pl/project13/jgit/DescribeResult.java
+@@ -49,8 +49,6 @@ public class DescribeResult {
+   private boolean dirty;
+   private String dirtyMarker;
+ 
+-  private boolean forceLongFormat;
+-
+   private ObjectReader objectReader;
+ 
+   public static final DescribeResult EMPTY = new DescribeResult("");
+@@ -60,7 +58,7 @@ public class DescribeResult {
+   }
+ 
+   public DescribeResult(@NotNull ObjectReader objectReader, String tagName, int commitsAwayFromTag, @Nullable ObjectId commitId) {
+-    this(objectReader, tagName, commitsAwayFromTag, commitId, false, Optional.<String>absent(), false);
++    this(objectReader, tagName, commitsAwayFromTag, commitId, false, Optional.<String>absent());
+   }
+ 
+   public DescribeResult(@NotNull ObjectReader objectReader, @NotNull ObjectId commitId) {
+@@ -71,14 +69,13 @@ public class DescribeResult {
+   }
+ 
+   public DescribeResult(@NotNull ObjectReader objectReader, String tagName, int commitsAwayFromTag, ObjectId commitId, boolean dirty, String dirtyMarker) {
+-    this(objectReader, tagName, commitsAwayFromTag, commitId, dirty, Optional.of(dirtyMarker), false);
++    this(objectReader, tagName, commitsAwayFromTag, commitId, dirty, Optional.of(dirtyMarker));
+   }
+ 
+-  public DescribeResult(@NotNull ObjectReader objectReader, String tagName, int commitsAwayFromTag, ObjectId commitId, boolean dirty, Optional<String> dirtyMarker, boolean forceLongFormat) {
++  public DescribeResult(@NotNull ObjectReader objectReader, String tagName, int commitsAwayFromTag, ObjectId commitId, boolean dirty, Optional<String> dirtyMarker) {
+     this(objectReader, commitId, dirty, dirtyMarker);
+     this.tagName = Optional.of(tagName);
+     this.commitsAwayFromTag = commitsAwayFromTag;
+-    this.forceLongFormat = forceLongFormat;
+   }
+ 
+   public DescribeResult(@NotNull ObjectReader objectReader, @NotNull ObjectId commitId, boolean dirty, @NotNull Optional<String> dirtyMarker) {
+@@ -148,9 +145,6 @@ public class DescribeResult {
+ 
+   @Nullable
+   public String commitsAwayFromTag() {
+-    if (forceLongFormat) {
+-      return String.valueOf(commitsAwayFromTag);
+-    }
+     return commitsAwayFromTag == 0 ? null : String.valueOf(commitsAwayFromTag);
+   }
+ 

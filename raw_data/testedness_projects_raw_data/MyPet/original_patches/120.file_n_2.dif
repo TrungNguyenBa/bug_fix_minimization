@@ -1,0 +1,46 @@
+diff --git a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+index f5d8b31c..3b426bb1 100644
+--- a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
++++ b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+@@ -499,22 +499,14 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
+         List<CompoundTag> petList = new ArrayList<CompoundTag>();
+ 
+         for (MyPet myPet : MyPetList.getAllActiveMyPets()) {
+-            try {
+-                CompoundTag petNBT = myPet.save();
+-                petList.add(petNBT);
+-                petCount++;
+-            } catch (Exception e) {
+-                DebugLogger.printThrowable(e);
+-            }
++            CompoundTag petNBT = myPet.save();
++            petList.add(petNBT);
++            petCount++;
+         }
+         for (InactiveMyPet inactiveMyPet : MyPetList.getAllInactiveMyPets()) {
+-            try {
+-                CompoundTag petNBT = inactiveMyPet.save();
+-                petList.add(petNBT);
+-                petCount++;
+-            } catch (Exception e) {
+-                DebugLogger.printThrowable(e);
+-            }
++            CompoundTag petNBT = inactiveMyPet.save();
++            petList.add(petNBT);
++            petCount++;
+         }
+         nbtConfiguration.getNBTCompound().getValue().put("Version", new StringTag("Version", MyPetVersion.getMyPetVersion()));
+         nbtConfiguration.getNBTCompound().getValue().put("Build", new StringTag("Build", MyPetVersion.getMyPetBuild()));
+@@ -530,11 +522,7 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
+         List<CompoundTag> playerList = new ArrayList<CompoundTag>();
+         for (MyPetPlayer myPetPlayer : MyPetPlayer.getMyPetPlayers()) {
+             if (myPetPlayer.hasCustomData()) {
+-                try {
+-                    playerList.add(myPetPlayer.save());
+-                } catch (Exception e) {
+-                    DebugLogger.printThrowable(e);
+-                }
++                playerList.add(myPetPlayer.save());
+             }
+         }
+         return new ListTag<CompoundTag>("Players", CompoundTag.class, playerList);

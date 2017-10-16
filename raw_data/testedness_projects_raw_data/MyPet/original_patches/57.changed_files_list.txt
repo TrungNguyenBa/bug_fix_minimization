@@ -1,0 +1,3 @@
+21394230 : add popup menu for expanding/collapsing the levels in the LevelCreator fixes #363
+:100644 100644 17804ef9... 75c970ff... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+:100644 100644 5b0a8033... a48f61a1... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java

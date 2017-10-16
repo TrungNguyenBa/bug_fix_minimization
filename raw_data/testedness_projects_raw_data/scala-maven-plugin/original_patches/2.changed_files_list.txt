@@ -1,0 +1,5 @@
+989e978 : fix #129 : add addZincArgs parameters to set additionnal zinc server arguments (like -no-color)
+:100644 100644 1400a62... 7a0c94e... M	src/changes/changes.xml
+:100644 100644 b56c903... a63b141... M	src/it/test-incremental-compile/invoker.properties
+:100644 100644 617f3a5... 27c6165... M	src/main/java/sbt_inc/SbtIncrementalCompiler.java
+:100644 100644 ef7843d... 2b61388... M	src/main/java/scala_maven/ScalaCompilerSupport.java

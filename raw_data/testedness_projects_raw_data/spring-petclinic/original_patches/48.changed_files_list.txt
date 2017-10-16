@@ -1,0 +1,4 @@
+eb8ba79 : moved cache config files to dedicated folder
+:100644 100644 32e5099... 32e5099... R100	src/main/resources/ehcache.xml	src/main/resources/cache/ehcache.xml
+:100644 100644 bfc19dd... bfc19dd... R100	src/main/resources/ehcache.xsd	src/main/resources/cache/ehcache.xsd
+:100644 100644 e64c189... 1be7e3b... M	src/main/resources/spring/tools-config.xml

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 8019ca63..40601612 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -247,7 +247,7 @@ public class EntityListener implements Listener {
+         }
+     }
+ 
+-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
++    @EventHandler
+     public void onEntityDamageByPlayer(final EntityDamageByEntityEvent event) {
+         if (!(event.getEntity() instanceof CraftMyPet) && event.getDamager() instanceof Player) {
+             if (MyPetType.isLeashableEntityType(event.getEntity().getType())) {

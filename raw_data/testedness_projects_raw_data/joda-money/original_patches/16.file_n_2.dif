@@ -1,0 +1,15 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 8078f1b..da19ef9 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -9,10 +9,6 @@
+ 
+     <!-- types are add, fix, remove, update -->
+     <release version="0.9.1" date="xxxx-xx-xx" description="v0.9.1">
+-      <action dev="scolebourne" type="fix" >
+-        Fix Javadoc of BigMoney.withScale.
+-        Fixes #31.
+-      </action>
+       <action dev="scolebourne" type="add" >
+         Ensure validation of string currency code.
+         Fixes #31.

@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/UriProcessor.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/UriProcessor.java
+index c15d0d6..bd8f227 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/UriProcessor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/UriProcessor.java
+@@ -25,7 +25,7 @@ import org.apache.http.client.utils.URIBuilder;
+ 
+ import com.lonepulse.zombielink.annotation.Endpoint;
+ import com.lonepulse.zombielink.annotation.Request;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ import com.lonepulse.zombielink.util.Metadata;
+ 
+ /**

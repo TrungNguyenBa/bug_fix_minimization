@@ -1,0 +1,2 @@
+49285f5 : fix javadoc on permissible
+:100644 100644 3ddf1c8... d6ef16f... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java

@@ -1,0 +1,2 @@
+820ffbfe : Fixed initializer list compilation error w. intel's compiler
+:100755 100755 de3f74fd... 70da31c8... M	include/faunus/analysis.h

@@ -1,0 +1,21 @@
+diff --git a/src/main/resources/plugin.yml b/src/main/resources/plugin.yml
+index 14c18ffa..2ce2a254 100644
+--- a/src/main/resources/plugin.yml
++++ b/src/main/resources/plugin.yml
+@@ -62,7 +62,7 @@ commands:
+     aliases: [pr, petr]
+     description: Pays respawn fee or enable auto respawn fee paying.
+     usage: '/<command> [pay/auto] [min respawn time]'
+-    permission: MyPet.user.command.respawn
++    permission: MyPet.user.respawn
+   pettype:
+     description: Infos for Pettype
+     usage: '/<command> <Pettype>'
+@@ -113,7 +113,6 @@ permissions:
+       MyPet.user.leash.*: true
+       MyPet.user.release: true
+       MyPet.user.command.respawn: true
+-      MyPet.user.command.release: true
+       MyPet.user.command.capturehelper: true
+       MyPet.user.command.name: true
+   MyPet.user.release:

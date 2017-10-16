@@ -1,0 +1,2 @@
+73160a3 : fixes #161
+:100644 100644 061a710... 871fd11... M	src/main/java/com/stripe/model/Charge.java

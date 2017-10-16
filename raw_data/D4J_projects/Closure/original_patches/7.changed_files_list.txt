@@ -1,0 +1,4 @@
+e736b1c9 : Fix goog.isFunction, typeof x == 'function', and similiar type inference. Fixes issue 841.
+:100644 100644 ed88c98d... fa7d47d2... M	src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java
+:100644 100644 7a5eedbf... 704c969f... M	test/com/google/javascript/jscomp/ClosureReverseAbstractInterpreterTest.java
+:100644 100644 632f5a89... ea687a57... M	test/com/google/javascript/jscomp/SemanticReverseAbstractInterpreterTest.java

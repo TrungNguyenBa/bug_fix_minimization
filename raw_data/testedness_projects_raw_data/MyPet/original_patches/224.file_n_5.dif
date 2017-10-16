@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Inventory.form b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Inventory.form
+index 779e4c0a..c08d7c8c 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Inventory.form
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Inventory.form
+@@ -48,7 +48,6 @@
+               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+             </constraints>
+             <properties>
+-              <font style="1"/>
+               <horizontalAlignment value="0"/>
+               <horizontalTextPosition value="0"/>
+               <text value="Increase Row Count"/>
+@@ -83,7 +82,6 @@
+               <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+             </constraints>
+             <properties>
+-              <font style="1"/>
+               <horizontalAlignment value="0"/>
+               <horizontalTextPosition value="0"/>
+               <text value="Drop Content on Death"/>

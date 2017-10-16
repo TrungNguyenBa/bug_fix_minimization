@@ -1,0 +1,14 @@
+diff --git a/pom.xml b/pom.xml
+index b656192..46c117b 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -221,8 +221,7 @@
+             <!--<dirty>-DEVEL</dirty>-->
+             <!--<forceLongFormat>false</forceLongFormat>-->
+           <!--</gitDescribe>-->
+-		
+-		  <!--<abbrevLength>7</abbrevLength>-->
++
+         <!--</configuration>-->
+       <!--</plugin>-->
+ 

@@ -1,0 +1,4 @@
+07762b0 : allow specifying/replacing compression level of ZipEntry fix issue #61
+:100644 100644 b98e348... 90c1652... M	src/main/java/org/zeroturnaround/zip/ByteSource.java
+:100644 100644 29761c6... d663e84... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java
+:100644 100644 cbb7f80... 058563c... M	src/test/java/org/zeroturnaround/zip/ZipUtilTest.java

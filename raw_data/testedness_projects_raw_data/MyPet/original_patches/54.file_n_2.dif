@@ -1,0 +1,17 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java b/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
+index 6817cbf9..0f494af1 100644
+--- a/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
++++ b/src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
+@@ -60,10 +60,8 @@ public class BukkitUtil {
+         PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(effectName, (float) location.getX(), (float) location.getY(), (float) location.getZ(), offsetX, offsetY, offsetZ, speed, count);
+ 
+         for (Player player : location.getWorld().getPlayers()) {
+-            if (player.getLocation().getWorld() == location.getWorld()) {
+-                if ((int) player.getLocation().distance(location) <= radius) {
+-                    ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+-                }
++            if ((int) player.getLocation().distance(location) <= radius) {
++                ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+             }
+         }
+     }

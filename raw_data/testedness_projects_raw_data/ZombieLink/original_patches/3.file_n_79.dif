@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/executor/ConfigurationManagerTest.java b/zombielink/src/test/java/com/lonepulse/zombielink/executor/ConfigurationManagerTest.java
+index f2787c1..7ba8c8d 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/executor/ConfigurationManagerTest.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/executor/ConfigurationManagerTest.java
+@@ -30,7 +30,7 @@ import org.junit.Rule;
+ import org.junit.Test;
+ 
+ import com.github.tomakehurst.wiremock.junit.WireMockRule;
+-import com.lonepulse.zombielink.proxy.MockEndpoint;
++import com.lonepulse.zombielink.inject.MockEndpoint;
+ 
+ /**
+  * <p>Performs unit testing on the implementation of {@link ConfigurationManager}.</p>

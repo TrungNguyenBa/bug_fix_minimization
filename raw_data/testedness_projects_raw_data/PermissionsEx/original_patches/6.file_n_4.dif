@@ -1,0 +1,37 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+index 1020290..0d19514 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+@@ -208,7 +208,8 @@ public final class FileDataStore extends AbstractDataStore {
+             if (data instanceof FileOptionSubjectData) {
+                 fileData = (FileOptionSubjectData) data;
+             } else {
+-                fileData = ConversionUtils.transfer(data, new FileOptionSubjectData());
++                fileData = new FileOptionSubjectData();
++                ConversionUtils.transfer(data, fileData);
+             }
+             fileData.serialize(getSubjectsNode().getNode(type, identifier));
+             return Futures.transform(save(), new Function<Void, ImmutableOptionSubjectData>() {
+@@ -303,9 +304,11 @@ public final class FileDataStore extends AbstractDataStore {
+ 
+     @Override
+     public ListenableFuture<ContextInheritance> setContextInheritanceInternal(final ContextInheritance inheritance) {
+-        final MemoryContextInheritance realInheritance = MemoryContextInheritance.fromExistingContextInheritance(inheritance);
++        if (!(inheritance instanceof MemoryContextInheritance)) {
++            throw new RuntimeException("Invalid inheritance provided, was a " + inheritance.getClass() + "but must be a MemoryContextInheritance");
++        }
+         try {
+-            this.permissionsConfig.setValue(TypeToken.of(MemoryContextInheritance.class), realInheritance);
++            this.permissionsConfig.setValue(TypeToken.of(MemoryContextInheritance.class), (MemoryContextInheritance) inheritance);
+         } catch (ObjectMappingException e) {
+             throw new RuntimeException(e);
+         }
+@@ -313,7 +316,7 @@ public final class FileDataStore extends AbstractDataStore {
+             @Nullable
+             @Override
+             public ContextInheritance apply(@Nullable Void input) {
+-                return realInheritance;
++                return inheritance;
+             }
+         });
+     }

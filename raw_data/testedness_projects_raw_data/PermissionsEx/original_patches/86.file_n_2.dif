@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index 7be094f..75ae1bf 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -263,7 +263,6 @@ public class PermissionsEx extends JavaPlugin {
+ 		try {
+ 			if (this.permissionsManager != null) {
+ 				this.permissionsManager.end();
+-				this.permissionsManager = null;
+ 			}
+ 
+ 			this.getServer().getServicesManager().unregister(PermissionManager.class, this.permissionsManager);

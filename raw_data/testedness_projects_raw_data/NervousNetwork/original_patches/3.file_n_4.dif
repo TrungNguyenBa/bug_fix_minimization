@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java b/src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java
+index 584a96b..e25902a 100644
+--- a/src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java
++++ b/src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java
+@@ -246,7 +246,7 @@ public class SelectorTest {
+ 
+ 		Random r = new Random();
+ 		
+-		Object[] values = new Object[500];
++		Object[] values = new Object[50];
+ 		
+ 		for (int i = 0; i < values.length; i++) {
+ 			Object data;

@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+index cfcd197..348617f 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+@@ -86,14 +86,12 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 		}
+ 		String oldNodePath = this.nodePath;
+ 		this.nodePath = FileBackend.buildPath(basePath, identifier);
+-		this.node = this.config.createSection(nodePath, node.getValues(false));
+ 		this.entityName = identifier;
+-		this.config.set(oldNodePath, null);
+ 		if (!this.isVirtual()) {
++			this.config.set(oldNodePath, null);
+ 			this.config.set(nodePath, node);
+ 			this.save();
+-		} else {
+-			this.config.set(nodePath, null);
++
+ 		}
+ 		return true;
+ 	}

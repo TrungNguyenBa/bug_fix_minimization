@@ -1,0 +1,65 @@
+diff --git a/include/faunus/species.h b/include/faunus/species.h
+index c5fdfbcc..b544b2ac 100644
+--- a/include/faunus/species.h
++++ b/include/faunus/species.h
+@@ -3,7 +3,6 @@
+ 
+ #ifndef SWIG
+ #include <faunus/common.h>
+-#include "point.h"
+ #endif
+ 
+ namespace Faunus {
+@@ -19,18 +18,18 @@ namespace Faunus {
+     double sigma,      //!< LJ diameter [angstrom]
+            eps,        //!< LJ epsilon [kJ/mol]
+            radius,     //!< Radius [angstrom]
+-           muscalar,  //!< Dipole momentscalar [eÅ]
++           mu,         //!< Dipole momentscalar [eÅ]
+            mw,         //!< Weight [g/mol]
+            charge,     //!< Charge/valency [e]
+            activity,   //!< Chemical activity [mol/l]
++           alpha,      //!< Polarizability [C^2 A^2 / J]
+            dp,         //!< Translational displacement parameter [angstrom]
+            dprot,      //!< Rotational displacement parameter [radians]
+            mean,       //!< Mean value... (charge, sasa, etc.)
+            variance;   //!< Spread around AtomData::mean
+-    Point mu;
+     short int patchtype;  //!< If patchy particle, which type of patch
+     Thydrophobic hydrophobic;  //!< Are we hydrophobic?
+-    Tensor<double>  alpha,
++    Eigen::Matrix3d alphamatrix,
+                     theta;  //!< Quadrupole moment
+     string name;       //!< Name. Avoid spaces.
+     bool operator==(const AtomData &d) const { return (*this==d); }
+@@ -99,14 +98,6 @@ namespace Faunus {
+    *       }
+    *     }
+    *
+-   * Example 2: 
+-   *       "atomlist" :
+-   *       {
+-   *         "sol1" : { "q": 1.0, "r":1.9, "mw":22.99, "mu":"1.3 0.1 0",
+-   *         "alpha":"1.1   0 0 2.3 0   1" },   // Matrix input in 
+-   *         "theta":"2.4 0.3 0 1.8 0 3.2"}     // (xx, xy, xz, yy, yz, zz)-form
+-   *       }
+-   * 
+    * @note
+    * For simple JSON syntax highlighting in the VIM editor, add
+    * the following to `.vimrc`:
+@@ -124,14 +115,12 @@ namespace Faunus {
+    * `dprot`       | Rotational displacement parameter [degrees] (will be converted to radians)
+    * `eps`         | Epsilon energy scaling commonly used for Lennard-Jones interactions etc. [kJ/mol] 
+    * `hydrophobic` | Is the particle hydrophobic? [true/false]
+-   * 'mu'          | Dipole moment vector [Debye]
+-   * 'theta'       | Quadrupole moment matrix [Debye Å]
++   * `mu`          | Dipole moment scalar [Debye]
+    * `mw`          | Molecular weight [g/mol]
+    * `patchtype`   | Patchtype for sphero-cylinders
+    * `q`           | Valency / partial charge number [e]
+    * `r`           | Radius = `sigma/2` [angstrom]
+    * `sigma`       | `2*r` [angstrom] (overrides radius)
+-   * 
+    *
+    * Code example:
+    *

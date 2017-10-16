@@ -1,0 +1,3 @@
+b0c14c7 : If ISO deserialization fails then throw a JSON exception to match the deserializer API.
+:100644 100644 f3bd016... 4db2413... M	src/main/java/com/allogy/coffeecan/jackson/ISODateTimeDeserializer.java
+:100644 100644 f3185be... 207b169... M	src/main/java/com/allogy/coffeecan/jackson/ISOPeriodDeserializer.java

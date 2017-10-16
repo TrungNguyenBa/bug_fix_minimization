@@ -1,0 +1,5 @@
+c453232f : fix Message.Spawn.Flying not showing the name of the pet in most cases
+:100644 100644 0f0aaf8a... dc6dd3f8... M	src/main/java/de/Keyle/MyPet/commands/CommandCall.java
+:100644 100644 38daf415... 1a5da006... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionSwitch.java
+:100644 100644 4d4206c1... 40e29298... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:100644 100644 d84ca5dd... 11857cf9... M	src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java

@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/Util.java b/src/main/java/de/Keyle/MyPet/util/Util.java
+index f1f7fc19..0995496f 100644
+--- a/src/main/java/de/Keyle/MyPet/util/Util.java
++++ b/src/main/java/de/Keyle/MyPet/util/Util.java
+@@ -31,7 +31,6 @@ import java.io.InputStreamReader;
+ import java.lang.reflect.Field;
+ import java.net.URL;
+ import java.text.MessageFormat;
+-import java.util.Scanner;
+ 
+ public class Util {
+     public static Field getField(Class<?> clazz, String field) {
+@@ -142,7 +141,7 @@ public class Util {
+     }
+ 
+     public static String convertStreamToString(java.io.InputStream is) {
+-        Scanner s = new Scanner(is).useDelimiter("\\A");
++        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+         return s.hasNext() ? s.next() : "";
+     }
+ 

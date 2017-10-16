@@ -1,0 +1,16 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+index e7127b39..d34e8ee0 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+@@ -130,9 +130,9 @@ public class OwnerHurtTarget extends AIGoal {
+             return true;
+         } else if (petEntity.getGoalTarget().world != petEntity.world) {
+             return true;
+-        } else if (petEntity.f(petEntity.getGoalTarget()) > 400) {
++        } else if (petEntity.e(petEntity.getGoalTarget()) > 400) {
+             return true;
+-        } else if (petEntity.f(petEntity.getOwner().getEntityPlayer()) > 600) {
++        } else if (petEntity.e(petEntity.getOwner().getEntityPlayer()) > 600) {
+             return true;
+         }
+         return false;

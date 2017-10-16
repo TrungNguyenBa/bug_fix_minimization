@@ -1,0 +1,28 @@
+diff --git a/src/main/java/com/allogy/coffeecan/jackson/ISODateTimeDeserializer.java b/src/main/java/com/allogy/coffeecan/jackson/ISODateTimeDeserializer.java
+index 4db2413..f3bd016 100644
+--- a/src/main/java/com/allogy/coffeecan/jackson/ISODateTimeDeserializer.java
++++ b/src/main/java/com/allogy/coffeecan/jackson/ISODateTimeDeserializer.java
+@@ -20,7 +20,6 @@ import com.fasterxml.jackson.core.JsonParser;
+ import com.fasterxml.jackson.core.JsonProcessingException;
+ import com.fasterxml.jackson.databind.DeserializationContext;
+ import com.fasterxml.jackson.databind.JsonDeserializer;
+-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+ import org.joda.time.DateTime;
+ import org.joda.time.format.DateTimeFormatter;
+ import org.joda.time.format.ISODateTimeFormat;
+@@ -39,14 +38,6 @@ public class ISODateTimeDeserializer extends JsonDeserializer<DateTime>
+     @Override
+     public DateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException
+     {
+-        String text = jsonParser.getText();
+-        try
+-        {
+-            return dateTimeFormatter.parseDateTime(text);
+-        }
+-        catch (Throwable throwable)
+-        {
+-            throw new InvalidFormatException(throwable.getMessage(), text, String.class);
+-        }
++        return dateTimeFormatter.parseDateTime(jsonParser.getText());
+     }
+ }

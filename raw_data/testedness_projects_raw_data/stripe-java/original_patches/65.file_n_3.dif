@@ -1,0 +1,25 @@
+diff --git a/src/main/java/com/stripe/model/Dispute.java b/src/main/java/com/stripe/model/Dispute.java
+index c3c657e..8766d0f 100644
+--- a/src/main/java/com/stripe/model/Dispute.java
++++ b/src/main/java/com/stripe/model/Dispute.java
+@@ -10,7 +10,6 @@ public class Dispute extends StripeObject {
+ 	String evidence;
+ 	Long evidenceDueBy;
+ 	String reason;
+-	String balanceTransaction;
+ 
+ 	public Integer getAmount() {
+ 		return amount;
+@@ -66,10 +65,4 @@ public class Dispute extends StripeObject {
+ 	public void setReason(String reason) {
+ 		this.reason = reason;
+ 	}
+-	public String getBalanceTransaction() {
+-		return balanceTransaction;
+-	}
+-	public void setBalanceTransaction(String balanceTransaction) {
+-		this.balanceTransaction = balanceTransaction;
+-	}
+-}
++}
+\ No newline at end of file

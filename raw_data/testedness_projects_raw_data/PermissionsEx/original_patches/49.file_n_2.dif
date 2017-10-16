@@ -1,0 +1,14 @@
+diff --git a/pom.xml b/pom.xml
+index 621ab26..e3c0e7c 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -56,9 +56,6 @@
+                     <relocation>
+                       <pattern>org.apache</pattern>
+                       <shadedPattern>ru.tehkode.libs.org.apache</shadedPattern>
+-                      <excludes>
+-                        <exclude>org.apache.commons.lang.*</exclude>
+-                      </excludes>
+                     </relocation>
+                     <relocation>
+                       <pattern>com.mojang</pattern>

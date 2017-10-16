@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Health.form b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Health.form
+index 9a7ae503..b2005326 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Health.form
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Health.form
+@@ -65,7 +65,6 @@
+               <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+             </constraints>
+             <properties>
+-              <font style="1"/>
+               <horizontalAlignment value="0"/>
+               <horizontalTextPosition value="0"/>
+               <text value="Health Increase"/>

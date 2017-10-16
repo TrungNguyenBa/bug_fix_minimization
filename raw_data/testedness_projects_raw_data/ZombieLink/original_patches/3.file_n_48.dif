@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/Interceptor.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/Interceptor.java
+index d579d13..6da38ab 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/Interceptor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/Interceptor.java
+@@ -22,7 +22,7 @@ package com.lonepulse.zombielink.request;
+ 
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>This contract defines the policy for <b>intercepting</b> a request and processing it just before 

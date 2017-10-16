@@ -1,0 +1,20 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 93708c7..d4fd989 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -271,13 +271,8 @@ public class PermissionManager {
+ 		if (users.containsKey(identifier.toLowerCase())) {
+ 			return getUser(identifier, null, false);
+ 		}
+-		OfflinePlayer ply = null;
+-		try {
+-			ply = plugin.getServer().getPlayer(uid); // to make things cheaper, we're just checking online players (can be improved later on)
+-			// Also, only online players are really necessary to convert to proper names
+-		} catch (NoSuchMethodError e) {
+-			// Old craftbukkit, guess we won't have a fallback name. Much shame.
+-		}
++		OfflinePlayer ply = plugin.getServer().getPlayer(uid); // to make things cheaper, we're just checking online players (can be improved later on)
++															   // Also, only online players are really necessary to convert to proper names
+ 		String fallbackName = null;
+ 		if (ply != null) {
+ 			fallbackName = ply.getName();

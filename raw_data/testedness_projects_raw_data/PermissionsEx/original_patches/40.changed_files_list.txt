@@ -1,0 +1,2 @@
+f14e8a8 : Correct visibility of MultiBackend
+:100644 100644 db9791c... e3693e0... M	src/main/java/ru/tehkode/permissions/backends/MultiBackend.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java b/src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java
+index 1a46c23..ee513d6 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java
++++ b/src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java
+@@ -24,7 +24,7 @@ package com.lonepulse.zombielink.response;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.processor.Processor;
+ 
+ /**

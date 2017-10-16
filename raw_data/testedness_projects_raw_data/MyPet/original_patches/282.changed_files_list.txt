@@ -1,0 +1,3 @@
+531f34d9 : fixed NPE caused by Slimes/Magmacubes
+:100644 100644 fac4790e... a79e6800... M	src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+:100644 100644 23905585... 05a100a4... M	src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java

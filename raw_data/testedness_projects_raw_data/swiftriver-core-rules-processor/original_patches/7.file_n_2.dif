@@ -1,0 +1,28 @@
+diff --git a/src/main/java/com/ushahidi/swiftriver/core/model/Rule.java b/src/main/java/com/ushahidi/swiftriver/core/model/Rule.java
+index f6898a6..4ad4815 100644
+--- a/src/main/java/com/ushahidi/swiftriver/core/model/Rule.java
++++ b/src/main/java/com/ushahidi/swiftriver/core/model/Rule.java
+@@ -32,6 +32,8 @@ public class Rule {
+ 	@JsonProperty("river_id")
+ 	private long riverId;
+ 	
++	private String name;
++		
+ 	private List<RuleCondition> conditions;
+ 	
+ 	private List<RuleAction> actions;
+@@ -55,6 +57,14 @@ public class Rule {
+ 		this.riverId = riverId;
+ 	}
+ 
++	public String getName() {
++		return name;
++	}
++
++	public void setName(String name) {
++		this.name = name;
++	}
++
+ 	public List<RuleCondition> getConditions() {
+ 		return conditions;
+ 	}

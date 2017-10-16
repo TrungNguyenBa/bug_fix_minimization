@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+index 2a329293..5256fd65 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+@@ -87,7 +87,7 @@ public class EntityMyMooshroom extends EntityMyPet
+ 
+             if (getOwner().equals(entityhuman) && itemStack != null && canUseItem())
+             {
+-                if (itemStack.id == GROW_UP_ITEM && getOwner().getPlayer().isSneaking())
++                if (itemStack.id == GROW_UP_ITEM)
+                 {
+                     if (isBaby())
+                     {

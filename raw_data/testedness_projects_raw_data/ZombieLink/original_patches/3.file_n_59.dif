@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/Serializers.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/Serializers.java
+index 8e3bc3e..f3d8504 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/Serializers.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/Serializers.java
+@@ -24,7 +24,7 @@ import java.util.HashMap;
+ import java.util.Map;
+ 
+ import com.lonepulse.zombielink.annotation.Entity.ContentType;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>Exposes all available {@link AbstractSerializer}s, resolves concrete instances of their serializer 

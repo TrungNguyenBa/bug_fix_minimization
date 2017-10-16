@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index 47c5aafa..f91a5e70 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -80,7 +80,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster {
+             this.petPathfinderSelector = new AIGoalSelector();
+             this.petTargetSelector = new AIGoalSelector();
+ 
+-            this.walkSpeed = MyPet.getStartSpeed(MyPetType.getMyPetTypeByEntityClass(getClass()));
++            this.walkSpeed = MyPet.getStartSpeed(MyPetType.getMyPetTypeByEntityClass(this.getClass()).getMyPetClass());
+             getAttributeInstance(GenericAttributes.d).setValue(walkSpeed);
+ 
+             petNavigation = new VanillaNavigation(this);

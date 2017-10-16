@@ -1,0 +1,2 @@
+58e1319 : Fix Javadoc
+:100644 100644 4ccb97f... a00dc83... M	src/main/java/org/joda/money/Money.java

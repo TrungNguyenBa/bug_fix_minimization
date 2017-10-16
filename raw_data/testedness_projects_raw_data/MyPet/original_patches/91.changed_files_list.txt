@@ -1,0 +1,8 @@
+c5a82760 : add Stomp skill fixes #230
+:100644 100644 4cd7abdc... 368fbdcd... M	src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+:100644 100644 acc2ccac... ef20a999... M	src/main/java/de/Keyle/MyPet/gui/GuiMain.java
+:000000 100644 00000000... 66ccbe7e... A	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Stomp.form
+:000000 100644 00000000... 9fe607bb... A	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Stomp.java
+:100644 100644 6665f817... 8fe3e35c... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:000000 100644 00000000... fa43dbbf... A	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Stomp.java
+:000000 100644 00000000... dbed967d... A	src/main/java/de/Keyle/MyPet/skill/skills/info/StompInfo.java

@@ -1,0 +1,9 @@
+55bde2b1 : fixed bugs, added cutoff, test for cigra energies
+:100644 100644 89529aa3... 12cf6492... M	include/faunus/io.h
+:100644 100644 9c4fdc18... 45266aa2... M	include/faunus/potentials.h
+:100644 100644 5108c93d... 96ecd513... M	include/faunus/species.h
+:100644 100644 471c796b... 78bd6b2b... M	include/faunus/spherocylinder.h
+:100644 100644 672dc882... 4e5d82a3... M	src/examples/CMakeLists.txt
+:100644 100644 053fe1bf... b8968b5f... M	src/playground/CMakeLists.txt
+:100644 100644 2058db45... 992c8682... M	src/potentials.cpp
+:100644 100644 6e5b9e32... 0a66629c... M	src/species.cpp

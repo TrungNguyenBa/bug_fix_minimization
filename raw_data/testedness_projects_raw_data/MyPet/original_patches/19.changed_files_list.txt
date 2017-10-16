@@ -1,0 +1,8 @@
+aa3e9b51 : Fixed MyPets attacking ArmorStands
+:100644 100644 cc13208b... f56bc999... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
+:100644 100644 ccd27012... 5ab891db... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/RangedAttack.java
+:100644 100644 855d1c5b... 9eb18615... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+:100644 100644 fbfced58... cfd8387a... M	src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+:100644 100644 3d6ec98b... 2c3535fc... M	src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+:100644 100644 01670ac8... 45b9d969... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtByTarget.java
+:100644 100644 458c663c... 1c09e291... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java

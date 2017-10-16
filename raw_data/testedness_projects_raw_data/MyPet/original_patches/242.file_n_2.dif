@@ -1,0 +1,204 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index abcdc5ce..5695102c 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -666,7 +666,7 @@ public class MyPetEntityListener implements Listener
+     @EventHandler(priority = EventPriority.MONITOR)
+     public void onEntityDamageByEntityDamageMonitor(final EntityDamageByEntityEvent event)
+     {
+-        if (!event.isCancelled() && MyPetExperience.DAMAGE_WEIGHTED_EXPERIENCE_DISTRIBUTION && event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof Player) && !(event.getEntity() instanceof CraftMyPet))
++        if (!event.isCancelled() && MyPetExperience.DAMAGE_WEIGHTED_EXPERIENCE_DISTRIBUTION && event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof Player))
+         {
+             LivingEntity damager = null;
+             if (event.getDamager() instanceof Projectile)
+@@ -697,29 +697,28 @@ public class MyPetEntityListener implements Listener
+     @EventHandler(priority = EventPriority.MONITOR)
+     public void onEntityDamageByEntityResult(final EntityDamageByEntityEvent event)
+     {
+-        Entity damagedEntity = event.getEntity();
+         // --  fix unwanted screaming of Endermen --
+-        if (damagedEntity instanceof CraftMyPet && ((CraftMyPet) damagedEntity).getPetType() == MyPetType.Enderman)
++        if (event.getEntity() instanceof CraftMyPet && ((CraftMyPet) event.getEntity()).getPetType() == MyPetType.Enderman)
+         {
+-            ((EntityMyEnderman) ((CraftMyPet) damagedEntity).getHandle()).setScreaming(true);
+-            ((EntityMyEnderman) ((CraftMyPet) damagedEntity).getHandle()).setScreaming(false);
++            ((EntityMyEnderman) ((CraftMyPet) event.getEntity()).getHandle()).setScreaming(true);
++            ((EntityMyEnderman) ((CraftMyPet) event.getEntity()).getHandle()).setScreaming(false);
+         }
+ 
+-        if (damagedEntity instanceof LivingEntity)
++        if (event.getEntity() instanceof LivingEntity)
+         {
+             if (event.getDamager() instanceof Player)
+             {
+                 Player damager = (Player) event.getDamager();
+-                if (damager.getItemInHand().getType() == MyPetConfiguration.LEASH_ITEM && damagedEntity instanceof CraftMyPet)
++                if (damager.getItemInHand().getType() == MyPetConfiguration.LEASH_ITEM && event.getEntity() instanceof CraftMyPet)
+                 {
+                     return;
+                 }
+                 if (MyPetList.hasMyPet(damager))
+                 {
+                     MyPet myPet = MyPetList.getMyPet(damager);
+-                    if (myPet.getStatus() == PetState.Here && damagedEntity != myPet.getCraftPet())
++                    if (myPet.getStatus() == PetState.Here && event.getEntity() != myPet.getCraftPet())
+                     {
+-                        myPet.getCraftPet().getHandle().goalTarget = ((CraftLivingEntity) damagedEntity).getHandle();
++                        myPet.getCraftPet().getHandle().goalTarget = ((CraftLivingEntity) event.getEntity()).getHandle();
+                     }
+                 }
+             }
+@@ -738,7 +737,7 @@ public class MyPetEntityListener implements Listener
+                     if (poisonSkill.activate())
+                     {
+                         PotionEffect effect = new PotionEffect(PotionEffectType.POISON, poisonSkill.getDuration() * 20, 1);
+-                        ((LivingEntity) damagedEntity).addPotionEffect(effect);
++                        ((LivingEntity) event.getEntity()).addPotionEffect(effect);
+                         skillUsed = true;
+                     }
+                 }
+@@ -748,7 +747,7 @@ public class MyPetEntityListener implements Listener
+                     if (witherSkill.activate())
+                     {
+                         PotionEffect effect = new PotionEffect(PotionEffectType.WITHER, witherSkill.getDuration() * 20, 1);
+-                        ((LivingEntity) damagedEntity).addPotionEffect(effect);
++                        ((LivingEntity) event.getEntity()).addPotionEffect(effect);
+                         skillUsed = true;
+                     }
+                 }
+@@ -757,7 +756,7 @@ public class MyPetEntityListener implements Listener
+                     Fire fireSkill = (Fire) myPet.getSkills().getSkill("Fire");
+                     if (fireSkill.activate())
+                     {
+-                        damagedEntity.setFireTicks(fireSkill.getDuration() * 20);
++                        event.getEntity().setFireTicks(fireSkill.getDuration() * 20);
+                         skillUsed = true;
+                     }
+                 }
+@@ -767,7 +766,7 @@ public class MyPetEntityListener implements Listener
+                     if (slowSkill.activate())
+                     {
+                         PotionEffect effect = new PotionEffect(PotionEffectType.SLOW, slowSkill.getDuration() * 20, 1);
+-                        ((LivingEntity) damagedEntity).addPotionEffect(effect);
++                        ((LivingEntity) event.getEntity()).addPotionEffect(effect);
+                         skillUsed = true;
+                     }
+                 }
+@@ -776,7 +775,7 @@ public class MyPetEntityListener implements Listener
+                     Knockback knockbackSkill = (Knockback) myPet.getSkills().getSkill("Knockback");
+                     if (knockbackSkill.activate())
+                     {
+-                        ((CraftEntity) damagedEntity).getHandle().g(-MathHelper.sin(myPet.getLocation().getYaw() * 3.141593F / 180.0F) * 2 * 0.5F, 0.1D, MathHelper.cos(myPet.getLocation().getYaw() * 3.141593F / 180.0F) * 2 * 0.5F);
++                        ((CraftEntity) event.getEntity()).getHandle().g(-MathHelper.sin(myPet.getLocation().getYaw() * 3.141593F / 180.0F) * 2 * 0.5F, 0.1D, MathHelper.cos(myPet.getLocation().getYaw() * 3.141593F / 180.0F) * 2 * 0.5F);
+                         skillUsed = true;
+                     }
+                 }
+@@ -786,7 +785,7 @@ public class MyPetEntityListener implements Listener
+                     if (lightningSkill.activate())
+                     {
+                         Lightning.isStriking = true;
+-                        LightningStrike bolt = damagedEntity.getLocation().getWorld().strikeLightning(damagedEntity.getLocation());
++                        LightningStrike bolt = event.getEntity().getLocation().getWorld().strikeLightning(event.getEntity().getLocation());
+                         Lightning.lightningList.put(bolt, myPet);
+                         Lightning.isStriking = false;
+                     }
+@@ -798,10 +797,9 @@ public class MyPetEntityListener implements Listener
+     @EventHandler
+     public void onMyPetEntityDeath(final EntityDeathEvent event)
+     {
+-        LivingEntity deadEntity = event.getEntity();
+-        if (deadEntity instanceof CraftMyPet)
++        if (event.getEntity() instanceof CraftMyPet)
+         {
+-            MyPet myPet = ((CraftMyPet) deadEntity).getMyPet();
++            MyPet myPet = ((CraftMyPet) event.getEntity()).getMyPet();
+             if (myPet == null || myPet.getHealth() > 0) // check health for death events where the pet isn't really dead (/killall)
+             {
+                 return;
+@@ -810,9 +808,9 @@ public class MyPetEntityListener implements Listener
+             myPet.setRespawnTime((MyPetConfiguration.RESPAWN_TIME_FIXED + MyPet.getCustomRespawnTimeFixed(myPet.getClass())) + (myPet.getExperience().getLevel() * (MyPetConfiguration.RESPAWN_TIME_FACTOR + MyPet.getCustomRespawnTimeFactor(myPet.getClass()))));
+             myPet.setStatus(PetState.Dead);
+ 
+-            if (deadEntity.getLastDamageCause() instanceof EntityDamageByEntityEvent)
++            if (event.getEntity().getLastDamageCause() instanceof EntityDamageByEntityEvent)
+             {
+-                EntityDamageByEntityEvent e = (EntityDamageByEntityEvent) deadEntity.getLastDamageCause();
++                EntityDamageByEntityEvent e = (EntityDamageByEntityEvent) event.getEntity().getLastDamageCause();
+ 
+                 if (e.getDamager() instanceof Player)
+                 {
+@@ -827,7 +825,7 @@ public class MyPetEntityListener implements Listener
+                         Behavior deadBehaviorSkill = (Behavior) myPet.getSkills().getSkill("Behavior");
+                         if (deadBehaviorSkill.getBehavior() == BehaviorState.Duel && killerBehaviorSkill.getBehavior() == BehaviorState.Duel)
+                         {
+-                            EntityMyPet myPetEntity = ((CraftMyPet) deadEntity).getHandle();
++                            EntityMyPet myPetEntity = ((CraftMyPet) event.getEntity()).getHandle();
+                             EntityMyPet duelKiller = ((CraftMyPet) e.getDamager()).getHandle();
+                             if (myPetEntity.petTargetSelector.hasGoal("DuelTarget"))
+                             {
+@@ -892,16 +890,11 @@ public class MyPetEntityListener implements Listener
+     {
+         if (MyPetConfiguration.USE_LEVEL_SYSTEM)
+         {
+-            LivingEntity deadEntity = event.getEntity();
+-            if (deadEntity instanceof CraftMyPet)
+-            {
+-                return;
+-            }
+             if (!MyPetExperience.GAIN_EXP_FROM_MONSTER_SPAWNER_MOBS && event.getEntity().hasMetadata("MonsterSpawner"))
+             {
+                 for (MetadataValue value : event.getEntity().getMetadata("MonsterSpawner"))
+                 {
+-                    if (value.getOwningPlugin().getName().equals(MyPetPlugin.getPlugin().getName()))
++                    if (value.getOwningPlugin() == MyPetPlugin.getPlugin())
+                     {
+                         if (value.asBoolean())
+                         {
+@@ -913,7 +906,7 @@ public class MyPetEntityListener implements Listener
+             }
+             if (MyPetExperience.DAMAGE_WEIGHTED_EXPERIENCE_DISTRIBUTION)
+             {
+-                Map<Entity, Double> damagePercentMap = MyPetExperience.getDamageToEntityPercent(deadEntity);
++                Map<Entity, Double> damagePercentMap = MyPetExperience.getDamageToEntityPercent(event.getEntity());
+                 for (Entity entity : damagePercentMap.keySet())
+                 {
+                     if (entity instanceof CraftMyPet)
+@@ -923,7 +916,7 @@ public class MyPetEntityListener implements Listener
+                         {
+                             continue;
+                         }
+-                        double randomExp = MyPetMonsterExperience.getMonsterExperience(deadEntity.getType()).getRandomExp();
++                        double randomExp = MyPetMonsterExperience.getMonsterExperience(event.getEntity().getType()).getRandomExp();
+                         myPet.getExperience().addExp(damagePercentMap.get(entity) * randomExp);
+                     }
+                     else if (entity instanceof Player)
+@@ -940,7 +933,7 @@ public class MyPetEntityListener implements Listener
+                             {
+                                 if (myPet.getStatus() == PetState.Here)
+                                 {
+-                                    double randomExp = MyPetMonsterExperience.getMonsterExperience(deadEntity.getType()).getRandomExp();
++                                    double randomExp = MyPetMonsterExperience.getMonsterExperience(event.getEntity().getType()).getRandomExp();
+                                     myPet.getExperience().addExp(damagePercentMap.get(entity) * randomExp);
+                                 }
+                             }
+@@ -948,9 +941,9 @@ public class MyPetEntityListener implements Listener
+                     }
+                 }
+             }
+-            else if (deadEntity.getLastDamageCause() instanceof EntityDamageByEntityEvent)
++            else if (event.getEntity().getLastDamageCause() instanceof EntityDamageByEntityEvent)
+             {
+-                EntityDamageByEntityEvent edbee = (EntityDamageByEntityEvent) deadEntity.getLastDamageCause();
++                EntityDamageByEntityEvent edbee = (EntityDamageByEntityEvent) event.getEntity().getLastDamageCause();
+                 if (edbee.getDamager() instanceof CraftMyPet)
+                 {
+                     MyPet myPet = ((CraftMyPet) edbee.getDamager()).getMyPet();
+@@ -974,7 +967,7 @@ public class MyPetEntityListener implements Listener
+                         {
+                             if (myPet.getStatus() == PetState.Here)
+                             {
+-                                myPet.getExperience().addExp(deadEntity.getType(), MyPetConfiguration.PASSIVE_PERCENT_PER_MONSTER);
++                                myPet.getExperience().addExp(event.getEntity().getType(), MyPetConfiguration.PASSIVE_PERCENT_PER_MONSTER);
+                             }
+                         }
+                     }

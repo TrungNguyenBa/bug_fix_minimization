@@ -1,0 +1,2 @@
+d32a4068 : improve /petinfo command can display pet from an offline player when he recently had an active MyPet fixed #262
+:100644 100644 528c1af5... 2ddefcf6... M	src/main/java/de/Keyle/MyPet/commands/CommandInfo.java

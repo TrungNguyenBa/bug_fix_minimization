@@ -1,0 +1,3 @@
+8c6c0eb0 : added Snowman snow track fix can be disabled in config
+:100644 100644 4fce5532... 5606c1b5... M	src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+:100644 100644 f2d876e3... 47ee5b8a... M	src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java

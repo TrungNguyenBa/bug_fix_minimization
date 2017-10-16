@@ -1,0 +1,32 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/Zips.java b/src/main/java/org/zeroturnaround/zip/Zips.java
+index fc577ae..b593d4d 100644
+--- a/src/main/java/org/zeroturnaround/zip/Zips.java
++++ b/src/main/java/org/zeroturnaround/zip/Zips.java
+@@ -552,7 +552,6 @@ public class Zips {
+   private void iterateChangedAndAdded(ZipEntryOrInfoAdapter zipEntryCallback) {
+ 
+     for (ZipEntrySource entrySource : changedEntries) {
+-      InputStream entrySourceStream = null;
+       try {
+         ZipEntry entry = entrySource.getEntry();
+         if (nameMapper != null) {
+@@ -565,8 +564,7 @@ public class Zips {
+             entry = ZipEntryUtil.copy(entry, mappedName);
+           }
+         }
+-        entrySourceStream = entrySource.getInputStream();
+-        zipEntryCallback.process(entrySourceStream, entry);
++        zipEntryCallback.process(entrySource.getInputStream(), entry);
+       }
+       catch (ZipBreakException ex) {
+         break;
+@@ -574,9 +572,6 @@ public class Zips {
+       catch (IOException e) {
+         ZipExceptionUtil.rethrow(e);
+       }
+-      finally {
+-         IOUtils.closeQuietly(entrySourceStream);
+-      }
+     }
+   }
+ 

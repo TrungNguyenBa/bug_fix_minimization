@@ -1,0 +1,4 @@
+1c7920a : Fix bugs in formatting with MoneyAmountStyle
+:100644 100644 50966d9... 05edd60... M	src/changes/changes.xml
+:100644 100644 1eb5621... fca7789... M	src/main/java/org/joda/money/format/AmountPrinterParser.java
+:100644 100644 0b63539... a862841... M	src/test/java/org/joda/money/format/TestMoneyFormatterBuilder.java

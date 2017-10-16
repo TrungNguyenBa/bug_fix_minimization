@@ -1,0 +1,6 @@
+91e3ff6 : Add unpacking methods which unwrap the parent directory included in the archive, fix #18
+:100644 100644 dac5a93... be4e695... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java
+:100644 100644 de6c6e5... c02b79b... M	src/test/java/ZipUtilTest.java
+:000000 100644 0000000... bd64b59... A	src/test/resources/demo-dirs-only.zip
+:000000 100644 0000000... b1c8824... A	src/test/resources/demo-single-empty-root-dir.zip
+:000000 100644 0000000... 2766a7d... A	src/test/resources/demo-single-root-dir.zip

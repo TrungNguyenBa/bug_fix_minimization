@@ -1,0 +1,20 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/model/Pet.java b/src/main/java/org/springframework/samples/petclinic/model/Pet.java
+index 536fe07..4bc2b92 100644
+--- a/src/main/java/org/springframework/samples/petclinic/model/Pet.java
++++ b/src/main/java/org/springframework/samples/petclinic/model/Pet.java
+@@ -94,13 +94,13 @@ public class Pet extends NamedEntity {
+ 
+     protected Set<Visit> getVisitsInternal() {
+         if (this.visits == null) {
+-            this.visits = new HashSet<>();
++            this.visits = new HashSet<Visit>();
+         }
+         return this.visits;
+     }
+ 
+     public List<Visit> getVisits() {
+-        List<Visit> sortedVisits = new ArrayList<>(getVisitsInternal());
++        List<Visit> sortedVisits = new ArrayList<Visit>(getVisitsInternal());
+         PropertyComparator.sort(sortedVisits, new MutableSortDefinition("date", false, false));
+         return Collections.unmodifiableList(sortedVisits);
+     }

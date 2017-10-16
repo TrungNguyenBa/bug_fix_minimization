@@ -1,0 +1,4 @@
+5fb9f04 : Restore sqlite compatibility
+:100644 100644 ccd64c3... 8a4c76f... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 32f6ef3... 1071c86... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
+:100644 100644 cb52947... aa44d9a... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java

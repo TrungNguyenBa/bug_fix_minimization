@@ -1,0 +1,2 @@
+d38519e : fix broken grails:create-pom command
+:100644 100644 78a550f... 989d3cd... M	src/main/java/org/grails/maven/plugin/CreatePomMojo.java

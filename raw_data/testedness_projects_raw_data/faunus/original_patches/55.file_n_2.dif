@@ -1,0 +1,13 @@
+diff --git a/include/faunus/mpi.h b/include/faunus/mpi.h
+index bedaaddd..47db22b7 100644
+--- a/include/faunus/mpi.h
++++ b/include/faunus/mpi.h
+@@ -81,6 +81,8 @@ namespace Faunus {
+     inline double reduceDouble(MPIController &mpi, double local) {
+       double sum;
+       MPI_Allreduce(&local,&sum,1,MPI_DOUBLE,MPI_SUM,mpi.comm);
++      //MPI_Reduce(&local,&sum,1,MPI_DOUBLE,MPI_SUM,mpi.rankMaster(),mpi.comm);
++      //MPI_Bcast(&sum,1,MPI_DOUBLE,mpi.rankMaster(),mpi.comm);
+       return sum;
+     }
+ 

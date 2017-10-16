@@ -1,0 +1,5 @@
+5bf31db : fixed JPA issue when updating existing owners/pets
+:100644 100644 fd0f217... c7398df... M	src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaOwnerRepositoryImpl.java
+:100644 100644 4823aab... 84d564d... M	src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaPetRepositoryImpl.java
+:100644 100644 fccf795... 3415def... M	src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVisitRepositoryImpl.java
+:100644 100644 e3c5f0a... 02a21ac... M	src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java

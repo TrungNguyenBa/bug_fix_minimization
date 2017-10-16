@@ -1,0 +1,5 @@
+fc505bba5 : MATH-393 Fixed inconsistent definition of "getResult". Modified associated test accordingly.
+:100644 100644 10bc9e66c... 26fd5e0ac... M	src/main/java/org/apache/commons/math/optimization/MultiStartUnivariateRealOptimizer.java
+:100644 100644 bf406ab6b... 07d8c4f98... M	src/main/java/org/apache/commons/math/optimization/UnivariateRealOptimizer.java
+:100644 100644 67c460e38... 07be4a457... M	src/site/xdoc/changes.xml
+:100644 100644 22a5293fe... e066703b6... M	src/test/java/org/apache/commons/math/optimization/MultiStartUnivariateRealOptimizerTest.java

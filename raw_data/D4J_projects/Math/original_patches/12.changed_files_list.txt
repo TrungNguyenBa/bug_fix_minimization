@@ -1,0 +1,3 @@
+cc82d38aa : MATH-927 Made "BitsStreamGenerator" class "Serializable" to allow cloning of subclasses. Added cloning test for all "RealDistribution" classes. Thanks to Dennis Hendriks.
+:100644 100644 a621d7b8a... fab295bfb... M	src/main/java/org/apache/commons/math3/random/BitsStreamGenerator.java
+:100644 100644 c693b1404... e25923396... M	src/test/java/org/apache/commons/math3/distribution/RealDistributionAbstractTest.java

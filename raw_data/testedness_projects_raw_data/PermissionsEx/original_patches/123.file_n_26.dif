@@ -1,0 +1,31 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
+index 293cb95..c62911d 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
+@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicReference;
+  */
+ public class PEXPermissionSubscriptionMap extends HashMap<String, Map<Permissible, Boolean>> {
+ 	private static FieldReplacer<PluginManager, Map> INJECTOR;
+-	private static final AtomicReference<PEXPermissionSubscriptionMap> INSTANCE = new AtomicReference<>();
++	private static final AtomicReference<PEXPermissionSubscriptionMap> INSTANCE = new AtomicReference<PEXPermissionSubscriptionMap>();
+ 	private final PermissionsEx plugin;
+ 	private final PluginManager manager;
+ 
+@@ -45,7 +45,7 @@ public class PEXPermissionSubscriptionMap extends HashMap<String, Map<Permissibl
+ 		}
+ 
+ 		if (INJECTOR == null) {
+-			INJECTOR = new FieldReplacer<>(manager.getClass(), "permSubs", Map.class);
++			INJECTOR = new FieldReplacer<PluginManager, Map>(manager.getClass(), "permSubs", Map.class);
+ 		}
+ 
+ 		Map backing = INJECTOR.get(manager);
+@@ -66,7 +66,7 @@ public class PEXPermissionSubscriptionMap extends HashMap<String, Map<Permissibl
+ 	 */
+ 	public void uninject() {
+ 		if (INSTANCE.compareAndSet(this, null)) {
+-			Map<String, Map<Permissible, Boolean>> unwrappedMap = new HashMap<>(this.size());
++			Map<String, Map<Permissible, Boolean>> unwrappedMap = new HashMap<String, Map<Permissible, Boolean>>(this.size());
+ 			for (Map.Entry<String, Map<Permissible, Boolean>> entry : this.entrySet()) {
+ 				if (entry.getValue() instanceof PEXSubscriptionValueMap) {
+ 					unwrappedMap.put(entry.getKey(), ((PEXSubscriptionValueMap) entry.getValue()).backing);

@@ -1,0 +1,43 @@
+diff --git a/README.md b/README.md
+index fb9a548..bc9388d 100644
+--- a/README.md
++++ b/README.md
+@@ -14,21 +14,17 @@ Installation
+ 
+ Add this dependency to your project's POM:
+ 
+-```xml
+     <dependency>
+       <groupId>com.stripe</groupId>
+       <artifactId>stripe-java</artifactId>
+       <version>1.27.0</version>
+     </dependency>
+-```
+ 
+ ### Gradle users
+ 
+ Add this dependency to your project's build file:
+ 
+-```groovy
+     compile "com.stripe:stripe-java:1.27.0"
+-```
+ 
+ ### Others
+ 
+@@ -48,7 +44,6 @@ Usage
+ 
+ StripeExample.java
+ 
+-```java
+     import java.util.HashMap;
+     import java.util.Map;
+ 
+@@ -76,7 +71,7 @@ StripeExample.java
+             }
+         }
+     }
+-```
++
+ 
+ See [StripeTest.java](https://github.com/stripe/stripe-java/blob/master/src/test/java/com/stripe/StripeTest.java) for more examples.
+ 

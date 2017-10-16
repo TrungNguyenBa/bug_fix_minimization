@@ -1,0 +1,22 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionEntity.java b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+index c7cd4aa..cdd3aab 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionEntity.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionEntity.java
+@@ -75,7 +75,7 @@ public abstract class PermissionEntity {
+ 	}
+ 
+ 	public String getName() {
+-		return getOption("name", null, getIdentifier());
++		return getOption("name", getIdentifier());
+ 	}
+ 
+ 	/*protected void setName(String name) {
+@@ -488,7 +488,7 @@ public abstract class PermissionEntity {
+ 	 * @param value  Value to set, null to remove
+ 	 */
+ 	public void setOption(String option, String value) {
+-		this.setOption(option, value, null);
++		this.setOption(option, value, "");
+ 	}
+ 
+ 	/**

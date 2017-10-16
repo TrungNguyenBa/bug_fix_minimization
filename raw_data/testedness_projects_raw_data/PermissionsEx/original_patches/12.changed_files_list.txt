@@ -1,0 +1,19 @@
+66dd636 : Commands cleanup and add /pex <type> list command
+:100644 100644 aa7f8a0... 7c660d6... M	src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+:100644 100644 8ae0f33... 2a74449... M	src/main/java/ninja/leaping/permissionsex/backend/DataStore.java
+:100644 100644 6abf113... 51343e4... M	src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+:100644 100644 6261ff9... 4cbcbde... M	src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryDataStore.java
+:100644 100644 6894220... 3e0aeca... M	src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java
+:100644 100644 5181554... d824d05... M	src/main/java/ninja/leaping/permissionsex/command/PermissionsExCommands.java
+:100644 100644 3e66a6f... f8994b1... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java
+:100644 100644 bd053dc... 7ea155a... M	src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+:100644 100644 d858bfc... d265e89... M	src/main/java/ninja/leaping/permissionsex/sponge/SpongeCommander.java
+:100644 100644 a686803... 545bb96... M	src/main/java/ninja/leaping/permissionsex/sponge/SpongeMessageFormatter.java
+:000000 100644 0000000... 871744c... A	src/main/java/ninja/leaping/permissionsex/util/StartsWithPredicate.java
+:100644 100644 16a59b5... acb4db2... M	src/main/java/ninja/leaping/permissionsex/util/command/Commander.java
+:100644 100644 5dd4287... 172c944... M	src/main/java/ninja/leaping/permissionsex/util/command/args/GameArguments.java
+:100644 100644 5bf01bc... 0a5c0f9... M	src/main/java/ninja/leaping/permissionsex/util/command/args/GenericArguments.java
+:100644 100644 cd0365a... 7d3f7ec... M	src/main/po/de.po
+:100644 100644 32e7829... 945ca54... M	src/main/po/keys.pot
+:100644 100644 c09f5c1... ff5f84b... M	src/main/po/zh_HK.po
+:100644 100644 803e669... c916a3e... M	src/test/java/ninja/leaping/permissionsex/util/command/TestCommander.java

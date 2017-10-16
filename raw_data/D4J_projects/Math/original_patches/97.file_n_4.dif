@@ -1,0 +1,24 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index d765cd86b..e0ba4274c 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -105,9 +105,6 @@ The <action> type attribute can be add,update,fix,remove.
+       </action>
+     </release>
+     <release version="1.3-SNAPSHOT" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-205" due-to="Roman Werpachowski">
+-        Fixed formula in fast cosine transformer javadoc comments.
+-      </action>
+       <action dev="brentworden" type="fix" issue="MATH-193" due-to="Michael Heuer and Sebb">
+         Javadoc and style fixes.
+       </action>
+@@ -126,9 +123,6 @@ The <action> type attribute can be add,update,fix,remove.
+       <action dev="brentworden" type="fix" issue="MATH-201" due-to="Peter Wyngaard">
+         Fixed truncation error in t-test classes for large t values.
+       </action>
+-      <action dev="brentworden" type="fix" issue="MATH-204" due-to="Mick">
+-        Added root checks for the endpoints.
+-      </action>
+     </release>
+     <release version="1.2" date="2008-02-24"
+     description="This release combines bug fixes and new features. Most notable

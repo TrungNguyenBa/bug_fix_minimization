@@ -1,0 +1,2 @@
+aec0e63 : Fix default permissions file format
+:100644 100644 a0b750a... f8c1320... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java

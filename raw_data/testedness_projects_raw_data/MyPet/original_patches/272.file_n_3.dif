@@ -1,0 +1,23 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java
+index 6d3006db..6fea5e68 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java
+@@ -59,14 +59,14 @@ public class MyPetAIRangedAttack extends MyPetAIGoal
+         {
+             return false;
+         }
+-        EntityLiving goalTarget = this.entityMyPet.getGoalTarget();
++        EntityLiving goalTarget = this.entityMyPet.goalTarget;
+ 
+-        if (goalTarget == null || !goalTarget.isAlive() || !entityMyPet.canMove())
++        if (goalTarget == null || !goalTarget.isAlive() || myPet.getRangedDamage() <= 0 || !entityMyPet.canMove())
+         {
+             return false;
+         }
+-        double space = this.entityMyPet.e(goalTarget.locX, goalTarget.boundingBox.b, goalTarget.locZ);
+-        if (myPet.getDamage() > 0 && space < 16)
++        double e = this.entityMyPet.e(goalTarget.locX, goalTarget.boundingBox.b, goalTarget.locZ);
++        if (myPet.getDamage() > 0 && e < 16)
+         {
+             return false;
+         }

@@ -1,0 +1,20 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/transform/ZipEntryTransformer.java b/src/main/java/org/zeroturnaround/zip/transform/ZipEntryTransformer.java
+index 729f083..d40a9dc 100644
+--- a/src/main/java/org/zeroturnaround/zip/transform/ZipEntryTransformer.java
++++ b/src/main/java/org/zeroturnaround/zip/transform/ZipEntryTransformer.java
+@@ -13,14 +13,7 @@ import java.util.zip.ZipOutputStream;
+ public interface ZipEntryTransformer {
+ 
+   /**
+-   * Transforms the zip entry given as an input stream and ZipEntry metadata.
+-   * The result is written to a ZipOutputStream
+-   *
+-   * @param in input stream of the entry contents
+-   * @param zipEntry zip entry metadata
+-   * @param out output stream to write transformed entry (if necessary)
+-   *
+-   * @throws IOException if anything goes wrong
++   * Copies and transforms the given entry into the ZIP output stream.
+    */
+   void transform(InputStream in, ZipEntry zipEntry, ZipOutputStream out) throws IOException;
+ 

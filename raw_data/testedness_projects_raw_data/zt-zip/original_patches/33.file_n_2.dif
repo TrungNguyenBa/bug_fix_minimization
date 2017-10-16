@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/Zips.java b/src/main/java/org/zeroturnaround/zip/Zips.java
+index 1243674..60568d9 100644
+--- a/src/main/java/org/zeroturnaround/zip/Zips.java
++++ b/src/main/java/org/zeroturnaround/zip/Zips.java
+@@ -164,7 +164,7 @@ public class Zips {
+       File entryFile = (File) iter.next();
+       String entryPath = getRelativePath(file, entryFile);
+       if (preserveRoot) {
+-        entryPath = file.getName() + entryPath;
++        entryPath = file.getName() + "/" + entryPath;
+       }
+       this.changedEntries.add(new FileSource(entryPath, entryFile));
+     }

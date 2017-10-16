@@ -1,0 +1,2 @@
+fcbc5a5 : Fixed uninjectAllPermissibles
+:100644 100644 fdfab03... 53210e9... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java

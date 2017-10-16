@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenu.java b/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenu.java
+index db8ab621..b3a50eec 100644
+--- a/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenu.java
++++ b/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenu.java
+@@ -105,7 +105,6 @@ public class IconMenu implements Listener {
+     @EventHandler(priority = EventPriority.MONITOR)
+     void onInventoryClick(InventoryClickEvent event) {
+         if (inventoryList.contains(event.getInventory())) {
+-            event.setCursor(null);
+             event.setCancelled(true);
+             int slot = event.getRawSlot();
+             if (slot >= 0 && slot < size && inventory.getMinecraftInventory().items[slot] != null) {

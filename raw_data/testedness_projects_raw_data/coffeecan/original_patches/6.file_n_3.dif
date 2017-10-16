@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/allogy/coffeecan/statements/Actor.java b/src/main/java/com/allogy/coffeecan/statements/Actor.java
+index cb4d244..542fa24 100644
+--- a/src/main/java/com/allogy/coffeecan/statements/Actor.java
++++ b/src/main/java/com/allogy/coffeecan/statements/Actor.java
+@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
+         visible = true,
+         defaultImpl = Agent.class)
+ @JsonSubTypes({
+-        @JsonSubTypes.Type(value = Agent.class, name = Agent.OBJECT_TYPE),
++        @JsonSubTypes.Type(value = Agent.class, name = Agent.ObjectType),
+ })
+ public abstract class Actor
+ {

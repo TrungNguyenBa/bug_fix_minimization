@@ -1,0 +1,21 @@
+7f2b709 : Rename PaymentSource to ExternalAccount, make generic and concrete
+:100644 100644 5c2cf18... f2727a5... M	src/main/java/com/stripe/model/Account.java
+:100644 100644 5c5fe4c... b560752... M	src/main/java/com/stripe/model/AlipayAccount.java
+:100644 100644 c74a1fd... 2302c2a... M	src/main/java/com/stripe/model/BankAccount.java
+:100644 100644 33a129f... ea9693b... M	src/main/java/com/stripe/model/BitcoinReceiver.java
+:100644 100644 f093c6d... d4a15bd... M	src/main/java/com/stripe/model/Card.java
+:100644 100644 871fd11... 43ee42c... M	src/main/java/com/stripe/model/Charge.java
+:100644 100644 f60aa9d... 5a07529... M	src/main/java/com/stripe/model/Customer.java
+:100644 100644 5cd6077... b8ca55e... M	src/main/java/com/stripe/model/DeletedAlipayAccount.java
+:100644 100644 4a5e2c3... cb47d68... M	src/main/java/com/stripe/model/DeletedBitcoinReceiver.java
+:100644 100644 149dcde... 78c3b7e... M	src/main/java/com/stripe/model/DeletedCard.java
+:100644 100644 490ba45... 8e73397... R077	src/main/java/com/stripe/model/DeletedConcretePaymentSource.java	src/main/java/com/stripe/model/DeletedExternalAccount.java
+:100644 100644 04e6e2a... dca86bf... R052	src/main/java/com/stripe/model/ConcretePaymentSource.java	src/main/java/com/stripe/model/ExternalAccount.java
+:100644 100644 ef6a091... 0e3835b... R066	src/main/java/com/stripe/model/PaymentSourceCollection.java	src/main/java/com/stripe/model/ExternalAccountCollection.java
+:000000 100644 0000000... e0cced1... A	src/main/java/com/stripe/model/ExternalAccountTypeAdapterFactory.java
+:100644 100644 df604fe... 99bf563... M	src/main/java/com/stripe/model/MetadataStore.java
+:100644 000000 7880602... 0000000... D	src/main/java/com/stripe/model/PaymentSource.java
+:100644 000000 1175bcb... 0000000... D	src/main/java/com/stripe/model/PaymentSourceDeserializer.java
+:100644 100644 462087f... 1be1f07... M	src/main/java/com/stripe/net/APIResource.java
+:100644 100644 eb1e5e3... 46695fd... M	src/test/java/com/stripe/StripeTest.java
+:100644 100644 74d8304... 1b0c7a5... M	src/test/java/com/stripe/model/AccountTest.java

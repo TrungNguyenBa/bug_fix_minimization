@@ -1,0 +1,47 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/core/request/MultipleEntityException.java b/src/main/java/com/lonepulse/zombielink/core/request/MultipleEntityException.java
+index 8d3dbfb..c1c47ff 100644
+--- a/src/main/java/com/lonepulse/zombielink/core/request/MultipleEntityException.java
++++ b/src/main/java/com/lonepulse/zombielink/core/request/MultipleEntityException.java
+@@ -36,7 +36,7 @@ import com.lonepulse.zombielink.core.processor.ProxyInvocationConfiguration;
+  * <br><br>
+  * @author <a href="mailto:sahan@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
+-class MultipleEntityException extends RequestProcessorException {
++class MultipleEntityException extends RequestPopulatorException {
+ 	
+ 
+ 	private static final long serialVersionUID = 7599536137960728412L;
+@@ -58,13 +58,13 @@ class MultipleEntityException extends RequestProcessorException {
+ 	}
+ 	
+ 	/**
+-	 * See {@link RequestProcessorException#RequestPopulatorException()}.
++	 * See {@link RequestPopulatorException#RequestPopulatorException()}.
+ 	 */
+ 	public MultipleEntityException() {
+ 	}
+ 
+ 	/**
+-	 * See {@link RequestProcessorException#RequestPopulatorException(String)}.
++	 * See {@link RequestPopulatorException#RequestPopulatorException(String)}.
+ 	 */
+ 	public MultipleEntityException(String detailMessage) {
+ 		
+@@ -72,7 +72,7 @@ class MultipleEntityException extends RequestProcessorException {
+ 	}
+ 
+ 	/**
+-	 * See {@link RequestProcessorException#RequestPopulatorException(Throwable)}.
++	 * See {@link RequestPopulatorException#RequestPopulatorException(Throwable)}.
+ 	 */
+ 	public MultipleEntityException(Throwable throwable) {
+ 		
+@@ -80,7 +80,7 @@ class MultipleEntityException extends RequestProcessorException {
+ 	}
+ 
+ 	/**
+-	 * See {@link RequestProcessorException#RequestPopulatorException(String, Throwable)}.
++	 * See {@link RequestPopulatorException#RequestPopulatorException(String, Throwable)}.
+ 	 */
+ 	public MultipleEntityException(String detailMessage, Throwable throwable) {
+ 

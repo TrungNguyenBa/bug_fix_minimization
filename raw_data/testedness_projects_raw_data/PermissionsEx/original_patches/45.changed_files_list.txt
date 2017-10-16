@@ -1,0 +1,4 @@
+c392100 : Add a proxy function PermissionManager.reset()
+:100644 100644 f74086b... 7502e6d... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 d1721d4... ec9351a... M	src/main/java/ru/tehkode/permissions/bukkit/RemoteEventListener.java
+:100644 100644 d44341e... a5d9d97... M	src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java

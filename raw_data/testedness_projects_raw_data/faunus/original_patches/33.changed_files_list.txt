@@ -1,0 +1,2 @@
+b2cd46b4 : Delete unsued variable in Faunus::Potential::HydrophobicWall<T>::_info()
+:100644 100644 cb5c1cfd... 2d222aa9... M	include/faunus/externalpotential.h

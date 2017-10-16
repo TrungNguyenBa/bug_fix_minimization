@@ -1,0 +1,2 @@
+661b58b7 : do not use the old pet to get info when a player respawns fixes #253
+:100644 100644 8c1aa4df... f78d3990... M	src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java

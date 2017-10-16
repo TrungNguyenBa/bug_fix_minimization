@@ -1,0 +1,2 @@
+d9080ea : Fix SQL queries
+:100644 100644 f0ec975... 5557b6a... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java

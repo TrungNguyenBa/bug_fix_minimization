@@ -1,0 +1,15 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java
+index 5bf90c0..7e98d95 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java
+@@ -29,8 +29,8 @@ import org.apache.http.client.methods.HttpUriRequest;
+ import org.apache.http.protocol.HttpContext;
+ 
+ import com.lonepulse.zombielink.annotation.Stateful;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
+-import com.lonepulse.zombielink.proxy.InvocationException;
++import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationException;
+ import com.lonepulse.zombielink.util.Is;
+ 
+ /**

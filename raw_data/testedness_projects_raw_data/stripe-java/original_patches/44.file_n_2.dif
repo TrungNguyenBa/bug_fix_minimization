@@ -1,0 +1,32 @@
+diff --git a/src/main/java/com/stripe/Stripe.java b/src/main/java/com/stripe/Stripe.java
+index 69aea72..975d3e2 100644
+--- a/src/main/java/com/stripe/Stripe.java
++++ b/src/main/java/com/stripe/Stripe.java
+@@ -7,7 +7,6 @@ public abstract class Stripe
+ 	public static volatile String apiKey;
+ 	public static volatile String apiVersion;
+ 
+-	private static volatile boolean verifySSL = true;
+ 	private static volatile String apiBase = LIVE_API_BASE;
+ 
+ 	/**
+@@ -19,19 +18,6 @@ public abstract class Stripe
+ 		apiBase = overriddenApiBase;
+ 	}
+ 
+-	/**
+-	 * (FOR TESTING ONLY)
+-	 * Only disable SSL verification if you're using your own (mocked) server.
+-	 * Disabling verification on stripe.com is not supported
+-	 */
+-	public static void setVerifySSL(boolean verify) {
+-		verifySSL = verify;
+-	}
+-
+-	public static boolean getVerifySSL() {
+-		return verifySSL;
+-	}
+-
+ 	public static String getApiBase() {
+ 		return apiBase;
+ 	}

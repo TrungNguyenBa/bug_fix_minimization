@@ -1,0 +1,14 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryDataStore.java b/src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryDataStore.java
+index a5888ed..ba530d4 100644
+--- a/src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryDataStore.java
++++ b/src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryDataStore.java
+@@ -101,9 +101,4 @@ public class MemoryDataStore extends AbstractDataStore {
+             }
+         });
+     }
+-
+-    @Override
+-    public Iterable<Map.Entry<Map.Entry<String, String>, ImmutableOptionSubjectData>> getAll() {
+-        return Iterables.unmodifiableIterable(data.entrySet());
+-    }
+ }

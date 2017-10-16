@@ -1,0 +1,62 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
+index 9c0c89e..b569b2a 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
+@@ -1,10 +1,5 @@
+ package com.fasterxml.jackson.dataformat.protobuf.schema;
+ 
+-import java.util.Collection;
+-import java.util.Collections;
+-import java.util.Map;
+-
+-import com.fasterxml.jackson.core.SerializableString;
+ import com.squareup.protoparser.MessageType.Field;
+ 
+ public class ProtobufField
+@@ -35,10 +30,7 @@ public class ProtobufField
+      */
+     protected ProtobufMessage messageType;
+ 
+-    /**
+-     * For fields of type {@link FieldType#ENUM}, mapping from names to ids.
+-     */
+-    protected final Map<String,Integer> enumValues;
++    protected final ProtobufEnum enumType;
+ 
+     protected final boolean isObject;
+     
+@@ -64,11 +56,7 @@ public class ProtobufField
+         this.type = type;
+         wireType = type.getWireType();
+         usesZigZag = type.usesZigZag();
+-        if (et == null) {
+-            enumValues = Collections.emptyMap();
+-        } else {
+-            enumValues = et.valueMapping();
+-        }
++        enumType = et;
+         messageType = msg;
+ 
+         if (nativeField == null) { // for "unknown" field
+@@ -108,19 +96,8 @@ public class ProtobufField
+         return messageType;
+     }
+ 
+-    public int findEnumIndex(SerializableString key) {
+-        // !!! TODO: optimize if possible
+-        Integer I = enumValues.get(key.getValue());
+-        return (I == null) ? -1 : I.intValue();
+-    }
+-
+-    public int findEnumIndex(String key) {
+-        Integer I = enumValues.get(key);
+-        return (I == null) ? -1 : I.intValue();
+-    }
+-
+-    public Collection<String> getEnumValues() {
+-        return enumValues.keySet();
++    public ProtobufEnum getEnumType() {
++        return enumType;
+     }
+ 
+     public boolean isObject() {

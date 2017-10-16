@@ -1,0 +1,4 @@
+592a68ee : add config option to always grant passive XP fixes #350
+:100644 100644 b12bb4b9... b8024ef5... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:100644 100644 1ee3fde2... 96450977... M	src/main/java/de/Keyle/MyPet/skill/Experience.java
+:100644 100644 f70e08ce... 5ce61800... M	src/main/java/de/Keyle/MyPet/util/Configuration.java

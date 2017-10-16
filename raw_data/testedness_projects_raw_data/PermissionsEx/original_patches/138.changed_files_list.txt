@@ -1,0 +1,2 @@
+6630e62 : Use permission name function where we can
+:100644 100644 a16c050... 0bbf53d... M	src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java

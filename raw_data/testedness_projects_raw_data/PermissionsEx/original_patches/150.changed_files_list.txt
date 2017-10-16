@@ -1,0 +1,2 @@
+749f27c : Make the invalid YAML error a bit louder
+:100644 100644 ddef0c0... 0cc8729... M	src/main/java/ru/tehkode/permissions/backends/FileBackend.java

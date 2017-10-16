@@ -1,0 +1,7 @@
+cd688f9a : fixed item duplication glitch when taking off equipment from zombies/skeletons/pigzombies  fixes #228
+:100644 100644 8008aaae... a12bf0a1... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 183e4f23... 56a54370... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java
+:100644 100644 91da06a7... 3091d0d8... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 0dc25972... dd61cf67... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/MySkeleton.java
+:100644 100644 8f848db9... b3ba14e7... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+:100644 100644 0503a3c7... 0c17d641... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java

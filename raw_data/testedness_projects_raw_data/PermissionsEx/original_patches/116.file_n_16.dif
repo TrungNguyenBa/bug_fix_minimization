@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
+index 1971f93..c64c495 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
+@@ -47,7 +47,7 @@ public abstract class PermissionsCommand implements CommandListener {
+ 	}
+ 
+ 	protected void informGroup(PermissionsEx plugin, PermissionGroup group, String message) {
+-		for (PermissionUser user : group.getActiveUsers()) {
++		for (PermissionUser user : group.getUsers()) {
+ 			this.informPlayer(plugin, user, message);
+ 		}
+ 	}

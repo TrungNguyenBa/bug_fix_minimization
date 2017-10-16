@@ -1,0 +1,4 @@
+f636f23b : defer evaluation of the @lends annotation fixes issue 314
+:100644 100644 4fecfbed... 233ab472... M	src/com/google/javascript/jscomp/CompilerOptions.java
+:100644 100644 215f0360... f9943a13... M	src/com/google/javascript/jscomp/TypedScopeCreator.java
+:100644 100644 bae183d8... 11613655... M	test/com/google/javascript/jscomp/TypeCheckTest.java

@@ -1,0 +1,322 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java b/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+index d5ac59f0..e6b0a033 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+@@ -35,9 +35,11 @@ import org.bukkit.Material;
+ public class EntityMyWolf extends EntityMyPet
+ {
+     public static int GROW_UP_ITEM = Material.POTION.getId();
++
+     protected boolean shaking;
+     protected boolean isWet;
+     protected float shakeCounter;
++
+     private MyPetAISit sitPathfinder;
+ 
+     public EntityMyWolf(World world, MyPet myPet)
+@@ -45,6 +47,48 @@ public class EntityMyWolf extends EntityMyPet
+         super(world, myPet);
+     }
+ 
++    public void setPathfinder()
++    {
++        super.setPathfinder();
++        petPathfinderSelector.addGoal("Sit", 2, sitPathfinder);
++    }
++
++    public void setMyPet(MyPet myPet)
++    {
++        if (myPet != null)
++        {
++            this.sitPathfinder = new MyPetAISit(this);
++
++            super.setMyPet(myPet);
++
++            this.setBaby(((MyWolf) myPet).isBaby());
++            this.setSitting(((MyWolf) myPet).isSitting());
++            this.setTamed(((MyWolf) myPet).isTamed());
++            this.setCollarColor(((MyWolf) myPet).getCollarColor());
++        }
++    }
++
++    public void setHealth(int i)
++    {
++        super.setHealth(i);
++        this.bj();
++    }
++
++    public boolean canMove()
++    {
++        return !isSitting();
++    }
++
++    public void setSitting(boolean sitting)
++    {
++        this.sitPathfinder.setSitting(sitting);
++    }
++
++    public boolean isSitting()
++    {
++        return ((MyWolf) myPet).isSitting;
++    }
++
+     public void applySitting(boolean sitting)
+     {
+         int i = this.datawatcher.getByte(16);
+@@ -59,46 +103,87 @@ public class EntityMyWolf extends EntityMyPet
+         ((MyWolf) myPet).isSitting = sitting;
+     }
+ 
+-    public boolean canMove()
++    public boolean isTamed()
+     {
+-        return !isSitting();
++        return ((MyWolf) myPet).isTamed;
+     }
+ 
+-    public DyeColor getCollarColor()
++    public void setTamed(boolean flag)
+     {
+-        return ((MyWolf) myPet).collarColor;
++        int i = this.datawatcher.getByte(16);
++        if (flag)
++        {
++            this.datawatcher.watch(16, (byte) (i | 0x4));
++        }
++        else
++        {
++            this.datawatcher.watch(16, (byte) (i & 0xFFFFFFFB));
++        }
++        ((MyWolf) myPet).isTamed = flag;
+     }
+ 
+-    public void setCollarColor(byte color)
++    public boolean isAngry()
+     {
+-        this.datawatcher.watch(20, color);
+-        ((MyWolf) myPet).collarColor = DyeColor.getByWoolData(color);
++        return ((MyWolf) myPet).isAngry;
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public void setAngry(boolean flag)
+     {
+-        return "mob.wolf.death";
++        byte b0 = this.datawatcher.getByte(16);
++        if (flag)
++        {
++            this.datawatcher.watch(16, (byte) (b0 | 0x2));
++        }
++        else
++        {
++            this.datawatcher.watch(16, (byte) (b0 & 0xFFFFFFFD));
++        }
++        ((MyWolf) myPet).isAngry = flag;
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public boolean isBaby()
+     {
+-        return "mob.wolf.hurt";
++        return ((MyWolf) myPet).isBaby;
+     }
+ 
+-    /**
+-     * Returns the default sound of the MyPet
+-     */
+-    protected String getLivingSound()
++    public void setBaby(boolean flag)
+     {
+-        return !playIdleSound() ? null : (this.random.nextInt(5) == 0 ? (getHealth() * 100 / getMaxHealth() <= 25 ? "mob.wolf.whine" : "mob.wolf.panting") : "mob.wolf.bark");
++        if (flag)
++        {
++            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
++        }
++        else
++        {
++            this.datawatcher.watch(12, new Integer(0));
++        }
++        ((MyWolf) myPet).isBaby = flag;
++    }
++
++    public DyeColor getCollarColor()
++    {
++        return ((MyWolf) myPet).collarColor;
++    }
++
++    public void setCollarColor(DyeColor color)
++    {
++        setCollarColor(color.getWoolData());
++    }
++
++    public void setCollarColor(byte color)
++    {
++        this.datawatcher.watch(20, color);
++        ((MyWolf) myPet).collarColor = DyeColor.getByWoolData(color);
++    }
++
++    protected void initDatawatcher()
++    {
++        super.initDatawatcher();
++        this.datawatcher.a(12, new Integer(0));         // age
++        this.datawatcher.a(16, new Byte((byte) 0));     // tamed/angry/sitting
++        this.datawatcher.a(17, "");                     // wolf owner name
++        this.datawatcher.a(18, new Float(getHealth())); // tail height
++        this.datawatcher.a(19, new Byte((byte) 0));     // N/A
++        this.datawatcher.a(20, new Byte((byte) 14));    // collar color
+     }
+ 
+     /**
+@@ -156,81 +241,28 @@ public class EntityMyWolf extends EntityMyPet
+         return false;
+     }
+ 
+-    protected void initDatawatcher()
+-    {
+-        super.initDatawatcher();
+-        this.datawatcher.a(12, new Integer(0));         // age
+-        this.datawatcher.a(16, new Byte((byte) 0));     // tamed/angry/sitting
+-        this.datawatcher.a(17, "");                     // wolf owner name
+-        this.datawatcher.a(18, new Float(getHealth())); // tail height
+-        this.datawatcher.a(19, new Byte((byte) 0));     // N/A
+-        this.datawatcher.a(20, new Byte((byte) 14));    // collar color
+-    }
+-
+-    public boolean isAngry()
+-    {
+-        return ((MyWolf) myPet).isAngry;
+-    }
+-
+-    public void setAngry(boolean flag)
+-    {
+-        byte b0 = this.datawatcher.getByte(16);
+-        if (flag)
+-        {
+-            this.datawatcher.watch(16, (byte) (b0 | 0x2));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(16, (byte) (b0 & 0xFFFFFFFD));
+-        }
+-        ((MyWolf) myPet).isAngry = flag;
+-    }
+-
+-    public boolean isBaby()
+-    {
+-        return ((MyWolf) myPet).isBaby;
+-    }
+-
+-    public void setBaby(boolean flag)
+-    {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(12, new Integer(0));
+-        }
+-        ((MyWolf) myPet).isBaby = flag;
+-    }
+-
+-    public boolean isSitting()
+-    {
+-        return ((MyWolf) myPet).isSitting;
+-    }
+-
+-    public void setSitting(boolean sitting)
++    @Override
++    public void playStepSound()
+     {
+-        this.sitPathfinder.setSitting(sitting);
++        makeSound("mob.wolf.step", 0.15F, 1.0F);
+     }
+ 
+-    public boolean isTamed()
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
+     {
+-        return ((MyWolf) myPet).isTamed;
++        return "mob.wolf.hurt";
+     }
+ 
+-    public void setTamed(boolean flag)
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
+-        int i = this.datawatcher.getByte(16);
+-        if (flag)
+-        {
+-            this.datawatcher.watch(16, (byte) (i | 0x4));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(16, (byte) (i & 0xFFFFFFFB));
+-        }
+-        ((MyWolf) myPet).isTamed = flag;
++        return "mob.wolf.death";
+     }
+ 
+     @Override
+@@ -287,41 +319,11 @@ public class EntityMyWolf extends EntityMyPet
+         }
+     }
+ 
+-    @Override
+-    public void playStepSound()
+-    {
+-        makeSound("mob.wolf.step", 0.15F, 1.0F);
+-    }
+-
+-    public void setCollarColor(DyeColor color)
+-    {
+-        setCollarColor(color.getWoolData());
+-    }
+-
+-    public void setHealth(int i)
+-    {
+-        super.setHealth(i);
+-        this.bj();
+-    }
+-
+-    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
+-        {
+-            this.sitPathfinder = new MyPetAISit(this);
+-
+-            super.setMyPet(myPet);
+-
+-            this.setBaby(((MyWolf) myPet).isBaby());
+-            this.setSitting(((MyWolf) myPet).isSitting());
+-            this.setTamed(((MyWolf) myPet).isTamed());
+-            this.setCollarColor(((MyWolf) myPet).getCollarColor());
+-        }
+-    }
+-
+-    public void setPathfinder()
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        super.setPathfinder();
+-        petPathfinderSelector.addGoal("Sit", 2, sitPathfinder);
++        return !playIdleSound() ? null : (this.random.nextInt(5) == 0 ? (getHealth() * 100 / getMaxHealth() <= 25 ? "mob.wolf.whine" : "mob.wolf.panting") : "mob.wolf.bark");
+     }
+ }
+\ No newline at end of file

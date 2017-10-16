@@ -1,0 +1,3 @@
+10cc64cc : add config options to disable log fixes #418
+:100644 100644 87913306... 58d13b79... M	src/main/java/de/Keyle/MyPet/util/Configuration.java
+:100644 100644 0be5fec3... 0d11bade... M	src/main/java/de/Keyle/MyPet/util/logger/DebugLogger.java

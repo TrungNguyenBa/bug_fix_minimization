@@ -1,0 +1,12 @@
+diff --git a/src/test/java/org/joda/time/chrono/TestAll.java b/src/test/java/org/joda/time/chrono/TestAll.java
+index f1fcb393..0db38e54 100644
+--- a/src/test/java/org/joda/time/chrono/TestAll.java
++++ b/src/test/java/org/joda/time/chrono/TestAll.java
+@@ -47,7 +47,6 @@ public class TestAll extends TestCase {
+         suite.addTest(TestJulianChronology.suite());
+         suite.addTest(TestISOChronology.suite());
+         suite.addTest(TestLenientChronology.suite());
+-        suite.addTest(TestGJDate.suite());
+         
+         return suite;
+     }

@@ -1,0 +1,7 @@
+diff --git a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/description b/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/description
+deleted file mode 100644
+index 498b267..0000000
+--- a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/description
++++ /dev/null
+@@ -1 +0,0 @@
+-Unnamed repository; edit this file 'description' to name the repository.

@@ -1,0 +1,73 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/MySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/MySkeleton.java
+index 00d89bfa..4f229f1b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/MySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/MySkeleton.java
+@@ -52,6 +52,16 @@ public class MySkeleton extends MyPet implements IMyPetEquipment
+         super(petOwner);
+     }
+ 
++    public void setEquipment(EquipmentSlot slot, ItemStack item)
++    {
++        item = item.cloneItemStack();
++        equipment.put(slot, item);
++        if (status == PetState.Here)
++        {
++            ((EntityMySkeleton) getCraftPet().getHandle()).setPetEquipment(slot.getSlotId(), item);
++        }
++    }
++
+     public ItemStack[] getEquipment()
+     {
+         ItemStack[] equipment = new ItemStack[EquipmentSlot.values().length];
+@@ -67,6 +77,20 @@ public class MySkeleton extends MyPet implements IMyPetEquipment
+         return equipment.get(slot);
+     }
+ 
++    public void setWither(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMySkeleton) getCraftPet().getHandle()).setWither(flag);
++        }
++        this.isWither = flag;
++    }
++
++    public boolean isWither()
++    {
++        return isWither;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -113,30 +137,6 @@ public class MySkeleton extends MyPet implements IMyPetEquipment
+         return MyPetType.Skeleton;
+     }
+ 
+-    public boolean isWither()
+-    {
+-        return isWither;
+-    }
+-
+-    public void setWither(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMySkeleton) getCraftPet().getHandle()).setWither(flag);
+-        }
+-        this.isWither = flag;
+-    }
+-
+-    public void setEquipment(EquipmentSlot slot, ItemStack item)
+-    {
+-        item = item.cloneItemStack();
+-        equipment.put(slot, item);
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMySkeleton) getCraftPet().getHandle()).setPetEquipment(slot.getSlotId(), item);
+-        }
+-    }
+-
+     @Override
+     public String toString()
+     {

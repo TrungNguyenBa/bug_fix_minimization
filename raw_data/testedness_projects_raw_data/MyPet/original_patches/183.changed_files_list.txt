@@ -1,0 +1,2 @@
+3cd15ed0 : do not break the XP destribution loop then a player's pet doesn't has a skilltree
+:100644 100644 e5aae2fb... afbfce83... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

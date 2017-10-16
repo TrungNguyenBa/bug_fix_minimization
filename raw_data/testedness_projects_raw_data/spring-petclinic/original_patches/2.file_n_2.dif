@@ -1,0 +1,38 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/model/Pet.java b/src/main/java/org/springframework/samples/petclinic/model/Pet.java
+index 970cdcb..09eeb76 100644
+--- a/src/main/java/org/springframework/samples/petclinic/model/Pet.java
++++ b/src/main/java/org/springframework/samples/petclinic/model/Pet.java
+@@ -32,7 +32,6 @@ import javax.persistence.Table;
+ 
+ import org.hibernate.annotations.Type;
+ import org.joda.time.DateTime;
+-import org.joda.time.LocalDate;
+ import org.springframework.beans.support.MutableSortDefinition;
+ import org.springframework.beans.support.PropertyComparator;
+ import org.springframework.format.annotation.DateTimeFormat;
+@@ -49,9 +48,9 @@ import org.springframework.format.annotation.DateTimeFormat;
+ public class Pet extends NamedEntity {
+ 
+     @Column(name = "birth_date")
+-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
++    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+     @DateTimeFormat(pattern = "yyyy/MM/dd")
+-    private LocalDate birthDate;
++    private DateTime birthDate;
+ 
+     @ManyToOne
+     @JoinColumn(name = "type_id")
+@@ -64,11 +63,11 @@ public class Pet extends NamedEntity {
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
+     private Set<Visit> visits;
+ 
+-    public LocalDate getBirthDate() {
++    public DateTime getBirthDate() {
+         return this.birthDate;
+     }
+ 
+-    public void setBirthDate(LocalDate birthDate) {
++    public void setBirthDate(DateTime birthDate) {
+         this.birthDate = birthDate;
+     }
+ 

@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/PathParamProcessor.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/PathParamProcessor.java
+index 4721e73..fe5090b 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/PathParamProcessor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/PathParamProcessor.java
+@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+ import com.lonepulse.zombielink.annotation.PathParam;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ import com.lonepulse.zombielink.util.Metadata;
+ 
+ /**

@@ -1,0 +1,18 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/backends/DataStore.java b/src/main/java/ninja/leaping/permissionsex/backends/DataStore.java
+index 815bf3c..958ae88 100644
+--- a/src/main/java/ninja/leaping/permissionsex/backends/DataStore.java
++++ b/src/main/java/ninja/leaping/permissionsex/backends/DataStore.java
+@@ -64,12 +64,5 @@ public interface DataStore {
+      * @param node The node to serialize state to
+      * @return The type name of this data store
+      */
+-     String serialize(ConfigurationNode node) throws PermissionsLoadingException;
+-
+-    /**
+-     * Returns all subjects present in this data store
+-     *
+-     * @return An iterable containing all subjects
+-     */
+-    Iterable<Map.Entry<Map.Entry<String,String>,ImmutableOptionSubjectData>> getAll();
++    public String serialize(ConfigurationNode node) throws PermissionsLoadingException;
+ }

@@ -1,0 +1,16 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java
+index 1182d90..10fa10a 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/EnumLookup.java
+@@ -4,11 +4,6 @@ import java.util.*;
+ 
+ import com.fasterxml.jackson.core.SerializableString;
+ 
+-/**
+- * Helper class used for doing efficient lookups of protoc enums
+- * given enum name caller provides. Ideally this would be avoided,
+- * but at this point translation is unfortunately necessary.
+- */
+ public abstract class EnumLookup
+ {
+     public static EnumLookup empty() {

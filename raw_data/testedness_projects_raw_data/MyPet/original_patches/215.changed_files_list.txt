@@ -1,0 +1,2 @@
+8732346d : fixed deathmessages for mobtypes which are called different in bukkit
+:100644 100644 cc9cb53e... a4f9f835... M	src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java

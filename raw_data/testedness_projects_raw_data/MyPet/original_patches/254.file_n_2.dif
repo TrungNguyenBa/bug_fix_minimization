@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+index 859aaf82..3eaf7870 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+@@ -311,9 +311,9 @@ public class MyPetPlayer implements IScheduler, NBTStorage
+         if (myplayerNBT.getValue().containsKey("LastActiveMyPetUUID"))
+         {
+             String lastActive = ((StringTag) myplayerNBT.getValue().get("LastActiveMyPetUUID")).getValue();
++            UUID lastActiveUUID = UUID.fromString(lastActive);
+             if (!lastActive.equalsIgnoreCase(""))
+             {
+-                UUID lastActiveUUID = UUID.fromString(lastActive);
+                 World newWorld = Bukkit.getServer().getWorlds().get(0);
+                 MyPetWorldGroup lastActiveGroup = MyPetWorldGroup.getGroup(newWorld.getName());
+                 this.setMyPetForWorldGroup(lastActiveGroup.getName(), lastActiveUUID);

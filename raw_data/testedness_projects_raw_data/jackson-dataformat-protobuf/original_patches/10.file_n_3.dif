@@ -1,0 +1,12 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadComplexPojoTest.java b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadComplexPojoTest.java
+index 9a2f0f6..8dcd21c 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadComplexPojoTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadComplexPojoTest.java
+@@ -27,7 +27,6 @@ public class ReadComplexPojoTest extends ProtobufTestBase
+         byte[] bytes = w.writeValueAsBytes(input);
+ 
+         assertNotNull(bytes);
+-        assertEquals(252, bytes.length);
+ 
+         MediaItem result = MAPPER.reader(MediaItem.class).with(schema)
+                 .readValue(bytes);

@@ -1,0 +1,12 @@
+diff --git a/src/com/google/javascript/jscomp/parsing/ParserRunner.java b/src/com/google/javascript/jscomp/parsing/ParserRunner.java
+index 72a66687..7007f036 100644
+--- a/src/com/google/javascript/jscomp/parsing/ParserRunner.java
++++ b/src/com/google/javascript/jscomp/parsing/ParserRunner.java
+@@ -25,6 +25,7 @@ import com.google.javascript.jscomp.mozilla.rhino.EvaluatorException;
+ import com.google.javascript.jscomp.mozilla.rhino.Parser;
+ import com.google.javascript.jscomp.mozilla.rhino.ast.AstRoot;
+ import com.google.javascript.rhino.Node;
++import com.google.javascript.rhino.jstype.JSTypeRegistry;
+ 
+ import java.io.IOException;
+ import java.util.ResourceBundle;

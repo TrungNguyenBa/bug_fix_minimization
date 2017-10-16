@@ -1,0 +1,18 @@
+165389ca : Fixed compilation error; fixed cigarenergy rotation problem; documentation; Eigen specific shotcuts
+:100755 100755 638ad509... de3f74fd... M	include/faunus/analysis.h
+:100644 100644 f019657a... d95c43d4... M	include/faunus/energy.h
+:100644 100644 ba0d075a... 664baa8a... M	include/faunus/geometry.h
+:100644 100644 fe6a0b54... 6373f7d5... M	include/faunus/io.h
+:100644 100644 e9d23dd1... a3770d7f... M	include/faunus/move.h
+:100644 100644 4ec621da... 11d840c4... M	include/faunus/point.h
+:100644 100644 907e78e2... 0a583582... M	include/faunus/potentials.h
+:100644 100644 2f74056e... de1938d6... M	include/faunus/space.h
+:100644 100644 7e3bc377... f27960b2... M	include/faunus/spherocylinder.h
+:100755 100755 6744a6d3... b67879a8... M	src/analysis.cpp
+:100644 100644 621de416... 334618d1... M	src/examples/manybody.cpp
+:100644 100644 fbd2aa2c... 8842d2df... M	src/examples/polymers.cpp
+:100644 100644 2385c389... 9a28a1eb... M	src/examples/water2.cpp
+:100644 100644 563f05d8... 9dc0b037... M	src/examples/water2.test
+:100644 100644 90b067b2... 9a912d22... M	src/geometry.cpp
+:100644 100644 5ff8c8cf... 34914f71... M	src/io.cpp
+:100644 100644 c79eb9e0... 9120f85c... M	xcode/faunus/faunus.xcodeproj/project.pbxproj

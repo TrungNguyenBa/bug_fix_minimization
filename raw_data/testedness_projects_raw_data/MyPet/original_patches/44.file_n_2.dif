@@ -1,0 +1,17 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 2c9d5085..7fe93911 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -245,11 +245,7 @@ public class EntityListener implements Listener {
+         if (PvPChecker.USE_PlayerDamageEntityEvent) {
+             Entity damager = event.getDamager();
+             if (damager instanceof Projectile) {
+-                if (((Projectile) damager).getShooter() instanceof Entity) {
+-                    damager = (Entity) ((Projectile) damager).getShooter();
+-                } else {
+-                    return;
+-                }
++                damager = (Entity) ((Projectile) damager).getShooter();
+             }
+             if (damager instanceof CraftMyPet && event.getEntity() instanceof LivingEntity) {
+                 MyPet myPet = ((CraftMyPet) damager).getMyPet();

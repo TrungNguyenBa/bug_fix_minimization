@@ -1,0 +1,14 @@
+diff --git a/src/test/java/pl/project13/maven/git/NativeAndJGitProviderTest.java b/src/test/java/pl/project13/maven/git/NativeAndJGitProviderTest.java
+index 278fcf7..6cf2c23 100644
+--- a/src/test/java/pl/project13/maven/git/NativeAndJGitProviderTest.java
++++ b/src/test/java/pl/project13/maven/git/NativeAndJGitProviderTest.java
+@@ -135,7 +135,8 @@ public class NativeAndJGitProviderTest extends GitIntegrationTest
+     private Properties createCopy(Properties orig)
+     {
+         Properties p = new Properties();
+-        for (String key : orig.stringPropertyNames()) {
++        for (Object o : orig.keySet()) {
++            String key = o.toString();
+             p.setProperty(key, orig.getProperty(key));
+         }
+ 

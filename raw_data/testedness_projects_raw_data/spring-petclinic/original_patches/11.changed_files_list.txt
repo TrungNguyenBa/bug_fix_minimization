@@ -1,0 +1,9 @@
+8b62561 : #87 Petclinic should be compatible with Java 7 for the time being
+:100644 100644 e15e6ab... 201f6dd... M	pom.xml
+:100644 100644 840a965... ca7c97e... M	src/main/java/org/springframework/samples/petclinic/model/Owner.java
+:100644 100644 4bc2b92... 536fe07... M	src/main/java/org/springframework/samples/petclinic/model/Pet.java
+:100644 100644 c58bd85... 61c5187... M	src/main/java/org/springframework/samples/petclinic/model/Vet.java
+:100644 100644 e8f44a7... aaf96b6... M	src/main/java/org/springframework/samples/petclinic/model/Vets.java
+:100644 100644 31839ad... 63aec2a... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcOwnerRepositoryImpl.java
+:100644 100644 e068791... e3c02fc... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPetRepositoryImpl.java
+:100644 100644 f6e91cf... cf6ec3e... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVetRepositoryImpl.java

@@ -1,0 +1,13 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
+index 60c7d6f..a1abd81 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
+@@ -28,7 +28,7 @@ public class WriteComplexPojoTest extends ProtobufTestBase
+ 
+         assertNotNull(bytes);
+ 
+-        assertEquals(252, bytes.length);
++        assertEquals(246, bytes.length);
+         // !!! TODO: verify
+     }
+ }

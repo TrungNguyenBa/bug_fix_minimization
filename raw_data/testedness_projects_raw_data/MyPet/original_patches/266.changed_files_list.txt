@@ -1,0 +1,3 @@
+9fe521b5 : fixed bug that lets player switch to not available behavior modes fixes #119
+:100644 100644 51e488e8... 44d6b149... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java
+:100644 100644 5017c623... 6ec31e0f... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Behavior.java

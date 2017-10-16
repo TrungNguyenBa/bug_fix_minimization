@@ -1,0 +1,14 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index 75d47dfc7..97db5b991 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,9 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="3.0" date="TBD" description="TBD">
+-      <action dev="erans" type="fix" issue="MATH-728" due-to="Bruce A. Johnson">
+-        Fixed "offset by one" bug in "BOBYQAOptimizer".
+-      </action>
+       <action dev="luc" type="fix" issue="MATH-727">
+         Check first step size in embedded Runge-Kutta integrators, and truncate it if needed.
+       </action>

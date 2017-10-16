@@ -1,0 +1,13 @@
+diff --git a/include/faunus/species.h b/include/faunus/species.h
+index 5108c93d..466f010c 100644
+--- a/include/faunus/species.h
++++ b/include/faunus/species.h
+@@ -35,8 +35,6 @@ namespace Faunus {
+            pdis,       //!< Distance to which attraction is flat (typicaly end of repulsion) on attrative patch on PatchySpherocylinder [Å]
+            pswitch,    //!< Distance on which attraction switches to zero on PatchySpherocylinder [Å]
+            chiral_angle,//!< Angle of chirality (rotation of patch) on PatchySpherocylinder [degrees]
+-           pcangl,
+-           pcanglsw,
+            rcutwca,
+            rcut;
+     Point mu;

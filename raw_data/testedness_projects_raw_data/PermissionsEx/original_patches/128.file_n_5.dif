@@ -1,0 +1,18 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+index 047bd88..43990cb 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+@@ -162,12 +162,11 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public boolean isVirtual() {
+-		return virtual;
++		return this.config.isConfigurationSection(this.nodePath);
+ 	}
+ 
+ 	@Override
+ 	public void save() {
+-		this.config.set(nodePath, node);
+ 		try {
+ 			this.config.save();
+ 		} catch (IOException e) {

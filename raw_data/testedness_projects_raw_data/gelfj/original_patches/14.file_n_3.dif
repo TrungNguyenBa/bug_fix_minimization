@@ -1,0 +1,27 @@
+diff --git a/src/main/java/org/graylog2/log/GelfAppender.java b/src/main/java/org/graylog2/log/GelfAppender.java
+index 4c0f582..ec5e898 100644
+--- a/src/main/java/org/graylog2/log/GelfAppender.java
++++ b/src/main/java/org/graylog2/log/GelfAppender.java
+@@ -32,7 +32,7 @@ public class GelfAppender extends AppenderSkeleton implements GelfMessageProvide
+     private String amqpURI;
+     private String amqpExchangeName;
+     private String amqpRoutingKey;
+-    private int amqpMaxRetries = 0;
++    private Integer amqpMaxRetries;
+     private static String originHost;
+     private int graylogPort = 12201;
+     private String facility;
+@@ -91,11 +91,11 @@ public class GelfAppender extends AppenderSkeleton implements GelfMessageProvide
+         this.amqpRoutingKey = amqpRoutingKey;
+     }
+ 
+-    public int getAmqpMaxRetries() {
++    public Integer getAmqpMaxRetries() {
+         return amqpMaxRetries;
+     }
+ 
+-    public void setAmqpMaxRetries(int amqpMaxRetries) {
++    public void setAmqpMaxRetries(Integer amqpMaxRetries) {
+         this.amqpMaxRetries = amqpMaxRetries;
+     }
+ 

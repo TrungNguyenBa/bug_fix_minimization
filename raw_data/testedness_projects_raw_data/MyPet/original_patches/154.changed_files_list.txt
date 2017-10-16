@@ -1,0 +1,2 @@
+3a626ec9 : it doesn't matter how many whitespaces are between the infos
+:100644 100644 5ae1661b... 82feab6d... M	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java

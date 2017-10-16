@@ -1,0 +1,93 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+index 739a1b5..3d5b8ca 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+@@ -586,7 +586,7 @@ public class ProtobufParser extends ParserMinimalBase
+             return (_currToken = JsonToken.START_OBJECT);
+ 
+         case STATE_ROOT_KEY:
+-            // end-of-input?
++            // end-of-the-line?
+             if (_inputPtr >= _inputEnd) {
+                 if (!loadMore()) {
+                     close();
+@@ -612,7 +612,7 @@ public class ProtobufParser extends ParserMinimalBase
+             return _handleNestedKey(_decodeVInt());
+ 
+         case STATE_ARRAY_START:
+-            _parsingContext = _parsingContext.createChildArrayContext(_currentField);            
++            _parsingContext = _parsingContext.createChildArrayContext();            
+             _state = STATE_ARRAY_VALUE_FIRST;
+             return (_currToken = JsonToken.START_ARRAY);
+ 
+@@ -629,7 +629,7 @@ public class ProtobufParser extends ParserMinimalBase
+                 }
+             }
+             _currentEndOffset = newEnd; 
+-            _parsingContext = _parsingContext.createChildArrayContext(_currentField, newEnd);            
++            _parsingContext = _parsingContext.createChildArrayContext(newEnd);            
+             _state = STATE_ARRAY_VALUE_PACKED;
+             return (_currToken = JsonToken.START_ARRAY);
+ 
+@@ -722,16 +722,14 @@ public class ProtobufParser extends ParserMinimalBase
+             _reportErrorF("Decoding: current inputPtr (%d) exceeds end offset (%d) (for message of type %s): corrupt content?",
+                     _inputPtr, _currentEndOffset, _currentMessage.getName());
+         }
+-        ProtobufReadContext parentCtxt = _parsingContext.getParent();
+-        _parsingContext = parentCtxt;
+-        _currentMessage = parentCtxt.getMessageType();
+-        _currentEndOffset = parentCtxt.getEndOffset();
++        _parsingContext = _parsingContext.getParent();
++        _currentMessage = _parsingContext.getMessageType();
++        _currentEndOffset = _parsingContext.getEndOffset();
+         if (_parsingContext.inRoot()) {
+             _state =  STATE_ROOT_KEY;
+         } else if (_parsingContext.inArray()) {
+-            _currentField = parentCtxt.getField();
+             // !!! TODO: distinguish between packed, unpacked!!!
+-            _state = _currentField.packed ? STATE_ARRAY_VALUE_PACKED : STATE_ARRAY_VALUE_OTHER;
++            _state = STATE_ARRAY_VALUE_OTHER;
+         } else {
+             _state = STATE_NESTED_KEY;
+         }
+@@ -948,16 +946,13 @@ public class ProtobufParser extends ParserMinimalBase
+         }
+         
+         while (true) {
+-            _skipUnknownValue(wireType);
+-            if (_state == STATE_NESTED_KEY) {
+-                if (_checkEnd()) {
+-                    return (_currToken = JsonToken.END_OBJECT);
+-                }
+-                if (_inputPtr >= _inputEnd) {
++            _skipUnknownAtRoot2(wireType);
++
++            // end-of-the-line?
++            if (_inputPtr >= _inputEnd) {
++                if (_state == STATE_NESTED_KEY) {
+                     loadMoreGuaranteed();
+-                }
+-            } else if (_inputPtr >= _inputEnd) {
+-                if (!loadMore()) {
++                } else if (!loadMore()) {
+                     close();
+                     return (_currToken = JsonToken.END_OBJECT);
+                 }
+@@ -968,7 +963,7 @@ public class ProtobufParser extends ParserMinimalBase
+             // Note: may be null; if so, value needs to be skipped
+             _currentField = _currentMessage.field(tag >> 3);
+             if (_currentField == null) {
+-                _skipUnknownValue(wireType);
++                _skipUnknownAtRoot2(wireType);
+                 continue;
+             }
+             _parsingContext.setCurrentName(_currentField.name);
+@@ -981,7 +976,7 @@ public class ProtobufParser extends ParserMinimalBase
+         }
+     }
+         
+-    private void _skipUnknownValue(int wireType) throws IOException
++    private void _skipUnknownAtRoot2(int wireType) throws IOException
+     {
+         switch (wireType) {
+         case WireType.VINT:

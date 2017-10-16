@@ -1,0 +1,24 @@
+diff --git a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+index dec50f5..5b16ef7 100755
+--- a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
++++ b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+@@ -389,8 +389,8 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+             if(springLoadedJar != null) {
+                 fgr.setReloadingAgent(springLoadedJar);
+             }else{
+-                getLog().warn("Grails Reloading: org.springframework:springloaded:"+SPRING_LOADED_VERSION+" not found");
+-                getLog().error("Grails Reloading: not enabled");
++                getLog().warn("Grails Start with Reloading: org.springsource.springloaded:springloaded-core"+SPRING_LOADED_VERSION+" not found");
++                getLog().error("Grails Start with Reloading: not enabled");
+             }
+         }
+         fgr.setDebug(forkDebug);
+@@ -452,7 +452,7 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+                 " from " + remoteRepos);
+ 
+         ArtifactResult result;
+-        File file;
++        File file = null;
+         try
+         {
+             result = repoSystem.resolveArtifact( repoSession, request );

@@ -1,0 +1,28 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+index 79dcd88..1a7cbde 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+@@ -216,13 +216,18 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 			worldName = "";
+ 		}
+ 
+-		try (SQLConnection conn = backend.getSQL()) {
+-			conn.prepAndBind("entity.options.delete", this.getIdentifier(), option, this.type.ordinal(), worldName).execute();
+-			if (value != null && !value.isEmpty()) {
++		if (value == null || value.isEmpty()) {
++			try (SQLConnection conn = backend.getSQL()) {
++				conn.prepAndBind("entity.options.delete", this.getIdentifier(), option, this.type.ordinal(), worldName).execute();
++			} catch (SQLException | IOException e) {
++				throw new RuntimeException(e);
++			}
++		} else {
++			try (SQLConnection conn = backend.getSQL()) {
+ 				conn.prepAndBind("entity.options.add", getIdentifier(), this.type.ordinal(), option, worldName, value).execute();
++			} catch (SQLException | IOException e) {
++				throw new RuntimeException(e);
+ 			}
+-		} catch (SQLException | IOException e) {
+-			throw new RuntimeException(e);
+ 		}
+ 	}
+ 

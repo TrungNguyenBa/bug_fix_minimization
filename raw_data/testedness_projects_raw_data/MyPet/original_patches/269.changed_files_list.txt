@@ -1,0 +1,2 @@
+b70ee371 : forgot about calling super.setPathfinder() Fixes #110
+:100644 100644 54eaf75b... db38add2... M	src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java

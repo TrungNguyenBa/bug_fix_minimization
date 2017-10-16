@@ -1,0 +1,11 @@
+diff --git a/src/main/resources/logback.xml b/src/main/resources/logback.xml
+index 830ef37..751726a 100644
+--- a/src/main/resources/logback.xml
++++ b/src/main/resources/logback.xml
+@@ -1,6 +1,4 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!DOCTYPE xml>
+-
+ <configuration scan="true" scanPeriod="30 seconds">
+ 
+     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">

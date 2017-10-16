@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/attack/RangedAttack.java b/src/main/java/de/Keyle/MyPet/entity/ai/attack/RangedAttack.java
+index 5ab891db..ccd27012 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/attack/RangedAttack.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/attack/RangedAttack.java
+@@ -27,7 +27,6 @@ import de.Keyle.MyPet.skill.skills.Skills;
+ import de.Keyle.MyPet.skill.skills.implementation.Ranged;
+ import de.Keyle.MyPet.skill.skills.implementation.ranged.*;
+ import de.Keyle.MyPet.skill.skills.info.RangedInfo.Projectiles;
+-import net.minecraft.server.v1_8_R2.EntityArmorStand;
+ import net.minecraft.server.v1_8_R2.EntityArrow;
+ import net.minecraft.server.v1_8_R2.EntityLiving;
+ import net.minecraft.server.v1_8_R2.MathHelper;
+@@ -63,9 +62,6 @@ public class RangedAttack extends AIGoal {
+         if (goalTarget == null || !goalTarget.isAlive() || !entityMyPet.canMove()) {
+             return false;
+         }
+-        if (goalTarget instanceof EntityArmorStand) {
+-            return false;
+-        }
+         double meleeDamage = myPet.getDamage();
+         if (meleeDamage > 0 && this.entityMyPet.f(goalTarget.locX, goalTarget.getBoundingBox().b, goalTarget.locZ) < 4) {
+             if (meleeDamage > rangedSkill.getDamage()) {

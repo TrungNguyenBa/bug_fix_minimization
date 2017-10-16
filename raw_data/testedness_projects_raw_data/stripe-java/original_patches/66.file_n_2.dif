@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/stripe/model/Customer.java b/src/main/java/com/stripe/model/Customer.java
+index 7cdddb9..d282cc1 100644
+--- a/src/main/java/com/stripe/model/Customer.java
++++ b/src/main/java/com/stripe/model/Customer.java
+@@ -169,7 +169,7 @@ public class Customer extends APIResource {
+ 		return delete(null);
+ 	}
+ 
+-	public Card createCard(Object params) throws AuthenticationException,
++	public Card createCard(Map<String, Object> params) throws AuthenticationException,
+ 			InvalidRequestException, APIConnectionException, CardException,
+ 			APIException {
+ 		Map<String, Object> postParams = new HashMap<String, Object>();

@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index f79e5f43..db0a5f98 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -580,7 +580,9 @@ public abstract class MyPet implements IMyPet, NBTStorage {
+         }
+         skills.reset();
+         this.skillTree = skillTree;
+-        getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(this, 1, experience.getLevel(), true));
++        for (int i = 1; i <= experience.getLevel(); i++) {
++            getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(this, i, true));
++        }
+         return true;
+     }
+ 

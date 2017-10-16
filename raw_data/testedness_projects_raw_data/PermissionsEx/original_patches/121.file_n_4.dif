@@ -1,0 +1,32 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java b/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
+index 2da8bd0..11e418f 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
++++ b/src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
+@@ -19,7 +19,7 @@ public class BackendDataTransfer {
+ 
+ 	private static void transferBase(PermissionsData from, PermissionsData to) {
+ 		for (Map.Entry<String, List<String>> entry : from.getPermissionsMap().entrySet()) {
+-			to.setPermissions(entry.getValue(), entry.getKey());
++			to.setPermissions(new ArrayList<>(entry.getValue()), entry.getKey());
+ 		}
+ 
+ 		for (Map.Entry<String, Map<String, String>> entry : from.getOptionsMap().entrySet()) {
+@@ -28,7 +28,8 @@ public class BackendDataTransfer {
+ 			}
+ 		}
+ 
+-		to.setParents(from.getParents(null), null);
++		List<String> globalParents = from.getParents(null);
++		to.setParents(globalParents == null ? null : new ArrayList<>(globalParents), null);
+ 		to.setPrefix(from.getPrefix(null), null);
+ 		to.setSuffix(from.getSuffix(null), null);
+ 		for (String world : from.getWorlds()) {
+@@ -38,7 +39,7 @@ public class BackendDataTransfer {
+ 			if (groups == null || groups.isEmpty()) {
+ 				continue;
+ 			}
+-			to.setParents(groups, world);
++			to.setParents(new ArrayList<>(groups), world);
+ 		}
+ 	}
+ 

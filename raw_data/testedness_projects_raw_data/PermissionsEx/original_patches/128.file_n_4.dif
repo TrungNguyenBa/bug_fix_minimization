@@ -1,0 +1,14 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java b/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+index 4b0c353..c57f29e 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+@@ -4,7 +4,9 @@ import org.bukkit.configuration.InvalidConfigurationException;
+ import org.bukkit.configuration.file.YamlConfiguration;
+ 
+ import java.io.File;
++import java.io.FileNotFoundException;
+ import java.io.IOException;
++import java.util.logging.Logger;
+ 
+ public class FileConfig extends YamlConfiguration {
+ 	private final File file;

@@ -1,0 +1,2 @@
+b427f265 : do not pickup itemstacks with an amount of 0 set the amount of completely picked up itemstacks to 0 fixes #192
+:100644 100644 2e6d9d0a... b77493e2... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Pickup.java

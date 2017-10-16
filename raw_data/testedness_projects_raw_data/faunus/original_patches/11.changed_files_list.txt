@@ -1,0 +1,4 @@
+70046052 : corrections in penalty function and penalty energy
+:100755 100755 bb83ce58... 4761e074... M	include/faunus/analysis.h
+:100644 100644 377c4189... 3f84e2f2... M	include/faunus/energy.h
+:100644 100644 1515d314... c1d839d2... M	include/faunus/geometry.h

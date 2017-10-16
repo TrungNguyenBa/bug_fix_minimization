@@ -1,0 +1,3 @@
+4e9f9bb : Fix parsing prob with strings; now handles strings ok
+:100644 100644 915ab00... bbf8347... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 9881f0b... 81bbb9d... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java

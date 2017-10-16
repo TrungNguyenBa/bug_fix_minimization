@@ -1,0 +1,4 @@
+e2b530a : fix regression around how plugin names are identified
+:100644 100644 6105421... 7580c7e... M	pom.xml
+:100644 100644 f556176... bf7a59f... M	src/main/java/org/grails/maven/plugin/tools/DefaultGrailsServices.java
+:000000 100644 0000000... 10d3177... A	src/test/groovy/org/grails/maven/plugin/tools/DefaultGrailsServicesSpec.groovy

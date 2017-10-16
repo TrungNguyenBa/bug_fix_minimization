@@ -1,0 +1,14 @@
+diff --git a/readme.md b/readme.md
+index fb46ffa..8b956b5 100644
+--- a/readme.md
++++ b/readme.md
+@@ -46,9 +46,6 @@ File -> Import -> Maven -> Existing Maven project
+ 
+ <table>
+   <tr>
+-    <th width="300px">Java Config</th><th width="300px"></th>
+-  </tr>
+-  <tr>
+     <td>Java Config branch</td>
+     <td>
+       Petclinic uses XML configuration by default. In case you'd like to use Java Config instead, there is a Java Config branch available <a href="https://github.com/arey/spring-petclinic/tree/javaconfig">here</a>. Thanks to Antoine Rey for his contribution.     

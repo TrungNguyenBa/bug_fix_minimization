@@ -1,0 +1,15 @@
+diff --git a/src/main/java/com/allogy/coffeecan/vocabulary/ADLActivities.java b/src/main/java/com/allogy/coffeecan/vocabulary/ADLActivities.java
+index cabd92b..6f63523 100644
+--- a/src/main/java/com/allogy/coffeecan/vocabulary/ADLActivities.java
++++ b/src/main/java/com/allogy/coffeecan/vocabulary/ADLActivities.java
+@@ -19,4 +19,10 @@ package com.allogy.coffeecan.vocabulary;
+ public class ADLActivities
+ {
+     public static final String ASSESSMENT_ID = "http://adlnet.gov/expapi/activities/assessment";
++
++    /**
++     * Use {@link ADLActivities.ASSESSMENT_ID}
++     */
++    @Deprecated
++    public static final String AssessmentID = ASSESSMENT_ID;
+ }

@@ -1,0 +1,2 @@
+69f818c : add properties to BankAccount
+:100644 100644 e996fc3... c74a1fd... M	src/main/java/com/stripe/model/BankAccount.java

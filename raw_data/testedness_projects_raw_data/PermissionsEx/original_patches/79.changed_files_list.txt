@@ -1,0 +1,2 @@
+fe61eec : Use concurrent maps for caching of user and group objects
+:100644 100644 f079fe5... 56e4b8a... M	src/main/java/ru/tehkode/permissions/PermissionManager.java

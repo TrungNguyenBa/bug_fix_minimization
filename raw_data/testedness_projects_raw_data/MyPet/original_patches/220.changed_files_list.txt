@@ -1,0 +1,13 @@
+3503f350 : players need to sneak for every optical change now
+:100644 100644 d9a3b23c... 7460bb6b... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+:100644 100644 5aa0ee6d... 129cdbb2... M	src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
+:100644 100644 ecb94e15... 4e3570ec... M	src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+:100644 100644 5256fd65... 2a329293... M	src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+:100644 100644 48a88bdc... 2b31d59b... M	src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+:100644 100644 26d908bd... 01b253df... M	src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+:100644 100644 e353f2ba... 05107080... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 e4536453... a05984bb... M	src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+:100644 100644 18b0a129... f1e6c1ec... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 d799611c... af1a62b1... M	src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+:100644 100644 332e2174... bbb338bf... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+:100644 100644 775dfb79... beac862e... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java

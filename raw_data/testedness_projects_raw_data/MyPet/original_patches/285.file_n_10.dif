@@ -1,0 +1,25 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java b/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+index 2154aef1..d03d8be1 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+@@ -91,9 +91,9 @@ public class EntityMyOcelot extends EntityMyPet
+         ((MyOcelot) myPet).isSitting = flag;
+     }
+ 
+-    public Type getCatType()
++    public int getCatType()
+     {
+-        return ((MyOcelot) myPet).catType;
++        return this.datawatcher.getByte(18);
+     }
+ 
+     public void setCatType(int value)
+@@ -104,7 +104,7 @@ public class EntityMyOcelot extends EntityMyPet
+ 
+     public boolean isBaby()
+     {
+-        return ((MyOcelot) myPet).isBaby;
++        return this.datawatcher.getInt(12) < 0;
+     }
+ 
+     @SuppressWarnings("boxing")

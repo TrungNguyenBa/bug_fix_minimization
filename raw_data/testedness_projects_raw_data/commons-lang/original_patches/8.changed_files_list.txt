@@ -1,0 +1,4 @@
+d75fe46b : LANG-1193 ordinalIndexOf("abc", "ab", 1) gives incorrect answer of -1 (correct answer should be 0) Revert LANG-1077
+:100644 100644 ca3408c9... 7c197c4a... M	src/changes/changes.xml
+:100644 100644 1b58b959... c7583c96... M	src/main/java/org/apache/commons/lang3/StringUtils.java
+:100644 100644 8750de3f... f509290c... M	src/test/java/org/apache/commons/lang3/StringUtilsEqualsIndexOfTest.java

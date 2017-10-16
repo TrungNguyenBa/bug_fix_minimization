@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java b/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+index 64b8be6b..8f0c7e2a 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+@@ -51,7 +51,7 @@ public class EntityMySnowman extends EntityMyPet {
+ 
+         for (int x = minX; x < maxX; x++) {
+             for (int z = minZ; z < maxZ; z++) {
+-                if (bukkitWorld.isChunkLoaded(x, z)) {
++                if (bukkitWorld.getChunkAt(x, z).isLoaded()) {
+                     for (int y = minY - 1; y < maxY; y++) {
+                         Block block = world.getType(x, y, z);
+ 

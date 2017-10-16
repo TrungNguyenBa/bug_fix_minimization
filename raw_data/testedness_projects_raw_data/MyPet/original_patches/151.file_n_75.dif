@@ -1,0 +1,37 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java b/src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java
+index bf336d00..6464e535 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java
+@@ -29,22 +29,27 @@ import org.bukkit.ChatColor;
+ import static org.bukkit.Material.SPIDER_EYE;
+ 
+ @MyPetInfo(food = {SPIDER_EYE})
+-public class MyBat extends MyPet {
+-    public MyBat(MyPetPlayer petOwner) {
++public class MyBat extends MyPet
++{
++    public MyBat(MyPetPlayer petOwner)
++    {
+         super(petOwner);
+     }
+ 
+-    public double getYSpawnOffset() {
++    public double getYSpawnOffset()
++    {
+         return 1;
+     }
+ 
+     @Override
+-    public MyPetType getPetType() {
++    public MyPetType getPetType()
++    {
+         return MyPetType.Bat;
+     }
+ 
+     @Override
+-    public String toString() {
++    public String toString()
++    {
+         return "MyBat{owner=" + getOwner().getName() + ", name=" + ChatColor.stripColor(petName) + ", exp=" + experience.getExp() + "/" + experience.getRequiredExp() + ", lv=" + experience.getLevel() + ", status=" + status.name() + ", skilltree=" + (skillTree != null ? skillTree.getName() : "-") + ", worldgroup=" + worldGroup + "}";
+     }
+ }

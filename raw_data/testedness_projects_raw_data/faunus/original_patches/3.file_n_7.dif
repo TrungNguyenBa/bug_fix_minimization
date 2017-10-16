@@ -1,0 +1,10 @@
+diff --git a/src/examples/slitpolymer.state b/src/examples/slitpolymer.state
+index 797201b9..457d95ad 100644
+--- a/src/examples/slitpolymer.state
++++ b/src/examples/slitpolymer.state
+@@ -1,4 +1,4 @@
+-300 300 154
++13860000
+ 10
+ 30.43738568340325
+ 119.7085437395421

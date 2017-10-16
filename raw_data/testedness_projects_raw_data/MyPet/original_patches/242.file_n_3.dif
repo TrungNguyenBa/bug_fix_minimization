@@ -1,0 +1,25 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/MyPetMonsterExperience.java b/src/main/java/de/Keyle/MyPet/skill/MyPetMonsterExperience.java
+index ca84f07e..b291d6d4 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/MyPetMonsterExperience.java
++++ b/src/main/java/de/Keyle/MyPet/skill/MyPetMonsterExperience.java
+@@ -28,7 +28,6 @@ import java.util.Map;
+ public class MyPetMonsterExperience
+ {
+     public static final Map<EntityType, MyPetMonsterExperience> mobExp = new HashMap<EntityType, MyPetMonsterExperience>();
+-    private static MyPetMonsterExperience unknown = new MyPetMonsterExperience(0., EntityType.UNKNOWN);
+ 
+     static
+     {
+@@ -150,10 +149,6 @@ public class MyPetMonsterExperience
+ 
+     public static MyPetMonsterExperience getMonsterExperience(EntityType type)
+     {
+-        if (mobExp.containsKey(type))
+-        {
+-            return mobExp.get(type);
+-        }
+-        return unknown;
++        return mobExp.get(type);
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,4 @@
+4fd8a5f : Make unit test pass in detached state.
+:100644 100644 205be38... 82eb8ad... M	src/main/java/pl/project13/maven/git/NativeGitProvider.java
+:100644 100644 3c2dbfd... 3894305... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+:100644 100644 6cf2c23... 278fcf7... M	src/test/java/pl/project13/maven/git/NativeAndJGitProviderTest.java

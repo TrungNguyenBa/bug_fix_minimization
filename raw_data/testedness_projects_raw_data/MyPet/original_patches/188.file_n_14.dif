@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+index 4892e00e..db0bb4a5 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+@@ -87,7 +87,7 @@ public class EntityMyPigZombie extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.zombiepig.zpig";
++        return !playIdleSound() ? null : "mob.zombiepig.zpig";
+     }
+ 
+     public ItemStack getPetEquipment(int slot)

@@ -1,0 +1,2 @@
+053b2ae : Make Coupon reedemBy be a Long, not an Integer (fixes #54)
+:100644 100644 75cf4c7... 7f40623... M	src/main/java/com/stripe/model/Coupon.java

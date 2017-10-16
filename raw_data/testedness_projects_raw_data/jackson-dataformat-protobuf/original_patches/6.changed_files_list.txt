@@ -1,0 +1,3 @@
+7778907 : slightly more efficient field lookup
+:100644 100644 1fb9587... 5b92fd9... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 33d1c6f... 8d7d7b6... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java

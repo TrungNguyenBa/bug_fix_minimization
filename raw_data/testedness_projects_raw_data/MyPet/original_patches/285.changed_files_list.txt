@@ -1,0 +1,17 @@
+f3858b83 : do not use the datawatcher to get pet propertie values
+:100644 100644 b48564e1... 22d4814e... M	src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+:100644 100644 f245487b... 31775992... M	src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+:100644 100644 3119909f... 5844a09b... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+:100644 100644 b707227e... 4b5734ed... M	src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
+:100644 100644 5b87c07f... 913d9cd2... M	src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
+:100644 100644 4fd02195... e3a5568d... M	src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+:100644 100644 3f2ecc0f... eaf5a08c... M	src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+:100644 100644 5e6c0c96... 7a6aab60... M	src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+:100644 100644 d03d8be1... 2154aef1... M	src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+:100644 100644 d05ea960... d577cf59... M	src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+:100644 100644 12fb9c4f... e74814a1... M	src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+:100644 100644 42077e37... 434e047d... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 714e2846... 3c4cc222... M	src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+:100644 100644 e2a3c820... e218410e... M	src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+:100644 100644 cad3997e... 544f757b... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+:100644 100644 c19e4a83... 9eb5f1a2... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java

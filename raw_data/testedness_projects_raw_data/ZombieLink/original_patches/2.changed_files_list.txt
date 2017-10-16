@@ -1,0 +1,8 @@
+e41e40e : Fix TypeToken usage on JsonDeserializer (closes #23)
+:100644 100644 d2b8506... f8b9cd9... M	zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationService.java
+:100644 100644 59ab684... 41f65b0... M	zombielink/src/main/java/com/lonepulse/zombielink/response/JsonDeserializer.java
+:100644 100644 6c35601... 18a08af... M	zombielink/src/main/java/com/lonepulse/zombielink/response/XmlDeserializer.java
+:100644 100644 5b9597a... ce1e01f... M	zombielink/src/test/java/com/lonepulse/zombielink/processor/DeserializerEndpoint.java
+:100644 100644 0fbb352... c96e7a3... M	zombielink/src/test/java/com/lonepulse/zombielink/processor/DeserializerEndpointTest.java
+:100644 100644 0067fdf... 69f75d8... M	zombielink/src/test/java/com/lonepulse/zombielink/processor/SerializerEndpoint.java
+:100644 100644 c93df98... ed487fd... M	zombielink/src/test/java/com/lonepulse/zombielink/processor/SerializerEndpointTest.java

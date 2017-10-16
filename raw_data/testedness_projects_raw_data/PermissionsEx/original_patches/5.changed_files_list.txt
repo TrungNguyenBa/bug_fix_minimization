@@ -1,0 +1,32 @@
+ada5111 : Rename subject data classes for brevity
+:100644 100644 36fc14c... ee3023b... M	permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissible.java
+:100644 100644 d5885a1... d431904... M	permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissionAttachment.java
+:100644 100644 1590d01... bcec9b4... M	permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java
+:100644 100644 7b8399c... a00784e... M	permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionsExPlugin.java
+:100644 100644 dc4e7a5... 207daae... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+:100644 100644 c4c2704... a661359... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/AbstractDataStore.java
+:100644 100644 ea507cc... c2e3288... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/ConversionUtils.java
+:100644 100644 028161c... db78c3c... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/DataStore.java
+:100644 100644 1020290... e81fec0... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+:100644 100644 0785640... ef38584... R087	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileOptionSubjectData.java	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileSubjectData.java
+:100644 100644 bcab788... 3e6a83d... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/SchemaMigrations.java
+:100644 100644 926c692... 3ee73ab... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryDataStore.java
+:100644 100644 1946ce5... d8a3409... R088	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryOptionSubjectData.java	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/memory/MemorySubjectData.java
+:100644 100644 b0aff53... 8e8baac... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java
+:100644 100644 7ed9691... 6e44529... R064	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlOptionSubjectData.java	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlSubjectData.java
+:100644 100644 b0510f1... ced9047... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/InfoCommand.java
+:100644 100644 ce408ef... 2954dca... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
+:100644 100644 e6f8f44... 076e6d0... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+:100644 100644 71999a7... 14dbe83... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
+:100644 100644 51fb284... e72f1f1... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsExExecutor.java
+:100644 100644 7e8f5f2... 1825ef3... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/RankingCommands.java
+:100644 100644 3e27bb3... 6f20b06... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/CalculatedSubject.java
+:100644 100644 3fdf757... 969841e... R054	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ImmutableSubjectData.java
+:100644 100644 e7c270f... 05c7371... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+:100644 100644 27514b9... 3a32848... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java
+:100644 100644 a3b747e... 62708f6... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/FixedRankLadder.java
+:100644 100644 4ac683e... 3985f54... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/RankLadder.java
+:100644 100644 251b7dc... a74611e... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/util/PEXProfileCache.java
+:100644 100644 c30376b... 6c85e58... M	permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
+:100644 100644 4bde0de... 0f37f5d... M	permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+:100644 100644 5fde3bb... 23d1e7f... M	permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java

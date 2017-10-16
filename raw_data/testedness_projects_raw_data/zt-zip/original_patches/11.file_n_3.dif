@@ -1,0 +1,12 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipEntryCallback.java b/src/main/java/org/zeroturnaround/zip/ZipEntryCallback.java
+index 82b4879..cbfc9ea 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipEntryCallback.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipEntryCallback.java
+@@ -33,7 +33,6 @@ public interface ZipEntryCallback {
+    * 
+    * @param in contents of the ZIP entry.
+    * @param zipEntry ZIP entry.
+-   * @throws java.io.IOException when any processing exception occurs
+    */
+   void process(InputStream in, ZipEntry zipEntry) throws IOException;
+   

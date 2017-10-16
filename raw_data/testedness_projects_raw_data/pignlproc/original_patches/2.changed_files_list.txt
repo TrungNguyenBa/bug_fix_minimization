@@ -1,0 +1,2 @@
+d98a866 : compatibility fix for Pig version 0.10.0
+:100644 100644 3babb83... b8ab4f8... M	src/main/java/pignlproc/storage/ParsingWikipediaLoader.java

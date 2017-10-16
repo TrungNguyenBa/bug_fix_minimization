@@ -1,0 +1,2 @@
+0a03a05 : moved to AspectJ 1.8.2 and Dandelion 0.10.1
+:100644 100644 4cece52... 86181d8... M	pom.xml

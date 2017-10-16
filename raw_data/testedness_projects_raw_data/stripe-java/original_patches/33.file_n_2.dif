@@ -1,0 +1,24 @@
+diff --git a/src/main/java/com/stripe/model/Dispute.java b/src/main/java/com/stripe/model/Dispute.java
+index b260c1e..4a03c50 100644
+--- a/src/main/java/com/stripe/model/Dispute.java
++++ b/src/main/java/com/stripe/model/Dispute.java
+@@ -13,16 +13,16 @@ public class Dispute extends StripeObject {
+ 	String reason;
+ 	String status;
+ 
+-	/** 8/2014: Legacy (now use balanceTransactions) -- https://stripe.com/docs/upgrades#2014-08-20 */
++	/** 1/2014: Legacy (now use balanceTransactions) -- https://stripe.com/docs/upgrades#2014-08-20 */
+ 	String balanceTransaction;
+ 	List<BalanceTransaction> balanceTransactions;
+ 
+-	/** 12/2014: Legacy (now use evidenceSubObject) -- https://stripe.com/docs/upgrades */
++	/** 1/2014: Legacy (now use evidenceSubObject) -- https://stripe.com/docs/upgrades */
+ 	String evidence;
+ 	EvidenceSubObject evidenceSubObject;
+ 
+ 	EvidenceDetails evidenceDetails;
+-	/** 12/2014: Legacy (now use evidenceDetails.dueBy) -- https://stripe.com/docs/upgrades */
++	/** 1/2014: Legacy (now use evidenceDetails.dueBy) -- https://stripe.com/docs/upgrades */
+ 	Long evidenceDueBy;
+ 
+ 	Boolean isChargeRefundable;

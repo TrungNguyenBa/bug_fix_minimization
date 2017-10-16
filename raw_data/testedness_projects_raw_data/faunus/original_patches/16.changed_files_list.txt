@@ -1,0 +1,4 @@
+5178d598 : Upgrade cmake requirement to match mpi; iterator header fix for linux; update readme
+:100644 100644 a1b3a47e... a5bf2747... M	CMakeLists.txt
+:100644 100644 baad7f78... 47740027... M	README.md
+:100644 100644 a6f3fbd9... b8da7075... M	include/faunus/common.h

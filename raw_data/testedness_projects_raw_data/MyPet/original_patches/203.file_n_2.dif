@@ -1,0 +1,27 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/EquipmentSlot.java b/src/main/java/de/Keyle/MyPet/entity/EquipmentSlot.java
+index 3eba99c3..03b61003 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/EquipmentSlot.java
++++ b/src/main/java/de/Keyle/MyPet/entity/EquipmentSlot.java
+@@ -35,6 +35,11 @@ public enum EquipmentSlot
+         this.slot = slot;
+     }
+ 
++    public int getSlotId()
++    {
++        return this.slot;
++    }
++
+     public static EquipmentSlot getSlotById(int id)
+     {
+         for (EquipmentSlot slot : EquipmentSlot.values())
+@@ -46,9 +51,4 @@ public enum EquipmentSlot
+         }
+         return EquipmentSlot.Weapon;
+     }
+-
+-    public int getSlotId()
+-    {
+-        return this.slot;
+-    }
+ }
+\ No newline at end of file

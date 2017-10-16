@@ -1,0 +1,3 @@
+46993e9 : Allow for non-forked execution of grails based on configuration property.
+:100755 100755 8eeea4a... 2daf6f4... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+:100644 100644 a01150b... d0db9a8... M	src/main/java/org/grails/maven/plugin/tools/ForkedGrailsRuntime.java

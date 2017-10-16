@@ -1,0 +1,2 @@
+21f1dac : Test that connection defaults to SSL
+:100644 100644 ca7d139... c1e9fea... M	src/test/java/com/stripe/StripeTest.java

@@ -1,0 +1,10 @@
+diff --git a/.gitignore b/.gitignore
+index 6a3c9d1..5cbf52a 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,4 +6,4 @@ test.log
+ .classpath
+ .project
+ .settings/
+-.idea
++

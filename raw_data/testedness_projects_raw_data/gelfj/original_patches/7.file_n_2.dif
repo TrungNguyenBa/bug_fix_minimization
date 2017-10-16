@@ -1,0 +1,23 @@
+diff --git a/src/main/java/org/graylog2/logging/GelfHandler.java b/src/main/java/org/graylog2/logging/GelfHandler.java
+index eef56db..b79f875 100644
+--- a/src/main/java/org/graylog2/logging/GelfHandler.java
++++ b/src/main/java/org/graylog2/logging/GelfHandler.java
+@@ -283,15 +283,15 @@ public class GelfHandler
+     private int levelToSyslogLevel( final Level level )
+     {
+         final int syslogLevel;
+-        if ( level.intValue() == Level.SEVERE.intValue() )
++        if ( level == Level.SEVERE )
+         {
+             syslogLevel = 3;
+         }
+-        else if ( level.intValue() == Level.WARNING.intValue() )
++        else if ( level == Level.WARNING )
+         {
+             syslogLevel = 4;
+         }
+-        else if ( level.intValue() == Level.INFO.intValue() )
++        else if ( level == Level.INFO )
+         {
+             syslogLevel = 6;
+         }

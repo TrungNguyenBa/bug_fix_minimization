@@ -1,0 +1,2 @@
+f8ac288 : Help Fix #68 RabbitMQ optional dep in gradle.
+:100644 100644 5f9eb7a... a67f268... M	build.gradle

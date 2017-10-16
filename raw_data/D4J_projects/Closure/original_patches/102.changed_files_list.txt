@@ -1,0 +1,5 @@
+d48c365b : "var arguments" never shadows the built-in arguments array. Fixes issue 115.
+:100755 100755 16c35fcc... 4e6e1529... M	lib/google_common_deploy.jar
+:100644 100644 4aa45558... 1db94e2f... M	src/com/google/javascript/jscomp/Normalize.java
+:100644 100644 bb3e3881... db992021... M	src/com/google/javascript/jscomp/SyntacticScopeCreator.java
+:100644 100644 c51444f0... b9d70375... M	test/com/google/javascript/jscomp/CompilerRunnerTest.java

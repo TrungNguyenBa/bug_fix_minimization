@@ -1,0 +1,53 @@
+diff --git a/src/main/java/com/stripe/model/ApplicationFee.java b/src/main/java/com/stripe/model/ApplicationFee.java
+index 3583ef0..a23213b 100644
+--- a/src/main/java/com/stripe/model/ApplicationFee.java
++++ b/src/main/java/com/stripe/model/ApplicationFee.java
+@@ -1,6 +1,7 @@
+ package com.stripe.model;
+ 
+ import java.util.Map;
++import java.util.List;
+ 
+ import com.stripe.exception.APIConnectionException;
+ import com.stripe.exception.APIException;
+@@ -20,7 +21,7 @@ public class ApplicationFee extends APIResource {
+ 	String user;
+ 	String application;
+ 	String charge;
+-	FeeRefundCollection refunds;
++	List<FeeRefund> refunds;
+ 	String balanceTransaction;
+ 
+ 	public String getId() {
+@@ -103,16 +104,14 @@ public class ApplicationFee extends APIResource {
+ 		this.charge = charge;
+ 	}
+ 
+-	public FeeRefundCollection getRefunds() {
+-		// API versions 2014-07-26 and earlier render charge refunds as an array
+-		// instead of an object, meaning there is no sublist URL.
+-		if (refunds.getURL() == null) {
+-			refunds.setURL(String.format("/v1/application_fees/%s/refunds", getId()));
+-		}
+-
++	public List<FeeRefund> getRefunds() {
+ 		return refunds;
+ 	}
+ 
++	public void setRefunds(List<FeeRefund> refunds) {
++		this.refunds = refunds;
++	}
++
+ 	public String getBalanceTransaction() {
+ 		return balanceTransaction;
+ 	}
+@@ -171,7 +170,7 @@ public class ApplicationFee extends APIResource {
+ 		return request(
+ 				RequestMethod.POST,
+ 				String.format("%s/refund",
+-						instanceURL(ApplicationFee.class, this.getId())),
+-							params, ApplicationFee.class, apiKey);
++						instanceURL(ApplicationFee.class, this.getId())), params,
++				ApplicationFee.class, apiKey);
+ 	}
+ }

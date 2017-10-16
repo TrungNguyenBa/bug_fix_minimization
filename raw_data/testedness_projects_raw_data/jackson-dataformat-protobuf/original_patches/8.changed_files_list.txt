@@ -1,0 +1,5 @@
+818024a : Add an efficient lookup impl for fields
+:100644 100644 440d9fe... 4df2a40... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 86174b4... 7c3e55b... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
+:100644 100644 5a46187... 33d1c6f... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
+:100644 100644 ba31d40... 371619a... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java

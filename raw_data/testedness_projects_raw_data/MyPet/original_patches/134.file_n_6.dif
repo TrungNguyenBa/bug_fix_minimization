@@ -1,0 +1,38 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/info/RideInfo.java b/src/main/java/de/Keyle/MyPet/skill/skills/info/RideInfo.java
+index 05aaba94..5110c39d 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/info/RideInfo.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/info/RideInfo.java
+@@ -20,31 +20,20 @@
+ 
+ package de.Keyle.MyPet.skill.skills.info;
+ 
+-import de.Keyle.MyPet.gui.skilltreecreator.skills.Ride;
+ import de.Keyle.MyPet.gui.skilltreecreator.skills.SkillPropertiesPanel;
+ import de.Keyle.MyPet.skill.skills.SkillName;
+-import de.Keyle.MyPet.skill.skills.SkillProperties;
+ import de.Keyle.MyPet.skill.skilltree.SkillTreeSkill;
+ 
+ @SkillName("Ride")
+-@SkillProperties(
+-        parameterNames = {"speed_percent", "addset_speed"},
+-        parameterTypes = {SkillProperties.NBTdatatypes.Int, SkillProperties.NBTdatatypes.String},
+-        parameterDefaultValues = {"5", "add"})
+ public class RideInfo extends SkillTreeSkill implements ISkillInfo {
+-    private SkillPropertiesPanel panel = null;
+-
+-    protected int speedPercent = 0;
++    //protected float speed = 0F;
+ 
+     public RideInfo(boolean addedByInheritance) {
+         super(addedByInheritance);
+     }
+ 
+     public SkillPropertiesPanel getGuiPanel() {
+-        if (panel == null) {
+-            panel = new Ride(this.getProperties());
+-        }
+-        return panel;
++        return null;
+     }
+ 
+     public ISkillInfo cloneSkill() {

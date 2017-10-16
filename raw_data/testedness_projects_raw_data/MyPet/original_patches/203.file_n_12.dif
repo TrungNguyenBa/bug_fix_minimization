@@ -1,0 +1,116 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+index 54bb1fa0..d222bd8d 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+@@ -35,33 +35,33 @@ public class EntityMyBat extends EntityMyPet
+         this.height = 1F;
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return "mob.bat.death";
+-    }
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
+-    {
+-        return "mob.bat.hurt";
++            this.setHanging(((MyBat) myPet).ishanging());
++        }
+     }
+ 
+-    @Override
+-    protected String getLivingSound()
++    public void setHanging(boolean flags)
+     {
+-        return !playIdleSound() ? null : "mob.bat.idle";
++        int i = this.datawatcher.getByte(16);
++        if (flags)
++        {
++            this.datawatcher.watch(16, (byte) (i | 0x1));
++        }
++        else
++        {
++            this.datawatcher.watch(16, (byte) (i & 0xFFFFFFFE));
++        }
++        ((MyBat) myPet).hanging = flags;
+     }
+ 
+-    public float getSoundSpeed()
++    public boolean isHanging()
+     {
+-        return super.getSoundSpeed() * 0.95F;
++        return ((MyBat) myPet).hanging;
+     }
+ 
+     protected void initDatawatcher()
+@@ -70,23 +70,27 @@ public class EntityMyBat extends EntityMyPet
+         this.datawatcher.a(16, new Byte((byte) 0)); // hanging
+     }
+ 
+-    public boolean isHanging()
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
+     {
+-        return ((MyBat) myPet).hanging;
++        return "mob.bat.hurt";
+     }
+ 
+-    public void setHanging(boolean flags)
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
+-        int i = this.datawatcher.getByte(16);
+-        if (flags)
+-        {
+-            this.datawatcher.watch(16, (byte) (i | 0x1));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(16, (byte) (i & 0xFFFFFFFE));
+-        }
+-        ((MyBat) myPet).hanging = flags;
++        return "mob.bat.death";
++    }
++
++    public float getSoundSpeed()
++    {
++        return super.getSoundSpeed() * 0.95F;
+     }
+ 
+     public void onLivingUpdate()
+@@ -99,13 +103,9 @@ public class EntityMyBat extends EntityMyPet
+         }
+     }
+ 
+-    public void setMyPet(MyPet myPet)
++    @Override
++    protected String getLivingSound()
+     {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-
+-            this.setHanging(((MyBat) myPet).ishanging());
+-        }
++        return !playIdleSound() ? null : "mob.bat.idle";
+     }
+ }
+\ No newline at end of file

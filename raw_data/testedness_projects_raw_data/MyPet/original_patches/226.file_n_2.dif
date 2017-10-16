@@ -1,0 +1,23 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetWorldListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetWorldListener.java
+index ed227b4d..a0a9aacb 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetWorldListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetWorldListener.java
+@@ -41,7 +41,6 @@ public class MyPetWorldListener implements Listener
+         if (defaultGroup == null)
+         {
+             defaultGroup = new MyPetWorldGroup("default");
+-            defaultGroup.registerGroup();
+         }
+         if (defaultGroup.addWorld(event.getWorld().getName()))
+         {
+@@ -52,9 +51,5 @@ public class MyPetWorldListener implements Listener
+             yamlConfiguration.saveConfig();
+             MyPetLogger.write("added " + ChatColor.YELLOW + event.getWorld().getName() + ChatColor.RESET + " to '" + ChatColor.YELLOW + "default" + ChatColor.RESET + "' group.");
+         }
+-        else
+-        {
+-            MyPetLogger.write("An error occured while adding " + ChatColor.YELLOW + event.getWorld().getName() + ChatColor.RESET + " to '" + ChatColor.YELLOW + "default" + ChatColor.RESET + "' group. Please restart the server.");
+-        }
+     }
+ }
+\ No newline at end of file

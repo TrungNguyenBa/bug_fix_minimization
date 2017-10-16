@@ -1,0 +1,9 @@
+59ebf2b8 : made remaining skill property headings bold
+:100644 100644 b6679f40... fbc45c86... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Damage.form
+:100644 100644 b2005326... 9a7ae503... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Health.form
+:100644 100644 6db44a1a... 29e416f2... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form
+:100644 100644 c08d7c8c... 779e4c0a... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Inventory.form
+:100644 100644 e9a26259... f3792c91... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Knockback.form
+:100644 100644 4187e4f8... 51f09bf0... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Lightning.form
+:100644 100644 78a01b09... 83631a2c... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Pickup.form
+:100644 100644 4f476397... 66e69ec0... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ranged.form

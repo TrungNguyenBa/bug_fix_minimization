@@ -1,0 +1,17 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java b/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
+index 42c3289..4eca0dd 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
+@@ -75,10 +75,10 @@ public class ErrorReport {
+ 			connection.setRequestMethod("POST");
+ 			connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+ 
+-			String urlParameters = "url=" + URLEncoder.encode(longUrl, UTF8_ENCODING);
++			String urlParameters = "url=" + longUrl;
+ 
+ 			DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+-			wr.writeBytes(urlParameters);
++			wr.writeBytes(URLEncoder.encode(urlParameters, UTF8_ENCODING));
+ 			wr.flush();
+ 			wr.close();
+ 

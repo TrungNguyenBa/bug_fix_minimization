@@ -1,0 +1,2 @@
+98dea0c7 : lowered the teleport distance from 20 to 17
+:100644 100644 a0c678e1... 12aa4a02... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java

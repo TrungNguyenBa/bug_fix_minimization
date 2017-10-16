@@ -1,0 +1,36 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 1800595..930213c 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -27,7 +27,10 @@ import ru.tehkode.permissions.events.PermissionEvent;
+ import ru.tehkode.permissions.events.PermissionSystemEvent;
+ import ru.tehkode.permissions.exceptions.PermissionBackendException;
+ 
+-import java.util.*;
++import java.util.HashMap;
++import java.util.Map;
++import java.util.Timer;
++import java.util.TimerTask;
+ import java.util.logging.Logger;
+ 
+ /**
+@@ -144,10 +147,6 @@ public class PermissionManager {
+ 		return backend.getUsers();
+ 	}
+ 
+-	public Collection<String> getUserNames() {
+-		return backend.getRegisteredUserNames();
+-	}
+-
+ 	/**
+ 	 * Return all users in group
+ 	 *
+@@ -511,8 +510,4 @@ public class PermissionManager {
+ 	public void setPermissionMatcher(PermissionMatcher matcher) {
+ 		this.matcher = matcher;
+ 	}
+-
+-	public Collection<String> getGroupNames() {
+-		return backend.getRegisteredGroupNames();
+-	}
+ }

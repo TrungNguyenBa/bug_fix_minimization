@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+index d577cf59..d05ea960 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+@@ -49,7 +49,7 @@ public class EntityMyPig extends EntityMyPet
+ 
+     public boolean hasSaddle()
+     {
+-        return ((MyPig) myPet).hasSaddle;
++        return (this.datawatcher.getByte(16) & 0x1) != 0;
+     }
+ 
+     public void setSaddle(boolean flag)
+@@ -67,7 +67,7 @@ public class EntityMyPig extends EntityMyPet
+ 
+     public boolean isBaby()
+     {
+-        return ((MyPig) myPet).isBaby;
++        return this.datawatcher.getInt(12) < 0;
+     }
+ 
+     @SuppressWarnings("boxing")

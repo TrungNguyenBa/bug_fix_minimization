@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java
+index 6083d39d..6f7a808a 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java
+@@ -21,7 +21,7 @@
+ package de.Keyle.MyPet.skill.skills.implementation;
+ 
+ import de.Keyle.MyPet.entity.types.MyPet;
+-import de.Keyle.MyPet.skill.skills.ISkillActive;
++import de.Keyle.MyPet.skill.ISkillActive;
+ import de.Keyle.MyPet.skill.skills.info.ISkillInfo;
+ import de.Keyle.MyPet.skill.skills.info.ThornsInfo;
+ import de.Keyle.MyPet.util.BukkitUtil;

@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java
+index bcda0a3d..0c17d641 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java
+@@ -76,7 +76,7 @@ public class MyZombie extends MyPet implements IMyPetEquipment, IMyPetBaby {
+         List<TagCompound> itemList = new ArrayList<TagCompound>();
+         for (EquipmentSlot slot : EquipmentSlot.values()) {
+             if (getEquipment(slot) != null) {
+-                TagCompound item = ItemStackNBTConverter.itemStackToCompund(getEquipment(slot));
++                TagCompound item = ItemStackNBTConverter.ItemStackToCompund(getEquipment(slot));
+                 item.getCompoundData().put("Slot", new TagInt(slot.getSlotId()));
+                 itemList.add(item);
+             }
+@@ -98,7 +98,7 @@ public class MyZombie extends MyPet implements IMyPetEquipment, IMyPetBaby {
+             for (int i = 0; i < equipment.size(); i++) {
+                 TagCompound item = equipment.getTag(i);
+ 
+-                ItemStack itemStack = ItemStackNBTConverter.compundToItemStack(item);
++                ItemStack itemStack = ItemStackNBTConverter.CompundToItemStack(item);
+                 setEquipment(EquipmentSlot.getSlotById(item.getAs("Slot", TagInt.class).getIntData()), itemStack);
+             }
+         }

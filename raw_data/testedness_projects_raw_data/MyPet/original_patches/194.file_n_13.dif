@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+index eec11128..c21f7d41 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+@@ -26,7 +26,7 @@ import com.google.common.collect.HashBiMap;
+ import de.Keyle.MyPet.api.event.MyPetSelectEvent;
+ import de.Keyle.MyPet.api.event.MyPetSelectEvent.NewStatus;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+-import de.Keyle.MyPet.skill.skills.ISkillStorage;
++import de.Keyle.MyPet.skill.ISkillStorage;
+ import de.Keyle.MyPet.skill.skills.implementation.ISkillInstance;
+ import de.Keyle.MyPet.util.Configuration;
+ import de.Keyle.MyPet.util.MyPetPlayer;

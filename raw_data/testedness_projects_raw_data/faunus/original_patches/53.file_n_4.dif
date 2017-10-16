@@ -1,0 +1,18 @@
+diff --git a/include/faunus/space.h b/include/faunus/space.h
+index 9f446e1e..72bf3646 100644
+--- a/include/faunus/space.h
++++ b/include/faunus/space.h
+@@ -102,13 +102,6 @@ namespace Faunus {
+         string info();               //!< Information string
+         void displace(const Point&); //!< Displace system by a vector
+ 
+-        inline Group* findGroup(int i) {
+-          for (auto g : groupList())
+-            if (g->find(i))
+-              return g;
+-          return nullptr;
+-        }
+-
+         inline double dist(int i, int j) const {
+           return geo.dist(p[i],p[j]);
+         }

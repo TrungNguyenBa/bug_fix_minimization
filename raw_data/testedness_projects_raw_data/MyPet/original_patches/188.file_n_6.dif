@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+index df63e2c4..511dca0b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+@@ -57,7 +57,7 @@ public class EntityMyChicken extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.chicken.say";
++        return !playIdleSound() ? null : "mob.chicken.say";
+     }
+ 
+     public boolean handlePlayerInteraction(EntityHuman entityhuman)

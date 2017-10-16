@@ -1,0 +1,19 @@
+15950fcf : getOwner() of EntityMyPet now returns MyPetPlayer
+:100644 100644 56cd5fe1... c362e772... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java
+:100644 100644 24336511... 798174b8... M	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAIFollowOwner.java
+:100644 100644 935a518a... 403e4733... M	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIDuelTarget.java
+:100644 100644 2992b8c8... 0176d4b8... M	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIFarmTarget.java
+:100644 100644 614d6b90... a709c3ec... M	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIOwnerHurtByTarget.java
+:100644 100644 0a233082... a0c678e1... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 241213f8... f5e764b3... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+:100644 100644 6c4cbf65... f1cf5939... M	src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
+:100644 100644 a024c487... 63a957da... M	src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+:100644 100644 8d0908ef... 080e6e73... M	src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+:100644 100644 3c541458... b9bb1440... M	src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+:100644 100644 066585ee... 38e52f2e... M	src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+:100644 100644 2f27879c... 94082bad... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 729a804d... 2b55098a... M	src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+:100644 100644 0992c93b... de9278e3... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 03c00165... 27a8322b... M	src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+:100644 100644 bbe79c25... 5f83e653... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+:100644 100644 87739fac... 907ecb8c... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java

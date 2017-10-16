@@ -1,0 +1,3 @@
+7d6dc80 : fix for MAVEN-222 “mvn dependency exclusions are ignored”
+:100644 100644 1a02cec... ac2107d... M	pom.xml
+:100755 100755 81c835d... f8d0e1f... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

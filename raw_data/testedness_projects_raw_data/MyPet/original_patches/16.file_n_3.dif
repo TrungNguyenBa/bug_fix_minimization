@@ -1,0 +1,29 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+index 981027fb..6b6a7b2c 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+@@ -76,7 +76,7 @@ public class ControlTarget extends AIGoal {
+                         Player targetPlayer = (Player) entityLiving.getBukkitEntity();
+                         if (myPet.getOwner().equals(targetPlayer)) {
+                             continue;
+-                        } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer, true)) {
++                        } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer)) {
+                             continue;
+                         }
+                     } else if (entityLiving instanceof EntityTameableAnimal) {
+@@ -85,13 +85,13 @@ public class ControlTarget extends AIGoal {
+                             Player tameableOwner = (Player) tameable.getOwner().getBukkitEntity();
+                             if (myPet.getOwner().equals(tameableOwner)) {
+                                 continue;
+-                            } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), tameableOwner, true)) {
++                            } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), tameableOwner)) {
+                                 continue;
+                             }
+                         }
+                     } else if (entityLiving instanceof EntityMyPet) {
+                         MyPet targetMyPet = ((EntityMyPet) entityLiving).getMyPet();
+-                        if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer(), true)) {
++                        if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer())) {
+                             continue;
+                         }
+                     }

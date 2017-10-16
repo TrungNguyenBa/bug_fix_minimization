@@ -1,0 +1,22 @@
+diff --git a/src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java b/src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java
+index 3aa45cd5..7c579ea6 100644
+--- a/src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java
++++ b/src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java
+@@ -29,11 +29,14 @@ import org.junit.Test;
+ import static org.junit.Assert.assertNotNull;
+ import static org.junit.Assert.assertTrue;
+ 
+-public class SkillNameTest {
++public class SkillNameTest
++{
+     @Test
+-    public void testSkillNames() {
++    public void testSkillNames()
++    {
+         MyPetPlugin.registerSkills();
+-        for (Class<? extends SkillTreeSkill> registeredSkills : Skills.getRegisteredSkills()) {
++        for (Class<? extends SkillTreeSkill> registeredSkills : Skills.getRegisteredSkills())
++        {
+             SkillName sn = registeredSkills.getAnnotation(SkillName.class);
+             assertNotNull(sn);
+             assertNotNull(sn.value());

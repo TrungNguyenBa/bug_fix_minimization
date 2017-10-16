@@ -1,0 +1,6 @@
+de553097 : readded speed parameter to the Ride skill Fixes #206
+:100644 100644 c41129fc... 1cc5ba3e... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:000000 100644 00000000... f11f2c1c... A	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ride.form
+:000000 100644 00000000... 828e7689... A	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ride.java
+:100644 100644 5211a345... 7307b046... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ride.java
+:100644 100644 5110c39d... 05aaba94... M	src/main/java/de/Keyle/MyPet/skill/skills/info/RideInfo.java

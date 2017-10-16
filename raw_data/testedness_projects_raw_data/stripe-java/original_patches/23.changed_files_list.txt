@@ -1,0 +1,3 @@
+b310338 : A bit more cleanup of SSL checking
+:100644 100644 c5cd1ed... 83b1a74... M	src/main/java/com/stripe/Stripe.java
+:100644 100644 cf3f505... 1fe9988... M	src/main/java/com/stripe/net/LiveStripeResponseGetter.java

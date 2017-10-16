@@ -1,0 +1,50 @@
+diff --git a/src/main/java/com/stripe/net/LiveStripeResponseGetter.java b/src/main/java/com/stripe/net/LiveStripeResponseGetter.java
+index 9d290a2..66dfcbc 100644
+--- a/src/main/java/com/stripe/net/LiveStripeResponseGetter.java
++++ b/src/main/java/com/stripe/net/LiveStripeResponseGetter.java
+@@ -15,12 +15,11 @@ import java.io.UnsupportedEncodingException;
+ import java.lang.reflect.Constructor;
+ import java.lang.reflect.InvocationTargetException;
+ import java.lang.reflect.Method;
+-import java.net.Authenticator;
+-import java.net.HttpURLConnection;
+ import java.net.MalformedURLException;
+-import java.net.PasswordAuthentication;
+ import java.net.URL;
++import java.net.URLEncoder;
+ import java.net.URLStreamHandler;
++import java.util.Arrays;
+ import java.util.HashMap;
+ import java.util.Iterator;
+ import java.util.LinkedHashMap;
+@@ -119,20 +118,7 @@ public class LiveStripeResponseGetter implements StripeResponseGetter {
+ 		} else {
+ 			stripeURL = new URL(url);
+ 		}
+-		HttpURLConnection conn;
+-		if (Stripe.getConnectionProxy() != null) {
+-			conn = (HttpURLConnection) stripeURL.openConnection(Stripe.getConnectionProxy());
+-			if (Stripe.getProxyCredential() != null) {
+-				Authenticator.setDefault(new Authenticator() {
+-					@Override
+-					protected PasswordAuthentication getPasswordAuthentication() {
+-						return Stripe.getProxyCredential();
+-					}
+-				});
+-			}
+-		} else {
+-			conn = (HttpURLConnection) stripeURL.openConnection();
+-		}
++		java.net.HttpURLConnection conn = (java.net.HttpURLConnection) stripeURL.openConnection();
+ 		conn.setConnectTimeout(30 * 1000);
+ 		conn.setReadTimeout(80 * 1000);
+ 		conn.setUseCaches(false);
+@@ -154,7 +140,7 @@ public class LiveStripeResponseGetter implements StripeResponseGetter {
+ 	}
+ 
+ 	private static java.net.HttpURLConnection createGetConnection(
+-			String url, String query, RequestOptions options) throws IOException {
++			String url, String query, RequestOptions options) throws IOException  {
+ 		String getURL = formatURL(url, query);
+ 		java.net.HttpURLConnection conn = createStripeConnection(getURL, options);
+ 		conn.setRequestMethod("GET");

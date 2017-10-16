@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form
+index 6db44a1a..933a940c 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.form
+@@ -95,7 +95,7 @@
+               </grid>
+             </constraints>
+             <properties>
+-              <text value="0"/>
++              <text value="0.0"/>
+             </properties>
+           </component>
+           <component id="c33fc" class="javax.swing.JRadioButton" binding="decreaseTimeRadioButton">

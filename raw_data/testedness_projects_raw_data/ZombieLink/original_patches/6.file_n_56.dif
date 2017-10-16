@@ -1,0 +1,16 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java b/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
+index 98dc11e..129cc03 100644
+--- a/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
++++ b/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
+@@ -34,9 +34,9 @@ import com.lonepulse.zombielink.response.AsyncHandler;
+  * 
+  * @category test
+  * <br><br> 
+- * @version 1.2.0
++ * @version 1.1.1
+  * <br><br> 
+- * @since 1.2.4
++ * @since 1.3.4
+  * <br><br> 
+  * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */

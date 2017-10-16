@@ -1,0 +1,31 @@
+diff --git a/src/test/java/org/tiernolan/nervous/network/connection/SimpleNetwork.java b/src/test/java/org/tiernolan/nervous/network/connection/SimpleNetwork.java
+deleted file mode 100644
+index 02b1167..0000000
+--- a/src/test/java/org/tiernolan/nervous/network/connection/SimpleNetwork.java
++++ /dev/null
+@@ -1,25 +0,0 @@
+-package org.tiernolan.nervous.network.connection;
+-
+-import java.util.concurrent.atomic.AtomicBoolean;
+-
+-
+-public class SimpleNetwork implements Network {
+-
+-	private AtomicBoolean writeRequest = new AtomicBoolean(false);
+-	
+-	public void clearWriteRequest() {
+-		writeRequest.compareAndSet(true, false);
+-	}
+-
+-	public void setWriteRequest() {
+-		writeRequest.compareAndSet(false, true);
+-	}
+-
+-	public boolean getWriteRequest() {
+-		return writeRequest.get();
+-	}
+-
+-	public void close() {
+-	}
+-	
+-}

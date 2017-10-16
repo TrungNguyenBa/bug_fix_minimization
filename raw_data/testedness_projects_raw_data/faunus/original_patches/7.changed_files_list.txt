@@ -1,0 +1,10 @@
+25f73007 : Comments and figure
+:000000 100644 00000000... 113fd1a1... A	doc/images/penalty.png
+:100644 100644 cddd9f6c... 05890235... M	include/faunus/drift.h
+:100644 100644 1e7b9921... e056812a... M	include/faunus/energy.h
+:100644 100644 edf53f3a... 37a48d3d... M	include/faunus/geometry.h
+:100644 100644 e2015c3c... c8efb770... M	include/faunus/group.h
+:100644 100644 539e7db8... b456876b... M	include/faunus/move.h
+:100644 100644 668bd8be... e45f5d35... M	src/examples/penalty.cpp
+:100755 100755 641fd653... 6003adbb... M	src/examples/penalty.run
+:100644 100644 c2f3d4c4... 3aca5562... M	src/examples/unittests.cpp

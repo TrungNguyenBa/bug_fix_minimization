@@ -1,0 +1,6 @@
+3a50dc5 : Fixed some warnings and made some IntelliJ code inspection recommendations.
+:100644 100644 8776c0b... 9a03133... M	src/main/java/com/allogy/coffeecan/statements/Activity.java
+:100644 100644 cb4d244... 35ceb70... M	src/main/java/com/allogy/coffeecan/statements/Actor.java
+:100644 100644 05145f0... 7fb69ef... M	src/main/java/com/allogy/coffeecan/statements/ContextActivity.java
+:100644 100644 d31d9be... 3549fbe... M	src/main/java/com/allogy/coffeecan/statements/StatementObject.java
+:100644 100644 d1f3aaf... 294e9ce... M	src/main/java/com/allogy/coffeecan/statements/Verb.java

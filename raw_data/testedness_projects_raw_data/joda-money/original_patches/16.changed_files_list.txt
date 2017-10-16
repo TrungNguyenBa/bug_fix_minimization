@@ -1,0 +1,3 @@
+8a2feba : Fix Javadoc of BigMoney.withScale
+:100644 100644 da19ef9... 8078f1b... M	src/changes/changes.xml
+:100644 100644 af5fe06... 2c09673... M	src/main/java/org/joda/money/BigMoney.java

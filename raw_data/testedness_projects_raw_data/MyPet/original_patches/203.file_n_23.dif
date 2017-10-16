@@ -1,0 +1,134 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+index db976f0f..2e606a7c 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+@@ -34,9 +34,15 @@ public class EntityMyEnderman extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    public int getBlockData()
++    public void setMyPet(MyPet myPet)
+     {
+-        return ((MyEnderman) myPet).BlockData;
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
++
++            this.setScreaming(((MyEnderman) myPet).isScreaming());
++            this.setBlock(((MyEnderman) myPet).getBlockID(), ((MyEnderman) myPet).getBlockData());
++        }
+     }
+ 
+     public int getBlockID()
+@@ -44,28 +50,37 @@ public class EntityMyEnderman extends EntityMyPet
+         return ((MyEnderman) myPet).BlockID;
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public int getBlockData()
+     {
+-        return "mob.endermen.death";
++        return ((MyEnderman) myPet).BlockData;
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public void setBlock(int blockID, int blockData)
+     {
+-        return "mob.endermen.hit";
++        this.datawatcher.watch(16, (byte) (blockID & 0xFF));
++        ((MyEnderman) myPet).BlockID = blockID;
++
++        this.datawatcher.watch(17, (byte) (blockData & 0xFF));
++        ((MyEnderman) myPet).BlockData = blockData;
+     }
+ 
+-    @Override
+-    protected String getLivingSound()
++    public boolean isScreaming()
+     {
+-        return !playIdleSound() ? null : isScreaming() ? "mob.endermen.scream" : "mob.endermen.idle";
++        return ((MyEnderman) myPet).isScreaming;
++    }
++
++    public void setScreaming(boolean screaming)
++    {
++        this.datawatcher.watch(18, (byte) (screaming ? 1 : 0));
++        ((MyEnderman) myPet).isScreaming = screaming;
++    }
++
++    protected void initDatawatcher()
++    {
++        super.initDatawatcher();
++        this.datawatcher.a(16, new Byte((byte) 0));  // blockID
++        this.datawatcher.a(17, new Byte((byte) 0));  // blockData
++        this.datawatcher.a(18, new Byte((byte) 0));  // face(angry)
+     }
+ 
+     /**
+@@ -115,42 +130,27 @@ public class EntityMyEnderman extends EntityMyPet
+         return false;
+     }
+ 
+-    protected void initDatawatcher()
+-    {
+-        super.initDatawatcher();
+-        this.datawatcher.a(16, new Byte((byte) 0));  // blockID
+-        this.datawatcher.a(17, new Byte((byte) 0));  // blockData
+-        this.datawatcher.a(18, new Byte((byte) 0));  // face(angry)
+-    }
+-
+-    public boolean isScreaming()
+-    {
+-        return ((MyEnderman) myPet).isScreaming;
+-    }
+-
+-    public void setScreaming(boolean screaming)
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
+     {
+-        this.datawatcher.watch(18, (byte) (screaming ? 1 : 0));
+-        ((MyEnderman) myPet).isScreaming = screaming;
++        return "mob.endermen.hit";
+     }
+ 
+-    public void setBlock(int blockID, int blockData)
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
+-        this.datawatcher.watch(16, (byte) (blockID & 0xFF));
+-        ((MyEnderman) myPet).BlockID = blockID;
+-
+-        this.datawatcher.watch(17, (byte) (blockData & 0xFF));
+-        ((MyEnderman) myPet).BlockData = blockData;
++        return "mob.endermen.death";
+     }
+ 
+-    public void setMyPet(MyPet myPet)
++    @Override
++    protected String getLivingSound()
+     {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-
+-            this.setScreaming(((MyEnderman) myPet).isScreaming());
+-            this.setBlock(((MyEnderman) myPet).getBlockID(), ((MyEnderman) myPet).getBlockData());
+-        }
++        return !playIdleSound() ? null : isScreaming() ? "mob.endermen.scream" : "mob.endermen.idle";
+     }
+ }
+\ No newline at end of file

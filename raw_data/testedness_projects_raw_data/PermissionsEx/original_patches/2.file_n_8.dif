@@ -1,0 +1,13 @@
+diff --git a/permissionsex-bukkit/src/main/po/keys.pot b/permissionsex-bukkit/src/main/po/keys.pot
+index cf08ae9..5d6b526 100644
+--- a/permissionsex-bukkit/src/main/po/keys.pot
++++ b/permissionsex-bukkit/src/main/po/keys.pot
+@@ -8,7 +8,7 @@ msgid ""
+ msgstr ""
+ "Project-Id-Version: PACKAGE VERSION\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2015-08-30 21:41-0700\n"
++"POT-Creation-Date: 2015-08-30 13:41-0700\n"
+ "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"

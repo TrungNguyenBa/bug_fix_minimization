@@ -1,0 +1,2 @@
+0417e05e : fixed removing pets from worldgroups on worldchange fixes #136
+:100644 100644 d6d0f5d3... 41c09595... M	src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java

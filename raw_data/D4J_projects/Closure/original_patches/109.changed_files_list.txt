@@ -1,0 +1,3 @@
+7d26b7bc : Tweak the grammar for this/new types. Fixes issue 1105 R=johnlenz
+:100644 100644 e642d758... c115e109... M	src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+:100644 100644 ad564757... 84e538b4... M	test/com/google/javascript/jscomp/parsing/JsDocInfoParserTest.java

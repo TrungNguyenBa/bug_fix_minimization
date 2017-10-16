@@ -1,0 +1,6 @@
+0480206 : Fix #66
+:100644 100644 0c0a9f4... c379863... M	pom.xml
+:100644 100644 5ae2a92... 2d673c3... M	release-notes/VERSION
+:100644 100644 c0ac02d... 8e0e287... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java
+:100644 100644 933120b... 4580c91... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeSerializer.java
+:000000 100644 0000000... f30802f... A	src/test/java/com/fasterxml/jackson/datatype/joda/TimeZoneTest.java

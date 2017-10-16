@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/command/PermissionsExCommands.java b/src/main/java/ninja/leaping/permissionsex/command/PermissionsExCommands.java
+index e9797a3..b5cd643 100644
+--- a/src/main/java/ninja/leaping/permissionsex/command/PermissionsExCommands.java
++++ b/src/main/java/ninja/leaping/permissionsex/command/PermissionsExCommands.java
+@@ -54,14 +54,11 @@ public class PermissionsExCommands {
+         return CommandSpec.builder()
+                 .setAliases("pex", "permissionsex", "permissions")
+                 .setDescription(_("Commands for PermissionsEx"))
+-                .setArguments(flags()
+-                        .flag("-transient")
+-                        .valueFlag(context(_("context")), "-context", "-contexts", "c")
+-                        .buildWith(optional(
++                .setArguments(optional(
+                         firstParsing(
+                                 children,
+                                 seq(subject(_("subject"), pex),
+-                                        optional(subjectChildren))))
++                                        optional(subjectChildren)))
+                 ))
+                 .setExecutor(new CommandExecutor() {
+                     @Override

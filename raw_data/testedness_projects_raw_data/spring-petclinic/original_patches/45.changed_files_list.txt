@@ -1,0 +1,2 @@
+2eaf498 : Introduce a "jee" Spring profile to retrieve the datasource with a JNDI lookup.
+:100644 100644 5cd214b... f741299... M	src/main/resources/spring/datasource-config.xml

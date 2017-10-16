@@ -1,0 +1,28 @@
+diff --git a/src/com/google/javascript/jscomp/CodeGenerator.java b/src/com/google/javascript/jscomp/CodeGenerator.java
+index e793ddf2..da05c4f8 100644
+--- a/src/com/google/javascript/jscomp/CodeGenerator.java
++++ b/src/com/google/javascript/jscomp/CodeGenerator.java
+@@ -550,7 +550,7 @@ class CodeGenerator {
+ 
+       case Token.NULL:
+         Preconditions.checkState(childCount == 0);
+-        cc.addConstant("null");
++        add("null");
+         break;
+ 
+       case Token.THIS:
+@@ -560,12 +560,12 @@ class CodeGenerator {
+ 
+       case Token.FALSE:
+         Preconditions.checkState(childCount == 0);
+-        cc.addConstant("false");
++        add("false");
+         break;
+ 
+       case Token.TRUE:
+         Preconditions.checkState(childCount == 0);
+-        cc.addConstant("true");
++        add("true");
+         break;
+ 
+       case Token.CONTINUE:

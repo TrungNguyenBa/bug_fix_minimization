@@ -1,0 +1,14 @@
+diff --git a/pom.xml b/pom.xml
+index e3b934c40..43d1c2893 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -133,9 +133,6 @@
+       <name>Eldar Agalarov</name>
+     </contributor>
+     <contributor>
+-      <name>Tim Allison</name>
+-    </contributor>
+-    <contributor>
+       <name>C. Scott Ananian</name>
+     </contributor>
+     <contributor>

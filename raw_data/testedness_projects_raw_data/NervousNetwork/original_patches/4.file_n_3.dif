@@ -1,0 +1,39 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/NetworkManagerImpl.java b/src/main/java/org/tiernolan/nervous/network/NetworkManagerImpl.java
+deleted file mode 100644
+index 2529f5d..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/NetworkManagerImpl.java
++++ /dev/null
+@@ -1,33 +0,0 @@
+-package org.tiernolan.nervous.network;
+-
+-import java.util.logging.Logger;
+-
+-import org.tiernolan.nervous.network.api.NetworkManager;
+-import org.tiernolan.nervous.network.api.protocol.Protocol;
+-import org.tiernolan.nervous.network.bufferpool.ByteBufferPool;
+-
+-public class NetworkManagerImpl implements NetworkManager {
+-	
+-	private final Protocol protocol;
+-	private final ByteBufferPool byteBufferPool;
+-	private final Logger logger;
+-	
+-	public NetworkManagerImpl(Protocol protocol) {
+-		this.protocol = protocol;
+-		this.byteBufferPool = new ByteBufferPool(protocol.getMaxPacketSize());
+-		this.logger = Logger.getLogger(getClass().getName());
+-	}
+-	
+-	public ByteBufferPool getByteBufferPool() {
+-		return byteBufferPool;
+-	}
+-
+-	public Protocol getProtocol() {
+-		return protocol;
+-	}
+-
+-	public Logger getLogger() {
+-		return logger;
+-	}
+-
+-}

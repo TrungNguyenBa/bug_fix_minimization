@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index 98604de0..4baa1f0d 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -366,7 +366,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster
+                         }
+                         else
+                         {
+-                            getMyPet().sendMessageToOwner(MyPetLocales.getString("Message.CantUse", myPet.getOwner().getLanguage()));
++                            getMyPet().sendMessageToOwner(Colorizer.setColors(MyPetLocales.getString("Message.CantUse", myPet.getOwner().getLanguage())));
+                         }
+                     }
+                 }

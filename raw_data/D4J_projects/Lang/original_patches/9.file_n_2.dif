@@ -1,0 +1,12 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 39e83430..b0244500 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -22,7 +22,6 @@
+   <body>
+ 
+   <release version="3.2" date="TBA" description="Next release">
+-    <action issue="LANG-832" type="fix">FastDateParser does not handle unterminated quotes correctly</action>
+     <action issue="LANG-831" type="fix">FastDateParser does not handle white-space properly</action>
+     <action issue="LANG-828" type="fix">FastDateParser does not handle non-Gregorian calendars properly</action>
+     <action issue="LANG-826" type="fix">FastDateParser does not handle non-ASCII digits correctly</action>

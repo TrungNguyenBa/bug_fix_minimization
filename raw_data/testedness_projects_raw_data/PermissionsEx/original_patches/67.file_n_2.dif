@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index 7ebeee1..ea293c6 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -310,7 +310,7 @@ public class PermissionsEx extends JavaPlugin {
+ 	}
+ 
+ 	public boolean isDebug() {
+-		return permissionsManager != null && permissionsManager.isDebug();
++		return permissionsManager.isDebug();
+ 	}
+ 
+ 	public static Plugin getPlugin() {

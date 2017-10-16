@@ -1,0 +1,2 @@
+bfc4054 : More null checking
+:100644 100644 7be094f... cfb63da... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

@@ -1,0 +1,98 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+index 387e199..28f9bed 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+@@ -23,7 +23,6 @@ import org.apache.commons.dbcp2.DriverManagerConnectionFactory;
+ import org.apache.commons.dbcp2.PoolableConnection;
+ import org.apache.commons.dbcp2.PoolableConnectionFactory;
+ import org.apache.commons.dbcp2.PoolingDataSource;
+-import org.apache.commons.pool2.ObjectPool;
+ import org.apache.commons.pool2.impl.GenericObjectPool;
+ import org.bukkit.configuration.ConfigurationSection;
+ import ru.tehkode.permissions.PermissionManager;
+@@ -36,6 +35,7 @@ import ru.tehkode.utils.StringUtils;
+ import javax.sql.DataSource;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.sql.Connection;
+ import java.sql.PreparedStatement;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
+@@ -46,10 +46,9 @@ import java.util.*;
+  * @author code
+  */
+ public class SQLBackend extends PermissionBackend {
+-	protected Map<String, List<String>> worldInheritanceCache = new HashMap<>();
++	protected Map<String, List<String>> worldInheritanceCache = new HashMap<String, List<String>>();
+ 	private Map<String, Object> tableNames;
+-	private DataSource ds;
+-	private final ObjectPool<?> connectionPool;
++	private final DataSource ds;
+ 	private String dbDriver;
+ 
+ 	public SQLBackend(PermissionManager manager, ConfigurationSection config) {
+@@ -63,7 +62,6 @@ public class SQLBackend extends PermissionBackend {
+ 			getConfig().set("user", "databaseuser");
+ 			getConfig().set("password", "databasepassword");
+ 			ds = null;
+-			connectionPool = null;
+ 		} else {
+ 		    dbDriver = dbUri.split(":", 2)[0];
+ 
+@@ -74,7 +72,6 @@ public class SQLBackend extends PermissionBackend {
+ 			connectionPool.setMaxTotal(20);
+ 			connectionPool.setMaxWaitMillis(200);
+ 			this.ds = new PoolingDataSource<>(connectionPool);
+-			this.connectionPool = connectionPool;
+ 		}
+ 		this.setupAliases();
+ 	}
+@@ -172,7 +169,7 @@ public class SQLBackend extends PermissionBackend {
+ 				result = conn.prepAndBind("SELECT `name` FROM `{permissions}` WHERE `permission` = 'default' AND `value` = 'true' AND `type` = ? AND `world` = ?",
+ 						SQLData.Type.GROUP.ordinal(), worldName).executeQuery();
+ 			}
+-			Set<String> ret = new HashSet<>();
++			Set<String> ret = new HashSet<String>();
+ 			while (result.next()) {
+ 				ret.add(result.getString("name"));
+ 			}
+@@ -204,7 +201,7 @@ public class SQLBackend extends PermissionBackend {
+ 
+ 	@Override
+ 	public Collection<String> getUserNames() {
+-		Set<String> ret = new HashSet<>();
++		Set<String> ret = new HashSet<String>();
+ 		try (SQLConnection conn = getSQL()) {
+ 			ResultSet set = conn.prepAndBind("SELECT `value` from `{permissions}` WHERE `type` = ? AND `name` = 'name' AND `value` IS NOT NULL", SQLData.Type.USER.ordinal()).executeQuery();
+ 			while (set.next()) {
+@@ -279,7 +276,7 @@ public class SQLBackend extends PermissionBackend {
+ 		if (!worldInheritanceCache.containsKey(world)) {
+ 			try (SQLConnection conn = getSQL()) {
+ 				ResultSet result = conn.prepAndBind("SELECT `parent` FROM `{permissions_inheritance}` WHERE `child` = ? AND `type` = 2;", world).executeQuery();
+-				LinkedList<String> worldParents = new LinkedList<>();
++				LinkedList<String> worldParents = new LinkedList<String>();
+ 
+ 				while (result.next()) {
+ 					worldParents.add(result.getString("parent"));
+@@ -299,7 +296,7 @@ public class SQLBackend extends PermissionBackend {
+ 		try (SQLConnection conn = getSQL()) {
+ 			ResultSet result = conn.prepAndBind("SELECT `child` FROM `{permissions_inheritance}` WHERE `type` = 2 ").executeQuery();
+ 
+-			Map<String, List<String>> ret = new HashMap<>();
++			Map<String, List<String>> ret = new HashMap<String, List<String>>();
+ 			while (result.next()) {
+ 				final String world = result.getString("child");
+ 				if (!ret.containsKey(world)) {
+@@ -339,12 +336,4 @@ public class SQLBackend extends PermissionBackend {
+ 	public void reload() {
+ 		worldInheritanceCache.clear();
+ 	}
+-
+-	@Override
+-	public void close() {
+-		if (ds != null) {
+-			connectionPool.close();
+-			ds = null;
+-		}
+-	}
+ }

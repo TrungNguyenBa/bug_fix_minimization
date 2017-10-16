@@ -1,0 +1,2 @@
+d6780b9 : Fix deprecation warning for Stopwatch.elapsedTime
+:100644 100644 5a82f43... 4e174dd... M	src/main/java/com/smarchive/dropwizard/gelf/filters/GelfLoggingFilter.java

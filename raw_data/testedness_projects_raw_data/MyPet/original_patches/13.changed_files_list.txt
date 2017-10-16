@@ -1,0 +1,2 @@
+071be23c : Check for taming after other plugins messed with the damage event fixes #505
+:100644 100644 40601612... 8019ca63... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

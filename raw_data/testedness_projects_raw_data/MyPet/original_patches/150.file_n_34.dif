@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/locale/ResourceBundle.java b/src/main/java/de/Keyle/MyPet/util/locale/ResourceBundle.java
+index a4ebab16..03271b1e 100644
+--- a/src/main/java/de/Keyle/MyPet/util/locale/ResourceBundle.java
++++ b/src/main/java/de/Keyle/MyPet/util/locale/ResourceBundle.java
+@@ -52,6 +52,7 @@ public class ResourceBundle extends java.util.ResourceBundle {
+         for (java.util.ResourceBundle bundle : this.extensionBundles) {
+             keys.addAll(bundle.keySet());
+         }
++
+         return Collections.enumeration(keys);
+     }
+ 
+@@ -61,6 +62,7 @@ public class ResourceBundle extends java.util.ResourceBundle {
+         if ((object = getObjectFromExtensionBundles(key)) != null) {
+             return object;
+         }
++
+         return this.parent.getObject(key);
+     }
+ 

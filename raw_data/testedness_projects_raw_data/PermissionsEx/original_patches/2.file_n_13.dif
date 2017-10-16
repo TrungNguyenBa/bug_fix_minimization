@@ -1,0 +1,22 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
+index 7eb4b3e..14dbe83 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
+@@ -62,7 +62,7 @@ public class PermissionsCommands {
+                         int intVal = (Integer) value;
+ 
+                         messageSubjectOnFuture(
+-                                dataCache.set(subject.getValue(), data.setPermission(contexts, key, intVal)), src,
++                                dataCache.update(subject.getValue(), data.setPermission(contexts, key, intVal)), src,
+                                 _("Set permission %s for %s in %s context", src.fmt().permission(key, intVal), src.fmt().hl(src.fmt().subject(subject)), formatContexts(src, contexts)));
+                     }
+                 })
+@@ -89,7 +89,7 @@ public class PermissionsCommands {
+                         int intVal = (Integer) value;
+ 
+                         messageSubjectOnFuture(
+-                                dataCache.set(subject.getValue(), data.setDefaultValue(contexts, intVal)), src,
++                                dataCache.update(subject.getValue(), data.setDefaultValue(contexts, intVal)), src,
+                                 _("Set default permission to %s for %s in %s context", intVal, src.fmt().hl(src.fmt().subject(subject)), formatContexts(src, contexts)));
+                     }
+                 })

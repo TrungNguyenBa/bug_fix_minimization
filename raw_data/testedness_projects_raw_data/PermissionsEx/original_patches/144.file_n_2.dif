@@ -1,0 +1,25 @@
+diff --git a/src/main/java/ru/tehkode/permissions/RegExpMatcher.java b/src/main/java/ru/tehkode/permissions/RegExpMatcher.java
+index 86c9b02..7de26e8 100644
+--- a/src/main/java/ru/tehkode/permissions/RegExpMatcher.java
++++ b/src/main/java/ru/tehkode/permissions/RegExpMatcher.java
+@@ -3,7 +3,6 @@ package ru.tehkode.permissions;
+ import java.util.HashMap;
+ import java.util.regex.Matcher;
+ import java.util.regex.Pattern;
+-import java.util.regex.PatternSyntaxException;
+ 
+ public class RegExpMatcher implements PermissionMatcher {
+ 	public static final String RAW_REGEX_CHAR = "$";
+@@ -23,11 +22,7 @@ public class RegExpMatcher implements PermissionMatcher {
+ 	}
+ 
+ 	protected Pattern createPattern(String expression) {
+-        try {
+-		    return Pattern.compile(prepareRegexp(expression), Pattern.CASE_INSENSITIVE);
+-        } catch (PatternSyntaxException e) {
+-            return Pattern.compile(Pattern.quote(expression), Pattern.CASE_INSENSITIVE);
+-        }
++		return Pattern.compile(prepareRegexp(expression), Pattern.CASE_INSENSITIVE);
+ 	}
+ 
+ 	public static String prepareRegexp(String expression) {

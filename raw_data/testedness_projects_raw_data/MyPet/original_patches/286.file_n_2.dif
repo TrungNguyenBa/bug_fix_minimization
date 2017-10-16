@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIAggressiveTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIAggressiveTarget.java
+index 9723a31f..d461ed98 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIAggressiveTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIAggressiveTarget.java
+@@ -46,8 +46,8 @@ public class MyPetAIAggressiveTarget extends MyPetAIGoal
+     public MyPetAIAggressiveTarget(EntityMyPet petEntity, float range)
+     {
+         this.petEntity = petEntity;
+-        this.myPet = petEntity.getMyPet();
+         this.petOwnerEntity = ((CraftPlayer) myPet.getOwner().getPlayer()).getHandle();
++        this.myPet = petEntity.getMyPet();
+         this.range = range;
+         if (myPet.getSkills().hasSkill("Behavior"))
+         {

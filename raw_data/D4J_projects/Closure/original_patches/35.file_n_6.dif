@@ -1,0 +1,16 @@
+diff --git a/src/com/google/javascript/rhino/jstype/UnionType.java b/src/com/google/javascript/rhino/jstype/UnionType.java
+index fcb01729..f54d8d48 100644
+--- a/src/com/google/javascript/rhino/jstype/UnionType.java
++++ b/src/com/google/javascript/rhino/jstype/UnionType.java
+@@ -586,11 +586,4 @@ public class UnionType extends JSType {
+     }
+     return currentCommonSuper;
+   }
+-
+-  @Override
+-  public void matchConstraint(ObjectType constraintObj) {
+-    for (JSType alternate : alternates) {
+-      alternate.matchConstraint(constraintObj);
+-    }
+-  }
+ }

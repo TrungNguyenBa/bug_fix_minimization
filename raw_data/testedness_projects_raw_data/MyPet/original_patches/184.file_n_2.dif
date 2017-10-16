@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/IconMenu.java b/src/main/java/de/Keyle/MyPet/util/IconMenu.java
+index 1db31bb5..7ae50b85 100644
+--- a/src/main/java/de/Keyle/MyPet/util/IconMenu.java
++++ b/src/main/java/de/Keyle/MyPet/util/IconMenu.java
+@@ -74,7 +74,7 @@ public class IconMenu implements Listener
+         {
+             if (inventory.getContents()[i] == null)
+             {
+-                icon = setItemNameAndLore(icon, name, lore);
++                setItemNameAndLore(icon, name, lore);
+                 optionNames[i] = name;
+                 inventory.setItem(i, icon);
+                 return i;
+@@ -94,7 +94,7 @@ public class IconMenu implements Listener
+         {
+             if (inventory.getContents()[i] == null)
+             {
+-                icon = setItemNameAndLore(icon, name, lore);
++                setItemNameAndLore(icon, name, lore);
+                 optionNames[i] = name;
+                 inventory.setItem(i, icon);
+                 return i;

@@ -1,0 +1,5 @@
+74e002965 : Check first step size in embedded Runge-Kutta integrators.
+:100644 100644 13ced27d7... d2bbf6725... M	src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+:100644 100644 e1e126028... 97db5b991... M	src/site/xdoc/changes.xml
+:100644 100644 7d5e9b736... f62299863... M	src/test/java/org/apache/commons/math/ode/nonstiff/DormandPrince853IntegratorTest.java
+:100644 100644 0be4a0c5c... f516b2b9d... M	src/test/java/org/apache/commons/math/ode/nonstiff/GraggBulirschStoerIntegratorTest.java

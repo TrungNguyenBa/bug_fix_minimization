@@ -1,0 +1,2 @@
+afafeee : fixed following tests failing on windows (because of locking file): ZipsTest.testInPlaceAddEntry() and ZipsTest.testInPlaceAddRemoveEntries()
+:100644 100644 f24882a... f8888e3... M	src/main/java/org/zeroturnaround/zip/Zips.java

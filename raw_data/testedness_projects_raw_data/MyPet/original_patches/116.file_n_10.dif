@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/irongolem/MyIronGolem.java b/src/main/java/de/Keyle/MyPet/entity/types/irongolem/MyIronGolem.java
+index 7e45506e..a617f4cf 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/irongolem/MyIronGolem.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/irongolem/MyIronGolem.java
+@@ -31,8 +31,6 @@ import static org.bukkit.Material.IRON_INGOT;
+ 
+ @MyPetInfo(food = {IRON_INGOT}, leashFlags = {UserCreated})
+ public class MyIronGolem extends MyPet {
+-    public static boolean CAN_THROW_UP = true;
+-
+     public MyIronGolem(MyPetPlayer petOwner) {
+         super(petOwner);
+     }

@@ -1,0 +1,60 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
+index 674b0d6..d20856d 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
+@@ -89,10 +89,6 @@ public abstract class PermissionsCommand implements CommandListener {
+ 			return null;
+ 		}
+ 
+-		if (playerName.startsWith("#")) {
+-			return playerName.substring(1);
+-		}
+-
+ 		List<String> players = new LinkedList<String>();
+ 
+ 		// Collect online Player names
+@@ -107,13 +103,13 @@ public abstract class PermissionsCommand implements CommandListener {
+ 		}
+ 
+ 		// Collect registered PEX user names
+-		for (String user : PermissionsEx.getPermissionManager().getUserNames()) {
+-			if (user.equalsIgnoreCase(playerName)) {
+-				return user;
++		for (PermissionUser user : PermissionsEx.getPermissionManager().getUsers()) {
++			if (user.getName().equalsIgnoreCase(playerName)) {
++				return user.getName();
+ 			}
+ 
+-			if (user.toLowerCase().startsWith(playerName.toLowerCase()) && !players.contains(user)) {
+-				players.add(user);
++			if (user.getName().toLowerCase().startsWith(playerName.toLowerCase()) && !players.contains(user.getName())) {
++				players.add(user.getName());
+ 			}
+ 		}
+ 
+@@ -140,20 +136,15 @@ public abstract class PermissionsCommand implements CommandListener {
+ 	}
+ 
+ 	protected String autoCompleteGroupName(String groupName, String argName) {
+-
+-		if (groupName.startsWith("#")) {
+-			return groupName.substring(1);
+-		}
+-
+ 		List<String> groups = new LinkedList<String>();
+ 
+-		for (String group : PermissionsEx.getPermissionManager().getGroupNames()) {
+-			if (group.equalsIgnoreCase(groupName)) {
+-				return group;
++		for (PermissionGroup group : PermissionsEx.getPermissionManager().getGroups()) {
++			if (group.getName().equalsIgnoreCase(groupName)) {
++				return group.getName();
+ 			}
+ 
+-			if (group.toLowerCase().startsWith(groupName.toLowerCase()) && !groups.contains(group)) {
+-				groups.add(group);
++			if (group.getName().toLowerCase().startsWith(groupName.toLowerCase()) && !groups.contains(group.getName())) {
++				groups.add(group.getName());
+ 			}
+ 		}
+ 

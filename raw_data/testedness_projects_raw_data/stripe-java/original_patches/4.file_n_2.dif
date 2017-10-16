@@ -1,0 +1,48 @@
+diff --git a/src/test/java/com/stripe/StripeTest.java b/src/test/java/com/stripe/StripeTest.java
+index 9e4a0e7..67239c1 100644
+--- a/src/test/java/com/stripe/StripeTest.java
++++ b/src/test/java/com/stripe/StripeTest.java
+@@ -43,7 +43,6 @@ import com.stripe.model.InvoiceItem;
+ import com.stripe.model.InvoiceLineItemCollection;
+ import com.stripe.model.MetadataStore;
+ import com.stripe.model.Order;
+-import com.stripe.model.OrderItem;
+ import com.stripe.model.Plan;
+ import com.stripe.model.Product;
+ import com.stripe.model.Recipient;
+@@ -2255,29 +2254,14 @@ public class StripeTest {
+ 		orderCreateParams.put("currency", "usd");
+ 		orderCreateParams.put("email", "foo@bar.com");
+ 		Order created = Order.create(orderCreateParams);
++		String orderId = created.getId();
++		assertEquals("sku", created.getItems().get(0).getType());
++		assertEquals(skuId, created.getItems().get(0).getParent());
+ 		assertEquals("created", created.getStatus());
+ 
+-		OrderItem item = null;
+-		for (OrderItem i : created.getItems()) {
+-			if (skuId.equals(i.getParent())) {
+-				item = i;
+-				break;
+-			}
+-		}
+-		assertNotNull(item);
+-		assertEquals("sku", item.getType());
+-
+-		Order retrieved = Order.retrieve(created.getId());
+-
+-		item = null;
+-		for (OrderItem i : created.getItems()) {
+-			if (skuId.equals(i.getParent())) {
+-				item = i;
+-				break;
+-			}
+-		}
+-		assertNotNull(item);
+-		assertEquals("sku", item.getType());
++		Order retrieved = Order.retrieve(orderId);
++		assertEquals("sku", retrieved.getItems().get(0).getType());
++		assertEquals(skuId, retrieved.getItems().get(0).getParent());
+ 
+ 		Order updated = retrieved.update(ImmutableMap.<String,Object>of("metadata", ImmutableMap.of("foo", "bar")));
+ 		assertEquals("bar", updated.getMetadata().get("foo"));

@@ -1,0 +1,22 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java b/src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java
+index 5a217f2..941818a 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java
++++ b/src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java
+@@ -24,7 +24,7 @@ package com.lonepulse.zombielink.response;
+ import org.apache.http.HttpResponse;
+ 
+ import com.lonepulse.zombielink.annotation.Parser.ParserType;
+-import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.util.Resolver;
+ 
+ /**
+@@ -80,7 +80,7 @@ public enum ResponseParsers implements ResponseParser<Object> {
+ 	 * {@inheritDoc}
+ 	 */
+ 	@Override
+-	public Object parse(HttpResponse httpResponse, InvocationContext config) {
++	public Object parse(HttpResponse httpResponse, ProxyInvocationConfiguration config) {
+ 		
+ 		return this.responseParser.parse(httpResponse, config);
+ 	}

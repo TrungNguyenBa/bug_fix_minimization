@@ -1,0 +1,3 @@
+febb7a3 : Warning patrol: Avoid generic Hashmap in Balance (add 'Money' class)
+:100644 100644 aa884ef... 3ba8424... M	src/main/java/com/stripe/model/Balance.java
+:000000 100644 0000000... d5adace... A	src/main/java/com/stripe/model/Money.java

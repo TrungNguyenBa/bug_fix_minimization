@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 320656c..6e1f7ce 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -31,7 +31,6 @@ import ru.tehkode.permissions.events.PermissionSystemEvent;
+ import ru.tehkode.permissions.exceptions.PermissionBackendException;
+ import ru.tehkode.permissions.query.GetQuery;
+ import ru.tehkode.permissions.query.SetQuery;
+-import ru.tehkode.utils.PrefixedThreadFactory;
+ 
+ import java.util.*;
+ import java.util.concurrent.Executors;
+@@ -286,7 +285,7 @@ public class PermissionManager {
+ 			service.shutdown();
+ 		}
+ 
+-		service = Executors.newSingleThreadScheduledExecutor(new PrefixedThreadFactory("PEX-manager"));
++		service = Executors.newSingleThreadScheduledExecutor();
+ 	}
+ 
+ 	protected void clearCache() {

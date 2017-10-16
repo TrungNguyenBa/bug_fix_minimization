@@ -1,0 +1,2 @@
+a65449d : add test for iteration of given entries from stream, fix #21
+:100644 100644 742b28e... de6c6e5... M	src/test/java/ZipUtilTest.java

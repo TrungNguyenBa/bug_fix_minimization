@@ -1,0 +1,10 @@
+f9fa096 : First version with (half-)functional generator; can output non-nested obs with numeric fields
+:000000 100644 0000000... 7cdff4e... A	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ByteAccumulator.java
+:100644 100644 c8d66fe... f203bc7... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufFactory.java
+:100644 100644 537ff65... 83a3937... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:000000 100644 0000000... 22225ca... A	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 04c9a44... 780ec8b... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufUtil.java
+:100644 100644 fba752c... 6217595... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufWriteContext.java
+:100644 100644 d0fe892... f82dc10... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
+:100644 100644 97c3e3d... b6dbac6... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:000000 100644 0000000... 165660e... A	src/test/java/com/fasterxml/jackson/dataformat/protobuf/SimpleWriteTest.java

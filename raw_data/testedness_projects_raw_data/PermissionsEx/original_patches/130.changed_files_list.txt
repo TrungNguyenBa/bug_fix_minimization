@@ -1,0 +1,3 @@
+e7be978 : Another attempt at resolving issues with circular inheritance
+:100644 100644 6c86285... 4366e19... M	src/main/java/ru/tehkode/permissions/PermissionGroup.java
+:100644 100644 4b24a96... 09923fe... M	src/main/java/ru/tehkode/permissions/PermissionManager.java

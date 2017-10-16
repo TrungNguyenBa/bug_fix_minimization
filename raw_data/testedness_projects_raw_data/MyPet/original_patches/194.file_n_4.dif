@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/CommandBeacon.java b/src/main/java/de/Keyle/MyPet/commands/CommandBeacon.java
+index 9612ce0e..e0821616 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/CommandBeacon.java
++++ b/src/main/java/de/Keyle/MyPet/commands/CommandBeacon.java
+@@ -23,7 +23,7 @@ package de.Keyle.MyPet.commands;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+ import de.Keyle.MyPet.entity.types.MyPetList;
+-import de.Keyle.MyPet.skill.skills.ISkillActive;
++import de.Keyle.MyPet.skill.ISkillActive;
+ import de.Keyle.MyPet.skill.skills.implementation.Beacon;
+ import de.Keyle.MyPet.util.Permissions;
+ import de.Keyle.MyPet.util.Util;

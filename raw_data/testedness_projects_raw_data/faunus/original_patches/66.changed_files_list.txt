@@ -1,0 +1,9 @@
+13c036c1 : fixed stockmayer
+:100644 100644 912abe9c... 5ec556b5... M	include/faunus/energy.h
+:100644 100644 b6aa1b29... 4e1d5155... M	include/faunus/geometry.h
+:100644 100644 74a0087b... 1b6b76f4... M	include/faunus/move.h
+:100644 100644 84179985... 342b4c7d... M	include/faunus/point.h
+:100644 100644 c056a962... d2444d95... M	src/examples/stockmayer.cpp
+:100644 100644 95e8deb9... b7a99182... M	src/examples/unittests.cpp
+:100644 100644 54ace4d5... 90b067b2... M	src/geometry.cpp
+:100644 100644 ee108e13... 6164a5ad... M	src/species.cpp

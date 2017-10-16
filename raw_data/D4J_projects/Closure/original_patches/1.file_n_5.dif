@@ -1,0 +1,37 @@
+diff --git a/test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java b/test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java
+index 02d13de2..aa922570 100644
+--- a/test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java
++++ b/test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java
+@@ -244,20 +244,20 @@ public class RemoveUnusedVarsTest extends CompilerTestCase {
+   public void testRemoveGlobal1() {
+     removeGlobal = false;
+     testSame("var x=1");
+-    test("var y=function(x){var z;}", "var y=function(x){}");
++    test("var y=function(x){var z;}", "var y=function(){}");
+   }
+ 
+   public void testRemoveGlobal2() {
+     removeGlobal = false;
+     testSame("var x=1");
+-    test("function y(x){var z;}", "function y(x){}");
++    test("function y(x){var z;}", "function y(){}");
+   }
+ 
+   public void testRemoveGlobal3() {
+     removeGlobal = false;
+     testSame("var x=1");
+     test("function x(){function y(x){var z;}y()}",
+-         "function x(){function y(x){}y()}");
++         "function x(){function y(){}y()}");
+   }
+ 
+   public void testRemoveGlobal4() {
+@@ -286,7 +286,7 @@ public class RemoveUnusedVarsTest extends CompilerTestCase {
+          "function b(){" +
+          "  a();" +
+          "}",
+-         "function a(){(function(x){b()})(1)}" +
++         "function a(){(function(){b()})(1)}" +
+          "function b(){a()}");
+   }
+ 

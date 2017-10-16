@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java
+index 850322f..2678de1 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java
+@@ -23,7 +23,7 @@ package com.lonepulse.zombielink.response;
+ import org.apache.http.HttpEntity;
+ import org.apache.http.HttpResponse;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationException;
++import com.lonepulse.zombielink.inject.InvocationException;
+ 
+ /**
+  * <p>To be used with <b>asynchronous request execution</b> for retrieving the deserialized response content 

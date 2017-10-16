@@ -1,0 +1,5 @@
+2b0d07b : moved from Model to Map so we do not use a Spring-specific class
+:100644 100644 3d4b84a... f311110... M	src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
+:100644 100644 87df563... d3d7340... M	src/main/java/org/springframework/samples/petclinic/web/PetController.java
+:100644 100644 0f54785... 7c72bf8... M	src/main/java/org/springframework/samples/petclinic/web/VetController.java
+:100644 100644 4b53444... 491fa08... M	src/main/java/org/springframework/samples/petclinic/web/VisitController.java

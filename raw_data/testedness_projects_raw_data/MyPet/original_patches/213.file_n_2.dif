@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
+index 4eb7d5c0..2354da8b 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
+@@ -60,12 +60,12 @@ public class Damage extends DamageInfo implements ISkillInstance
+         if (upgrade instanceof DamageInfo)
+         {
+             boolean isPassive = damage <= 0;
+-            if (upgrade.getProperties().getValue().containsKey("damage"))
++            if (getProperties().getValue().containsKey("damage"))
+             {
+-                int damage = ((IntTag) upgrade.getProperties().getValue().get("damage")).getValue();
+-                upgrade.getProperties().getValue().remove("damage");
++                int damage = ((IntTag) getProperties().getValue().get("damage")).getValue();
++                getProperties().getValue().remove("damage");
+                 DoubleTag doubleTag = new DoubleTag("damage_double", damage);
+-                upgrade.getProperties().getValue().put("damage_double", doubleTag);
++                getProperties().getValue().put("damage_double", doubleTag);
+             }
+             if (upgrade.getProperties().getValue().containsKey("damage_double"))
+             {

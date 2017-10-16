@@ -1,0 +1,2 @@
+a21c60b : Fix FieldReplacer to correctly replace fields in superclasses
+:100644 100644 5dc73f5... ab18be0... M	src/main/java/ru/tehkode/utils/FieldReplacer.java

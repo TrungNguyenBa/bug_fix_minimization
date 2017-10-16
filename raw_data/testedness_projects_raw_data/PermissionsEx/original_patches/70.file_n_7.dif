@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/yaml/YamlBackend.java b/src/main/java/ru/tehkode/permissions/backends/yaml/YamlBackend.java
+index 4d24652..15b0b89 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/yaml/YamlBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/yaml/YamlBackend.java
+@@ -7,7 +7,6 @@ import org.bukkit.configuration.ConfigurationSection;
+ import ru.tehkode.permissions.PermissionManager;
+ import ru.tehkode.permissions.backends.PermissionBackend;
+ import ru.tehkode.permissions.backends.SchemaUpdate;
+-import ru.tehkode.permissions.data.Context;
+ import ru.tehkode.permissions.data.MatcherGroup;
+ import ru.tehkode.permissions.data.Qualifier;
+ import ru.tehkode.permissions.exceptions.PermissionBackendException;
+@@ -255,7 +254,7 @@ public class YamlBackend extends PermissionBackend {
+ 	}
+ 
+ 	@Override
+-	public ListenableFuture<List<MatcherGroup>> getMatchingGroups(String type, Context context) {
++	public ListenableFuture<List<MatcherGroup>> getMatchingGroups(String type, Qualifier qual, String qualValue) {
+ 		throw new UnsupportedOperationException("YAML backend is import-only.");
+ 	}
+ 

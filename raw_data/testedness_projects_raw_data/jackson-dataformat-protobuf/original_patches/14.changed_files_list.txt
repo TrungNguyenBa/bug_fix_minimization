@@ -1,0 +1,4 @@
+e171bdd : Fix a problem with missing END_OBJECT for root level
+:100644 100644 cce8056... bdba3e9... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 101b077... 03a466f... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
+:100644 100644 b3e575e... bcabd11... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java

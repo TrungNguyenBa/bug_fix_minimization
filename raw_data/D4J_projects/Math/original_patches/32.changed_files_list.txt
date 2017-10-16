@@ -1,0 +1,4 @@
+f81847d80 : Fixed a wrong assumption on BSP tree attributes.
+:100644 100644 5fb43778a... a3c40fe96... M	src/changes/changes.xml
+:100644 100644 6ba72be94... add24acea... M	src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java
+:100644 100644 6c776711f... a55f017f1... M	src/test/java/org/apache/commons/math3/geometry/euclidean/threed/PolyhedronsSetTest.java

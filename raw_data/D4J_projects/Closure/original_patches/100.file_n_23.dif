@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/jscomp/deps/SortedDependencies.java b/src/com/google/javascript/jscomp/deps/SortedDependencies.java
+index adb6d81b..60cbec8d 100644
+--- a/src/com/google/javascript/jscomp/deps/SortedDependencies.java
++++ b/src/com/google/javascript/jscomp/deps/SortedDependencies.java
+@@ -38,6 +38,8 @@ import java.util.List;
+ import java.util.Map;
+ import java.util.PriorityQueue;
+ import java.util.Set;
++import java.util.SortedSet;
++import java.util.TreeSet;
+ 
+ /**
+  * A sorted list of inputs with dependency information. Uses a stable

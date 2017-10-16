@@ -1,0 +1,13 @@
+diff --git a/src/examples/stockmayer.cpp b/src/examples/stockmayer.cpp
+index 20886a43..6863d37a 100644
+--- a/src/examples/stockmayer.cpp
++++ b/src/examples/stockmayer.cpp
+@@ -16,7 +16,7 @@ typedef Move::AtomicRotation<Tspace> TmoveRot;
+ #endif
+ 
+ int main() {
+-  //::atom.includefile("stockmayer.json");         // load atom properties
++  ::atom.includefile("stockmayer.json");         // load atom properties
+   InputMap in("stockmayer.input");               // open parameter file for user input
+   Energy::NonbondedVector<Tspace,Tpair> pot(in); // non-bonded only
+   EnergyDrift sys;                               // class for tracking system energy drifts

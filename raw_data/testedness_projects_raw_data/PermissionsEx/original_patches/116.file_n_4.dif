@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionUser.java b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+index b6000f0..0ad0024 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionUser.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+@@ -532,7 +532,7 @@ public class PermissionUser extends PermissionEntity {
+ 	public Player getPlayer() {
+ 		try {
+ 			return manager.getPlugin().getServer().getPlayer(UUID.fromString(getIdentifier()));
+-		} catch (Throwable ex) { // Not a UUID or method not implemented in server build
++		} catch (IllegalArgumentException ex) {
+ 			return manager.getPlugin().getServer().getPlayerExact(getIdentifier());
+ 		}
+ 	}

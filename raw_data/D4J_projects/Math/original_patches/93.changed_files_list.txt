@@ -1,0 +1,4 @@
+7cd3d822b : Fixed error in factorial accuracy.  JIRA: MATH-240.
+:100644 100644 50ed22a6a... 1389d5a28... M	src/java/org/apache/commons/math/util/MathUtils.java
+:100644 100644 80a8aa3d9... 245b3496c... M	src/site/xdoc/changes.xml
+:100644 100644 dd99e9135... 8b953579d... M	src/test/org/apache/commons/math/util/MathUtilsTest.java

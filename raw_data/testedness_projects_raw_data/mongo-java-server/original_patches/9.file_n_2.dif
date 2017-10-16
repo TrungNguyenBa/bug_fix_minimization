@@ -1,0 +1,13 @@
+diff --git a/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java b/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java
+index 59f7610..696194c 100644
+--- a/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java
++++ b/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java
+@@ -693,7 +693,7 @@ public abstract class AbstractBackendTest extends AbstractSimpleBackendTest {
+         assertThat(db.getCollectionNames()).contains("coll");
+     }
+ 
+-    /*
++    /**
+      * Test that ObjectId is getting generated even if _id is present in
+      * DBObject but it's value is null
+      */

@@ -1,0 +1,2 @@
+73147f7 : fix releasing snapshots
+:100644 100644 7d70e31... 0d5be15... M	pom.xml

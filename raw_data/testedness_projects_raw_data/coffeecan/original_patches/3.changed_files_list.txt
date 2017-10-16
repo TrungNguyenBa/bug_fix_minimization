@@ -1,0 +1,5 @@
+e990ba4 : Removed deprecated fields.
+:100644 100644 9a03133... 399fc6d... M	src/main/java/com/allogy/coffeecan/statements/Activity.java
+:100644 100644 8494416... fead225... M	src/main/java/com/allogy/coffeecan/statements/Agent.java
+:100644 100644 6f63523... cabd92b... M	src/main/java/com/allogy/coffeecan/vocabulary/ADLActivities.java
+:100644 100644 ba572ad... f870f6b... M	src/main/java/com/allogy/coffeecan/vocabulary/ADLVerbs.java

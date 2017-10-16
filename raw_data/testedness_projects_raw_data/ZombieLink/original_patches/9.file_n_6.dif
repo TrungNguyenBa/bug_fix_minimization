@@ -1,0 +1,42 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java b/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+index e781a89..78901d5 100644
+--- a/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
++++ b/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+@@ -28,13 +28,12 @@ import org.apache.http.client.methods.HttpRequestBase;
+ 
+ import com.lonepulse.zombielink.annotation.Asynchronous;
+ import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+-import com.lonepulse.zombielink.inject.Zombie;
+ import com.lonepulse.zombielink.util.Resolver;
+ 
+ /**
+  * <p>Exposes all available {@link RequestExecutor}s and delegates communication. 
+  * 
+- * @version 1.2.0
++ * @version 1.1.0
+  * <br><br>
+  * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
+@@ -103,6 +102,7 @@ public enum RequestExecutors implements RequestExecutor {
+ 		 * @return an {@link AsyncRequestExecutor} if the request method or 
+ 		 * 		   endpoint is annotated with {@link Asynchronous}, else a 
+ 		 * 		   basic request builder.
++		 * 
+ 		 * <br><br>
+ 		 * @since 1.1.0
+ 		 */
+@@ -120,14 +120,4 @@ public enum RequestExecutors implements RequestExecutor {
+ 			}
+ 		}
+ 	};
+-	
+-	/**
+-	 * <p>Manages services related to {@link Zombie.Configuration}s which govern all configurable aspects of 
+-	 * request execution.</p>
+-	 *  
+-	 * <p>See {@link ConfigurationManager}</p>
+-	 * 
+-	 * @since 1.2.0
+-	 */
+-	public static final ConfigurationManager CONFIGURATION = new ConfigurationService();
+ }

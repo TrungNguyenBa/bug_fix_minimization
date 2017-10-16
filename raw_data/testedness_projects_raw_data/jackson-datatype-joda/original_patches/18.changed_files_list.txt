@@ -1,0 +1,7 @@
+a35ff6b : Fix #27
+:100644 100644 60a0f22... 4cfce8d... M	release-notes/VERSION
+:100644 100644 84fc6cd... 3d95d5c... M	src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
+:000000 100644 0000000... 7bf77db... A	src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeZoneDeserializer.java
+:100644 100644 2447511... de45d49... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/InstantDeserializer.java
+:100644 100644 f2c6a60... 6d5e4ad... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
+:000000 100644 0000000... fab5f76... A	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeZoneSerializer.java

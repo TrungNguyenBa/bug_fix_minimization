@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Detach.java b/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Detach.java
+index 8b4fbfa..b000266 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Detach.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Detach.java
+@@ -27,7 +27,7 @@ import java.lang.annotation.RetentionPolicy;
+ import java.lang.annotation.Target;
+ 
+ /**
+- * <p>Detaches any inherited <b>@{@link Serialize}, @{@link Deserialize}, @{@link Async} and 
++ * <p>Detaches any inherited <b>@{@link Serializer}, @{@link Deserializer}, @{@link Async} and 
+  * @{@link Intercept}</b> annotations.</p>
+  * <br>
+  * <br>

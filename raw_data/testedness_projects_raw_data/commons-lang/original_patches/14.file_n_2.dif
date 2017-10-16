@@ -1,0 +1,26 @@
+diff --git a/src/test/java/org/apache/commons/lang3/StringUtilsTest.java b/src/test/java/org/apache/commons/lang3/StringUtilsTest.java
+index c49ee6a0..a57a7f5c 100644
+--- a/src/test/java/org/apache/commons/lang3/StringUtilsTest.java
++++ b/src/test/java/org/apache/commons/lang3/StringUtilsTest.java
+@@ -2390,7 +2390,9 @@ public void testStringUtilsCharSequenceContract() {
+                 // don't actively test for that.
+                 final Class<?>[] params = m.getParameterTypes();
+                 if (params.length > 0 && (params[0] == CharSequence.class || params[0] == CharSequence[].class)) {
+-                    if (!ArrayUtils.contains(excludeMethods, methodStr)) {
++                    if (ArrayUtils.contains(excludeMethods, methodStr)) {
++                        System.out.println("The mutable method \"" + methodStr + "\" is expressly excluded from testStringUtilsCharSequenceContract()");
++                    } else {
+                         fail("The method \"" + methodStr + "\" appears to be mutable in spirit and therefore must not accept a CharSequence");
+                     }
+                 }
+@@ -2399,7 +2401,9 @@ public void testStringUtilsCharSequenceContract() {
+                 // As above, it may be something other than CharSequence.
+                 final Class<?>[] params = m.getParameterTypes();
+                 if (params.length > 0 && (params[0] == String.class || params[0] == String[].class)) {
+-                    if (!ArrayUtils.contains(excludeMethods, methodStr)) {
++                    if (ArrayUtils.contains(excludeMethods, methodStr)) {
++                        System.out.println("The immutable method \"" + methodStr + "\" is expressly excluded from testStringUtilsCharSequenceContract()");
++                    } else {
+                         fail("The method \"" + methodStr + "\" appears to be immutable in spirit and therefore must not accept a String");
+                     }
+                 }

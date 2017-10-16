@@ -1,0 +1,4 @@
+efa9de051 : MATH-864 Fixed missing "repair" of a point that lies outside the boundaries. Thanks to Frank Hessen for the report and for pinpointing the cause of the problem.
+:100644 100644 4f23f92f1... 7bf77019e... M	src/changes/changes.xml
+:100644 100644 d01cd158c... b54cb3744... M	src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+:100644 100644 19a30bc6f... 38818798c... M	src/test/java/org/apache/commons/math3/optimization/direct/CMAESOptimizerTest.java

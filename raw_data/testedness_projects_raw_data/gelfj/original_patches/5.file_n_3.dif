@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/graylog2/GelfMessage.java b/src/main/java/org/graylog2/GelfMessage.java
+index 51d22af..bbb265a 100644
+--- a/src/main/java/org/graylog2/GelfMessage.java
++++ b/src/main/java/org/graylog2/GelfMessage.java
+@@ -271,7 +271,7 @@ public class GelfMessage {
+     }
+ 
+     public void setAdditonalFields(Map<String, Object> additonalFields) {
+-        this.additonalFields = new HashMap<String, Object>(additonalFields);
++        this.additonalFields = additonalFields;
+     }
+ 
+     public boolean isValid() {

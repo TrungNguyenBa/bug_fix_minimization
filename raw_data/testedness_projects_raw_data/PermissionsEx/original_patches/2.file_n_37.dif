@@ -1,0 +1,13 @@
+diff --git a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeMessageFormatter.java b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeMessageFormatter.java
+index 714c3d8..85f9794 100644
+--- a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeMessageFormatter.java
++++ b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeMessageFormatter.java
+@@ -43,7 +43,7 @@ import static ninja.leaping.permissionsex.sponge.SpongeTranslations._;
+ /**
+  * Factory to create formatted elements of messages
+  */
+-class SpongeMessageFormatter implements MessageFormatter<TextBuilder> {
++public class SpongeMessageFormatter implements MessageFormatter<TextBuilder> {
+     private static final Text EQUALS_SIGN = Texts.of(TextColors.GRAY, "=");
+     private final PermissionsExPlugin pex;
+ 

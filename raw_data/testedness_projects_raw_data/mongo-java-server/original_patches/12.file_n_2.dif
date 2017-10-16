@@ -1,0 +1,20 @@
+diff --git a/README.md b/README.md
+index 6f83f33..54776bf 100644
+--- a/README.md
++++ b/README.md
+@@ -82,10 +82,12 @@ can either be in-memory or on-disk.
+ ```java
+ public class Application {
+ 
++	private MongoServer embeddedServer;
++
+     public static void main(String[] args) throws Exception {
+-        MongoServer server = new MongoServer(new H2Backend("database.mv"));
+-        server.bind("localhost", 27017);
+-    }
++		embeddedServer = new H2MongoServer("database.mv");
++		embeddedServer.bind("localhost", "27017");
++	}
+ 
+ }
+ ```

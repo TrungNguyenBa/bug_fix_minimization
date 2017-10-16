@@ -1,0 +1,2 @@
+c22c739 : define compile encoding to be UTF-8
+:100644 100644 08c999f... d6987ef... M	build.gradle

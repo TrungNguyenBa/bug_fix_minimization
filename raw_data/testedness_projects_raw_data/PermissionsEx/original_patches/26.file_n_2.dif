@@ -1,0 +1,35 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+index 8736b28..f4628bc 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+@@ -44,15 +44,16 @@ import java.util.concurrent.ExecutionException;
+  */
+ public class PEXOptionSubjectData implements OptionSubjectData, Caching {
+     private final PermissionsExPlugin plugin;
+-    private volatile SubjectCache cache;
++    private final SubjectCache cache;
+     private final String identifier;
+     private volatile ImmutableOptionSubjectData data;
+     private final ConcurrentMap<Set<Map.Entry<String, String>>, List<Subject>> parentsCache = new ConcurrentHashMap<>();
+ 
+     public PEXOptionSubjectData(SubjectCache cache, String identifier, PermissionsExPlugin plugin) throws ExecutionException {
+         this.plugin = plugin;
++        this.cache = cache;
+         this.identifier = identifier;
+-        updateCache(cache);
++        clearCache(cache.getData(identifier, this));
+     }
+ 
+     /**
+@@ -100,11 +101,6 @@ public class PEXOptionSubjectData implements OptionSubjectData, Caching {
+         }
+     }
+ 
+-    void updateCache(SubjectCache newCache) throws ExecutionException {
+-        this.cache = newCache;
+-        clearCache(newCache.getData(identifier, this));
+-    }
+-
+     @Override
+     public Map<Set<Context>, Map<String, String>> getAllOptions() {
+         return tKeys(this.data.getAllOptions());

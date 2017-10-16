@@ -1,0 +1,3 @@
+68c4a44 : Fix missing .gitconfig file
+:100644 100644 6db53af... 838068b... M	src/main/java/pl/project13/maven/git/JGitProvider.java
+:100644 100644 17a9f01... 205be38... M	src/main/java/pl/project13/maven/git/NativeGitProvider.java

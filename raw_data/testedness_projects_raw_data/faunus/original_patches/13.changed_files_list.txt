@@ -1,0 +1,11 @@
+90afb201 : Fixed for merge
+:100755 100755 57feb1a3... 699d11b2... M	include/faunus/analysis.h
+:100644 100644 8e44d992... 3acd1734... M	include/faunus/energy.h
+:100644 100644 a87f5e5e... caa37d1f... M	include/faunus/io.h
+:100644 100644 033ff1b1... bf18ab4c... M	include/faunus/move.h
+:100644 100644 f4b9416b... 5bcbc2c1... M	include/faunus/multipole.h
+:100644 100644 add0bdc2... 40c75c56... M	include/faunus/potentials.h
+:100644 100644 3f88d295... 47737a24... M	src/examples/water.cpp
+:100644 100644 92ede337... e03ab207... M	src/examples/water2.cpp
+:100644 100644 835eb839... 69ec37e2... M	src/playground/stenqvist/nemo.cpp
+:100755 100755 8a4c0800... 27240cd0... M	src/playground/stenqvist/stockmayer.run

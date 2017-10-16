@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java
+index 183e4f23..e628cf1d 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java
+@@ -27,7 +27,6 @@ import de.Keyle.MyPet.entity.types.IMyPetEquipment;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPetType;
+ import de.Keyle.MyPet.skill.skills.implementation.inventory.ItemStackNBTConverter;
+-import de.Keyle.MyPet.util.ConfigItem;
+ import de.Keyle.MyPet.util.MyPetPlayer;
+ import de.keyle.knbt.TagByte;
+ import de.keyle.knbt.TagCompound;
+@@ -45,8 +44,6 @@ import static org.bukkit.Material.ROTTEN_FLESH;
+ 
+ @MyPetInfo(food = {ROTTEN_FLESH})
+ public class MyPigZombie extends MyPet implements IMyPetEquipment, IMyPetBaby {
+-    public static ConfigItem GROW_UP_ITEM;
+-
+     protected boolean isBaby = false;
+     protected Map<EquipmentSlot, ItemStack> equipment = new HashMap<EquipmentSlot, ItemStack>();
+ 

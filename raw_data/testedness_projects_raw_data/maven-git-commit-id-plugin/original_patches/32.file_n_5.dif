@@ -1,0 +1,13 @@
+diff --git a/src/test/java/pl/project13/maven/git/ContainsKeyCondition.java b/src/test/java/pl/project13/maven/git/ContainsKeyCondition.java
+index 45f4ad8..9d5616f 100644
+--- a/src/test/java/pl/project13/maven/git/ContainsKeyCondition.java
++++ b/src/test/java/pl/project13/maven/git/ContainsKeyCondition.java
+@@ -34,7 +34,7 @@ class ContainsKeyCondition extends Condition<Map<?, ?>> {
+   public boolean matches(@NotNull Map<?, ?> map) {
+     boolean containsKey = map.containsKey(key);
+     if (!containsKey) {
+-      throw new RuntimeException(String.format("Map did not contain [%s] key! Map is: %s\nValue for [%s] was: %s", key, map, key, map.get(key)));
++      throw new RuntimeException(String.format("Map did not contain [%s] key! Map is: %s", key, map));
+     }
+     return true;
+   }

@@ -1,0 +1,2 @@
+39ab836 : moved spring-data dependency to boot-starter
+:100644 100644 aab99a0... 3f2e357... M	pom.xml

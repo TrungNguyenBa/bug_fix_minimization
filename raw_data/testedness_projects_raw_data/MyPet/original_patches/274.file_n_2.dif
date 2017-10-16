@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java
+index 91b78714..df0a2bc9 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java
+@@ -55,7 +55,6 @@ public class MyPetArrow extends EntityArrow
+             try
+             {
+                 inGround = EntityArrow.class.getDeclaredField("inGround");
+-                inGround.setAccessible(true);
+             }
+             catch (NoSuchFieldException e)
+             {

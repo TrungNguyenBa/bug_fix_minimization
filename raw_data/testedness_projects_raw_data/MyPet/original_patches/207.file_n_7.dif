@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java b/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
+index 27b9b432..c5e9d6f3 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
+@@ -25,7 +25,7 @@ import de.Keyle.MyPet.entity.types.EntityMyPet;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import net.minecraft.server.v1_6_R2.World;
+ 
+-@EntitySize(width = 0.6F, height = 1.9F)
++@EntitySize(width = 0.6F, height = 0.8F)
+ public class EntityMyWitch extends EntityMyPet
+ {
+     public EntityMyWitch(World world, MyPet myPet)

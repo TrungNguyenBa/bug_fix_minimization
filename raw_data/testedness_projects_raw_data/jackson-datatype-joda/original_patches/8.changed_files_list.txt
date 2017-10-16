@@ -1,0 +1,12 @@
+cac261e : Fix a problem with DataMidnightSerializer, was not allowing format overrides
+:100644 100644 c413b51... 3abeda9... M	src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
+:100644 100644 3f6201c... 3087ce7... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateMidnightDeserializer.java
+:100644 100644 b095e7b... 9d0adb8... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/JodaDateDeserializerBase.java
+:100644 100644 ca708d4... d557f9d... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateMidnightSerializer.java
+:100644 100644 f1e641a... 1fa1771... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeZoneSerializer.java
+:100644 100644 3b866fc... 3674a6c... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/LocalDateSerializer.java
+:100644 100644 354eb3d... 3cb8deb... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/LocalDateTimeSerializer.java
+:100644 100644 33202b1... 332141f... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/LocalTimeSerializer.java
+:100644 100644 8b8ca7a... 1db9813... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/PeriodSerializer.java
+:100644 100644 04917ce... f025e4e... M	src/test/java/com/fasterxml/jackson/datatype/joda/DateMidnightTest.java
+:100644 100644 41eebad... 2697285... M	src/test/java/com/fasterxml/jackson/datatype/joda/DateTimeTest.java

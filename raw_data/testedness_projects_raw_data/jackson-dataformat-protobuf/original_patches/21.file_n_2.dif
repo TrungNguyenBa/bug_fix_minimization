@@ -1,0 +1,109 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+index 277377d..f1cea15 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+@@ -496,15 +496,15 @@ public class ProtobufGenerator extends GeneratorBase
+         // Couple of choices; short (guaranteed to have length <= 127); medium (guaranteed
+         // to fit in single buffer); and large (something else)
+ 
+-        final int clen = text.length();
+-        // since max encoded = 3*42 == 126, could check for 42 (ta-dah!)
+-        // ... or, speculate that we commonly get Ascii anyway, and just occasionally need to move
+-        if (clen > 99) {
++        final int len = text.length();
++        // since max encoded = 3*42 == 126
++        if (len > 42) { // Oh yeah, so we FINALLY have the ultimate question answered here
+             _encodeLongerString(text);
+             return;
+         }
++
+         _verifyValueWrite();
+-        _ensureRoom(clen+clen+clen+2); // up to 3 bytes per char; and possibly 2 bytes for length
++        _ensureRoom(140); // 126 for bytes, 1 for length, 5 for tag, at least
+         int ptr = _writeTag(WireType.LENGTH_PREFIXED, _currPtr) + 1; // +1 to leave room for length indicator
+         final int start = ptr;
+         final byte[] buf = _currBuffer;
+@@ -516,15 +516,15 @@ public class ProtobufGenerator extends GeneratorBase
+                 break;
+             }
+             buf[ptr++] = (byte) c;
+-            if (++i >= clen) { // done! Also, we know length is 7-bit
++            if (++i >= len) { // done!
+                 buf[start-1] = (byte) (ptr - start);
+                 _currPtr = ptr;
+                 return;
+             }
+         }
+ 
+-        // no; non-ASCII stuff, slower loop
+-        while (i < clen) {
++        // no; non-aSCII stuff, slower loop
++        while (i < len) {
+             int c = text.charAt(i++);
+             if (c <= 0x7F) {
+                 buf[ptr++] = (byte) c;
+@@ -549,7 +549,7 @@ public class ProtobufGenerator extends GeneratorBase
+                 _throwIllegalSurrogate(c);
+             }
+             // ... meaning it must have a pair
+-            if (i >= clen) {
++            if (i >= len) {
+                 _throwIllegalSurrogate(c);
+             }
+             c = _decodeSurrogate(c, text.charAt(i++));
+@@ -561,18 +561,7 @@ public class ProtobufGenerator extends GeneratorBase
+             buf[ptr++] = (byte) (0x80 | ((c >> 6) & 0x3f));
+             buf[ptr++] = (byte) (0x80 | (c & 0x3f));
+         }
+-
+-        // still fits in a single byte?
+-        int blen = ptr-start;
+-        
+-        if (blen <= 0x7F) { // expected case
+-            buf[start-1] = (byte) blen;
+-        } else { // but sometimes we got it wrong, need to move (bah)
+-            System.arraycopy(buf, start, buf, start+1, blen);
+-            buf[start-1] = (byte) (0x80 + (blen & 0x7F));
+-            buf[start] = (byte) (blen >> 7);
+-            ++ptr;
+-        }
++        buf[start-1] = (byte) (ptr - start);
+         _currPtr = ptr;
+     }
+     
+@@ -583,13 +572,12 @@ public class ProtobufGenerator extends GeneratorBase
+             writeNull();
+             return;
+         }
+-        // Could guarantee with 42 chars or less; but let's do bit more speculative
+-        if (clen > 99) {
++        if (clen > 42) { // ... the ultimate question being "... that fits within 7-bit length indicator"
+             _encodeLongerString(text, offset, clen);
+             return;
+         }
+         _verifyValueWrite();
+-        _ensureRoom(clen+clen+clen+2); // up to 3 bytes per char; and possibly 2 bytes for length
++        _ensureRoom(140); // 126 for bytes, 1 for length, 5 for tag, at least
+         int ptr = _writeTag(WireType.LENGTH_PREFIXED, _currPtr) + 1; // +1 to leave room for length indicator
+         final int start = ptr;
+         final byte[] buf = _currBuffer;
+@@ -640,18 +628,7 @@ public class ProtobufGenerator extends GeneratorBase
+             buf[ptr++] = (byte) (0x80 | ((c >> 6) & 0x3f));
+             buf[ptr++] = (byte) (0x80 | (c & 0x3f));
+         }
+-
+-        // still fits in a single byte?
+-        int blen = ptr-start;
+-        
+-        if (blen <= 0x7F) { // expected case
+-            buf[start-1] = (byte) blen;
+-        } else { // but sometimes we got it wrong, need to move (bah)
+-            System.arraycopy(buf, start, buf, start+1, blen);
+-            buf[start-1] = (byte) (0x80 + (blen & 0x7F));
+-            buf[start] = (byte) (blen >> 7);
+-            ++ptr;
+-        }
++        buf[start-1] = (byte) (ptr - start);
+         _currPtr = ptr;
+     }
+ 

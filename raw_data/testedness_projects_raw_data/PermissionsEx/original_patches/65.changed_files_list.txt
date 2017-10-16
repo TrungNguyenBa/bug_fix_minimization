@@ -1,0 +1,2 @@
+7206e13 : Make sure ErrorReport correctly urlencodes params of shortened url
+:100644 100644 253406d... 4eca0dd... M	src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java

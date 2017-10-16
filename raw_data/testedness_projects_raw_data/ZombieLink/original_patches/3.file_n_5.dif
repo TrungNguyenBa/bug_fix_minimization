@@ -1,0 +1,31 @@
+diff --git a/zombielink-it/src/test/java/com/lonepulse/zombielink/response/DeserializerEndpoint.java b/zombielink-it/src/test/java/com/lonepulse/zombielink/response/DeserializerEndpoint.java
+index b857d12..4f1ec6d 100644
+--- a/zombielink-it/src/test/java/com/lonepulse/zombielink/response/DeserializerEndpoint.java
++++ b/zombielink-it/src/test/java/com/lonepulse/zombielink/response/DeserializerEndpoint.java
+@@ -23,7 +23,7 @@ package com.lonepulse.zombielink.response;
+ import static com.lonepulse.zombielink.annotation.Entity.ContentType.JSON;
+ import static com.lonepulse.zombielink.annotation.Entity.ContentType.XML;
+ 
+-import com.lonepulse.zombielink.annotation.Deserialize;
++import com.lonepulse.zombielink.annotation.Deserializer;
+ import com.lonepulse.zombielink.annotation.Endpoint;
+ import com.lonepulse.zombielink.annotation.GET;
+ import com.lonepulse.zombielink.model.User;
+@@ -50,7 +50,7 @@ public interface DeserializerEndpoint {
+ 	 * <br><br>
+ 	 * @since 1.2.4
+ 	 */
+-	@Deserialize(JSON) 
++	@Deserializer(JSON) 
+ 	@GET("/gsonunavailable")
+ 	User gsonUnavailable();
+ 	
+@@ -61,7 +61,7 @@ public interface DeserializerEndpoint {
+ 	 * <br><br>
+ 	 * @since 1.2.4
+ 	 */
+-	@Deserialize(XML) 
++	@Deserializer(XML) 
+ 	@GET("/simplexmlunavailable")
+ 	User simpleXmlUnavailable();
+ }

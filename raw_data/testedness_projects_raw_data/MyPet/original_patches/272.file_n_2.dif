@@ -1,0 +1,24 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIMeleeAttack.java b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIMeleeAttack.java
+index 9b3354b2..854fc78a 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIMeleeAttack.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIMeleeAttack.java
+@@ -74,7 +74,7 @@ public class MyPetAIMeleeAttack extends MyPetAIGoal
+     @Override
+     public boolean shouldFinish()
+     {
+-        if (this.petEntity.getGoalTarget() == null || !this.targetEntity.isAlive())
++        if (this.petEntity.getGoalTarget() == null)
+         {
+             return true;
+         }
+@@ -82,6 +82,10 @@ public class MyPetAIMeleeAttack extends MyPetAIGoal
+         {
+             return true;
+         }
++        else if (!this.targetEntity.isAlive())
++        {
++            return true;
++        }
+         if (petEntity.getMyPet().getRangedDamage() > 0 && this.petEntity.e(targetEntity.locX, targetEntity.boundingBox.b, targetEntity.locZ) >= 16)
+         {
+             return true;

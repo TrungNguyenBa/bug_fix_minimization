@@ -1,0 +1,24 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index 4986368..127ac5f 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -285,9 +285,7 @@ public class PermissionsEx extends JavaPlugin {
+ 		public void onPlayerLogin(PlayerLoginEvent event) {
+ 			try {
+ 				PermissionUser user = getPermissionsManager().getUser(event.getPlayer());
+-				if (!user.isVirtual()) { // Update name only if user exists in config
+-					user.setOption("name", event.getPlayer().getName());
+-				}
++				user.setOption("name", event.getPlayer().getName()); // Update name
+ 				if (!config.shouldLogPlayers()) {
+ 					return;
+ 				}
+@@ -306,7 +304,7 @@ public class PermissionsEx extends JavaPlugin {
+ 				getPermissionsManager().getUser(event.getPlayer()).setOption("last-logout-time", Long.toString(System.currentTimeMillis() / 1000L));
+ 			}
+ 
+-			getPermissionsManager().resetUser(event.getPlayer());
++			getPermissionsManager().resetUser(event.getPlayer().getUniqueId());
+ 			} catch (Throwable t) {
+ 				ErrorReport.handleError("While logout cleanup event", t);
+ 			}

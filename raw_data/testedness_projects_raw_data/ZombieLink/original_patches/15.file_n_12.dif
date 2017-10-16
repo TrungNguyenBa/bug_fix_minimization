@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/core/request/package-info.java b/src/main/java/com/lonepulse/zombielink/core/request/package-info.java
+index ea16c70..3ce5caa 100644
+--- a/src/main/java/com/lonepulse/zombielink/core/request/package-info.java
++++ b/src/main/java/com/lonepulse/zombielink/core/request/package-info.java
+@@ -1,6 +1,7 @@
+ /**
+- * <p>Contains the set of classes which create HTTP requests for a proxy invocation using the annotated meta-data 
+- * found on the endpoint request method declarations.</p>
++ * <p>Contains the set of classes which create HTTP responses of any <i>method 
++ * type</i> using the annotated meta-data. Use {@link com.lonepulse.zombielink.core.request.RequestBuilders} 
++ * to access all available request builders.</p>
+  * 
+  * @since 1.1.1
+  * <br><br>

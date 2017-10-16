@@ -1,0 +1,38 @@
+diff --git a/zombielink-it/src/test/java/com/lonepulse/zombielink/request/SerializerEndpoint.java b/zombielink-it/src/test/java/com/lonepulse/zombielink/request/SerializerEndpoint.java
+index 4a8b65f..393a414 100644
+--- a/zombielink-it/src/test/java/com/lonepulse/zombielink/request/SerializerEndpoint.java
++++ b/zombielink-it/src/test/java/com/lonepulse/zombielink/request/SerializerEndpoint.java
+@@ -20,13 +20,14 @@ package com.lonepulse.zombielink.request;
+  * #L%
+  */
+ 
++
+ import static com.lonepulse.zombielink.annotation.Entity.ContentType.JSON;
+ import static com.lonepulse.zombielink.annotation.Entity.ContentType.XML;
+ 
+ import com.lonepulse.zombielink.annotation.Endpoint;
+ import com.lonepulse.zombielink.annotation.Entity;
+ import com.lonepulse.zombielink.annotation.PUT;
+-import com.lonepulse.zombielink.annotation.Serialize;
++import com.lonepulse.zombielink.annotation.Serializer;
+ import com.lonepulse.zombielink.model.User;
+ 
+ /**
+@@ -52,7 +53,7 @@ public interface SerializerEndpoint {
+ 	 * <br><br>
+ 	 * @since 1.2.4
+ 	 */
+-	@Serialize(JSON) 
++	@Serializer(JSON) 
+ 	@PUT("/gsonunavailable")
+ 	String gsonUnavailable(@Entity User user);
+ 	
+@@ -64,7 +65,7 @@ public interface SerializerEndpoint {
+ 	 * <br><br>
+ 	 * @since 1.2.4
+ 	 */
+-	@Serialize(XML) 
++	@Serializer(XML) 
+ 	@PUT("/simplexmlunavailable")
+ 	String simpleXmlUnavailable(@Entity User user);
+ }

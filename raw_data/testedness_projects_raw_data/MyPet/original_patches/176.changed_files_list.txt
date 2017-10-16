@@ -1,0 +1,3 @@
+6a878c38 : fixed displayed owner in pet info there is no need to create a MyPetPlayer when accessing the petinfo
+:100644 100644 7eec757d... 5c10025a... M	src/main/java/de/Keyle/MyPet/commands/CommandInfo.java
+:100644 100644 b58f1720... 6dcd8fda... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

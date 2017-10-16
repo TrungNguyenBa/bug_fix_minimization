@@ -1,0 +1,32 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/giant/MyGiant.java b/src/main/java/de/Keyle/MyPet/entity/types/giant/MyGiant.java
+index a45aad88..1fb3b6b7 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/giant/MyGiant.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/giant/MyGiant.java
+@@ -29,18 +29,22 @@ import org.bukkit.ChatColor;
+ import static org.bukkit.Material.ROTTEN_FLESH;
+ 
+ @MyPetInfo(food = {ROTTEN_FLESH})
+-public class MyGiant extends MyPet {
+-    public MyGiant(MyPetPlayer petOwner) {
++public class MyGiant extends MyPet
++{
++    public MyGiant(MyPetPlayer petOwner)
++    {
+         super(petOwner);
+     }
+ 
+     @Override
+-    public MyPetType getPetType() {
++    public MyPetType getPetType()
++    {
+         return MyPetType.Giant;
+     }
+ 
+     @Override
+-    public String toString() {
++    public String toString()
++    {
+         return "MyGiant{owner=" + getOwner().getName() + ", name=" + ChatColor.stripColor(petName) + ", exp=" + experience.getExp() + "/" + experience.getRequiredExp() + ", lv=" + experience.getLevel() + ", status=" + status.name() + ", skilltree=" + (skillTree != null ? skillTree.getName() : "-") + ", worldgroup=" + worldGroup + "}";
+     }
+ }
+\ No newline at end of file

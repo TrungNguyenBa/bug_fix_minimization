@@ -1,0 +1,7 @@
+0da657a65 : [MATH-996] Fix creation of Fraction/BigFraction objects in maxDenominator mode when the value is close to an actual fraction.
+:100644 100644 43d1c2893... e3b934c40... M	pom.xml
+:100644 100644 7b277f648... c73a55b03... M	src/changes/changes.xml
+:100644 100644 5b0a6b4ce... 4ca33eb04... M	src/main/java/org/apache/commons/math3/fraction/BigFraction.java
+:100644 100644 08d3b9556... 002dae934... M	src/main/java/org/apache/commons/math3/fraction/Fraction.java
+:100644 100644 7b06ded2a... 71efb97ba... M	src/test/java/org/apache/commons/math3/fraction/BigFractionTest.java
+:100644 100644 37e22d105... 96b7c08d1... M	src/test/java/org/apache/commons/math3/fraction/FractionTest.java

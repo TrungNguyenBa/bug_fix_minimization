@@ -1,0 +1,2 @@
+42ab8d7 : Improved performance when getting all users and some users are not converted
+:100644 100644 93708c7... cdf2e33... M	src/main/java/ru/tehkode/permissions/PermissionManager.java

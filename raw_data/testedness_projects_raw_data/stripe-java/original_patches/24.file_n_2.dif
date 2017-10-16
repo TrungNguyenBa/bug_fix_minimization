@@ -1,0 +1,25 @@
+diff --git a/src/main/java/com/stripe/model/Card.java b/src/main/java/com/stripe/model/Card.java
+index d4f4925..8b865f9 100644
+--- a/src/main/java/com/stripe/model/Card.java
++++ b/src/main/java/com/stripe/model/Card.java
+@@ -17,7 +17,6 @@ public class Card extends APIResource implements PaymentSource {
+ 	Integer expMonth;
+ 	Integer expYear;
+ 	String last4;
+-	String dynamicLast4;
+ 	String country;
+ 	String type;
+ 	String name;
+@@ -140,12 +139,6 @@ public class Card extends APIResource implements PaymentSource {
+ 	public void setLast4(String last4) {
+ 		this.last4 = last4;
+ 	}
+-	public String getDynamicLast4() {
+-		return dynamicLast4;
+-	}
+-	public void setDynamicLast4(String dynamicLast4) {
+-		this.dynamicLast4 = dynamicLast4;
+-	}
+ 	public String getCountry() {
+ 		return country;
+ 	}

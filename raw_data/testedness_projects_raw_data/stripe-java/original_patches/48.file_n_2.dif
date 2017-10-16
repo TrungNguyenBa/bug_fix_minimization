@@ -1,0 +1,34 @@
+diff --git a/src/main/java/com/stripe/net/APIResource.java b/src/main/java/com/stripe/net/APIResource.java
+index 8033f4e..21fdc96 100644
+--- a/src/main/java/com/stripe/net/APIResource.java
++++ b/src/main/java/com/stripe/net/APIResource.java
+@@ -208,19 +208,9 @@ public abstract class APIResource extends StripeObject {
+ 		}
+ 	}
+ 
+-	private static String formatURL(String url, String query) {
+-		if (query == null || query.isEmpty()) {
+-			return url;
+-		} else {
+-			// In some cases, URL can already contain a question mark (eg, upcoming invoice lines)
+-			String separator = url.contains("?") ? "&" : "?";
+-			return String.format("%s%s%s", url, separator, query);
+-		}
+-	}
+-
+ 	private static javax.net.ssl.HttpsURLConnection createGetConnection(
+ 			String url, String query, String apiKey) throws IOException, APIConnectionException {
+-		String getURL = formatURL(url, query);
++		String getURL = String.format("%s?%s", url, query);
+ 		javax.net.ssl.HttpsURLConnection conn = createStripeConnection(getURL,
+ 				apiKey);
+ 		conn.setRequestMethod("GET");
+@@ -256,7 +246,7 @@ public abstract class APIResource extends StripeObject {
+ 
+ 	private static javax.net.ssl.HttpsURLConnection createDeleteConnection(
+ 			String url, String query, String apiKey) throws IOException, APIConnectionException {
+-		String deleteUrl = formatURL(url, query);
++		String deleteUrl = String.format("%s?%s", url, query);
+ 		javax.net.ssl.HttpsURLConnection conn = createStripeConnection(
+ 				deleteUrl, apiKey);
+ 		conn.setRequestMethod("DELETE");

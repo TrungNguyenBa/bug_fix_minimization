@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/MultiBackend.java b/src/main/java/ru/tehkode/permissions/backends/MultiBackend.java
+index e3693e0..db9791c 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/MultiBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/MultiBackend.java
+@@ -27,7 +27,7 @@ import java.util.Set;
+ public class MultiBackend extends PermissionBackend {
+ 	private final List<PermissionBackend> backends = new ArrayList<>();
+ 	private final Map<String, PermissionBackend> fallbackBackends = new HashMap<>();
+-	public MultiBackend(PermissionManager manager, ConfigurationSection backendConfig) throws PermissionBackendException {
++	protected MultiBackend(PermissionManager manager, ConfigurationSection backendConfig) throws PermissionBackendException {
+ 		super(manager, backendConfig);
+ 		Map<String, PermissionBackend> backendMap = new HashMap<>();
+ 		List<String> backendNames = backendConfig.getStringList("backends");

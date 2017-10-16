@@ -1,0 +1,5 @@
+739bd0db : Work on polarization and external, uniform electric field
+:100644 100644 c09ca52d... 603c0f94... M	include/faunus/energy.h
+:100644 100644 5d871bbc... bfa8fb1f... M	include/faunus/externalpotential.h
+:100644 100644 008eb558... 6c563bb5... M	include/faunus/move.h
+:100644 100644 2dff15e6... 29007200... M	include/faunus/multipole.h

@@ -1,0 +1,11 @@
+32756cf : Assorted bugfixes
+:100644 100644 c93e930... fc40cc4... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 465e53a... f4ca4a3... M	src/main/java/ru/tehkode/permissions/RegExpMatcher.java
+:100644 100644 11e418f... 2da8bd0... M	src/main/java/ru/tehkode/permissions/backends/BackendDataTransfer.java
+:100644 100644 67f84ad... 2c78661... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 20c7472... 5c559ec... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+:100644 100644 75c9292... 267f8a4... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+:100644 100644 127ac5f... 4986368... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+:100644 100644 29017c5... abb90e3... M	src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+:100644 100644 82583de... 347e18b... M	src/main/java/ru/tehkode/permissions/bukkit/commands/UserCommands.java
+:100644 100644 4326427... 07c07da... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java

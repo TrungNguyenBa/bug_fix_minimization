@@ -1,0 +1,23 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalDateDeserializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalDateDeserializer.java
+index 6fd1cb5..bede129 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalDateDeserializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalDateDeserializer.java
+@@ -2,8 +2,8 @@ package com.fasterxml.jackson.datatype.joda.deser;
+ 
+ import java.io.IOException;
+ 
+-import org.joda.time.DateTimeZone;
+ import org.joda.time.LocalDate;
++
+ import com.fasterxml.jackson.core.JsonParser;
+ import com.fasterxml.jackson.core.JsonToken;
+ import com.fasterxml.jackson.databind.DeserializationContext;
+@@ -37,7 +37,7 @@ public class LocalDateDeserializer
+                     : _format.createParser(ctxt).parseLocalDate(str);
+         }
+         if (p.getCurrentToken() == JsonToken.VALUE_NUMBER_INT) {
+-            return new LocalDate(p.getLongValue(), DateTimeZone.forTimeZone(ctxt.getTimeZone()));
++            return new LocalDate(p.getLongValue());            
+         }
+         
+         // [yyyy,mm,dd] or ["yyyy","mm","dd"]

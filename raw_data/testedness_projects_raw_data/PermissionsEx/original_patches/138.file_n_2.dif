@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+index 0bbf53d..a16c050 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+@@ -72,7 +72,7 @@ public class SuperpermsListener implements Listener {
+ 
+ 	private void updatePlayerPermission(Permission permission, Player player, PermissionUser user) {
+ 		permission.getChildren().clear();
+-		permission.getChildren().put(permissionName(player, ".options"), true);
++		permission.getChildren().put("permissionsex.player." + player.getName() + ".options", true);
+ 		for (String perm : user.getPermissions(player.getWorld().getName())) {
+ 			boolean value = true;
+ 			if (perm.startsWith("-")) {

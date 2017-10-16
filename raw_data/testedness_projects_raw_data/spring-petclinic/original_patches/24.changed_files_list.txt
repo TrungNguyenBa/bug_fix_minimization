@@ -1,0 +1,2 @@
+aeec710 : Adding Maven config for Cobertura
+:100644 100644 59fdd76... ffdbf51... M	pom.xml

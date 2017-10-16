@@ -1,0 +1,3 @@
+50aad9d : Cleanup and fix projection of subdocuments.
+:100644 100644 8fdeaec... 5a07ba6... M	src/main/java/de/bwaldvogel/mongo/backend/memory/MemoryCollection.java
+:100644 100644 996e22f... 2b2d629... M	src/test/java/de/bwaldvogel/MemoryBackendTest.java

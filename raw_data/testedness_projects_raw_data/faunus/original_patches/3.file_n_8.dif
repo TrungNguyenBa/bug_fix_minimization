@@ -1,0 +1,10 @@
+diff --git a/src/examples/stockmayer.state b/src/examples/stockmayer.state
+index 6b5fb168..be09b2f4 100644
+--- a/src/examples/stockmayer.state
++++ b/src/examples/stockmayer.state
+@@ -1,4 +1,4 @@
+-8.939 8.939 8.939
++714.277240019
+ 100
+ 4.409404117418362
+ -2.326239027346395

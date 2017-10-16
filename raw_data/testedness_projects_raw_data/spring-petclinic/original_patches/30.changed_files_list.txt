@@ -1,0 +1,2 @@
+74f683a : Fixed typo
+:100644 100644 b548629... f2ed258... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPet.java

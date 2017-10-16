@@ -1,0 +1,10 @@
+e8feb341 : Fixed minor changes. Ready for merge
+:100755 100755 cb0ff5c6... 9bc01275... M	include/faunus/analysis.h
+:100644 100644 764526cb... 12e7212d... M	include/faunus/io.h
+:100644 100644 017b6592... 8e78950e... M	include/faunus/multipole.h
+:100644 100644 eb497290... 77b14c66... M	include/faunus/space.h
+:100644 100644 86a665b4... 5bb5a68c... M	src/examples/stockmayer.cpp
+:100755 100755 a1e950d4... ea11c6e1... M	src/examples/stockmayer.run
+:100644 100644 732dcdda... 9a28a1eb... M	src/examples/water2.cpp
+:100644 100644 a193df6d... 0002aa6c... M	src/playground/stenqvist/nemo.cpp
+:100644 100644 f73ffb32... e4779a90... M	src/species.cpp

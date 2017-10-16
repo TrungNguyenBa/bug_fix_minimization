@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+index 7d3cde7d..425bccef 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+@@ -76,9 +76,6 @@ public class HurtByTarget extends AIGoal {
+                 }
+             }
+         }
+-        if (!PvPChecker.canHurtCitizens(target.getBukkitEntity())) {
+-            return false;
+-        }
+         return true;
+     }
+ 

@@ -1,0 +1,12 @@
+diff --git a/src/main/java/org/apache/commons/math/optimization/univariate/AbstractUnivariateRealOptimizer.java b/src/main/java/org/apache/commons/math/optimization/univariate/AbstractUnivariateRealOptimizer.java
+index c6eeb53d0..d312243bc 100644
+--- a/src/main/java/org/apache/commons/math/optimization/univariate/AbstractUnivariateRealOptimizer.java
++++ b/src/main/java/org/apache/commons/math/optimization/univariate/AbstractUnivariateRealOptimizer.java
+@@ -260,6 +260,5 @@ public abstract class AbstractUnivariateRealOptimizer
+      *
+      * @return the optimum.
+      */
+-    protected abstract double doOptimize()
+-        throws MaxIterationsExceededException, FunctionEvaluationException;
++    protected abstract double doOptimize();
+ }

@@ -1,0 +1,26 @@
+diff --git a/src/main/java/ru/tehkode/permissions/query/SetQuery.java b/src/main/java/ru/tehkode/permissions/query/SetQuery.java
+index ccf9341..7d172a6 100644
+--- a/src/main/java/ru/tehkode/permissions/query/SetQuery.java
++++ b/src/main/java/ru/tehkode/permissions/query/SetQuery.java
+@@ -4,19 +4,17 @@ import com.google.common.base.Function;
+ import com.google.common.util.concurrent.Futures;
+ import com.google.common.util.concurrent.ListenableFuture;
+ import ru.tehkode.permissions.PermissionManager;
+-import ru.tehkode.permissions.data.Context;
+ import ru.tehkode.permissions.data.MatcherGroup;
+ 
+ import javax.annotation.Nullable;
+ import java.util.List;
+-import java.util.concurrent.ConcurrentMap;
+ 
+ /**
+  * Query used to set permissions data
+  */
+ public class SetQuery extends PermissionQuery<SetQuery> {
+-	public SetQuery(PermissionManager manager, ConcurrentMap<CacheKey, CacheElement> cache) {
+-		super(manager, cache);
++	public SetQuery(PermissionManager manager) {
++		super(manager);
+ 		followInheritance(false); // When setting, we usually don't want to go up in the inheritance tree to look for sections to modify
+ 	}
+ 

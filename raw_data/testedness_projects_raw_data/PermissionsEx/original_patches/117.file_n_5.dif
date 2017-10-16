@@ -1,0 +1,23 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java b/src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+index 1945f31..22adcea 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+@@ -110,14 +110,14 @@ public abstract class PermissionBackend {
+ 	 * @param backend The backend to load data from
+ 	 */
+ 	public void loadFrom(PermissionBackend backend) {
+-		for (String group : backend.getGroupNames()) {
+-			BackendDataTransfer.transferGroup(backend.getGroupData(group), getGroupData(group));
+-		}
+-
+ 		for (String user : backend.getUserIdentifiers()) {
+ 			BackendDataTransfer.transferUser(backend.getUserData(user), getUserData(user));
+ 		}
+ 
++		for (String group : backend.getGroupNames()) {
++			BackendDataTransfer.transferGroup(backend.getGroupData(group), getGroupData(group));
++		}
++
+ 		for (Map.Entry<String, List<String>> ent : backend.getAllWorldInheritance().entrySet()) {
+ 			setWorldInheritance(ent.getKey(), ent.getValue()); // Could merge data but too complicated & too lazy
+ 		}

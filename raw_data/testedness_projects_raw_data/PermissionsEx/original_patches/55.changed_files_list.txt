@@ -1,0 +1,3 @@
+b9dea56 : Various regexperms tweaks
+:100644 100644 b6df82b... af89912... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
+:100644 100644 838c35d... f218509... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissionList.java

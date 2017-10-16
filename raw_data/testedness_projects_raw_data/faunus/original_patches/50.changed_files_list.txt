@@ -1,0 +1,3 @@
+80ab063a : Fixed bonded force calculation; updated xyz/debyer script
+:100644 100644 fb9ecd81... d2f25597... M	include/faunus/energy.h
+:100755 100755 d5b13939... 84ded781... M	scripts/xyz2debye.sh

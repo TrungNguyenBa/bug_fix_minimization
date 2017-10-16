@@ -1,0 +1,9 @@
+49826214 : pet will now stop following their target when:   * target is in another world   * target is more than 20 meters away   * owner is more than 25 meters away
+:100644 100644 3e6a70bb... 90262dc8... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+:100644 100644 93714763... e624dd4c... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
+:100644 100644 49fc46fe... c16f2427... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+:100644 100644 f7ab403b... 6d42a8c5... M	src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+:100644 100644 d41dc74a... 3cf22839... M	src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+:100644 100644 d5dceec7... 4398ee03... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtByTarget.java
+:100644 100644 f9071f7e... 8eab89af... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+:100644 100644 d1faa28d... 1460ab12... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java

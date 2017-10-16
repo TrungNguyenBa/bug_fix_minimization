@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/Util.java b/src/main/java/de/Keyle/MyPet/util/Util.java
+index f40c7cfa..2bb32ab9 100644
+--- a/src/main/java/de/Keyle/MyPet/util/Util.java
++++ b/src/main/java/de/Keyle/MyPet/util/Util.java
+@@ -24,7 +24,6 @@ import de.Keyle.MyPet.util.logger.DebugLogger;
+ import org.apache.commons.lang.Validate;
+ import org.apache.commons.lang.WordUtils;
+ 
+-import javax.annotation.Nullable;
+ import java.io.BufferedReader;
+ import java.io.FileReader;
+ import java.io.IOException;
+@@ -34,7 +33,6 @@ import java.net.URL;
+ import java.text.MessageFormat;
+ 
+ public class Util {
+-    @Nullable
+     public static Field getField(Class<?> clazz, String field) {
+         try {
+             Field f = clazz.getDeclaredField(field);

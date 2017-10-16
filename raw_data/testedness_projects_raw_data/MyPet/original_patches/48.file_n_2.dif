@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java b/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+index 21c86cda..abe5c696 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+@@ -94,7 +94,7 @@ public class LevelUpListener implements Listener {
+                     fwm.addEffect(fwe);
+                     fwm.setPower(0);
+                     fw.setFireworkMeta(fwm);
+-                    //fw.detonate(); // the rocket just disappears when used
++                    fw.detonate();
+                 }
+             }
+         }

@@ -1,0 +1,4 @@
+82c5e4f9 : Ambiguous date-time when in zone with offset of 00:00 [3424669]
+:100644 100644 e47e1dee... d5157e34... M	RELEASE-NOTES.txt
+:100644 100644 855cad05... ec05941f... M	src/main/java/org/joda/time/DateTimeZone.java
+:100644 100644 a62d6242... a7a5175d... M	src/test/java/org/joda/time/TestDateTimeZoneCutover.java

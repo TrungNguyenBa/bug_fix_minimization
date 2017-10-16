@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index a2d40927..f289ff31 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -106,13 +106,14 @@ public abstract class MyPet implements IMyPet, NBTStorage
+         Dead, Despawned, Here
+     }
+ 
+-    protected MyPet(MyPetPlayer Owner)
++    public MyPet(MyPetPlayer Owner)
+     {
+         this.petOwner = Owner;
+         skills = new Skills(this);
+         experience = new Experience(this);
+         hungerTime = Configuration.HUNGER_SYSTEM_TIME;
+-        petName = Locales.getString("Name." + getPetType().getTypeName(), petOwner);
++        autoAssignSkilltree();
++        petName = Locales.getString("Name." + getPetType().getTypeName(), petOwner.getLanguage());
+     }
+ 
+     public boolean autoAssignSkilltree()

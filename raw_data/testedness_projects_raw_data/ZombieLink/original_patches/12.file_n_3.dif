@@ -1,0 +1,55 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java b/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
+index 469d994..f5a9709 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
++++ b/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
+@@ -88,25 +88,35 @@ class HeaderProcessor extends AbstractResponseProcessor {
+ 				
+ 				for (Map.Entry<String, Object> header : headers) {
+ 					
+-					if(header.getValue() instanceof StringBuilder) {
+-						
+-						name = header.getKey();
+-						value = (StringBuilder)header.getValue();
++					name = header.getKey();
++					
++					if(!(header.getValue() instanceof StringBuilder)) {
+ 						
+-						if(value == null || value.equals("")) {
+-							
+-							continue; //skip headers which are omitted for the current invocation
+-						}
++						StringBuilder errorContext = new StringBuilder()
++						.append("Dynamic header values can only be of type ")
++						.append(StringBuilder.class.getName())
++						.append(". Please consider providing an instance of StringBuilder for the header <")
++						.append(header.getKey())
++						.append("> and query it after request execution to retrieve the response header-value. ");
+ 						
+-						org.apache.http.Header[] responseHeaders = httpResponse.getHeaders(name);
++						throw new IllegalArgumentException(errorContext.toString());
++					}
++					
++					value = (StringBuilder)header.getValue();
++					
++					if(value == null) {
+ 						
+-						if(responseHeaders != null && responseHeaders.length > 0) {
++						continue; //skip headers which are omitted for the current invocation
++					}
++					
++					org.apache.http.Header[] responseHeaders = httpResponse.getHeaders(name);
++					
++					if(responseHeaders != null && responseHeaders.length > 0) {
++					
++						String responseHeaderValue = responseHeaders[0].getValue();
++						value.replace(0, value.length(), responseHeaderValue == null? "" :responseHeaderValue);
+ 						
+-							String responseHeaderValue = responseHeaders[0].getValue();
+-							value.replace(0, value.length(), responseHeaderValue == null? "" :responseHeaderValue);
+-							
+-							httpResponse.removeHeader(responseHeaders[0]); //remaining headers (equally named) processed if in-out params available
+-						}
++						httpResponse.removeHeader(responseHeaders[0]); //remaining headers (equally named) processed if in-out params available
+ 					}
+ 				}
+ 			}

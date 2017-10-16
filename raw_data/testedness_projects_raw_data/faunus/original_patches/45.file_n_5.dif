@@ -1,0 +1,13 @@
+diff --git a/include/faunus/inputfile.h b/include/faunus/inputfile.h
+index 5ce4faef..184c44fe 100644
+--- a/include/faunus/inputfile.h
++++ b/include/faunus/inputfile.h
+@@ -54,7 +54,7 @@ namespace Faunus {
+           return fallback;
+         }
+         
+-      //!< Set value associated with keyword
++      //!< Get value associated with keyword
+       template<typename T>
+         void set(const string &key, T value, string infostring=string()) {
+           if ( map.find(key) != map.end() ) {

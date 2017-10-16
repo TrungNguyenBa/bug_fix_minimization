@@ -1,0 +1,2 @@
+02ebbf3 : whoops, fix
+:100644 100644 3b0c4d0... 8f88366... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java

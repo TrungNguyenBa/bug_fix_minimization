@@ -1,0 +1,3 @@
+bbd990b8 : Applying test for LANG-304 and fix to LocaleUtils
+:100644 100644 ceb886e8... 139d9a7f... M	src/java/org/apache/commons/lang/LocaleUtils.java
+:100644 100644 d1dd7f51... 76cba2f9... M	src/test/org/apache/commons/lang/LocaleUtilsTest.java

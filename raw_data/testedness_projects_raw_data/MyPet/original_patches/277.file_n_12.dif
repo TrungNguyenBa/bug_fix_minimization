@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java b/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+index b9bb1440..3c541458 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+@@ -147,7 +147,7 @@ public class EntityMyOcelot extends EntityMyPet
+ 
+         ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-        if (getOwner().equals(entityhuman))
++        if (entityhuman == getOwner())
+         {
+             if (itemStack != null)
+             {

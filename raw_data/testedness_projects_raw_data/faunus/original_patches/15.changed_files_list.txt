@@ -1,0 +1,2 @@
+04865c27 : Clang compilation flag for linux
+:100644 100644 f7eff32e... 22be24d4... M	scripts/OptimizationFlags.cmake

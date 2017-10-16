@@ -1,0 +1,6 @@
+2703ab3d : Fixed tabulation unitcheck failure. Doc cleanup.
+:100755 100755 de2229e4... c774bb3a... M	include/faunus/analysis.h
+:100644 100644 e147b642... faafe4ab... M	include/faunus/multipole.h
+:100644 100644 2fe7021f... 6d96742c... M	include/faunus/tabulate.h
+:100644 100644 01727bd4... aeed1304... M	src/examples/CMakeLists.txt
+:100644 100644 f30248e7... c10277d2... M	src/examples/unittests.cpp

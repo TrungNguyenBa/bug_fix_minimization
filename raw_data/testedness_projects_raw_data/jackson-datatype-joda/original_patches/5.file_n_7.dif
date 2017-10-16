@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalTimeDeserializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalTimeDeserializer.java
+index d333e78..2661d44 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalTimeDeserializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalTimeDeserializer.java
+@@ -4,8 +4,7 @@ import java.io.IOException;
+ 
+ import org.joda.time.LocalTime;
+ 
+-import com.fasterxml.jackson.core.JsonParser;
+-import com.fasterxml.jackson.core.JsonToken;
++import com.fasterxml.jackson.core.*;
+ import com.fasterxml.jackson.databind.DeserializationContext;
+ import com.fasterxml.jackson.datatype.joda.cfg.FormatConfig;
+ import com.fasterxml.jackson.datatype.joda.cfg.JacksonJodaDateFormat;

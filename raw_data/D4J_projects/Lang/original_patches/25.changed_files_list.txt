@@ -1,0 +1,2 @@
+2bae6878 : LANG-658 Fix remaining entries
+:100644 100644 8caca580... ef839c68... M	src/main/java/org/apache/commons/lang3/text/translate/EntityArrays.java

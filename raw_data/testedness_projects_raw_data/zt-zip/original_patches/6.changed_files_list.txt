@@ -1,0 +1,3 @@
+3976136 : Fixed removing missing entries.
+:100644 100644 d663e84... 2d8ae25... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java
+:100644 100644 058563c... addbae3... M	src/test/java/org/zeroturnaround/zip/ZipUtilTest.java

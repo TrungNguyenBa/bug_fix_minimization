@@ -1,0 +1,17 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/inject/Zombie.java b/src/main/java/com/lonepulse/zombielink/inject/Zombie.java
+index 1e4dda3..c807379 100644
+--- a/src/main/java/com/lonepulse/zombielink/inject/Zombie.java
++++ b/src/main/java/com/lonepulse/zombielink/inject/Zombie.java
+@@ -329,7 +329,11 @@ public final class Zombie {
+ 	
+ 	private static Object createAndRegisterProxy(Class<?> endpointClass) throws InstantiationException, IllegalAccessException {
+ 		
++		Object proxyInstance = EndpointProxyFactory.INSTANCE.create(endpointClass); 
++		EndpointDirectory.INSTANCE.put(endpointClass, proxyInstance);
++		
+ 		RequestExecutors.CONFIGURATION.register(endpointClass);
+-		return EndpointProxyFactory.INSTANCE.create(endpointClass); 
++		
++		return proxyInstance;
+ 	}
+ }

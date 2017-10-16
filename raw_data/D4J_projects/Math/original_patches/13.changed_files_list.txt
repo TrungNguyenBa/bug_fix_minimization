@@ -1,0 +1,4 @@
+8079ea5b8 : MATH-924 Avoid memory exhaustion for large number of unclorrelated observations.
+:100644 100644 8e7538f22... 28c161903... M	src/main/java/org/apache/commons/math3/optimization/Weight.java
+:100644 100644 b6c97e7e5... 982e559eb... M	src/main/java/org/apache/commons/math3/optimization/general/AbstractLeastSquaresOptimizer.java
+:100644 100644 7f7743e03... 74bd8eee2... M	src/test/java/org/apache/commons/math3/optimization/fitting/PolynomialFitterTest.java

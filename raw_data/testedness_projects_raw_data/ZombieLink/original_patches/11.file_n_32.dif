@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java b/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
+index ec2b375..9f6e794 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
++++ b/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
+@@ -26,8 +26,8 @@ import java.util.Map;
+ 
+ import org.apache.http.HttpResponse;
+ 
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.annotation.Header;
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This is a concrete implementation of {@link ResponseProcessor} which retrieves the <i>response-headers</i> 

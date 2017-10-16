@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java b/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
+index 3d4ae9b1..3d12416e 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
+@@ -47,7 +47,7 @@ public class EntityMySilverfish extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.silverfish.say";
++        return !playIdleSound() ? null : "mob.silverfish.say";
+     }
+ 
+     @Override

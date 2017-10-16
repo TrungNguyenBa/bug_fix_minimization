@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/AsyncRequestExecutor.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/AsyncRequestExecutor.java
+index 992f8e1..2c7d847 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/AsyncRequestExecutor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/AsyncRequestExecutor.java
+@@ -32,7 +32,7 @@ import org.apache.http.client.HttpClient;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+ import com.lonepulse.zombielink.annotation.Async;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>An extension of {@link BasicRequestExecutor} which is responsible for executing <b>asynchronous 

@@ -1,0 +1,28 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandBeacon.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandBeacon.java
+index 35fe3177..68bc629c 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandBeacon.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandBeacon.java
+@@ -48,7 +48,7 @@ public class CommandBeacon implements CommandExecutor, TabCompleter
+         if (sender instanceof Player)
+         {
+             Player player = (Player) sender;
+-            if (args.length == 1 && !args[0].equalsIgnoreCase("stop") && MyPetPermissions.has(player, "MyPet.admin", false))
++            if (args.length == 1 && MyPetPermissions.has(player, "MyPet.admin", false))
+             {
+                 Player petOwner = Bukkit.getServer().getPlayer(args[0]);
+ 
+@@ -68,12 +68,11 @@ public class CommandBeacon implements CommandExecutor, TabCompleter
+                 {
+                     ((Beacon) myPet.getSkills().getSkill("Beacon")).activate(player);
+                 }
+-                return true;
+             }
+-            if (MyPetList.hasMyPet(player))
++            else if (MyPetList.hasMyPet(player))
+             {
+                 MyPet myPet = MyPetList.getMyPet(player);
+-                if (!MyPetPermissions.hasExtended(player, "MyPet.user.extended.Beacon", true))
++                if (!MyPetPermissions.hasExtended(player, "MyPet.user.extended.Beacon"))
+                 {
+                     myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_CantUse")));
+                     return true;

@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+index 5f8e559a..1e808c6a 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+@@ -257,11 +257,10 @@ public class PlayerListener implements Listener {
+                     UUID groupMyPetUUID = myPetPlayer.getMyPetForWorldGroup(toGroup.getName());
+                     for (InactiveMyPet inactiveMyPet : myPetPlayer.getInactiveMyPets()) {
+                         if (inactiveMyPet.getUUID().equals(groupMyPetUUID)) {
+-                            MyPet activeMyPet = MyPetList.setMyPetActive(inactiveMyPet);
+-                            if (activeMyPet != null) {
+-                                activeMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.MultiWorld.NowActivePet", myPetPlayer), activeMyPet.getPetName()));
+-                                break;
+-                            }
++                            MyPetList.setMyPetActive(inactiveMyPet);
++                            MyPet activeMyPet = myPetPlayer.getMyPet();
++                            activeMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.MultiWorld.NowActivePet", myPetPlayer), activeMyPet.getPetName()));
++                            break;
+                         }
+                     }
+                     if (!myPetPlayer.hasMyPet()) {

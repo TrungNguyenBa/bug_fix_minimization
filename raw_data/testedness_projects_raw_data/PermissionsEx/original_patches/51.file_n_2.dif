@@ -1,0 +1,31 @@
+diff --git a/pom.xml b/pom.xml
+index e3c0e7c..4378eaf 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -57,14 +57,6 @@
+                       <pattern>org.apache</pattern>
+                       <shadedPattern>ru.tehkode.libs.org.apache</shadedPattern>
+                     </relocation>
+-                    <relocation>
+-                      <pattern>com.mojang</pattern>
+-                      <shadedPattern>ru.tehkode.libs.com.mojang</shadedPattern>
+-                    </relocation>
+-                    <relocation>
+-                      <pattern>com.google.gson</pattern>
+-                      <shadedPattern>ru.tehkode.libs.com.google.gson</shadedPattern>
+-                    </relocation>
+                   </relocations>
+                 </configuration>
+               </execution>
+@@ -158,11 +150,6 @@
+             <artifactId>updater</artifactId>
+             <version>LATEST</version>
+         </dependency>
+-      <dependency>
+-        <groupId>com.mojang</groupId>
+-        <artifactId>AccountsClient</artifactId>
+-        <version>unspecified</version>
+-      </dependency>
+     </dependencies>
+     <repositories>
+         <repository>

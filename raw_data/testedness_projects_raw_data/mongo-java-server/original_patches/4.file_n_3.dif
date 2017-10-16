@@ -1,0 +1,16 @@
+diff --git a/core/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java b/core/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java
+index f23a742..d561fd2 100644
+--- a/core/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java
++++ b/core/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java
+@@ -224,11 +224,6 @@ public class DefaultQueryMatcher implements QueryMatcher {
+         return false;
+     }
+ 
+-    @Override
+-    public boolean matchesValue(Object queryValue, Object value) throws MongoServerException {
+-        return checkMatchesValue(queryValue, value, true);
+-    }
+-
+     private boolean checkMatchesValue(Object queryValue, Object value, boolean valueExists) throws MongoServerException {
+         if (queryValue instanceof BSONObject) {
+             BSONObject queryObject = (BSONObject) queryValue;

@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a5bf2747..a1b3a47e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,6 @@
+-cmake_minimum_required(VERSION 2.8.5 FATAL_ERROR)
++cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+ project("Faunus")
++set(CMAKE_LEGACY_CYGWIN_WIN32 0) # Remove when CMake >= 2.8.4 is required
+ 
+ # ----------------------------
+ #   Locate external packages

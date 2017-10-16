@@ -1,0 +1,18 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index 4d1fc70d..4a148076 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -637,13 +637,6 @@ public abstract class MyPet implements IMyPet, NBTStorage {
+         leashItem.put(myPetClass, configItem);
+     }
+ 
+-    public static double getStartSpeed(MyPetType myPetType) {
+-        if (myPetType != null) {
+-            return getStartSpeed(myPetType.getMyPetClass());
+-        }
+-        return 0.3F;
+-    }
+-
+     public static double getStartSpeed(Class<? extends MyPet> myPetClass) {
+         if (startSpeed.containsKey(myPetClass)) {
+             return startSpeed.get(myPetClass);

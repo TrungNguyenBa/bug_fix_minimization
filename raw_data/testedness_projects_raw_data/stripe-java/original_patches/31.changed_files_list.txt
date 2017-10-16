@@ -1,0 +1,2 @@
+04b9b61 : Revert "StripeColllectionAPIResource => StripeCollectionAPIResource (lll => ll)"
+:100644 100644 105b2e9... 08733c2... R092	src/main/java/com/stripe/model/StripeCollectionAPIResource.java	src/main/java/com/stripe/model/StripeColllectionAPIResource.java

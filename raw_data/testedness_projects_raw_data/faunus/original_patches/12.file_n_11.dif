@@ -1,0 +1,16 @@
+diff --git a/src/examples/temper.run b/src/examples/temper.run
+index c47bcf0e..d66e5a82 100755
+--- a/src/examples/temper.run
++++ b/src/examples/temper.run
+@@ -24,10 +24,9 @@ Tscale                  $Tscale # Reduced temperature
+ " > mpi$proc.temper.input
+ done
+ 
+-exe=./temper
+ # Run simulation
+ if [ -x $exe ]; then
+-  $mpicommand -np 4 $exe
++  $mpicommand -np 4 ./temper
+   rc=$?
+   #rm mpi*
+   exit $rc

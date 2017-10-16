@@ -1,0 +1,13 @@
+diff --git a/include/faunus/io.h b/include/faunus/io.h
+index 8a83478b..735a628f 100644
+--- a/include/faunus/io.h
++++ b/include/faunus/io.h
+@@ -102,7 +102,7 @@ namespace Faunus {
+           std::ostringstream o;
+           o.precision(5);
+           o << atom[a.id].name << " " << i+1 << " " << a.x() << " " << a.y() <<" "<< a.z() << " "
+-            << a.charge << " " << a.mw << " " << a.radius << endl;
++            << a.charge << " " << a.mw << " " << a.radius << "\n";
+           return o.str();
+         }
+ 

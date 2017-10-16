@@ -1,0 +1,26 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/core/response/parser/JsonResponseParser.java b/src/main/java/com/lonepulse/zombielink/core/response/parser/JsonResponseParser.java
+index c694f2a..323a5e0 100644
+--- a/src/main/java/com/lonepulse/zombielink/core/response/parser/JsonResponseParser.java
++++ b/src/main/java/com/lonepulse/zombielink/core/response/parser/JsonResponseParser.java
+@@ -25,7 +25,6 @@ import org.apache.http.util.EntityUtils;
+ 
+ import com.google.gson.Gson;
+ import com.google.gson.reflect.TypeToken;
+-import com.lonepulse.zombielink.core.processor.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This is an extension of {@link AbstractResponseParser} which allows the parsing 
+@@ -45,11 +44,11 @@ public class JsonResponseParser extends AbstractResponseParser<Object> {
+      * and returns the entity representing the JSON data.
+ 	 */
+ 	@Override
+-	protected Object processResponse(HttpResponse httpResponse, ProxyInvocationConfiguration config) throws Exception {
++	protected Object processResponse(HttpResponse httpResponse) throws Exception {
+ 		
+ 		String jsonString = EntityUtils.toString(httpResponse.getEntity());
+ 		
+-		return new Gson().fromJson(jsonString, TypeToken.get(config.getRequest().getReturnType()).getType());
++		return new Gson().fromJson(jsonString, TypeToken.get(getRequestReturnType()).getType());
+ 	}
+ 
+ 	/**

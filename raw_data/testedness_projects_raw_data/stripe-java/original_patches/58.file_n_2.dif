@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/stripe/model/ApplicationFee.java b/src/main/java/com/stripe/model/ApplicationFee.java
+index 7f36209..9194714 100644
+--- a/src/main/java/com/stripe/model/ApplicationFee.java
++++ b/src/main/java/com/stripe/model/ApplicationFee.java
+@@ -170,7 +170,7 @@ public class ApplicationFee extends APIResource {
+ 	public ApplicationFee refund(Map<String, Object> params, String apiKey)
+ 			throws AuthenticationException, InvalidRequestException,
+ 			APIConnectionException, CardException, APIException {
+-		String url = String.format("%s/%s/%s/%s", Stripe.getApiBase(), "v1/application_fees", id, "refund");
++		String url = String.format("%s/%s/%s", Stripe.getApiBase(), "v1/application_fees", id);
+ 		return request(RequestMethod.POST, url, params,
+ 				ApplicationFee.class, apiKey);
+ 	}

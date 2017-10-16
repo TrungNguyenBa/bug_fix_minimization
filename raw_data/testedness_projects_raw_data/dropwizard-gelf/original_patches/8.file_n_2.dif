@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/smarchive/dropwizard/gelf/filters/GelfLoggingFilter.java b/src/main/java/com/smarchive/dropwizard/gelf/filters/GelfLoggingFilter.java
+index 4e174dd..5a82f43 100644
+--- a/src/main/java/com/smarchive/dropwizard/gelf/filters/GelfLoggingFilter.java
++++ b/src/main/java/com/smarchive/dropwizard/gelf/filters/GelfLoggingFilter.java
+@@ -121,7 +121,7 @@ public class GelfLoggingFilter implements Filter {
+         MDC.put("responseStatus", String.valueOf(httpResponse.getStatus()));
+         MDC.put("responseContentType", httpResponse.getContentType());
+         MDC.put("responseEncoding", httpResponse.getCharacterEncoding());
+-        MDC.put("responseTimeNanos", String.valueOf(stopwatch.elapsed(TimeUnit.NANOSECONDS)));
++        MDC.put("responseTimeNanos", String.valueOf(stopwatch.elapsedTime(TimeUnit.NANOSECONDS)));
+         MDC.put("responseLength", String.valueOf(responseWrapper.getCount()));
+ 
+         LOG.info("{} {} {}", httpRequest.getMethod(), httpRequest.getRequestURI(), httpRequest.getProtocol());

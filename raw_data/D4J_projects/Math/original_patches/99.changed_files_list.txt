@@ -1,0 +1,6 @@
+58b5609fe : Fixed an error in computing gcd and lcm for some extreme values at integer range boundaries. JIRA: MATH-243
+:100644 100644 7ea7b0112... 18bf2c78d... M	pom.xml
+:100644 100644 927e50d43... 804a7f672... M	src/java/org/apache/commons/math/MessagesResources_fr.java
+:100644 100644 08df583de... 806c888de... M	src/java/org/apache/commons/math/util/MathUtils.java
+:100644 100644 ea2206528... ba3f36f04... M	src/site/xdoc/changes.xml
+:100644 100644 26433d6b7... 20b61df09... M	src/test/org/apache/commons/math/util/MathUtilsTest.java

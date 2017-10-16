@@ -1,0 +1,4 @@
+fafd8ca : Make GelfConfiguration#hostName an optional setting, fixes #3
+:100644 100644 d56b9a5... f7963f5... M	src/main/java/net/gini/dropwizard/gelf/config/GelfConfiguration.java
+:100644 100644 de15166... 268d3b0... M	src/main/java/net/gini/dropwizard/gelf/logging/LogbackFactory.java
+:100644 100644 ee95f3d... 015ca7d... M	src/test/java/net/gini/dropwizard/gelf/config/GelfConfigurationTest.java

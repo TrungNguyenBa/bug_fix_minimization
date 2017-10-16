@@ -1,0 +1,18 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionUser.java b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+index 2c3bbb7..a264b82 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionUser.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+@@ -732,10 +732,12 @@ public abstract class PermissionUser extends PermissionEntity {
+ 			}
+ 		}
+ 
++		Set<PermissionGroup> visitedGroups = new HashSet<PermissionGroup>();
++
+ 		// Group inhertance
+ 		if (groupInheritance) {
+ 			for (PermissionGroup parentGroup : this.getGroups(worldName)) {
+-				parentGroup.getInheritedPermissions(worldName, permissions, true, false, new HashSet<PermissionGroup>());
++				parentGroup.getInheritedPermissions(worldName, permissions, true, false, visitedGroups);
+ 			}
+ 		}
+ 

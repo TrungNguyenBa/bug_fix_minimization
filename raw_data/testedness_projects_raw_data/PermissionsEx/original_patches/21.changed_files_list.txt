@@ -1,0 +1,23 @@
+43f0e94 : Various commands system tweaks, begin implementing PEX commands
+:100644 100644 6896192... 41b1b83... M	src/main/java/ninja/leaping/permissionsex/ImplementationInterface.java
+:100644 100644 fc8eb74... 014604a... M	src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+:000000 100644 0000000... ea05cb4... A	src/main/java/ninja/leaping/permissionsex/PermissionsExCommands.java
+:100644 100644 873e9b7... bc39f46... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java
+:100644 100644 f65b1d9... 6ea5772... M	src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+:100644 100644 0a779da... a446d7c... M	src/main/java/ninja/leaping/permissionsex/sponge/SpongeMessageFormatter.java
+:100644 100644 28de4c1... 271f64f... M	src/main/java/ninja/leaping/permissionsex/util/command/ChildCommands.java
+:100644 100644 fa3cf09... a86578f... M	src/main/java/ninja/leaping/permissionsex/util/command/CommandContext.java
+:100644 100644 8a9a0e5... 5615a7f... M	src/main/java/ninja/leaping/permissionsex/util/command/CommandSpec.java
+:100644 100644 6679bfa... aedfc01... M	src/main/java/ninja/leaping/permissionsex/util/command/MessageFormatter.java
+:100644 100644 5c78bc6... 8f3b2d2... M	src/main/java/ninja/leaping/permissionsex/util/command/args/CommandArgs.java
+:100644 100644 35982c8... e8bf9ef... M	src/main/java/ninja/leaping/permissionsex/util/command/args/GameArguments.java
+:100644 100644 5a4e224... cea3cb2... M	src/main/java/ninja/leaping/permissionsex/util/command/args/GenericArguments.java
+:100644 100644 b8c877d... 59c105c... M	src/main/po/de.po
+:100644 100644 4d96c6e... 588cf37... M	src/main/po/keys.pot
+:000000 100644 0000000... a8da0c2... A	src/test/java/ninja/leaping/permissionsex/PermissionsExCommandTest.java
+:100644 100644 14ae00d... ac7d0fb... M	src/test/java/ninja/leaping/permissionsex/TestImplementationInterface.java
+:000000 100644 0000000... 82e6b8d... A	src/test/java/ninja/leaping/permissionsex/util/command/ChildCommandsTest.java
+:000000 100644 0000000... dcd277f... A	src/test/java/ninja/leaping/permissionsex/util/command/CommandSpecTest.java
+:100644 100644 a155f55... 146f29d... M	src/test/java/ninja/leaping/permissionsex/util/command/GenericArgumentsTest.java
+:100644 100644 c7122b5... 5561843... M	src/test/java/ninja/leaping/permissionsex/util/command/QuotedStringParserTest.java
+:100644 100644 c0d49e3... 141b3ac... M	src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java

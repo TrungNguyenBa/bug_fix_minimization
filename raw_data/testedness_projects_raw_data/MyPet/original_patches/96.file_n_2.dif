@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+index f81cbef3..9c55aadd 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+@@ -70,7 +70,4 @@ public class EntityMyBat extends EntityMyPet {
+             this.motY *= 0.6D;
+         }
+     }
+-
+-    protected void b(float f) {
+-    }
+ }
+\ No newline at end of file

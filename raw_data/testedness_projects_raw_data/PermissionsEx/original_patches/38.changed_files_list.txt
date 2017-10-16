@@ -1,0 +1,3 @@
+cdb3873 : Correctly implement isOnline(UUID). Fixes #1837
+:100644 100644 53f2d4f... ef7873a... M	pom.xml
+:100644 100644 57aa930... f05a2cb... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

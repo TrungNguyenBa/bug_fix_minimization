@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java b/src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java
+index b24cfa03..fa3972ff 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java
+@@ -48,7 +48,7 @@ public class EntityMyGiant extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.zombie.say";
++        return !playIdleSound() ? null : "mob.zombie.say";
+     }
+ 
+     public void playStepSound()

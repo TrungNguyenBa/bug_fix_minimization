@@ -1,0 +1,81 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/MyOcelot.java b/src/main/java/de/Keyle/MyPet/entity/types/ocelot/MyOcelot.java
+index 3ae3fc06..ba03be34 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/ocelot/MyOcelot.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/ocelot/MyOcelot.java
+@@ -46,6 +46,20 @@ public class MyOcelot extends MyPet implements IMyPetBaby
+         super(petOwner);
+     }
+ 
++    public boolean isSitting()
++    {
++        return isSitting;
++    }
++
++    public void setSitting(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyOcelot) getCraftPet().getHandle()).setSitting(flag);
++        }
++        this.isSitting = flag;
++    }
++
+     public Type getCatType()
+     {
+         return catType;
+@@ -60,6 +74,20 @@ public class MyOcelot extends MyPet implements IMyPetBaby
+         this.catType = value;
+     }
+ 
++    public boolean isBaby()
++    {
++        return isBaby;
++    }
++
++    public void setBaby(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyOcelot) getCraftPet().getHandle()).setBaby(flag);
++        }
++        this.isBaby = flag;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -93,34 +121,6 @@ public class MyOcelot extends MyPet implements IMyPetBaby
+         return MyPetType.Ocelot;
+     }
+ 
+-    public boolean isBaby()
+-    {
+-        return isBaby;
+-    }
+-
+-    public void setBaby(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyOcelot) getCraftPet().getHandle()).setBaby(flag);
+-        }
+-        this.isBaby = flag;
+-    }
+-
+-    public boolean isSitting()
+-    {
+-        return isSitting;
+-    }
+-
+-    public void setSitting(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyOcelot) getCraftPet().getHandle()).setSitting(flag);
+-        }
+-        this.isSitting = flag;
+-    }
+-
+     @Override
+     public String toString()
+     {

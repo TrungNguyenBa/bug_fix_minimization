@@ -1,0 +1,38 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipUtil.java b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+index 3ba1666..c23ca63 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipUtil.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+@@ -1513,15 +1513,13 @@ public final class ZipUtil {
+    * @since 1.9
+    */
+   public static void pack(ZipEntrySource[] entries, OutputStream os) {
+-    if (log.isDebugEnabled()) {
+-      log.debug("Creating stream from {}.", Arrays.asList(entries));
+-    }
++    log.debug("Creating stream from {}.", Arrays.asList(entries));
+     pack(entries, os, false);
+   }
+ 
+   private static void pack(ZipEntrySource[] entries, OutputStream os, boolean closeStream) {
+     try {
+-      ZipOutputStream out = new ZipOutputStream(os);
++      ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(os));
+       for (int i = 0; i < entries.length; i++) {
+         addEntry(entries[i], out);
+       }
+@@ -1545,13 +1543,11 @@ public final class ZipUtil {
+    *          new ZIP file created.
+    */
+   public static void pack(ZipEntrySource[] entries, File zip) {
+-    if (log.isDebugEnabled()) {
+-      log.debug("Creating '{}' from {}.", zip, Arrays.asList(entries));
+-    }
++    log.debug("Creating '{}' from {}.", zip, Arrays.asList(entries));
+ 
+     OutputStream out = null;
+     try {
+-      out = new BufferedOutputStream(new FileOutputStream(zip));
++      out = new FileOutputStream(zip);
+       pack(entries, out, true);
+     }
+     catch (IOException e) {

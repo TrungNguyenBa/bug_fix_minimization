@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Control.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Control.java
+index 6e9a8c10..59fdd28b 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Control.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Control.java
+@@ -63,7 +63,7 @@ public class Control extends ControlInfo implements ISkillInstance
+             active = true;
+             if (!quiet)
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddControl", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%item%", ITEM.name()).replace("%ITEM%", ITEM.name()));
++                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddControl", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%item%", ITEM.name()).replace("%ITEM%", ITEM.name()));
+ 
+             }
+         }

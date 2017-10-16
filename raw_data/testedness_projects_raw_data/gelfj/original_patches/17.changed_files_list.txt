@@ -1,0 +1,3 @@
+661247a : Fix message sending when the short message is empty. This is needed to pass events like 'logger.warn(null, ex)'.
+:100644 100644 32d9107... 36c5faa... M	src/main/java/org/graylog2/GelfMessage.java
+:100644 100644 fc76d80... b5cb296... M	src/test/java/org/graylog2/log/GelfAppenderTest.java

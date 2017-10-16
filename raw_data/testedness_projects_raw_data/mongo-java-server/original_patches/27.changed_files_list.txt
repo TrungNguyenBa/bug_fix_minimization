@@ -1,0 +1,3 @@
+e8c08ff : Quick fix for dot notation projection
+:100644 100644 2aa97ac... 8fdeaec... M	src/main/java/de/bwaldvogel/mongo/backend/memory/MemoryCollection.java
+:100644 100644 fbfcc5d... 996e22f... M	src/test/java/de/bwaldvogel/MemoryBackendTest.java

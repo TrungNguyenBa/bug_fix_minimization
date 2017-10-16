@@ -1,0 +1,3 @@
+1934c7c : Manually enable TLSv1.2 for the benefit of Java 6 and 7
+:100644 100644 3797732... 2f3563b... M	src/main/java/com/stripe/net/LiveStripeResponseGetter.java
+:000000 100644 0000000... bfaf00a... A	src/main/java/com/stripe/net/StripeSSLSocketFactory.java

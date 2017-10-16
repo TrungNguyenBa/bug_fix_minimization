@@ -1,0 +1,4 @@
+e71f6dd3 : LANG-822: NumberUtils#createNumber - bad behaviour for leading "--"
+:100644 100644 0cd39eec... 32624b49... M	src/changes/changes.xml
+:100644 100644 cca5a3f5... 064f547a... M	src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+:100644 100644 e66fa614... b97289a7... M	src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java

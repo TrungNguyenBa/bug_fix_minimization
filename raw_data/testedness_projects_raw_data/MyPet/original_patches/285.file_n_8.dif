@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+index eaf5a08c..3f2ecc0f 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+@@ -50,7 +50,8 @@ public class EntityMyMagmaCube extends EntityMyPet
+ 
+     public int getSize()
+     {
+-        return ((MyMagmaCube) myPet).size;
++        int size = this.datawatcher.getByte(16);
++        return size <= 0 ? 1 : size;
+     }
+ 
+     public void setSize(int value)

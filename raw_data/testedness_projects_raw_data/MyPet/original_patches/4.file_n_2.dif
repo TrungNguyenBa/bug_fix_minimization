@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index 0c71c122..d8ebd171 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -677,14 +677,6 @@ public abstract class EntityMyPet extends EntityCreature implements IAnimal {
+     }
+ 
+     /**
+-     * Allows handlePlayerInteraction() to
+-     * be fired when a lead is used
+-     */
+-    public boolean cb() {
+-        return false;
+-    }
+-
+-    /**
+      * Entity AI tick method
+      * -> updateAITasks()
+      */

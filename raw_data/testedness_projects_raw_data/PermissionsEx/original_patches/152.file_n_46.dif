@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/events/PermissionSystemEvent.java b/src/main/java/ru/tehkode/permissions/events/PermissionSystemEvent.java
+index e3f1ed9..ceb833d 100644
+--- a/src/main/java/ru/tehkode/permissions/events/PermissionSystemEvent.java
++++ b/src/main/java/ru/tehkode/permissions/events/PermissionSystemEvent.java
+@@ -21,6 +21,7 @@ package ru.tehkode.permissions.events;
+ import org.bukkit.event.HandlerList;
+ 
+ /**
++ *
+  * @author t3hk0d3
+  */
+ public class PermissionSystemEvent extends PermissionEvent {

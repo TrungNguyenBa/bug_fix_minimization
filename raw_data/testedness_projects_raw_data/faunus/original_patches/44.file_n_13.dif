@@ -1,0 +1,13 @@
+diff --git a/src/examples/polymers.cpp b/src/examples/polymers.cpp
+index 8842d2df..fbd2aa2c 100644
+--- a/src/examples/polymers.cpp
++++ b/src/examples/polymers.cpp
+@@ -148,8 +148,6 @@ int main() {
+  - polymer crankshaft and pivot rotations
+  - isobaric volume move (NPT ensemble)
+ 
+- ![Hardsphere polyelectrolytes with counter ions](polymers.png)
+-
+  Run this example from the `examples` directory:
+ 
+  ~~~~~~~~~~~~~~~~~~~

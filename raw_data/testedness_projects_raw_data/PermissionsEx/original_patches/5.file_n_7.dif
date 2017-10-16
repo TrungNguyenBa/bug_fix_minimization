@@ -1,0 +1,80 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/AbstractDataStore.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/AbstractDataStore.java
+index a661359..c4c2704 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/AbstractDataStore.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/AbstractDataStore.java
+@@ -32,7 +32,7 @@ import ninja.leaping.permissionsex.PermissionsEx;
+ import ninja.leaping.permissionsex.data.CacheListenerHolder;
+ import ninja.leaping.permissionsex.data.Caching;
+ import ninja.leaping.permissionsex.data.ContextInheritance;
+-import ninja.leaping.permissionsex.data.ImmutableSubjectData;
++import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ import ninja.leaping.permissionsex.exception.PermissionsLoadingException;
+ import ninja.leaping.permissionsex.rank.RankLadder;
+ 
+@@ -48,7 +48,7 @@ import static ninja.leaping.permissionsex.util.Translations._;
+ public abstract class AbstractDataStore implements DataStore {
+     private PermissionsEx manager;
+     private final Factory factory;
+-    private final CacheListenerHolder<Map.Entry<String, String>, ImmutableSubjectData> listeners = new CacheListenerHolder<>();
++    private final CacheListenerHolder<Map.Entry<String, String>, ImmutableOptionSubjectData> listeners = new CacheListenerHolder<>();
+     private final CacheListenerHolder<String, RankLadder> rankLadderListeners = new CacheListenerHolder<>();
+     private final CacheListenerHolder<Boolean, ContextInheritance> contextInheritanceListeners = new CacheListenerHolder<>();
+ 
+@@ -72,12 +72,12 @@ public abstract class AbstractDataStore implements DataStore {
+     protected abstract void initializeInternal() throws PermissionsLoadingException;
+ 
+     @Override
+-    public final ImmutableSubjectData getData(String type, String identifier, Caching<ImmutableSubjectData> listener) {
++    public final ImmutableOptionSubjectData getData(String type, String identifier, Caching<ImmutableOptionSubjectData> listener) {
+         Preconditions.checkNotNull(type, "type");
+         Preconditions.checkNotNull(identifier, "identifier");
+ 
+         try {
+-            ImmutableSubjectData ret = getDataInternal(type, identifier);
++            ImmutableOptionSubjectData ret = getDataInternal(type, identifier);
+             if (listener != null) {
+                 listeners.addListener(Maps.immutableEntry(type, identifier), listener);
+             }
+@@ -88,15 +88,15 @@ public abstract class AbstractDataStore implements DataStore {
+     }
+ 
+     @Override
+-    public final ListenableFuture<ImmutableSubjectData> setData(String type, String identifier, ImmutableSubjectData data) {
++    public final ListenableFuture<ImmutableOptionSubjectData> setData(String type, String identifier, ImmutableOptionSubjectData data) {
+         Preconditions.checkNotNull(type, "type");
+         Preconditions.checkNotNull(identifier, "identifier");
+ 
+         final Map.Entry<String, String> lookupKey = Maps.immutableEntry(type, identifier);
+-        ListenableFuture<ImmutableSubjectData> ret = setDataInternal(type, identifier, data);
+-        Futures.addCallback(ret, new FutureCallback<ImmutableSubjectData>() {
++        ListenableFuture<ImmutableOptionSubjectData> ret = setDataInternal(type, identifier, data);
++        Futures.addCallback(ret, new FutureCallback<ImmutableOptionSubjectData>() {
+             @Override
+-            public void onSuccess(@Nullable ImmutableSubjectData newData) {
++            public void onSuccess(@Nullable ImmutableOptionSubjectData newData) {
+                 if (newData != null) {
+                     listeners.call(lookupKey, newData);
+                 }
+@@ -123,17 +123,17 @@ public abstract class AbstractDataStore implements DataStore {
+                 .setDefaultValue(ImmutableSet.of(Maps.immutableEntry("srcip", "127.0.0.1")), 1));
+     }
+ 
+-    protected abstract ImmutableSubjectData getDataInternal(String type, String identifier) throws PermissionsLoadingException;
++    protected abstract ImmutableOptionSubjectData getDataInternal(String type, String identifier) throws PermissionsLoadingException;
+ 
+-    protected abstract ListenableFuture<ImmutableSubjectData> setDataInternal(String type, String identifier, ImmutableSubjectData data);
++    protected abstract ListenableFuture<ImmutableOptionSubjectData> setDataInternal(String type, String identifier, ImmutableOptionSubjectData data);
+ 
+     @Override
+-    public final Iterable<Map.Entry<String, ImmutableSubjectData>> getAll(final String type) {
++    public final Iterable<Map.Entry<String, ImmutableOptionSubjectData>> getAll(final String type) {
+         Preconditions.checkNotNull(type, "type");
+-        return Iterables.transform(getAllIdentifiers(type), new Function<String, Map.Entry<String, ImmutableSubjectData>>() {
++        return Iterables.transform(getAllIdentifiers(type), new Function<String, Map.Entry<String, ImmutableOptionSubjectData>>() {
+             @Nullable
+             @Override
+-            public Map.Entry<String, ImmutableSubjectData> apply(String input) {
++            public Map.Entry<String, ImmutableOptionSubjectData> apply(String input) {
+                 return Maps.immutableEntry(input, getData(type, input, null));
+             }
+         });

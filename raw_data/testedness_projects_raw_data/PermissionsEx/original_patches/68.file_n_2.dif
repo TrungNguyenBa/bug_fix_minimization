@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+index 7f36cc9..f8c1320 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+@@ -342,14 +342,14 @@ public class FileBackend extends PermissionBackend {
+ 				permissionsFile.createNewFile();
+ 
+ 				// Load default permissions
+-				permissions.set("groups/default/options/default", true);
++				permissions.set("groups/default/default", true);
+ 
+ 
+ 				List<String> defaultPermissions = new LinkedList<>();
+ 				// Specify here default permissions
+ 				defaultPermissions.add("modifyworld.*");
+ 
+-				permissions.set("groups/default/permissions", defaultPermissions);
++				permissions.set("groups/default/options/permissions", defaultPermissions);
+ 				permissions.set("schema-version", getLatestSchemaVersion());
+ 
+ 				this.save();

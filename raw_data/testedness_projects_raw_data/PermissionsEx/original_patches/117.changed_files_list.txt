@@ -1,0 +1,9 @@
+fb6c844 : Preload groups, SQL bugfixes
+:100644 100644 be50067... 61910b6... M	src/main/java/ru/tehkode/permissions/PermissionEntity.java
+:100644 100644 a97473b... e42907b... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 6300a56... 832a283... M	src/main/java/ru/tehkode/permissions/PermissionsGroupData.java
+:100644 100644 22adcea... 1945f31... M	src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+:100644 100644 7f4876c... fbc2ca7... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+:100644 100644 2175790... 790e195... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
+:100644 100644 87b0cb1... 2f25c08... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+:100644 100644 cbcdf53... d6b9dd6... M	src/main/resources/sql/mysql.sql

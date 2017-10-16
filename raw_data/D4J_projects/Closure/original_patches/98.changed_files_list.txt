@@ -1,0 +1,6 @@
+d1df9704 : Change on 2010/06/09 by nicksantos
+:100755 100755 6d3c117b... 0ba2e33b... M	lib/protobuf_deploy.jar
+:100644 100644 0e3c9864... b29886e0... M	src/com/google/javascript/jscomp/CollapseProperties.java
+:100644 100644 b9538c35... c14c8456... M	src/com/google/javascript/jscomp/InlineVariables.java
+:100644 100644 1e4b0ae9... da4ed3e0... M	src/com/google/javascript/jscomp/ReferenceCollectingCallback.java
+:100644 100644 f4742731... 7c2d91e9... M	test/com/google/javascript/jscomp/InlineVariablesTest.java

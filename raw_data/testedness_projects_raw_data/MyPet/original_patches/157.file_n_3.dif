@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/movement/Sprint.java b/src/main/java/de/Keyle/MyPet/entity/ai/movement/Sprint.java
+index 5c133fcb..2e429397 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/movement/Sprint.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/movement/Sprint.java
+@@ -73,7 +73,7 @@ public class Sprint extends AIGoal
+             return false;
+         }
+         this.lastTarget = targetEntity;
+-        return true;
++        return this.petEntity.getEntitySenses().canSee(targetEntity);
+     }
+ 
+     @Override

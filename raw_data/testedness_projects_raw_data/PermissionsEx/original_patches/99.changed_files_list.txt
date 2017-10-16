@@ -1,0 +1,2 @@
+cbfd015 : Fix autoreconnect for MySQL databases
+:100644 100644 8a4c76f... 8906dad... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java

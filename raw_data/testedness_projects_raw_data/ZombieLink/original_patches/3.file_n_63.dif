@@ -1,0 +1,14 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java
+index eb336bc..a017155 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/AbstractResponseProcessor.java
+@@ -27,8 +27,8 @@ import static com.lonepulse.zombielink.util.Assert.assertNotNull;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
++import com.lonepulse.zombielink.inject.InvocationContext;
+ import com.lonepulse.zombielink.processor.Processor;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
+ 
+ /**
+  * <p>This is an abstract implementation of {@link Processor} which specifies a template for processing 

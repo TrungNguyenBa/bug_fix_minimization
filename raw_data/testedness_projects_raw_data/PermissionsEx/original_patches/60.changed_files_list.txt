@@ -1,0 +1,2 @@
+7ce687d : Include data for any backend in error report
+:100644 100644 42c3289... 09eb517... M	src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java

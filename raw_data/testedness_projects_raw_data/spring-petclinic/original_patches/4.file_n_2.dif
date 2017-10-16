@@ -1,0 +1,17 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java b/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
+index 1a50a69..c2d45bb 100644
+--- a/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
++++ b/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
+@@ -111,11 +111,10 @@ public class OwnerController {
+     }
+ 
+     @RequestMapping(value = "/owners/{ownerId}/edit", method = RequestMethod.POST)
+-    public String processUpdateOwnerForm(@Valid Owner owner, @PathVariable("ownerId") int ownerId, BindingResult result) {
++    public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result) {
+         if (result.hasErrors()) {
+             return "owners/createOrUpdateOwnerForm";
+         } else {
+-            owner.setId(ownerId);
+             this.clinicService.saveOwner(owner);
+             return "redirect:/owners/{ownerId}";
+         }

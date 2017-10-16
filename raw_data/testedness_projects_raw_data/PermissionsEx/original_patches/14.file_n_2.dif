@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java b/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+index 5dc915f..26625d6 100644
+--- a/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
++++ b/src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+@@ -84,7 +84,7 @@ public class SubjectCache {
+     public boolean isRegistered(String identifier) {
+         Preconditions.checkNotNull(identifier, "identifier");
+ 
+-        return dataStore.isRegistered(type, identifier);
++        return cache.getIfPresent(identifier) != null || dataStore.isRegistered(type, identifier);
+     }
+ 
+     public ListenableFuture<ImmutableOptionSubjectData> update(String identifier, ImmutableOptionSubjectData newData) {

@@ -1,0 +1,58 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/cavespider/EntityMyCaveSpider.java b/src/main/java/de/Keyle/MyPet/entity/types/cavespider/EntityMyCaveSpider.java
+index f878da48..442608d0 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/cavespider/EntityMyCaveSpider.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/cavespider/EntityMyCaveSpider.java
+@@ -33,13 +33,15 @@ public class EntityMyCaveSpider extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    protected void initDatawatcher()
+     {
+-        return "mob.spider.death";
++        super.initDatawatcher();
++        this.datawatcher.a(16, new Byte((byte) 0)); // N/A
++    }
++
++    public void playStepSound()
++    {
++        makeSound("mob.spider.step", 0.15F, 1.0F);
+     }
+ 
+     /**
+@@ -52,21 +54,19 @@ public class EntityMyCaveSpider extends EntityMyPet
+     }
+ 
+     /**
+-     * Returns the default sound of the MyPet
++     * Returns the sound that is played when the MyPet dies
+      */
+-    protected String getLivingSound()
+-    {
+-        return !playIdleSound() ? null : "mob.spider.say";
+-    }
+-
+-    protected void initDatawatcher()
++    @Override
++    protected String getDeathSound()
+     {
+-        super.initDatawatcher();
+-        this.datawatcher.a(16, new Byte((byte) 0)); // N/A
++        return "mob.spider.death";
+     }
+ 
+-    public void playStepSound()
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        makeSound("mob.spider.step", 0.15F, 1.0F);
++        return !playIdleSound() ? null : "mob.spider.say";
+     }
+ }
+\ No newline at end of file

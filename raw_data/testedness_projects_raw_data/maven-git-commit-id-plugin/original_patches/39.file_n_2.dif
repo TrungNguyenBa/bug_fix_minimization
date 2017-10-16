@@ -1,0 +1,13 @@
+diff --git a/README.md b/README.md
+index 241a66d..74abd7a 100644
+--- a/README.md
++++ b/README.md
+@@ -338,7 +338,7 @@ There's another way to use the plugin, it's a little bit easier I guess. First,
+     <generateGitPropertiesFile>true</generateGitPropertiesFile>
+ 
+     <!-- The path for the to be generated properties file, it's relative to ${project.basedir} -->
+-    <generateGitPropertiesFilename>src/main/resources/git.properties</generateGitPropertiesFilename>
++    <generateGitPropertiesFilename>src/main/resources/git.properties<generateGitPropertiesFilename>
+ </configuration>
+ ```
+ 

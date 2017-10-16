@@ -1,0 +1,2 @@
+00a31950 : moved scm phase to a property
+:100644 100644 0af7664b... 3ec3d344... M	pom.xml

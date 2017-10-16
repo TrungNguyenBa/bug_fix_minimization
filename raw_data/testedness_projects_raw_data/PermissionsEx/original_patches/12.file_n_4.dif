@@ -1,0 +1,38 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java b/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+index 51343e4..6abf113 100644
+--- a/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
++++ b/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+@@ -16,11 +16,12 @@
+  */
+ package ninja.leaping.permissionsex.backend.file;
+ 
++import com.fasterxml.jackson.core.JsonGenerator;
++import com.fasterxml.jackson.core.JsonParser;
+ import com.google.common.base.Function;
+ import com.google.common.base.Functions;
+ import com.google.common.base.Objects;
+ import com.google.common.base.Predicate;
+-import com.google.common.collect.ImmutableSet;
+ import com.google.common.collect.Iterables;
+ import com.google.common.collect.Maps;
+ import com.google.common.util.concurrent.Futures;
+@@ -364,8 +365,8 @@ public final class FileDataStore extends AbstractDataStore {
+     }
+ 
+     @Override
+-    public Set<String> getRegisteredTypes() {
+-        return ImmutableSet.copyOf(Iterables.transform(Maps.filterValues(this.permissionsConfig.getChildrenMap(), new Predicate<ConfigurationNode>() {
++    public Iterable<String> getRegisteredTypes() {
++        return Iterables.transform(Maps.filterValues(this.permissionsConfig.getChildrenMap(), new Predicate<ConfigurationNode>() {
+             @Override
+             public boolean apply(@Nullable ConfigurationNode input) {
+                 return input != null && input.hasMapChildren();
+@@ -377,7 +378,7 @@ public final class FileDataStore extends AbstractDataStore {
+                 final String typeStr = input.toString();
+                 return typeStr.substring(0, typeStr.length() - 1); // trim trailing s
+             }
+-        }));
++        });
+     }
+ 
+     @Override

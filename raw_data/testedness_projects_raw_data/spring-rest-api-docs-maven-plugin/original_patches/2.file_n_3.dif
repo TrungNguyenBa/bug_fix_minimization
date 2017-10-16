@@ -1,0 +1,17 @@
+diff --git a/src/main/java/com/pehrs/spring/api/doc/LogUtils.java b/src/main/java/com/pehrs/spring/api/doc/LogUtils.java
+index 3acad0f..d7a9f1c 100644
+--- a/src/main/java/com/pehrs/spring/api/doc/LogUtils.java
++++ b/src/main/java/com/pehrs/spring/api/doc/LogUtils.java
+@@ -6,11 +6,9 @@ import org.apache.log4j.PatternLayout;
+ 
+ public abstract class LogUtils {
+ 
+-	public static final String SYSARG_LOGGING_LEVEL = "logging.level";
+-
+ 	public static void initLogging() {
+ 		org.apache.log4j.Logger root = org.apache.log4j.Logger.getRootLogger();
+-		Level level = Level.toLevel(System.getProperty(SYSARG_LOGGING_LEVEL, ""
++		Level level = Level.toLevel(System.getProperty("logging.level", ""
+ 				+ Level.DEBUG));
+ 		root.setLevel(level);
+ 		root.removeAllAppenders();

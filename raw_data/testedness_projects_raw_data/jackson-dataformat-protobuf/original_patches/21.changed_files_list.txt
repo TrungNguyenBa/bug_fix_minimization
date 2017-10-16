@@ -1,0 +1,4 @@
+8522a5e : More testing
+:100644 100644 f1cea15... 277377d... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 de6c8cc... be71cc9... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
+:100644 100644 3928d43... 2071378... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java

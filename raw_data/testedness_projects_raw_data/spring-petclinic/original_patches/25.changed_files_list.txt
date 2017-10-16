@@ -1,0 +1,2 @@
+3f2d3ba : fix typo
+:100644 100644 5088c7d... 61ed545... M	src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java

@@ -1,0 +1,15 @@
+diff --git a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+index 36e5d65..bc777c0 100644
+--- a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
++++ b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+@@ -302,9 +302,7 @@ public class GitCommitIdMojo extends AbstractMojo {
+ 
+     try {
+       properties = initProperties();
+-
+-      String trimmedPrefix = prefix.trim();
+-      prefixDot = trimmedPrefix.equals("") ? "" : trimmedPrefix + ".";
++      prefixDot = prefix + ".";
+ 
+       loadGitData(properties);
+       loadBuildTimeData(properties);

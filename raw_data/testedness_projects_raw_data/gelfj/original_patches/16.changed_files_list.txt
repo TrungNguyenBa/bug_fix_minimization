@@ -1,0 +1,12 @@
+dbff7b9 : Issues #50, #49, #53, #54, #58, #59, #53
+:000000 100644 0000000... 35a1bb0... A	CHANGELOG.md
+:100644 100644 36c5faa... 8bf3410... M	src/main/java/org/graylog2/GelfMessage.java
+:100644 100644 cd05a79... c6ba906... M	src/main/java/org/graylog2/GelfMessageFactory.java
+:100644 100644 0319907... 4b9b332... M	src/main/java/org/graylog2/GelfTCPSender.java
+:100644 100644 5404b47... 8684df1... M	src/main/java/org/graylog2/GelfUDPSender.java
+:100644 100644 b7c3d31... e948b0a... M	src/main/java/org/graylog2/log/GelfAppender.java
+:100644 100644 f8ecadf... 7b59c4d... M	src/test/java/org/graylog2/GelfMessageTest.java
+:100644 100644 b5cb296... 8756fd2... M	src/test/java/org/graylog2/log/GelfAppenderTest.java
+:100644 100644 5f62622... ca6ef97... M	src/test/java/org/graylog2/logging/GelfHandlerTest.java
+:100644 100644 9eb8959... b18dd4b... R067	src/test/java/org/graylog2/logging/TestGelfHandlerSender.java	src/test/java/org/graylog2/logging/MockGelfHandlerSender.java
+:100644 100644 3aeb557... 7b2046e... M	src/test/resources/org/graylog2/logging/logging-test.properties

@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java b/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+index 8f0c7e2a..588ad7c6 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+@@ -33,6 +33,7 @@ import java.util.Map;
+ 
+ @EntitySize(width = 0.4F, height = 1.8F)
+ public class EntityMySnowman extends EntityMyPet {
++    public static boolean FIX_SNOW_TRACK = true;
+     Map<Location, Integer> snowMap = new HashMap<Location, Integer>();
+ 
+     public EntityMySnowman(World world, MyPet myPet) {
+@@ -81,7 +82,7 @@ public class EntityMySnowman extends EntityMyPet {
+     public void onLivingUpdate() {
+         super.onLivingUpdate();
+ 
+-        if (MySnowman.FIX_SNOW_TRACK) {
++        if (FIX_SNOW_TRACK) {
+             if (this.motX != 0D || this.motZ != 0D) {
+                 addAirBlocksInBB(this.world.getWorld(), this.boundingBox);
+             }

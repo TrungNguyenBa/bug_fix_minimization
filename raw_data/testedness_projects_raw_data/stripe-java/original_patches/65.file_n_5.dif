@@ -1,0 +1,39 @@
+diff --git a/src/main/java/com/stripe/model/Refund.java b/src/main/java/com/stripe/model/Refund.java
+deleted file mode 100644
+index faff54d..0000000
+--- a/src/main/java/com/stripe/model/Refund.java
++++ /dev/null
+@@ -1,33 +0,0 @@
+-package com.stripe.model;
+-
+-public class Refund extends StripeObject {
+-	Integer amount;
+-	String currency;
+-	Long created;
+-	String balanceTransaction;
+-
+-	public Integer getAmount() {
+-		return amount;
+-	}
+-	public void setAmount(Integer amount) {
+-		this.amount = amount;
+-	}
+-	public String getCurrency() {
+-		return currency;
+-	}
+-	public void setCurrency(String currency) {
+-		this.currency = currency;
+-	}
+-	public Long getCreated() {
+-		return created;
+-	}
+-	public void setCreated(Long created) {
+-		this.created = created;
+-	}
+-	public String getBalanceTransaction() {
+-		return balanceTransaction;
+-	}
+-	public void setBalanceTransaction(String balanceTransaction) {
+-		this.balanceTransaction = balanceTransaction;
+-	}
+-}

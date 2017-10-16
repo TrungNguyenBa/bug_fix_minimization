@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+index a12bf0a1..8008aaae 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+@@ -85,7 +85,9 @@ public class EntityMyPigZombie extends EntityMyPet {
+                     entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+                     entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+                 }
+-                getMyPet().setEquipment(slot, itemStack);
++                ItemStack itemStackClone = itemStack.cloneItemStack();
++                itemStackClone.count = 1;
++                getMyPet().setEquipment(slot, itemStackClone);
+                 if (!entityhuman.abilities.canInstantlyBuild) {
+                     if (--itemStack.count <= 0) {
+                         entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);

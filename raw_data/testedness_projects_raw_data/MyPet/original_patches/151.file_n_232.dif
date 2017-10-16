@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/IScheduler.java b/src/main/java/de/Keyle/MyPet/util/IScheduler.java
+index f604b9ce..a295a0b4 100644
+--- a/src/main/java/de/Keyle/MyPet/util/IScheduler.java
++++ b/src/main/java/de/Keyle/MyPet/util/IScheduler.java
+@@ -20,6 +20,7 @@
+ 
+ package de.Keyle.MyPet.util;
+ 
+-public interface IScheduler {
++public interface IScheduler
++{
+     public void schedule();
+ }
+\ No newline at end of file

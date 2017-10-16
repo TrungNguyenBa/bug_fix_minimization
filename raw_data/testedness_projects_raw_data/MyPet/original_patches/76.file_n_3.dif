@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java b/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+index aa22e975..6c823172 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+@@ -63,6 +63,7 @@ public class LevelUpListener implements Listener {
+                 lvl = skillTree.getLastLevelWithSkills();
+             }
+             for (int i = lastLvl + 1; i <= lvl; i++) {
++
+                 if (skillTree.hasLevel(lvl)) {
+                     SkillTreeLevel level = skillTree.getLevel(lvl);
+                     if (!event.isQuiet()) {

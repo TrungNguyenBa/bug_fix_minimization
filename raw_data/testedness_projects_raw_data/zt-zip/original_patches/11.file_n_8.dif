@@ -1,0 +1,24 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/extra/AsiExtraField.java b/src/main/java/org/zeroturnaround/zip/extra/AsiExtraField.java
+index 537c4bf..a3f7e33 100644
+--- a/src/main/java/org/zeroturnaround/zip/extra/AsiExtraField.java
++++ b/src/main/java/org/zeroturnaround/zip/extra/AsiExtraField.java
+@@ -31,8 +31,7 @@ import java.util.zip.ZipException;
+  * 
+  * <p>
+  * This class uses the ASi extra field in the format:
+- * </p>
+- *
++ * 
+  * <pre>
+  *         Value         Size            Description
+  *         -----         ----            -----------
+@@ -45,8 +44,7 @@ import java.util.zip.ZipException;
+  *         GID           Short           group ID
+  *         (var.)        variable        symbolic link filename
+  * </pre>
+- *
+- * <p>
++ * 
+  * taken from appnote.iz (Info-ZIP note, 981119) found at <a href="ftp://ftp.uu.net/pub/archiving/zip/doc/">ftp://ftp.uu.net/pub/archiving/zip/doc/</a>
+  * </p>
+  * 

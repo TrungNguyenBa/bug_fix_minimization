@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/NBTStorage.java b/src/main/java/de/Keyle/MyPet/util/NBTStorage.java
+index fb1bfc7f..b406f676 100644
+--- a/src/main/java/de/Keyle/MyPet/util/NBTStorage.java
++++ b/src/main/java/de/Keyle/MyPet/util/NBTStorage.java
+@@ -22,7 +22,8 @@ package de.Keyle.MyPet.util;
+ 
+ import org.spout.nbt.CompoundTag;
+ 
+-public interface NBTStorage {
++public interface NBTStorage
++{
+     public CompoundTag save();
+ 
+     public void load(CompoundTag compound);

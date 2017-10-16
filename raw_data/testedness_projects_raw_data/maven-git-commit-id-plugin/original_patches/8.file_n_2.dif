@@ -1,0 +1,24 @@
+diff --git a/src/main/java/pl/project13/maven/git/JGitProvider.java b/src/main/java/pl/project13/maven/git/JGitProvider.java
+index 8d11122..9778217 100644
+--- a/src/main/java/pl/project13/maven/git/JGitProvider.java
++++ b/src/main/java/pl/project13/maven/git/JGitProvider.java
+@@ -83,16 +83,12 @@ public class JGitProvider extends GitDataProvider {
+   protected void prepareGitToExtractMoreDetailedReproInformation() throws MojoExecutionException {
+     try {
+       // more details parsed out bellow
+-      Ref head = git.getRef(Constants.HEAD);
+-      if (head == null) {
++      Ref HEAD = git.getRef(Constants.HEAD);
++      if (HEAD == null) {
+         throw new MojoExecutionException("Could not get HEAD Ref, are you sure you've set the dotGitDirectory property of this plugin to a valid path?");
+       }
+       revWalk = new RevWalk(git);
+-      ObjectId headObjectId = head.getObjectId();
+-      if(headObjectId == null){
+-        throw new MojoExecutionException("Could not get HEAD Ref, are you sure you've some commits in the dotGitDirectory?");
+-      }
+-      headCommit = revWalk.parseCommit(headObjectId);
++      headCommit = revWalk.parseCommit(HEAD.getObjectId());
+       revWalk.markStart(headCommit);
+     } catch (MojoExecutionException e) {
+       throw e;

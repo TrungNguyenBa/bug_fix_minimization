@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
+index b33d9c3..244df57 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
+@@ -18,7 +18,7 @@ public class IntervalDeserializer extends JodaDateDeserializerBase<Interval>
+ 
+     public IntervalDeserializer() {
+         // NOTE: not currently used, but must pass something
+-        this(FormatConfig.DEFAULT_DATETIME_PARSER);
++        this(FormatConfig.DEFAULT_DATETIME_FORMAT);
+     }
+ 
+     public IntervalDeserializer(JacksonJodaDateFormat format) {

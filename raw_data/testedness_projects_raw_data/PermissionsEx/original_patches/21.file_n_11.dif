@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/util/command/MessageFormatter.java b/src/main/java/ninja/leaping/permissionsex/util/command/MessageFormatter.java
+index aedfc01..6679bfa 100644
+--- a/src/main/java/ninja/leaping/permissionsex/util/command/MessageFormatter.java
++++ b/src/main/java/ninja/leaping/permissionsex/util/command/MessageFormatter.java
+@@ -28,7 +28,7 @@ public interface MessageFormatter<TextType> {
+     public TextType booleanVal(boolean val);
+     public TextType permission(String permission, int value);
+     public TextType option(String permission, String value);
+-    public TextType highlighted(TextType text);
++    public TextType highlighted(Translatable text);
+ 
+     /**
+      * Combines an array containing elements of type {@link TextType} and {@link java.lang.String} into a single message

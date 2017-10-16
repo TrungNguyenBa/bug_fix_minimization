@@ -1,0 +1,12 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/inject/FallbackErrorMockService.java b/src/test/java/com/lonepulse/zombielink/inject/FallbackErrorMockService.java
+index 8b841e6..8c0771f 100644
+--- a/src/test/java/com/lonepulse/zombielink/inject/FallbackErrorMockService.java
++++ b/src/test/java/com/lonepulse/zombielink/inject/FallbackErrorMockService.java
+@@ -21,6 +21,7 @@ package com.lonepulse.zombielink.inject;
+  */
+ 
+ 
++import com.lonepulse.zombielink.Zombie;
+ import com.lonepulse.zombielink.annotation.Bite;
+ 
+ /**

@@ -1,0 +1,3 @@
+fe371c5 : Use parent directory not parent project to locate gitdir
+:100644 100644 6f71c0e... 03eb6f6... M	src/main/java/pl/project13/maven/git/GitDirLocator.java
+:100644 100644 c71ef3b... 6799dd6... M	src/test/java/pl/project13/maven/git/GitDirLocatorTest.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java b/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
+index 841573c9..a0dd2c76 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
+@@ -28,7 +28,7 @@ import net.minecraft.server.v1_6_R1.StepSound;
+ import net.minecraft.server.v1_6_R1.World;
+ import org.bukkit.Material;
+ 
+-@EntitySize(width = 1.4F, height = 1.6F)
++@EntitySize(width = 0.3F, height = 0.7F)
+ public class EntityMyHorse extends EntityMyPet
+ {
+     public static int GROW_UP_ITEM = Material.POTION.getId();

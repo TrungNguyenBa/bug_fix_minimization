@@ -1,0 +1,13 @@
+484df8c : Perform some general cleanup
+:100644 100644 30d70b7... 9f5f0a8... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+:100644 100644 ced9047... 004b13c... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/InfoCommand.java
+:100644 100644 076e6d0... fe2549d... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+:100644 100644 1825ef3... 79b8e7f... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/RankingCommands.java
+:100644 100644 5ef2565... f41b672... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/calculated/CalculatedSubject.java
+:100644 100644 a0eb35e... b0ed37c... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/util/Translations.java
+:100644 100644 18281a6... e62e1db... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/util/Util.java
+:100644 100644 68f0b7b... 1bfb7b3... M	permissionsex-core/src/main/po/de.po
+:100644 100644 9337491... aee6a51... M	permissionsex-core/src/main/po/keys.pot
+:100644 100644 95db6c9... 971b6b0... M	permissionsex-core/src/main/po/zh_HK.po
+:100644 100644 21b0773... 0535959... M	permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
+:100644 100644 056bf5c... 6395892... M	permissionsex-sponge/src/main/po/keys.pot

@@ -1,0 +1,91 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java b/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+index d9fe896..e0ad12d 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+@@ -31,12 +31,15 @@ import ninja.leaping.configurate.commented.CommentedConfigurationNode;
+ import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
+ import ninja.leaping.configurate.loader.ConfigurationLoader;
+ import ninja.leaping.configurate.objectmapping.ObjectMappingException;
++import ninja.leaping.configurate.objectmapping.serialize.TypeSerializers;
+ import ninja.leaping.configurate.yaml.YAMLConfigurationLoader;
+ import ninja.leaping.permissionsex.ImplementationInterface;
+ import ninja.leaping.permissionsex.PermissionsEx;
+ import ninja.leaping.permissionsex.exception.PEBKACException;
+ import ninja.leaping.permissionsex.config.ConfigTransformations;
+ import ninja.leaping.permissionsex.config.PermissionsExConfiguration;
++import ninja.leaping.permissionsex.config.DataStoreSerializer;
++import ninja.leaping.permissionsex.exception.PermissionsException;
+ import ninja.leaping.permissionsex.exception.PermissionsLoadingException;
+ import org.slf4j.Logger;
+ import org.spongepowered.api.Game;
+@@ -95,7 +98,7 @@ public class PermissionsExPlugin implements PermissionService, ImplementationInt
+     @Inject private Game game;
+ 
+     @Nullable
+-    private volatile PermissionsEx manager;
++    private PermissionsEx manager;
+     private PermissionsExConfiguration config;
+     private ConfigurationNode rawConfig;
+ 
+@@ -104,7 +107,10 @@ public class PermissionsExPlugin implements PermissionService, ImplementationInt
+     private final LoadingCache<String, PEXSubjectCollection> subjectCollections = CacheBuilder.newBuilder().build(new CacheLoader<String, PEXSubjectCollection>() {
+         @Override
+         public PEXSubjectCollection load(String type) throws Exception {
+-            return new PEXSubjectCollection(type, PermissionsExPlugin.this);
++            if (manager == null) {
++                throw new PermissionsException("Manager is not currently loaded!");
++            }
++            return new PEXSubjectCollection(PermissionsExPlugin.this, manager.getSubjects(type), manager.getTransientSubjects(type));
+         }
+     });
+     private PEXSubject defaults;
+@@ -132,7 +138,15 @@ public class PermissionsExPlugin implements PermissionService, ImplementationInt
+         } catch (IOException | ObjectMappingException e) {
+             throw new RuntimeException(e);
+         }
+-        defaults = (PEXSubject) getSubjects("default").get().get("global");
++
++        // Registering the PEX service *must* occur after the plugin has been completely initialized
++        try {
++            services.setProvider(this, PermissionService.class, this);
++        } catch (ProviderExistsException e) {
++            manager.close();
++            throw new PEBKACException("Your appear to already be using a different permissions plugin: " + e.getLocalizedMessage());
++        }
++
+         setCommandSourceProvider(getUserSubjects(), new Function<String, Optional<CommandSource>>() {
+             @Override
+             @SuppressWarnings("unchecked")
+@@ -158,14 +172,6 @@ public class PermissionsExPlugin implements PermissionService, ImplementationInt
+         });
+         registerContextCalculator(contextCalculator);
+ 
+-        // Registering the PEX service *must* occur after the plugin has been completely initialized
+-        try {
+-            services.setProvider(this, PermissionService.class, this);
+-        } catch (ProviderExistsException e) {
+-            manager.close();
+-            throw new PEBKACException("Your appear to already be using a different permissions plugin: " + e.getLocalizedMessage());
+-        }
+-
+         this.game.getCommandDispatcher().register(this, new CommandCallable() {
+             @Override
+             public boolean call(CommandSource source, String arguments, List<String> parents) throws CommandException {
+@@ -273,14 +279,12 @@ public class PermissionsExPlugin implements PermissionService, ImplementationInt
+             if (oldManager != null) {
+                 oldManager.close();
+             }
++            // TODO: Make subject collections persist past reloads
++            subjectCollections.invalidateAll();
++            defaults = (PEXSubject) getSubjects("default").get().get("global");
+             contextCalculator.update(config);
+-            for (PEXSubjectCollection collection : subjectCollections.asMap().values()) {
+-                collection.updateCaches();
+-            }
+         } catch (IOException e) {
+             throw new PEBKACException("Error while loading configuration: " + e.getLocalizedMessage());
+-        } catch (ExecutionException e) {
+-            throw new PermissionsLoadingException("Unable to reload!", e);
+         }
+     }
+ 

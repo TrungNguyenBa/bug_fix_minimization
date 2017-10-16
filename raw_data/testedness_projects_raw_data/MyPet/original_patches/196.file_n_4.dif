@@ -1,0 +1,38 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderJSON.java b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderJSON.java
+index d56c359d..abfb1d81 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderJSON.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderJSON.java
+@@ -52,11 +52,32 @@ public class SkillTreeLoaderJSON extends SkillTreeLoader
+         DebugLogger.info("Loading json skill configs in: " + configPath);
+         File skillFile;
+ 
++        skillFile = new File(configPath + File.separator + "default.json");
++        SkillTreeMobType skillTreeMobType = SkillTreeMobType.getMobTypeByName("default");
++        if (skillFile.exists())
++        {
++            skilltreeConfig = new ConfigurationJSON(skillFile);
++            if (skilltreeConfig.load())
++            {
++                try
++                {
++                    loadSkillTree(skilltreeConfig, skillTreeMobType);
++                    DebugLogger.info("  default.json");
++                }
++                catch (Exception e)
++                {
++                    MyPetLogger.write(ChatColor.RED + "  Error while loading skilltrees from: default.json");
++                    e.printStackTrace();
++                    MyPetLogger.write(ChatColor.RED + "  Error while loading skilltrees from: default.json");
++                }
++            }
++        }
++
+         for (String mobType : mobtypes)
+         {
+             skillFile = new File(configPath + File.separator + mobType.toLowerCase() + ".json");
+ 
+-            SkillTreeMobType skillTreeMobType = SkillTreeMobType.getMobTypeByName(mobType);
++            skillTreeMobType = SkillTreeMobType.getMobTypeByName(mobType);
+ 
+             if (!skillFile.exists())
+             {

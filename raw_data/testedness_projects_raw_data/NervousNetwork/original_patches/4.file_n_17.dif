@@ -1,0 +1,12 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/protocol/ProtocolImpl.java b/src/main/java/org/tiernolan/nervous/network/protocol/ProtocolImpl.java
+deleted file mode 100644
+index ba82618..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/protocol/ProtocolImpl.java
++++ /dev/null
+@@ -1,6 +0,0 @@
+-package org.tiernolan.nervous.network.protocol;
+-
+-
+-public class ProtocolImpl {
+-// TODO - packet registrations
+-}

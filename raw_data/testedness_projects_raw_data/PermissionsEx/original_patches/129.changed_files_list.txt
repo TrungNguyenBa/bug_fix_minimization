@@ -1,0 +1,2 @@
+2879a92 : Fix issues with cache updating in PermissionUser
+:100644 100644 626bc92... 13e26ad... M	src/main/java/ru/tehkode/permissions/PermissionUser.java

@@ -1,0 +1,11 @@
+diff --git a/config/db.properties b/config/db.properties
+new file mode 100644
+index 0000000..f7e41b7
+--- /dev/null
++++ b/config/db.properties
+@@ -0,0 +1,4 @@
++db.driverClassName=com.mysql.jdbc.Driver
++db.url=jdbc:mysql://localhost/swiftriver?zeroDateTimeBehavior=convertToNull
++db.username=swiftriver
++db.password=
+\ No newline at end of file

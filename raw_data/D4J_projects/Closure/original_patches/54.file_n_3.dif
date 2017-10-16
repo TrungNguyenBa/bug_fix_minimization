@@ -1,0 +1,33 @@
+diff --git a/src/com/google/javascript/rhino/jstype/FunctionType.java b/src/com/google/javascript/rhino/jstype/FunctionType.java
+index a87be07f..0499e5ec 100644
+--- a/src/com/google/javascript/rhino/jstype/FunctionType.java
++++ b/src/com/google/javascript/rhino/jstype/FunctionType.java
+@@ -338,6 +338,7 @@ public class FunctionType extends PrototypeObjectType {
+     //
+     // In the second case, we just use the anonymous object as the prototype.
+     if (baseType.hasReferenceName() ||
++        baseType.isUnknownType() ||
+         isNativeObjectType() ||
+         baseType.isFunctionPrototypeType() ||
+         !(baseType instanceof PrototypeObjectType)) {
+@@ -362,19 +363,11 @@ public class FunctionType extends PrototypeObjectType {
+       return false;
+     }
+ 
+-    PrototypeObjectType oldPrototype = this.prototype;
+-    boolean replacedPrototype = oldPrototype != null;
+-
++    boolean replacedPrototype = prototype != null;
+     this.prototype = prototype;
+     this.prototypeSlot = new SimpleSlot("prototype", prototype, true);
+     this.prototype.setOwnerFunction(this);
+ 
+-    if (oldPrototype != null) {
+-      // Disassociating the old prototype makes this easier to debug--
+-      // we don't have to worry about two prototypes running around.
+-      oldPrototype.setOwnerFunction(null);
+-    }
+-
+     if (isConstructor() || isInterface()) {
+       FunctionType superClass = getSuperClassConstructor();
+       if (superClass != null) {

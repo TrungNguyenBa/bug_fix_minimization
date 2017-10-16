@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 8fe3e35c..6665f817 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -596,14 +596,6 @@ public class EntityListener implements Listener {
+                             isSkillActive = false;
+                         }
+                     }
+-                    if (!skillUsed && myPet.getSkills().hasSkill(Stomp.class)) {
+-                        Stomp stompSkill = myPet.getSkills().getSkill(Stomp.class);
+-                        if (stompSkill.activate()) {
+-                            isSkillActive = true;
+-                            stompSkill.stomp(myPet.getLocation());
+-                            isSkillActive = false;
+-                        }
+-                    }
+                 }
+             }
+         }

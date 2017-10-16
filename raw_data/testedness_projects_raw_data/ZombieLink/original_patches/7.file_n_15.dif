@@ -1,0 +1,23 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/inject/RequestValidationTest.java b/src/test/java/com/lonepulse/zombielink/inject/RequestValidationTest.java
+index 7bd5046..c2228cb 100644
+--- a/src/test/java/com/lonepulse/zombielink/inject/RequestValidationTest.java
++++ b/src/test/java/com/lonepulse/zombielink/inject/RequestValidationTest.java
+@@ -27,7 +27,10 @@ import org.junit.Test;
+ import org.junit.rules.ExpectedException;
+ 
+ import com.lonepulse.zombielink.annotation.Endpoint;
++import com.lonepulse.zombielink.annotation.Parser;
++import com.lonepulse.zombielink.annotation.Parser.ParserType;
+ import com.lonepulse.zombielink.annotation.Request;
++import com.lonepulse.zombielink.inject.EndpointProxyFactory;
+ 
+ /**
+  * <p>Performs unit testing for <b>request validation</b>.
+@@ -46,6 +49,7 @@ public class RequestValidationTest {
+ 	 * <p>Represents an endpoint definition with a missing @{@link Request} annotation on 
+ 	 * one of its request definitions.
+ 	 */
++	@Parser(ParserType.STRING)
+ 	@Endpoint(host = "0.0.0.0", port = "8080")
+ 	private interface MissingRequestAnnotationEndpoint {
+ 		

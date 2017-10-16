@@ -1,0 +1,3 @@
+a309207 : Fix setter methods in MemoryOptionSubjectData. Fixes #1936
+:100644 100644 5b121af... 1e723d5... M	src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryOptionSubjectData.java
+:100644 100644 c1137b4... e0ad12d... M	src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java

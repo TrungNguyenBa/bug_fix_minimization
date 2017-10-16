@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetVersion.java b/src/main/java/de/Keyle/MyPet/util/MyPetVersion.java
+index c113b822..3e7ae13b 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetVersion.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetVersion.java
+@@ -61,6 +61,7 @@ public class MyPetVersion {
+         Manifest mf = jf.getManifest();
+         jf.close();
+         return mf;
++
+     }
+ 
+     public static String getMyPetVersion() {

@@ -1,0 +1,15 @@
+diff --git a/include/faunus/move.h b/include/faunus/move.h
+index 0eaa3986..17070573 100644
+--- a/include/faunus/move.h
++++ b/include/faunus/move.h
+@@ -432,6 +432,10 @@ namespace Faunus {
+ 
+     template<class Tspace>
+       void AtomicTranslation<Tspace>::setGroup(Group &g) {
++        int N=spc->p.size();
++        assert(g.size()<=N);
++        assert(g.back()<N);
++        assert(g.front()>=0);
+         igroup=&g;
+         iparticle=-1;
+        }

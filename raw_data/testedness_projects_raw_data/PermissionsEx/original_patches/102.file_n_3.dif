@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
+index 1071c86..32f6ef3 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
+@@ -93,7 +93,7 @@ public class SQLConnection implements AutoCloseable {
+ 	}
+ 
+ 	protected void checkConnection() throws SQLException {
+-		if (this.backend.dbDriver.equals("sqlite")) {
++		if (this.db.getClass().getName().startsWith("org.sqlite")) {
+ 			return;
+ 		}
+ 

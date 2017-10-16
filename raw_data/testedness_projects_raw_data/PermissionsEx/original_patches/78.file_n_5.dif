@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+index 95969a7..a0b750a 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+@@ -54,7 +54,7 @@ public class FileBackend extends PermissionBackend {
+ 			getConfig().set("file", "permissions.yml");
+ 		}
+ 
+-		String baseDir = manager.getConfiguration().getBasedir();
++		String baseDir = manager.getPlugin().getConfig().getString("permissions.basedir", manager.getPlugin().getDataFolder().getPath());
+ 
+ 		if (baseDir.contains("\\") && !"\\".equals(File.separator)) {
+ 			baseDir = baseDir.replace("\\", File.separator);

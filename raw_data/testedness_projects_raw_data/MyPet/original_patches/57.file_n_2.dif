@@ -1,0 +1,52 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+index 75c970ff..17804ef9 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+@@ -76,7 +76,6 @@ public class LevelCreator {
+     JTextField requiredLevelTextField;
+     JCheckBox requiredLevelCheckBox;
+     JFrame levelCreatorFrame;
+-    JPopupMenu levelListRightclickMenu;
+ 
+     DefaultTreeModel skillTreeTreeModel;
+     DefaultComboBoxModel inheritanceComboBoxModel;
+@@ -677,39 +676,10 @@ public class LevelCreator {
+         skillTreeTree = new JTree(skillTreeTreeModel);
+         skillTreeTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+ 
+-        createRightclickMenus();
+-
+         inheritanceComboBoxModel = new DefaultComboBoxModel();
+         inheritanceComboBox = new JComboBox(inheritanceComboBoxModel);
+     }
+ 
+-    public void createRightclickMenus() {
+-        levelListRightclickMenu = new JPopupMenu();
+-
+-        JMenuItem expandMenuItem = new JMenuItem("Expand all");
+-        levelListRightclickMenu.add(expandMenuItem);
+-        expandMenuItem.addActionListener(new ActionListener() {
+-            public void actionPerformed(ActionEvent e) {
+-                for (int i = 0; i < skillTreeTree.getRowCount(); i++) {
+-                    skillTreeTree.expandRow(i);
+-                }
+-            }
+-        });
+-
+-        JMenuItem collapseMenuItem = new JMenuItem("Collapse all");
+-        levelListRightclickMenu.add(collapseMenuItem);
+-        collapseMenuItem.addActionListener(new ActionListener() {
+-            public void actionPerformed(ActionEvent e) {
+-                for (int i = 1; i < skillTreeTree.getRowCount(); i++) {
+-                    skillTreeTree.collapseRow(i);
+-                }
+-            }
+-        });
+-
+-        MouseListener popupListener = new SkilltreeCreator.PopupListener(levelListRightclickMenu);
+-        skillTreeTree.addMouseListener(popupListener);
+-    }
+-
+     private class SkillTreeSkillNode extends DefaultMutableTreeNode {
+         private ISkillInfo skill;
+ 

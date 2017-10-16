@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index cfbfbd3..21f2190 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -707,8 +707,4 @@ public class PermissionManager {
+ 	public Logger getLogger() {
+ 		return logger;
+ 	}
+-
+-	public ScheduledExecutorService getExecutor() {
+-		return executor;
+-	}
+ }

@@ -1,0 +1,3 @@
+0298560 : Fix encoding of Lists being sent in via API requests
+:100644 100644 444d353... 37f8e40... M	src/main/java/com/stripe/net/LiveStripeResponseGetter.java
+:100644 100644 02fea52... bc283ca... M	src/test/java/com/stripe/net/LiveStripeResponseGetterTest.java

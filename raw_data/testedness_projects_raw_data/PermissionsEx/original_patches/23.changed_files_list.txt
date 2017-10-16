@@ -1,0 +1,7 @@
+426e871 : Begin structure for commands system
+:000000 100644 0000000... 3e4f733... A	src/main/java/ninja/leaping/permissionsex/localization/LocalizationTarget.java
+:000000 100644 0000000... 62dda95... A	src/main/java/ninja/leaping/permissionsex/sponge/SpongeCommander.java
+:000000 100644 0000000... 60c71a0... A	src/main/java/ninja/leaping/permissionsex/util/command/ArgumentParseException.java
+:000000 100644 0000000... 1195a61... A	src/main/java/ninja/leaping/permissionsex/util/command/Command.java
+:000000 100644 0000000... cb6a541... A	src/main/java/ninja/leaping/permissionsex/util/command/CommandArgs.java
+:000000 100644 0000000... 25efb44... A	src/main/java/ninja/leaping/permissionsex/util/command/Commander.java

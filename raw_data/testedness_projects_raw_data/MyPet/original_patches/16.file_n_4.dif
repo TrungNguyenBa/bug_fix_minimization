@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+index 4c92d7b5..76a0c7ef 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+@@ -64,12 +64,12 @@ public class HurtByTarget extends AIGoal {
+ 
+             if (targetPlayer == myPet.getOwner().getPlayer()) {
+                 return false;
+-            } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer, true)) {
++            } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer)) {
+                 return false;
+             }
+         } else if (target instanceof EntityMyPet) {
+             MyPet targetMyPet = ((EntityMyPet) target).getMyPet();
+-            if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer(), true)) {
++            if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer())) {
+                 return false;
+             }
+         } else if (target instanceof EntityTameableAnimal) {

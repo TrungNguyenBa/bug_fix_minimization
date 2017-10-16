@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
+index cb6bfa6..560c6b6 100644
+--- a/src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
+@@ -41,7 +41,7 @@ import java.util.Map;
+ import java.util.Set;
+ 
+ public class FileOptionSubjectData implements ImmutableOptionSubjectData {
+-    private static final String KEY_CONTEXTS = "context";
++    private static final String KEY_CONTEXTS = "contexts";
+     @ConfigSerializable
+     static class DataEntry {
+         private static final ObjectMapper<DataEntry> MAPPER;

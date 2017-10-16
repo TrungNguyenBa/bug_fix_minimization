@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/GuiMain.java b/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
+index 3b6309d7..5a420c34 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
++++ b/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
+@@ -23,7 +23,7 @@ package de.Keyle.MyPet.gui;
+ import de.Keyle.MyPet.gui.skilltreecreator.LevelCreator;
+ import de.Keyle.MyPet.gui.skilltreecreator.SkillPropertyEditor;
+ import de.Keyle.MyPet.gui.skilltreecreator.SkilltreeCreator;
+-import de.Keyle.MyPet.skill.skills.SkillsInfo;
++import de.Keyle.MyPet.skill.SkillsInfo;
+ import de.Keyle.MyPet.skill.skills.info.*;
+ import de.Keyle.MyPet.skill.skilltreeloader.SkillTreeLoaderNBT;
+ 

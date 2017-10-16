@@ -1,0 +1,71 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java b/src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java
+index 276fed8..ecde956 100644
+--- a/src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java
++++ b/src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java
+@@ -25,11 +25,11 @@ import java.util.Arrays;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+ import com.lonepulse.zombielink.ZombieLinkRuntimeException;
+-import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This runtime exception is thrown when an HTTP {@link RequestProcessor} fails to execute successfully 
+- * for a given {@link HttpRequestBase} and {@link InvocationContext}.
++ * for a given {@link HttpRequestBase} and {@link ProxyInvocationConfiguration}.
+  * 
+  * @version 1.1.0
+  * <br><br>
+@@ -50,19 +50,21 @@ class RequestProcessorException extends ZombieLinkRuntimeException {
+ 	 * 			the {@link Class} of the {@link RequestProcessor} implementation which failed
+ 	 * 
+ 	 * @param config
+-	 * 			the {@link InvocationContext} which caused the {@link RequestProcessor} to fail
++	 * 			the {@link ProxyInvocationConfiguration} which caused the {@link RequestProcessor} to fail
+ 	 * 
+ 	 * <br><br>
+ 	 * @since 1.2.4
+ 	 */
+ 	public RequestProcessorException(Class<?> requestProcessorClass, 
+-									 InvocationContext config) {
++									 ProxyInvocationConfiguration config) {
+ 	
+ 		this(new StringBuilder(requestProcessorClass.getName())
+ 			 .append(" failed to process the invocation configuration for the request [")
+ 			 .append(config.getRequest().getName())
++			 .append("] on [")
++			 .append(config.getUri().toASCIIString())
+ 			 .append("] with arguments ")
+-			 .append(Arrays.toString(config.getArguments().toArray())).toString());
++			 .append(Arrays.toString(config.getRequestArgs())).toString());
+ 	}
+ 	
+ 	/**
+@@ -72,7 +74,7 @@ class RequestProcessorException extends ZombieLinkRuntimeException {
+ 	 * 			the {@link Class} of the {@link RequestProcessor} implementation which failed
+ 	 * 
+ 	 * @param config
+-	 * 			the {@link InvocationContext} which caused the {@link RequestProcessor} to fail
++	 * 			the {@link ProxyInvocationConfiguration} which caused the {@link RequestProcessor} to fail
+ 	 * 
+ 	 * @param rootCause
+ 	 * 			the parent exception which caused the {@link RequestProcessor} to fail
+@@ -81,14 +83,16 @@ class RequestProcessorException extends ZombieLinkRuntimeException {
+ 	 * @since 1.2.4
+ 	 */
+ 	public RequestProcessorException(Class<?> requestProcessorClass, 
+-									 InvocationContext config, 
++									 ProxyInvocationConfiguration config, 
+ 									 Throwable rootCause) {
+ 		
+ 		this(new StringBuilder(requestProcessorClass.getName())
+ 			 .append(" failed to process the invocation configuration for the request [")
+ 			 .append(config.getRequest().getName())
++			 .append("] on [")
++			 .append(config.getUri().toASCIIString())
+ 			 .append("] with arguments ")
+-			 .append(Arrays.toString(config.getArguments().toArray())).toString(), rootCause);
++			 .append(Arrays.toString(config.getRequestArgs())).toString() , rootCause);
+ 	}
+ 	
+ 	/**

@@ -1,0 +1,13 @@
+diff --git a/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java b/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+index eb271f7..e43c335 100644
+--- a/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
++++ b/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+@@ -142,7 +142,7 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+ 
+     setProjectToExecuteMojoIn(targetProject);
+     alterMojoSettings("generateGitPropertiesFile", true);
+-    alterMojoSettings("generateGitPropertiesFilename", targetFilePath);
++    alterMojoSettings("generateGitPropertiesFilename", expectedFile.getAbsolutePath());
+ 
+     // when
+     try {

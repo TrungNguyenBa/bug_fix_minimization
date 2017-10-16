@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/Deserializer.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/Deserializer.java
+index 2f80a5f..56cc5fe 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/Deserializer.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/Deserializer.java
+@@ -22,7 +22,7 @@ package com.lonepulse.zombielink.response;
+ 
+ import org.apache.http.HttpResponse;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>This contract defines the policy for a <i>deserializer</i> which reads the response content of a 

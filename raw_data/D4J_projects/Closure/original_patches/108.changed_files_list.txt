@@ -1,0 +1,3 @@
+aae547f4 : Don't try to process jsdoc nodes twice. Fixes issue 1144 R=blickly
+:100644 100644 82350529... b2a16900... M	src/com/google/javascript/jscomp/ScopedAliases.java
+:100644 100644 a08cd49f... 45ab1b04... M	test/com/google/javascript/jscomp/ScopedAliasesTest.java

@@ -1,0 +1,2 @@
+0be5b41 : Force a warning for servers not supporting UUID methods
+:100644 100644 fbcb97f... 404031d... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

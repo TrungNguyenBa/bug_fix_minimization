@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/ExecutionHandler.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/ExecutionHandler.java
+index b0004f3..5bd9ae2 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/ExecutionHandler.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/ExecutionHandler.java
+@@ -22,7 +22,7 @@ package com.lonepulse.zombielink.executor;
+ 
+ import org.apache.http.HttpResponse;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>This contract defines the callbacks offered for customizing the stages in a request execution. 

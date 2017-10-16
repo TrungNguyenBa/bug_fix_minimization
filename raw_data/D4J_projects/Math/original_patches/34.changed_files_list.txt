@@ -1,0 +1,4 @@
+520f36b43 : [MATH-779] Fixed iterator() method in ListPopulation to return an iterator of the unmodifiable list, thanks to Reid Hochstedler.
+:100644 100644 5aa9b2d42... 521b432a3... M	src/changes/changes.xml
+:100644 100644 8fe3ffe71... 3f3919cb6... M	src/main/java/org/apache/commons/math3/genetics/ListPopulation.java
+:100644 100644 77178ccfc... 9234492c4... M	src/test/java/org/apache/commons/math3/genetics/ListPopulationTest.java

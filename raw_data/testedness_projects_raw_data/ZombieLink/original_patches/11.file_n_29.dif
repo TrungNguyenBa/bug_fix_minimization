@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/AbstractResponseParser.java b/src/main/java/com/lonepulse/zombielink/response/AbstractResponseParser.java
+index b5ff34f..dbb766e 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/AbstractResponseParser.java
++++ b/src/main/java/com/lonepulse/zombielink/response/AbstractResponseParser.java
+@@ -23,7 +23,7 @@ package com.lonepulse.zombielink.response;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.util.EntityUtils;
+ 
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This is an implementation of {@link ResponseParser} which defines and executes the 

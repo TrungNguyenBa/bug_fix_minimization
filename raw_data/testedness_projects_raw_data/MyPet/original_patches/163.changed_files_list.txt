@@ -1,0 +1,3 @@
+57c7eabb : fixed string is too long exception for the beacon buff selection
+:100644 100644 7bf8514c... 80f163a4... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java
+:100644 100644 aeb2d93e... 78468840... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/TileEntityBeacon.java

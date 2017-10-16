@@ -1,0 +1,5 @@
+0252f5df : rabbits and guardians keep their data after taming
+:100644 100644 4d085ddd... d1fb5425... M	src/main/java/de/Keyle/MyPet/commands/CommandRelease.java
+:100644 100644 25c323d8... dad95efe... M	src/main/java/de/Keyle/MyPet/entity/types/rabbit/EntityMyRabbit.java
+:100644 100644 3eb7024a... ca0fa862... M	src/main/java/de/Keyle/MyPet/entity/types/rabbit/MyRabbit.java
+:100644 100644 2c9d5085... 47e92448... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

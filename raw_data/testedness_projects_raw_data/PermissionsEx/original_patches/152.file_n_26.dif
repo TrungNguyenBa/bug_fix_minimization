@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLSelectQuery.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLSelectQuery.java
+index 96a7f52..adae47d 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLSelectQuery.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLSelectQuery.java
+@@ -4,12 +4,12 @@ import java.sql.ResultSet;
+ import java.sql.SQLException;
+ 
+ public interface SQLSelectQuery extends SQLQuery {
+-
++	
+ 	public ResultSet getResults() throws SQLException;
+-
++	
+ 	public boolean haveResults();
+-
++	
+ 	@Override
+ 	public SQLSelectQuery execute() throws SQLException;
+-
++		
+ }

@@ -1,0 +1,25 @@
+diff --git a/src/main/java/com/stripe/model/DeletedExternalAccount.java b/src/main/java/com/stripe/model/DeletedExternalAccount.java
+deleted file mode 100644
+index 8e73397..0000000
+--- a/src/main/java/com/stripe/model/DeletedExternalAccount.java
++++ /dev/null
+@@ -1,19 +0,0 @@
+-package com.stripe.model;
+-
+-public class DeletedExternalAccount extends StripeObject implements DeletedStripeObject {
+-    String id;
+-    Boolean deleted;
+-
+-    public String getId() {
+-        return id;
+-    }
+-    public void setId(String id) {
+-        this.id = id;
+-    }
+-    public Boolean getDeleted() {
+-        return deleted;
+-    }
+-    public void setDeleted(Boolean deleted) {
+-        this.deleted = deleted;
+-    }
+-}

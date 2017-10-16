@@ -1,0 +1,2 @@
+757a09e : restore signature handling
+:100644 100644 027bd06... e4439ee... M	pom.xml

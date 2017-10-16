@@ -1,0 +1,4 @@
+91cc42ba0 : MATH-728 Offset by one bug. Suggested fix provided by Bruce Johnson. I've added a unit test that exercises the use of more interpolation points; two previously unexplored code paths are now being traversed.
+:100644 100644 e31b15621... ba3fe26cb... M	src/main/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizer.java
+:100644 100644 97db5b991... 75d47dfc7... M	src/site/xdoc/changes.xml
+:100644 100644 7eb774213... fe64f9e37... M	src/test/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizerTest.java

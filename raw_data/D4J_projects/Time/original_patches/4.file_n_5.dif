@@ -1,0 +1,20 @@
+diff --git a/src/test/java/org/joda/time/TestPartial_Constructors.java b/src/test/java/org/joda/time/TestPartial_Constructors.java
+index 9a91bfad..f302fa58 100644
+--- a/src/test/java/org/joda/time/TestPartial_Constructors.java
++++ b/src/test/java/org/joda/time/TestPartial_Constructors.java
+@@ -345,15 +345,6 @@ public class TestPartial_Constructors extends TestCase {
+         } catch (IllegalArgumentException ex) {
+             assertMessageContains(ex, "must not", "duplicate");
+         }
+-        
+-        types = new DateTimeFieldType[] {
+-            DateTimeFieldType.dayOfMonth(), DateTimeFieldType.clockhourOfDay(), DateTimeFieldType.hourOfDay() };
+-        try {
+-            new Partial(types, values);
+-            fail();
+-        } catch (IllegalArgumentException ex) {
+-            assertMessageContains(ex, "must not", "duplicate");
+-        }
+     }
+ 
+     /**

@@ -1,0 +1,9 @@
+6cd5522f : Small changes
+:100755 100755 bd5d69b4... 296c5e17... M	include/faunus/analysis.h
+:100644 100644 fde47f18... a96bcc11... M	include/faunus/average.h
+:100644 100644 926e3de1... ede3954a... M	include/faunus/multipole.h
+:100644 100644 59709ae0... afe9b756... M	include/faunus/species.h
+:100644 100644 6863d37a... 20886a43... M	src/examples/stockmayer.cpp
+:100755 100755 5c98ca73... d7fffbc4... M	src/examples/stockmayer.run
+:100644 100644 1b8e9bcd... 4f15b9d0... M	src/examples/unittests.cpp
+:100755 100755 2941cade... 2511da8f... M	src/playground/stenqvist/stockmayer.run

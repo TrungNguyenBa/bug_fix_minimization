@@ -1,0 +1,50 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java b/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
+index f311110..3d4b84a 100644
+--- a/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
++++ b/src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
+@@ -16,7 +16,6 @@
+ package org.springframework.samples.petclinic.web;
+ 
+ import java.util.Collection;
+-import java.util.Map;
+ 
+ import javax.validation.Valid;
+ 
+@@ -59,9 +58,9 @@ public class OwnerController {
+     }
+ 
+     @RequestMapping(value = "/owners/new", method = RequestMethod.GET)
+-    public String initCreationForm(Map<String, Object> model) {
++    public String initCreationForm(Model model) {
+         Owner owner = new Owner();
+-        model.put("owner", owner);
++        model.addAttribute(owner);
+         return "owners/createOrUpdateOwnerForm";
+     }
+ 
+@@ -77,13 +76,13 @@ public class OwnerController {
+     }
+ 
+     @RequestMapping(value = "/owners/find", method = RequestMethod.GET)
+-    public String initFindForm(Map<String, Object> model) {
+-        model.put("owner", new Owner());
++    public String initFindForm(Model model) {
++        model.addAttribute("owner", new Owner());
+         return "owners/findOwners";
+     }
+ 
+     @RequestMapping(value = "/owners", method = RequestMethod.GET)
+-    public String processFindForm(Owner owner, BindingResult result, Map<String, Object> model) {
++    public String processFindForm(Owner owner, BindingResult result, Model model) {
+ 
+         // allow parameterless GET request for /owners to return all records
+         if (owner.getLastName() == null) {
+@@ -99,7 +98,7 @@ public class OwnerController {
+         }
+         if (results.size() > 1) {
+             // multiple owners found
+-            model.put("selections", results);
++            model.addAttribute("selections", results);
+             return "owners/ownersList";
+         } else {
+             // 1 owner found

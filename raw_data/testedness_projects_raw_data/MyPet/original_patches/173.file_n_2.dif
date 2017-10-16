@@ -1,0 +1,44 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 4af9de5d..caa3b244 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -730,32 +730,25 @@ public class EntityListener implements Listener
+ 
+         if (damagedEntity instanceof LivingEntity)
+         {
+-            Entity damager = event.getDamager();
+-
+-            if (damager instanceof Projectile)
++            if (event.getDamager() instanceof Player)
+             {
+-                damager = ((Projectile) damager).getShooter();
+-            }
+-
+-            if (damager instanceof Player)
+-            {
+-                Player player = (Player) damager;
+-                if (player.getItemInHand().getTypeId() == Configuration.LEASH_ITEM && damagedEntity instanceof CraftMyPet)
++                Player damager = (Player) event.getDamager();
++                if (damager.getItemInHand().getTypeId() == Configuration.LEASH_ITEM && damagedEntity instanceof CraftMyPet)
+                 {
+                     return;
+                 }
+-                if (MyPetList.hasMyPet(player))
++                if (MyPetList.hasMyPet(damager))
+                 {
+-                    MyPet myPet = MyPetList.getMyPet(player);
++                    MyPet myPet = MyPetList.getMyPet(damager);
+                     if (myPet.getStatus() == PetState.Here && damagedEntity != myPet.getCraftPet())
+                     {
+                         myPet.getCraftPet().getHandle().goalTarget = ((CraftLivingEntity) damagedEntity).getHandle();
+                     }
+                 }
+             }
+-            else if (damager instanceof CraftMyPet && !isSkillActive)
++            else if (event.getDamager() instanceof CraftMyPet && !isSkillActive)
+             {
+-                MyPet myPet = ((CraftMyPet) damager).getMyPet();
++                MyPet myPet = ((CraftMyPet) event.getDamager()).getMyPet();
+ 
+                 // fix influence of other plugins
+                 event.setDamage(myPet.getDamage());

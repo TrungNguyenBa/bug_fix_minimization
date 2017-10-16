@@ -1,0 +1,3 @@
+0cc2459 : Small cleanups
+:100644 100644 aa94f60... 95dae01... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+:100644 100644 eef6bd8... 3ea21db... M	src/main/java/pl/project13/maven/git/GitDataProvider.java

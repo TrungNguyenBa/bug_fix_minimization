@@ -1,0 +1,10 @@
+diff --git a/.gitignore b/.gitignore
+index e0ec2ce..f25d3ca 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,5 +1,4 @@
+ .*.swp
+-/.idea
+ /.classpath
+ /.project
+ /.settings

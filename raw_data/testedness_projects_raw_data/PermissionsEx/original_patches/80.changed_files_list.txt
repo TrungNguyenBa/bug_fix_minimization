@@ -1,0 +1,3 @@
+0d57df3 : Fix non-inheritable permissions for real this time
+:100644 100644 8dd3ebb... 7a8bdf4... M	src/main/java/ru/tehkode/permissions/PermissionEntity.java
+:100644 100644 16146cd... ea2232c... M	src/main/java/ru/tehkode/permissions/PermissionGroup.java

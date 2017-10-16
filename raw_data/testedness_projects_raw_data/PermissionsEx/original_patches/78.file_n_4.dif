@@ -1,0 +1,24 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionUser.java b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+index 1de4c76..fb8bb08 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionUser.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+@@ -18,7 +18,6 @@
+  */
+ package ru.tehkode.permissions;
+ 
+-import org.bukkit.Bukkit;
+ import org.bukkit.entity.Player;
+ import ru.tehkode.permissions.events.PermissionEntityEvent;
+ import ru.tehkode.permissions.exceptions.RankingException;
+@@ -512,9 +511,9 @@ public class PermissionUser extends PermissionEntity {
+ 
+ 	public Player getPlayer() {
+ 		try {
+-			return Bukkit.getServer().getPlayer(UUID.fromString(getIdentifier()));
++			return manager.getPlugin().getServer().getPlayer(UUID.fromString(getIdentifier()));
+ 		} catch (Throwable ex) { // Not a UUID or method not implemented in server build
+-			return Bukkit.getServer().getPlayerExact(getIdentifier());
++			return manager.getPlugin().getServer().getPlayerExact(getIdentifier());
+ 		}
+ 	}
+ 

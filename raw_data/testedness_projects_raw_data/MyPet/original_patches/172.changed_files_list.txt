@@ -1,0 +1,6 @@
+818833af : create craft entities for projectiles directly
+:100644 100644 664cecca... b51db168... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java
+:100644 100644 9c927d22... 66102824... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetLargeFireball.java
+:100644 100644 3c7406d6... e558e42a... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetSmallFireball.java
+:100644 100644 472620e5... 1ff24390... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetSnowball.java
+:100644 100644 29be53bf... 060af78a... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetWitherSkull.java

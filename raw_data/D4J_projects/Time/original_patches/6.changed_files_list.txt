@@ -1,0 +1,5 @@
+28aeba95 : Fix GJChronology.plus/minus across cutover and year zero
+:100644 100644 a7b5ab78... a440db56... M	RELEASE-NOTES.txt
+:100644 100644 960fe479... d1556f52... M	src/main/java/org/joda/time/chrono/GJChronology.java
+:100644 100644 0db38e54... f1fcb393... M	src/test/java/org/joda/time/chrono/TestAll.java
+:000000 100644 00000000... ba2a1fbc... A	src/test/java/org/joda/time/chrono/TestGJDate.java

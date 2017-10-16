@@ -1,0 +1,15 @@
+diff --git a/pom.xml b/pom.xml
+index 8c50443b..515e0512 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -105,6 +105,10 @@
+             <url>http://repo.md-5.net/content/repositories/snapshots/</url>
+         </repository>
+         <repository>
++            <id>metrics-repo</id>
++            <url>http://repo.mcstats.org/content/repositories/releases/</url>
++        </repository>
++        <repository>
+             <id>citizens-repo</id>
+             <url>http://repo.citizensnpcs.co/</url>
+         </repository>

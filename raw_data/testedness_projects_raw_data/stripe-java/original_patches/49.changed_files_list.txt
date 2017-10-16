@@ -1,0 +1,6 @@
+344db7c : fixes to recipient card collection as per @jimdanz
+:100644 100644 c450de9... 8dd08a9... M	src/main/java/com/stripe/model/Card.java
+:100644 100644 f17b4bf... 0c18090... M	src/main/java/com/stripe/model/CustomerCardCollection.java
+:100644 100644 533bb55... 9bbe02c... M	src/main/java/com/stripe/model/CustomerCollection.java
+:100644 100644 9224c9f... 7b0c7e2... M	src/main/java/com/stripe/model/CustomerSubscriptionCollection.java
+:100644 100644 07b71ec... a2e47fa... M	src/main/java/com/stripe/model/RecipientCardCollection.java

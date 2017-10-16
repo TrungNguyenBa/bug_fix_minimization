@@ -1,0 +1,6 @@
+899507a : Refactored the convert method by removing the annonymous methods with concrete classes.
+:000000 100644 0000000... 53e61c4... A	README.md
+:100644 100644 d034cd7... 7d2efb7... M	pom.xml
+:100644 100644 983d8c6... b5051a8... M	src/main/java/org/valhalla/cli/Options.java
+:000000 100644 0000000... ebedd4c... A	src/test/java/org/valhalla/cli/OptionImplThree.java
+:100644 100644 104b11f... 854ea14... M	src/test/java/org/valhalla/cli/UsageTests.java

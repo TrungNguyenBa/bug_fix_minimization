@@ -1,0 +1,57 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
+index fc4f987..e01f89f 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
+@@ -74,6 +74,8 @@ public class GroupCommands extends PermissionsCommand {
+ 			permission = "permissions.manage.groups.weight.<group>",
+ 			description = "Print or set group weight")
+ 	public void groupPrintSetWeight(PermissionsEx plugin, CommandSender sender, Map<String, String> args) {
++		String groupName = this.autoCompleteGroupName(args.get("group"));
++
+ 		PermissionGroup group = plugin.getPermissionsManager().getGroup(args.get("group"));
+ 
+ 		if (group == null) {
+@@ -175,7 +177,7 @@ public class GroupCommands extends PermissionsCommand {
+ 
+ 		if (args.get("parents") != null) {
+ 			String[] parents = args.get("parents").split(",");
+-			List<PermissionGroup> groups = new LinkedList<>();
++			List<PermissionGroup> groups = new LinkedList<PermissionGroup>();
+ 
+ 			for (String parent : parents) {
+ 				groups.add(plugin.getPermissionsManager().getGroup(parent));
+@@ -207,6 +209,7 @@ public class GroupCommands extends PermissionsCommand {
+ 
+ 		group.remove();
+ 		plugin.getPermissionsManager().resetGroup(group.getIdentifier());
++		group = null;
+ 	}
+ 
+ 	/**
+@@ -266,7 +269,7 @@ public class GroupCommands extends PermissionsCommand {
+ 
+ 		if (args.get("parents") != null) {
+ 			String[] parents = args.get("parents").split(",");
+-			List<PermissionGroup> groups = new LinkedList<>();
++			List<PermissionGroup> groups = new LinkedList<PermissionGroup>();
+ 
+ 			for (String parent : parents) {
+ 				PermissionGroup parentGroup = plugin.getPermissionsManager().getGroup(this.autoCompleteGroupName(parent));
+@@ -301,7 +304,7 @@ public class GroupCommands extends PermissionsCommand {
+ 
+ 		if (args.get("parents") != null) {
+ 			String[] parents = args.get("parents").split(",");
+-			List<PermissionGroup> groups = new LinkedList<>(group.getOwnParents(worldName));
++			List<PermissionGroup> groups = new LinkedList<PermissionGroup>(group.getOwnParents(worldName));
+ 
+ 			for (String parent : parents) {
+ 				PermissionGroup parentGroup = plugin.getPermissionsManager().getGroup(this.autoCompleteGroupName(parent));
+@@ -336,7 +339,7 @@ public class GroupCommands extends PermissionsCommand {
+ 
+ 		if (args.get("parents") != null) {
+ 			String[] parents = args.get("parents").split(",");
+-			List<PermissionGroup> groups = new LinkedList<>(group.getOwnParents(worldName));
++			List<PermissionGroup> groups = new LinkedList<PermissionGroup>(group.getOwnParents(worldName));
+ 
+ 			for (String parent : parents) {
+ 				PermissionGroup parentGroup = plugin.getPermissionsManager().getGroup(this.autoCompleteGroupName(parent));

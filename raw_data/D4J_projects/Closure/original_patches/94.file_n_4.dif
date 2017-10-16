@@ -1,0 +1,54 @@
+diff --git a/test/com/google/javascript/jscomp/ProcessDefinesTest.java b/test/com/google/javascript/jscomp/ProcessDefinesTest.java
+index 6ab1ae71..b4b38169 100644
+--- a/test/com/google/javascript/jscomp/ProcessDefinesTest.java
++++ b/test/com/google/javascript/jscomp/ProcessDefinesTest.java
+@@ -84,15 +84,10 @@ public class ProcessDefinesTest extends CompilerTestCase {
+         null, ProcessDefines.INVALID_DEFINE_TYPE_ERROR);
+   }
+ 
+-  public void testDefineWithBadValue1() {
++  public void testDefineWithBadValue() {
+     test("/** @define {boolean} */ var DEF = new Boolean(true);", null,
+         ProcessDefines.INVALID_DEFINE_INIT_ERROR);
+   }
+-  
+-  public void testDefineWithBadValue2() {
+-    test("/** @define {string} */ var DEF = 'x' + y;", null,
+-        ProcessDefines.INVALID_DEFINE_INIT_ERROR);
+-  }  
+ 
+   public void testDefineWithDependentValue() {
+     test("/** @define {boolean} */ var BASE = false;\n" +
+@@ -137,32 +132,6 @@ public class ProcessDefinesTest extends CompilerTestCase {
+         "var DEF_OVERRIDE_TO_TRUE=true");
+   }
+ 
+-  public void testOverridingString0() {
+-    test(
+-        "/** @define {string} */ var DEF_OVERRIDE_STRING = 'x';",
+-        "var DEF_OVERRIDE_STRING=\"x\"");
+-  }
+-  
+-  public void testOverridingString1() {
+-    test(
+-        "/** @define {string} */ var DEF_OVERRIDE_STRING = 'x' + 'y';",
+-        "var DEF_OVERRIDE_STRING=\"x\" + \"y\"");
+-  }  
+-  
+-  public void testOverridingString2() {
+-    overrides.put("DEF_OVERRIDE_STRING", Node.newString("foo"));
+-    test(
+-        "/** @define {string} */ var DEF_OVERRIDE_STRING = 'x';",
+-        "var DEF_OVERRIDE_STRING=\"foo\"");
+-  }  
+-  
+-  public void testOverridingString3() {
+-    overrides.put("DEF_OVERRIDE_STRING", Node.newString("foo"));
+-    test(
+-        "/** @define {string} */ var DEF_OVERRIDE_STRING = 'x' + 'y';",
+-        "var DEF_OVERRIDE_STRING=\"foo\"");
+-  }
+-  
+   public void testMisspelledOverride() {
+     overrides.put("DEF_BAD_OVERIDE", new Node(Token.TRUE));
+     test("/** @define {boolean} */ var DEF_BAD_OVERRIDE = true",

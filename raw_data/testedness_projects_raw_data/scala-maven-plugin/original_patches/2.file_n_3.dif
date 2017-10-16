@@ -1,0 +1,9 @@
+diff --git a/src/it/test-incremental-compile/invoker.properties b/src/it/test-incremental-compile/invoker.properties
+index a63b141..b56c903 100644
+--- a/src/it/test-incremental-compile/invoker.properties
++++ b/src/it/test-incremental-compile/invoker.properties
+@@ -1 +1 @@
+-invoker.goals=clean test-compile -DaddZincArgs=-no-color
+\ No newline at end of file
++invoker.goals=clean test-compile
+\ No newline at end of file

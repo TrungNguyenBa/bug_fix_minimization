@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java
+index 611126bd..35a11cc4 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java
+@@ -72,7 +72,7 @@ public class Knockback extends KnockbackInfo implements ISkillInstance, ISkillAc
+                 }
+                 if (!quiet)
+                 {
+-                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.KnockbackChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%chance%", "" + chance));
++                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.KnockbackChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%chance%", "" + chance));
+                 }
+             }
+         }

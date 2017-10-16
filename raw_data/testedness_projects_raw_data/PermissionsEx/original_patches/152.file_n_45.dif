@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/events/PermissionEvent.java b/src/main/java/ru/tehkode/permissions/events/PermissionEvent.java
+index 9e4b83d..0382262 100644
+--- a/src/main/java/ru/tehkode/permissions/events/PermissionEvent.java
++++ b/src/main/java/ru/tehkode/permissions/events/PermissionEvent.java
+@@ -21,6 +21,7 @@ package ru.tehkode.permissions.events;
+ import org.bukkit.event.Event;
+ 
+ /**
++ *
+  * @author t3hk0d3
+  */
+ public abstract class PermissionEvent extends Event {

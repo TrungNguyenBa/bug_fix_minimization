@@ -1,0 +1,4 @@
+e0559c50 : Period formatter builder append(PeriodFormatter) did not handle some case [2495455] test from Bjoern Ricks
+:100644 100644 e4990906... f8a62407... M	JodaTime/RELEASE-NOTES.txt
+:100644 100644 f78830c3... f7c77381... M	JodaTime/src/main/java/org/joda/time/format/PeriodFormatterBuilder.java
+:100644 100644 53d31b0f... 66843661... M	JodaTime/src/test/java/org/joda/time/format/TestPeriodFormatterBuilder.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/experience/Experience.java b/src/main/java/de/Keyle/MyPet/skill/experience/Experience.java
+index 7fad9ebb..5152ded2 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/experience/Experience.java
++++ b/src/main/java/de/Keyle/MyPet/skill/experience/Experience.java
+@@ -39,7 +39,5 @@ public abstract class Experience {
+ 
+     public abstract double getCurrentExp(double exp);
+ 
+-    public abstract double getExpByLevel(int level);
+-
+     public abstract boolean isUsable();
+ }
+\ No newline at end of file

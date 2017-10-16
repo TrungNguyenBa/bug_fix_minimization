@@ -1,0 +1,29 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
+index 743823d..b0f44a3 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
+@@ -8,18 +8,19 @@ public class ProtobufMessage
+ 
+     protected final Map<String,ProtobufField> _fields;
+     
+-    public ProtobufMessage(String name, Map<String,ProtobufField> fields)
++    public ProtobufMessage(String name, List<ProtobufField> fields)
+     {
+         _name = name;
+-        _fields = fields;
++        _fields = new LinkedHashMap<String,ProtobufField>(fields.size());
++        for (ProtobufField f : fields) {
++            _fields.put(f.name, f);
++        }
+     }
+ 
+     public static ProtobufMessage bogusMessage(String desc) {
+-        return new ProtobufMessage(desc, Collections.<String,ProtobufField>emptyMap());
++        return new ProtobufMessage(desc, Collections.<ProtobufField>emptyList());
+     }
+ 
+-    public int getFieldCount() { return _fields.size(); }
+-    
+     public String getName() { return _name; }
+     
+     public ProtobufField field(String name) {

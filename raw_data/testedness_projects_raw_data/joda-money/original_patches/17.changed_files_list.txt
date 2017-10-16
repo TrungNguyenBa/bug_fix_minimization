@@ -1,0 +1,3 @@
+b18d5e8 : Use GitHub pages for home page
+:100644 100644 ef922a5... 089ec2b... M	pom.xml
+:100644 100644 c7e8832... 6521f42... M	src/changes/changes.xml

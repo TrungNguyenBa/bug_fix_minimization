@@ -1,0 +1,16 @@
+36919e9c : make nullables clear
+:100644 100644 a5ff6867... 500b1570... M	src/main/java/de/Keyle/MyPet/api/event/MyPetSelectEvent.java
+:100644 100644 9dcdf12d... c2e3ba19... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 f64fa6d4... 7213447c... M	src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+:100644 100644 89548543... f1e38e46... M	src/main/java/de/Keyle/MyPet/entity/types/MyPetType.java
+:100644 100644 89deb922... 14c27862... M	src/main/java/de/Keyle/MyPet/skill/skills/Skills.java
+:100644 100644 ae01c634... bc450c1e... M	src/main/java/de/Keyle/MyPet/skill/skills/SkillsInfo.java
+:100644 100644 7a604665... 58926687... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/CustomInventory.java
+:100644 100644 1addb0e2... 7256d519... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/ItemStackNBTConverter.java
+:100644 100644 be25981c... d59e423c... M	src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTreeMobType.java
+:100644 100644 65913ac3... 2946cb52... M	src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTreeSkill.java
+:100644 100644 7dc858cf... 493b4e6a... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+:100644 100644 2bb32ab9... f40c7cfa... M	src/main/java/de/Keyle/MyPet/util/Util.java
+:100644 100644 316c2521... 2f3805c0... M	src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuInventory.java
+:100644 100644 a4ebab16... 73b3e2e9... M	src/main/java/de/Keyle/MyPet/util/locale/ResourceBundle.java
+:100644 100644 e9023e7d... e1a9561d... M	src/main/java/de/Keyle/MyPet/util/support/PluginSupportManager.java

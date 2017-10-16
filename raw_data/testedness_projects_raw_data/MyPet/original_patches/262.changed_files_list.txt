@@ -1,0 +1,2 @@
+a48d15de : fixed admin beacon-stop bug
+:100644 100644 68bc629c... 35fe3177... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandBeacon.java

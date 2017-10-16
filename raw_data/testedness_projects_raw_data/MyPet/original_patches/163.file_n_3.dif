@@ -1,0 +1,11 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/TileEntityBeacon.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/TileEntityBeacon.java
+index 78468840..aeb2d93e 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/TileEntityBeacon.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/TileEntityBeacon.java
+@@ -90,4 +90,4 @@ public class TileEntityBeacon extends net.minecraft.server.v1_6_R2.TileEntityBea
+             e.printStackTrace();
+         }
+     }
+-}
+\ No newline at end of file
++}

@@ -1,0 +1,3 @@
+b3aee9a : Fix for OpenJDK6
+:100644 100644 d9b3838... 90d2994... M	src/main/java/org/zeroturnaround/zip/ZTFilePermissionsUtil.java
+:100644 100644 cb2007f... ea55012... M	src/main/java/org/zeroturnaround/zip/ZTZipReflectionUtil.java

@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 42ce2c7..805c3c5 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -286,9 +286,7 @@ public class PermissionManager {
+ 					oldData.remove();
+ 					// Convert
+ 				}
+-				if (fallbackName != null) {
+-					data.setOption("name", fallbackName, null);
+-				}
++				data.setOption("name", null, fallbackName);
+ 				user = new PermissionUser(identifier, data, this);
+ 				user.initialize();
+ 				this.users.put(identifier.toLowerCase(), user);

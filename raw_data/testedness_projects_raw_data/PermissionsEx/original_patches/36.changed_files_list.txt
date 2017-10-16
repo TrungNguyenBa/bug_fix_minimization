@@ -1,0 +1,2 @@
+b7443ee : Use a more optimal pool size
+:100644 100644 4fc4838... 4a73195... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java

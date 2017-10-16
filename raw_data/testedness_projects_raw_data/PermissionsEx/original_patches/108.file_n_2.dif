@@ -1,0 +1,30 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+index 024df0d..e061d57 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+@@ -148,16 +148,20 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public String getOption(String option, String worldName) {
+-		String ret = this.node.getString(formatPath(worldName, "options", option));
+-		if (ret == null && (option.equals("prefix") || option.equals("suffix"))) {
+-			ret = this.node.getString(formatPath(worldName, option));
++		if (option.equals("prefix") || option.equals("suffix")) {
++			return this.node.getString(formatPath(worldName, option));
++		} else {
++			return this.node.getString(formatPath(worldName, "options", option));
+ 		}
+-		return ret;
+ 	}
+ 
+ 	@Override
+ 	public void setOption(String option, String value, String worldName) {
+-		this.node.set(formatPath(worldName, "options", option), value);
++		if (option.equals("prefix") || option.equals("suffix")) {
++			this.node.set(formatPath(worldName, option), value);
++		} else {
++			this.node.set(formatPath(worldName, "options", option), value);
++		}
+ 		save();
+ 	}
+ 

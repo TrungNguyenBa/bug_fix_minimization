@@ -1,0 +1,8 @@
+4c7d17f : Refactor and isolate responsibilities for configuration management (issue #11)
+:000000 100644 0000000... b1b5f22... A	src/main/java/com/lonepulse/zombielink/executor/ConfigurationFailedException.java
+:000000 100644 0000000... daf241f... A	src/main/java/com/lonepulse/zombielink/executor/ConfigurationManager.java
+:000000 100644 0000000... 350cad3... A	src/main/java/com/lonepulse/zombielink/executor/ConfigurationService.java
+:100644 100644 66220df... 4d5932a... M	src/main/java/com/lonepulse/zombielink/executor/HttpClientDirectory.java
+:100644 100644 78901d5... e781a89... M	src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+:100644 100644 8af6393... 8dda1bc... M	src/main/java/com/lonepulse/zombielink/inject/ProxyInvocationConfiguration.java
+:100644 100644 9446948... d2fedfe... M	src/main/java/com/lonepulse/zombielink/inject/Zombie.java

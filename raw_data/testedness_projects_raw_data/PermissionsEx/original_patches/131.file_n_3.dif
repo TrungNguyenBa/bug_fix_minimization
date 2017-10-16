@@ -1,0 +1,24 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/SQLBackend.java b/src/main/java/ru/tehkode/permissions/backends/SQLBackend.java
+index 4c4bdd4..37b4c64 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/SQLBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/SQLBackend.java
+@@ -300,8 +300,7 @@ public class SQLBackend extends PermissionBackend {
+ 
+ 			// Permissions
+ 			for (Map.Entry<String, String[]> entry : user.getAllPermissions().entrySet()) {
+-				for (int i = entry.getValue().length - 1; i >= 0; --i) {
+-					String permission = entry.getValue()[i];
++				for (String permission : entry.getValue()) {
+ 					String world = entry.getKey();
+ 
+ 					if (world == null) {
+@@ -418,8 +417,7 @@ public class SQLBackend extends PermissionBackend {
+ 
+ 			// Permissions
+ 			for (Map.Entry<String, String[]> entry : group.getAllPermissions().entrySet()) {
+-				for (int i = entry.getValue().length - 1; i >= 0; --i) {
+-					String permission = entry.getValue()[i];
++				for (String permission : entry.getValue()) {
+ 					String world = entry.getKey();
+ 
+ 					if (world == null) {

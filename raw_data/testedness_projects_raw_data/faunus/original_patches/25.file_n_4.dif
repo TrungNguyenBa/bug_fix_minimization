@@ -1,0 +1,8 @@
+diff --git a/src/playground/stenqvist/compile.sh b/src/playground/stenqvist/compile.sh
+index 629297d7..734fc035 100755
+--- a/src/playground/stenqvist/compile.sh
++++ b/src/playground/stenqvist/compile.sh
+@@ -1,2 +1,2 @@
+ cd ..
+-make -j2 stenqvist-nemo
++make -j8 stenqvist-nemo

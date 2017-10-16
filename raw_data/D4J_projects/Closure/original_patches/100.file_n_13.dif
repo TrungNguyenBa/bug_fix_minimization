@@ -1,0 +1,12 @@
+diff --git a/src/com/google/javascript/jscomp/LinkedFlowScope.java b/src/com/google/javascript/jscomp/LinkedFlowScope.java
+index 3747e098..47b0a5eb 100644
+--- a/src/com/google/javascript/jscomp/LinkedFlowScope.java
++++ b/src/com/google/javascript/jscomp/LinkedFlowScope.java
+@@ -148,6 +148,7 @@ class LinkedFlowScope implements FlowScope {
+     return cache.getSlot(name);
+   }
+ 
++  /** @inheritDoc */
+   @Override
+   public StaticSlot<JSType> getOwnSlot(String name) {
+     throw new UnsupportedOperationException();

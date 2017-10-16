@@ -1,0 +1,14 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipUtil.java b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+index 0a8aa97..e2975d6 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipUtil.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+@@ -1655,6 +1655,9 @@ public final class ZipUtil {
+       catch (IOException e) {
+         ZipExceptionUtil.rethrow(e);
+       }
++      finally {
++        IOUtils.closeQuietly(out);
++      }
+     }
+ 
+   /**

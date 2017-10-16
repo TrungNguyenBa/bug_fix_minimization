@@ -1,0 +1,2 @@
+4336655 : Fix variable name
+:100644 100644 5e68834... 0348e69... M	src/main/java/com/stripe/model/TransferTransaction.java

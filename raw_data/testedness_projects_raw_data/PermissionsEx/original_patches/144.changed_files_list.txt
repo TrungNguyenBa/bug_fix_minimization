@@ -1,0 +1,2 @@
+feae8f1 : Escape invalid regexes in regex matcher
+:100644 100644 7de26e8... 86c9b02... M	src/main/java/ru/tehkode/permissions/RegExpMatcher.java

@@ -1,0 +1,2 @@
+82315fc : Fixed log error
+:100644 100644 10ac3ec... 614c716... M	src/main/java/net/rubyeye/xmemcached/XMemcachedClient.java

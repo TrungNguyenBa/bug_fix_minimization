@@ -1,0 +1,116 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+index d7e50dc1..cd942172 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+@@ -145,70 +145,63 @@ public class EntityMySkeleton extends EntityMyPet
+      */
+     public boolean a_(EntityHuman entityhuman)
+     {
+-        try
++        if (super.a_(entityhuman))
+         {
+-            if (super.a_(entityhuman))
+-            {
+-                return true;
+-            }
++            return true;
++        }
+ 
+-            ItemStack itemStack = entityhuman.inventory.getItemInHand();
++        ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-            if (getOwner().equals(entityhuman) && itemStack != null)
++        if (getOwner().equals(entityhuman) && itemStack != null)
++        {
++            if (itemStack.id == Item.SHEARS.id)
+             {
+-                if (itemStack.id == Item.SHEARS.id)
++                if (!MyPetPermissions.hasExtended(myPet.getOwner().getPlayer(), "MyPet.user.extended.Equip") || MobArena.isInMobArena(myPet.getOwner()) || Minigames.isInMinigame(myPet.getOwner()))
+                 {
+-                    if (!MyPetPermissions.hasExtended(myPet.getOwner().getPlayer(), "MyPet.user.extended.Equip") || MobArena.isInMobArena(myPet.getOwner()) || Minigames.isInMinigame(myPet.getOwner()))
+-                    {
+-                        return false;
+-                    }
+-                    for (EquipmentSlot slot : EquipmentSlot.values())
+-                    {
+-                        ItemStack itemInSlot = ((MySkeleton) myPet).getEquipment(slot);
+-                        if (itemInSlot != null)
+-                        {
+-                            EntityItem entityitem = this.a(itemInSlot.cloneItemStack(), 1.0F);
+-                            entityitem.motY += (double) (this.random.nextFloat() * 0.05F);
+-                            entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+-                            entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+-                            setPetEquipment(slot.getSlotId(), null);
+-                        }
+-                    }
+-                    return true;
++                    return false;
+                 }
+-                else if (checkForEquipment(itemStack) && getOwner().getPlayer().isSneaking())
++                for (EquipmentSlot slot : EquipmentSlot.values())
+                 {
+-                    if (!MyPetPermissions.hasExtended(myPet.getOwner().getPlayer(), "MyPet.user.extended.Equip") || MobArena.isInMobArena(myPet.getOwner()) || Minigames.isInMinigame(myPet.getOwner()))
+-                    {
+-                        return false;
+-                    }
+-                    EquipmentSlot slot = EquipmentSlot.getSlotById(b(itemStack));
+                     ItemStack itemInSlot = ((MySkeleton) myPet).getEquipment(slot);
+-                    if (itemInSlot != null && !entityhuman.abilities.canInstantlyBuild)
++                    if (itemInSlot != null)
+                     {
+                         EntityItem entityitem = this.a(itemInSlot.cloneItemStack(), 1.0F);
+                         entityitem.motY += (double) (this.random.nextFloat() * 0.05F);
+                         entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+                         entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
++                        setPetEquipment(slot.getSlotId(), null);
+                     }
+-                    ItemStack itemStackClone = itemStack.cloneItemStack();
+-                    itemStackClone.count = 1;
+-                    setPetEquipment(b(itemStack), itemStackClone);
+-                    if (!entityhuman.abilities.canInstantlyBuild)
+-                    {
+-                        --itemStack.count;
+-                    }
+-                    if (itemStack.count <= 0)
+-                    {
+-                        entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+-                    }
+-                    return true;
+                 }
++                return true;
++            }
++            else if (checkForEquipment(itemStack) && getOwner().getPlayer().isSneaking())
++            {
++                if (!MyPetPermissions.hasExtended(myPet.getOwner().getPlayer(), "MyPet.user.extended.Equip") || MobArena.isInMobArena(myPet.getOwner()) || Minigames.isInMinigame(myPet.getOwner()))
++                {
++                    return false;
++                }
++                EquipmentSlot slot = EquipmentSlot.getSlotById(b(itemStack));
++                ItemStack itemInSlot = ((MySkeleton) myPet).getEquipment(slot);
++                if (itemInSlot != null && !entityhuman.abilities.canInstantlyBuild)
++                {
++                    EntityItem entityitem = this.a(itemInSlot.cloneItemStack(), 1.0F);
++                    entityitem.motY += (double) (this.random.nextFloat() * 0.05F);
++                    entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
++                    entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
++                }
++                ItemStack itemStackClone = itemStack.cloneItemStack();
++                itemStackClone.count = 1;
++                setPetEquipment(b(itemStack), itemStackClone);
++                if (!entityhuman.abilities.canInstantlyBuild)
++                {
++                    --itemStack.count;
++                }
++                if (itemStack.count <= 0)
++                {
++                    entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
++                }
++                return true;
+             }
+-        }
+-        catch (Exception e)
+-        {
+-            e.printStackTrace();
+         }
+         return false;
+     }

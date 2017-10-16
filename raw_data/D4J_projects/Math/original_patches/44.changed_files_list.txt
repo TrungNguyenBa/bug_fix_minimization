@@ -1,0 +1,4 @@
+53c8cec5c : Fixed an event resetting issue in ODE.
+:100644 100644 2d878b15f... 8f315e334... M	src/main/java/org/apache/commons/math/ode/AbstractIntegrator.java
+:100644 100644 bf13163d4... 1e770fe69... M	src/site/xdoc/changes.xml
+:100644 100644 07178e52b... 722584b8f... M	src/test/java/org/apache/commons/math/ode/events/EventStateTest.java

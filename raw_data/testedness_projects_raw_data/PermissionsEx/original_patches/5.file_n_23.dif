@@ -1,0 +1,22 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/CalculatedSubject.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/CalculatedSubject.java
+index 6f20b06..3e27bb3 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/CalculatedSubject.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/CalculatedSubject.java
+@@ -34,7 +34,7 @@ import java.util.concurrent.ExecutionException;
+ /**
+  * This is a holder that maintains the current subject data state
+  */
+-public class CalculatedSubject implements Caching<ImmutableSubjectData> {
++public class CalculatedSubject implements Caching<ImmutableOptionSubjectData> {
+     private final Map.Entry<String, String> identifier;
+     private final PermissionsEx pex;
+ 
+@@ -92,7 +92,7 @@ public class CalculatedSubject implements Caching<ImmutableSubjectData> {
+     }
+ 
+     @Override
+-    public void clearCache(ImmutableSubjectData newData) {
++    public void clearCache(ImmutableOptionSubjectData newData) {
+         data.invalidateAll();
+         for (CalculatedSubject subject : pex.getActiveCalculatedSubjects()) {
+             for (Set<Map.Entry<String, String>> ent : subject.getActiveContexts()) {

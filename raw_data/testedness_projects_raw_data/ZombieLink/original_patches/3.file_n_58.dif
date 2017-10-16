@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/Serializer.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/Serializer.java
+index 8976e01..0acb429 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/Serializer.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/Serializer.java
+@@ -20,7 +20,7 @@ package com.lonepulse.zombielink.request;
+  * #L%
+  */
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>This contract defines the policy of a <b>serializer</b> which is responsible for translating a model 

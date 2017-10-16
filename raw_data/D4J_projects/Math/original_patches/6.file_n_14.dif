@@ -1,0 +1,44 @@
+diff --git a/src/test/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizerNelderMeadTest.java b/src/test/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizerNelderMeadTest.java
+index d51025d7e..fdc187a62 100644
+--- a/src/test/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizerNelderMeadTest.java
++++ b/src/test/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizerNelderMeadTest.java
+@@ -66,9 +66,6 @@ public class SimplexOptimizerNelderMeadTest {
+         Assert.assertEquals(fourExtrema.valueXmYp, optimum.getValue(), 6e-12);
+         Assert.assertTrue(optimizer.getEvaluations() > 60);
+         Assert.assertTrue(optimizer.getEvaluations() < 90);
+-
+-        // Check that the number of iterations is updated (MATH-949).
+-        Assert.assertTrue(optimizer.getIterations() > 0);
+     }
+ 
+     @Test
+@@ -87,9 +84,6 @@ public class SimplexOptimizerNelderMeadTest {
+         Assert.assertEquals(fourExtrema.valueXpYm, optimum.getValue(), 1e-11);
+         Assert.assertTrue(optimizer.getEvaluations() > 60);
+         Assert.assertTrue(optimizer.getEvaluations() < 90);
+-
+-        // Check that the number of iterations is updated (MATH-949).
+-        Assert.assertTrue(optimizer.getIterations() > 0);
+     }
+ 
+     @Test
+@@ -108,9 +102,6 @@ public class SimplexOptimizerNelderMeadTest {
+         Assert.assertEquals(fourExtrema.valueXmYm, optimum.getValue(), 3e-12);
+         Assert.assertTrue(optimizer.getEvaluations() > 60);
+         Assert.assertTrue(optimizer.getEvaluations() < 90);
+-
+-        // Check that the number of iterations is updated (MATH-949).
+-        Assert.assertTrue(optimizer.getIterations() > 0);
+     }
+ 
+     @Test
+@@ -129,9 +120,6 @@ public class SimplexOptimizerNelderMeadTest {
+         Assert.assertEquals(fourExtrema.valueXpYp, optimum.getValue(), 7e-12);
+         Assert.assertTrue(optimizer.getEvaluations() > 60);
+         Assert.assertTrue(optimizer.getEvaluations() < 90);
+-
+-        // Check that the number of iterations is updated (MATH-949).
+-        Assert.assertTrue(optimizer.getIterations() > 0);
+     }
+ 
+     @Test

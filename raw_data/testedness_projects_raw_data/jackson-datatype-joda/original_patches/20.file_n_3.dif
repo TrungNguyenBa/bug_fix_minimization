@@ -1,0 +1,15 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/JodaMapper.java b/src/main/java/com/fasterxml/jackson/datatype/joda/JodaMapper.java
+deleted file mode 100644
+index c0f55e1..0000000
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/JodaMapper.java
++++ /dev/null
+@@ -1,9 +0,0 @@
+-package com.fasterxml.jackson.datatype.joda;
+-
+-import com.fasterxml.jackson.databind.ObjectMapper;
+-
+-public class JodaMapper extends ObjectMapper {
+-  public JodaMapper() {
+-    registerModule(new JodaModule());
+-  }
+-}

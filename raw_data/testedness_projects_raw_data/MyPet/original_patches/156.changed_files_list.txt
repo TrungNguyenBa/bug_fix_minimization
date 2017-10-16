@@ -1,0 +1,26 @@
+99b0fbf7 : items used by MyPet can now have custom NBT data fixes #161
+:100644 100644 f8422b02... d0538a33... M	src/main/java/de/Keyle/MyPet/commands/CommandPetType.java
+:100644 100644 62de2e2d... 3634ae48... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 ce2ea016... f9251b4c... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 df63e2c4... eb161941... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+:100644 100644 e3432d92... cf1bf8f2... M	src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
+:100644 100644 a76bcecd... c72ffbcf... M	src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
+:100644 100644 38bf2d50... 8b11dcb6... M	src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+:100644 100644 016956ce... 98dc8db2... M	src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+:100644 100644 f7deee7b... 883d9af8... M	src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+:100644 100644 1d743c53... a9647305... M	src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+:100644 100644 9c85d86a... 66c94111... M	src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+:100644 100644 34af2399... 6f2a3193... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+:100644 100644 9f467e5c... 6011c5ef... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+:100644 100644 2e20c22e... ea4f9821... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:100644 100644 0a245887... 15d02167... M	src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+:100644 100644 b44a4068... 692544d0... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Control.java
+:100644 100644 3e80d5f5... f39d555b... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ride.java
+:100644 100644 d757ada8... a469b0b4... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/ItemStackComparator.java
+:100644 100644 876d9ba5... f6928fa9... M	src/main/java/de/Keyle/MyPet/util/Configuration.java
+:000000 100644 00000000... 08f45251... A	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java
+:000000 100644 00000000... 823dc7fb... A	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ItemStringInterpreter.java
+:000000 100644 00000000... 3e6965d9... A	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTHolder.java
+:000000 100644 00000000... d982f805... A	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java
+:000000 100644 00000000... ccaa0ffc... A	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagHolder.java
+:000000 100644 00000000... 052892af... A	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagListHolder.java

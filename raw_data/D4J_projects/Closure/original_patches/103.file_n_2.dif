@@ -1,0 +1,19 @@
+diff --git a/src/com/google/javascript/jscomp/ControlFlowAnalysis.java b/src/com/google/javascript/jscomp/ControlFlowAnalysis.java
+index 6ef25483..d5bcabe1 100644
+--- a/src/com/google/javascript/jscomp/ControlFlowAnalysis.java
++++ b/src/com/google/javascript/jscomp/ControlFlowAnalysis.java
+@@ -891,13 +891,12 @@ final class ControlFlowAnalysis implements Callback, CompilerPass {
+       case Token.ASSIGN:
+       case Token.INC:
+       case Token.DEC:
+-      case Token.INSTANCEOF:
+         return true;
+       case Token.FUNCTION:
+         return false;
+     }
+     for (Node c = n.getFirstChild(); c != null; c = c.getNext()) {
+-      if (!ControlFlowGraph.isEnteringNewCfgNode(c) && mayThrowException(c)) {
++      if (mayThrowException(c)) {
+         return true;
+       }
+     }

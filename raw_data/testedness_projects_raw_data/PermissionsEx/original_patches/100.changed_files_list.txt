@@ -1,0 +1,2 @@
+df1696e : Fix compatibility with pre-UUID bukkit
+:100644 100644 d4fd989... 93708c7... M	src/main/java/ru/tehkode/permissions/PermissionManager.java

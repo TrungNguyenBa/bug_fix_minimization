@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index 5728da05..195286a5 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -112,7 +112,7 @@
+         </repository>
+         <repository>
+             <id>battlearena-repo</id>
+-            <url>http://server.battleplugins.com/maven/repository/</url>
++            <url>http://battleplugins.com/maven/</url>
+         </repository>
+         <repository>
+             <id>vault-repo</id>

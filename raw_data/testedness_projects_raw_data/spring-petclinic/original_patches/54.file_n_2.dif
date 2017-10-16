@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index 233a5b6..4d3d52b 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -31,7 +31,7 @@
+ 		<hibernate.version>4.1.11.Final</hibernate.version>
+ 
+ 		<!-- Bean validation -->
+-		<hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
++		<hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
+ 
+ 		<!-- Database access -->
+ 		<commons-dbcp.version>1.4</commons-dbcp.version>

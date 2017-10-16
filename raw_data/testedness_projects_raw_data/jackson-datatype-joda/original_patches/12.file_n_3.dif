@@ -1,0 +1,25 @@
+diff --git a/release-notes/VERSION b/release-notes/VERSION
+index 1eec3cb..f9c4b36 100644
+--- a/release-notes/VERSION
++++ b/release-notes/VERSION
+@@ -4,11 +4,6 @@ Project: jackson-datatype-joda
+ === Releases ===
+ ------------------------------------------------------------------------
+ 
+-2.5.4 (not yet released)
+-
+-#60: Configured date/time format not considered when serializing Joda Instant
+- (reported by Thorsten P)
+-
+ 2.5.3 (24-Apr-2015)
+ 2.5.2 (29-Mar-2015)
+ 
+@@ -21,6 +16,8 @@ No changes since 2.5.1
+ 
+ 2.5.0 (01-Jan-2015)
+ 
++No changes since 2.4
++
+ 2.4.6 (23-Apr-2015)
+ 2.4.5 (14-Jan-2015)
+ 2.4.4 (24-Nov-2014)

@@ -1,0 +1,40 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/FixedRankLadder.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/FixedRankLadder.java
+index 62708f6..a3b747e 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/FixedRankLadder.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/FixedRankLadder.java
+@@ -17,7 +17,7 @@
+ package ninja.leaping.permissionsex.rank;
+ 
+ import com.google.common.collect.ImmutableList;
+-import ninja.leaping.permissionsex.data.ImmutableSubjectData;
++import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -42,7 +42,7 @@ public class FixedRankLadder implements RankLadder {
+     }
+ 
+     @Override
+-    public ImmutableSubjectData promote(Set<Entry<String, String>> contexts, ImmutableSubjectData input) {
++    public ImmutableOptionSubjectData promote(Set<Entry<String, String>> contexts, ImmutableOptionSubjectData input) {
+         if (this.ranks.isEmpty()) {
+             return input;
+         }
+@@ -74,7 +74,7 @@ public class FixedRankLadder implements RankLadder {
+     }
+ 
+     @Override
+-    public ImmutableSubjectData demote(Set<Entry<String, String>> contexts, ImmutableSubjectData input) {
++    public ImmutableOptionSubjectData demote(Set<Entry<String, String>> contexts, ImmutableOptionSubjectData input) {
+         if (this.ranks.isEmpty()) {
+             return input;
+         }
+@@ -107,7 +107,7 @@ public class FixedRankLadder implements RankLadder {
+     }
+ 
+     @Override
+-    public boolean isOnLadder(Set<Entry<String, String>> contexts, ImmutableSubjectData subject) {
++    public boolean isOnLadder(Set<Entry<String, String>> contexts, ImmutableOptionSubjectData subject) {
+         if (this.ranks.isEmpty()) {
+             return false;
+         }

@@ -1,0 +1,37 @@
+diff --git a/src/main/java/com/stripe/model/Account.java b/src/main/java/com/stripe/model/Account.java
+index 0c3f52c..2c3c73f 100644
+--- a/src/main/java/com/stripe/model/Account.java
++++ b/src/main/java/com/stripe/model/Account.java
+@@ -11,9 +11,9 @@ import java.util.List;
+ 
+ public class Account extends APIResource {
+ 	String id;
+-	Boolean chargesEnabled;
++	Boolean chargeEnabled;
+ 	Boolean detailsSubmitted;
+-	Boolean transfersEnabled;
++	Boolean transferEnabled;
+ 	List<String> currenciesSupported;
+ 	String email;
+ 	String statementDescriptor;
+@@ -26,16 +26,16 @@ public class Account extends APIResource {
+ 		return id;
+ 	}
+ 
+-	public Boolean getChargesEnabled() {
+-		return chargesEnabled;
++	public Boolean getChargeEnabled() {
++		return chargeEnabled;
+ 	}
+ 
+ 	public Boolean getDetailsSubmitted() {
+ 		return detailsSubmitted;
+ 	}
+ 
+-	public Boolean getTransfersEnabled() {
+-		return transfersEnabled;
++	public Boolean getTransferEnabled() {
++		return transferEnabled;
+ 	}
+ 
+ 	public List<String> getCurrenciesSupported() {

@@ -1,0 +1,10 @@
+4698f28 : Implement cache listeners for subjects
+:100644 100644 20fe81e... 0032849... M	pom.xml
+:100644 100644 21e6046... 3fec58b... M	src/main/java/ninja/leaping/permissionsex/backends/file/FileDataStore.java
+:100644 100644 560c6b6... cb6bfa6... M	src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
+:100644 100644 3a2e933... f003626... M	src/main/java/ninja/leaping/permissionsex/config/PermissionsExConfiguration.java
+:000000 100644 0000000... 970a792... A	src/main/java/ninja/leaping/permissionsex/data/CacheListenerHolder.java
+:100644 100644 1f52265... 572c399... M	src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+:100644 100644 d21e9e4... 026d1a6... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+:100644 100644 2b5bc4a... f2d4aed... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java
+:000000 100644 0000000... a4c42a1... A	src/test/java/ninja/leaping/permissionsex/data/CacheListenerHolderTest.java

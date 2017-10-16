@@ -1,0 +1,2 @@
+7fa3160 : fix spring loaded message
+:100755 100755 5b16ef7... dec50f5... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

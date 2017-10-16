@@ -1,0 +1,12 @@
+diff --git a/src/com/google/javascript/rhino/jstype/ProxyObjectType.java b/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+index bd23c71b..8761a538 100644
+--- a/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
++++ b/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+@@ -42,6 +42,7 @@ package com.google.javascript.rhino.jstype;
+ import com.google.javascript.rhino.ErrorReporter;
+ import com.google.javascript.rhino.JSDocInfo;
+ 
++import java.util.List;
+ import java.util.Set;
+ 
+ /**

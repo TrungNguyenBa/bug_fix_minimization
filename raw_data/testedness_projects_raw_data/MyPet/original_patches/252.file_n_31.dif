@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java
+index 78dafeb4..72fab619 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java
+@@ -87,7 +87,7 @@ public class Fire extends FireInfo implements ISkillInstance, ISkillActive
+             }
+             if (!quiet && valuesEdit)
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.FireChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%chance%", "" + chance).replace("%duration%", "" + duration));
++                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.FireChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%chance%", "" + chance).replace("%duration%", "" + duration));
+             }
+         }
+     }

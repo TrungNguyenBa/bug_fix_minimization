@@ -1,0 +1,21 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java b/src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java
+index cd7a380..9c73d01 100644
+--- a/src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java
++++ b/src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java
+@@ -23,6 +23,8 @@ package com.lonepulse.zombielink.executor;
+ 
+ import com.lonepulse.zombielink.annotation.Configuration;
+ import com.lonepulse.zombielink.annotation.Endpoint;
++import com.lonepulse.zombielink.annotation.Parser;
++import com.lonepulse.zombielink.annotation.Parser.ParserType;
+ import com.lonepulse.zombielink.annotation.Request;
+ import com.lonepulse.zombielink.inject.Zombie;
+ 
+@@ -37,6 +39,7 @@ import com.lonepulse.zombielink.inject.Zombie;
+  * <br><br> 
+  * @author <a href="mailto:sahan@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
++@Parser(ParserType.STRING)
+ @Configuration(ZombieConfig.class)
+ @Endpoint(host = "0.0.0.0", port = "8080")
+ public interface ConfigEndpoint {

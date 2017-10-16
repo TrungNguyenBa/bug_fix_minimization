@@ -1,0 +1,7 @@
+244bbb6 : Add refund resource, add refunds property to charges, fix some balanceTransaction methods
+:100644 100644 c3c50b6... bd9ba0b... M	src/main/java/com/stripe/model/Charge.java
+:100644 100644 8766d0f... c3c657e... M	src/main/java/com/stripe/model/Dispute.java
+:100644 100644 d6d382c... 4696d65... M	src/main/java/com/stripe/model/EventDataDeserializer.java
+:000000 100644 0000000... faff54d... A	src/main/java/com/stripe/model/Refund.java
+:100644 100644 544d1cf... f309cd7... M	src/main/java/com/stripe/model/Transfer.java
+:100644 100644 a1ef88f... 3110013... M	src/test/java/com/stripe/StripeTest.java

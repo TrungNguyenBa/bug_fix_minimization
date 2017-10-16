@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/stripe/Stripe.java b/src/main/java/com/stripe/Stripe.java
+index 877d7af..d6b6682 100644
+--- a/src/main/java/com/stripe/Stripe.java
++++ b/src/main/java/com/stripe/Stripe.java
+@@ -3,7 +3,7 @@ package com.stripe;
+ public abstract class Stripe
+ {
+ 	public static final String LIVE_API_BASE = "https://api.stripe.com";
+-	public static final String VERSION = "1.16.0";
++	public static final String VERSION = "1.15.1";
+ 	public static volatile String apiKey;
+ 	public static volatile String apiVersion;
+ 

@@ -1,0 +1,4 @@
+22b67ac : [#eng-6544] make the tests pass with es 1.2.1
+:100644 100644 90b56fc... 225d2b4... M	pom.xml
+:100644 100644 cbb9d41... 1294766... M	src/main/java/com/sonian/elasticsearch/http/filter/logging/LoggingFilterHttpServerAdapter.java
+:100644 100644 f4cb629... ebe1e5e... M	src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java

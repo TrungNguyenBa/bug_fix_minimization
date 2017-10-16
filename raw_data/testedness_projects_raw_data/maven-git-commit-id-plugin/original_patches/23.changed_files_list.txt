@@ -1,0 +1,3 @@
+8e99f0d : Fix for https://github.com/ktoso/maven-git-commit-id-plugin/issues/146 : Now using SHA of commit in native git in case Repro is in detached HEAD-State and not in a CI-Environment, thats the same behavoir as in JGit-Implementation
+:100644 100644 d78ef07... 87413e8... M	src/main/java/pl/project13/maven/git/NativeGitProvider.java
+:100644 100644 68b0558... 3c2dbfd... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java

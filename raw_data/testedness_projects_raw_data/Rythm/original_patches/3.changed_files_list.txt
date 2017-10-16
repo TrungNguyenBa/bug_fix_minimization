@@ -1,0 +1,9 @@
+817d782 : A commit before renaming. Small changes here and there
+:100644 100644 ea77160... c19a763... M	library/build.gradle
+:100644 100644 a4ace1a... 890909c... M	library/src/main/java/com/actinarium/rhythm/RhythmConfig.java
+:100644 100644 fb76a06... f739bb6... M	library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
+:100644 100644 0c55cb0... c04c389... R092	library/src/main/java/com/actinarium/rhythm/RhythmControl.java	library/src/main/java/com/actinarium/rhythm/RhythmGroup.java
+:100644 100644 c1e18de... 8c96f1b... M	library/src/main/java/com/actinarium/rhythm/RhythmManager.java
+:100644 100644 0b003b5... 26aa5f3... M	library/src/main/java/com/actinarium/rhythm/RhythmNotificationService.java
+:100644 100644 628aa57... 63a27fb... M	library/src/main/res/values/strings.xml
+:100644 100644 6595a40... e5916f6... M	sample/src/main/java/com/actinarium/rhythm/sample/RhythmSampleApplication.java

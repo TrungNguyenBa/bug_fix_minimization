@@ -1,0 +1,3 @@
+7a5ba083 : fixed window size for skill properties
+:100644 100644 3687e6c5... 67c03850... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+:100644 100644 4091fa55... b0284d7a... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkillPropertyEditor.form

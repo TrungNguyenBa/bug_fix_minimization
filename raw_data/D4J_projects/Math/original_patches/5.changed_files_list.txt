@@ -1,0 +1,4 @@
+e54a1c923 : Fixed Complex.reciprocal() for zero argument.
+:100644 100644 28e5acc54... b1fe6ecfc... M	src/changes/changes.xml
+:100644 100644 22b23f24e... ac8185b17... M	src/main/java/org/apache/commons/math3/complex/Complex.java
+:100644 100644 25c1a92a6... 26465492b... M	src/test/java/org/apache/commons/math3/complex/ComplexTest.java

@@ -1,0 +1,2 @@
+2c06721 : fix maven groupId of subprojects #14
+:100644 100644 63d07a2... 10b5e33... M	build.gradle

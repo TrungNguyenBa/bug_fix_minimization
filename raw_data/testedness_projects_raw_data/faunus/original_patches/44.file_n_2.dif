@@ -1,0 +1,29 @@
+diff --git a/include/faunus/analysis.h b/include/faunus/analysis.h
+index de3f74fd..638ad509 100755
+--- a/include/faunus/analysis.h
++++ b/include/faunus/analysis.h
+@@ -112,7 +112,7 @@ namespace Faunus {
+                 << "\n";
+             }
+             o << "\n  Excess pressure tensor (mM):\n\n"
+-              << T/cnt*1e30/pc::Nav << endl << endl;
++              << T/cnt*1e30/pc::Nav << "\n\n";
+           }
+           return o.str();
+         }
+@@ -164,7 +164,6 @@ namespace Faunus {
+             Ttensor t;
+             t.setZero();
+             int N=spc.p.size();
+-            double V=spc.geo.getVolume();
+ 
+             // loop over groups internally
+             for (auto g : spc.groupList()) {
+@@ -184,6 +183,7 @@ namespace Faunus {
+                 t+=g2g(spc.p, spc.geo, pot, *(*gi), *(*gj));
+ 
+             // add to grand avarage
++            double V = spc.geo.getVolume();
+             T += t/(d*V);
+             Pid = N/V;
+           }

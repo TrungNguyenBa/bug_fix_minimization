@@ -1,0 +1,12 @@
+eea7a2d5 : Tables, penalty functions, penalty energy, gyration tensor, scale volume type Z, flip-flop move, size-dependent DH potential, penalty example
+:100755 100755 11abeb09... a74611d6... M	include/faunus/analysis.h
+:100644 100644 e6d332bf... b3f41e3a... M	include/faunus/energy.h
+:100644 100644 656a89fa... 90f38c01... M	include/faunus/geometry.h
+:100644 100644 05de3450... c67f64fa... M	include/faunus/move.h
+:100644 100644 d7624a5f... 855d8db4... M	include/faunus/potentials.h
+:100644 100644 c1a70a15... 6269d119... M	src/examples/CMakeLists.txt
+:000000 100644 00000000... e8eb45c5... A	src/examples/penalty.cpp
+:000000 100644 00000000... 0fdd3f22... A	src/examples/penalty.gnu
+:000000 100755 00000000... 86842c56... A	src/examples/penalty.run
+:100755 100755 d66e5a82... c47bcf0e... M	src/examples/temper.run
+:100644 100644 b20bb168... 38f940eb... M	src/geometry.cpp

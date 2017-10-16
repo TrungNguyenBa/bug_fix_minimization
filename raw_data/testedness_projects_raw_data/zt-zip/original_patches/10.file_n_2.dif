@@ -1,0 +1,22 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipUtil.java b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+index a6982c2..9880a51 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipUtil.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+@@ -818,7 +818,7 @@ public final class ZipUtil {
+    *          call-back for renaming the entries.
+    */
+   public static void unwrap(File zip, File outputDir, NameMapper mapper) {
+-    log.debug("Unwrapping '{}' into '{}'.", zip, outputDir);
++    log.debug("Unwraping '{}' into '{}'.", zip, outputDir);
+     iterate(zip, new Unwraper(outputDir, mapper));
+   }
+ 
+@@ -884,7 +884,7 @@ public final class ZipUtil {
+    *          call-back for renaming the entries.
+    */
+   public static void unwrap(InputStream is, File outputDir, NameMapper mapper) {
+-    log.debug("Unwrapping {} into '{}'.", is, outputDir);
++    log.debug("Unwraping {} into '{}'.", is, outputDir);
+     iterate(is, new Unwraper(outputDir, mapper));
+   }
+ 

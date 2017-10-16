@@ -1,0 +1,12 @@
+diff --git a/zombielink-it/src/test/java/com/lonepulse/zombielink/model/User.java b/zombielink-it/src/test/java/com/lonepulse/zombielink/model/User.java
+index da91899..00d71bc 100644
+--- a/zombielink-it/src/test/java/com/lonepulse/zombielink/model/User.java
++++ b/zombielink-it/src/test/java/com/lonepulse/zombielink/model/User.java
+@@ -20,6 +20,7 @@ package com.lonepulse.zombielink.model;
+  * #L%
+  */
+ 
++
+ import java.io.Serializable;
+ 
+ /**

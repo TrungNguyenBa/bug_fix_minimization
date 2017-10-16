@@ -1,0 +1,21 @@
+diff --git a/include/faunus/move.h b/include/faunus/move.h
+index f8be7e8d..4dc4332b 100644
+--- a/include/faunus/move.h
++++ b/include/faunus/move.h
+@@ -2426,7 +2426,7 @@ namespace Faunus {
+           //int iparticle;   //!< Select single particle to move (-1 if none, default)
+ 
+         public:
+-          SwapCharge(InputMap&, Energy::Energybase<Tspace>&, Tspace&, string="swapcharge");
++          SwapCharge(InputMap&, Energy::Energybase<Tspace>&, Tspace&, string="myswapmv");
+           std::set<int> swappableParticles;  //!< Particle index that can be swapped
+       };  
+ 
+@@ -2566,7 +2566,6 @@ namespace Faunus {
+         vrot.setAxis(spc->geo, startpoint, endpoint, angle); //rot around startpoint->endpoint vec
+         for (auto i : *igroup)
+           spc->trial[i].rotate(vrot);
+-        igroup->cm_trial.rotate(vrot);
+         //double u2=pot->g_internal(spc->p, *igroup);
+         //double delta=u2-u1;
+         //cout << "Internal Energy Change " << delta << endl;

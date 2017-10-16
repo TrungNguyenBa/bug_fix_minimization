@@ -1,0 +1,3 @@
+c79a421 : yet more fixes to array handling
+:100644 100644 ce037d5... 3d5b8ca... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 8dcd21c... 9a2f0f6... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadComplexPojoTest.java

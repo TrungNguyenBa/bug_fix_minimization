@@ -1,0 +1,2 @@
+3c5598e : Fix spacing in property assignment.
+:100644 100644 2ad6f4a... e996fc3... M	src/main/java/com/stripe/model/BankAccount.java

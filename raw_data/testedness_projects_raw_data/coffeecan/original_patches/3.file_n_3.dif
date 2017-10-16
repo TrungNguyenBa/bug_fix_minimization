@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/allogy/coffeecan/statements/Agent.java b/src/main/java/com/allogy/coffeecan/statements/Agent.java
+index fead225..8494416 100644
+--- a/src/main/java/com/allogy/coffeecan/statements/Agent.java
++++ b/src/main/java/com/allogy/coffeecan/statements/Agent.java
+@@ -23,6 +23,8 @@ import javax.validation.Valid;
+ public class Agent extends Actor
+ {
+     public static final String OBJECT_TYPE = "Agent";
++    @Deprecated
++    public static final String ObjectType = OBJECT_TYPE;
+ 
+     private String name;
+     @JsonProperty("mbox")

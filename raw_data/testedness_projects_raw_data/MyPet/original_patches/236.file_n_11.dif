@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/support/Minigames.java b/src/main/java/de/Keyle/MyPet/util/support/Minigames.java
+index 05b8fced..96045d91 100644
+--- a/src/main/java/de/Keyle/MyPet/util/support/Minigames.java
++++ b/src/main/java/de/Keyle/MyPet/util/support/Minigames.java
+@@ -49,7 +49,7 @@ public class Minigames implements Listener
+             MyPetPlayer player = MyPetPlayer.getMyPetPlayer(event.getPlayer());
+             if (player.hasMyPet() && player.getMyPet().getStatus() == PetState.Here)
+             {
+-                player.getMyPet().removePet(true);
++                player.getMyPet().removePet();
+                 player.getPlayer().sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.NotAllowedHere", player.getPlayer())));
+             }
+         }
+@@ -63,7 +63,7 @@ public class Minigames implements Listener
+             MyPetPlayer player = MyPetPlayer.getMyPetPlayer(event.getPlayer());
+             if (player.hasMyPet() && player.getMyPet().getStatus() == PetState.Here)
+             {
+-                player.getMyPet().removePet(true);
++                player.getMyPet().removePet();
+                 player.getPlayer().sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.NotAllowedHere", player.getPlayer())));
+             }
+         }

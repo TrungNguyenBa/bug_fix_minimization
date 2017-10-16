@@ -1,0 +1,22 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/FieldLookup.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/FieldLookup.java
+index d42b90c..6192eee 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/FieldLookup.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/FieldLookup.java
+@@ -2,6 +2,8 @@ package com.fasterxml.jackson.dataformat.protobuf.schema;
+ 
+ import java.util.*;
+ 
++import com.fasterxml.jackson.core.SerializableString;
++
+ /**
+  * Helper class used for cases where {@link ProtobufField} instances
+  * need to be looked up by name. Basically a more specialized Map
+@@ -234,7 +236,7 @@ public abstract class FieldLookup
+             int i = hashSize + (hashSize>>1);
+             for (int end = i + _spillCount; i < end; ++i) {
+                 if (key.equals(_keys[i])) {
+-                    return _fields[i];
++                    return _fields[1];
+                 }
+             }
+             return null;

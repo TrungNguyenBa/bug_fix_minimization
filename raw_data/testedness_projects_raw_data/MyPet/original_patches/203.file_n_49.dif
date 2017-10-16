@@ -1,0 +1,28 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/squid/EntityMySquid.java b/src/main/java/de/Keyle/MyPet/entity/types/squid/EntityMySquid.java
+index 0a0870a0..d80f49c0 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/squid/EntityMySquid.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/squid/EntityMySquid.java
+@@ -35,19 +35,19 @@ public class EntityMySquid extends EntityMyPet
+     }
+ 
+     /**
+-     * Returns the sound that is played when the MyPet dies
++     * Returns the sound that is played when the MyPet get hurt
+      */
+     @Override
+-    protected String getDeathSound()
++    protected String getHurtSound()
+     {
+         return null;
+     }
+ 
+     /**
+-     * Returns the sound that is played when the MyPet get hurt
++     * Returns the sound that is played when the MyPet dies
+      */
+     @Override
+-    protected String getHurtSound()
++    protected String getDeathSound()
+     {
+         return null;
+     }

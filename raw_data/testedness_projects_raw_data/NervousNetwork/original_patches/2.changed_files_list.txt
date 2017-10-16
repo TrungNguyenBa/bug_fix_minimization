@@ -1,0 +1,6 @@
+96b6f72 : Renamed classes so that they aren't detected as test classes
+:100644 100644 584a96b... 842aad7... M	src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java
+:100644 100644 2f78126... 73f7ec5... M	src/test/java/org/tiernolan/nervous/network/connection/SerDesTest.java
+:100644 100644 ef87dc4... f5ff506... R089	src/test/java/org/tiernolan/nervous/network/connection/FIFOChannel.java	src/test/java/org/tiernolan/nervous/network/connection/SimpleFIFOChannel.java
+:100644 100644 134b0a3... 02b1167... R085	src/test/java/org/tiernolan/nervous/network/connection/TestNetwork.java	src/test/java/org/tiernolan/nervous/network/connection/SimpleNetwork.java
+:100644 100644 34b80f2... 222827a... R090	src/test/java/org/tiernolan/nervous/network/connection/TestProtocol.java	src/test/java/org/tiernolan/nervous/network/connection/SimpleProtocol.java

@@ -1,0 +1,2 @@
+4fe26cf0 : do not show the skilltree selection GUI when no skiltree is available for the player
+:100644 100644 8794eb0c... b92317b0... M	src/main/java/de/Keyle/MyPet/commands/CommandChooseSkilltree.java

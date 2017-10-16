@@ -1,0 +1,23 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/queue/CompletableStriped.java b/src/main/java/org/tiernolan/nervous/network/queue/CompletableStriped.java
+deleted file mode 100644
+index 17ecea4..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/queue/CompletableStriped.java
++++ /dev/null
+@@ -1,17 +0,0 @@
+-package org.tiernolan.nervous.network.queue;
+-
+-import org.tiernolan.nervous.network.api.queue.Striped;
+-
+-public interface CompletableStriped<T extends Striped> extends Striped {
+-	
+-	/**
+-	 * Indicates that this object is completed and the next object can be read from the queue
+-	 */
+-	public void done();
+-	
+-	/**
+-	 * Gets the Striped object
+-	 */
+-	public T getStriped();
+-
+-}

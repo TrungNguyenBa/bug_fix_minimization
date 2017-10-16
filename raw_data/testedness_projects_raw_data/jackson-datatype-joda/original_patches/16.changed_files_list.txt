@@ -1,0 +1,6 @@
+7fc795a : move KeyDeserializers to own package
+:100644 100644 470babc... 91eca1c... M	src/main/java/com/fasterxml/jackson/datatype/joda/JodaModule.java
+:100644 100644 92a8a9b... f7e162f... R091	src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeKeyDeserializer.java	src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/DateTimeKeyDeserializer.java
+:100644 100644 6801695... 4288e4e... R093	src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalDateKeyDeserializer.java	src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/LocalDateKeyDeserializer.java
+:100644 100644 c35d86a... d4e10d2... R093	src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalDateTimeKeyDeserializer.java	src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/LocalDateTimeKeyDeserializer.java
+:100644 100644 8efc08d... 232235d... R093	src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalTimeKeyDeserializer.java	src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/LocalTimeKeyDeserializer.java

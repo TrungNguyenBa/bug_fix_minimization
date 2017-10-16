@@ -1,0 +1,4 @@
+e45e5458 : fix skill problem fixes #278
+:100644 100644 252e5f61... 015cc201... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 6c823172... aa22e975... M	src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+:100644 100644 5b2a3459... c08080ec... M	src/main/java/de/Keyle/MyPet/skill/Experience.java

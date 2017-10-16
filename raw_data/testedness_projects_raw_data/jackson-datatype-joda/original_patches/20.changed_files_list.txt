@@ -1,0 +1,3 @@
+d39e595 : fix compilation issue with previous change
+:100644 100644 af00e87... 228d3a1... M	release-notes/VERSION
+:100644 100644 d6f6ba6... c0f55e1... R062	src/main/java/com/fasterxml/jackson/datatype/joda/JodaMapper	src/main/java/com/fasterxml/jackson/datatype/joda/JodaMapper.java

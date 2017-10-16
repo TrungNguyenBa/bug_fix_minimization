@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeSerializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeSerializer.java
+index c858a28..3a9039e 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeSerializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeSerializer.java
+@@ -15,7 +15,7 @@ public final class DateTimeSerializer
+ {
+     private static final long serialVersionUID = 1L;
+ 
+-    public DateTimeSerializer() { this(FormatConfig.DEFAULT_DATETIME_PRINTER); }
++    public DateTimeSerializer() { this(FormatConfig.DEFAULT_DATETIME_FORMAT); }
+     public DateTimeSerializer(JacksonJodaDateFormat format) {
+         // false -> no arrays (numbers)
+         super(DateTime.class, format, false,

@@ -1,0 +1,10 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ContextInheritance.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ContextInheritance.java
+index b35fb7c..4646228 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ContextInheritance.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ContextInheritance.java
+@@ -25,5 +25,4 @@ import java.util.Map;
+ public interface ContextInheritance {
+     List<Map.Entry<String, String>> getParents(Map.Entry<String, String> context);
+     ContextInheritance setParents(Map.Entry<String, String> context, List<Map.Entry<String, String>> parents);
+-    Map<Map.Entry<String, String>, List<Map.Entry<String, String>>> getAllParents();
+ }

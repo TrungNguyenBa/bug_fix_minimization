@@ -1,0 +1,4 @@
+544a5b37 : fixed order of inherited skills
+:100644 100644 389184fd... 1790d4e1... M	src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTree.java
+:100644 100644 75a61334... 97836f3f... M	src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTreeLevel.java
+:100644 100644 b9ef67f4... 632ee9e4... M	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoader.java

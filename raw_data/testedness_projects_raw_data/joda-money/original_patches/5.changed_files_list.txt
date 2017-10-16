@@ -1,0 +1,2 @@
+611eb92 : Change BigMoney to normalize negative scales
+:100644 100644 3a153b7... 469fe06... M	src/site/xdoc/userguide.xml

@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java b/src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java
+index 5c421c14..8d8658ed 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java
+@@ -177,7 +177,7 @@ public class MyHorse extends MyPet implements IMyPetBaby {
+                 ItemStack item = new ItemStack(Material.CHEST);
+                 setChest(item);
+             }
+-        } else if (info.containsKeyAs("Chest", TagCompound.class)) {
++        } else {
+             TagCompound itemTag = info.get("Chest");
+             ItemStack item = CraftItemStack.asBukkitCopy(ItemStackNBTConverter.CompundToItemStack(itemTag));
+             setChest(item);
+@@ -188,7 +188,7 @@ public class MyHorse extends MyPet implements IMyPetBaby {
+                 ItemStack item = new ItemStack(Material.SADDLE);
+                 setSaddle(item);
+             }
+-        } else if (info.containsKeyAs("Saddle", TagCompound.class)) {
++        } else {
+             TagCompound itemTag = info.get("Saddle");
+             ItemStack item = CraftItemStack.asBukkitCopy(ItemStackNBTConverter.CompundToItemStack(itemTag));
+             setSaddle(item);

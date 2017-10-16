@@ -1,0 +1,2 @@
+5fd76d7 : Properly check permissions for child commands
+:100644 100644 3f7c0b8... 3a1b691... M	src/main/java/ninja/leaping/permissionsex/util/command/ChildCommands.java

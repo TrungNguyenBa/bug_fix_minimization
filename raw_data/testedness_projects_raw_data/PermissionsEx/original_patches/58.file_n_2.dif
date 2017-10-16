@@ -1,0 +1,22 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
+index 166e5b8..c07efd7 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
+@@ -76,7 +76,7 @@ public class GroupCommands extends PermissionsCommand {
+ 	public void groupDisplaySetWeight(PermissionsEx plugin, CommandSender sender, Map<String, String> args) {
+ 		String groupName = this.autoCompleteGroupName(args.get("group"));
+ 		PermissionGroup group = plugin.getPermissionsManager().getGroup(groupName);
+-
++		
+ 		if (group == null) {
+ 			sender.sendMessage(ChatColor.RED + "Group \"" + groupName + "\" doesn't exist.");
+ 			return;
+@@ -584,7 +584,7 @@ public class GroupCommands extends PermissionsCommand {
+ 			return;
+ 		}
+ 
+-		sender.sendMessage("Group \"" + groupName + "\"'s users (" + users.size() + "):");
++		sender.sendMessage("Group \"" + groupName + "\"'s users:");
+ 
+ 		for (PermissionUser user : users) {
+ 			sender.sendMessage("   " + describeUser(user));

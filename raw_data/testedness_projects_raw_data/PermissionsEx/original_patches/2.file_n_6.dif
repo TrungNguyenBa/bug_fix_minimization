@@ -1,0 +1,22 @@
+diff --git a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java
+index 61ad8f5..e322756 100644
+--- a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java
++++ b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PermissionList.java
+@@ -138,7 +138,7 @@ public class PermissionList extends HashMap<String, Permission> {
+         repl.set(v, new NotifyingChildrenMap(v));
+         if (v.getDefault() == PermissionDefault.TRUE || v.getDefault() == PermissionDefault.FALSE) {
+             final Entry<String, String> def = plugin.getManager().getDefaultIdentifier();
+-            plugin.getManager().getTransientSubjects(def.getKey()).update(def.getValue(), new Function<ImmutableSubjectData, ImmutableSubjectData>() {
++            plugin.getManager().getTransientSubjects(def.getKey()).doUpdate(def.getValue(), new Function<ImmutableSubjectData, ImmutableSubjectData>() {
+                 @Nullable
+                 @Override
+                 public ImmutableSubjectData apply(ImmutableSubjectData input) {
+@@ -157,7 +157,7 @@ public class PermissionList extends HashMap<String, Permission> {
+             getFieldReplacer(ret).set(ret, new LinkedHashMap<>(ret.getChildren()));
+             if (ret.getDefault() == PermissionDefault.TRUE || ret.getDefault() == PermissionDefault.FALSE) {
+                 final Entry<String, String> def = plugin.getManager().getDefaultIdentifier();
+-                plugin.getManager().getTransientSubjects(def.getKey()).update(def.getValue(), new Function<ImmutableSubjectData, ImmutableSubjectData>() {
++                plugin.getManager().getTransientSubjects(def.getKey()).doUpdate(def.getValue(), new Function<ImmutableSubjectData, ImmutableSubjectData>() {
+                     @Nullable
+                     @Override
+                     public ImmutableSubjectData apply(ImmutableSubjectData input) {

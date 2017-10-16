@@ -1,0 +1,8 @@
+1002c9e2 : revert LANG-1192 while investigating travis failures
+:100644 100644 7a184df5... d4904c45... M	src/changes/changes.xml
+:100644 000000 79ebb3f9... 00000000... D	src/main/java/org/apache/commons/lang3/time/CalendarReflection.java
+:100644 100644 c91f9a2d... 120c4abb... M	src/main/java/org/apache/commons/lang3/time/DateParser.java
+:100644 100644 c2907b27... abb51987... M	src/main/java/org/apache/commons/lang3/time/FastDateFormat.java
+:100644 100644 8210ee34... 4dc897b6... M	src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+:100644 100644 f0445525... 4f84cc77... M	src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java
+:100644 000000 95f5ad8a... 00000000... D	src/test/java/org/apache/commons/lang3/time/WeekYearTest.java

@@ -1,0 +1,23 @@
+diff --git a/src/main/java/net/gini/dropwizard/gelf/logging/LogbackFactory.java b/src/main/java/net/gini/dropwizard/gelf/logging/LogbackFactory.java
+index 268d3b0..de15166 100644
+--- a/src/main/java/net/gini/dropwizard/gelf/logging/LogbackFactory.java
++++ b/src/main/java/net/gini/dropwizard/gelf/logging/LogbackFactory.java
+@@ -36,6 +36,7 @@ public final class LogbackFactory {
+         appender.setGraylog2ServerHost(gelf.getHost());
+         appender.setGraylog2ServerPort(gelf.getPort());
+         appender.setGraylog2ServerVersion(gelf.getServerVersion());
++        appender.setHostName(gelf.getHostName());
+         appender.setMessagePattern(gelf.getMessagePattern());
+         appender.setShortMessagePattern(gelf.getShortMessagePattern());
+         appender.setUseLoggerName(gelf.isUseLoggerName());
+@@ -46,10 +47,6 @@ public final class LogbackFactory {
+         appender.setIncludeFullMDC(gelf.isIncludeFullMDC());
+         appender.setUseMarker(gelf.isUseMarker());
+ 
+-        if(gelf.getHostName().isPresent()) {
+-            appender.setHostName(gelf.getHostName().get());
+-        }
+-
+         addThresholdFilter(appender, gelf.getThreshold());
+         appender.start();
+ 

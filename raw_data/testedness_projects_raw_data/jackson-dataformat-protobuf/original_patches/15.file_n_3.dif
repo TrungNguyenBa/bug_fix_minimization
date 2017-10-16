@@ -1,0 +1,12 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java
+index 4705b38..e0a6c3b 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java
+@@ -66,6 +66,7 @@ public class ReadSimpleTest extends ProtobufTestBase
+         byte[] bytes = w.writeValueAsBytes(input);
+         assertNotNull(bytes);
+ 
++        // 6 bytes: 1 byte tags, 2 byte values
+         assertEquals(15, bytes.length);
+ 
+         /*

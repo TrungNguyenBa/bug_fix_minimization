@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java b/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
+index 81b1ab9..1e5a1dd 100644
+--- a/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
++++ b/src/main/java/ninja/leaping/permissionsex/command/PermissionsCommands.java
+@@ -71,7 +71,7 @@ public class PermissionsCommands {
+ 
+     public static CommandSpec getPermissionDefaultCommand(final PermissionsEx pex) {
+         return CommandSpec.builder()
+-                .setAliases("permission-default", "perms-def", "permsdef", "pdef", "pd", "default", "def")
++                .setAliases("permission-default", "perms-def", "permsdef", "pdef", "pd")
+                 .setArguments(permissionValue(_("value")))
+                 .setExecutor(new PermissionsExExecutor(pex) {
+                     @Override

@@ -1,0 +1,30 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java
+index 64f9c353..d982f805 100644
+--- a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java
++++ b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java
+@@ -28,17 +28,21 @@ import java.util.ArrayList;
+ /**
+  * This class will be removed with Minecraft 1.7
+  */
+-public class NBTTagCompoundHolder extends NBTHolder {
++public class NBTTagCompoundHolder extends NBTHolder
++{
+     protected ArrayList<NBTHolder> holderList = new ArrayList<NBTHolder>();
+ 
+-    public NBTTagCompoundHolder(String paramString) {
++    public NBTTagCompoundHolder(String paramString)
++    {
+         this.name = paramString;
+     }
+ 
+-    public NBTBase getNBT() {
++    public NBTBase getNBT()
++    {
+         NBTTagCompound localcb = new NBTTagCompound(this.name);
+ 
+-        for (NBTHolder holder : this.holderList) {
++        for (NBTHolder holder : this.holderList)
++        {
+             localcb.set(holder.name, holder.getNBT());
+         }
+ 

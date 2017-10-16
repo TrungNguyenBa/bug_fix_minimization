@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/util/command/args/GameArguments.java b/src/main/java/ninja/leaping/permissionsex/util/command/args/GameArguments.java
+index e8bf9ef..35982c8 100644
+--- a/src/main/java/ninja/leaping/permissionsex/util/command/args/GameArguments.java
++++ b/src/main/java/ninja/leaping/permissionsex/util/command/args/GameArguments.java
+@@ -38,7 +38,7 @@ public class GameArguments {
+      * @param defaultType The type of subject to expect if none is given. May be null.
+      * @return the element to match the input
+      */
+-    public static CommandElement subject(Translatable key, PermissionsEx pex) {
++    private static CommandElement subject(Translatable key, PermissionsEx pex, String defaultType) {
+         return new SubjectElement(key);
+     }
+ 

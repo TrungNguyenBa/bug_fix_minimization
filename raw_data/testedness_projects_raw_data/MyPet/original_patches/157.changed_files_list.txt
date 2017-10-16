@@ -1,0 +1,7 @@
+1bc88e9d : removed some canSee(vanilla) checks fixes  #193
+:100644 100644 14a2c4aa... 2bd0aabe... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
+:100644 100644 2e429397... 5c133fcb... M	src/main/java/de/Keyle/MyPet/entity/ai/movement/Sprint.java
+:100644 100644 1f804284... ecacd5ac... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+:100644 100644 2cae1993... bedc8469... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
+:100644 100644 9cbd027b... b769c81e... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+:100644 100644 4b8345c2... 38c2fffb... M	src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java

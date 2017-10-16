@@ -1,0 +1,2 @@
+7a998496 : fixed the damager when a ranged attack is used by a MyPet fixes #181
+:100644 100644 4dc0da88... 822d2656... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

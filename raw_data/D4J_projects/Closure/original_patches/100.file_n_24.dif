@@ -1,0 +1,19 @@
+diff --git a/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java b/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+index 477b2871..a0f264b2 100644
+--- a/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
++++ b/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+@@ -1034,6 +1034,14 @@ public final class JsDocInfoParser {
+       this.string = string;
+       this.token = token;
+     }
++
++    public String getString() {
++      return string;
++    }
++
++    public JsDocToken getToken() {
++      return token;
++    }
+   }
+ 
+   /**

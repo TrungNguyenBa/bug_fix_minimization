@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+index f6b800ac..cc86b9b5 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+@@ -56,7 +56,7 @@ public class EntityMySkeleton extends EntityMyPet
+             {
+                 public void run()
+                 {
+-                    if (mySkeleton.getStatus() == PetState.Here)
++                    if (mySkeleton.status == PetState.Here)
+                     {
+                         for (EquipmentSlot slot : EquipmentSlot.values())
+                         {

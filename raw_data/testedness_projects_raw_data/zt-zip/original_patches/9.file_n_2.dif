@@ -1,0 +1,11 @@
+diff --git a/.gitignore b/.gitignore
+index 28aa3d7..105f29e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -7,6 +7,5 @@ test.log
+ .project
+ .settings/
+ .idea
+-.sonar
+ pom.xml.versionsBackup
+ release.sh

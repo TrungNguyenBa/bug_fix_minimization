@@ -1,0 +1,11 @@
+3ceaf61 : Refactor request processing contracts; add an entity processor (breaks build) (issues #6, #8)
+:000000 100644 0000000... fd095dc... A	src/main/java/com/lonepulse/zombielink/core/request/EntityProcessor.java
+:100644 100644 35a4775... 3b0cf21... M	src/main/java/com/lonepulse/zombielink/core/request/EntityResolutionFailedException.java
+:100644 100644 26cbd1e... 20ca4a3... R090	src/main/java/com/lonepulse/zombielink/core/request/FormParamPopulator.java	src/main/java/com/lonepulse/zombielink/core/request/FormParamProcessor.java
+:100644 100644 327a36c... 800b668... M	src/main/java/com/lonepulse/zombielink/core/request/MissingEntityException.java
+:100644 100644 c1c47ff... 8d3dbfb... M	src/main/java/com/lonepulse/zombielink/core/request/MultipleEntityException.java
+:100644 100644 63afbe8... 647d105... R090	src/main/java/com/lonepulse/zombielink/core/request/QueryParamPopulator.java	src/main/java/com/lonepulse/zombielink/core/request/QueryParamProcessor.java
+:100644 100644 01892c4... fa29ff6... M	src/main/java/com/lonepulse/zombielink/core/request/RequestMethod.java
+:100644 000000 961a2f1... 0000000... D	src/main/java/com/lonepulse/zombielink/core/request/RequestPopulatorException.java
+:100644 100644 f7873a3... a5337bf... R067	src/main/java/com/lonepulse/zombielink/core/request/RequestPopulator.java	src/main/java/com/lonepulse/zombielink/core/request/RequestProcessor.java
+:000000 100644 0000000... df63d0c... A	src/main/java/com/lonepulse/zombielink/core/request/RequestProcessorException.java

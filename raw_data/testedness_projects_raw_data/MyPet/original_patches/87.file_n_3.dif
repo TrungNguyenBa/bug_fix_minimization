@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+index 51f412c2..8b80e0c0 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+@@ -28,7 +28,6 @@ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+ import de.Keyle.MyPet.util.BukkitUtil;
+ import net.minecraft.server.v1_7_R1.*;
+-import org.bukkit.Bukkit;
+ 
+ @EntitySize(width = 0.6F, height = 1.9F)
+ public class EntityMySkeleton extends EntityMyPet {
+@@ -118,7 +117,7 @@ public class EntityMySkeleton extends EntityMyPet {
+ 
+             this.setWither(mySkeleton.isWither());
+ 
+-            Bukkit.getScheduler().runTaskLater(MyPetPlugin.getPlugin(), new Runnable() {
++            MyPetPlugin.getPlugin().getServer().getScheduler().runTaskLater(MyPetPlugin.getPlugin(), new Runnable() {
+                 public void run() {
+                     if (mySkeleton.getStatus() == PetState.Here) {
+                         for (EquipmentSlot slot : EquipmentSlot.values()) {

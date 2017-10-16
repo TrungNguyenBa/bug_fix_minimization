@@ -1,0 +1,2 @@
+4aba7967 : remove the mcstats repo (returns 502)
+:100644 100644 515e0512... 8c50443b... M	pom.xml

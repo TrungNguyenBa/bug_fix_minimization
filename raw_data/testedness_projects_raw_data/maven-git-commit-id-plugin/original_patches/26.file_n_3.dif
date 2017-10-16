@@ -1,0 +1,42 @@
+diff --git a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+index a19fcac..95dae01 100644
+--- a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
++++ b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+@@ -300,10 +300,6 @@ public class GitCommitIdMojo extends AbstractMojo {
+     dotGitDirectory = lookupGitDirectory();
+     throwWhenRequiredDirectoryNotFound(dotGitDirectory, failOnNoGitDirectory, ".git directory could not be found! Please specify a valid [dotGitDirectory] in your pom.xml");
+ 
+-    if (gitDescribe == null) {
+-      gitDescribe = new GitDescribeConfig();
+-    }
+-
+     if (dotGitDirectory != null) {
+       log("dotGitDirectory", dotGitDirectory.getAbsolutePath());
+     } else {
+@@ -464,10 +460,10 @@ public class GitCommitIdMojo extends AbstractMojo {
+   }
+ 
+   void loadGitDataWithNativeGit(@NotNull Properties properties) throws IOException, MojoExecutionException {
+-    final File basedir = project.getBasedir().getCanonicalFile();
+-
+-    GitDataProvider nativeGitProvider = NativeGitProvider
+-      .on(basedir, loggerBridge)
++    File basedir = project.getBasedir().getCanonicalFile();
++    NativeGitProvider nativeGitProvider = NativeGitProvider
++      .on(basedir)
++      .withLoggerBridge(loggerBridge)
+       .setVerbose(verbose)
+       .setPrefixDot(prefixDot)
+       .setAbbrevLength(abbrevLength)
+@@ -478,8 +474,9 @@ public class GitCommitIdMojo extends AbstractMojo {
+   }
+ 
+   void loadGitDataWithJGit(@NotNull Properties properties) throws IOException, MojoExecutionException {
+-    GitDataProvider jGitProvider = JGitProvider
+-      .on(dotGitDirectory, loggerBridge)
++    JGitProvider jGitProvider = JGitProvider
++      .on(dotGitDirectory)
++      .withLoggerBridge(loggerBridge)
+       .setVerbose(verbose)
+       .setPrefixDot(prefixDot)
+       .setAbbrevLength(abbrevLength)

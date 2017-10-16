@@ -1,0 +1,15 @@
+2d381d46 : moved admin command options to own classes
+:000000 100644 00000000... ee5bd71c... A	src/main/java/de/Keyle/MyPet/api/commands/CommandOption.java
+:100644 100644 bbf46467... a745e55b... M	src/main/java/de/Keyle/MyPet/commands/CommandAdmin.java
+:000000 100644 00000000... b7f528f5... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCleanup.java
+:000000 100644 00000000... 146cb9fc... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionClone.java
+:000000 100644 00000000... 4284f999... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java
+:000000 100644 00000000... 538c1f28... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionExp.java
+:000000 100644 00000000... 64ed50b6... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionName.java
+:000000 100644 00000000... e0f56e4e... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionReload.java
+:000000 100644 00000000... 3bbb6b0f... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionReloadSkilltrees.java
+:000000 100644 00000000... 23576122... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRemove.java
+:000000 100644 00000000... 7d699a0e... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRespawn.java
+:000000 100644 00000000... 195e5585... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionSkilltree.java
+:000000 100644 00000000... 2c984d67... A	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionTest.java
+:100644 100644 ee7adaae... 2a9ed4c2... M	src/main/java/de/Keyle/MyPet/util/BukkitUtil.java

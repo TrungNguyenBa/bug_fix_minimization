@@ -1,0 +1,13 @@
+diff --git a/src/examples/manybody.cpp b/src/examples/manybody.cpp
+index 49f1f82b..4adbb137 100644
+--- a/src/examples/manybody.cpp
++++ b/src/examples/manybody.cpp
+@@ -120,7 +120,7 @@ int main(int argc, char** argv) {
+                   cmfile << "H " << ((m+spc.geo.len_half)/10).transpose() << endl;
+               }
+               if (energyfile)
+-                energyfile << loop.count() << " " << sys.current() << " " << std::cbrt(spc.geo.getVolume()) << "\n";
++                energyfile << loop.count() << " " << sys.current() << endl;
+           }
+           break;
+         case 2: // volume move (NPT)

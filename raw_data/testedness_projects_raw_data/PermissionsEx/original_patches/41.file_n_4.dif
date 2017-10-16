@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
+index f7ffcb4..ae354f4 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
+@@ -163,8 +163,8 @@ public class PEXPermissionSubscriptionMap extends HashMap<String, Map<Permissibl
+ 
+ 		@Override
+ 		public Set<Permissible> keySet() {
+-			Collection<? extends Player> players = plugin.getServer().getOnlinePlayers();
+-			Set<Permissible> pexMatches = new HashSet<Permissible>(players.size());
++			Player[] players = plugin.getServer().getOnlinePlayers();
++			Set<Permissible> pexMatches = new HashSet<Permissible>(players.length);
+ 			for (Player player : players) {
+ 				if (player.hasPermission(permission)) {
+ 					pexMatches.add(player);

@@ -1,0 +1,2 @@
+4185fd5 : Fix handling of multiple enables/disables
+:100644 100644 75ae1bf... 7be094f... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

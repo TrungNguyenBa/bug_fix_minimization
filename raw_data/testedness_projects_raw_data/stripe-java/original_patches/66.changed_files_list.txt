@@ -1,0 +1,3 @@
+2d88e06 : Enable createCard() to use a token
+:100644 100644 d282cc1... 7cdddb9... M	src/main/java/com/stripe/model/Customer.java
+:100644 100644 1ea8a38... 6695091... M	src/test/java/com/stripe/StripeTest.java

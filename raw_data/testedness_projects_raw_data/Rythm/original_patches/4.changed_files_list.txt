@@ -1,0 +1,10 @@
+d8f6af2 : Made the structure and working proof of concept
+:100644 100644 34f1faf... a08f456... M	library/src/main/AndroidManifest.xml
+:000000 100644 0000000... bfe28e3... A	library/src/main/java/com/actinarium/rhythm/RhythmConfiguration.java
+:000000 100644 0000000... ac08e6d... A	library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
+:000000 100644 0000000... a3e4f30... A	library/src/main/java/com/actinarium/rhythm/RhythmManager.java
+:100644 100644 a28c260... 6e98323... R069	library/src/main/java/com/actinarium/rhythm/RhythmService.java	library/src/main/java/com/actinarium/rhythm/RhythmNotificationService.java
+:000000 100644 0000000... d4a22f0... A	library/src/main/java/com/actinarium/rhythm/Rhythmic.java
+:100644 100644 8abadad... bdacb23... M	sample/src/main/java/com/actinarium/rhythm/sample/MainActivity.java
+:100644 100644 ceb47e6... b9d5435... M	sample/src/main/java/com/actinarium/rhythm/sample/RhythmSampleApplication.java
+:100644 100644 b504846... 6517a35... M	sample/src/main/res/layout/activity_main.xml

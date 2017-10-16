@@ -1,0 +1,10 @@
+diff --git a/src/examples/bulk.state b/src/examples/bulk.state
+index 1f47b4d1..80557a90 100644
+--- a/src/examples/bulk.state
++++ b/src/examples/bulk.state
+@@ -1,4 +1,4 @@
+-42.5 42.5 42.5
++76765.625
+ 2304
+ 13.10094583712177 3.084384893230277 -17.11120788331698 1 1.665 1 1 0
+ -15.85933048186353 -11.05641265968114 0.8143276026905861 1 1.665 1 1 0

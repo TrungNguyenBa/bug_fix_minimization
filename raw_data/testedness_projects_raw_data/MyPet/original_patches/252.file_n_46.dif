@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetTimer.java b/src/main/java/de/Keyle/MyPet/util/MyPetTimer.java
+index b7b4f992..9e38c681 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetTimer.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetTimer.java
+@@ -22,7 +22,6 @@ package de.Keyle.MyPet.util;
+ 
+ import de.Keyle.MyPet.MyPetPlugin;
+ import de.Keyle.MyPet.entity.types.MyPet;
+-import de.Keyle.MyPet.entity.types.MyPetList;
+ import de.Keyle.MyPet.util.logger.DebugLogger;
+ import org.bukkit.Bukkit;
+ 

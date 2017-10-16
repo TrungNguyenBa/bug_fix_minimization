@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileMatcherList.java b/src/main/java/ru/tehkode/permissions/backends/file/FileMatcherList.java
+index 3672dfb..d616cb1 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileMatcherList.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileMatcherList.java
+@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
+ import ru.tehkode.permissions.backends.file.config.Node;
+ import ru.tehkode.permissions.backends.file.config.PEXMLWriter;
+ import ru.tehkode.permissions.backends.memory.MemoryMatcherList;
++import ru.tehkode.permissions.data.MatcherGroup;
+ import ru.tehkode.permissions.data.Qualifier;
+ 
+ import java.io.IOException;

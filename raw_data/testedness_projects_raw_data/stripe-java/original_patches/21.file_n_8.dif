@@ -1,0 +1,27 @@
+diff --git a/src/main/java/com/stripe/model/Customer.java b/src/main/java/com/stripe/model/Customer.java
+index 5a07529..f60aa9d 100644
+--- a/src/main/java/com/stripe/model/Customer.java
++++ b/src/main/java/com/stripe/model/Customer.java
+@@ -30,7 +30,7 @@ public class Customer extends APIResource implements MetadataStore<Customer> {
+ 	Integer accountBalance;
+ 	String currency;
+ 	CustomerCardCollection cards;
+-	ExternalAccountCollection sources;
++	PaymentSourceCollection sources;
+ 	Map<String, String> metadata;
+ 
+ 	public Long getCreated() {
+@@ -85,11 +85,11 @@ public class Customer extends APIResource implements MetadataStore<Customer> {
+ 		return cards;
+ 	}
+ 
+-	public ExternalAccountCollection getSources() {
++	public PaymentSourceCollection getSources() {
+ 		return sources;
+ 	}
+ 
+-	public void setSources(ExternalAccountCollection sources) {
++	public void setSources(PaymentSourceCollection sources) {
+ 		this.sources = sources;
+ 	}
+ 

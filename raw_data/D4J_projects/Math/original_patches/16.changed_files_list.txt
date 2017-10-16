@@ -1,0 +1,3 @@
+875ed1f4d : MATH-905 Avoid overflow on the whole range covered by the equivalent functions in the standard "Math" class.
+:100644 100644 22ed1578e... fd1ce2d85... M	src/main/java/org/apache/commons/math3/util/FastMath.java
+:100644 100644 9490e1e5f... 282e7b299... M	src/test/java/org/apache/commons/math3/util/FastMathTest.java

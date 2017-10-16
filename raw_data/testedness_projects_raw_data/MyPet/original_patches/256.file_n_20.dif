@@ -1,0 +1,58 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java
+index 6b777a46..91b78714 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java
+@@ -49,37 +49,30 @@ public class MyPetArrow extends EntityArrow
+ 
+     public void l_()
+     {
+-        try
++        super.l_();
++        if (inGround == null)
+         {
+-            super.l_();
+-            if (inGround == null)
+-            {
+-                try
+-                {
+-                    inGround = EntityArrow.class.getDeclaredField("inGround");
+-                    inGround.setAccessible(true);
+-                }
+-                catch (NoSuchFieldException e)
+-                {
+-                    e.printStackTrace();
+-                }
+-            }
+             try
+             {
+-                if (inGround != null)
+-                {
+-                    if (inGround.getBoolean(this))
+-                    {
+-                        die();
+-                    }
+-                }
++                inGround = EntityArrow.class.getDeclaredField("inGround");
++                inGround.setAccessible(true);
+             }
+-            catch (IllegalAccessException e)
++            catch (NoSuchFieldException e)
+             {
+                 e.printStackTrace();
+             }
+         }
+-        catch (Exception e)
++        try
++        {
++            if (inGround != null)
++            {
++                if (inGround.getBoolean(this))
++                {
++                    die();
++                }
++            }
++        }
++        catch (IllegalAccessException e)
+         {
+             e.printStackTrace();
+         }

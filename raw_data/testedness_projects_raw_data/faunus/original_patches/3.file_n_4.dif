@@ -1,0 +1,13 @@
+diff --git a/src/examples/membrane.run b/src/examples/membrane.run
+index d7abfe35..7bd45126 100755
+--- a/src/examples/membrane.run
++++ b/src/examples/membrane.run
+@@ -26,7 +26,7 @@ echo "3
+ 
+ echo "
+ atomlist               membrane.json
+-loop_macrosteps        10
++loop_macrosteps        5
+ loop_microsteps        1000
+ cuboid_len             -1        # Box side length Angstrom
+ cuboid_xlen            $box

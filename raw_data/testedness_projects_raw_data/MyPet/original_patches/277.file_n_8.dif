@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+index f5e764b3..241213f8 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+@@ -90,7 +90,7 @@ public class EntityMyChicken extends EntityMyPet
+ 
+         ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-        if (getOwner().equals(entityhuman) && itemStack != null)
++        if (entityhuman == getOwner() && itemStack != null)
+         {
+             if (itemStack.id == GROW_UP_ITEM.getId())
+             {

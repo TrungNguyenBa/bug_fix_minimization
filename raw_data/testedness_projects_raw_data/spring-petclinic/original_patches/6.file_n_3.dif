@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java b/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
+index 5784278..0621c98 100644
+--- a/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
++++ b/src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
+@@ -58,7 +58,7 @@ public class PetValidator implements Validator {
+      */
+     @Override
+     public boolean supports(Class<?> clazz) {
+-        return Pet.class.isAssignableFrom(clazz);
++        return Pet.class.equals(clazz);
+     }
+ 
+ 

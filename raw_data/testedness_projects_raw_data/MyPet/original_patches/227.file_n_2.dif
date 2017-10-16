@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+index 67c03850..3687e6c5 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+@@ -338,7 +338,6 @@ public class LevelCreator
+                             }
+                             GuiMain.skillPropertyEditor.getFrame().setVisible(true);
+                             getFrame().setEnabled(false);
+-                            GuiMain.skillPropertyEditor.getFrame().setSize(GuiMain.skillPropertyEditor.getFrame().getWidth(), skill.getGuiPanel().getMainPanel().getHeight() + 90);
+                         }
+                     }
+                 }

@@ -1,0 +1,30 @@
+diff --git a/src/main/java/pl/project13/maven/git/log/StdOutLoggerBridge.java b/src/main/java/pl/project13/maven/git/log/StdOutLoggerBridge.java
+index b88c816..47b0253 100644
+--- a/src/main/java/pl/project13/maven/git/log/StdOutLoggerBridge.java
++++ b/src/main/java/pl/project13/maven/git/log/StdOutLoggerBridge.java
+@@ -28,14 +28,14 @@ public class StdOutLoggerBridge implements LoggerBridge {
+   @Override
+   public void log(String msg, Object... interpolations) {
+     if (verbose) {
+-      System.out.println("LOG: " + String.format(escaped(msg), interpolations));
++      System.out.println("LOG: " + String.format(msg, interpolations));
+     }
+   }
+ 
+   @Override
+   public void error(String msg, Object... interpolations) {
+     if(verbose) {
+-      System.out.println("ERR: " + String.format(escaped(msg), interpolations));
++      System.out.println("ERR: " + String.format(msg, interpolations));
+     }
+   }
+ 
+@@ -44,8 +44,4 @@ public class StdOutLoggerBridge implements LoggerBridge {
+     this.verbose = verbose;
+   }
+ 
+-  private String escaped(String msg) {
+-    return msg.replaceAll("%", "%%");
+-  }
+-
+ }

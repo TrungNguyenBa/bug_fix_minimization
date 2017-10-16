@@ -1,0 +1,4 @@
+86c6402 : Fix #60
+:100644 100644 3bef7bc... bce6773... M	release-notes/CREDITS
+:100644 100644 f9c4b36... 1eec3cb... M	release-notes/VERSION
+:100644 100644 c4bd0f3... 3b2a415... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/InstantSerializer.java

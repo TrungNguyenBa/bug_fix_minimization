@@ -1,0 +1,18 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java
+index 0c17d641..0503a3c7 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/zombie/MyZombie.java
+@@ -132,13 +132,7 @@ public class MyZombie extends MyPet implements IMyPetEquipment, IMyPetBaby {
+     }
+ 
+     public void setEquipment(EquipmentSlot slot, ItemStack item) {
+-        if (item == null) {
+-            equipment.remove(slot);
+-            ((EntityMyZombie) getCraftPet().getHandle()).setPetEquipment(slot.getSlotId(), null);
+-            return;
+-        }
+         item = item.cloneItemStack();
+-        item.count = 1;
+         equipment.put(slot, item);
+         if (status == PetState.Here) {
+             ((EntityMyZombie) getCraftPet().getHandle()).setPetEquipment(slot.getSlotId(), item);

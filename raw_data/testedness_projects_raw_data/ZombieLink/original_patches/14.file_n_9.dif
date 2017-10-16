@@ -1,0 +1,22 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/core/response/parser/ObjectResponseParser.java b/src/main/java/com/lonepulse/zombielink/core/response/parser/ObjectResponseParser.java
+index def129e..a6c08d3 100644
+--- a/src/main/java/com/lonepulse/zombielink/core/response/parser/ObjectResponseParser.java
++++ b/src/main/java/com/lonepulse/zombielink/core/response/parser/ObjectResponseParser.java
+@@ -28,8 +28,6 @@ import java.io.Serializable;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.util.EntityUtils;
+ 
+-import com.lonepulse.zombielink.core.processor.ProxyInvocationConfiguration;
+-
+ /**
+  * <p>This is an extension of {@link AbstractResponseParser} which allows the parsing 
+  * of object data. 
+@@ -47,7 +45,7 @@ class ObjectResponseParser extends AbstractResponseParser<Object> {
+ 	 * @see AbstractResponseParser#parse(HttpResponse, com.lonepulse.zombielink.core.processor.ProxyInvocationConfiguration)
+ 	 */
+ 	@Override
+-	public Object processResponse(HttpResponse httpResponse, ProxyInvocationConfiguration config) throws Exception {
++	public Object processResponse(HttpResponse httpResponse) throws Exception {
+ 
+ 		byte[] responseBytes = EntityUtils.toByteArray(httpResponse.getEntity());
+ 			

@@ -1,0 +1,12 @@
+diff --git a/src/playground/CMakeLists.txt b/src/playground/CMakeLists.txt
+index ecc8797b..720931ad 100644
+--- a/src/playground/CMakeLists.txt
++++ b/src/playground/CMakeLists.txt
+@@ -14,7 +14,6 @@ endfunction( fau_dipoleexample )
+ 
+ # Mikael's playground
+ fau_example(mlund-cosan "./mlund" cosan.cpp)
+-fau_example(mlund-angular "./mlund" angular.cpp)
+ fau_example(mlund-test "./mlund" test.cpp)
+ fau_example(mlund-cluster "./mlund" cluster.cpp)
+ fau_example(mlund-manybody "./mlund" manybody.cpp)

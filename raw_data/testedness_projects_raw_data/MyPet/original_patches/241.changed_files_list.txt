@@ -1,0 +1,2 @@
+667a1761 : fixed /petstop for ranged attacks
+:100644 100644 c2a49bdc... 390d3964... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java

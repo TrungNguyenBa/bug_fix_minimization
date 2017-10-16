@@ -1,0 +1,15 @@
+diff --git a/src/main/java/pl/project13/jgit/DescribeCommand.java b/src/main/java/pl/project13/jgit/DescribeCommand.java
+index ef8f6fd..640569c 100644
+--- a/src/main/java/pl/project13/jgit/DescribeCommand.java
++++ b/src/main/java/pl/project13/jgit/DescribeCommand.java
+@@ -162,8 +162,8 @@ public class DescribeCommand extends GitCommand<DescribeResult> {
+   @NotNull
+   public DescribeCommand forceLongFormat(@Nullable Boolean forceLongFormat) {
+     if (forceLongFormat != null && forceLongFormat) {
+-      this.forceLongFormat = true;
+-      log("--long =", true);
++      this.forceLongFormat = forceLongFormat;
++      log("--long =", forceLongFormat);
+     }
+     return this;
+   }

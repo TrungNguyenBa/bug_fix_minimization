@@ -1,0 +1,4 @@
+4cc36a6 : Fix up jdk6 compat
+:100644 100644 94d37fe... 3e4b75a... M	src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryDataStore.java
+:100644 100644 59c105c... f9caf01... M	src/main/po/de.po
+:100644 100644 588cf37... 6c7d9a0... M	src/main/po/keys.pot

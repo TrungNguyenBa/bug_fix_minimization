@@ -1,0 +1,46 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/creeper/MyCreeper.java b/src/main/java/de/Keyle/MyPet/entity/types/creeper/MyCreeper.java
+index 468473f5..1c2993f7 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/creeper/MyCreeper.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/creeper/MyCreeper.java
+@@ -40,6 +40,20 @@ public class MyCreeper extends MyPet
+         super(petOwner);
+     }
+ 
++    public void setPowered(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyCreeper) getCraftPet().getHandle()).setPowered(flag);
++        }
++        this.isPowered = flag;
++    }
++
++    public boolean isPowered()
++    {
++        return isPowered;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -63,20 +77,6 @@ public class MyCreeper extends MyPet
+         return MyPetType.Creeper;
+     }
+ 
+-    public boolean isPowered()
+-    {
+-        return isPowered;
+-    }
+-
+-    public void setPowered(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyCreeper) getCraftPet().getHandle()).setPowered(flag);
+-        }
+-        this.isPowered = flag;
+-    }
+-
+     @Override
+     public String toString()
+     {

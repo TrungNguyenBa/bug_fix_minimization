@@ -1,0 +1,3 @@
+4c65d64 : Small copy edits to errors and comments.
+:100644 100644 4a03c50... b260c1e... M	src/main/java/com/stripe/model/Dispute.java
+:100644 100644 7854154... 1a0f0ab... M	src/main/java/com/stripe/model/DisputeDataDeserializer.java

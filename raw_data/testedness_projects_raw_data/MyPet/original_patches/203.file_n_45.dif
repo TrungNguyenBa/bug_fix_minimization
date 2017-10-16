@@ -1,0 +1,107 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java b/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+index 29ce9a90..dc432cfb 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+@@ -39,31 +39,14 @@ public class EntityMySlime extends EntityMyPet
+         this.jumpDelay = (this.random.nextInt(20) + 10);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
+-    {
+-        return "mob.slime." + (getSize() > 1 ? "big" : "small");
+-
+-    }
+-
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return getDeathSound();
+-    }
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
+ 
+-    /**
+-     * Returns the default sound of the MyPet
+-     */
+-    protected String getLivingSound()
+-    {
+-        return null;
++            setSize(((MySlime) myPet).getSize());
++        }
+     }
+ 
+     public int getSize()
+@@ -87,6 +70,12 @@ public class EntityMySlime extends EntityMyPet
+         ((MySlime) myPet).size = value;
+     }
+ 
++    public void setPathfinder()
++    {
++        super.setPathfinder();
++        petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 2 + getSize(), 20));
++    }
++
+     protected void initDatawatcher()
+     {
+         super.initDatawatcher();
+@@ -94,6 +83,25 @@ public class EntityMySlime extends EntityMyPet
+     }
+ 
+     /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
++    {
++        return getDeathSound();
++    }
++
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
++    {
++        return "mob.slime." + (getSize() > 1 ? "big" : "small");
++
++    }
++
++    /**
+      * Method is called when pet moves
+      * Is used to create the hopping motion
+      */
+@@ -110,19 +118,11 @@ public class EntityMySlime extends EntityMyPet
+         }
+     }
+ 
+-    public void setMyPet(MyPet myPet)
+-    {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-
+-            setSize(((MySlime) myPet).getSize());
+-        }
+-    }
+-
+-    public void setPathfinder()
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        super.setPathfinder();
+-        petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 2 + getSize(), 20));
++        return null;
+     }
+ }
+\ No newline at end of file

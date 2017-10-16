@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
+index ae354f4..293cb95 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java
+@@ -122,7 +122,7 @@ public class PEXPermissionSubscriptionMap extends HashMap<String, Map<Permissibl
+ 
+ 		@Override
+ 		public boolean containsKey(Object key) {
+-			return backing.containsKey(key) || (key instanceof Permissible && ((Permissible) key).isPermissionSet(permission));
++			return backing.containsKey(key);
+ 		}
+ 
+ 		@Override

@@ -1,0 +1,13 @@
+diff --git a/src/test/java/com/stripe/StripeTest.java b/src/test/java/com/stripe/StripeTest.java
+index fec7565..0dd50fe 100644
+--- a/src/test/java/com/stripe/StripeTest.java
++++ b/src/test/java/com/stripe/StripeTest.java
+@@ -1320,7 +1320,7 @@ public class StripeTest {
+ 	@Test
+ 	public void testTransferCreate() throws StripeException {
+ 		Transfer createdTransfer = Transfer.create(getTransferParams());
+-		assertEquals("paid", createdTransfer.getStatus());
++		assertEquals("pending", createdTransfer.getStatus());
+ 	}
+ 
+ 	@Test

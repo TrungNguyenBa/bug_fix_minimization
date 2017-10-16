@@ -1,0 +1,31 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandInventory.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandInventory.java
+index 5358775f..88782d81 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandInventory.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandInventory.java
+@@ -22,10 +22,10 @@ package de.Keyle.MyPet.chatcommands;
+ 
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+-import de.Keyle.MyPet.entity.types.MyPetList;
+ import de.Keyle.MyPet.skill.ISkillActive;
+ import de.Keyle.MyPet.skill.skills.implementation.Inventory;
+ import de.Keyle.MyPet.util.MyPetBukkitUtil;
++import de.Keyle.MyPet.util.MyPetList;
+ import de.Keyle.MyPet.util.MyPetPermissions;
+ import de.Keyle.MyPet.util.locale.MyPetLocales;
+ import org.bukkit.Bukkit;
+@@ -54,12 +54,12 @@ public class CommandInventory implements CommandExecutor, TabCompleter
+                     MyPet myPet = MyPetList.getMyPet(player);
+                     if (myPet.getStatus() == PetState.Despawned)
+                     {
+-                        sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.CallFirst", player)).replace("%petname%", myPet.getPetName()));
++                        sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.CallFirst", player)).replace("%petname%", myPet.petName));
+                         return true;
+                     }
+                     if (myPet.getStatus() == PetState.Dead)
+                     {
+-                        sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.CallWhenDead", player)).replace("%petname%", myPet.getPetName()).replace("%time%", "" + myPet.getRespawnTime()));
++                        sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.CallWhenDead", player)).replace("%petname%", myPet.petName).replace("%time%", "" + myPet.respawnTime));
+                         return true;
+                     }
+                     if (!MyPetPermissions.hasExtended(player, "MyPet.user.extended.Inventory") && !MyPetPermissions.has(player, "MyPet.admin", false))

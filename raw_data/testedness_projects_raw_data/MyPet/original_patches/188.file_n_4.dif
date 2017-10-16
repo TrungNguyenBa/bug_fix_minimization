@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+index 2f46a495..4653de75 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+@@ -50,7 +50,7 @@ public class EntityMyBlaze extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.blaze.breathe";
++        return !playIdleSound() ? null : "mob.blaze.breathe";
+     }
+ 
+     public boolean handlePlayerInteraction(EntityHuman entityhuman)

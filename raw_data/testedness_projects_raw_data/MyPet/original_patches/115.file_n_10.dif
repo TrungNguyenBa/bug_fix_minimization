@@ -1,0 +1,58 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+index 8f848db9..14ffd6ce 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+@@ -26,7 +26,6 @@ import de.Keyle.MyPet.entity.EquipmentSlot;
+ import de.Keyle.MyPet.entity.types.EntityMyPet;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+-import de.Keyle.MyPet.util.BukkitUtil;
+ import net.minecraft.server.v1_7_R1.*;
+ 
+ @EntitySize(width = 0.6F, height = 1.9F)
+@@ -35,6 +34,27 @@ public class EntityMyZombie extends EntityMyPet {
+         super(world, myPet);
+     }
+ 
++    public boolean checkForEquipment(ItemStack itemstack) {
++        int slot = b(itemstack);
++        if (slot == 0) {
++            if (itemstack.getItem() instanceof ItemSword) {
++                return true;
++            } else if (itemstack.getItem() instanceof ItemAxe) {
++                return true;
++            } else if (itemstack.getItem() instanceof ItemSpade) {
++                return true;
++            } else if (itemstack.getItem() instanceof ItemHoe) {
++                return true;
++            } else if (itemstack.getItem() instanceof ItemPickaxe) {
++                return true;
++            } else if (itemstack.getItem() instanceof ItemBow) {
++                return true;
++            }
++            return false;
++        }
++        return true;
++    }
++
+     /**
+      * Returns the sound that is played when the MyPet dies
+      */
+@@ -91,7 +111,7 @@ public class EntityMyZombie extends EntityMyPet {
+                     }
+                 }
+                 return true;
+-            } else if (BukkitUtil.isEquipment(itemStack) && getOwner().getPlayer().isSneaking() && canEquip()) {
++            } else if (checkForEquipment(itemStack) && getOwner().getPlayer().isSneaking() && canEquip()) {
+                 EquipmentSlot slot = EquipmentSlot.getSlotById(b(itemStack));
+                 ItemStack itemInSlot = getMyPet().getEquipment(slot);
+                 if (itemInSlot != null && !entityhuman.abilities.canInstantlyBuild) {
+@@ -144,7 +164,7 @@ public class EntityMyZombie extends EntityMyPet {
+     public void setMyPet(MyPet myPet) {
+         if (myPet != null) {
+             super.setMyPet(myPet);
+-            final MyZombie myZombie = getMyPet();
++            final MyZombie myZombie = (MyZombie) myPet;
+             final EntityMyZombie entityMyZombie = this;
+ 
+             this.setBaby(myZombie.isBaby());

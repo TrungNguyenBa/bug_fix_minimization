@@ -1,0 +1,13 @@
+diff --git a/src/main/java/net/gini/dropwizard/gelf/filters/GelfLoggingFilter.java b/src/main/java/net/gini/dropwizard/gelf/filters/GelfLoggingFilter.java
+index 205bf7c..22d6cec 100644
+--- a/src/main/java/net/gini/dropwizard/gelf/filters/GelfLoggingFilter.java
++++ b/src/main/java/net/gini/dropwizard/gelf/filters/GelfLoggingFilter.java
+@@ -283,7 +283,7 @@ public class GelfLoggingFilter implements Filter {
+         }
+     }
+ 
+-    private static final class AdditionalKeys {
++    private final class AdditionalKeys {
+ 
+         public static final String USER_AGENT = "userAgent";
+         public static final String REQ_AUTH = "requestAuth";

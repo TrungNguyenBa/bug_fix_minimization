@@ -1,0 +1,36 @@
+diff --git a/src/com/google/debugging/sourcemap/FilePosition.java b/src/com/google/debugging/sourcemap/FilePosition.java
+index f84320a0..cc7243bb 100644
+--- a/src/com/google/debugging/sourcemap/FilePosition.java
++++ b/src/com/google/debugging/sourcemap/FilePosition.java
+@@ -20,6 +20,9 @@ package com.google.debugging.sourcemap;
+  * Represents a position in a source file.
+  *
+  */
++/**
++ * Represents a position in a source file.
++ */
+ public class FilePosition {
+   private final int line;
+   private final int column;
+@@ -30,18 +33,15 @@ public class FilePosition {
+   }
+ 
+   /**
+-   * Returns the line number of this position.
+-   * Note: The v1 and v2 source maps use a line number with the first line
+-   * being 1, whereas the v3 source map corrects this and uses a first line
+-   * number of 0 to be consistent with the column representation.
++   * Returns the line number of this postion.
+    */
+   public int getLine() {
+     return line;
+   }
+ 
+   /**
+-   * @return the character index on the line
+-   * of this position, with the first column being 0.
++   * Returns the character index on the line
++   * of this position.
+    */
+   public int getColumn() {
+     return column;

@@ -1,0 +1,69 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java b/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
+index c628e3a..a79be7f 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
+@@ -103,11 +103,11 @@ public class ErrorReport {
+ 			conn.setDoOutput(true);
+ 			conn.setDoInput(true);
+ 
+-			Map<String, Object> request = new HashMap<>();       // {
++			Map<String, Object> request = new HashMap<String, Object>();       // {
+ 			request.put("description", "PEX Error Report");       //     "description": "PEX Error Report",
+ 			request.put("public", "false");                       //     "public": false,
+-			Map<String, Object> filesMap = new HashMap<>();      //     "files": {
+-			Map<String, Object> singleFileMap = new HashMap<>(); //         "report.md": {
++			Map<String, Object> filesMap = new HashMap<String, Object>();      //     "files": {
++			Map<String, Object> singleFileMap = new HashMap<String, Object>(); //         "report.md": {
+ 			singleFileMap.put("content", text);                   //             "content": <text>
+ 			filesMap.put("report.md", singleFileMap);             //         }
+ 			request.put("files", filesMap);                       //     }
+@@ -220,7 +220,8 @@ public class ErrorReport {
+ 		if (pexPlugin != null) {
+ 			StringBuilder pluginList = new StringBuilder("**Plugins:** (*italics* are disabled)\n");
+ 			Plugin[] plugins = pexPlugin.getServer().getPluginManager().getPlugins();
+-			for (Plugin plugin : plugins) {
++			for (int i = 0; i < plugins.length; i++) {
++				Plugin plugin = plugins[i];
+ 				pluginList.append("- ");
+ 				if (plugin.getDescription() != null) {
+ 					if (plugin.isEnabled()) {
+@@ -258,17 +259,16 @@ public class ErrorReport {
+ 		// PEX Configuration
+ 		YamlConfiguration pexConfig = new YamlConfiguration();
+ 		boolean successfulLoad = false;
+-		final File mainConfigFile = pexPlugin != null ? new File(pexPlugin.getDataFolder(), "config.yml") : null;
++		final File mainConfigFile = new File(pexPlugin.getDataFolder(), "config.yml");
+ 		String configuration;
+ 		String permissionsDb = "Permissions configuration could not be read. Does it exist?";
+ 
+-		if (mainConfigFile == null) {
+-			configuration = "PEX plugin was inaccessible!";
+-		} else if (mainConfigFile.exists()) {
++		if (mainConfigFile.exists()) {
+ 			try {
+ 				pexConfig.load(mainConfigFile);
+ 				successfulLoad = true;
+-			} catch (IOException | InvalidConfigurationException ignore) {
++			} catch (IOException ignore) {
++			} catch (InvalidConfigurationException ignore) {
+ 			}
+ 
+ 			try {
+@@ -284,7 +284,7 @@ public class ErrorReport {
+ 				.addCode(configuration, "yaml");
+ 
+ 		// Permissions database
+-		if (pexPlugin != null && pexConfig.getString("permissions.backend", "file").equalsIgnoreCase("file")) {
++		if (pexConfig.getString("permissions.backend", "file").equalsIgnoreCase("file")) {
+ 			File file = new File(pexPlugin.getDataFolder(), pexConfig.getString("permissions.backends.file.file", "permissions.yml"));
+ 			if (file.exists()) {
+ 				try {
+@@ -293,7 +293,7 @@ public class ErrorReport {
+ 				}
+ 			}
+ 		} else {
+-			permissionsDb = "Backend is not file or plugin was not accessible, see configuration file for details";
++			permissionsDb = "Backend is not file, see configuration file for details";
+ 		}
+ 
+ 		builder.addHeading("Permissions database");

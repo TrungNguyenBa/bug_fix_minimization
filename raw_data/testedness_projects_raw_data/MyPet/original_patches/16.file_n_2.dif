@@ -1,0 +1,28 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+index f83ccd0b..227d6eb2 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+@@ -76,12 +76,12 @@ public class BehaviorAggressiveTarget extends AIGoal {
+                     if (myPet.getOwner().equals(targetPlayer)) {
+                         continue;
+                     }
+-                    if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer, true)) {
++                    if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetPlayer)) {
+                         continue;
+                     }
+                 } else if (entityLiving instanceof EntityMyPet) {
+                     MyPet targetMyPet = ((EntityMyPet) entityLiving).getMyPet();
+-                    if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer(), true)) {
++                    if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), targetMyPet.getOwner().getPlayer())) {
+                         continue;
+                     }
+                 } else if (entityLiving instanceof EntityTameableAnimal) {
+@@ -90,7 +90,7 @@ public class BehaviorAggressiveTarget extends AIGoal {
+                         Player tameableOwner = (Player) tameable.getOwner().getBukkitEntity();
+                         if (myPet.getOwner().equals(tameableOwner)) {
+                             continue;
+-                        } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), tameableOwner, true)) {
++                        } else if (!PvPChecker.canHurt(myPet.getOwner().getPlayer(), tameableOwner)) {
+                             continue;
+                         }
+                     }

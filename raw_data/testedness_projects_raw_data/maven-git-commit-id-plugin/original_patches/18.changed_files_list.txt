@@ -1,0 +1,2 @@
+a0f7db7 : Add integration test for changed date format.
+:100644 100644 2ec18d9... cea32fa... M	src/test/java/pl/project13/maven/git/NativeAndJGitProviderTest.java

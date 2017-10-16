@@ -1,0 +1,19 @@
+diff --git a/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractSimpleBackendTest.java b/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractSimpleBackendTest.java
+index f801c4f..1ce5cef 100644
+--- a/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractSimpleBackendTest.java
++++ b/test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractSimpleBackendTest.java
+@@ -72,12 +72,12 @@ public abstract class AbstractSimpleBackendTest {
+     }
+ 
+     @Test
+-    public void testSimpleInsert() throws Exception {
++    public void testInsert() throws Exception {
+         collection.insert(json("_id: 1"));
+     }
+ 
+     @Test
+-    public void testSimpleInsertDelete() throws Exception {
++    public void testInsertDelete() throws Exception {
+         collection.insert(json("_id: 1"));
+         collection.remove(json("_id: 1"));
+     }

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java
+index 93ed15b3..285dcf79 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java
+@@ -21,7 +21,7 @@
+ package de.Keyle.MyPet.skill.skills.implementation;
+ 
+ import de.Keyle.MyPet.entity.types.MyPet;
+-import de.Keyle.MyPet.skill.skills.ISkillActive;
++import de.Keyle.MyPet.skill.ISkillActive;
+ import de.Keyle.MyPet.skill.skills.info.FireInfo;
+ import de.Keyle.MyPet.skill.skills.info.ISkillInfo;
+ import de.Keyle.MyPet.util.Util;

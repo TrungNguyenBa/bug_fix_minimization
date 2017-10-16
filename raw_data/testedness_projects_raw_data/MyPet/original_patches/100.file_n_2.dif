@@ -1,0 +1,24 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Pickup.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Pickup.java
+index dc5c4e66..a275183e 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Pickup.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Pickup.java
+@@ -37,7 +37,6 @@ import de.keyle.knbt.TagDouble;
+ import de.keyle.knbt.TagString;
+ import net.minecraft.server.v1_7_R1.PacketPlayOutCollect;
+ import org.bukkit.Bukkit;
+-import org.bukkit.GameMode;
+ import org.bukkit.craftbukkit.v1_7_R1.entity.CraftPlayer;
+ import org.bukkit.entity.Entity;
+ import org.bukkit.entity.ExperienceOrb;
+@@ -116,11 +115,6 @@ public class Pickup extends PickupInfo implements ISkillInstance, IScheduler, IS
+             myPet.sendMessageToOwner(Util.formatText(Locales.getString(("Message.Skill.Pickup.StartStop"), myPet.getOwner().getPlayer()), myPet.getPetName(), Locales.getString("Name.Disabled", myPet.getOwner())));
+             return;
+         }
+-        if (pickup && myPet.getOwner().getPlayer().getGameMode() == GameMode.CREATIVE && !Inventory.OPEN_IN_CREATIVEMODE && !Permissions.has(myPet.getOwner().getPlayer(), "MyPet.admin", false)) {
+-            myPet.sendMessageToOwner(Locales.getString("Message.Skill.Pickup.Creative", myPet.getOwner()));
+-            pickup = false;
+-            return;
+-        }
+         if (range > 0 && pickup && myPet.getStatus() == PetState.Here && myPet.getSkills().isSkillActive(Inventory.class)) {
+             for (Entity entity : myPet.getCraftPet().getNearbyEntities(range, range, range)) {
+                 if (!entity.isDead()) {

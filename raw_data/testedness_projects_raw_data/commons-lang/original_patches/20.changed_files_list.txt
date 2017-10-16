@@ -1,0 +1,4 @@
+52b46e74 : LANG-1152 StringIndexOutOfBoundsException or field over-write for large year fields in FastDateParser
+:100644 100644 9e14f45a... 83bf55ad... M	src/changes/changes.xml
+:100644 100644 3f6b3bd1... 84bf7e27... M	src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java
+:100644 100644 1bdc25ae... 1b69403a... M	src/test/java/org/apache/commons/lang3/time/FastDateFormatTest.java

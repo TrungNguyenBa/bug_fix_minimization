@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
+index 8f31a652..e6e7b13d 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
+@@ -54,7 +54,6 @@ public class CommandChooseSkilltree implements CommandExecutor, TabCompleter
+             MyPet myPet = MyPetList.getMyPet(player);
+             if (MyPetConfiguration.AUTOMATIC_SKILLTREE_ASSIGNMENT && !myPet.getOwner().isMyPetAdmin())
+             {
+-                myPet.autoAssignSkilltree();
+                 sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AutomaticSkilltreeAssignment", myPet.getOwner().getLanguage())));
+             }
+             else if (myPet.getSkillTree() != null && MyPetConfiguration.CHOOSE_SKILLTREE_ONLY_ONCE && !myPet.getOwner().isMyPetAdmin())

@@ -1,0 +1,135 @@
+diff --git a/src/main/java/ru/tehkode/permissions/data/MatcherGroup.java b/src/main/java/ru/tehkode/permissions/data/MatcherGroup.java
+index 991181f..315e7d6 100644
+--- a/src/main/java/ru/tehkode/permissions/data/MatcherGroup.java
++++ b/src/main/java/ru/tehkode/permissions/data/MatcherGroup.java
+@@ -1,10 +1,7 @@
+ package ru.tehkode.permissions.data;
+ 
+ import com.google.common.collect.Multimap;
+-import com.google.common.util.concurrent.Futures;
+-import com.google.common.util.concurrent.ListenableFuture;
+ 
+-import javax.annotation.Nonnull;
+ import java.util.ArrayList;
+ import java.util.HashMap;
+ import java.util.List;
+@@ -44,7 +41,7 @@ public abstract class MatcherGroup implements Comparable<MatcherGroup> {
+ 	 * @param qualifiers The qualifiers to set for this group.
+ 	 * @return an updated group object
+ 	 */
+-	public abstract ListenableFuture<MatcherGroup> setQualifiers(Multimap<Qualifier, String> qualifiers);
++	public abstract MatcherGroup setQualifiers(Multimap<Qualifier, String> qualifiers);
+ 
+ 	/**
+ 	 * Return the entries associated with this group.
+@@ -85,7 +82,7 @@ public abstract class MatcherGroup implements Comparable<MatcherGroup> {
+ 	 * @param value the value to set as entries.
+ 	 * @return the new matcher group object, or null if this group's already invalid
+ 	 */
+-	public abstract ListenableFuture<MatcherGroup> setEntries(Map<String, String> value);
++	public abstract MatcherGroup setEntries(Map<String, String> value);
+ 
+ 	/**
+ 	 * Sets this group's entries as a list.
+@@ -94,7 +91,7 @@ public abstract class MatcherGroup implements Comparable<MatcherGroup> {
+ 	 * @param value The values to set as entries.
+ 	 * @return the new matcher group object, or null if this group's already invalid.
+ 	 */
+-	public abstract ListenableFuture<MatcherGroup> setEntries(List<String> value);
++	public abstract MatcherGroup setEntries(List<String> value);
+ 
+ 	/**
+ 	 * Adds an entry to the current mapping of entries.
+@@ -104,10 +101,10 @@ public abstract class MatcherGroup implements Comparable<MatcherGroup> {
+ 	 * @param value The value to add
+ 	 * @return null if the current value is not a map, otherwise the result of {@link #setEntries(Map)}.
+ 	 */
+-	public ListenableFuture<MatcherGroup> putEntry(String key, String value) {
++	public MatcherGroup putEntry(String key, String value) {
+ 		Map<String, String> entries = getEntries();
+ 		if (getEntries() == null) {
+-			return Futures.immediateFailedFuture(new IllegalStateException("Group is not a map!").fillInStackTrace());
++			return null;
+ 		}
+ 		Map<String, String> newEntries = new HashMap<>(entries);
+ 		newEntries.put(key, value);
+@@ -119,12 +116,12 @@ public abstract class MatcherGroup implements Comparable<MatcherGroup> {
+ 	 *
+ 	 * @see #setEntries(List) for error conditions
+ 	 * @param value The value to add
+-	 * @return future with IllegalStateException if the current value is not a list, otherwise the result of {@link #setEntries(List)}
++	 * @return null if the current value is not a list, otherwise the result of {@link #setEntries(List)}
+ 	 */
+-	public ListenableFuture<MatcherGroup> addEntry(String value) {
++	public MatcherGroup addEntry(String value) {
+ 		List<String> entries = getEntriesList();
+ 		if (entries == null) {
+-			return Futures.immediateFailedFuture(new IllegalStateException("Group is not a list!").fillInStackTrace());
++			return null;
+ 		}
+ 		List<String> newEntries = new ArrayList<>(entries.size() + 1);
+ 		newEntries.addAll(entries);
+@@ -137,39 +134,32 @@ public abstract class MatcherGroup implements Comparable<MatcherGroup> {
+ 	 * (yeah, it's a single method. Isn't that cool?)
+ 	 *
+ 	 * @param key The key or list entry to remove.
+-	 * @return The new matcher group, this if this group didn't contain the provided entry, or {@link InvalidGroupException} if this matcher group is invalid.
++	 * @return The new matcher group, this if this group didn't contain the provided entry, or null if this matcher group is invalid.
+ 	 */
+-	public ListenableFuture<MatcherGroup> removeEntry(String key) {
++	public MatcherGroup removeEntry(String key) {
+ 		if (!isValid()) {
+-			return Futures.immediateFailedFuture(new InvalidGroupException());
++			return null;
+ 		}
+ 
+ 		if (isMap()) {
+ 			Map<String, String> newEntries = new HashMap<>(getEntries());
+ 			if (newEntries.remove(key) == null) {
+-				return Futures.immediateFuture(this);
++				return this;
+ 			} else {
+ 				return setEntries(newEntries);
+ 			}
+ 		} else if (isList()) {
+ 			List<String> newEntries = new ArrayList<>(getEntriesList());
+ 			if (!newEntries.remove(key)) {
+-				return Futures.immediateFuture(this);
++				return this;
+ 			} else {
+ 				return setEntries(newEntries);
+ 			}
+ 		} else { // What are we?
+-			return Futures.immediateFailedFuture(new IllegalStateException("Group is not a list or map!").fillInStackTrace());
++			return null;
+ 		}
+ 	}
+ 
+-	/**
+-	 * Thrown when a group's data is no longer valid
+-	 */
+-	public static class InvalidGroupException extends Exception {
+-
+-	}
+-
+ 
+ 	/**
+ 	 * Returns whether this group matches the provided context, based on this group's qualifiers.
+@@ -205,7 +195,7 @@ public abstract class MatcherGroup implements Comparable<MatcherGroup> {
+ 	 * @return true if matcher was removed, false if {@link #isValid()} returns false or
+ 	 * 	if for some other reason the backend doesn't feel like removing this matcher.
+ 	 */
+-	public abstract ListenableFuture<Boolean> remove();
++	public abstract boolean remove();
+ 
+ 	public int getQualifierTypeMask() {
+ 		int ret = 0;
+@@ -220,7 +210,7 @@ public abstract class MatcherGroup implements Comparable<MatcherGroup> {
+ 	 * This is inconsistent with equals
+ 	 */
+ 	@Override
+-	public int compareTo(@Nonnull MatcherGroup o) {
++	public int compareTo(MatcherGroup o) {
+ 		final int me = getQualifierTypeMask();
+ 		final int other = o.getQualifierTypeMask();
+ 		return me == other ? 0 :

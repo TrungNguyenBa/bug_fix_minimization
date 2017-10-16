@@ -1,0 +1,33 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
+index 64d69260..bd518a98 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
+@@ -24,8 +24,8 @@ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+ import de.Keyle.MyPet.skill.skills.info.DamageInfo;
+ import de.Keyle.MyPet.skill.skills.info.ISkillInfo;
+-import de.Keyle.MyPet.util.Util;
+-import de.Keyle.MyPet.util.locale.Locales;
++import de.Keyle.MyPet.util.MyPetUtil;
++import de.Keyle.MyPet.util.locale.MyPetLocales;
+ import org.bukkit.ChatColor;
+ import org.spout.nbt.DoubleTag;
+ import org.spout.nbt.IntTag;
+@@ -79,7 +79,7 @@ public class Damage extends DamageInfo implements ISkillInstance
+                 }
+                 if (!quiet)
+                 {
+-                    myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Skill.Damage.Upgrade", myPet.getOwner().getLanguage()), myPet.getPetName(), damage));
++                    myPet.sendMessageToOwner(MyPetUtil.formatText(MyPetLocales.getString("Message.Skill.Damage.Upgrade", myPet.getOwner().getLanguage()), myPet.getPetName(), damage));
+                 }
+             }
+             if (isPassive != (damage <= 0))
+@@ -100,7 +100,7 @@ public class Damage extends DamageInfo implements ISkillInstance
+ 
+     public String getFormattedValue()
+     {
+-        return " -> " + ChatColor.GOLD + damage + ChatColor.RESET + " " + Locales.getString("Name.Damage", myPet.getOwner());
++        return " -> " + ChatColor.GOLD + damage + ChatColor.RESET + " " + MyPetLocales.getString("Name.Damage", myPet.getOwner());
+     }
+ 
+     public void reset()

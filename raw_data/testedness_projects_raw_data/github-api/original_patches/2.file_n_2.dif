@@ -1,0 +1,24 @@
+diff --git a/README.md b/README.md
+index 02e026f..9e83211 100644
+--- a/README.md
++++ b/README.md
+@@ -139,10 +139,10 @@ repo.deleteRef('heads/gh-pages', function(err) {});
+ var user = github.getUser();
+ ```
+ 
+-List all repositories of the authenticated user, including private repositories and repositories in which the user is a collaborator and not an owner.
++List all repositories of the authenticated user.
+ 
+ ```js
+-user.repos(function(err, repos) {});
++user.repos(username, function(err, repos) {});
+ ```
+ 
+ List organizations the autenticated user belongs to.
+@@ -269,4 +269,4 @@ Consider commit messages.
+ 
+ ### 0.1.X
+ 
+-Initial version.
++Initial version.
+\ No newline at end of file

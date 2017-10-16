@@ -1,0 +1,13 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/InfoCommand.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/InfoCommand.java
+index 004b13c..ced9047 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/InfoCommand.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/InfoCommand.java
+@@ -34,7 +34,7 @@ public class InfoCommand {
+     public static CommandSpec getInfoCommand(PermissionsEx pex) {
+         return CommandSpec.builder()
+                 .setAliases("info", "i", "who")
+-                .setDescription(_("Provide information about a subject"))
++                .setDescription(_("Provide information about the user "))
+                 .setExecutor(new SubjectInfoPrintingExecutor(pex))
+                 .build();
+     }

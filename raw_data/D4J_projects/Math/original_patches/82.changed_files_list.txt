@@ -1,0 +1,4 @@
+4ece1884c : fixed an error induced by zero entries in simplex solver JIRA: MATH-288
+:100644 100644 16d3baea1... 60a1b3ac5... M	src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java
+:100644 100644 a48e1da07... a03001152... M	src/site/xdoc/changes.xml
+:100644 100644 9d43a5405... 469d9edc7... M	src/test/java/org/apache/commons/math/optimization/linear/SimplexSolverTest.java

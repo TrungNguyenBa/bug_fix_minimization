@@ -1,0 +1,83 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionUser.java b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+index 9cc8015..db0e262 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionUser.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionUser.java
+@@ -587,8 +587,8 @@ public class PermissionUser extends PermissionEntity {
+ 	 * @return
+ 	 */
+ 	@Deprecated
+-	public PermissionGroup[] getGroups() {
+-		return getParents().toArray(new PermissionGroup[0]);
++	public List<PermissionGroup> getGroups() {
++		return getParents();
+ 	}
+ 
+ 	/**
+@@ -598,8 +598,8 @@ public class PermissionUser extends PermissionEntity {
+ 	 * @return PermissionGroup groups
+ 	 */
+ 	@Deprecated
+-	public PermissionGroup[] getGroups(String worldName) {
+-		return getParents(worldName).toArray(new PermissionGroup[0]);
++	public List<PermissionGroup> getGroups(String worldName) {
++		return getParents(worldName);
+ 	}
+ 
+ 	/**
+@@ -608,8 +608,8 @@ public class PermissionUser extends PermissionEntity {
+ 	 * @return
+ 	 */
+ 	@Deprecated
+-	public String[] getGroupNames() {
+-		return getParentIdentifiers().toArray(new String[0]);
++	public List<String> getGroupNames() {
++		return getParentIdentifiers();
+ 	}
+ 
+ 	/**
+@@ -618,8 +618,8 @@ public class PermissionUser extends PermissionEntity {
+ 	 * @return String array of user's group names
+ 	 */
+ 	@Deprecated
+-	public String[] getGroupNames(String worldName) {
+-		return getParentIdentifiers(worldName).toArray(new String[0]);
++	public List<String> getGroupNames(String worldName) {
++		return getParentIdentifiers(worldName);
+ 	}
+ 
+ 	/**
+@@ -628,13 +628,13 @@ public class PermissionUser extends PermissionEntity {
+ 	 * @param groups array of parent group names
+ 	 */
+ 	@Deprecated
+-	public void setGroups(String[] groups, String worldName) {
+-		setParentsIdentifier(Arrays.asList(groups), worldName);
++	public void setGroups(List<String> groups, String worldName) {
++		setParentsIdentifier(groups, worldName);
+ 	}
+ 
+ 	@Deprecated
+-	public void setGroups(String[] groups) {
+-		setParentsIdentifier(Arrays.asList(groups));
++	public void setGroups(List<String> groups) {
++		setParentsIdentifier(groups);
+ 	}
+ 
+ 	/**
+@@ -643,12 +643,12 @@ public class PermissionUser extends PermissionEntity {
+ 	 * @param parentGroups array of parent group objects
+ 	 */
+ 	@Deprecated
+-	public void setGroups(PermissionGroup[] parentGroups, String worldName) {
+-		setParents(Arrays.asList(parentGroups), worldName);
++	public void setGroupObjects(List<PermissionGroup> parentGroups, String worldName) {
++		setParents(parentGroups, worldName);
+ 	}
+ 
+ 	@Deprecated
+-	public void setGroups(PermissionGroup[] parentGroups) {
+-		setParents(Arrays.asList(parentGroups));
++	public void setGroupObjects(List<PermissionGroup> parentGroups) {
++		setParents(parentGroups);
+ 	}
+ }

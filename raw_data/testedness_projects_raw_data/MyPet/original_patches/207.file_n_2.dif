@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+index be5775bc..3df94d44 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+@@ -25,7 +25,7 @@ import de.Keyle.MyPet.entity.types.EntityMyPet;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import net.minecraft.server.v1_6_R2.World;
+ 
+-@EntitySize(width = 0.6F, height = 1.7F)
++@EntitySize(width = 0.6F, height = 0.7F)
+ public class EntityMyBlaze extends EntityMyPet
+ {
+     public EntityMyBlaze(World world, MyPet myPet)

@@ -1,0 +1,74 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
+index c2142e4..355090e 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
+@@ -2,7 +2,6 @@ package com.fasterxml.jackson.dataformat.protobuf;
+ 
+ import com.fasterxml.jackson.core.*;
+ import com.fasterxml.jackson.core.io.CharTypes;
+-import com.fasterxml.jackson.dataformat.protobuf.schema.ProtobufField;
+ import com.fasterxml.jackson.dataformat.protobuf.schema.ProtobufMessage;
+ 
+ /**
+@@ -23,18 +22,15 @@ public final class ProtobufReadContext
+     protected ProtobufMessage _messageType;
+ 
+     /**
+-     * For array contexts: field that defines type of array values.
+-     */
+-    protected ProtobufField _field;
+-
+-    protected String _currentName;
+-    
+-    /**
+      * Offset within input buffer where the message represented
+      * by this context (if message context) ends.
+      */
+     protected int _endOffset;
+     
++    // // // Location information (minus source reference)
++
++    protected String _currentName;
++    
+     /*
+     /**********************************************************
+     /* Simple instance reuse slots
+@@ -75,7 +71,7 @@ public final class ProtobufReadContext
+         return new ProtobufReadContext(null, null, TYPE_ROOT, Integer.MAX_VALUE);
+     }
+ 
+-    public ProtobufReadContext createChildArrayContext(ProtobufField f)
++    public ProtobufReadContext createChildArrayContext()
+     {
+         ProtobufReadContext ctxt = _child;
+         if (ctxt == null) {
+@@ -84,11 +80,10 @@ public final class ProtobufReadContext
+         } else {
+             ctxt.reset(_messageType, TYPE_ARRAY, _endOffset);
+         }
+-        ctxt._field = f;
+         return ctxt;
+     }
+ 
+-    public ProtobufReadContext createChildArrayContext(ProtobufField f, int endOffset)
++    public ProtobufReadContext createChildArrayContext(int endOffset)
+     {
+         ProtobufReadContext ctxt = _child;
+         if (ctxt == null) {
+@@ -97,7 +92,6 @@ public final class ProtobufReadContext
+         } else {
+             ctxt.reset(_messageType, TYPE_ARRAY, endOffset);
+         }
+-        ctxt._field = f;
+         return ctxt;
+     }
+     
+@@ -135,8 +129,6 @@ public final class ProtobufReadContext
+ 
+     public ProtobufMessage getMessageType() { return _messageType; }
+ 
+-    public ProtobufField getField() { return _field; }
+-    
+     public void setMessageType(ProtobufMessage mt) { _messageType = mt; }
+     
+     /**

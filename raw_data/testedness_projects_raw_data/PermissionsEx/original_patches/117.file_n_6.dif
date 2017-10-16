@@ -1,0 +1,16 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+index fbc2ca7..7f4876c 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+@@ -247,11 +247,6 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 	}
+ 
+ 	@Override
+-	public void load() {
+-		// Already loaded bc file
+-	}
+-
+-	@Override
+ 	public boolean isDefault(String world) {
+ 		return world == null ? this.node.getBoolean("default") : this.node.getBoolean(formatPath(world, "default"));
+ 	}

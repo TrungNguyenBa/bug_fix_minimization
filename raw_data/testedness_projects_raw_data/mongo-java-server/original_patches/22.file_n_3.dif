@@ -1,0 +1,32 @@
+diff --git a/src/test/java/de/bwaldvogel/mongo/MongoServerTest.java b/src/test/java/de/bwaldvogel/mongo/MongoServerTest.java
+index ad2bc3a..f58a6f0 100644
+--- a/src/test/java/de/bwaldvogel/mongo/MongoServerTest.java
++++ b/src/test/java/de/bwaldvogel/mongo/MongoServerTest.java
+@@ -1,6 +1,5 @@
+ package de.bwaldvogel.mongo;
+ 
+-import static org.fest.assertions.Assertions.assertThat;
+ import static org.junit.Assert.fail;
+ 
+ import java.net.InetSocketAddress;
+@@ -60,20 +59,6 @@ public class MongoServerTest {
+     }
+ 
+     @Test(timeout = 1000)
+-    public void testGetLocalAddress() {
+-        MongoServer server = new MongoServer();
+-        assertThat(server.getLocalAddress()).isNull();
+-        try {
+-            InetSocketAddress serverAddress = server.bind();
+-            InetSocketAddress localAddress = server.getLocalAddress();
+-            assertThat(localAddress).isEqualTo(serverAddress);
+-        } finally {
+-            server.shutdownNow();
+-        }
+-        assertThat(server.getLocalAddress()).isNull();
+-    }
+-
+-    @Test(timeout = 1000)
+     public void testShutdownAndRestart() {
+         MongoServer server = new MongoServer();
+         MongoClient client = null;

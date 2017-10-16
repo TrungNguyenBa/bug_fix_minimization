@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/Util.java b/src/main/java/de/Keyle/MyPet/util/Util.java
+index 348a1312..fb127718 100644
+--- a/src/main/java/de/Keyle/MyPet/util/Util.java
++++ b/src/main/java/de/Keyle/MyPet/util/Util.java
+@@ -166,6 +166,7 @@ public class Util {
+                 e.printStackTrace();
+             }
+         }
++
+         return contents.toString();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/InstantSerializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/InstantSerializer.java
+index d4fb687..3b2a415 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/InstantSerializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/InstantSerializer.java
+@@ -2,7 +2,7 @@ package com.fasterxml.jackson.datatype.joda.ser;
+ 
+ import java.io.IOException;
+ 
+-import org.joda.time.Instant;
++import org.joda.time.*;
+ 
+ import com.fasterxml.jackson.core.JsonGenerator;
+ import com.fasterxml.jackson.databind.SerializationFeature;

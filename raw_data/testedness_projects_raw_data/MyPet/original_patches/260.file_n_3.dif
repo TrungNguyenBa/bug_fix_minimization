@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java
+index 2089f00d..f6cc9351 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java
+@@ -245,12 +245,8 @@ public class MyPetPlayerListener implements Listener
+                 final MyPet myPet = myPetPlayer.getMyPet();
+                 if (myPet.getStatus() == PetState.Here)
+                 {
+-
+-                    if (myPet.getLocation().getWorld() != event.getTo().getWorld() || myPet.getLocation().distance(event.getTo()) > 10)
+-                    {
+-                        myPet.removePet();
+-                    }
+-                    myPet.setLocation(event.getTo());
++                    myPet.removePet();
++                    myPet.setLocation(event.getPlayer().getLocation());
+ 
+                     MyPetPlugin.getPlugin().getServer().getScheduler().runTaskLater(MyPetPlugin.getPlugin(), new Runnable()
+                     {

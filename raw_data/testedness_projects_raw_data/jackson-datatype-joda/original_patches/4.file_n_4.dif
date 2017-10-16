@@ -1,0 +1,29 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java
+index 878940b..23014ef 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java
+@@ -23,22 +23,9 @@ public class FormatConfig
+     public final static JacksonJodaDateFormat DEFAULT_TIMEONLY_FORMAT
+         = new JacksonJodaDateFormat(ISODateTimeFormat.time().withZoneUTC());
+ 
+-    /* 28-Jul-2015, tatu: As per [datatype-joda#70], there is difference between
+-     *    "dateTime()" and "dateTimeParser()"... so we need to differentiate between
+-     *    parser/generator it seems.
+-     */
+-    public final static JacksonJodaDateFormat DEFAULT_DATETIME_PARSER
+-    	= new JacksonJodaDateFormat(ISODateTimeFormat.dateTimeParser().withZoneUTC());
++    public final static JacksonJodaDateFormat DEFAULT_DATETIME_FORMAT
++        = new JacksonJodaDateFormat(ISODateTimeFormat.dateTime().withZoneUTC());
+ 
+-    public final static JacksonJodaDateFormat DEFAULT_DATETIME_PRINTER
+-    	= new JacksonJodaDateFormat(ISODateTimeFormat.dateTime().withZoneUTC());
+-
+-    /**
+-     * @deprecated Since 2.6.1
+-     */
+-    @Deprecated
+-    public final static JacksonJodaDateFormat DEFAULT_DATETIME_FORMAT = DEFAULT_DATETIME_PRINTER;
+-    
+     public final static JacksonJodaPeriodFormat DEFAULT_PERIOD_FORMAT
+         = new JacksonJodaPeriodFormat(ISOPeriodFormat.standard());
+     

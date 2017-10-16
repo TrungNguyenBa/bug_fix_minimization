@@ -1,0 +1,5 @@
+5b6b7f27 : fixed slimes and magmacubes with size smaller than 1 fixes #154
+:100644 100644 571a7028... 37691fb4... M	src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+:100644 100644 e7332e0c... 680fa462... M	src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java
+:100644 100644 1d7c7137... 6f2c70da... M	src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+:100644 100644 8e3795ca... 27e81ddb... M	src/main/java/de/Keyle/MyPet/entity/types/slime/MySlime.java

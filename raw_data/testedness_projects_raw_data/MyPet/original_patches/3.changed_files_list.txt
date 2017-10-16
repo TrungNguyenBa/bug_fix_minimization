@@ -1,0 +1,2 @@
+34790444 : show confirm message when no or the wrong name is provided as a parameter fixes #554
+:100644 100644 7da2bf3c... d48f03ea... M	src/main/java/de/Keyle/MyPet/commands/CommandRelease.java

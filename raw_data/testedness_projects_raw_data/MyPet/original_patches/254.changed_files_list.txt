@@ -1,0 +1,2 @@
+3ffedf01 : fixed "invalid UUID exception" because of an empty UUID string fixes #133
+:100644 100644 3eaf7870... 859aaf82... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java

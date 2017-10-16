@@ -1,0 +1,109 @@
+diff --git a/src/main/java/pl/project13/maven/git/GitDirLocator.java b/src/main/java/pl/project13/maven/git/GitDirLocator.java
+index 03eb6f6..6f71c0e 100644
+--- a/src/main/java/pl/project13/maven/git/GitDirLocator.java
++++ b/src/main/java/pl/project13/maven/git/GitDirLocator.java
+@@ -17,6 +17,8 @@
+ 
+ package pl.project13.maven.git;
+ 
++import com.google.common.base.Optional;
++import org.apache.maven.artifact.Artifact;
+ import org.apache.maven.project.MavenProject;
+ import org.eclipse.jgit.lib.Constants;
+ import org.jetbrains.annotations.NotNull;
+@@ -41,6 +43,7 @@ public class GitDirLocator {
+ 
+   @Nullable
+   public File lookupGitDirectory(@NotNull File manuallyConfiguredDir) {
++
+     if (manuallyConfiguredDir.exists()) {
+ 
+       // If manuallyConfiguredDir is a directory then we can use it as the git path.
+@@ -74,25 +77,60 @@ public class GitDirLocator {
+    */
+   @Nullable
+   private File findProjectGitDirectory() {
+-    if (this.mavenProject == null) {
+-      return null;
++    MavenProject currentProject = this.mavenProject;
++
++    while (currentProject != null) {
++      File dir = getProjectGitDir(currentProject);
++
++      if (isExistingDirectory(dir)) {
++        return dir;
++      }
++      // If the path exists but is not a directory it might be a git submodule "gitdir" link.
++      File gitDirLinkPath = processGitDirFile(dir);
++
++      // If the linkPath was found from the file and it exists then use it.
++      if (isExistingDirectory(gitDirLinkPath)) {
++        return gitDirLinkPath;
++      }
++
++      /**
++       * project.getParent always returns NULL for me, but if getParentArtifact returns
++       * not null then there is actually a parent - seems like a bug in maven to me.
++       */
++      if (currentProject.getParent() == null && currentProject.getParentArtifact() != null) {
++        Optional<MavenProject> maybeFoundParentProject = getReactorParentProject(currentProject);
++
++        if (maybeFoundParentProject.isPresent())
++        currentProject = maybeFoundParentProject.get();
++
++      } else {
++        // Get the parent, or NULL if no parent AND no parentArtifact.
++        currentProject = currentProject.getParent();
++      }
+     }
+ 
+-    File basedir = mavenProject.getBasedir();
+-    while (basedir != null) {
+-      File gitdir = new File(basedir, Constants.DOT_GIT);
+-      if (gitdir != null && gitdir.exists()) {
+-        if (gitdir.isDirectory()) {
+-          return gitdir;
+-        } else if (gitdir.isFile()) {
+-          return processGitDirFile(gitdir);
+-        } else {
+-          return null;
++    return null;
++  }
++
++  /**
++   * Find a project in the reactor by its artifact, I'm new to maven coding
++   * so there may be a better way to do this, it would not be necessary
++   * if project.getParent() actually worked.
++   *
++   * @return MavenProject parent project or NULL if no parent available
++   */
++  private Optional<MavenProject> getReactorParentProject(@NotNull MavenProject project) {
++    Artifact parentArtifact = project.getParentArtifact();
++
++    if (parentArtifact != null) {
++      for (MavenProject reactorProject : this.reactorProjects) {
++        if (reactorProject.getArtifactId().equals(parentArtifact.getArtifactId())) {
++          return Optional.of(reactorProject);
+         }
+       }
+-      basedir = basedir.getParentFile();
+     }
+-    return null;
++
++    return Optional.absent();
+   }
+ 
+   /**
+@@ -140,6 +178,12 @@ public class GitDirLocator {
+     }
+   }
+ 
++  @NotNull
++  private static File getProjectGitDir(@NotNull MavenProject mavenProject) {
++    // FIXME Shouldn't this look at the dotGitDirectory property (if set) for the given project?
++    return new File(mavenProject.getBasedir(), Constants.DOT_GIT);
++  }
++
+   private static boolean isExistingDirectory(@Nullable File fileLocation) {
+     return fileLocation != null && fileLocation.exists() && fileLocation.isDirectory();
+   }

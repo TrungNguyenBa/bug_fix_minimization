@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index 8995d03a..16539fb4 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -388,6 +388,7 @@ public abstract class MyPet implements IMyPet, NBTStorage {
+         if (this.uuid == null) {
+             this.uuid = UUID.randomUUID();
+         }
++
+         return this.uuid;
+     }
+ 

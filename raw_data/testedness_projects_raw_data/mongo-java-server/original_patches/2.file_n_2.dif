@@ -1,0 +1,24 @@
+diff --git a/core/src/main/java/de/bwaldvogel/mongo/backend/AbstractMongoCollection.java b/core/src/main/java/de/bwaldvogel/mongo/backend/AbstractMongoCollection.java
+index f839381..6ff1366 100644
+--- a/core/src/main/java/de/bwaldvogel/mongo/backend/AbstractMongoCollection.java
++++ b/core/src/main/java/de/bwaldvogel/mongo/backend/AbstractMongoCollection.java
+@@ -837,7 +837,7 @@ public abstract class AbstractMongoCollection<KEY> implements MongoCollection<KE
+         for (BSONObject document : queryDocuments(selector, null, 0, 0)) {
+             Integer matchPos = matcher.matchPosition(document, selector);
+             BSONObject oldDocument = updateDocument(document, updateQuery, matchPos);
+-            if (!Utils.nullAwareEquals(oldDocument, document)) {
++            if (!equals(oldDocument, document)) {
+                 nModified++;
+             }
+             nMatched++;
+@@ -862,6 +862,10 @@ public abstract class AbstractMongoCollection<KEY> implements MongoCollection<KE
+         return result;
+     }
+ 
++    private static boolean equals(Object a, Object b) {
++        return (a == b) || (a != null && a.equals(b));
++    }
++
+     private BSONObject updateDocument(BSONObject document, BSONObject updateQuery, Integer matchPos)
+             throws MongoServerException {
+         synchronized (document) {

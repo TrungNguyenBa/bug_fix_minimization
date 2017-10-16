@@ -1,0 +1,4 @@
+44eb5ce : more testing, for longer strings
+:100644 100644 3a9f36f... b16c507... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufUtil.java
+:100644 100644 e376512... a7fa099... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteArrayTest.java
+:100644 100644 34a2b3b... 3928d43... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java

@@ -1,0 +1,16 @@
+diff --git a/release-notes/VERSION b/release-notes/VERSION
+index 60db4ed..c5f6d47 100644
+--- a/release-notes/VERSION
++++ b/release-notes/VERSION
+@@ -4,11 +4,6 @@ Project: jackson-datatype-jsr353
+ === Releases ===
+ ------------------------------------------------------------------------
+ 
+-2.4.5 (not released yet)
+-
+-#5: Support conversion of `BinaryNode`, as base64-encoded text
+- (suggested by Gabor B, aborg0@github)
+-
+ 2.4.4 (24-Nov-2014)
+ 2.4.3 (04-Oct-2014)
+ 2.4.2 (15-Aug-2014)

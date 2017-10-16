@@ -1,0 +1,32 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index 127ac5f..720a97c 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -21,6 +21,7 @@ package ru.tehkode.permissions.bukkit;
+ import org.bukkit.ChatColor;
+ import org.bukkit.command.Command;
+ import org.bukkit.command.CommandSender;
++import org.bukkit.configuration.file.FileConfiguration;
+ import org.bukkit.entity.Player;
+ import org.bukkit.event.EventHandler;
+ import org.bukkit.event.Listener;
+@@ -131,10 +132,6 @@ public class PermissionsEx extends JavaPlugin {
+ 		try {
+ 			this.config = new PermissionsExConfig(this.getConfig());
+ 			this.commandsManager = new CommandsManager(this);
+-
+-			if (!getServer().getOnlineMode()) {
+-				getLogger().log(Level.WARNING, "This server is in offline mode. Unless this server is configured to integrate with a supported proxy (see http://dft.ba/-8ous), UUIDs *may not be stable*!");
+-			}
+ 			//this.permissionsManager = new PermissionManager(this.config);
+ 		/*} catch (PermissionBackendException e) {
+ 			logBackendExc(e);
+@@ -304,7 +301,7 @@ public class PermissionsEx extends JavaPlugin {
+ 				getPermissionsManager().getUser(event.getPlayer()).setOption("last-logout-time", Long.toString(System.currentTimeMillis() / 1000L));
+ 			}
+ 
+-			getPermissionsManager().resetUser(event.getPlayer().getUniqueId());
++			getPermissionsManager().resetUser(event.getPlayer().getName());
+ 			} catch (Throwable t) {
+ 				ErrorReport.handleError("While logout cleanup event", t);
+ 			}

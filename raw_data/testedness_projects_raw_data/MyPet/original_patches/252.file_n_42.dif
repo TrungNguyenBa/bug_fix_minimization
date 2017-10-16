@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Sprint.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Sprint.java
+index b42de5ef..33743fb5 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Sprint.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Sprint.java
+@@ -58,7 +58,7 @@ public class Sprint extends SprintInfo implements ISkillInstance
+             active = true;
+             if (!quiet)
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddSprint", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()));
++                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddSprint", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName));
+ 
+             }
+         }

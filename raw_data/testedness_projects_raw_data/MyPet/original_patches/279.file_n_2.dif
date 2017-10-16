@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIDuelTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIDuelTarget.java
+index 935a518a..263e6209 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIDuelTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIDuelTarget.java
+@@ -58,7 +58,7 @@ public class MyPetAIDuelTarget extends MyPetAIGoal
+         }
+         if (behaviorSkill != null && behaviorSkill.isActive())
+         {
+-            if (behaviorSkill.getBehavior() == BehaviorState.Duel && myPet.getCraftPet().canMove())
++            if (behaviorSkill.getBehavior() == BehaviorState.Farm && myPet.getCraftPet().canMove())
+             {
+                 if (petEntity.getGoalTarget() == null || !petEntity.getGoalTarget().isAlive())
+                 {

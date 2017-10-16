@@ -1,0 +1,2 @@
+c5e2db42 : check the item id for NMS itemstacks too fixes #195
+:100644 100644 82feab6d... 03de086d... M	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java

@@ -1,0 +1,4 @@
+f8ccf1d9 : lowered the despawn distance to 20 (from 75) lowered the teleport distance to 16 (from 17) removed the location check on server reload fixes #218
+:100644 100644 4e36ced8... ef7f3ef7... M	src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+:100644 100644 467cb2a5... 896ddff5... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 82525303... a708d26a... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java

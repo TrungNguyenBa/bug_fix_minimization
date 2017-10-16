@@ -1,0 +1,10 @@
+diff --git a/.travis.yml b/.travis.yml
+index 9900096..65fde78 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -8,4 +8,4 @@ jdk:
+ 
+ sudo: false
+ 
+-install: mvn install -Dgpg.skip=true -DskipTests
++install: mvn install -Dgpg.skip=true

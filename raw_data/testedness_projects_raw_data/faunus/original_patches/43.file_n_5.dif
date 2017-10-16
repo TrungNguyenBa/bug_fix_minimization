@@ -1,0 +1,13 @@
+diff --git a/src/examples/manybody.cpp b/src/examples/manybody.cpp
+index b3d3bf8a..334618d1 100644
+--- a/src/examples/manybody.cpp
++++ b/src/examples/manybody.cpp
+@@ -114,7 +114,7 @@ int main(int argc, char** argv) {
+             for (auto &i : pol)
+               cm_vec.push_back(i.cm);
+             debye.sample(cm_vec,spc.geo.getVolume());
+-            //debye2.sampleg2g(spc.p,spc.groupList());
++            debye2.sampleg2g(spc.p,spc.groupList());
+ 
+             if (mpi.isMaster())
+               if (cmfile) {

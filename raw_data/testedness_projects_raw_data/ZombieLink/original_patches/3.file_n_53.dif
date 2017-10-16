@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/PlainSerializer.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/PlainSerializer.java
+index 802f9d9..fe9af93 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/PlainSerializer.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/PlainSerializer.java
+@@ -20,7 +20,7 @@ package com.lonepulse.zombielink.request;
+  * #L%
+  */
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>An {@link AbstractSerializer} which simply invokes {@code String#valueOf(...)} on a model.</p>

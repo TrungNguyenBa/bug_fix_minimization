@@ -1,0 +1,13 @@
+cad0012 : Still removing the dep on commons-io
+:000000 100644 0000000... 50a8b5c... A	src/main/java/org/zeroturnaround/zip/ZTFileUtil.java
+:100644 100644 03df11f... e02ca9f... M	src/main/java/org/zeroturnaround/zip/Zips.java
+:100644 100644 c6a3227... 48cd4f2... M	src/main/java/org/zeroturnaround/zip/commons/FileUtils.java
+:100644 100644 4cffb1b... 52e8d2a... M	src/main/java/org/zeroturnaround/zip/commons/FilenameUtils.java
+:100644 100644 fc35d1e... b6ce1b3... M	src/main/java/org/zeroturnaround/zip/commons/IOUtils.java
+:100644 100644 39ff977... 6ccf973... M	src/test/java/example/PackEntryExample.java
+:100644 100644 9521700... cbca3c8... M	src/test/java/example/PackExample.java
+:100644 100644 b3beaba... b5dff06... M	src/test/java/example/UnpackEntryExample.java
+:100644 100644 a0bc2f6... 32ed58a... M	src/test/java/example/UnpackExample.java
+:100644 100644 f7044f2... f289fa3... M	src/test/java/org/zeroturnaround/zip/ZTFileUtilTest.java
+:100644 100644 119d601... 454459e... M	src/test/java/org/zeroturnaround/zip/ZipUtilInPlaceTest.java
+:100644 100644 270625e... 4c4039c... M	src/test/java/org/zeroturnaround/zip/ZipUtilTest.java

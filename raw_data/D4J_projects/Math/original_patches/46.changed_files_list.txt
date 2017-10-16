@@ -1,0 +1,3 @@
+e6f27ebcb : MATH-657 Reverting to previous behaviour, as requested by P. Steitz.
+:100644 100644 137765c85... dd0b00a5b... M	src/main/java/org/apache/commons/math/complex/Complex.java
+:100644 100644 a002b0bc2... 71bdd1e1f... M	src/test/java/org/apache/commons/math/complex/ComplexTest.java

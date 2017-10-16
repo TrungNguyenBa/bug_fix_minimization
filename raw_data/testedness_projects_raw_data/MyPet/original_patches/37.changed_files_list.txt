@@ -1,0 +1,6 @@
+5520876b : disable falldamage for flying/hovering pets fixes #404
+:100644 100644 b0839443... 7529f2a7... M	src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+:100644 100644 250acd55... b610322a... M	src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+:100644 100644 0e5e9ea8... 29aaf82f... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+:100644 100644 5ca525e1... 941ad5ea... M	src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
+:100644 100644 afef8f77... e97a4a08... M	src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java

@@ -1,0 +1,4 @@
+4f37653 : resolved #68, fixes % exploding logging statements (failing build)
+:100644 100644 406a1e6... 8bd4cd6... M	src/main/java/pl/project13/maven/git/log/MavenLoggerBridge.java
+:100644 100644 47b0253... b88c816... M	src/main/java/pl/project13/maven/git/log/StdOutLoggerBridge.java
+:000000 100644 0000000... ab50425... A	src/test/java/pl/project13/maven/git/log/StdOutLoggerBridgeTest.java

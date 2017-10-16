@@ -1,0 +1,3 @@
+496525b0 : [LANG-586] part 2: refactor ToStringStyle and ToStringBuilderTest to verify that we are unsetting the registry when no longer needed
+:100644 100644 95b580bb... 26214ed4... M	src/main/java/org/apache/commons/lang3/builder/ToStringStyle.java
+:100644 100644 228704a0... f2085b2c... M	src/test/java/org/apache/commons/lang3/builder/ToStringBuilderTest.java

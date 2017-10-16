@@ -1,0 +1,3 @@
+0619c1a : Warning patrol
+:100644 100644 de0de0a... a23213b... M	src/main/java/com/stripe/model/ApplicationFee.java
+:100644 100644 7392c5c... 42a3855... M	src/test/java/com/stripe/StripeTest.java

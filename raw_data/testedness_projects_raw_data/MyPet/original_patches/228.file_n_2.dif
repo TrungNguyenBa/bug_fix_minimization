@@ -1,0 +1,25 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+index 5b7e0047..4d168a68 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+@@ -35,6 +35,7 @@ import org.bukkit.entity.AnimalTamer;
+ import org.bukkit.entity.Player;
+ import org.spout.nbt.*;
+ 
++import java.io.IOException;
+ import java.util.*;
+ 
+ public class MyPetPlayer implements IScheduler, NBTStorage
+@@ -226,10 +227,9 @@ public class MyPetPlayer implements IScheduler, NBTStorage
+                         DebugLogger.info(playerName + " is a donator! Thanks " + playerName + " =)");
+                     }
+                 }
+-                catch (Exception e)
++                catch (IOException e)
+                 {
+-                    DebugLogger.info("Can not connect to donation server.");
+-                    MyPetConfiguration.DONATOR_EFFECT = false;
++                    e.printStackTrace();
+                 }
+             }
+         }, 60L);

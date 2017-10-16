@@ -1,0 +1,14 @@
+diff --git a/release-notes/VERSION b/release-notes/VERSION
+index 228d3a1..af00e87 100644
+--- a/release-notes/VERSION
++++ b/release-notes/VERSION
+@@ -3,9 +3,6 @@ Version: 2.3.0 (xx-xxx-2013)
+ 
+ New minor version
+ 
+-#18: Add `JodaMapper`, sub-class of basic `ObjectMapper` that auto-registers
+-  Joda module
+-
+ ------------------------------------------------------------------------
+ === History: ===
+ ------------------------------------------------------------------------

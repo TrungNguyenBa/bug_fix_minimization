@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/WorldCommands.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/WorldCommands.java
+index ceceb16..f61d771 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/WorldCommands.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/WorldCommands.java
+@@ -97,7 +97,7 @@ public class WorldCommands extends PermissionsCommand {
+ 			return;
+ 		}
+ 
+-		List<String> parents = new ArrayList<>();
++		List<String> parents = new ArrayList<String>();
+ 		String parentWorlds = args.get("parentWorlds");
+ 		if (parentWorlds.contains(",")) {
+ 			for (String world : parentWorlds.split(",")) {

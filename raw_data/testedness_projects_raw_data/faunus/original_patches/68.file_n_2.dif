@@ -1,0 +1,14 @@
+diff --git a/src/playground/vacha/cigar-npt.cpp b/src/playground/vacha/cigar-npt.cpp
+index a0679bb7..29f19790 100644
+--- a/src/playground/vacha/cigar-npt.cpp
++++ b/src/playground/vacha/cigar-npt.cpp
+@@ -27,8 +27,7 @@ int main() {
+   Analysis::RadialDistribution<> rdf(0.2);
+ 
+   // Add cigars
+-  Group cigars;
+-  cigars.addParticles(spc, mcp);
++  GroupAtomic cigars(spc, mcp);
+   cigars.name="cigars";
+   for (auto i : cigars) {
+     spc.p[i].halfl = 2.5;

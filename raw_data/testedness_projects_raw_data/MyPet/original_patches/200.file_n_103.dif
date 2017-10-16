@@ -1,0 +1,24 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/info/PickupInfo.java b/src/main/java/de/Keyle/MyPet/skill/skills/info/PickupInfo.java
+index cd5cf30e..4148dd97 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/info/PickupInfo.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/info/PickupInfo.java
+@@ -22,17 +22,17 @@ package de.Keyle.MyPet.skill.skills.info;
+ 
+ import de.Keyle.MyPet.gui.skilltreecreator.skills.Pickup;
+ import de.Keyle.MyPet.gui.skilltreecreator.skills.SkillPropertiesPanel;
++import de.Keyle.MyPet.skill.MyPetSkillTreeSkill;
+ import de.Keyle.MyPet.skill.SkillName;
+ import de.Keyle.MyPet.skill.SkillProperties;
+ import de.Keyle.MyPet.skill.SkillProperties.NBTdatatypes;
+-import de.Keyle.MyPet.skill.SkillTreeSkill;
+ 
+ @SkillName("Pickup")
+ @SkillProperties(
+         parameterNames = {"range", "addset_range"},
+         parameterTypes = {NBTdatatypes.Double, NBTdatatypes.String},
+         parameterDefaultValues = {"1.0", "add"})
+-public class PickupInfo extends SkillTreeSkill implements ISkillInfo
++public class PickupInfo extends MyPetSkillTreeSkill implements ISkillInfo
+ {
+     private SkillPropertiesPanel panel = null;
+ 

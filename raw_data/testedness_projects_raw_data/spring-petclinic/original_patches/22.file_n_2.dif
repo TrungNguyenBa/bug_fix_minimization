@@ -1,0 +1,17 @@
+diff --git a/pom.xml b/pom.xml
+index b38c87c..0e06f8d 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -111,12 +111,6 @@
+ 			<groupId>org.springframework.data</groupId>
+ 			<artifactId>spring-data-jpa</artifactId>
+ 			<version>${spring-data-jpa.version}</version>
+-			<exclusions>
+-			    <exclusion>
+-			      <groupId>org.springframework</groupId>
+-			      <artifactId>*</artifactId>
+-			    </exclusion>
+-			</exclusions>
+ 		</dependency>
+ 
+ 		<dependency>

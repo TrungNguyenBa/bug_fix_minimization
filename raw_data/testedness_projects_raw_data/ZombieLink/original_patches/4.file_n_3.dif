@@ -1,0 +1,27 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/request/FormParamProcessor.java b/src/main/java/com/lonepulse/zombielink/request/FormParamProcessor.java
+index 59a53f0..1fb2427 100644
+--- a/src/main/java/com/lonepulse/zombielink/request/FormParamProcessor.java
++++ b/src/main/java/com/lonepulse/zombielink/request/FormParamProcessor.java
+@@ -131,21 +131,11 @@ class FormParamProcessor extends AbstractRequestProcessor {
+ 					nameValuePairs.add(new BasicNameValuePair(name, String.valueOf(value)));
+ 				}
+ 				
+-				//add batch name and value pairs (along with any static params)
++				//add batch name and value pairs
+ 				List<Entry<FormParams, Object>> queryParamMaps = Metadata.onParams(FormParams.class, context); //batch N&V pairs
+ 				
+ 				for (Entry<FormParams, Object> entry : queryParamMaps) {
+ 					
+-					Param[] constantParams = entry.getKey().value();
+-					
+-					if(constantParams != null && constantParams.length > 0) {
+-					
+-						for (Param param : constantParams) {
+-							
+-							nameValuePairs.add(new BasicNameValuePair(param.name(), param.value()));
+-						}
+-					}
+-					
+ 					Object map = entry.getValue();
+ 					
+ 					if(!(map instanceof Map)) {

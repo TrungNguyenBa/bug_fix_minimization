@@ -1,0 +1,2 @@
+cdbc4d4 : Add a missing intern() for enum values
+:100644 100644 8bdb731... fc87b74... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java

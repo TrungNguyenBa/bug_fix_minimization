@@ -1,0 +1,2 @@
+67de1f27 : MPI info() function
+:100644 100644 bedaaddd... 570296d1... M	include/faunus/mpi.h

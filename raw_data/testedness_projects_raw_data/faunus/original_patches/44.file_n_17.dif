@@ -1,0 +1,16 @@
+diff --git a/src/io.cpp b/src/io.cpp
+index 34914f71..5ff8c8cf 100644
+--- a/src/io.cpp
++++ b/src/io.cpp
+@@ -17,7 +17,10 @@ namespace Faunus {
+     o >> name >> x >> y >> z;
+     particle p;
+     p=atom[name]; 
+-    return 10*p; //nm->angstrom
++    p.x()=x*10; // nm->angstrom
++    p.y()=y*10;
++    p.z()=z*10;
++    return p;
+   }
+ 
+   bool FormatGRO::load(string file) {

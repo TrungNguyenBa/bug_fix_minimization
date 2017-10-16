@@ -1,0 +1,22 @@
+diff --git a/src/geometry.cpp b/src/geometry.cpp
+index 9a912d22..90b067b2 100644
+--- a/src/geometry.cpp
++++ b/src/geometry.cpp
+@@ -179,7 +179,7 @@ namespace Faunus {
+     string Cuboid::_info(char w) {
+       std::ostringstream o;
+       o << pad(SUB,w, "Sidelengths")
+-        << len.transpose() << " ("+textio::angstrom+")" << endl
++        << len.x() << " x " << len.y() << " x " << len.z() << " ("+textio::angstrom+")" << endl
+         << pad(SUB,w, "Scale directions") << (scaledir==XY ? "XY" : "XYZ") << endl;
+       return o.str();
+     }
+@@ -201,7 +201,7 @@ namespace Faunus {
+         std::ofstream fout( file.c_str(), std::ios_base::app);
+         if (fout) {
+           fout.precision(10);
+-          fout << len.transpose() << endl;
++          fout << len.x() << " " << len.y() << " " << len.z() << endl;
+           return true;
+         }
+       }

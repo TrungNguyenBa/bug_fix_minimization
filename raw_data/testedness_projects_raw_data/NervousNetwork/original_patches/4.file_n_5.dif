@@ -1,0 +1,17 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/api/NetworkManager.java b/src/main/java/org/tiernolan/nervous/network/api/NetworkManager.java
+deleted file mode 100644
+index a3e5d67..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/api/NetworkManager.java
++++ /dev/null
+@@ -1,11 +0,0 @@
+-package org.tiernolan.nervous.network.api;
+-
+-import java.util.logging.Logger;
+-
+-import org.tiernolan.nervous.network.api.protocol.ProtocolComponent;
+-
+-public interface NetworkManager extends ProtocolComponent {
+-
+-	public Logger getLogger();
+-	
+-}

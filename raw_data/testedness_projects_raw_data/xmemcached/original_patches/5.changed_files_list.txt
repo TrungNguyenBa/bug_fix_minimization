@@ -1,0 +1,2 @@
+780753d : Fixed tomcat classloader could not find class,thanks to http://zj0121.iteye.com/blog/1815590
+:100644 100644 79160a0... 852ac2e... M	src/main/java/net/rubyeye/xmemcached/transcoders/BaseSerializingTranscoder.java

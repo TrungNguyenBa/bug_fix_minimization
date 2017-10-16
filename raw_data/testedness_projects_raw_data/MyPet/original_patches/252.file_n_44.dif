@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Wither.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Wither.java
+index 1f2aa363..72082c0c 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Wither.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Wither.java
+@@ -87,7 +87,7 @@ public class Wither extends WitherInfo implements ISkillInstance, ISkillActive
+             }
+             if (!quiet && valuesEdit)
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.WitherChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%chance%", "" + chance).replace("%duration%", "" + duration));
++                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.WitherChance", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%chance%", "" + chance).replace("%duration%", "" + duration));
+             }
+         }
+     }

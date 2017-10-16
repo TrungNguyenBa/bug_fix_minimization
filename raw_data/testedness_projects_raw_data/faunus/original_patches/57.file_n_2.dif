@@ -1,0 +1,13 @@
+diff --git a/include/faunus/io.h b/include/faunus/io.h
+index ca86fdec..b8bc99b5 100644
+--- a/include/faunus/io.h
++++ b/include/faunus/io.h
+@@ -334,7 +334,7 @@ namespace Faunus {
+             o << buf;
+             for (size_t i=0; i< p.size(); i++)
+                 o << p2s(p[i], i);
+-          return IO::writeFile(file, o.str(), std::ios_base::app);
++            return IO::writeFile(file, o.str());
+         }
+         
+     public:

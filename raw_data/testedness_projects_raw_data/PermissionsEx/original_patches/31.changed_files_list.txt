@@ -1,0 +1,2 @@
+8050554 : Bump configurate dep to 1.0
+:100644 100644 0032849... d7b4340... M	pom.xml

@@ -1,0 +1,43 @@
+diff --git a/src/main/java/com/stripe/model/Charge.java b/src/main/java/com/stripe/model/Charge.java
+index bd9ba0b..c3c50b6 100644
+--- a/src/main/java/com/stripe/model/Charge.java
++++ b/src/main/java/com/stripe/model/Charge.java
+@@ -1,7 +1,6 @@
+ package com.stripe.model;
+ 
+ import java.util.Map;
+-import java.util.List;
+ 
+ import com.stripe.exception.APIConnectionException;
+ import com.stripe.exception.APIException;
+@@ -25,7 +24,6 @@ public class Charge extends APIResource {
+ 	Integer amountRefunded;
+ 	String customer;
+ 	String invoice;
+-	List<Refund> refunds;
+ 	Card card;
+ 	Dispute dispute;
+ 	String balanceTransaction;
+@@ -158,22 +156,6 @@ public class Charge extends APIResource {
+ 		this.dispute = dispute;
+ 	}
+ 
+-	public List<Refund> getRefunds() {
+-		return refunds;
+-	}
+-
+-	public void setRefunds(List<Refund> refunds) {
+-		this.refunds = refunds;
+-	}
+-
+-	public String getBalanceTransaction() {
+-		return balanceTransaction;
+-	}
+-
+-	public void setBalanceTransaction(String balanceTransaction) {
+-		this.balanceTransaction = balanceTransaction;
+-	}
+-
+ 	public static Charge create(Map<String, Object> params)
+ 			throws AuthenticationException, InvalidRequestException,
+ 			APIConnectionException, CardException, APIException {

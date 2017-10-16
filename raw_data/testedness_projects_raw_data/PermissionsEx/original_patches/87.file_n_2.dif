@@ -1,0 +1,14 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index f079fe5..96e1a7d 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -660,9 +660,6 @@ public class PermissionManager {
+ 	 */
+ 	public void setWorldInheritance(String world, List<String> parentWorlds) {
+ 		backend.setWorldInheritance(world, parentWorlds);
+-		for (PermissionUser user : getActiveUsers()) { // Clear user cache
+-			user.clearCache();
+-		}
+ 		this.callEvent(PermissionSystemEvent.Action.WORLDINHERITANCE_CHANGED);
+ 	}
+ 

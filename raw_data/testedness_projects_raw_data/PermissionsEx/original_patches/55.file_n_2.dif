@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
+index af89912..b6df82b 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java
+@@ -24,7 +24,6 @@ import org.bukkit.permissions.PermissibleBase;
+ import org.bukkit.permissions.Permission;
+ import org.bukkit.permissions.PermissionAttachment;
+ import org.bukkit.permissions.PermissionAttachmentInfo;
+-import org.bukkit.permissions.PermissionDefault;
+ import ru.tehkode.permissions.PermissionCheckResult;
+ import ru.tehkode.permissions.PermissionMatcher;
+ import ru.tehkode.permissions.PermissionUser;
+@@ -139,7 +138,7 @@ public class PermissiblePEX extends PermissibleBase {
+ 					}
+ 					return ret;
+ 				} else {
+-					return Permission.DEFAULT_PERMISSION.getValue(isOp());
++					return false;
+ 				}
+ 		}
+ 	}

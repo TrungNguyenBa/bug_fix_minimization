@@ -1,0 +1,3 @@
+38a5b28 : Improving/fixing comments
+:100644 100644 4ae1965... 579de52... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcOwnerRepositoryImpl.java
+:100644 100644 f2ed258... 39ba53b... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPet.java

@@ -1,0 +1,4 @@
+ec4a34c2 : Parameter types should be declared, rather than inferred. This means that if the programmer re-assignes the argument to a different type, they will get a type warning. Fixes issue 433.
+:100644 100644 210bb66e... aa7e2458... M	src/com/google/javascript/jscomp/TypedScopeCreator.java
+:100644 100644 87c3fdcf... d2e90dcc... M	test/com/google/javascript/jscomp/LooseTypeCheckTest.java
+:100644 100644 1a887db6... 50007116... M	test/com/google/javascript/jscomp/TypeCheckTest.java

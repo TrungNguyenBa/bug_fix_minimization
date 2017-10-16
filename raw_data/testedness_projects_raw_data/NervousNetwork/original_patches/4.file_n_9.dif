@@ -1,0 +1,24 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/api/protocol/Handler.java b/src/main/java/org/tiernolan/nervous/network/api/protocol/Handler.java
+deleted file mode 100644
+index b3639e7..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/api/protocol/Handler.java
++++ /dev/null
+@@ -1,18 +0,0 @@
+-package org.tiernolan.nervous.network.api.protocol;
+-
+-import org.tiernolan.nervous.network.api.connection.Connection;
+-
+-
+-public interface Handler<T extends Packet> extends ProtocolComponent {
+-
+-	/**
+-	 * Handles a packet.
+-	 * 
+-	 * Packets for a given connection are handled serially.
+-	 * 
+-	 * @param connection the connection
+-	 * @param packet the packet
+-	 */
+-	public void handle(Connection connection, T packet);
+-
+-}

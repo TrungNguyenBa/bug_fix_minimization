@@ -1,0 +1,2 @@
+bda31e9 : rename variable counter to projectCounter and adding public method for accessing generateGitPropertiesFilename
+:100644 100644 8207ec7... 05afb32... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java

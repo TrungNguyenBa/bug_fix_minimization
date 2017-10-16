@@ -1,0 +1,20 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/inject/MockEndpoint.java b/src/test/java/com/lonepulse/zombielink/inject/MockEndpoint.java
+index aae4299..5e9458f 100644
+--- a/src/test/java/com/lonepulse/zombielink/inject/MockEndpoint.java
++++ b/src/test/java/com/lonepulse/zombielink/inject/MockEndpoint.java
+@@ -22,6 +22,8 @@ package com.lonepulse.zombielink.inject;
+ 
+ 
+ import com.lonepulse.zombielink.annotation.Endpoint;
++import com.lonepulse.zombielink.annotation.Parser;
++import com.lonepulse.zombielink.annotation.Parser.ParserType;
+ import com.lonepulse.zombielink.annotation.Stateful;
+ 
+ /**
+@@ -36,5 +38,6 @@ import com.lonepulse.zombielink.annotation.Stateful;
+  * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
+ @Stateful
++@Parser(ParserType.STRING)
+ @Endpoint(host = "0.0.0.0", port = "8080")
+ public interface MockEndpoint {}

@@ -1,0 +1,28 @@
+diff --git a/src/main/java/com/allogy/coffeecan/jackson/ISOPeriodDeserializer.java b/src/main/java/com/allogy/coffeecan/jackson/ISOPeriodDeserializer.java
+index 207b169..f3185be 100644
+--- a/src/main/java/com/allogy/coffeecan/jackson/ISOPeriodDeserializer.java
++++ b/src/main/java/com/allogy/coffeecan/jackson/ISOPeriodDeserializer.java
+@@ -20,7 +20,6 @@ import com.fasterxml.jackson.core.JsonParser;
+ import com.fasterxml.jackson.core.JsonProcessingException;
+ import com.fasterxml.jackson.databind.DeserializationContext;
+ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+ import org.joda.time.Period;
+ 
+ import java.io.IOException;
+@@ -35,14 +34,6 @@ public class ISOPeriodDeserializer extends StdDeserializer<Period>
+     @Override
+     public Period deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException
+     {
+-        String textValue = jsonParser.getText();
+-        try
+-        {
+-            return new Period(textValue);
+-        }
+-        catch (Throwable throwable)
+-        {
+-            throw new InvalidFormatException(throwable.getMessage(), textValue, String.class);
+-        }
++        return new Period(jsonParser.getText());
+     }
+ }

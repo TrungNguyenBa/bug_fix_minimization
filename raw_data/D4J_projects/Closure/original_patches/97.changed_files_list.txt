@@ -1,0 +1,3 @@
+ee749e28 : Propertly fold ">>> 0" on negative values. Fixes issue 200
+:100644 100644 f3d95836... c998d1ef... M	src/com/google/javascript/jscomp/PeepholeFoldConstants.java
+:100644 100644 57e68f93... 14c507a2... M	test/com/google/javascript/jscomp/PeepholeFoldConstantsTest.java

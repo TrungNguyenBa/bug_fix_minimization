@@ -1,0 +1,47 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java b/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+index d8173c31..fca27b99 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+@@ -47,7 +47,6 @@ public class LevelUpListener implements Listener {
+     public void onLevelUp(MyPetLevelUpEvent event) {
+         MyPet myPet = event.getPet();
+         int lvl = event.getLevel();
+-        int lastLvl = event.getLastLevel();
+ 
+         if (!event.isQuiet()) {
+             int maxlevel = myPet.getSkillTree() != null ? myPet.getSkillTree().getMaxLevel() : 0;
+@@ -58,25 +57,17 @@ public class LevelUpListener implements Listener {
+             }
+         }
+         SkillTree skillTree = myPet.getSkillTree();
+-        if (skillTree != null) {
+-            if (skillTree.getLastLevelWithSkills() < lvl) {
+-                lvl = skillTree.getLastLevelWithSkills();
++        if (skillTree != null && skillTree.hasLevel(lvl)) {
++            SkillTreeLevel level = skillTree.getLevel(lvl);
++            if (!event.isQuiet()) {
++                if (level.hasLevelupMessage()) {
++                    myPet.sendMessageToOwner(Colorizer.setColors(level.getLevelupMessage()));
++                }
+             }
+-            for (int i = lastLvl + 1; i <= lvl; i++) {
+-
+-                if (skillTree.hasLevel(lvl)) {
+-                    SkillTreeLevel level = skillTree.getLevel(lvl);
+-                    if (!event.isQuiet()) {
+-                        if (level.hasLevelupMessage()) {
+-                            myPet.sendMessageToOwner(Colorizer.setColors(level.getLevelupMessage()));
+-                        }
+-                    }
+ 
+-                    List<ISkillInfo> skillList = level.getSkills();
+-                    for (ISkillInfo skill : skillList) {
+-                        myPet.getSkills().getSkill(skill.getName()).upgrade(skill, event.isQuiet());
+-                    }
+-                }
++            List<ISkillInfo> skillList = level.getSkills();
++            for (ISkillInfo skill : skillList) {
++                myPet.getSkills().getSkill(skill.getName()).upgrade(skill, event.isQuiet());
+             }
+         }
+ 

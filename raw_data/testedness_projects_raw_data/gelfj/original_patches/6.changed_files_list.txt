@@ -1,0 +1,4 @@
+e9087b1 : - Fixed #77, #78 - Readme and changelod update
+:100644 100644 a1dc6d1... f1faaae... M	CHANGELOG.md
+:100644 100644 d76b788... 9fa47b1... M	README.md
+:100644 100644 9b99652... fc4b0a2... M	build.gradle

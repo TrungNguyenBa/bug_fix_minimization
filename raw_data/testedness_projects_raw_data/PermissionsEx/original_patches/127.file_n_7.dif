@@ -1,0 +1,18 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
+index 5bb9f8c..3706890 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
+@@ -157,9 +157,10 @@ public class UtilityCommands extends PermissionsCommand {
+ 		}
+ 
+ 		try {
+-			PermissionManager mgr = PermissionsEx.getPermissionManager();
+-			PermissionBackend backend = mgr.createBackend(args.get("backend"));
+-			mgr.getBackend().loadFrom(backend);
++			PermissionBackend backend = PermissionBackend.getBackend(args.get("backend"), PermissionsEx.getPermissionManager(), plugin.getConfig(), null);
++			backend.reload();
++			backend.validate();
++			PermissionsEx.getPermissionManager().getBackend().loadFrom(backend);
+ 
+ 
+ 			sender.sendMessage(ChatColor.WHITE + "[PermissionsEx] Data from \"" + args.get("backend") + "\" loaded into currently active backend");

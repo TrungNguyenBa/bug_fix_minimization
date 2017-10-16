@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
+index d6d11c77..9c255597 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
+@@ -119,7 +119,7 @@ public class CommandInfo implements CommandExecutor, TabCompleter
+                 }
+                 if (myPet.getRangedDamage() > 0 && CommandInfo.canSee(PetInfoDisplay.RangedDamage.adminOnly, myPetPlayer, myPet))
+                 {
+-                    int damage = myPet.getRangedDamage();
++                    int damage = myPet.getDamage();
+                     player.sendMessage(MyPetBukkitUtil.setColors("   %N_RangedDamage%: %dmg%").replace("%petname%", myPet.getPetName()).replace("%dmg%", "" + damage).replace("%N_RangedDamage%", MyPetLocales.getString("Name.RangedDamage", player)));
+                     infoShown = true;
+                 }

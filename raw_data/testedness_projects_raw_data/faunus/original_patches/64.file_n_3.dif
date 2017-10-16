@@ -1,0 +1,22 @@
+diff --git a/include/faunus/geometry.h b/include/faunus/geometry.h
+index b38c1412..4e1d5155 100644
+--- a/include/faunus/geometry.h
++++ b/include/faunus/geometry.h
+@@ -355,11 +355,12 @@ namespace Faunus {
+         geo.boundary(x);
+       }
+ 
+-    /**
+-     * @brief Find an empty space for a particle vector in a space of other particles
+-     * @author Mikael Lund
+-     * @date Asljunga 2011
+-     * @todo Implement random rotation in addition to current translation scheme.
++    /*!
++     * \brief Find an empty space for a particle vector in a space of other particles
++     * \author Mikael Lund
++     * \date Asljunga 2011
++     * \todo Implement random rotation in addition to current translation scheme.
++     *
+      */
+     class FindSpace {
+       private:

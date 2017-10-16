@@ -1,0 +1,2 @@
+e0be3a3 : added temporary fix for json-simple
+:100644 100644 3f2e357... 2ffe282... M	pom.xml

@@ -1,0 +1,5 @@
+57eb4cbb : Fix ZoneInfoCompiler and DateTimeZoneBuilder multi-threading
+:100644 100644 dba6a25e... e5563f61... M	RELEASE-NOTES.txt
+:100644 100644 31c07c66... 214c9439... M	pom.xml
+:100644 100644 6efe0716... 64da5ea5... M	src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
+:100644 100644 eec41d57... fc6cc865... M	src/test/java/org/joda/time/tz/TestCompiler.java

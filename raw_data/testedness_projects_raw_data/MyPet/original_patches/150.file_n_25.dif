@@ -1,0 +1,11 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/info/ISkillInfo.java b/src/main/java/de/Keyle/MyPet/skill/skills/info/ISkillInfo.java
+index e74d503e..bd8eba8f 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/info/ISkillInfo.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/info/ISkillInfo.java
+@@ -39,4 +39,4 @@ public interface ISkillInfo {
+     public ISkillInfo cloneSkill();
+ 
+     public String getName();
+-}
+\ No newline at end of file
++}

@@ -1,0 +1,6 @@
+031e168 : Fixes to array handling; now handles complex objects ok. Also add unit tests that fail for more exotic cases...
+:100644 100644 3d5b8ca... 739a1b5... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 355090e... c2142e4... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
+:000000 100644 0000000... cc0042e... A	src/test/java/com/fasterxml/jackson/dataformat/protobuf/LimitingInputStream.java
+:100644 100644 0cc58c9... 1f6e58b... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:100644 100644 9a2f0f6... 02b8f27... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadComplexPojoTest.java

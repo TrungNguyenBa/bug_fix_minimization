@@ -1,0 +1,47 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java b/src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+index 4e533cc..5b70713 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+@@ -27,7 +27,6 @@ import java.util.logging.Logger;
+ public abstract class PermissionBackend {
+ 	private final PermissionManager manager;
+ 	private final ConfigurationSection backendConfig;
+-	private boolean persistent;
+ 
+ 	protected PermissionBackend(PermissionManager manager, ConfigurationSection backendConfig) throws PermissionBackendException {
+ 		this.manager = manager;
+@@ -112,26 +111,19 @@ public abstract class PermissionBackend {
+ 	 * @param backend The backend to load data from
+ 	 */
+ 	public void loadFrom(PermissionBackend backend) {
+-		setPersistent(false);
+-		try {
+-			for (String group : backend.getGroupNames()) {
+-				BackendDataTransfer.transferGroup(backend.getGroupData(group), getGroupData(group));
+-			}
++		for (String group : backend.getGroupNames()) {
++			BackendDataTransfer.transferGroup(backend.getGroupData(group), getGroupData(group));
++		}
+ 
+-			for (String user : backend.getUserIdentifiers()) {
+-				BackendDataTransfer.transferUser(backend.getUserData(user), getUserData(user));
+-			}
++		for (String user : backend.getUserIdentifiers()) {
++			BackendDataTransfer.transferUser(backend.getUserData(user), getUserData(user));
++		}
+ 
+-			for (Map.Entry<String, List<String>> ent : backend.getAllWorldInheritance().entrySet()) {
+-				setWorldInheritance(ent.getKey(), ent.getValue()); // Could merge data but too complicated & too lazy
+-			}
+-		} finally {
+-			setPersistent(true);
++		for (Map.Entry<String, List<String>> ent : backend.getAllWorldInheritance().entrySet()) {
++			setWorldInheritance(ent.getKey(), ent.getValue()); // Could merge data but too complicated & too lazy
+ 		}
+ 	}
+ 
+-	public void setPersistent(boolean persistent) {}
+-
+ 	// -- Backend lookup/creation
+ 
+ 	public final static String DEFAULT_BACKEND = "file";

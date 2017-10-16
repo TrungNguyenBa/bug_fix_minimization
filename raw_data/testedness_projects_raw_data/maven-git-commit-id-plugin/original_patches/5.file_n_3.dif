@@ -1,0 +1,12 @@
+diff --git a/src/main/java/pl/project13/maven/git/JGitProvider.java b/src/main/java/pl/project13/maven/git/JGitProvider.java
+index 811f327..253393e 100644
+--- a/src/main/java/pl/project13/maven/git/JGitProvider.java
++++ b/src/main/java/pl/project13/maven/git/JGitProvider.java
+@@ -234,6 +234,7 @@ public class JGitProvider extends GitDataProvider {
+       DescribeResult describeResult = DescribeCommand
+         .on(repository)
+         .withLoggerBridge(super.loggerBridge)
++        .withJGitCommon(jGitCommon)
+         .setVerbose(super.verbose)
+         .apply(super.gitDescribe)
+         .call();

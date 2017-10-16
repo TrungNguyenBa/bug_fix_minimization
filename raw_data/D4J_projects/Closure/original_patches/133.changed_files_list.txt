@@ -1,0 +1,3 @@
+4fbbc47c : Fixes issue 919
+:100644 100644 bf460570... ce945739... M	src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+:100644 100644 59c1ef7a... 279aff25... M	test/com/google/javascript/jscomp/parsing/JsDocInfoParserTest.java

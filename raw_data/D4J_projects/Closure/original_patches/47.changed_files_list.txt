@@ -1,0 +1,9 @@
+aedce359 : Fix how source line numbers are stored in the source files. Fixes issue 575
+:100644 100644 cc7243bb... f84320a0... M	src/com/google/debugging/sourcemap/FilePosition.java
+:100644 100644 3b07ae45... 5ee9108c... M	src/com/google/debugging/sourcemap/SourceMapConsumerV3.java
+:100644 100644 04ff6233... 71924081... M	src/com/google/javascript/jscomp/SourceMap.java
+:100644 100644 b3b23994... 1d3c3a33... M	test/com/google/debugging/sourcemap/SourceMapGeneratorV1Test.java
+:100644 100644 370467ce... 0932b54e... M	test/com/google/debugging/sourcemap/SourceMapGeneratorV2Test.java
+:100644 100644 1d008f6f... 6e2f45e2... M	test/com/google/debugging/sourcemap/SourceMapGeneratorV3Test.java
+:100644 100644 802fef59... 694f93f4... M	test/com/google/debugging/sourcemap/SourceMapTestCase.java
+:100644 100644 10fcfd12... 84f4492d... M	test/com/google/javascript/jscomp/SourceMapTest.java

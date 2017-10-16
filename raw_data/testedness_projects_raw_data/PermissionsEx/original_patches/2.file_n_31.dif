@@ -1,0 +1,13 @@
+diff --git a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXPermissionDescription.java b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXPermissionDescription.java
+index 93f0ab2..32db37f 100644
+--- a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXPermissionDescription.java
++++ b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXPermissionDescription.java
+@@ -28,7 +28,7 @@ import java.util.Map;
+ /**
+  * Implementation of a permission description
+  */
+-class PEXPermissionDescription implements PermissionDescription {
++public class PEXPermissionDescription implements PermissionDescription {
+     private final PermissionsExPlugin plugin;
+     private final String permId;
+     private final Text description;

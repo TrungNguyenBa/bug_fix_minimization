@@ -1,0 +1,38 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/configuration/JSON_Configuration.java b/src/main/java/de/Keyle/MyPet/util/configuration/JSON_Configuration.java
+index 32d3595d..753cb93b 100644
+--- a/src/main/java/de/Keyle/MyPet/util/configuration/JSON_Configuration.java
++++ b/src/main/java/de/Keyle/MyPet/util/configuration/JSON_Configuration.java
+@@ -56,10 +56,9 @@ public class JSON_Configuration
+     public boolean load()
+     {
+         config = new JSONObject();
+-        BufferedReader reader = null;
+         try
+         {
+-            reader = new BufferedReader(new FileReader(jsonFile));
++            BufferedReader reader = new BufferedReader(new FileReader(jsonFile));
+             JSONParser parser = new JSONParser();
+             Object obj = parser.parse(reader);
+             config = (JSONObject) obj;
+@@ -75,19 +74,8 @@ public class JSON_Configuration
+             e.printStackTrace();
+             return false;
+         }
+-        finally
+-        {
+-            if (reader != null)
+-            {
+-                try
+-                {
+-                    reader.close();
+-                }
+-                catch (IOException ignored)
+-                {
+-                }
+-            }
+-        }
++        jsonFile.setWritable(true);
++        jsonFile.setReadable(true);
+         return true;
+     }
+ 

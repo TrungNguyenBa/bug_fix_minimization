@@ -1,0 +1,20 @@
+diff --git a/README.md b/README.md
+index 92027fb..48eeed7 100644
+--- a/README.md
++++ b/README.md
+@@ -82,7 +82,7 @@ public class SimpleTest {
+ 	* shares the basic idea of implementing the wire protocol with Netty
+ 	* focus on in-memory backend for unit testing
+ 
+-* [fongo][fongo]
++* [jongo][jongo]
+ 	* focus on unit testing
+ 	* no wire protocol implementation
+ 	* intercepts the java mongo driver
+@@ -92,5 +92,5 @@ public class SimpleTest {
+ [wire-protocol]: http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol
+ [netty]: http://netty.io/
+ [jmockmongo]: https://github.com/thiloplanz/jmockmongo/
+-[fongo]: https://github.com/foursquare/fongo/
++[jongo]: https://github.com/foursquare/fongo/
+ [nosql-unit]: https://github.com/lordofthejars/nosql-unit/

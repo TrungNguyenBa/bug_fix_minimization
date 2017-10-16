@@ -1,0 +1,22 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/commons/FileUtils.java b/src/main/java/org/zeroturnaround/zip/commons/FileUtils.java
+index c3816e0..b377d4b 100644
+--- a/src/main/java/org/zeroturnaround/zip/commons/FileUtils.java
++++ b/src/main/java/org/zeroturnaround/zip/commons/FileUtils.java
+@@ -102,8 +102,6 @@ public class FileUtils {
+    * 
+    * @param file input file (must exist).
+    * @param out output stream.
+-   *
+-   * @throws java.io.IOException if file is not found or copying fails
+    */
+   public static void copy(File file, OutputStream out) throws IOException {
+     FileInputStream in = new FileInputStream(file);
+@@ -122,8 +120,6 @@ public class FileUtils {
+    * 
+    * @param in source stream.
+    * @param file output file to be created or overwritten.
+-   *
+-   * @throws java.io.IOException if file is not found or copying fails
+    */
+   public static void copy(InputStream in, File file) throws IOException {
+     OutputStream out = new BufferedOutputStream(new FileOutputStream(file));

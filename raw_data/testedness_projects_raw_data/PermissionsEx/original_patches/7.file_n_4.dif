@@ -1,0 +1,54 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryDataStore.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryDataStore.java
+index 926c692..0d04766 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryDataStore.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryDataStore.java
+@@ -27,6 +27,8 @@ import com.google.common.util.concurrent.ListenableFuture;
+ import ninja.leaping.configurate.objectmapping.Setting;
+ import ninja.leaping.permissionsex.backend.AbstractDataStore;
+ import ninja.leaping.permissionsex.backend.DataStore;
++import ninja.leaping.permissionsex.data.CacheListenerHolder;
++import ninja.leaping.permissionsex.data.Caching;
+ import ninja.leaping.permissionsex.data.ContextInheritance;
+ import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ import ninja.leaping.permissionsex.rank.FixedRankLadder;
+@@ -49,6 +51,7 @@ public class MemoryDataStore extends AbstractDataStore {
+     private final ConcurrentMap<Map.Entry<String, String>, ImmutableOptionSubjectData> data = new ConcurrentHashMap<>();
+     private final ConcurrentMap<String, RankLadder> rankLadders = new ConcurrentHashMap<>();
+     private volatile ContextInheritance inheritance = new MemoryContextInheritance();
++    private final CacheListenerHolder<Boolean, ContextInheritance> contextInheritanceCache = new CacheListenerHolder<>();
+ 
+     public MemoryDataStore() {
+         super(FACTORY);
+@@ -56,10 +59,12 @@ public class MemoryDataStore extends AbstractDataStore {
+ 
+     @Override
+     protected void initializeInternal() {
++
+     }
+ 
+     @Override
+     public void close() {
++
+     }
+ 
+     @Override
+@@ -150,13 +155,17 @@ public class MemoryDataStore extends AbstractDataStore {
+     }
+ 
+     @Override
+-    public ContextInheritance getContextInheritanceInternal() {
++    public ContextInheritance getContextInheritance(Caching<ContextInheritance> inheritance) {
++        if (inheritance != null) {
++            this.contextInheritanceCache.addListener(true, inheritance);
++        }
+         return this.inheritance;
+     }
+ 
+     @Override
+-    public ListenableFuture<ContextInheritance> setContextInheritanceInternal(ContextInheritance inheritance) {
++    public ListenableFuture<ContextInheritance> setContextInheritance(ContextInheritance inheritance) {
+         this.inheritance = inheritance;
++        this.contextInheritanceCache.call(true, inheritance);
+         return Futures.immediateFuture(this.inheritance);
+     }
+ 

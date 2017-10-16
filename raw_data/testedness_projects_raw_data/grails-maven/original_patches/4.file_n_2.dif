@@ -1,0 +1,18 @@
+diff --git a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+index 2daf6f4..8eeea4a 100755
+--- a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
++++ b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+@@ -405,12 +405,7 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+         fgr.setMinMemory(forkMinMemory);
+         try {
+             handleVersionSync();
+-            getLog().info("Starting " + (fork ? "forked" : "unforked") + " grails project.");
+-            if(fork) {
+-                fgr.fork();
+-            } else {
+-                fgr.nofork();
+-            }
++            fgr.fork();
+         } catch (Exception e) {
+             throw new MojoExecutionException(e.getMessage(), e);
+         }

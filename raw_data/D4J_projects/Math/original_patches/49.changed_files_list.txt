@@ -1,0 +1,3 @@
+09e35881f : MATH-645 Iterate on the original vector, not on the copy that is modified.
+:100644 100644 5db488466... 13ebfd24d... M	src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+:100644 100644 e23bfa01c... 8ab628c68... M	src/test/java/org/apache/commons/math/linear/SparseRealVectorTest.java

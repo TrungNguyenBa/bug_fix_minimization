@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+index 311b6e47..3b992ff4 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+@@ -54,7 +54,6 @@ public class MyPetList {
+             activeMyPet.setWorldGroup(inactiveMyPet.getWorldGroup());
+             activeMyPet.setExtendedInfo(inactiveMyPet.getInfo());
+             activeMyPet.lastUsed = inactiveMyPet.lastUsed;
+-            activeMyPet.wantsToRespawn = inactiveMyPet.wantsToRespawn;
+ 
+             if (activeMyPet.respawnTime > 0) {
+                 activeMyPet.status = PetState.Dead;
+@@ -151,7 +150,6 @@ public class MyPetList {
+         inactiveMyPet.setSkillTree(activeMyPet.getSkillTree());
+         inactiveMyPet.setWorldGroup(activeMyPet.getWorldGroup());
+         inactiveMyPet.lastUsed = activeMyPet.lastUsed;
+-        inactiveMyPet.wantsToRespawn = activeMyPet.wantsToRespawn;
+ 
+         return inactiveMyPet;
+     }

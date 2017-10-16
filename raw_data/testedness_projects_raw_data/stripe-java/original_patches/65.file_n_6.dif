@@ -1,0 +1,27 @@
+diff --git a/src/main/java/com/stripe/model/Transfer.java b/src/main/java/com/stripe/model/Transfer.java
+index f309cd7..544d1cf 100644
+--- a/src/main/java/com/stripe/model/Transfer.java
++++ b/src/main/java/com/stripe/model/Transfer.java
+@@ -23,7 +23,6 @@ public class Transfer extends APIResource {
+ 	List<String> otherTransfers;
+ 	String recipient;
+ 	BankAccount account;
+-	String balanceTransaction;
+ 
+ 	public String getId() {
+ 		return id;
+@@ -121,14 +120,6 @@ public class Transfer extends APIResource {
+ 		this.otherTransfers = otherTransfers;
+ 	}
+ 
+-	public String getBalanceTransaction() {
+-		return balanceTransaction;
+-	}
+-
+-	public void setBalanceTransaction(String balanceTransaction) {
+-		this.balanceTransaction = balanceTransaction;
+-	}
+-
+ 	public static Transfer create(Map<String, Object> params)
+ 			throws AuthenticationException, InvalidRequestException,
+ 			APIConnectionException, CardException, APIException {

@@ -1,0 +1,52 @@
+diff --git a/src/main/java/org/graylog2/log/GelfAppender.java b/src/main/java/org/graylog2/log/GelfAppender.java
+index e948b0a..b7c3d31 100644
+--- a/src/main/java/org/graylog2/log/GelfAppender.java
++++ b/src/main/java/org/graylog2/log/GelfAppender.java
+@@ -39,7 +39,6 @@ public class GelfAppender extends AppenderSkeleton implements GelfMessageProvide
+         super();
+     }
+ 
+-    @SuppressWarnings("unchecked")
+     public void setAdditionalFields(String additionalFields) {
+         fields = (Map<String, String>) JSONValue.parse(additionalFields.replaceAll("'", "\""));
+     }
+@@ -95,7 +94,7 @@ public class GelfAppender extends AppenderSkeleton implements GelfMessageProvide
+     }
+ 
+     public void setOriginHost(String originHost) {
+-        GelfAppender.originHost = originHost;
++        this.originHost = originHost;
+     }
+ 
+     public boolean isAddExtendedInformation() {
+@@ -129,12 +128,12 @@ public class GelfAppender extends AppenderSkeleton implements GelfMessageProvide
+ 			try {
+ 				if (graylogHost.startsWith("tcp:")) {
+ 					String tcpGraylogHost = graylogHost.substring(4);
+-					gelfSender = getGelfTCPSender(tcpGraylogHost, graylogPort);
++					gelfSender = new GelfTCPSender(tcpGraylogHost, graylogPort);
+ 				} else if (graylogHost.startsWith("udp:")) {
+ 					String udpGraylogHost = graylogHost.substring(4);
+-					gelfSender = getGelfUDPSender(udpGraylogHost, graylogPort);
++					gelfSender = new GelfUDPSender(udpGraylogHost, graylogPort);
+ 				} else {
+-					gelfSender = getGelfUDPSender(graylogHost, graylogPort);
++					gelfSender = new GelfUDPSender(graylogHost, graylogPort);
+ 				}
+ 			} catch (UnknownHostException e) {
+ 				errorHandler.error("Unknown Graylog2 hostname:" + getGraylogHost(), e, ErrorCode.WRITE_FAILURE);
+@@ -146,14 +145,6 @@ public class GelfAppender extends AppenderSkeleton implements GelfMessageProvide
+ 		}
+     }
+ 
+-    protected GelfUDPSender getGelfUDPSender(String udpGraylogHost, int graylogPort) throws IOException {
+-        return new GelfUDPSender(udpGraylogHost, graylogPort);
+-    }
+-
+-    protected GelfTCPSender getGelfTCPSender(String tcpGraylogHost, int graylogPort) throws IOException {
+-        return new GelfTCPSender(tcpGraylogHost, graylogPort);
+-    }
+-
+     @Override
+     protected void append(LoggingEvent event) {
+         GelfMessage gelfMessage = GelfMessageFactory.makeMessage(event, this);

@@ -1,0 +1,4 @@
+4f8063e : #18 fixing 2 errors related to ValidatorTests
+:100644 100644 ddeaeac... 1cf8cca... M	pom.xml
+:100644 100644 4dd7401... 4dd7401... R100	src/test/java/org/springframework/samples/petclinic/model/ValidatorTest-config.xml	src/test/java/org/springframework/samples/petclinic/model/ValidatorTests-config.xml
+:100644 100644 c387728... e15a849... R093	src/test/java/org/springframework/samples/petclinic/model/ValidatorTest.java	src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java

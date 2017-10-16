@@ -1,0 +1,2 @@
+0dd6c781 : Fixed compilation warnings of linux gcc48
+:100644 100644 0aaab41e... 4ffe1e5d... M	include/faunus/move.h

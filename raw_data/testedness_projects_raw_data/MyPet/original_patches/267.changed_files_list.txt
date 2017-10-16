@@ -1,0 +1,3 @@
+fb8c5517 : reset pet options before loading them from config
+:100644 100644 0446f20e... 4225ed6d... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 8d9bcf7d... d70be059... M	src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java

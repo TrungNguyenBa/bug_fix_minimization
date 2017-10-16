@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/support/MyHungerGames.java b/src/main/java/de/Keyle/MyPet/util/support/MyHungerGames.java
+index 6549436c..1927f7a3 100644
+--- a/src/main/java/de/Keyle/MyPet/util/support/MyHungerGames.java
++++ b/src/main/java/de/Keyle/MyPet/util/support/MyHungerGames.java
+@@ -68,7 +68,7 @@ public class MyHungerGames implements Listener
+             MyPetPlayer player = MyPetPlayer.getMyPetPlayer(event.getPlayer());
+             if (player.hasMyPet() && player.getMyPet().getStatus() == PetState.Here)
+             {
+-                player.getMyPet().removePet(true);
++                player.getMyPet().removePet();
+                 player.getPlayer().sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.NotAllowedHere", player.getPlayer())));
+             }
+         }

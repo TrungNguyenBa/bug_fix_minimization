@@ -1,0 +1,34 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+index 1460ab12..d1faa28d 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+@@ -31,12 +31,10 @@ import de.Keyle.MyPet.util.locale.Locales;
+ import de.Keyle.MyPet.util.logger.DebugLogger;
+ import de.Keyle.MyPet.util.support.*;
+ import net.minecraft.server.v1_6_R2.EntityHuman;
+-import net.minecraft.server.v1_6_R2.EntityPlayer;
+ import org.bukkit.Bukkit;
+ import org.bukkit.ChatColor;
+ import org.bukkit.OfflinePlayer;
+ import org.bukkit.World;
+-import org.bukkit.craftbukkit.v1_6_R2.entity.CraftPlayer;
+ import org.bukkit.entity.AnimalTamer;
+ import org.bukkit.entity.Player;
+ import org.spout.nbt.*;
+@@ -359,16 +357,6 @@ public class MyPetPlayer implements IScheduler, NBTStorage
+         return Bukkit.getServer().getPlayer(playerName);
+     }
+ 
+-    public EntityPlayer getEntityPlayer()
+-    {
+-        Player p = getPlayer();
+-        if (p != null)
+-        {
+-            return ((CraftPlayer) p).getHandle();
+-        }
+-        return null;
+-    }
+-
+     public static MyPetPlayer getMyPetPlayer(String name)
+     {
+         for (MyPetPlayer myPetPlayer : playerList)

@@ -1,0 +1,30 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/core/processor/executor/BasicRequestExecutor.java b/src/main/java/com/lonepulse/zombielink/core/processor/executor/BasicRequestExecutor.java
+index 79804ef..121ef97 100644
+--- a/src/main/java/com/lonepulse/zombielink/core/processor/executor/BasicRequestExecutor.java
++++ b/src/main/java/com/lonepulse/zombielink/core/processor/executor/BasicRequestExecutor.java
+@@ -25,6 +25,7 @@ import java.io.IOException;
+ 
+ import org.apache.http.HttpRequest;
+ import org.apache.http.HttpResponse;
++import org.apache.http.HttpStatus;
+ import org.apache.http.client.methods.HttpRequestBase;
+ import org.apache.http.protocol.HttpContext;
+ 
+@@ -65,15 +66,13 @@ class BasicRequestExecutor implements RequestExecutor {
+ 				httpResponse = MultiThreadedHttpClient.INSTANCE.executeRequest(httpRequestBase);
+ 			}
+ 			
+-			int statusCode = httpResponse.getStatusLine().getStatusCode();
+-			
+-			if(!(statusCode > 199 && statusCode < 300)) {
++			if(!(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK)) {
+ 				
+ 				StringBuilder builder = new StringBuilder()
+ 				.append("HTTP request for ")
+ 				.append(httpRequestBase.getURI())
+ 				.append(" failed with status code ")
+-				.append(statusCode)
++				.append(httpResponse.getStatusLine().getStatusCode())
+ 				.append(", ")
+ 				.append(httpResponse.getStatusLine().getReasonPhrase());
+ 				

@@ -1,0 +1,16 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index d1697761..9f635df3 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -593,10 +593,7 @@ public class MyPetEntityListener implements Listener
+                         }
+                         DebugLogger.info("New Pet leashed:");
+                         DebugLogger.info("   " + myPet.toString());
+-                        if (MyPetConfiguration.STORE_PETS_ON_PET_LEASH)
+-                        {
+-                            DebugLogger.info(MyPetPlugin.getPlugin().savePets(false) + " pet(s) saved.");
+-                        }
++                        DebugLogger.info(MyPetPlugin.getPlugin().savePets(false) + " pet(s) saved.");
+                         damager.sendMessage(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_AddLeash")));
+                     }
+                 }

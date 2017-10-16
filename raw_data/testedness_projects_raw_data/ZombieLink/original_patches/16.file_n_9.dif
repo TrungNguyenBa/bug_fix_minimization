@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/core/request/UriProcessor.java b/src/main/java/com/lonepulse/zombielink/core/request/UriProcessor.java
+index ef81b3e..9c5b017 100644
+--- a/src/main/java/com/lonepulse/zombielink/core/request/UriProcessor.java
++++ b/src/main/java/com/lonepulse/zombielink/core/request/UriProcessor.java
+@@ -71,7 +71,7 @@ class UriProcessor extends AbstractRequestProcessor {
+ 	 * @since 1.2.4
+ 	 */
+ 	@Override
+-	protected void process(HttpRequestBase httpRequestBase, ProxyInvocationConfiguration config) 
++	public void process(HttpRequestBase httpRequestBase, ProxyInvocationConfiguration config) 
+ 	throws RequestProcessorException {
+ 
+ 		try {

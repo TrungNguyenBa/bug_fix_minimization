@@ -1,0 +1,33 @@
+diff --git a/src/main/java/com/stripe/model/Account.java b/src/main/java/com/stripe/model/Account.java
+index f32c504..932dcce 100644
+--- a/src/main/java/com/stripe/model/Account.java
++++ b/src/main/java/com/stripe/model/Account.java
+@@ -18,9 +18,6 @@ public class Account extends APIResource {
+ 	String email;
+ 	String statementDescriptor;
+ 	String defaultCurrency;
+-	String country;
+-	String timezone;
+-	String displayName;
+ 
+ 	public String getId() {
+ 		return id;
+@@ -54,18 +51,6 @@ public class Account extends APIResource {
+ 		return defaultCurrency;
+ 	}
+ 
+-	public String getCountry() {
+-		return country;
+-	}
+-
+-	public String getTimezone() {
+-		return timezone;
+-	}
+-
+-	public String getDisplayName() {
+-		return displayName;
+-	}
+-
+ 	public static Account retrieve() throws AuthenticationException,
+ 			InvalidRequestException, APIConnectionException, CardException,
+ 			APIException {

@@ -1,0 +1,13 @@
+diff --git a/include/faunus/scatter.h b/include/faunus/scatter.h
+index 344b2e94..2b7bb9af 100644
+--- a/include/faunus/scatter.h
++++ b/include/faunus/scatter.h
+@@ -53,7 +53,7 @@ namespace Faunus {
+     template<typename T=float>
+       class FormFactorTable {
+         private:
+-          typedef Table2D<T,T> Ttable;
++          typedef Analysis::Table2D<T,T> Ttable;
+           std::map<int, Ttable > F;
+ 
+           /**

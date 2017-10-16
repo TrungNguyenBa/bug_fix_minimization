@@ -1,0 +1,20 @@
+diff --git a/src/main/java/pl/project13/maven/git/JGitProvider.java b/src/main/java/pl/project13/maven/git/JGitProvider.java
+index 6db53af..891b0d6 100644
+--- a/src/main/java/pl/project13/maven/git/JGitProvider.java
++++ b/src/main/java/pl/project13/maven/git/JGitProvider.java
+@@ -142,13 +142,13 @@ public class JGitProvider extends GitDataProvider {
+   @Override
+   protected String getCommitMessageFull() {
+     String fullMessage = headCommit.getFullMessage();
+-    return fullMessage.trim();
++    return fullMessage;
+   }
+ 
+   @Override
+   protected String getCommitMessageShort() {
+     String shortMessage = headCommit.getShortMessage();
+-    return shortMessage.trim();
++    return shortMessage;
+   }
+ 
+   @Override

@@ -1,0 +1,2 @@
+19ef3be : adding Java Config to links on github homepage
+:100644 100644 8f9cb72... 8b956b5... M	readme.md

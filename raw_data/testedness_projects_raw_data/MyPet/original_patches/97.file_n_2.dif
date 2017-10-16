@@ -1,0 +1,54 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/experience/JavaScript.java b/src/main/java/de/Keyle/MyPet/skill/experience/JavaScript.java
+index 21c9b33c..8a6d5343 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/experience/JavaScript.java
++++ b/src/main/java/de/Keyle/MyPet/skill/experience/JavaScript.java
+@@ -39,9 +39,7 @@ public class JavaScript extends Experience {
+     private static IExperience expInv = null;
+     private static boolean isUsable = false;
+ 
+-    private double lastExpLevel = Double.NaN;
+-    private double lastExpRequiredExp = Double.NaN;
+-    private double lastExpCurrentExp = Double.NaN;
++    private double lastExp = Double.NaN;
+     private int lastLevel = 1;
+     private double lastCurrentExp = 0.0;
+     private double lastRequiredExp = 0.0;
+@@ -75,10 +73,10 @@ public class JavaScript extends Experience {
+         if (exp == 0) {
+             return 1;
+         }
+-        if (lastExpLevel == exp) {
++        if (lastExp == exp) {
+             return lastLevel;
+         }
+-        lastExpLevel = exp;
++        lastExp = exp;
+         if (expInv != null) {
+             try {
+                 return lastLevel = expInv.getLevel(exp, scriptInfo);
+@@ -103,10 +101,10 @@ public class JavaScript extends Experience {
+     }
+ 
+     public double getRequiredExp(double exp) {
+-        if (lastExpRequiredExp == exp) {
++        if (lastExp == exp) {
+             return lastRequiredExp;
+         }
+-        lastExpRequiredExp = exp;
++        lastExp = exp;
+         if (expInv != null) {
+             try {
+                 return lastRequiredExp = expInv.getRequiredExp(exp, scriptInfo);
+@@ -131,10 +129,10 @@ public class JavaScript extends Experience {
+     }
+ 
+     public double getCurrentExp(double exp) {
+-        if (lastExpCurrentExp == exp) {
++        if (lastExp == exp) {
+             return lastCurrentExp;
+         }
+-        lastExpCurrentExp = exp;
++        lastExp = exp;
+ 
+         if (expInv != null) {
+             try {

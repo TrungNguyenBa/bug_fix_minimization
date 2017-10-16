@@ -1,0 +1,17 @@
+diff --git a/src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java b/src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java
+index 7c579ea6..09741a06 100644
+--- a/src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java
++++ b/src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java
+@@ -21,9 +21,9 @@
+ package de.Keyle.MyPet.test.skill.skills;
+ 
+ import de.Keyle.MyPet.MyPetPlugin;
+-import de.Keyle.MyPet.skill.skills.SkillName;
+-import de.Keyle.MyPet.skill.skills.Skills;
+-import de.Keyle.MyPet.skill.skilltree.SkillTreeSkill;
++import de.Keyle.MyPet.skill.SkillName;
++import de.Keyle.MyPet.skill.SkillTreeSkill;
++import de.Keyle.MyPet.skill.Skills;
+ import org.junit.Test;
+ 
+ import static org.junit.Assert.assertNotNull;

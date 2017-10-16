@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/allogy/coffeecan/statements/Verb.java b/src/main/java/com/allogy/coffeecan/statements/Verb.java
+index 294e9ce..d1f3aaf 100644
+--- a/src/main/java/com/allogy/coffeecan/statements/Verb.java
++++ b/src/main/java/com/allogy/coffeecan/statements/Verb.java
+@@ -25,7 +25,7 @@ import java.util.Map;
+ public class Verb implements Identifiable
+ {
+     @NotNull
+-    private final String id;
++    private String id;
+ 
+     private Map<String, String> display;
+ 

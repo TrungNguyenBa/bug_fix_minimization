@@ -1,0 +1,2 @@
+2e2981b5 : fixed inheritance checkbox
+:100644 100644 67c03850... 01eb6e37... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java

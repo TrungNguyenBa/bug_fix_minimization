@@ -1,0 +1,8 @@
+69fce320 : xyz trajectory script for structure factor calculation; approximate geometric functions; g2g group cut-off options; approximate cosine potential option in membrane example
+:100644 100644 733956ce... c3b49274... M	include/faunus/auxiliary.h
+:100644 100644 ded0696f... 5c91b675... M	include/faunus/energy.h
+:100644 100644 17070573... 0eaa3986... M	include/faunus/move.h
+:100644 100644 09f2a3e8... 5e1f033c... M	include/faunus/potentials.h
+:000000 100755 00000000... 66b857bc... A	scripts/xyz2debye.sh
+:100644 100644 ee539a7d... b36ce5d3... M	src/examples/manybody.cpp
+:100644 100644 8ea8bf14... 2932237d... M	src/examples/membrane.cpp

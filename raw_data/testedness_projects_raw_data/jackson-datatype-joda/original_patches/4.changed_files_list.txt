@@ -1,0 +1,9 @@
+a24ccc2 : Fix #70
+:100644 100644 08354a5... 4c83e7e... M	release-notes/CREDITS
+:100644 100644 f066dfe... 9798b69... M	release-notes/VERSION
+:100644 100644 23014ef... 878940b... M	src/main/java/com/fasterxml/jackson/datatype/joda/cfg/FormatConfig.java
+:100644 100644 a77ab2b... 32c3c76... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java
+:100644 100644 244df57... b33d9c3... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
+:100644 100644 3a9039e... c858a28... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeSerializer.java
+:100644 100644 94f561e... eea0cb9... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/IntervalSerializer.java
+:100644 100644 f9b16ce... ec4b74a... M	src/test/java/com/fasterxml/jackson/datatype/joda/DateTimeTest.java

@@ -1,0 +1,5 @@
+6b75ae8 : Fix #5
+:100644 100644 dd52fe3... bc1a866... M	pom.xml
+:100644 100644 c5f6d47... 60db4ed... M	release-notes/VERSION
+:100644 100644 bab8e5e... 89340e7... M	src/main/java/com/fasterxml/jackson/datatype/jsr353/JsonValueDeserializer.java
+:100644 100644 017ed80... 847b3a3... M	src/test/java/com/fasterxml/jackson/datatype/jsr353/SimpleDeserializeTest.java

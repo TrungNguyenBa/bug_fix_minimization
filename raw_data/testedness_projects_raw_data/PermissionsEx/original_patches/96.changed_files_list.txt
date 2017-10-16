@@ -1,0 +1,2 @@
+c0f14b6 : Restore old method signatures for deprecated methods
+:100644 100644 db0e262... 9cc8015... M	src/main/java/ru/tehkode/permissions/PermissionUser.java

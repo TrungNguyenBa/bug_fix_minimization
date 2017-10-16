@@ -1,0 +1,4 @@
+35d2d90 : fix queries for binary data. closes #12
+:100644 100644 b6e329e... 2ce87e0... M	src/main/java/de/bwaldvogel/mongo/backend/Utils.java
+:100644 100644 0111097... c362df3... M	src/test/java/de/bwaldvogel/mongo/backend/UtilsTest.java
+:100644 100644 29cef5c... 1322559... M	src/test/java/de/bwaldvogel/mongo/backend/memory/MemoryBackendTest.java

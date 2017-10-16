@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+index 59a6946a..b1a86c16 100644
+--- a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
++++ b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+@@ -504,7 +504,6 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
+         nbtConfiguration.getNBTCompound().getValue().put("Pets", new ListTag<CompoundTag>("Pets", CompoundTag.class, petList));
+         nbtConfiguration.getNBTCompound().getValue().put("Players", savePlayers());
+         nbtConfiguration.save();
+-
+         return petCount;
+     }
+ 

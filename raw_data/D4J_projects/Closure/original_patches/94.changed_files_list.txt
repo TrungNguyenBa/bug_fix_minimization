@@ -1,0 +1,4 @@
+7cc74859 : Generalize define value handling allow ADD and other basic ops, fix BITxxx handling so they don't allow invalid operands.
+:100644 100644 cec8b2df... 8c5d125f... M	src/com/google/javascript/jscomp/NodeUtil.java
+:100644 100644 aa052ecb... 61d4c31d... M	test/com/google/javascript/jscomp/NodeUtilTest.java
+:100644 100644 b4b38169... 6ab1ae71... M	test/com/google/javascript/jscomp/ProcessDefinesTest.java

@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/ContainerBeacon.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/ContainerBeacon.java
+index 7b1e3116..2e6a6139 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/ContainerBeacon.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/ContainerBeacon.java
+@@ -122,6 +122,7 @@ public class ContainerBeacon extends net.minecraft.server.v1_6_R2.ContainerBeaco
+ 
+             slot.a(entityhuman, slotItem);
+         }
++
+         return slotItemClone;
+     }
+ 
+@@ -129,4 +130,4 @@ public class ContainerBeacon extends net.minecraft.server.v1_6_R2.ContainerBeaco
+     public TileEntityBeacon e() {
+         return tileEntityBeacon;
+     }
+-}
+\ No newline at end of file
++}

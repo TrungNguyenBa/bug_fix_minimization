@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index cc9cb53e..0fcbf762 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -187,7 +187,7 @@ public class MyPetEntityListener implements Listener
+                     if (myPet.getOwner().isDonator())
+                     {
+                         infoShown = true;
+-                        damager.sendMessage("   " + myPet.getOwner().getDonationRank().getDisplayText());
++                        damager.sendMessage("   " + myPetPlayer.getDonationRank().getDisplayText());
+                     }
+                     if (!infoShown)
+                     {

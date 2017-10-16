@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java b/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+index db38add2..54eaf75b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+@@ -72,7 +72,6 @@ public class EntityMySlime extends EntityMyPet
+ 
+     public void setPathfinder()
+     {
+-        super.setPathfinder();
+         petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 2 + getSize(), 20));
+     }
+ 

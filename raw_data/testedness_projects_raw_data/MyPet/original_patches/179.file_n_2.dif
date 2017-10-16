@@ -1,0 +1,25 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index 50a03477..a2d40927 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -134,14 +134,19 @@ public abstract class MyPet implements IMyPet, NBTStorage
+             }
+             else
+             {
++                boolean skilltreeAvailable = false;
+                 for (SkillTree skillTree : SkillTreeMobType.getSkillTrees(this.getPetType()))
+                 {
+                     if (Permissions.has(this.petOwner.getPlayer(), "MyPet.custom.skilltree." + skillTree.getPermission()))
+                     {
+-                        sendMessageToOwner(Util.formatText(Locales.getString("Message.Skilltree.SelectionPrompt", getOwner()), getPetName()));
++                        skilltreeAvailable = true;
+                         break;
+                     }
+                 }
++                if (skilltreeAvailable)
++                {
++                    sendMessageToOwner(Util.formatText(Locales.getString("Message.Skilltree.SelectionPrompt", getOwner()), getPetName()));
++                }
+                 return false;
+             }
+         }

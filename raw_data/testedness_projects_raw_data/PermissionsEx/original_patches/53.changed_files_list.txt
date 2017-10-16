@@ -1,0 +1,2 @@
+dc6de36 : Correctly remove unset options from the cache
+:100644 100644 1de4e5b... 37c8940... M	src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java

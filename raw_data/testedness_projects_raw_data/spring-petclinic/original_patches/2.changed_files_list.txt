@@ -1,0 +1,4 @@
+92de655 : Fix #111 For pet's birthday we are now using jodatime LocalDate instead of DateTime
+:100644 100644 09eeb76... 970cdcb... M	src/main/java/org/springframework/samples/petclinic/model/Pet.java
+:100644 100644 ad00a71... 6420df1... M	src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPetRowMapper.java
+:100644 100644 0dd8737... 469c24b... M	src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java

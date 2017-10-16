@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index 7e3a2f34..e0b5c6b0 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -569,7 +569,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster {
+      * Returns the sound that is played when the MyPet get hurt
+      * -> getHurtSound()
+      */
+-    protected String bo() {
++    protected String bn() {
+         try {
+             return getHurtSound();
+         } catch (Exception e) {
+@@ -583,7 +583,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster {
+      * Returns the sound that is played when the MyPet dies
+      * -> getDeathSound()
+      */
+-    protected String bp() {
++    protected String bo() {
+         try {
+             return getDeathSound();
+         } catch (Exception e) {

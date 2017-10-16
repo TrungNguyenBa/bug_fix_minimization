@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+index f1e6c1ec..18b0a129 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+@@ -156,7 +156,7 @@ public class EntityMySkeleton extends EntityMyPet
+ 
+             if (getOwner().equals(entityhuman) && itemStack != null && canUseItem())
+             {
+-                if (itemStack.id == Item.SHEARS.id && getOwner().getPlayer().isSneaking())
++                if (itemStack.id == Item.SHEARS.id)
+                 {
+                     if (!canEquip())
+                     {

@@ -1,0 +1,15 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+index 6c21139..3e453a1 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+@@ -26,8 +26,8 @@ import org.apache.http.HttpResponse;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+ import com.lonepulse.zombielink.annotation.Async;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>Exposes all available {@link RequestExecutor}s and delegates communication.</p>

@@ -1,0 +1,262 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+index 2251873a..517f3449 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+@@ -20,9 +20,6 @@
+ 
+ package de.Keyle.MyPet.entity.types;
+ 
+-import com.google.common.collect.ArrayListMultimap;
+-import com.google.common.collect.BiMap;
+-import com.google.common.collect.HashBiMap;
+ import de.Keyle.MyPet.api.event.MyPetSelectEvent;
+ import de.Keyle.MyPet.api.event.MyPetSelectEvent.NewStatus;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+@@ -34,16 +31,17 @@ import de.Keyle.MyPet.util.logger.DebugLogger;
+ import org.bukkit.entity.Player;
+ import org.spout.nbt.CompoundTag;
+ 
+-import java.util.Collection;
+-import java.util.List;
++import java.util.*;
+ 
+ import static org.bukkit.Bukkit.getServer;
+ 
+ public class MyPetList
+ {
+-    private static final BiMap<MyPetPlayer, MyPet> mActivePlayerPets = HashBiMap.create();
+-    private static final BiMap<MyPet, MyPetPlayer> mActivePetsPlayer = mActivePlayerPets.inverse();
+-    private static final ArrayListMultimap<MyPetPlayer, InactiveMyPet> mInctivePets = ArrayListMultimap.create();
++    private static final Map<MyPetPlayer, MyPet> mActivePets = new HashMap<MyPetPlayer, MyPet>();
++    private static final List<MyPet> lActivePets = new ArrayList<MyPet>();
++
++    private static final Map<MyPetPlayer, List<InactiveMyPet>> mInctivePets = new HashMap<MyPetPlayer, List<InactiveMyPet>>();
++    private static final List<InactiveMyPet> lInactivePets = new ArrayList<InactiveMyPet>();
+ 
+     // Active -------------------------------------------------------------------
+ 
+@@ -93,7 +91,8 @@ public class MyPetList
+ 
+     private static void addMyPet(MyPet myPet)
+     {
+-        mActivePetsPlayer.put(myPet, myPet.getOwner());
++        mActivePets.put(myPet.getOwner(), myPet);
++        lActivePets.add(myPet);
+     }
+ 
+     private static void removeMyPet(MyPet myPet)
+@@ -102,24 +101,36 @@ public class MyPetList
+         {
+             return;
+         }
+-        mActivePetsPlayer.remove(myPet);
++        lActivePets.remove(myPet);
++        if (mActivePets.containsKey(myPet.getOwner()))
++        {
++            mActivePets.remove(myPet.getOwner());
++        }
+     }
+ 
+     public static MyPet getMyPet(Player owner)
+     {
+-        return mActivePlayerPets.get(MyPetPlayer.getMyPetPlayer(owner));
++        if (mActivePets.containsKey(MyPetPlayer.getMyPetPlayer(owner)))
++        {
++            return mActivePets.get(MyPetPlayer.getMyPetPlayer(owner));
++        }
++        return null;
+     }
+ 
+     public static MyPet getMyPet(String owner)
+     {
+-        return mActivePlayerPets.get(MyPetPlayer.getMyPetPlayer(owner));
++        if (mActivePets.containsKey(MyPetPlayer.getMyPetPlayer(owner)))
++        {
++            return mActivePets.get(MyPetPlayer.getMyPetPlayer(owner));
++        }
++        return null;
+     }
+ 
+     public static MyPet[] getAllActiveMyPets()
+     {
+-        MyPet[] allActiveMyPets = new MyPet[mActivePetsPlayer.keySet().size()];
++        MyPet[] allActiveMyPets = new MyPet[lActivePets.size()];
+         int i = 0;
+-        for (MyPet myPet : mActivePetsPlayer.keySet())
++        for (MyPet myPet : lActivePets)
+         {
+             allActiveMyPets[i++] = myPet;
+         }
+@@ -128,19 +139,19 @@ public class MyPetList
+ 
+     public static boolean hasMyPet(Player player)
+     {
+-        return mActivePlayerPets.containsKey(MyPetPlayer.getMyPetPlayer(player));
++        return mActivePets.containsKey(MyPetPlayer.getMyPetPlayer(player));
+     }
+ 
+     public static boolean hasMyPet(String name)
+     {
+-        return mActivePlayerPets.containsKey(MyPetPlayer.getMyPetPlayer(name));
++        return mActivePets.containsKey(MyPetPlayer.getMyPetPlayer(name));
+     }
+ 
+     // Inactive -----------------------------------------------------------------
+ 
+-    public static Collection<InactiveMyPet> getAllInactiveMyPets()
++    public static List<InactiveMyPet> getAllInactiveMyPets()
+     {
+-        return mInctivePets.values();
++        return lInactivePets;
+     }
+ 
+     public static boolean hasInactiveMyPets(Player player)
+@@ -153,6 +164,11 @@ public class MyPetList
+         return mInctivePets.containsKey(myPetPlayer);
+     }
+ 
++    public static boolean hasInactiveMyPets(String name)
++    {
++        return MyPetPlayer.isMyPetPlayer(name) && mInctivePets.containsKey(MyPetPlayer.getMyPetPlayer(name));
++    }
++
+     private static InactiveMyPet getInactiveMyPetFromMyPet(MyPet activeMyPet)
+     {
+         InactiveMyPet inactiveMyPet = new InactiveMyPet(activeMyPet.getOwner());
+@@ -171,26 +187,67 @@ public class MyPetList
+         return inactiveMyPet;
+     }
+ 
+-    public static List<InactiveMyPet> getInactiveMyPets(MyPetPlayer owner)
++    public static List<InactiveMyPet> getInactiveMyPets(Player owner)
+     {
+-        return mInctivePets.get(owner);
++        if (mInctivePets.containsKey(MyPetPlayer.getMyPetPlayer(owner)))
++        {
++            return mInctivePets.get(MyPetPlayer.getMyPetPlayer(owner));
++        }
++        return new ArrayList<InactiveMyPet>();
+     }
+ 
+-    public static List<InactiveMyPet> getInactiveMyPets(Player owner)
++    public static InactiveMyPet[] getInactiveMyPets(String owner)
+     {
+-        return mInctivePets.get(MyPetPlayer.getMyPetPlayer(owner));
++        if (mInctivePets.containsKey(MyPetPlayer.getMyPetPlayer(owner)))
++        {
++            InactiveMyPet[] allInactiveMyPets = new InactiveMyPet[mInctivePets.get(MyPetPlayer.getMyPetPlayer(owner)).size()];
++            int i = 0;
++            for (InactiveMyPet myPet : mInctivePets.get(MyPetPlayer.getMyPetPlayer(owner)))
++            {
++                allInactiveMyPets[i++] = myPet;
++            }
++            return allInactiveMyPets;
++        }
++        return new InactiveMyPet[0];
+     }
+ 
+     public static void removeInactiveMyPet(InactiveMyPet inactiveMyPet)
+     {
+-        mInctivePets.remove(inactiveMyPet.getOwner(), inactiveMyPet);
++        if (inactiveMyPet == null)
++        {
++            return;
++        }
++        lInactivePets.remove(inactiveMyPet);
++        if (mInctivePets.containsKey(inactiveMyPet.getOwner()))
++        {
++            List<InactiveMyPet> myPetList = mInctivePets.get(inactiveMyPet.getOwner());
++            if (myPetList.contains(inactiveMyPet))
++            {
++                myPetList.remove(inactiveMyPet);
++            }
++            if (myPetList.size() == 0)
++            {
++                mInctivePets.remove(inactiveMyPet.getOwner());
++            }
++        }
+     }
+ 
+     public static void addInactiveMyPet(InactiveMyPet inactiveMyPet)
+     {
+-        if (!mInctivePets.containsEntry(inactiveMyPet.getOwner(), inactiveMyPet))
++        lInactivePets.add(inactiveMyPet);
++        if (mInctivePets.containsKey(inactiveMyPet.getOwner()))
++        {
++            List<InactiveMyPet> inactiveMyPetList = mInctivePets.get(inactiveMyPet.getOwner());
++            if (!inactiveMyPetList.contains(inactiveMyPet))
++            {
++                inactiveMyPetList.add(inactiveMyPet);
++            }
++        }
++        else
+         {
+-            mInctivePets.put(inactiveMyPet.getOwner(), inactiveMyPet);
++            List<InactiveMyPet> inactiveMyPetList = new ArrayList<InactiveMyPet>();
++            inactiveMyPetList.add(inactiveMyPet);
++            mInctivePets.put(inactiveMyPet.getOwner(), inactiveMyPetList);
+         }
+     }
+ 
+@@ -227,7 +284,7 @@ public class MyPetList
+ 
+     public static InactiveMyPet setMyPetInactive(MyPetPlayer owner)
+     {
+-        if (mActivePlayerPets.containsKey(owner))
++        if (mActivePets.containsKey(owner))
+         {
+             MyPet activeMyPet = owner.getMyPet();
+ 
+@@ -261,11 +318,11 @@ public class MyPetList
+     {
+         IMyPet[] allMyPets = new IMyPet[countMyPets()];
+         int i = 0;
+-        for (MyPet myPet : mActivePetsPlayer.keySet())
++        for (MyPet myPet : lActivePets)
+         {
+             allMyPets[i++] = myPet;
+         }
+-        for (InactiveMyPet inactiveMyPet : getAllInactiveMyPets())
++        for (InactiveMyPet inactiveMyPet : lInactivePets)
+         {
+             allMyPets[i++] = inactiveMyPet;
+         }
+@@ -274,31 +331,33 @@ public class MyPetList
+ 
+     public static void clearList()
+     {
+-        mActivePlayerPets.clear();
++        mActivePets.clear();
++        lActivePets.clear();
+         mInctivePets.clear();
++        lInactivePets.clear();
+     }
+ 
+     public static int countMyPets()
+     {
+-        return countActiveMyPets() + getAllInactiveMyPets().size();
++        return lActivePets.size() + lInactivePets.size();
+     }
+ 
+     public static int countActiveMyPets()
+     {
+-        return mActivePetsPlayer.size();
++        return lActivePets.size();
+     }
+ 
+     public static int countMyPets(MyPetType myPetType)
+     {
+         int counter = 0;
+-        for (MyPet myPet : mActivePetsPlayer.keySet())
++        for (MyPet myPet : lActivePets)
+         {
+             if (myPet.getPetType() == myPetType)
+             {
+                 counter++;
+             }
+         }
+-        for (InactiveMyPet inactiveMyPet : getAllInactiveMyPets())
++        for (InactiveMyPet inactiveMyPet : lInactivePets)
+         {
+             if (inactiveMyPet.getPetType() == myPetType)
+             {

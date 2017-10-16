@@ -1,0 +1,13 @@
+diff --git a/release-notes/VERSION b/release-notes/VERSION
+index 6136e7d..c53bed3 100644
+--- a/release-notes/VERSION
++++ b/release-notes/VERSION
+@@ -1,8 +1,6 @@
+ Project: jackson-datatype-joda
+ Version: 2.3.1 (xx-Dec-2013)
+ 
+-#23: Package as a bundle (was accidentally not, just bare jar)
+- (suggested by Łukasz D)
+ #26: Implement `equals()` and `hashCode()` for JodaModule
+  (suggested by Henning S)
+ 

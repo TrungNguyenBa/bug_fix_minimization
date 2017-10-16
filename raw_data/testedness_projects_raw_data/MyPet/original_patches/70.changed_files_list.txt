@@ -1,0 +1,3 @@
+b273736c : catch pet creation for players which are offline or have an invalid name
+:100644 100644 1236ec05... 199e1d65... M	pom.xml
+:100644 100644 ec4dbaaf... 475c2f2b... M	src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java

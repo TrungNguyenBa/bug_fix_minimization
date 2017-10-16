@@ -1,0 +1,24 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/SkillProperties.java b/src/main/java/de/Keyle/MyPet/skill/skills/SkillProperties.java
+index 4c41aa8f..94a4fbf3 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/SkillProperties.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/SkillProperties.java
+@@ -26,14 +26,16 @@ import java.lang.annotation.*;
+ @Retention(RetentionPolicy.RUNTIME)
+ @Target(ElementType.TYPE)
+ @Inherited
+-public @interface SkillProperties {
++public @interface SkillProperties
++{
+     String[] parameterNames() default {};
+ 
+     String[] parameterDefaultValues() default {};
+ 
+     NBTdatatypes[] parameterTypes() default {};
+ 
+-    public enum NBTdatatypes {
++    public enum NBTdatatypes
++    {
+         Byte, Short, Int, Long, Float, Double, String, Boolean
+     }
+ }
+\ No newline at end of file

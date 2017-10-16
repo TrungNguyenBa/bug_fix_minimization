@@ -1,0 +1,20 @@
+diff --git a/src/test/java/com/sematext/hbase/wd/RowKeyDistributorTestBase.java b/src/test/java/com/sematext/hbase/wd/RowKeyDistributorTestBase.java
+index e9c2eb4..317561a 100644
+--- a/src/test/java/com/sematext/hbase/wd/RowKeyDistributorTestBase.java
++++ b/src/test/java/com/sematext/hbase/wd/RowKeyDistributorTestBase.java
+@@ -106,15 +106,6 @@ public abstract class RowKeyDistributorTestBase {
+     testSimpleScanInternal(origKeyPrefix, new Scan(), 500, 500, 0, 999);
+   }
+ 
+-  /** Test scan without stop key. */
+-  @Test
+-  public void testSimpleScanWithoutStopKey() throws IOException {
+-    long origKeyPrefix = System.currentTimeMillis();
+-    int seekIntervalMinValue = 100;
+-    byte[] startKey = Bytes.toBytes(origKeyPrefix + seekIntervalMinValue);
+-    testSimpleScanInternal(origKeyPrefix, new Scan(startKey), 500, 500, 100, 999);
+-  }
+-
+   /** Test scan with start and stop key. */
+   @Test
+   public void testMapReduceBounded() throws IOException, InterruptedException, ClassNotFoundException {

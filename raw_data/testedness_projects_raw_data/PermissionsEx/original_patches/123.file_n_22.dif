@@ -1,0 +1,98 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
+index c64c495..b026c1d 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java
+@@ -57,7 +57,7 @@ public abstract class PermissionsCommand implements CommandListener {
+ 			return; // User informing is disabled
+ 		}
+ 
+-		Player player = user.getPlayer();
++		Player player = plugin.getServer().getPlayer(user.getName());
+ 		if (player == null) {
+ 			return;
+ 		}
+@@ -89,7 +89,7 @@ public abstract class PermissionsCommand implements CommandListener {
+ 			return playerName.substring(1);
+ 		}
+ 
+-		List<String> players = new LinkedList<>();
++		List<String> players = new LinkedList<String>();
+ 
+ 		// Collect online Player names
+ 		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+@@ -137,7 +137,7 @@ public abstract class PermissionsCommand implements CommandListener {
+ 			return groupName.substring(1);
+ 		}
+ 
+-		List<String> groups = new LinkedList<>();
++		List<String> groups = new LinkedList<String>();
+ 
+ 		for (String group : PermissionsEx.getPermissionManager().getGroupNames()) {
+ 			if (group.equalsIgnoreCase(groupName)) {
+@@ -168,7 +168,7 @@ public abstract class PermissionsCommand implements CommandListener {
+ 			return null;
+ 		}
+ 
+-		List<String> worlds = new LinkedList<>();
++		List<String> worlds = new LinkedList<String>();
+ 
+ 		for (World world : Bukkit.getServer().getWorlds()) {
+ 			if (world.getName().equalsIgnoreCase(worldName)) {
+@@ -189,9 +189,9 @@ public abstract class PermissionsCommand implements CommandListener {
+ 		return worldName;
+ 	}
+ 
+-	protected String getSafeWorldName(String worldName, PermissionUser user) {
++	protected String getSafeWorldName(String worldName, String userName) {
+ 		if (worldName == null) {
+-			Player player = user.getPlayer();
++			Player player = Bukkit.getServer().getPlayer(userName);
+ 
+ 			if (player != null) {
+ 				worldName = player.getWorld().getName();
+@@ -209,10 +209,10 @@ public abstract class PermissionsCommand implements CommandListener {
+ 
+ 	protected String autoCompletePermission(PermissionEntity entity, String permission, String worldName, String argName) {
+ 		if (permission == null) {
+-			return null;
++			return permission;
+ 		}
+ 
+-		Set<String> permissions = new HashSet<>();
++		Set<String> permissions = new HashSet<String>();
+ 		for (String currentPermission : entity.getPermissions(worldName)) {
+ 			if (currentPermission.equalsIgnoreCase(permission)) {
+ 				return currentPermission;
+@@ -313,7 +313,7 @@ public abstract class PermissionsCommand implements CommandListener {
+ 	}
+ 
+ 	protected List<String> getPermissionsTree(PermissionEntity entity, String world, int level) {
+-		List<String> permissions = new LinkedList<>();
++		List<String> permissions = new LinkedList<String>();
+ 		Map<String, List<String>> allPermissions = entity.getAllPermissions();
+ 
+ 		List<String> worldsPermissions = allPermissions.get(world);
+@@ -335,7 +335,7 @@ public abstract class PermissionsCommand implements CommandListener {
+ 	}
+ 
+ 	protected List<String> sprintPermissions(String world, List<String> permissions) {
+-		List<String> permissionList = new LinkedList<>();
++		List<String> permissionList = new LinkedList<String>();
+ 
+ 		if (permissions == null) {
+ 			return permissionList;
+@@ -359,12 +359,12 @@ public abstract class PermissionsCommand implements CommandListener {
+ 
+ 		try {
+ 			return Integer.parseInt(value);
+-		} catch (NumberFormatException ignore) {
++		} catch (NumberFormatException e) {
+ 		}
+ 
+ 		try {
+ 			return Double.parseDouble(value);
+-		} catch (NumberFormatException ignore) {
++		} catch (NumberFormatException e) {
+ 		}
+ 
+ 		return value;

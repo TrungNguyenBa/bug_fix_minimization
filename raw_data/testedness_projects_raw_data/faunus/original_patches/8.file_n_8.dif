@@ -1,0 +1,83 @@
+diff --git a/include/faunus/group.h b/include/faunus/group.h
+index e2015c3c..1340a58d 100644
+--- a/include/faunus/group.h
++++ b/include/faunus/group.h
+@@ -163,38 +163,36 @@ namespace Faunus {
+           assert( find( sel.back()  ) );
+         }
+ 
+-      /** @brief Scaling for isobaric and isochoric moves */ 
++      /** @brief Volume scaling for NPT ensemble */
+       template<class Tspace>
+-        void scale(Tspace &spc, Point &s, double xyz=1, double xy=1) {
++        void scale(Tspace &s, double newvol) {
+           if (empty()) return;
+ 
+           if (isAtomic()) {
+             cm_trial=cm;
+-            cm_trial.scale(spc.geo,s,xyz,xy);
++            cm_trial.scale(s.geo, newvol);
+             for (auto i : *this)
+-              spc.trial[i].scale(spc.geo,s,xyz,xy);
++              s.trial[i].scale(s.geo, newvol);
+             return;
+           }
+ 
+           if (isMolecular()) {
+-            assert( spc.geo.dist(cm, massCenter(spc))<1e-6);
+-            assert( spc.geo.dist(cm, cm_trial)<1e-7);
++            assert( s.geo.dist(cm, massCenter(s))<1e-6);
++            assert( s.geo.dist(cm, cm_trial)<1e-7);
+ 
+             Point newcm=cm;
+-            newcm.scale(spc.geo,s,xyz,xy);
+-            translate(spc,-cm);                 // move to origo
++            newcm.scale(s.geo, newvol);
++            translate(s,-cm);                 // move to origo
+ 
+-            Point oldlen=spc.geo.len; // store original volume
+-            Point newlen=oldlen;
+-            newlen.scale(spc.geo,s,xyz,xy);
+-            spc.geo.setlen(newlen);         // apply trial volume
++            double oldvol=s.geo.getVolume(); // store original volume
++            s.geo.setVolume(newvol);         // apply trial volume
+ 
+             for (auto i : *this) {
+-              spc.trial[i] += newcm;            // move all particles to new cm
+-              spc.geo.boundary( spc.trial[i] );  // respect boundary conditions
++              s.trial[i] += newcm;            // move all particles to new cm
++              s.geo.boundary( s.trial[i] );  // respect boundary conditions
+             }
+             cm_trial=newcm;
+-            spc.geo.setlen(oldlen);         // restore original volume
++            s.geo.setVolume(oldvol);         // restore original volume
+             return;
+           }
+ 
+@@ -202,14 +200,14 @@ namespace Faunus {
+             for (int i=0; i!=numMolecules(); ++i) {
+               Group sel;
+               getMolecule(i,sel);
+-              sel.setMassCenter(spc);
+-              sel.scale(spc,s,xyz,xy);
++              sel.setMassCenter(s);
++              sel.scale(s,newvol);
+             }
+             return;
+           }
+         }
+ 
+-      /** @brief Side lengths scaling for NVT ensemble 
++      /** @brief Side lengths scaling for NVT ensemble */
+       template<class Tspace>
+         void isoscale(Tspace &s, double xy, double z) {
+           if (empty()) return;
+@@ -251,7 +249,7 @@ namespace Faunus {
+             }
+             return;
+           }
+-        }*/
++        }
+ 
+       /** @brief Undo move operation */
+       template<class Tspace>

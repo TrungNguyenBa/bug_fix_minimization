@@ -1,0 +1,8 @@
+9630f16b : add health bar fixes #446
+:100644 100644 b424be26... 6f90eb39... M	src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+:000000 100644 00000000... 7b4fdda0... A	src/main/java/de/Keyle/MyPet/commands/CommandOptions.java
+:000000 100644 00000000... 90a6ca0b... A	src/main/java/de/Keyle/MyPet/commands/options/CommandOptionHealthbar.java
+:100644 100644 1e01d72a... bd9657a4... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 a41a0007... 400237f2... M	src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
+:100644 100644 75b98906... fb96c272... M	src/main/java/de/Keyle/MyPet/util/player/MyPetPlayer.java
+:100644 100644 8463b2eb... 7dfd3764... M	src/main/resources/plugin.yml

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java
+index ef20b7f5..64f9c353 100644
+--- a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java
++++ b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTTagCompoundHolder.java
+@@ -41,6 +41,7 @@ public class NBTTagCompoundHolder extends NBTHolder {
+         for (NBTHolder holder : this.holderList) {
+             localcb.set(holder.name, holder.getNBT());
+         }
++
+         return localcb;
+     }
+ }
+\ No newline at end of file

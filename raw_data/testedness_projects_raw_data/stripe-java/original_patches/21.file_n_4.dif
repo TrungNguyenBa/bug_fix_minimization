@@ -1,0 +1,29 @@
+diff --git a/src/main/java/com/stripe/model/BankAccount.java b/src/main/java/com/stripe/model/BankAccount.java
+index 2302c2a..c74a1fd 100644
+--- a/src/main/java/com/stripe/model/BankAccount.java
++++ b/src/main/java/com/stripe/model/BankAccount.java
+@@ -1,7 +1,8 @@
+ package com.stripe.model;
+ 
+ 
+-public class BankAccount extends ExternalAccount {
++public class BankAccount extends StripeObject {
++	String id;
+ 	String country;
+ 	String last4;
+ 	String bankName;
+@@ -11,6 +12,14 @@ public class BankAccount extends ExternalAccount {
+ 	String fingerprint;
+ 	Boolean defaultForCurrency;
+ 
++	public String getId() {
++		return id;
++	}
++
++	public void setId(String id) {
++		this.id = id;
++	}
++
+ 	public String getLast4() {
+ 		return last4;
+ 	}

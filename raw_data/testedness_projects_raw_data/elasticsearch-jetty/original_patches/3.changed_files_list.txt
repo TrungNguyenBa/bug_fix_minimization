@@ -1,0 +1,2 @@
+5091f46 : Attempt to fix sonian/elasticsearch-jetty#40
+:100644 100644 6f2c8b0... f4cb629... M	src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java

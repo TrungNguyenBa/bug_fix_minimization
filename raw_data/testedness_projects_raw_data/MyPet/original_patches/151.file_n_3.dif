@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/api/commands/CommandOption.java b/src/main/java/de/Keyle/MyPet/api/commands/CommandOption.java
+index 14fbcebe..ee5bd71c 100644
+--- a/src/main/java/de/Keyle/MyPet/api/commands/CommandOption.java
++++ b/src/main/java/de/Keyle/MyPet/api/commands/CommandOption.java
+@@ -22,6 +22,7 @@ package de.Keyle.MyPet.api.commands;
+ 
+ import org.bukkit.command.CommandSender;
+ 
+-public interface CommandOption {
++public interface CommandOption
++{
+     public boolean onCommandOption(CommandSender sender, String[] parameter);
+ }
+\ No newline at end of file

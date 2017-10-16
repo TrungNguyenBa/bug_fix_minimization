@@ -1,0 +1,9 @@
+7319382 : test fixes
+:100644 100644 f306112... 8207ec7... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+:100644 100644 e06600b... af78910... M	src/main/java/pl/project13/maven/git/NativeGitProvider.java
+:100644 100644 718f7ba... be01769... M	src/main/java/pl/project13/maven/git/log/MavenLoggerBridge.java
+:100644 100644 9d5616f... 45f4ad8... M	src/test/java/pl/project13/maven/git/ContainsKeyCondition.java
+:100644 100644 1801c11... c8239a3... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+:000000 100644 0000000... 3a30b33... A	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java.orig
+:100644 100644 fe199c7... 91a23bb... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java
+:000000 100644 0000000... ba81620... A	src/test/java/pl/project13/maven/git/NaivePerformanceTest.java

@@ -1,0 +1,96 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/experience/Default.java b/src/main/java/de/Keyle/MyPet/skill/experience/Default.java
+index 05642440..65ac2119 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/experience/Default.java
++++ b/src/main/java/de/Keyle/MyPet/skill/experience/Default.java
+@@ -22,7 +22,8 @@ package de.Keyle.MyPet.skill.experience;
+ 
+ import de.Keyle.MyPet.entity.types.MyPet;
+ 
+-public class Default extends Experience {
++public class Default extends Experience
++{
+     private int lastLevel = 1;
+     private double lastExpL = Double.NaN;
+     private double lastExpC = Double.NaN;
+@@ -30,17 +31,21 @@ public class Default extends Experience {
+     private double lastCurrentExp = 0.0;
+     private double lastRequiredExp = 0.0;
+ 
+-    public Default(MyPet myPet) {
++    public Default(MyPet myPet)
++    {
+         super(myPet);
+     }
+ 
+-    public int getLevel(double exp) {
+-        if (lastExpL == exp) {
++    public int getLevel(double exp)
++    {
++        if (lastExpL == exp)
++        {
+             return lastLevel;
+         }
+         lastExpL = exp;
+ 
+-        if (exp == 0) {
++        if (exp == 0)
++        {
+             return 1;
+         }
+ 
+@@ -49,7 +54,8 @@ public class Default extends Experience {
+         double tmpExp = exp;
+         int tmpLvl = 0;
+ 
+-        while (tmpExp >= 7 + Math.floor(tmpLvl * 3.5)) {
++        while (tmpExp >= 7 + Math.floor(tmpLvl * 3.5))
++        {
+             tmpExp -= 7 + Math.floor(tmpLvl * 3.5);
+             tmpLvl++;
+         }
+@@ -57,8 +63,10 @@ public class Default extends Experience {
+         return lastLevel;
+     }
+ 
+-    public double getRequiredExp(double exp) {
+-        if (lastExpR == exp) {
++    public double getRequiredExp(double exp)
++    {
++        if (lastExpR == exp)
++        {
+             return lastRequiredExp;
+         }
+         lastExpR = exp;
+@@ -67,8 +75,10 @@ public class Default extends Experience {
+         return lastRequiredExp;
+     }
+ 
+-    public double getCurrentExp(double exp) {
+-        if (lastExpC == exp) {
++    public double getCurrentExp(double exp)
++    {
++        if (lastExpC == exp)
++        {
+             return lastCurrentExp;
+         }
+         lastExpC = exp;
+@@ -76,7 +86,8 @@ public class Default extends Experience {
+         double tmpExp = exp;
+         int tmplvl = 0;
+ 
+-        while (tmpExp >= 7 + Math.floor(tmplvl * 3.5)) {
++        while (tmpExp >= 7 + Math.floor(tmplvl * 3.5))
++        {
+             tmpExp -= 7 + Math.floor(tmplvl * 3.5);
+             tmplvl++;
+         }
+@@ -84,7 +95,8 @@ public class Default extends Experience {
+         return lastCurrentExp;
+     }
+ 
+-    public boolean isUsable() {
++    public boolean isUsable()
++    {
+         return true;
+     }
+ }

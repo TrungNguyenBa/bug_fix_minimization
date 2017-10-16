@@ -1,0 +1,2 @@
+e00a0343 : catch IllegalArgumentExeption when a 2nd Pet/Worldgroup is registered for a Worldgroup/Pet
+:100644 100644 1913a68f... c2123fea... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java

@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Config.java b/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Config.java
+index 4090c18..3d660d8 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Config.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Config.java
+@@ -25,7 +25,7 @@ import java.lang.annotation.Retention;
+ import java.lang.annotation.RetentionPolicy;
+ import java.lang.annotation.Target;
+ 
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>Identifies an alternate {@link Zombie.Configuration} which should be used on an endpoint for 

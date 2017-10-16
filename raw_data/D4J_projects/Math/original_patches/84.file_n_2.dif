@@ -1,0 +1,37 @@
+diff --git a/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java b/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java
+index 929560c36..955d0d837 100644
+--- a/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java
++++ b/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java
+@@ -21,7 +21,6 @@ import java.util.Comparator;
+ 
+ import org.apache.commons.math.FunctionEvaluationException;
+ import org.apache.commons.math.optimization.OptimizationException;
+-import org.apache.commons.math.optimization.RealConvergenceChecker;
+ import org.apache.commons.math.optimization.RealPointValuePair;
+ 
+ /** 
+@@ -61,7 +60,6 @@ public class MultiDirectional extends DirectSearchOptimizer {
+     protected void iterateSimplex(final Comparator<RealPointValuePair> comparator)
+         throws FunctionEvaluationException, OptimizationException, IllegalArgumentException {
+ 
+-        final RealConvergenceChecker checker = getConvergenceChecker();
+         while (true) {
+ 
+             incrementIterationsCounter();
+@@ -93,16 +91,6 @@ public class MultiDirectional extends DirectSearchOptimizer {
+                 return;
+             }
+ 
+-            // check convergence
+-            final int iter = getIterations();
+-            boolean converged = true;
+-            for (int i = 0; i < simplex.length; ++i) {
+-                converged &= checker.converged(iter, original[i], simplex[i]);
+-            }
+-            if (converged) {
+-                return;
+-            }
+-
+         }
+ 
+     }

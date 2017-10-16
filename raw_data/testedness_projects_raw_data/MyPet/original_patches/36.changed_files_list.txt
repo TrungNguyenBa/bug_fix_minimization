@@ -1,0 +1,2 @@
+ac441666 : fix ConcurrentModificationException when closing inventories for all viewers fixes #409
+:100644 100644 a3b50ef0... c7e9e33f... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/CustomInventory.java

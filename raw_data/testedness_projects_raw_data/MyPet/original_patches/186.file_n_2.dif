@@ -1,0 +1,34 @@
+diff --git a/src/main/resources/plugin.yml b/src/main/resources/plugin.yml
+index aee29437..010d7245 100644
+--- a/src/main/resources/plugin.yml
++++ b/src/main/resources/plugin.yml
+@@ -107,9 +107,6 @@ permissions:
+     description: Gives access to ALL (not includes admin) MyPet features.
+     children:
+       MyPet.user.*: true
+-  MyPet.admin:
+-    description: Gives access to the MyPet admin features.
+-    default: op
+   MyPet.user.*:
+     description: Gives access to MyPet features for normal user.
+     children:
+@@ -118,11 +115,10 @@ permissions:
+       MyPet.user.command.release: true
+       MyPet.user.command.capturehelper: true
+       MyPet.user.command.name: true
+-  MyPet.user.command.release:
++  MyPet.user.release:
+     description: Allows usage of /petrelease
+-  MyPet.user.command.capturehelper:
+-    description: Gives access to the CaptureHelper
+-  MyPet.user.command.respawn:
+-    description: Allows usage of /petrespawn
+-  MyPet.user.command.name:
+-    description: Allows usage of /petname
+\ No newline at end of file
++  MyPet.admin:
++    description: Gives access to admin MyPet features.
++    default: op
++  MyPet.user.capturehelper:
++    description: Gives access to the CaptureHelper
+\ No newline at end of file

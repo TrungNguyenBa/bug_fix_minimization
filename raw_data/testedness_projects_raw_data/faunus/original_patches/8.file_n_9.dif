@@ -1,0 +1,399 @@
+diff --git a/include/faunus/move.h b/include/faunus/move.h
+index 539e7db8..0e461b95 100644
+--- a/include/faunus/move.h
++++ b/include/faunus/move.h
+@@ -1865,19 +1865,21 @@ namespace Faunus {
+      *
+      * Key              | Description
+      * :--------------- | :-----------------------------
+-     * `npt_dp`         | Volume displacement parameter
++     * `npt_dV`         | Volume displacement parameter
+      * `npt_P`          | Pressure [mM]
+      * `npt_runfraction`| Runfraction [default=1]
+      *
+      * Note that new volumes are generated according to
+-     * \f$ V^{\prime} = \exp\left ( \log V \pm \delta dp \right ) \f$
++     * \f$ V^{\prime} = \exp\left ( \log V \pm \delta dV \right ) \f$
+      * where \f$\delta\f$ is a random number between zero and one half.
+      */
+     template<class Tspace>
+       class Isobaric : public Movebase<Tspace> {
+         private:
+           typedef Movebase<Tspace> base;
+-        protected:
++          using base::spc;
++          using base::pot;
++          using base::w;
+           string _info();
+           void _test(UnitTest&);
+           void _trialMove();
+@@ -1885,32 +1887,29 @@ namespace Faunus {
+           void _rejectMove();
+           template<class Tpvec> double _energy(const Tpvec&);
+           double _energyChange();
+-          using base::spc;
+-          using base::pot;
+-          using base::w;
++          double dV; //!< Volume displacement parameter
++          double oldV;
++          double newV;
+           double P; //!< Pressure
+-          double dp; //!< Volume displacement parameter
+-          double oldval;
+-          double newval;
+-          Point oldlen;
+-          Point newlen;
+-          Average<double> msd;       //!< Mean squared volume displacement
+-          Average<double> val;          //!< Average volume
+-          Average<double> rval;         //!< Average 1/volume
++          Average<double> sqrV;       //!< Mean squared volume displacement
++          Average<double> V;          //!< Average volume
++          Average<double> rV;         //!< Average 1/volume
+         public:
+-          Isobaric(InputMap&, Energy::Energybase<Tspace>&, Tspace&, string="npt");
++          template<class Tenergy>
++            Isobaric(InputMap&, Tenergy&, Tspace&, string="npt");
+       };
+ 
+     template<class Tspace>
+-      Isobaric<Tspace>::Isobaric(InputMap &in, Energy::Energybase<Tspace> &e, Tspace &s, string pfx) : base(e,s,pfx) {
++      template<class Tenergy>
++      Isobaric<Tspace>::Isobaric(InputMap &in, Tenergy &e, Tspace &s, string pfx) : base(e,s,pfx) {
+         this->title="Isobaric Volume Fluctuations";
+         this->w=30;
+-        dp=in.get<double>(pfx+"_dV", 0.,
++        dV=in.get<double>(pfx+"_dV", 0.,
+             "NPT volume displacement parameter");
+         P=in.get<double>(pfx+"_P", 0.,
+             "NPT external pressure P/kT (mM)")/1e30*pc::Nav; //mM -> 1/A^3
+         this->runfraction = in.get<double>(pfx+"_runfraction",1.0);
+-        if (dp<1e-6)
++        if (dV<1e-6)
+           base::runfraction=0;
+       }
+ 
+@@ -1927,7 +1926,7 @@ namespace Faunus {
+             Nmol+=g->numMolecules();
+         N = Natom + Nmol;
+         double Pascal = P*pc::kB*pc::T()*1e30;
+-        o << pad(SUB,w, "Displacement parameter") << dp << endl
++        o << pad(SUB,w, "Displacement parameter") << dV << endl
+           << pad(SUB,w, "Number of molecules")
+           << N << " (" <<Nmol<< " molecular + " <<Natom<< " atomic)\n"
+           << pad(SUB,w, "Pressure")
+@@ -1937,9 +1936,9 @@ namespace Faunus {
+         if (base::cnt>0) {
+           char l=14;
+           o << pad(SUB,w, "Mean displacement")
+-            << cuberoot+rootof+bracket("dp"+squared)
+-            << " = " << pow(msd.avg(), 1/6.) << _angstrom << endl
+-            << pad(SUB,w, "Osmotic coefficient") << P / (N*rval.avg()) << endl
++            << cuberoot+rootof+bracket("dV"+squared)
++            << " = " << pow(sqrV.avg(), 1/6.) << _angstrom << endl
++            << pad(SUB,w, "Osmotic coefficient") << P / (N*rV.avg()) << endl
+             << endl
+             << indent(SUBSUB) << std::right << setw(10) << ""
+             << setw(l+5) << bracket("V")
+@@ -1947,43 +1946,38 @@ namespace Faunus {
+             << setw(l+8) << bracket("1/V")
+             << setw(l+8) << bracket("N/V") << endl
+             << indent(SUB) << setw(10) << "Averages"
+-            << setw(l) << val.avg() << _angstrom + cubed
+-            << setw(l) << std::cbrt(val.avg()) << _angstrom
+-            << setw(l) << rval.avg() << " 1/" + _angstrom + cubed
+-            << setw(l) << N*rval.avg()*tomM << " mM\n";
++            << setw(l) << V.avg() << _angstrom + cubed
++            << setw(l) << std::cbrt(V.avg()) << _angstrom
++            << setw(l) << rV.avg() << " 1/" + _angstrom + cubed
++            << setw(l) << N*rV.avg()*tomM << " mM\n";
+         }
+         return o.str();
+       }
+ 
+     template<class Tspace>
+       void Isobaric<Tspace>::_test(UnitTest &t) {
+-        t(this->prefix+"_averageSideLength", std::cbrt(val.avg()) );
+-        t(this->prefix+"_MSQDisplacement", pow(msd.avg(), 1/6.) );
++        t(this->prefix+"_averageSideLength", std::cbrt(V.avg()) );
++        t(this->prefix+"_MSQDisplacement", pow(sqrV.avg(), 1/6.) );
+       }
+ 
+     template<class Tspace>
+       void Isobaric<Tspace>::_trialMove() {
+         assert(spc->groupList().size()>0
+             && "Space has empty group vector - NPT move not possible.");
+-        oldval = spc->geo.getVolume();
+-        oldlen = newlen = spc->geo.len;
+-        newval = std::exp( std::log(oldval) + slp_global.randHalf()*dp );
+-        Point s = Point(1,1,1);
+-        double xyz = cbrt(newval/oldval);
+-        double xy = sqrt(newval/oldval);
+-        newlen.scale(spc->geo,s,xyz,xy);
++        oldV = spc->geo.getVolume();
++        newV = std::exp( std::log(oldV) + slp_global.randHalf()*dV );
+         for (auto g : spc->groupList()) {
+           g->setMassCenter(*spc);
+-          g->scale(*spc, s, xyz, xy); // scale trial coordinates to new volume
++          g->scale(*spc, newV); // scale trial coordinates to new volume
+         }
+       }
+ 
+     template<class Tspace>
+       void Isobaric<Tspace>::_acceptMove() {
+-        val += newval;
+-        msd += pow( oldval-newval, 2 );
+-        rval += 1./newval;
+-        spc->geo.setlen(newlen);
++        V += newV;
++        sqrV += pow( oldV-newV, 2 );
++        rV += 1./newV;
++        spc->geo.setVolume(newV);
+         pot->setSpace(*spc);
+         for (auto g : spc->groupList() )
+           g->accept(*spc);
+@@ -1991,10 +1985,10 @@ namespace Faunus {
+ 
+     template<class Tspace>
+       void Isobaric<Tspace>::_rejectMove() {
+-        msd += 0;
+-        val += oldval;
+-        rval += 1./oldval;
+-        spc->geo.setlen(oldlen);
++        sqrV += 0;
++        V += oldV;
++        rV += 1./oldV;
++        spc->geo.setVolume(oldV);
+         pot->setSpace(*spc);
+         for (auto g : spc->groupList() )
+           g->undo(*spc);
+@@ -2008,7 +2002,7 @@ namespace Faunus {
+       template<class Tpvec>
+       double Isobaric<Tspace>::_energy(const Tpvec &p) {
+         double u=0;
+-        if (dp<1e-6)
++        if (dV<1e-6)
+           return u;
+         size_t n=spc->groupList().size();  // number of groups
+         for (size_t i=0; i<n-1; ++i)      // group-group
+@@ -2030,7 +2024,7 @@ namespace Faunus {
+     template<class Tspace>
+       double Isobaric<Tspace>::_energyChange() {
+         double uold = _energy(spc->p);
+-        spc->geo.setlen(newlen);
++        spc->geo.setVolume(newV);
+         pot->setSpace(*spc); // potential must know about volume, too
+ 
+         // In spherical geometries, molecules may collide with
+@@ -2053,38 +2047,45 @@ namespace Faunus {
+      *
+      * Key                | Description
+      * :----------------- | :-----------------------------
+-     * `nvt_z`          | Length displacement parameter
+-     * `nvt_runfraction`| Runfraction [default=1]
++     * `scale_z`          | Length displacement parameter
++     * `scale_runfraction`| Runfraction [default=1]
+      *
+      */
+     template<class Tspace>
+-       class Isochoric : public Isobaric<Tspace> {
+-         protected:
+-           typedef Isobaric<Tspace> base;
++       class Isochoric : public Movebase<Tspace> {
++         private:
++           typedef Movebase<Tspace> base;
+            using base::spc;
+            using base::pot;
+            using base::w;
+-           using base::dp;
+-           using base::oldval;
+-           using base::newval;
+-           using base::oldlen;
+-           using base::newlen;
+-           using base::msd;
+-           using base::val;
+-           void _trialMove();
+            string _info();
++           void _test(UnitTest&);
++           void _trialMove();
++           void _acceptMove();
++           void _rejectMove();
++           template<class Tpvec> double _energy(const Tpvec&);
++           double _energyChange();
++           double dz; //!< Volume displacement parameter
++           Point oldlen;
++           Point newlen;
++           double factor_z;
++           double factor_xy;
++           Average<double> sqrLz; //!< Mean squared Lz displacement
++           Average<double> Lz;    //!< Average Lz
+          public:
+-           Isochoric(InputMap&, Energy::Energybase<Tspace>&, Tspace&, string="nvt");
++           template<class Tenergy>
++             Isochoric(InputMap&, Tenergy&, Tspace&, string="nvt");
+        };
+ 
+     template<class Tspace>
+-      Isochoric<Tspace>::Isochoric(InputMap &in, Energy::Energybase<Tspace> &e, Tspace &s, string pfx) : base(in,e,s,pfx) {
++      template<class Tenergy>
++      Isochoric<Tspace>::Isochoric(InputMap &in, Tenergy &e, Tspace &s, string pfx) : base(e,s,pfx) {
+         this->title="Isochoric Side Lengths Fluctuations";
+         this->w=30;
+-        dp=in.get<double>(pfx+"_dz", 0.,
++        dz=in.get<double>(pfx+"_dz", 0.,
+             "z-displacement parameter");
+         this->runfraction = in.get<double>(pfx+"_runfraction",1.0);
+-        if (dp<1e-6)
++        if (dz<1e-6)
+           base::runfraction=0;
+       }
+ 
+@@ -2092,37 +2093,95 @@ namespace Faunus {
+       string Isochoric<Tspace>::_info() {
+         using namespace textio;
+         std::ostringstream o;
+-        o << pad(SUB,w, "Displacement parameter") << dp << endl
++        o << pad(SUB,w, "Displacement parameter") << dz << endl
+           << pad(SUB,w, "Temperature") << pc::T() << " K\n";
+         if (base::cnt>0) {
+           char l=14;
+           o << pad(SUB,w, "Mean displacement")
+             << rootof+bracket("dz"+squared)
+-            << " = " << pow(msd.avg(), 1/2.) << _angstrom << endl
++            << " = " << pow(sqrLz.avg(), 1/2.) << _angstrom << endl
+             << endl
+             << indent(SUBSUB) << std::right << setw(10) << ""
+             << setw(l+5) << bracket("Lz") << endl
+             << indent(SUB) << setw(10) << "Averages"
+-            << setw(l) << val.avg() << _angstrom + cubed;
++            << setw(l) << Lz.avg() << _angstrom + cubed;
+         }
+         return o.str();
+       }
+ 
+     template<class Tspace>
++      void Isochoric<Tspace>::_test(UnitTest &t) {
++        t(this->prefix+"_averageSideLength", Lz.avg() );
++        t(this->prefix+"_MSQDisplacement", pow(sqrLz.avg(), 1/2.) );
++      }
++
++    template<class Tspace>
+       void Isochoric<Tspace>::_trialMove() {
+         assert(spc->groupList().size()>0
+             && "Space has empty group vector - Isochoric scaling move not possible.");
+-        oldlen = newlen = spc->geo.len;
+-        oldval = spc->geo.len.z();
+-        newval = oldval+slp_global.randHalf()*dp;
+-        Point s;
+-        s.z() = newval / oldval;
+-        s.x() = s.y() = 1 / std::sqrt(s.z());
+-        newlen.scale(spc->geo,s);
++        oldlen = spc->geo.len;
++        factor_z = (oldlen.z()+slp_global.randHalf()*dz) / oldlen.z();
++        factor_xy = 1 / std::sqrt(factor_z);
++        newlen = Point( oldlen.x()*factor_xy,oldlen.y()*factor_xy,oldlen.z()*factor_z);
+         for (auto g : spc->groupList()) {
+           g->setMassCenter(*spc);
+-          g->scale(*spc,s); // scale trial coordinates to new coordinates
++          g->isoscale(*spc,factor_xy,factor_z); // scale trial coordinates to new coordinates
++        }
++      }
++
++    template<class Tspace>
++      void Isochoric<Tspace>::_acceptMove() {
++        Lz += newlen.z();
++        sqrLz += pow( oldlen.z()-newlen.z(), 2 );
++        spc->geo.setlen( newlen );
++        pot->setSpace(*spc);
++        for (auto g : spc->groupList() )
++          g->accept(*spc);
++      }
++
++    template<class Tspace>
++      void Isochoric<Tspace>::_rejectMove() {
++        Lz += oldlen.z();
++        sqrLz += 0;
++        spc->geo.setlen( oldlen );
++        pot->setSpace(*spc);
++        for (auto g : spc->groupList() )
++          g->undo(*spc);
++      }
++
++    /**
++     * This will calculate the total energy of the configuration
++     */
++    template<class Tspace>
++      template<class Tpvec>
++      double Isochoric<Tspace>::_energy(const Tpvec &p) {
++        double u=0;
++        if (dz<1e-6)
++          return u;
++        size_t n=spc->groupList().size();  // number of groups
++        for (size_t i=0; i<n-1; ++i)      // group-group
++          for (size_t j=i+1; j<n; ++j)
++            u += pot->g2g(p, *spc->groupList()[i], *spc->groupList()[j]);
++
++        for (auto g : spc->groupList()) {
++          u += pot->g_external(p, *g);
++          if (g->numMolecules()>1)
++            u+=pot->g_internal(p, *g);
+         }
++        return u + pot->external(p);
++      }
++
++    /**
++     * @todo Early rejection could be implemented
++     *       - not relevant for geometries with periodicity, though.
++     */
++    template<class Tspace>
++      double Isochoric<Tspace>::_energyChange() {
++        double uold = _energy(spc->p);
++        spc->geo.setlen( newlen );
++        pot->setSpace(*spc); // potential must know about side lengths
++        double unew = _energy(spc->trial);
++        return unew-uold;
+       }
+ 
+     /**
+@@ -2785,13 +2844,9 @@ namespace Faunus {
+       }
+ 
+     /**
+-     * @brief Flip-flop move of lipids in planar and cylindrical geometry
+-     *
+-     * Key                    | Description
+-     * :--------------------- | :-----------------------------
+-     * `flipflop_geometry`    | Geometry of the bilayer [planar(default) or cylindrical]
+-     * `flipflop_runfraction` | Runfraction [default=1]
++     * @brief Make a flip-flip move on lipids
+      *
++     * @date Lund, 2013
+      */
+     template<class Tspace>
+       class FlipFlop : public Movebase<Tspace> {
+@@ -2812,7 +2867,6 @@ namespace Faunus {
+           map_type accmap;   //!< Group particle acceptance map
+           Group* igroup;
+           Point* cntr;
+-          string geometry;
+         public:
+           FlipFlop(InputMap&, Energy::Energybase<Tspace>&, Tspace&, string="flipflop"); // if cylindrical geometry, string=cylinder
+           void setGroup(Group&); //!< Select Group to move
+@@ -2825,8 +2879,7 @@ namespace Faunus {
+         base::w=30;
+         igroup=nullptr;
+         cntr=nullptr;
+-        geometry=in.get<string>(base::prefix+"_geometry","planar");
+-        this->runfraction=in.get<double>(base::prefix+"_runfraction",1.0);
++        this->runfraction = in.get<double>(base::prefix+"_runfraction",1.0);
+       }
+ 
+     template<class Tspace>
+@@ -2849,7 +2902,7 @@ namespace Faunus {
+         Point startpoint=spc->p[igroup->back()];
+         Point endpoint=*cntr;
+         startpoint.z()=cntr->z();
+-        if (geometry.compare("cylindrical") == 0) { // MC move in case of cylindrical geometry
++        if (base::prefix.compare("cylinder") == 0) { // MC move in case of cylindrical geometry
+           startpoint=spc->p[igroup->back()];
+           Point head=spc->p[igroup->front()];
+           cntr->z()=head.z()=startpoint.z();

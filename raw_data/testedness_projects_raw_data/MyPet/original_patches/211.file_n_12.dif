@@ -1,0 +1,32 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandName.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandName.java
+index dcaf50d0..6fa94150 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandName.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandName.java
+@@ -24,7 +24,6 @@ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPetList;
+ import de.Keyle.MyPet.util.Colorizer;
+ import de.Keyle.MyPet.util.locale.MyPetLocales;
+-import org.bukkit.ChatColor;
+ import org.bukkit.command.Command;
+ import org.bukkit.command.CommandExecutor;
+ import org.bukkit.command.CommandSender;
+@@ -61,16 +60,16 @@ public class CommandName implements CommandExecutor
+                 Matcher regexMatcher = regex.matcher(name);
+                 if (regexMatcher.find())
+                 {
+-                    name += ChatColor.RESET;
++                    name += Colorizer.setColors("%reset%");
+                 }
+ 
+                 MyPet myPet = MyPetList.getMyPet(petOwner);
+                 myPet.setPetName(name);
+-                sender.sendMessage(MyPetLocales.getString("Message.NewName", petOwner).replace("%petname%", name));
++                sender.sendMessage(Colorizer.setColors(MyPetLocales.getString("Message.NewName", petOwner)).replace("%petname%", myPet.getPetName()));
+             }
+             else
+             {
+-                sender.sendMessage(MyPetLocales.getString("Message.DontHavePet", petOwner));
++                sender.sendMessage(Colorizer.setColors(MyPetLocales.getString("Message.DontHavePet", petOwner)));
+             }
+             return true;
+         }

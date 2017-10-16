@@ -1,0 +1,2 @@
+a3ed2b2 : Slightly improved exception handling for wrong dotGitDirectory.
+:100644 100644 5564632... 92968de... M	src/main/java/pl/project13/maven/git/JGitProvider.java

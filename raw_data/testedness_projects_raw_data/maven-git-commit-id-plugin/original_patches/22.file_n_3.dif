@@ -1,0 +1,141 @@
+diff --git a/src/main/java/pl/project13/maven/git/NativeGitProvider.java b/src/main/java/pl/project13/maven/git/NativeGitProvider.java
+index 17a9f01..87413e8 100644
+--- a/src/main/java/pl/project13/maven/git/NativeGitProvider.java
++++ b/src/main/java/pl/project13/maven/git/NativeGitProvider.java
+@@ -1,15 +1,18 @@
+ package pl.project13.maven.git;
+ 
++import com.google.common.base.Function;
++import com.google.common.base.Joiner;
++import com.google.common.base.Predicate;
+ import com.google.common.base.Splitter;
++import com.google.common.collect.FluentIterable;
++import com.google.common.collect.ImmutableList;
+ import com.google.common.collect.Lists;
+-
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.jetbrains.annotations.NotNull;
+-
+ import pl.project13.maven.git.log.LoggerBridge;
+ 
+ import java.io.*;
+-import java.text.SimpleDateFormat;
++import java.util.Arrays;
+ 
+ 
+ public class NativeGitProvider extends GitDataProvider {
+@@ -52,12 +55,12 @@ public class NativeGitProvider extends GitDataProvider {
+ 
+   @Override
+   protected String getBuildAuthorName() {
+-    return tryToRunGitCommand(canonical, "config user.name");
++    return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%an\"");
+   }
+ 
+   @Override
+   protected String getBuildAuthorEmail() {
+-    return tryToRunGitCommand(canonical, "config user.email");
++    return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%ae\"");
+   }
+ 
+   @Override
+@@ -147,35 +150,58 @@ public class NativeGitProvider extends GitDataProvider {
+ 
+   @Override
+   protected String getCommitAuthorName() {
+-    return tryToRunGitCommand(canonical, "log -1 --pretty=format:%an");
++    return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%cn\"");
+   }
+ 
+   @Override
+   protected String getCommitAuthorEmail() {
+-    return tryToRunGitCommand(canonical, "log -1 --pretty=format:%ae");
++    return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%ce\"");
+   }
+ 
+   @Override
+   protected String getCommitMessageFull() {
+-    return tryToRunGitCommand(canonical, "log -1 --pretty=format:%B");
++    return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%B\"");
+   }
+ 
+   @Override
+   protected String getCommitMessageShort() {
+-    return tryToRunGitCommand(canonical, "log -1 --pretty=format:%s");
++    return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%s\"");
+   }
+ 
+   @Override
+   protected String getCommitTime() {
+-    String value =  tryToRunGitCommand(canonical, "log -1 --pretty=format:%ct");
+-    SimpleDateFormat smf = new SimpleDateFormat(dateFormat);
+-    return smf.format(Long.parseLong(value)*1000L);
++    return tryToRunGitCommand(canonical, "log -1 --pretty=format:\"%ci\"");
+   }
+ 
+   @Override
+   protected String getTags() throws MojoExecutionException {
+-    final String result = tryToRunGitCommand(canonical, "tag --contains");
+-    return result.replace('\n', ',');
++    final String branch = tryToRunGitCommand(canonical, "rev-parse --abbrev-ref HEAD");
++
++    String out = tryToRunGitCommand(canonical, "log -n 1 --pretty=format:'%d'");
++    String[] nms = out
++      .replaceAll("HEAD", "")
++      .replaceAll("\\)", "")
++      .replaceAll("\\(", "")
++      .replaceAll("'", "")
++      .replaceAll("tag: ", "")
++      .replaceAll(",", "")
++      .trim()
++      .split(" ");
++
++
++    ImmutableList<String> cleanTags = FluentIterable.from(Arrays.asList(nms)).
++      transform(new Function<String, String>() {
++        @Override public String apply(String input) {
++          return input.trim();
++        }
++      }).
++      filter(new Predicate<String>() {
++        @Override public boolean apply(String input) {
++          return !input.equals(branch);
++        }
++      }).toList();
++
++    return Joiner.on(",").join(cleanTags);
+   }
+ 
+   @Override
+@@ -223,19 +249,16 @@ public class NativeGitProvider extends GitDataProvider {
+   /**
+    * Runs a maven command and returns {@code true} if output was non empty.
+    * Can be used to short cut reading output from command when we know it may be a rather long one.
+-   *
+-   * Return true if the result is empty.
+-   *
+-   **/
++   * */
+   private boolean tryCheckEmptyRunGitCommand(File directory, String gitCommand) {
+     try {
+       String env = System.getenv("GIT_PATH");
+       String exec = (env == null) ? "git" : env;
+       String command = String.format("%s %s", exec, gitCommand);
+ 
+-      return getRunner().runEmpty(directory, command);
++      boolean empty = getRunner().runEmpty(directory, command);
++      return !empty;
+     } catch (IOException ex) {
+-        // Error means "non-empty"
+       return false;
+       // do nothing...
+     }
+@@ -288,7 +311,7 @@ public class NativeGitProvider extends GitDataProvider {
+             final StringBuilder commandResult = new StringBuilder();
+             String line;
+             while ((line = reader.readLine()) != null) {
+-              commandResult.append(line).append("\n");
++              commandResult.append(line);
+             }
+ 
+             if (proc.exitValue() != 0) {

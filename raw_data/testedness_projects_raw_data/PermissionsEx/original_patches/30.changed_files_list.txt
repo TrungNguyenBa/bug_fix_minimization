@@ -1,0 +1,3 @@
+1aeec88 : Add basic debug logging. Fixes #1937
+:100644 100644 e6d3a95... 1d7edaf... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java
+:100644 100644 399acb0... c1137b4... M	src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java

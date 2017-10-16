@@ -1,0 +1,23 @@
+diff --git a/src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java b/src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java
+index 0dd644e22..3d16aa8a7 100644
+--- a/src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java
++++ b/src/main/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/SimplexOptimizer.java
+@@ -155,7 +155,7 @@ public class SimplexOptimizer extends MultivariateOptimizer {
+         int iteration = 0;
+         final ConvergenceChecker<PointValuePair> checker = getConvergenceChecker();
+         while (true) {
+-            if (getIterations() > 0) {
++            if (iteration > 0) {
+                 boolean converged = true;
+                 for (int i = 0; i < simplex.getSize(); i++) {
+                     PointValuePair prev = previous[i];
+@@ -171,8 +171,7 @@ public class SimplexOptimizer extends MultivariateOptimizer {
+             // We still need to search.
+             previous = simplex.getPoints();
+             simplex.iterate(evalFunc, comparator);
+-
+-            incrementIterationCount();
++            ++iteration;
+         }
+     }
+ 

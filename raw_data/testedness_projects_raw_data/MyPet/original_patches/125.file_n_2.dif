@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+index c5ee090e..9e652c34 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+@@ -337,7 +337,7 @@ public class MyPetPlayer implements IScheduler, NBTStorage {
+         if (hasMyPet()) {
+             MyPet myPet = getMyPet();
+             if (myPet.getStatus() == PetState.Here) {
+-                if (myPet.getLocation().getWorld() != this.getPlayer().getLocation().getWorld() || myPet.getLocation().distance(this.getPlayer().getLocation()) > 40) {
++                if (myPet.getLocation().getWorld() != this.getPlayer().getLocation().getWorld() || myPet.getLocation().distance(this.getPlayer().getLocation()) > 20) {
+                     myPet.removePet(true);
+                     myPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Despawn", getLanguage()), myPet.getPetName()));
+                 }

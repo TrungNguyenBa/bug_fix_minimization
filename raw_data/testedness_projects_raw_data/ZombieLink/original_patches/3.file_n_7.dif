@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Bite.java b/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Bite.java
+index 945c73a..7c64fce 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Bite.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/annotation/Bite.java
+@@ -25,7 +25,7 @@ import java.lang.annotation.Retention;
+ import java.lang.annotation.RetentionPolicy;
+ import java.lang.annotation.Target;
+ 
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>Identifies an endpoint definition whose thread-safe proxy should be created and injected. Endpoint 

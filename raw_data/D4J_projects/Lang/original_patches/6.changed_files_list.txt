@@ -1,0 +1,4 @@
+cff0f1ae : [LANG-857] StringIndexOutOfBoundsException in CharSequenceTranslator.
+:100644 100644 aea46f0e... f31c928a... M	src/changes/changes.xml
+:100644 100644 4d010eaf... 05004604... M	src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java
+:100644 100644 b11a6337... bad56e97... M	src/test/java/org/apache/commons/lang3/StringUtilsTest.java

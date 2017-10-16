@@ -1,0 +1,42 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java b/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java
+index 3e0aeca..6894220 100644
+--- a/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java
++++ b/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java
+@@ -18,7 +18,6 @@ package ninja.leaping.permissionsex.backend.sql;
+ 
+ import com.google.common.base.Function;
+ import com.google.common.collect.ImmutableList;
+-import com.google.common.collect.ImmutableSet;
+ import com.google.common.collect.Iterables;
+ import com.google.common.util.concurrent.ListenableFuture;
+ import com.j256.ormlite.dao.Dao;
+@@ -39,7 +38,6 @@ import javax.sql.DataSource;
+ import java.sql.Connection;
+ import java.sql.SQLException;
+ import java.util.Map;
+-import java.util.Set;
+ import java.util.concurrent.Callable;
+ 
+ import static ninja.leaping.permissionsex.util.Translations._;
+@@ -112,17 +110,17 @@ public final class SqlDataStore extends AbstractDataStore {
+     }
+ 
+     @Override
+-    public Set<String> getRegisteredTypes() {
++    public Iterable<String> getRegisteredTypes() {
+         try {
+-            return ImmutableSet.copyOf(Iterables.transform(subjectDao.queryBuilder().selectColumns("type").distinct().queryRaw(), new Function<String[], String>() {
++            return Iterables.transform(subjectDao.queryBuilder().selectColumns("type").distinct().queryRaw(), new Function<String[], String>() {
+                 @Nullable
+                 @Override
+                 public String apply(@Nullable String[] input) {
+                     return input[0];
+                 }
+-            }));
++            });
+         } catch (SQLException e) {
+-            return ImmutableSet.of();
++            return ImmutableList.of();
+         }
+     }
+ 

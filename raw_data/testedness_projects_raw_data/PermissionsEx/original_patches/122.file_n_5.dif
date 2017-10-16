@@ -1,0 +1,33 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+index 67f84ad..0fb4072 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+@@ -39,7 +39,7 @@ public class FileBackend extends PermissionBackend {
+ 	public FileConfig permissions;
+ 	public File permissionsFile;
+ 
+-	public FileBackend(PermissionManager manager, ConfigurationSection config) throws PermissionBackendException {
++	public FileBackend(PermissionManager manager, ConfigurationSection config) {
+ 		super(manager, config);
+ 		String permissionFilename = getConfig().getString("file");
+ 
+@@ -61,7 +61,6 @@ public class FileBackend extends PermissionBackend {
+ 		}
+ 
+ 		this.permissionsFile = new File(baseDir, permissionFilename);
+-		reload();
+ 	}
+ 
+ 	@Override
+@@ -225,6 +224,11 @@ public class FileBackend extends PermissionBackend {
+ 		}
+ 	}
+ 
++	@Override
++	public void validate() throws PermissionBackendException {
++
++	}
++
+ 	/**
+ 	 * This method is called when the file the permissions config is supposed to save to
+ 	 * does not exist yet,This adds default permissions & stuff

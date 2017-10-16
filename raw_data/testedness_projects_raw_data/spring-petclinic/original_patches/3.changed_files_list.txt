@@ -1,0 +1,3 @@
+4aa89ae : Fix #110 owner and pet validators failed
+:100644 100644 1a50a69... 0ff2858... M	src/main/java/org/springframework/samples/petclinic/web/OwnerController.java
+:100644 100644 39c7f1c... a944997... M	src/main/java/org/springframework/samples/petclinic/web/PetController.java

@@ -1,0 +1,35 @@
+diff --git a/sample/src/main/java/com/actinarium/rhythm/sample/RhythmSampleApplication.java b/sample/src/main/java/com/actinarium/rhythm/sample/RhythmSampleApplication.java
+index b9d5435..ceb47e6 100644
+--- a/sample/src/main/java/com/actinarium/rhythm/sample/RhythmSampleApplication.java
++++ b/sample/src/main/java/com/actinarium/rhythm/sample/RhythmSampleApplication.java
+@@ -1,8 +1,7 @@
+ package com.actinarium.rhythm.sample;
+ 
+ import android.app.Application;
+-import com.actinarium.rhythm.RhythmManager;
+-import com.actinarium.rhythm.Rhythmic;
++import com.actinarium.rhythm.RhythmService;
+ 
+ /**
+  * <p></p>
+@@ -10,18 +9,11 @@ import com.actinarium.rhythm.Rhythmic;
+  * @author Paul Danyliuk
+  * @version $Id$
+  */
+-public class RhythmSampleApplication extends Application implements Rhythmic {
+-
+-    private RhythmManager mRhythmManager;
++public class RhythmSampleApplication extends Application {
+ 
+     @Override
+     public void onCreate() {
+         super.onCreate();
+-        mRhythmManager = new RhythmManager(this, 0).displayNotification(0);
+-    }
+-
+-    @Override
+-    public RhythmManager getRhythmManager() {
+-        return mRhythmManager;
++        RhythmService.showNotification(this, 0, 0);
+     }
+ }

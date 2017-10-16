@@ -1,0 +1,7 @@
+75408787 : the rate of fire for the Ranged skill can be set by skilltrees now fixes #175 partially
+:100644 100644 bde964aa... b9a9426b... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/RangedAttack.java
+:100644 100644 79714f23... e172abcf... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 66e69ec0... 8c469e5c... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ranged.form
+:100644 100644 f5e58b2a... d15bf9eb... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Ranged.java
+:100644 100644 4f48c685... 35c9eda6... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java
+:100644 100644 6acb39f0... e42c0545... M	src/main/java/de/Keyle/MyPet/skill/skills/info/RangedInfo.java

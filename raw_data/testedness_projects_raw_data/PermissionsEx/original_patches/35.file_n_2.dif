@@ -1,0 +1,24 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/config/PermissionsExConfiguration.java b/src/main/java/ninja/leaping/permissionsex/config/PermissionsExConfiguration.java
+index 6b2e2e1..03529ba 100644
+--- a/src/main/java/ninja/leaping/permissionsex/config/PermissionsExConfiguration.java
++++ b/src/main/java/ninja/leaping/permissionsex/config/PermissionsExConfiguration.java
+@@ -37,9 +37,9 @@ public class PermissionsExConfiguration {
+         }
+     }
+ 
+-    @Setting private Map<String, DataStore> backends;
++    @Setting("backends") private Map<String, DataStore> backends;
+     @Setting("default-backend") private String defaultBackend;
+-    @Setting private boolean debug;
++    @Setting("debug") private boolean debugEnabled;
+ 
+     protected PermissionsExConfiguration() {}
+ 
+@@ -52,6 +52,6 @@ public class PermissionsExConfiguration {
+     }
+ 
+     public boolean isDebugEnabled() {
+-        return debug;
++        return debugEnabled;
+     }
+ }

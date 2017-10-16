@@ -1,0 +1,23 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index baed060e..0efa5fc1 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -663,17 +663,7 @@ public class MyPetEntityListener implements Listener
+     {
+         if (MyPetExperience.DAMAGE_WEIGHTED_EXPERIENCE_DISTRIBUTION && event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof Player))
+         {
+-            LivingEntity damager;
+-            if (event.getDamager() instanceof Projectile)
+-            {
+-                Projectile projectile = (Projectile) event.getDamager();
+-                damager = projectile.getShooter();
+-            }
+-            else
+-            {
+-                damager = (LivingEntity) event.getDamager();
+-            }
+-            MyPetExperience.addDamageToEntity(damager, (LivingEntity) event.getEntity(), event.getDamage());
++            MyPetExperience.addDamageToEntity((LivingEntity) event.getDamager(), (LivingEntity) event.getEntity(), event.getDamage());
+         }
+     }
+ 

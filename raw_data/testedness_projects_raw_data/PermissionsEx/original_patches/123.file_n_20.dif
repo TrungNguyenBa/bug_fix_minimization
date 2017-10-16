@@ -1,0 +1,22 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+index 29017c5..9a3241c 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+@@ -26,7 +26,7 @@ import java.util.UUID;
+  */
+ public class SuperpermsListener implements Listener {
+ 	private final PermissionsEx plugin;
+-	private final Map<UUID, PermissionAttachment> attachments = new HashMap<>();
++	private final Map<UUID, PermissionAttachment> attachments = new HashMap<UUID, PermissionAttachment>();
+ 
+ 	public SuperpermsListener(PermissionsEx plugin) {
+ 		this.plugin = plugin;
+@@ -58,7 +58,7 @@ public class SuperpermsListener implements Listener {
+ 	}
+ 
+ 	private String permissionName(Player player, String suffix) {
+-		return "permissionsex.player." + player.getUniqueId().toString() + suffix;
++		return "permissionsex.player." + player.getName() + suffix;
+ 	}
+ 
+ 	private void removePEXPerm(Player player, String suffix) {

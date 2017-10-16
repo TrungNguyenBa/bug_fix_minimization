@@ -1,0 +1,13 @@
+diff --git a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java
+index 9aa408f..4e5e7ab 100644
+--- a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java
++++ b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXSpongeCommand.java
+@@ -29,7 +29,7 @@ import java.util.List;
+ /**
+  * Wrapper class between PEX commands and the Sponge command class
+  */
+-class PEXSpongeCommand implements CommandCallable {
++public class PEXSpongeCommand implements CommandCallable {
+     private final CommandSpec command;
+     private final PermissionsExPlugin plugin;
+ 

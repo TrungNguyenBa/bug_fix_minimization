@@ -1,0 +1,32 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index 766615ce..8d57da87 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -57,7 +57,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster {
+     public AbstractNavigation petNavigation;
+     Ride rideSkill = null;
+ 
+-    private static Field jump = null;
++    private Field jump = null;
+ 
+     public EntityMyPet(World world, MyPet myPet) {
+         super(world);
+@@ -78,13 +78,11 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster {
+ 
+             this.setPathfinder();
+ 
+-            if (jump == null) {
+-                try {
+-                    jump = EntityLiving.class.getDeclaredField("bd");
+-                    jump.setAccessible(true);
+-                } catch (NoSuchFieldException e) {
+-                    e.printStackTrace();
+-                }
++            try {
++                jump = EntityLiving.class.getDeclaredField("bd");
++                jump.setAccessible(true);
++            } catch (NoSuchFieldException e) {
++                e.printStackTrace();
+             }
+         } catch (Exception e) {
+             e.printStackTrace();

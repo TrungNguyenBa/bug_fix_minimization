@@ -1,0 +1,13 @@
+diff --git a/README.md b/README.md
+index 3599fa5..4eef757 100644
+--- a/README.md
++++ b/README.md
+@@ -20,7 +20,7 @@ We will fix this ASAP.
+ 
+ # Credits
+ 
+-* Tapas pictures are links to Wikipedia resources: [http://en.wikipedia.org/wiki/Tapas](http://en.wikipedia.org/wiki/Tapas)
++* [Tapas]() pictures are links to Wikipedia resources: [http://en.wikipedia.org/wiki/Tapas](http://en.wikipedia.org/wiki/Tapas)
+ * The initial project was generated with the [Spring Tool Suite](http://www.springsource.org/sts): `New -> String Template Project -> Itegration -> Spring Integration Project (WAR)`
+ 
+ # Warning!

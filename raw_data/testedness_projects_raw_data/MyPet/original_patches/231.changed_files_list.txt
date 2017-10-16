@@ -1,0 +1,2 @@
+d2c0966c : fixed name display in /petinfo command
+:100644 100644 858fa5d6... 2c40c5eb... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java

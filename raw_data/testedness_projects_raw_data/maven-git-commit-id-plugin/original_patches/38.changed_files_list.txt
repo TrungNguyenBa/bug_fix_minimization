@@ -1,0 +1,3 @@
+399578b : fix test
+:100644 100644 3537451... d0c56e0... M	.gitignore
+:100644 100644 e43c335... eb271f7... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVisitRepositoryImpl.java b/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVisitRepositoryImpl.java
+index 62bf430..a923b76 100644
+--- a/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVisitRepositoryImpl.java
++++ b/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVisitRepositoryImpl.java
+@@ -81,7 +81,7 @@ public class JdbcVisitRepositoryImpl implements VisitRepository {
+     @Override
+     public List<Visit> findByPetId(Integer petId) {
+         return this.jdbcTemplate.query(
+-                "SELECT id, visit_date, description FROM visits WHERE pet_id=?",
++                "SELECT id as visit_id, visit_date, description FROM visits WHERE pet_id=?",
+                 new JdbcVisitRowMapper(), petId);
+     }
+ 

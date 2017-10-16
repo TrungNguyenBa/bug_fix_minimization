@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+index 3091d0d8..91da06a7 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+@@ -83,7 +83,9 @@ public class EntityMySkeleton extends EntityMyPet {
+                     entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+                     entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+                 }
+-                getMyPet().setEquipment(slot, itemStack);
++                ItemStack itemStackClone = itemStack.cloneItemStack();
++                itemStackClone.count = 1;
++                getMyPet().setEquipment(slot, itemStackClone);
+                 if (!entityhuman.abilities.canInstantlyBuild) {
+                     --itemStack.count;
+                 }

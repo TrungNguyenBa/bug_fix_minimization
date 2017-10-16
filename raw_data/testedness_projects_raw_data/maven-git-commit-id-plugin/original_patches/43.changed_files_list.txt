@@ -1,0 +1,2 @@
+38d29d1 : fix formatting
+:100644 100644 ea38ba5... b548476... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java

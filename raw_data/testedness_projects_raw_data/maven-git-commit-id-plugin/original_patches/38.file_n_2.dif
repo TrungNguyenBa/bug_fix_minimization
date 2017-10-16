@@ -1,0 +1,9 @@
+diff --git a/.gitignore b/.gitignore
+index d0c56e0..3537451 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -16,4 +16,3 @@ bin/
+ 
+ out
+ target
+-

@@ -1,0 +1,17 @@
+diff --git a/src/main/java/com/stripe/model/Money.java b/src/main/java/com/stripe/model/Money.java
+index 72327ad..d5adace 100644
+--- a/src/main/java/com/stripe/model/Money.java
++++ b/src/main/java/com/stripe/model/Money.java
+@@ -1,10 +1,10 @@
+ package com.stripe.model;
+ 
+ public class Money {
+-	Long amount;
++	Integer amount;
+ 	String currency;
+ 
+-	public Long getAmount() {
++	public Integer getAmount() {
+ 		return amount;
+ 	}
+ 

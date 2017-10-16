@@ -1,0 +1,2 @@
+261adffb : compile against latest Bukkit SNAPSHOT to address the getOnlinePlayers() changes
+:100644 100644 ef4f97f9... 89dfe62b... M	pom.xml

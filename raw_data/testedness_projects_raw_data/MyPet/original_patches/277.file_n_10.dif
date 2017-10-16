@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+index 63a957da..a024c487 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+@@ -101,7 +101,7 @@ public class EntityMyEnderman extends EntityMyPet
+ 
+         ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-        if (getOwner().equals(entityhuman) && itemStack != null)
++        if (entityhuman == getOwner() && itemStack != null)
+         {
+             if (itemStack.id == Item.SHEARS.id)
+             {

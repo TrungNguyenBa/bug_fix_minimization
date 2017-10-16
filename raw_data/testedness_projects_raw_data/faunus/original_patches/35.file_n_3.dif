@@ -1,0 +1,39 @@
+diff --git a/include/faunus/externalpotential.h b/include/faunus/externalpotential.h
+index cb5c1cfd..819ad903 100644
+--- a/include/faunus/externalpotential.h
++++ b/include/faunus/externalpotential.h
+@@ -349,14 +349,6 @@ namespace Faunus {
+      * independent).
+      *
+      * See doi:10.1021/la300892p for more details on the method.
+-     *
+-     * The InputMap parameters are:
+-     *
+-     * Key                | Description
+-     * :----------------- | :---------------------------
+-     * `sqwl_depth`       | Depth, \f$\epsilon\f$ [kT] (positive number)
+-     * `sqwl_threshold    | Threshold, [angstrom] (particle center-to-wall distance)
+-     *
+      */
+     template<class T=double>
+     class HydrophobicWall : public ExternalPotentialBase<> {
+@@ -375,8 +367,8 @@ namespace Faunus {
+     HydrophobicWall<T>::HydrophobicWall(InputMap &in) {
+       string prefix = "sqwl_";
+       name          = "Hydrophobic Wall";
+-      _depth        = in.get<double>(prefix + "depth");     // defaults to zero
+-      _threshold    = in.get<double>(prefix + "threshold"); // defaults to zero
++      _depth        = in.get<double>(prefix + "depth");     // default value?
++      _threshold    = in.get<double>(prefix + "threshold"); // default value?
+     }
+ 
+     template<class T>
+@@ -401,7 +393,7 @@ namespace Faunus {
+       char w = 30;
+       std::ostringstream o;
+       o << pad(textio::SUB,25,"Threshold") << _threshold << textio::_angstrom << " (particle - wall distance)" << endl
+-	<< pad(textio::SUB,25,"Depth")     << _depth     << textio::kT << endl;
++	<< pad(textio::SUB,25,"Depth")     << _depth     << " kT" << endl;
+       return o.str();
+     }
+   } //namespace

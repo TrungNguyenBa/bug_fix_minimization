@@ -1,0 +1,2 @@
+e5f8f8a : Make command handler account for permissions manager being null
+:100644 100644 7ebeee1... 82be861... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

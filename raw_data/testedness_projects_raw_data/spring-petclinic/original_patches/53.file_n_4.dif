@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVisitRepositoryImpl.java b/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVisitRepositoryImpl.java
+index fccf795..58d3709 100644
+--- a/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVisitRepositoryImpl.java
++++ b/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVisitRepositoryImpl.java
+@@ -45,7 +45,7 @@ public class JpaVisitRepositoryImpl implements VisitRepository {
+ 
+     @Override
+     public void save(Visit visit) {
+-        this.em.persist(visit);
++        this.em.merge(visit);
+     }
+ 
+ 

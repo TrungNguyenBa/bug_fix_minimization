@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/Experience.java b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+index 96450977..1ee3fde2 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/Experience.java
++++ b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+@@ -44,8 +44,6 @@ public class Experience {
+     public static String CALCULATION_MODE = "Default";
+     public static boolean DAMAGE_WEIGHTED_EXPERIENCE_DISTRIBUTION = false;
+     public static boolean FIREWORK_ON_LEVELUP = true;
+-    public static boolean ALWAYS_GRANT_PASSIVE_XP = true;
+-    public static int PASSIVE_PERCENT_PER_MONSTER = 25;
+ 
+     private final MyPet myPet;
+ 

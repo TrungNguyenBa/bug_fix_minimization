@@ -1,0 +1,12 @@
+diff --git a/src/test/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizerTest.java b/src/test/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizerTest.java
+index 708f77b94..c76c7c944 100644
+--- a/src/test/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizerTest.java
++++ b/src/test/java/org/apache/commons/math3/optim/nonlinear/scalar/noderiv/PowellOptimizerTest.java
+@@ -262,7 +262,5 @@ public class PowellOptimizerTest {
+             Assert.assertEquals("found[" + i + "]=" + point[i] + " value=" + result.getValue(),
+                                 optimum[i], point[i], pointTol);
+         }
+-
+-        Assert.assertTrue(optim.getIterations() > 0);
+     }
+ }

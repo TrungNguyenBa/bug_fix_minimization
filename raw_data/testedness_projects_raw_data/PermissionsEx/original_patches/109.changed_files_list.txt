@@ -1,0 +1,2 @@
+d04c4e3 : Fix exception handling of permissions backend errors
+:100644 100644 1945f31... 5b70713... M	src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java

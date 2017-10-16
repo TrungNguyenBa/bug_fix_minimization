@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.java
+index bff26981..799667c3 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.java
+@@ -58,7 +58,7 @@ public class HealthRegeneration implements SkillPropertiesPanel
+     public void verifyInput()
+     {
+         timeInput.setText(timeInput.getText().replaceAll("[^0-9]*", ""));
+-        if (timeInput.getText().length() == 0)
++        if (timeInput.getText().length() > 0)
+         {
+             timeInput.setText("0");
+         }

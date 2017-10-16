@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVetRepositoryImpl.java b/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVetRepositoryImpl.java
+index cf6ec3e..f6e91cf 100644
+--- a/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVetRepositoryImpl.java
++++ b/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcVetRepositoryImpl.java
+@@ -60,7 +60,7 @@ public class JdbcVetRepositoryImpl implements VetRepository {
+      */
+     @Override
+     public Collection<Vet> findAll() throws DataAccessException {
+-        List<Vet> vets = new ArrayList<>();
++        List<Vet> vets = new ArrayList<Vet>();
+         // Retrieve the list of all vets.
+         vets.addAll(this.jdbcTemplate.query(
+                 "SELECT id, first_name, last_name FROM vets ORDER BY last_name,first_name",

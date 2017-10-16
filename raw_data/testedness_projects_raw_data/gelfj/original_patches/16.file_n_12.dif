@@ -1,0 +1,10 @@
+diff --git a/src/test/resources/org/graylog2/logging/logging-test.properties b/src/test/resources/org/graylog2/logging/logging-test.properties
+index 7b2046e..3aeb557 100644
+--- a/src/test/resources/org/graylog2/logging/logging-test.properties
++++ b/src/test/resources/org/graylog2/logging/logging-test.properties
+@@ -8,4 +8,4 @@ org.graylog2.logging.GelfHandler.additionalField.0 = foo=bar
+ org.graylog2.logging.GelfHandler.facility = test
+ 
+ #Only used for testing
+-org.graylog2.logging.GelfHandler.graylogTestSenderClass = org.graylog2.logging.MockGelfHandlerSender
++org.graylog2.logging.GelfHandler.graylogTestSenderClass = org.graylog2.logging.TestGelfHandlerSender

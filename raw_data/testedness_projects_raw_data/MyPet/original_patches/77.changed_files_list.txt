@@ -1,0 +1,6 @@
+c8563a39 : reduce thrown LevelUpEvents fixes #274
+:100644 100644 1c696869... 33c727a0... M	src/main/java/de/Keyle/MyPet/api/event/MyPetLevelUpEvent.java
+:100644 100644 db0a5f98... f79e5f43... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 fca27b99... d8173c31... M	src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+:100644 100644 62c04901... 5b2a3459... M	src/main/java/de/Keyle/MyPet/skill/Experience.java
+:100644 100644 5f9eef33... ba926cc6... M	src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTree.java

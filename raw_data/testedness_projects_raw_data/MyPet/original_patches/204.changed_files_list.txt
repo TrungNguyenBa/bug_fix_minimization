@@ -1,0 +1,3 @@
+6637ee48 : fixed permissions for commands
+:100644 100644 0ad312a6... e0bb7595... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
+:100644 100644 2ce2a254... 14c18ffa... M	src/main/resources/plugin.yml

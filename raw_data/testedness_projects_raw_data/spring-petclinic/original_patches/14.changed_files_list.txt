@@ -1,0 +1,2 @@
+1b4d425 : Fix typo into javadoc
+:100644 100644 61ed545... 428c285... M	src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java

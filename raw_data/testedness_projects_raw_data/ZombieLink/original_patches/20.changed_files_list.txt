@@ -1,0 +1,3 @@
+e58d762 : Accept all 2xx type response codes as successful operations (fixes #3) [ci skip]
+:100644 100644 03505d1... f93c172... M	src/main/java/com/lonepulse/zombielink/core/processor/executor/AsyncRequestExecutor.java
+:100644 100644 121ef97... 79804ef... M	src/main/java/com/lonepulse/zombielink/core/processor/executor/BasicRequestExecutor.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionsData.java b/src/main/java/ru/tehkode/permissions/PermissionsData.java
+index 4f29b0d..a4d4eb5 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionsData.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionsData.java
+@@ -85,7 +85,7 @@ public interface PermissionsData {
+ 	 * @param worldName
+ 	 * @param value
+ 	 */
+-	public void setOption(String option, String value, String world);
++	public void setOption(String option, String worldName, String value);
+ 
+ 	/**
+ 	 * Returns all options in specified world

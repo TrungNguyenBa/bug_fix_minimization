@@ -1,0 +1,20 @@
+diff --git a/etc/build-accountsclient.sh b/etc/build-accountsclient.sh
+index c1bf373..b6aec8d 100755
+--- a/etc/build-accountsclient.sh
++++ b/etc/build-accountsclient.sh
+@@ -3,7 +3,7 @@ set -e
+ 
+ DESTDIR="AccountsClient"
+ git clone https://github.com/Mojang/AccountsClient.git $DESTDIR
+-cd $DESTDIR
++pushd $DESTDIR
+ 
+ sed -i "s/testLogging\.showStandardStreams = true//" build.gradle
+ sed -i "s/apply plugin: 'idea'/apply plugin: 'idea'\napply plugin: 'maven'\ngroup = 'com.mojang'/" build.gradle
+@@ -11,5 +11,5 @@ echo "rootProject.name = 'AccountsClient'" >> settings.gradle
+ 
+ gradle clean install
+ 
+-cd ..
+ rm -rf $DESTDIR
++popd

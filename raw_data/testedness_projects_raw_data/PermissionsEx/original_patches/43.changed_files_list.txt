@@ -1,0 +1,2 @@
+71cfcc2 : Fix compatibility of accountsclient script with plain sh
+:100755 100755 b6aec8d... c1bf373... M	etc/build-accountsclient.sh

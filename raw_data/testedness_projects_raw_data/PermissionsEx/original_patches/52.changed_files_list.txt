@@ -1,0 +1,2 @@
+6e361c3 : Only store last login time for non-virtual players. Fixes #1639
+:100644 100644 d21c0fc... 57aa930... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

@@ -1,0 +1,2 @@
+ad19228 : reverted source and target config back to 1.6
+:100644 100644 9d33fb8... 2c2335d... M	pom.xml

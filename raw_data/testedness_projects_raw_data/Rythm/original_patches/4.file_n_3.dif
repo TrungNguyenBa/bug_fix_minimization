@@ -1,0 +1,19 @@
+diff --git a/library/src/main/java/com/actinarium/rhythm/RhythmConfiguration.java b/library/src/main/java/com/actinarium/rhythm/RhythmConfiguration.java
+deleted file mode 100644
+index bfe28e3..0000000
+--- a/library/src/main/java/com/actinarium/rhythm/RhythmConfiguration.java
++++ /dev/null
+@@ -1,13 +0,0 @@
+-package com.actinarium.rhythm;
+-
+-/**
+- * <p></p>
+- *
+- * @author Paul Danyliuk
+- * @version $Id$
+- */
+-public class RhythmConfiguration {
+-
+-    int mIncrement;
+-
+-}

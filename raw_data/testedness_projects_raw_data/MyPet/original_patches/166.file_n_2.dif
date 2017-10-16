@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 822d2656..4dc0da88 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -241,7 +241,7 @@ public class EntityListener implements Listener
+             }
+             if (damager instanceof CraftMyPet && event.getEntity() instanceof LivingEntity)
+             {
+-                MyPet myPet = ((CraftMyPet) damager).getMyPet();
++                MyPet myPet = ((CraftMyPet) event.getDamager()).getMyPet();
+ 
+                 selfThrownEventRunning = true;
+                 if (!PvPChecker.canHurtEvent(myPet.getOwner().getPlayer(), (LivingEntity) event.getEntity()))

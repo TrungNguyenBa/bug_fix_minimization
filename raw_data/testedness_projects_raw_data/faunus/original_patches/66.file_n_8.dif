@@ -1,0 +1,21 @@
+diff --git a/src/geometry.cpp b/src/geometry.cpp
+index 90b067b2..54ace4d5 100644
+--- a/src/geometry.cpp
++++ b/src/geometry.cpp
+@@ -355,5 +355,16 @@ namespace Faunus {
+        */
+ #endif
+ 
++    void translate(const Geometrybase &geo, p_vec &p, Point d) {
++      for (auto &pi : p) {
++        pi += d;
++        geo.boundary(pi);
++      }
++    }
++
++    void cm2origo(const Geometrybase &geo, p_vec &p) {
++      translate(geo, p, -massCenter(geo, p) );
++    }
++
+   }//namespace geometry
+ }//namespace

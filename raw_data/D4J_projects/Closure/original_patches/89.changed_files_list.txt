@@ -1,0 +1,4 @@
+4b065734 : Turn off collapsing for non-constructor function properties. Fixes issue 289.
+:100644 100644 4e7ea97b... ddccf0db... M	src/com/google/javascript/jscomp/CollapseProperties.java
+:100644 100644 26b13e8b... 82683391... M	src/com/google/javascript/jscomp/GlobalNamespace.java
+:100644 100644 a825b185... 79f6dc0e... M	test/com/google/javascript/jscomp/CollapsePropertiesTest.java

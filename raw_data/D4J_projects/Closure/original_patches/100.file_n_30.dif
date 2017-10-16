@@ -1,0 +1,12 @@
+diff --git a/src/com/google/javascript/rhino/jstype/NamedType.java b/src/com/google/javascript/rhino/jstype/NamedType.java
+index 6af723cc..b67876c3 100644
+--- a/src/com/google/javascript/rhino/jstype/NamedType.java
++++ b/src/com/google/javascript/rhino/jstype/NamedType.java
+@@ -110,7 +110,6 @@ class NamedType extends ProxyObjectType {
+     this.charno = charno;
+   }
+ 
+-  @Override
+   void forgiveUnknownNames() {
+     forgiving = true;
+   }

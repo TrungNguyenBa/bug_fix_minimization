@@ -1,0 +1,22 @@
+diff --git a/pom.xml b/pom.xml
+index 0d5be15..7d70e31 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -266,17 +266,6 @@
+     </plugins>
+   </build>
+ 
+-  <distributionManagement>
+-    <snapshotRepository>
+-      <id>ossrh</id>
+-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+-    </snapshotRepository>
+-    <repository>
+-      <id>ossrh</id>
+-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+-    </repository>
+-  </distributionManagement>
+-
+   <profiles>
+     <profile>
+       <id>gpg</id>

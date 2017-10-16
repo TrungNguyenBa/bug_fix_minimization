@@ -1,0 +1,4 @@
+73461e5 : Add transformers to Zips. Use charset for outputs too. #31
+:100644 100644 6368950... d75b3a3... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java
+:100644 100644 40219f1... eff4411... M	src/main/java/org/zeroturnaround/zip/Zips.java
+:100644 100644 7ede1ed... 2bb0ceb... M	src/test/java/org/zeroturnaround/zip/ZipsTest.java

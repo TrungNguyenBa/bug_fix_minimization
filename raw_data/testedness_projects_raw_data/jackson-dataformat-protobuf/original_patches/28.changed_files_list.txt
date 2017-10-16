@@ -1,0 +1,2 @@
+b4ef3db : Improvements in OSGi manifest generation. Fixes #2.
+:100644 100644 e9273ce... cc32290... M	pom.xml

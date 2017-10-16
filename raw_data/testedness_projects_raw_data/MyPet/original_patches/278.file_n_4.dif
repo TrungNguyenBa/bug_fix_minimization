@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetLanguage.java b/src/main/java/de/Keyle/MyPet/util/MyPetLanguage.java
+index 5bfcf346..b19d491f 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetLanguage.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetLanguage.java
+@@ -165,7 +165,6 @@ public class MyPetLanguage
+         addString("Msg_SpawnPrevent", "MyPet.Message.spawnprevent", "Something prevents %aqua%%petname%%reset% from coming to you.");
+         addString("Msg_StopAttack", "MyPet.Message.stopattack", "Your pet should now %green%stop%reset% attacking!");
+         // --  T  --
+-        addString("Msg_TameNow", "MyPet.Message.tamenow", "%green% Tame now!");
+         addString("Msg_ThornsChance", "MyPet.Message.thornschance", "%aqua%%petname%%reset% has now a chance of %gold%%chance%%%reset% to reflect damage.");
+         // --  U  --
+         addString("Msg_UserDontHavePet", "MyPet.Message.userdonthavepet", "%gold%%playername%%reset% doesn't have a MyPet!");

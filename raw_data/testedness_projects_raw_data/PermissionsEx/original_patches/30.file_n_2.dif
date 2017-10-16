@@ -1,0 +1,55 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java b/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java
+index 1d7edaf..e6d3a95 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java
+@@ -66,11 +66,6 @@ public class PEXSubject implements OptionSubject, Caching {
+         return identifier;
+     }
+ 
+-    private String identifyUser() {
+-        final Optional<CommandSource> source = getCommandSource();
+-        return getIdentifier() + (source.isPresent() ? "/" + source.get().getName() : "");
+-    }
+-
+     @Override
+     public Optional<CommandSource> getCommandSource() {
+         return getContainingCollection().getCommandSource(this.identifier);
+@@ -96,11 +91,7 @@ public class PEXSubject implements OptionSubject, Caching {
+         Preconditions.checkNotNull(contexts, "contexts");
+         Preconditions.checkNotNull(key, "key");
+         try {
+-            final String val = dataCache.get(contexts).getOptions().get(key);
+-            if (collection.getPlugin().getManager().hasDebugMode()) {
+-                collection.getPlugin().getLogger().info("Option " + key + " checked in " + contexts + " for user " + identifyUser() + ": " + val);
+-            }
+-            return Optional.fromNullable(val);
++            return Optional.fromNullable(dataCache.get(contexts).getOptions().get(key));
+         } catch (ExecutionException e) {
+             throw new RuntimeException(e);
+         }
+@@ -127,11 +118,7 @@ public class PEXSubject implements OptionSubject, Caching {
+         Preconditions.checkNotNull(permission, "permission");
+ 
+         try {
+-            Tristate ret = dataCache.get(contexts).getPermissions().get(permission);
+-            if (collection.getPlugin().getManager().hasDebugMode()) {
+-                collection.getPlugin().getLogger().info("Permission " + permission + " checked in " + contexts + " for user " + identifyUser() + ": " + ret);
+-            }
+-            return ret;
++            return dataCache.get(contexts).getPermissions().get(permission);
+         } catch (ExecutionException e) {
+             throw new RuntimeException(e);
+         }
+@@ -168,11 +155,7 @@ public class PEXSubject implements OptionSubject, Caching {
+     public List<Subject> getParents(Set<Context> contexts) {
+         Preconditions.checkNotNull(contexts, "contexts");
+         try {
+-            final List<Subject> parents = dataCache.get(contexts).getParents();
+-            if (collection.getPlugin().getManager().hasDebugMode()) {
+-                collection.getPlugin().getLogger().info("Parents checked in " + contexts + " for user " + identifyUser() + ": " + parents);
+-            }
+-            return parents;
++            return dataCache.get(contexts).getParents();
+         } catch (ExecutionException e) {
+             throw new RuntimeException(e);
+         }

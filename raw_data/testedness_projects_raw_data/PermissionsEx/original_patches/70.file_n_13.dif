@@ -1,0 +1,29 @@
+diff --git a/src/main/java/ru/tehkode/permissions/query/GetQuery.java b/src/main/java/ru/tehkode/permissions/query/GetQuery.java
+index f5703b0..8346caf 100644
+--- a/src/main/java/ru/tehkode/permissions/query/GetQuery.java
++++ b/src/main/java/ru/tehkode/permissions/query/GetQuery.java
+@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.ListenableFuture;
+ import org.bukkit.Bukkit;
+ import org.bukkit.permissions.Permission;
+ import ru.tehkode.permissions.PermissionManager;
+-import ru.tehkode.permissions.data.Context;
+ import ru.tehkode.permissions.data.MatcherGroup;
+ 
+ import java.util.ArrayList;
+@@ -15,14 +14,13 @@ import java.util.LinkedList;
+ import java.util.List;
+ import java.util.ListIterator;
+ import java.util.Map;
+-import java.util.concurrent.ConcurrentMap;
+ 
+ /**
+  * Query type used to get permissions data.
+  */
+ public class GetQuery extends PermissionQuery<GetQuery> {
+-	public GetQuery(PermissionManager manager, ConcurrentMap<CacheKey, CacheElement> cache) {
+-		super(manager, cache);
++	public GetQuery(PermissionManager manager) {
++		super(manager);
+ 	}
+ 
+ 	public ListenableFuture<Boolean> has(final String permission) {

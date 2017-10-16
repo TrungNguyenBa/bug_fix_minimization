@@ -1,0 +1,33 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java
+index 60d00a5f..708ac28b 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java
+@@ -22,8 +22,8 @@ package de.Keyle.MyPet.chatcommands;
+ 
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+-import de.Keyle.MyPet.entity.types.MyPetList;
+ import de.Keyle.MyPet.util.MyPetBukkitUtil;
++import de.Keyle.MyPet.util.MyPetList;
+ import de.Keyle.MyPet.util.locale.MyPetLocales;
+ import org.bukkit.command.Command;
+ import org.bukkit.command.CommandExecutor;
+@@ -43,15 +43,15 @@ public class CommandStop implements CommandExecutor
+ 
+                 if (myPet.getStatus() == PetState.Despawned)
+                 {
+-                    sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.CallFirst", petOwner)).replace("%petname%", myPet.getPetName()));
++                    sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.CallFirst", petOwner)).replace("%petname%", myPet.petName));
+                     return true;
+                 }
+                 else if (myPet.getStatus() == PetState.Dead)
+                 {
+-                    sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.CallWhenDead", petOwner)).replace("%petname%", myPet.getPetName()).replace("%time%", "" + myPet.getRespawnTime()));
++                    sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.CallWhenDead", petOwner)).replace("%petname%", myPet.petName).replace("%time%", "" + myPet.respawnTime));
+                     return true;
+                 }
+-                sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.StopAttack", petOwner)).replace("%petname%", myPet.getPetName()));
++                sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.StopAttack", petOwner)).replace("%petname%", myPet.petName));
+                 myPet.getCraftPet().getHandle().setTarget(null);
+                 myPet.getCraftPet().getHandle().setGoalTarget(null);
+                 myPet.getCraftPet().getHandle().goalTarget = null;

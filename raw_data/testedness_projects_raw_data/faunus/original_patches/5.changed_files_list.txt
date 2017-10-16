@@ -1,0 +1,4 @@
+318d146e : Half bin width compensation, stockmeyer.test, npt and nvt move dp keys
+:100644 100644 e056812a... 7977be80... M	include/faunus/energy.h
+:100644 100644 b456876b... 051820ef... M	include/faunus/move.h
+:100644 100644 58637bb3... b7bd52b6... M	src/examples/stockmayer.test

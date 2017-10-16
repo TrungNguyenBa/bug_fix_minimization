@@ -1,0 +1,2 @@
+28adf5b : Test that getting charges with total_count included works
+:100644 100644 42a3855... 8f76b64... M	src/test/java/com/stripe/StripeTest.java

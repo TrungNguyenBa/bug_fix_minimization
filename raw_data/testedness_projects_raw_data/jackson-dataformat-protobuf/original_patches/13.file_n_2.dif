@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+index 799ce66..86202f0 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+@@ -1078,7 +1078,7 @@ public class ProtobufGenerator extends GeneratorBase
+                         buf[ptr++] = (byte) ((v & 0x7F) + 0x80);
+                         v >>= 7;
+                         // and now must have at most 3 bits (since negatives were offlined)
+-                        buf[ptr++] = (byte) (v & 0x7F);
++                        buf[ptr++] = (byte) ((v & 0x7F) + 0x80);
+                     }
+                 }
+             }

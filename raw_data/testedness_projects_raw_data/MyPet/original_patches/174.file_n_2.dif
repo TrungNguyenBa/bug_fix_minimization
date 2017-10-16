@@ -1,0 +1,42 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index caa3b244..6dcd8fda 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -693,6 +693,7 @@ public class EntityListener implements Listener
+         }
+     }
+ 
++    @SuppressWarnings("unchecked")
+     @EventHandler(priority = EventPriority.MONITOR)
+     public void onEntityDamageByEntityDamageMonitor(final EntityDamageByEntityEvent event)
+     {
+@@ -976,15 +977,9 @@ public class EntityListener implements Listener
+             else if (deadEntity.getLastDamageCause() instanceof EntityDamageByEntityEvent)
+             {
+                 EntityDamageByEntityEvent edbee = (EntityDamageByEntityEvent) deadEntity.getLastDamageCause();
+-
+-                Entity damager = edbee.getDamager();
+-                if (damager instanceof Projectile)
+-                {
+-                    damager = ((Projectile) damager).getShooter();
+-                }
+-                if (damager instanceof CraftMyPet)
++                if (edbee.getDamager() instanceof CraftMyPet)
+                 {
+-                    MyPet myPet = ((CraftMyPet) damager).getMyPet();
++                    MyPet myPet = ((CraftMyPet) edbee.getDamager()).getMyPet();
+                     if (myPet.getSkillTree() == null && Configuration.PREVENT_LEVELLING_WITHOUT_SKILLTREE)
+                     {
+                         if (!myPet.autoAssignSkilltree())
+@@ -994,9 +989,9 @@ public class EntityListener implements Listener
+                     }
+                     myPet.getExperience().addExp(edbee.getEntity().getType());
+                 }
+-                else if (damager instanceof Player)
++                else if (edbee.getDamager() instanceof Player)
+                 {
+-                    Player owner = (Player) damager;
++                    Player owner = (Player) edbee.getDamager();
+                     if (MyPetList.hasMyPet(owner))
+                     {
+                         MyPet myPet = MyPetList.getMyPet(owner);

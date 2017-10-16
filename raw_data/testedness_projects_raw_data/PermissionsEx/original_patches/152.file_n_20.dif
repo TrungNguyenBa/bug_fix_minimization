@@ -1,0 +1,20 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileUser.java b/src/main/java/ru/tehkode/permissions/backends/file/FileUser.java
+index 3d77058..19fbac3 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileUser.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileUser.java
+@@ -20,7 +20,6 @@ package ru.tehkode.permissions.backends.file;
+ 
+ import java.util.Arrays;
+ import java.util.List;
+-
+ import org.bukkit.configuration.ConfigurationSection;
+ import ru.tehkode.permissions.PermissionManager;
+ import ru.tehkode.permissions.ProxyPermissionUser;
+@@ -28,6 +27,7 @@ import ru.tehkode.permissions.backends.FileBackend;
+ import ru.tehkode.permissions.events.PermissionEntityEvent;
+ 
+ /**
++ *
+  * @author code
+  */
+ public class FileUser extends ProxyPermissionUser {

@@ -1,0 +1,2 @@
+1d38fdb1 : fix beacon timer and activation bug fixes #377
+:100644 100644 358347e1... e22a169a... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java

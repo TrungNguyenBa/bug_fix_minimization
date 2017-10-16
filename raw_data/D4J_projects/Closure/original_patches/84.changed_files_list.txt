@@ -1,0 +1,10 @@
+4839e1ea : Don't let invalid LHS assignments to slip through. Fixes issue 215. Fixes issue 214.
+:100644 100644 3568fc5e... d2a4e5dc... M	src/com/google/javascript/jscomp/parsing/IRFactory.java
+:100644 100644 de413ddf... 585df22c... M	test/com/google/javascript/jscomp/CheckGlobalThisTest.java
+:100644 100644 2d82661d... 486fe5a7... M	test/com/google/javascript/jscomp/DeadAssignmentsEliminationTest.java
+:100644 100644 4eab4b4b... bc4ba6f1... M	test/com/google/javascript/jscomp/FlowSensitiveInlineVariablesTest.java
+:100644 100644 c92661e7... aa72d7a6... M	test/com/google/javascript/jscomp/InlineFunctionsTest.java
+:100644 100644 b2b3dded... 7488dec8... M	test/com/google/javascript/jscomp/LooseTypeCheckTest.java
+:100644 100644 8a42af99... f2a279d6... M	test/com/google/javascript/jscomp/TypeCheckTest.java
+:100644 100644 6b982b54... 6801b270... M	test/com/google/javascript/jscomp/parsing/IRFactoryTest.java
+:100644 100644 0d7e9eb5... e09390d2... M	test/com/google/javascript/jscomp/parsing/ParserTest.java

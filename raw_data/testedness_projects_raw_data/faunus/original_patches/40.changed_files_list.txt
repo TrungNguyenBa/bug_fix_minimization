@@ -1,0 +1,3 @@
+59bfc8d6 : fixed decltype gcc46 compilation bug
+:100644 100644 d6a58e03... a1b3a47e... M	CMakeLists.txt
+:100644 100644 3eedb9a0... b3ddb160... M	include/faunus/energy.h

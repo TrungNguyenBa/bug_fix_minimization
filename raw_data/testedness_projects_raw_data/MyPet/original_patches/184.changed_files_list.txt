@@ -1,0 +1,2 @@
+c71ec276 : fixed IconMenus don't showing correct name and lore
+:100644 100644 7ae50b85... 1db31bb5... M	src/main/java/de/Keyle/MyPet/util/IconMenu.java

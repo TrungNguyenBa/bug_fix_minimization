@@ -1,0 +1,47 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateMidnightSerializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateMidnightSerializer.java
+index d557f9d..ca708d4 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateMidnightSerializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateMidnightSerializer.java
+@@ -5,6 +5,7 @@ import java.io.IOException;
+ import org.joda.time.DateMidnight;
+ 
+ import com.fasterxml.jackson.core.JsonGenerator;
++
+ import com.fasterxml.jackson.databind.*;
+ import com.fasterxml.jackson.datatype.joda.cfg.FormatConfig;
+ import com.fasterxml.jackson.datatype.joda.cfg.JacksonJodaDateFormat;
+@@ -23,7 +24,7 @@ public final class DateMidnightSerializer
+ 
+     @Override
+     public DateMidnightSerializer withFormat(JacksonJodaDateFormat formatter) {
+-        return (_format == formatter) ? this : new DateMidnightSerializer(formatter);
++        return (_format == formatter) ? this : new DateMidnightSerializer(_format);
+     }
+ 
+     @Override
+@@ -32,18 +33,17 @@ public final class DateMidnightSerializer
+     }
+ 
+     @Override
+-    public void serialize(DateMidnight value, JsonGenerator gen,
+-            SerializerProvider provider) throws IOException
++    public void serialize(DateMidnight value, JsonGenerator jgen, SerializerProvider provider) throws IOException
+     {
+         if (_useTimestamp(provider)) {
+             // same as with other date-only values
+-            gen.writeStartArray();
+-            gen.writeNumber(value.year().get());
+-            gen.writeNumber(value.monthOfYear().get());
+-            gen.writeNumber(value.dayOfMonth().get());
+-            gen.writeEndArray();
++            jgen.writeStartArray();
++            jgen.writeNumber(value.year().get());
++            jgen.writeNumber(value.monthOfYear().get());
++            jgen.writeNumber(value.dayOfMonth().get());
++            jgen.writeEndArray();
+         } else {
+-            gen.writeString(_format.createFormatterWithLocale(provider).print(value));
++            jgen.writeString(_format.createFormatterWithLocale(provider).print(value));
+         }
+     }
+ }

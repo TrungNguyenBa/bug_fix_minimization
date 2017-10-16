@@ -1,0 +1,12 @@
+diff --git a/src/com/google/javascript/rhino/jstype/UnresolvedTypeExpression.java b/src/com/google/javascript/rhino/jstype/UnresolvedTypeExpression.java
+index e485054a..275c7512 100644
+--- a/src/com/google/javascript/rhino/jstype/UnresolvedTypeExpression.java
++++ b/src/com/google/javascript/rhino/jstype/UnresolvedTypeExpression.java
+@@ -41,6 +41,7 @@ package com.google.javascript.rhino.jstype;
+ 
+ import com.google.common.base.Preconditions;
+ import com.google.javascript.rhino.ErrorReporter;
++import com.google.javascript.rhino.JSTypeExpression;
+ import com.google.javascript.rhino.Node;
+ 
+ /**

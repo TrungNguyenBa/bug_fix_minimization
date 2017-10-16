@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/BasicSQLSelectQuery.java b/src/main/java/ru/tehkode/permissions/backends/sql/BasicSQLSelectQuery.java
+index fd1fbdc..146a1bb 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/BasicSQLSelectQuery.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/BasicSQLSelectQuery.java
+@@ -30,7 +30,7 @@ public class BasicSQLSelectQuery extends BasicSQLQuery implements SQLSelectQuery
+ 	@Override
+ 	public SQLSelectQuery execute() throws SQLException {
+ 		this.results = stmt.executeQuery();
+-
++		
+ 		return this;
+ 	}
+ }

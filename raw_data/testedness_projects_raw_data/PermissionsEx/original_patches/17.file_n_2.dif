@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java b/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
+index 53f913c..cc6edc1 100644
+--- a/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
++++ b/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
+@@ -36,7 +36,7 @@ public class OptionCommands {
+     public static CommandSpec getOptionCommand(PermissionsEx pex) {
+         return CommandSpec.builder()
+                 .setAliases("options", "option", "opt", "o")
+-                .setArguments(seq(string(_("key")), optional(string(_("value")))))
++                .setArguments(seq(string(_("key")), optional(string(_("val")))))
+                 .setExecutor(new PermissionsExExecutor(pex) {
+                     @Override
+                     public <TextType> void execute(Commander<TextType> src, CommandContext args) throws CommandException {

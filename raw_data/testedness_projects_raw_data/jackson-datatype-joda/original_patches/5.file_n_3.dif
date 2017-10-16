@@ -1,0 +1,19 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
+index 6b34b83..38f6798 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
+@@ -198,14 +198,6 @@ public class JacksonJodaDateFormat extends JacksonJodaFormatBase
+         }
+         return formatter;
+     }
+-
+-    /**
+-     * Differentiate if TimeZone is specified by caller 
+-     * @return true if TimeZone is specified by caller; false otherwise.
+-     */
+-    public boolean isTimezoneExplicit() {
+-    	return _explicitTimezone;
+-    }
+     
+     /*
+     /**********************************************************

@@ -1,0 +1,40 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+index 0fb4072..528e750 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+@@ -82,7 +82,7 @@ public class FileBackend extends PermissionBackend {
+ 			return Collections.emptyMap();
+ 		}
+ 
+-		Map<String, List<String>> ret = new HashMap<>();
++		Map<String, List<String>> ret = new HashMap<String, List<String>>();
+ 		for (String world : worldsSection.getKeys(false)) {
+ 			ret.put(world, getWorldInheritance(world));
+ 		}
+@@ -127,7 +127,7 @@ public class FileBackend extends PermissionBackend {
+ 			return Collections.emptySet();
+ 		}
+ 
+-		Set<String> names = new HashSet<>();
++		Set<String> names = new HashSet<String>();
+ 
+ 		String defaultGroupProperty = "default";
+ 		if (worldName != null) {
+@@ -161,7 +161,7 @@ public class FileBackend extends PermissionBackend {
+ 			return Collections.emptySet();
+ 		}
+ 
+-		Set<String> userNames = new HashSet<>();
++		Set<String> userNames = new HashSet<String>();
+ 
+ 		for (Map.Entry<String, Object> entry : users.getValues(false).entrySet()) {
+ 			if (entry.getValue() instanceof ConfigurationSection) {
+@@ -242,7 +242,7 @@ public class FileBackend extends PermissionBackend {
+ 				permissions.set("groups/default/default", true);
+ 
+ 
+-				List<String> defaultPermissions = new LinkedList<>();
++				List<String> defaultPermissions = new LinkedList<String>();
+ 				// Specify here default permissions
+ 				defaultPermissions.add("modifyworld.*");
+ 

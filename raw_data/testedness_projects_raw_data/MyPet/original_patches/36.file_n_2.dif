@@ -1,0 +1,17 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/CustomInventory.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/CustomInventory.java
+index c7e9e33f..a3b50ef0 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/CustomInventory.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/CustomInventory.java
+@@ -238,10 +238,8 @@ public class CustomInventory implements IInventory, Listener {
+     }
+ 
+     public void close() {
+-        if (transaction.size() > 0) {
+-            for (HumanEntity humanEntity : new ArrayList<HumanEntity>(transaction)) {
+-                humanEntity.closeInventory();
+-            }
++        for (HumanEntity humanEntity : transaction) {
++            humanEntity.closeInventory();
+         }
+     }
+ 

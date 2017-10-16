@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java b/src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java
+index 1de4e5b..9dcc6d9 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/caching/CachingData.java
+@@ -184,7 +184,7 @@ public abstract class CachingData implements PermissionsData {
+ 	@Override
+ 	public Map<String, Map<String, String>> getOptionsMap() {
+ 		if (options == null) {
+-			loadOptions();
++			loadPermissions();
+ 		}
+ 		Map<String, Map<String, String>> ret = new HashMap<>();
+ 		for (Map.Entry<String, Map<String, String>> e : options.entrySet()) {

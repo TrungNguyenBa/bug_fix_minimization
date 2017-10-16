@@ -1,0 +1,3 @@
+d98a1a5 : Fixed #23
+:100644 100644 935f68c... 76b8a66... M	pom.xml
+:100644 100644 c53bed3... 6136e7d... M	release-notes/VERSION

@@ -1,0 +1,2 @@
+77ff8ed3 : fixed config option to disable Player vs. MyPet
+:100644 100644 a78bf1ea... 9f7e9d99... M	src/main/java/de/Keyle/MyPet/util/MyPetPvP.java

@@ -1,0 +1,2 @@
+cb594a9 : Correct subject cache to properly return registered value. This prevents unintentional creation of user records on login
+:100644 100644 26625d6... 5dc915f... M	src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java

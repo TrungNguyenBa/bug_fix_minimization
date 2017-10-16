@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
+index bedc8469..2cae1993 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
+@@ -80,7 +80,7 @@ public class BehaviorDuelTarget extends AIGoal
+             EntityMyPet entityMyPet = (EntityMyPet) entityObj;
+             MyPet targetMyPet = entityMyPet.getMyPet();
+ 
+-            if (entityMyPet != petEntity && entityMyPet.isAlive())
++            if (petEntity.getEntitySenses().canSee(entityMyPet) && entityMyPet != petEntity && entityMyPet.isAlive())
+             {
+                 if (!targetMyPet.getSkills().isSkillActive(Behavior.class) || !targetMyPet.getCraftPet().canMove())
+                 {

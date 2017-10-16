@@ -1,0 +1,2 @@
+af2f90e : agregando RunTimeException
+:100644 100644 dd7c4c9... 6ec1863... M	src/main/java/synergyj/Stereo.java

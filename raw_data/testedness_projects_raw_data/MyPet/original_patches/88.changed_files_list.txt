@@ -1,0 +1,3 @@
+56341b21 : fix default values for control and ride item in config
+:100644 100644 6cf27bb1... f4e90506... M	src/main/java/de/Keyle/MyPet/util/ConfigItem.java
+:100644 100644 36b32944... 815bff6e... M	src/main/java/de/Keyle/MyPet/util/Configuration.java

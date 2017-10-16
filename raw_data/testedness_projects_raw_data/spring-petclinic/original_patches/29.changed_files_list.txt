@@ -1,0 +1,2 @@
+8929d37 : upgraded to Spring Data 1.7.0
+:100644 100644 5b3b1ea... a1fd6e3... M	pom.xml

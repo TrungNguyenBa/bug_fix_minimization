@@ -1,0 +1,5 @@
+0bfb25e : fixed problem with preserveRoot and subdirectories by removing extra slash from addFiles(). Also added test to prove issue existed.
+:100644 100644 60568d9... 1243674... M	src/main/java/org/zeroturnaround/zip/Zips.java
+:100644 100644 f1dd651... 0a73a76... M	src/test/java/org/zeroturnaround/zip/ZipsTest.java
+:000000 100644 0000000... 086e92c... A	src/test/resources/testDirectory/testSubdirectory/testFileInTestSubdirectory.txt
+:000000 100644 0000000... 34c6d59... A	src/test/resources/testDirectory/testfileInTestDirectory.txt

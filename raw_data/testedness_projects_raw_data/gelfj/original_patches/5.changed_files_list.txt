@@ -1,0 +1,4 @@
+e6ec090 : - Fixed #79
+:100644 100644 9328612... 44d9b00... M	pom.xml
+:100644 100644 bbb265a... 51d22af... M	src/main/java/org/graylog2/GelfMessage.java
+:000000 100644 0000000... cefb499... A	src/test/java/org/graylog2/GelfMessageMutabilityTest.java

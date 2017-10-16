@@ -1,0 +1,12 @@
+diff --git a/src/test/java/com/stripe/StripeTest.java b/src/test/java/com/stripe/StripeTest.java
+index 822de5c..57018ea 100644
+--- a/src/test/java/com/stripe/StripeTest.java
++++ b/src/test/java/com/stripe/StripeTest.java
+@@ -162,7 +162,6 @@ public class StripeTest {
+ 		assertEquals(false, retrievedAccount.getDetailsSubmitted());
+ 		assertEquals(null, retrievedAccount.getStatementDescriptor());
+ 		assertEquals(false, retrievedAccount.getTransferEnabled());
+-		assertEquals("CAD", retrievedAccount.getDefaultCurrency());
+ 
+ 		List<String> currencies = retrievedAccount.getCurrenciesSupported();
+ 		assertEquals(1, currencies.size());

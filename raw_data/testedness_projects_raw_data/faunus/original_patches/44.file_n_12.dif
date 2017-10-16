@@ -1,0 +1,21 @@
+diff --git a/src/examples/manybody.cpp b/src/examples/manybody.cpp
+index 334618d1..621de416 100644
+--- a/src/examples/manybody.cpp
++++ b/src/examples/manybody.cpp
+@@ -118,13 +118,12 @@ int main(int argc, char** argv) {
+ 
+             if (mpi.isMaster())
+               if (cmfile) {
+-                cmfile << cm_vec.size() << "\n" << "cm" << "\n";
++                cmfile << cm_vec.size() << endl << "cm" << endl;
+                 for (auto &m : cm_vec)
+-                  cmfile << "H " << ((m+spc.geo.len_half)/10).transpose() << "\n";
++                  cmfile << "H " << ((m+spc.geo.len_half)/10).transpose() << endl;
+               }
+               if (energyfile)
+-                energyfile << loop.count() << " " << sys.current()
+-                  << " " << std::cbrt(spc.geo.getVolume()) << "\n";
++                energyfile << loop.count() << " " << sys.current() << " " << std::cbrt(spc.geo.getVolume()) << "\n";
+           }
+           break;
+         case 2: // volume move (NPT)

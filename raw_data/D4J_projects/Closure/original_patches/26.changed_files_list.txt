@@ -1,0 +1,4 @@
+372eb11e : don't bother with module exports if there's nothing to export Fixes issue 732
+:100644 100644 a0f2dda0... fa01cd9e... M	src/com/google/javascript/jscomp/ProcessCommonJSModules.java
+:100644 100644 f1898834... fd8f632b... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java
+:100644 100644 4f6f0538... 7525531c... M	test/com/google/javascript/jscomp/ProcessCommonJSModulesTest.java

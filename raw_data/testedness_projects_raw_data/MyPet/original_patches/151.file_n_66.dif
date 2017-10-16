@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java
+index 973f6004..64fe73cb 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java
+@@ -25,7 +25,8 @@ import de.Keyle.MyPet.util.MyPetPlayer;
+ 
+ import java.util.UUID;
+ 
+-public interface IMyPet {
++public interface IMyPet
++{
+     public double getExp();
+ 
+     public double getHealth();

@@ -1,0 +1,17 @@
+diff --git a/include/faunus/species.h b/include/faunus/species.h
+index 85125bf9..96ecd513 100644
+--- a/include/faunus/species.h
++++ b/include/faunus/species.h
+@@ -34,7 +34,11 @@ namespace Faunus {
+            panglsw,    //!< Angle of angluar switch on sides of patch on PatchySpherocylinder [degrees]
+            pdis,       //!< Distance to which attraction is flat (typicaly end of repulsion) on attrative patch on PatchySpherocylinder [Å]
+            pswitch,    //!< Distance on which attraction switches to zero on PatchySpherocylinder [Å]
+-           chiral_angle;//!< Angle of chirality (rotation of patch) on PatchySpherocylinder [degrees]
++           chiral_angle,//!< Angle of chirality (rotation of patch) on PatchySpherocylinder [degrees]
++           pcangl,
++           pcanglsw,
++           rcutwca,
++           rcut;
+     Point mu;
+     short int patchtype;     //!< If patchy particle, which type of patch
+     Thydrophobic hydrophobic;//!< Are we hydrophobic?

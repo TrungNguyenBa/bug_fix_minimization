@@ -1,0 +1,4 @@
+7e93d521 : Prevent unsupport JavaScript variants that Rhino can parse from crashing the compiler in "ide mode". Fixes issue 663
+:100644 100644 8201b41a... 435b4a8c... M	src/com/google/javascript/jscomp/NodeTraversal.java
+:100644 100644 c6b70c55... 26cbc19b... M	src/com/google/javascript/jscomp/parsing/IRFactory.java
+:100644 100644 85cfe4f0... d1ffc4c5... M	test/com/google/javascript/jscomp/IntegrationTest.java

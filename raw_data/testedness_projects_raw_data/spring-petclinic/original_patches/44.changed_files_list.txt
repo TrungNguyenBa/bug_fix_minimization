@@ -1,0 +1,2 @@
+6942397 : removing reference to Cloudfoundry instance until petclinic is migrated to CloudFoundry v2
+:100644 100644 3c1b8ed... 043e3a5... M	readme.md

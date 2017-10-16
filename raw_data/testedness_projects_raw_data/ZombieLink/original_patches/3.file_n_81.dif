@@ -1,0 +1,31 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java b/zombielink/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
+index fb4534a..decf048 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
+@@ -25,7 +25,7 @@ import static com.lonepulse.zombielink.annotation.Entity.ContentType.JSON;
+ import org.apache.http.HttpResponse;
+ 
+ import com.lonepulse.zombielink.annotation.Async;
+-import com.lonepulse.zombielink.annotation.Deserialize;
++import com.lonepulse.zombielink.annotation.Deserializer;
+ import com.lonepulse.zombielink.annotation.Detach;
+ import com.lonepulse.zombielink.annotation.Endpoint;
+ import com.lonepulse.zombielink.annotation.GET;
+@@ -85,7 +85,7 @@ public interface AsyncEndpoint {
+ 	 * 
+ 	 * @since 1.3.4
+ 	 */
+-	@Deserialize(JSON)
++	@Deserializer(JSON)
+ 	@GET("/asyncerror")
+ 	void asyncError(AsyncHandler<User> asyncHandler);
+ 	
+@@ -131,7 +131,7 @@ public interface AsyncEndpoint {
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+-	@Deserialize(JSON)
++	@Deserializer(JSON)
+ 	@GET("/errorcallbackerror")
+ 	void asyncErrorCallbackError(AsyncHandler<User> asyncHandler);
+ 	

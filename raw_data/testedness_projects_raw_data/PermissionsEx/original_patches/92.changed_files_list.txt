@@ -1,0 +1,4 @@
+d337228 : Fix up double printing of permissions and informplayers config
+:100644 100644 aa44d9a... e28f54c... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+:100644 100644 b5e9615... 27da3f0... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
+:100644 100644 2cef8fa... 518e9de... M	src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java

@@ -1,0 +1,3 @@
+31693a77 : improved the pet creation admin option fixes #113
+:100644 100644 04f0bbf3... be6f2995... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
+:100644 100644 312102ec... 3358482d... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java

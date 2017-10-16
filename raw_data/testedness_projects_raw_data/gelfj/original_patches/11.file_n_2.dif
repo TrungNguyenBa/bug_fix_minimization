@@ -1,0 +1,31 @@
+diff --git a/src/main/java/org/graylog2/GelfAMQPSender.java b/src/main/java/org/graylog2/GelfAMQPSender.java
+index 645ea64..103b852 100644
+--- a/src/main/java/org/graylog2/GelfAMQPSender.java
++++ b/src/main/java/org/graylog2/GelfAMQPSender.java
+@@ -15,7 +15,6 @@ public class GelfAMQPSender implements GelfSender {
+     private boolean shutdown = false;
+ 
+     private ConnectionFactory factory;
+-    private Connection connection;
+     private Channel channel;
+ 
+     private String exchangeName;
+@@ -45,7 +44,7 @@ public class GelfAMQPSender implements GelfSender {
+             try {
+                 // establish the connection the first time
+                 if (channel == null) {
+-                    connection = factory.newConnection();
++                    Connection connection = factory.newConnection();
+                     channel = connection.createChannel();
+                 }
+ 
+@@ -75,9 +74,5 @@ public class GelfAMQPSender implements GelfSender {
+             channel.close();
+         } catch (Exception e) {
+         }
+-        try {
+-            connection.close();
+-        } catch (Exception e) {
+-        }
+     }
+ }

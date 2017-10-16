@@ -1,0 +1,9 @@
+80fced8 : Fix for https://github.com/ktoso/maven-git-commit-id-plugin/issues/122: rename git.commit.id to git.commit.id.full
+:100644 100644 1fc4a82... 3c4e10e... M	README.md
+:100644 100644 8b21b45... a616cce... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+:100644 100644 ca67786... 56b15b5... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+:100644 100644 caa7a39... c54587b... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java
+:100644 100644 8d2dff9... fabe9be... M	src/test/java/pl/project13/maven/git/GitSubmodulesTest.java
+:100644 100644 f86c069... 4cff7c0... M	src/test/java/pl/project13/maven/git/NaivePerformanceTest.java
+:100644 100644 f04b5fd... bfad398... M	src/test/java/pl/project13/maven/git/NativeAndJGitProviderTest.java
+:100644 100644 790e93d... c720d8a... M	src/test/resources/git.properties

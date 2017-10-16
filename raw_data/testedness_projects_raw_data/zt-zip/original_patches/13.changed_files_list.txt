@@ -1,0 +1,8 @@
+b285402 : Preserve file permissions #52: make it Java 1.5 compatible.
+:100644 100644 3741a56... e034e26... M	src/main/java/org/zeroturnaround/zip/FileSource.java
+:100644 000000 39e15b1... 0000000... D	src/main/java/org/zeroturnaround/zip/Java5FileApiFilePermissionsStrategy.java
+:000000 100644 0000000... 58c1c9c... A	src/main/java/org/zeroturnaround/zip/Java6FileApiPermissionsStrategy.java
+:100644 100644 398b2a1... fa47e00... M	src/main/java/org/zeroturnaround/zip/ZTFilePermissionsUtil.java
+:100644 100644 0ee38cc... a5c2322... M	src/main/java/org/zeroturnaround/zip/ZipEntryUtil.java
+:100644 100644 a74586c... e71e3e7... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java
+:100644 100644 7c28128... d913719... M	src/test/java/org/zeroturnaround/zip/FilePermissionsTest.java

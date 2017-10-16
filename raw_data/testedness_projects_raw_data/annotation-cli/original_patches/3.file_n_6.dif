@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/valhalla/cli/annotations/Option.java b/src/main/java/org/valhalla/cli/annotations/Option.java
+index 8b0e22c..85767a0 100644
+--- a/src/main/java/org/valhalla/cli/annotations/Option.java
++++ b/src/main/java/org/valhalla/cli/annotations/Option.java
+@@ -110,7 +110,7 @@ public @interface Option {
+ 	/**
+ 	 * This is used to state that this option is required. The Options instance
+ 	 * will determine if all of the required options have been satisfied and will
+-	 * raise an exception if one was not applied.
++	 * raise an exception is one was not applied.
+ 	 * 
+ 	 * @return true, if this option is required
+ 	 */

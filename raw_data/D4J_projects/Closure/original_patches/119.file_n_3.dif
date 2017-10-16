@@ -1,0 +1,18 @@
+diff --git a/test/com/google/javascript/jscomp/CheckGlobalNamesTest.java b/test/com/google/javascript/jscomp/CheckGlobalNamesTest.java
+index 46152b9d..1050872c 100644
+--- a/test/com/google/javascript/jscomp/CheckGlobalNamesTest.java
++++ b/test/com/google/javascript/jscomp/CheckGlobalNamesTest.java
+@@ -336,13 +336,4 @@ public class CheckGlobalNamesTest extends CompilerTestCase {
+         "SubFoo.superClazz();",
+          UNDEFINED_NAME_WARNING);
+   }
+-
+-  public void testGlobalCatch() throws Exception {
+-    testSame(
+-        "try {" +
+-        "  throw Error();" +
+-        "} catch (e) {" +
+-        "  console.log(e.name)" +
+-        "}");
+-  }
+ }

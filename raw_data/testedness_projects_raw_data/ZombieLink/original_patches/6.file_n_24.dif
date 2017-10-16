@@ -1,0 +1,57 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java b/src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java
+index 927968c..c88cd69 100644
+--- a/src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java
++++ b/src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java
+@@ -21,7 +21,7 @@ package com.lonepulse.zombielink.request;
+  */
+ 
+ import com.lonepulse.zombielink.annotation.Entity;
+-import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This runtime exception is thrown when an @{@link Entity} annotation failed to be discovered on the 
+@@ -46,33 +46,33 @@ class MissingEntityException extends RequestProcessorException {
+ 	 * <p>Displays a detailed description along with the stacktrace.
+ 	 * 
+ 	 * @param config
+-	 * 			the {@link InvocationContext} for which an @{@link Entity} failed to be discovered
++	 * 			the {@link ProxyInvocationConfiguration} for which an @{@link Entity} failed to be discovered
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+-	public MissingEntityException(InvocationContext config) {
++	public MissingEntityException(ProxyInvocationConfiguration config) {
+ 	
+-		this(new StringBuilder("An entity annotated with @").append(Entity.class.getSimpleName()) 
+-			 .append(" was not found on the request named [").append(config.getRequest().getName())
+-			 .append("]").toString());
++		this("An entity annotated with @" + Entity.class.getSimpleName() + 
++			 " was not found on the request named [" + config.getRequest().getName() + 
++			 "] for the URI [" + config.getUri().toString() + "] ");
+ 	}
+ 	
+ 	/**
+ 	 * <p>Displays a detailed description along with the stacktrace.
+ 	 * 
+ 	 * @param config
+-	 * 			the {@link InvocationContext} for which an @{@link Entity} failed to be discovered
++	 * 			the {@link ProxyInvocationConfiguration} for which an @{@link Entity} failed to be discovered
+ 	 * 
+ 	 * @param rootCause
+ 	 * 			the root cause which resulted in a failure to discover an entity
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+-	public MissingEntityException(InvocationContext config, Throwable rootCause) {
++	public MissingEntityException(ProxyInvocationConfiguration config, Throwable rootCause) {
+ 		
+-		this(new StringBuilder("An entity annotated with @").append(Entity.class.getSimpleName()) 
+-			 .append(" was not found on the request named [").append(config.getRequest().getName())
+-			 .append("]").toString(), rootCause);
++		this("An entity annotated with @" + Entity.class.getSimpleName() + 
++			 " was not found on the request named [" + config.getRequest().getName() + 
++			 "] for the URI [" + config.getUri().toString() + "] ", rootCause);
+ 	}
+ 	
+ 	/**

@@ -1,0 +1,4 @@
+39e2ad8af : Singular Value Decomposition now computes either the compact SVD (using only positive singular values) or truncated SVD (using a user-specified maximal number of singular values). Fixed Singular Value Decomposition solving of singular systems. JIRA: MATH-320, MATH-321
+:100644 100644 6003ed677... e418c084f... M	src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java
+:100644 100644 0514a5be4... 6ed488994... M	src/site/xdoc/changes.xml
+:100644 100644 041678748... a13652d9d... M	src/test/java/org/apache/commons/math/linear/SingularValueSolverTest.java

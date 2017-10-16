@@ -1,0 +1,2 @@
+872b76d : Make travis execute maven in a non-quiet manner
+:100644 100644 c8149f5... f5a14cf... M	.travis.yml

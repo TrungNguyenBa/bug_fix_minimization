@@ -1,0 +1,30 @@
+diff --git a/sample/src/main/java/com/actinarium/rhythm/sample/MainActivity.java b/sample/src/main/java/com/actinarium/rhythm/sample/MainActivity.java
+index 0b70a0c..eb85095 100644
+--- a/sample/src/main/java/com/actinarium/rhythm/sample/MainActivity.java
++++ b/sample/src/main/java/com/actinarium/rhythm/sample/MainActivity.java
+@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
+ import android.view.Menu;
+ import android.view.MenuItem;
+ import android.view.View;
+-import android.widget.FrameLayout;
+ import com.actinarium.rhythm.RhythmControl;
+ import com.actinarium.rhythm.RhythmDrawable;
+ 
+@@ -16,14 +15,14 @@ public class MainActivity extends AppCompatActivity {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+         View view = findViewById(R.id.frame);
+-        FrameLayout subView = (FrameLayout) findViewById(R.id.subframe);
++        View subView = findViewById(R.id.subframe);
+         final RhythmControl rhythmControl = ((RhythmSampleApplication) getApplication()).getRhythmControl();
+         view.setBackgroundDrawable(rhythmControl.getGroup(0).makeDrawable());
+         final RhythmDrawable drawable = rhythmControl.getGroup(1).makeDrawable();
+ //        drawable.setBounds(new Rect(subView.getLeft(), subView.getTop(), subView.getRight(), subView.getBottom()));
+ //        subView.getOverlay().add(drawable);
+-//        drawable.setBackgroundDrawable(subView.getBackground());
+-        subView.setForeground(drawable);
++        drawable.setBackgroundDrawable(subView.getBackground());
++        subView.setBackgroundDrawable(drawable);
+     }
+ 
+     @Override

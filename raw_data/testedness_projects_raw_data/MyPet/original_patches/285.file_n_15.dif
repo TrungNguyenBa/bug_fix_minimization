@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java b/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+index e218410e..e2a3c820 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+@@ -52,7 +52,7 @@ public class EntityMyVillager extends EntityMyPet
+ 
+     public int getProfession()
+     {
+-        return ((MyVillager) myPet).profession;
++        return this.datawatcher.getInt(16);
+     }
+ 
+     public void setProfession(int value)
+@@ -63,7 +63,7 @@ public class EntityMyVillager extends EntityMyPet
+ 
+     public boolean isBaby()
+     {
+-        return ((MyVillager) myPet).isBaby;
++        return this.datawatcher.getInt(12) < 0;
+     }
+ 
+     @SuppressWarnings("boxing")

@@ -1,0 +1,21 @@
+diff --git a/library/src/main/res/values/attrs.xml b/library/src/main/res/values/attrs.xml
+deleted file mode 100644
+index b545183..0000000
+--- a/library/src/main/res/values/attrs.xml
++++ /dev/null
+@@ -1,14 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<resources>
+-
+-    <declare-styleable name="RhythmicFrameLayout">
+-        <attr name="rhythmGroup" format="integer" />
+-        <attr name="patternPosition" format="enum">
+-            <enum name="underBackground" value="0" />
+-            <enum name="underContent" value="1" />
+-            <enum name="overContent" value="2" />
+-            <enum name="overForeground" value="3" />
+-        </attr>
+-    </declare-styleable>
+-
+-</resources>
+\ No newline at end of file

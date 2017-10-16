@@ -1,0 +1,7 @@
+2f932ec : Add fallback writing of Strings
+:100644 100644 4cc7796... ecf608e... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 780ec8b... 3a9f36f... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufUtil.java
+:100644 100644 d6f8590... 5b613fc... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:100644 100644 3b8639c... f56bc85... R059	src/test/java/com/fasterxml/jackson/dataformat/protobuf/SimpleWriteTest.java	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteArrayTest.java
+:000000 100644 0000000... de6c8cc... A	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
+:000000 100644 0000000... f96f026... A	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteSimpleTest.java

@@ -1,0 +1,2 @@
+c7ec39fe : fixed /petname message field format
+:100644 100644 dcaf50d0... b0bc3786... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandName.java

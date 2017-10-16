@@ -1,0 +1,2 @@
+fcfe711 : Use PluginManager for storage of PEX internal permissions instead of maintaining a spearate mapping.
+:100644 100644 22533c3... 1ad5352... M	src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java

@@ -1,0 +1,2 @@
+eed71a88 : do not spawn pet when the owner is dead fixes #207
+:100644 100644 240686ef... 6b4ee23c... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java

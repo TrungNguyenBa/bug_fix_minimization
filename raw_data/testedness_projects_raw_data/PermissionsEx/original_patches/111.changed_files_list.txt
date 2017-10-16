@@ -1,0 +1,2 @@
+68800c2 : Fixed lookup by name for online players on older versions of Bukkit
+:100644 100644 6d83682... d4fd989... M	src/main/java/ru/tehkode/permissions/PermissionManager.java

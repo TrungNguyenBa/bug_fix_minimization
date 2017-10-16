@@ -1,0 +1,4 @@
+7a0812d5 : surrounded loadSkillTree with try&catch to prevent the plugin from crashing on startup
+:100644 100644 7a06e9f6... 32c51d43... M	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderJSON.java
+:100644 100644 20e580fa... 752beb84... M	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderNBT.java
+:100644 100644 4fc6dca8... bf5e3e9d... M	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderYAML.java

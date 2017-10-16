@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+index cdb8a0e6..be967518 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+@@ -54,7 +54,7 @@ public class EntityMyPigZombie extends EntityMyPet
+             {
+                 public void run()
+                 {
+-                    if (myPigZombie.getStatus() == PetState.Here)
++                    if (myPigZombie.status == PetState.Here)
+                     {
+                         for (EquipmentSlot slot : EquipmentSlot.values())
+                         {

@@ -1,0 +1,4 @@
+09d39029 : LANG-879 LocaleUtils test fails with new Locale "ja_JP_JP_#u-ca-japanese" of JDK7
+:100644 100644 01867e70... bf6b3fec... M	src/changes/changes.xml
+:100644 100644 8a1203a0... fab00c5b... M	src/main/java/org/apache/commons/lang3/LocaleUtils.java
+:100644 100644 f2d47c59... e021dce9... M	src/test/java/org/apache/commons/lang3/LocaleUtilsTest.java

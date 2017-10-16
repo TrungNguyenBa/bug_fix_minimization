@@ -1,0 +1,14 @@
+diff --git a/pom.xml b/pom.xml
+index 18bf2c78d..7ea7b0112 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -166,9 +166,6 @@
+       <name>Christopher Schuck</name>
+     </contributor>
+     <contributor>
+-      <name>Christian Semrau</name>
+-    </contributor>
+-    <contributor>
+       <name>Mauro Talevi</name>
+     </contributor>
+     <contributor>

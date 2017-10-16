@@ -1,0 +1,22 @@
+diff --git a/pom.xml b/pom.xml
+index 3ec3d344..0af7664b 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -62,8 +62,6 @@
+         <forms_rt.version>7.0.3</forms_rt.version>
+ 
+         <junit.version>4.8.2</junit.version>
+-
+-        <download.translations>prepare-package</download.translations>
+     </properties>
+ 
+     <repositories>
+@@ -372,7 +370,7 @@
+                 <version>1.8.1</version>
+                 <executions>
+                     <execution>
+-                        <phase>${download.translations}</phase>
++                        <phase>prepare-package</phase>
+                         <configuration>
+                             <connectionUrl>scm:git:https://github.com/xXKeyleXx/MyPet-Translations.git</connectionUrl>
+                             <checkoutDirectory>target/classes/locale</checkoutDirectory>

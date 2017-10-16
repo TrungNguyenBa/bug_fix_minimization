@@ -1,0 +1,2 @@
+c4e5899b : MyPets are pets therefore they should implement IAnimal this prevents iron golems from attacking MyPets without a reason
+:100644 100644 b323fa17... d8ebd171... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java

@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java b/src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java
+index 23c749b..cdf4f61 100644
+--- a/src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java
++++ b/src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java
+@@ -62,9 +62,7 @@ class SubjectDataBaker {
+         final Combinations<Entry<String, String>> combos = Combinations.of(activeContexts);
+         final Set<Map.Entry<String, String>> visitedSubjects = new HashSet<>();
+         visitSubject(subject, combos, visitedSubjects);
+-        if (!subject.equals(pex.getDefaultIdentifier())) {
+-            visitSubject(pex.getDefaultIdentifier(), combos, visitedSubjects);
+-        }
++        visitSubject(pex.getDefaultIdentifier(), combos, visitedSubjects);
+ 
+         return new BakedSubjectData(activeContexts, NodeTree.of(combinedPermissions, defaultValue), ImmutableList.copyOf(parents), ImmutableMap.copyOf(options));
+     }

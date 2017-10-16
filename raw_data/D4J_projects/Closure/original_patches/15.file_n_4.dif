@@ -1,0 +1,13 @@
+diff --git a/test/com/google/javascript/jscomp/NodeUtilTest.java b/test/com/google/javascript/jscomp/NodeUtilTest.java
+index b01cf028..bd569cbc 100644
+--- a/test/com/google/javascript/jscomp/NodeUtilTest.java
++++ b/test/com/google/javascript/jscomp/NodeUtilTest.java
+@@ -406,8 +406,6 @@ public class NodeUtilTest extends TestCase {
+     assertSideEffect(false, "({}||[]).foo = 2;");
+     assertSideEffect(false, "(true ? {} : []).foo = 2;");
+     assertSideEffect(false, "({},[]).foo = 2;");
+-
+-    assertSideEffect(true, "delete a.b");
+   }
+ 
+   public void testObjectMethodSideEffects() {

@@ -1,0 +1,20 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java b/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+index 602c06d..a8e45dc 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+@@ -157,13 +157,13 @@ public class PermissionsExPlugin implements PermissionService {
+             @Override
+             public boolean call(CommandSource source, String arguments, List<String> parents) throws CommandException {
+                 source.sendMessage("Your command ran!!");
+-                source.sendMessage("Has permission: " + source.hasPermission("permissionsex.test.check"));
++                source.sendMessage("Has permission: " + source.hasPermission("permissionsex.test"));
+                 return true;
+             }
+ 
+             @Override
+             public boolean testPermission(CommandSource source) {
+-                return source.hasPermission("permissionsex.test.run");
++                return source.hasPermission("permissionsex.test");
+             }
+ 
+             @Override

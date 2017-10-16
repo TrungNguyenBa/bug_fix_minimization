@@ -1,0 +1,5 @@
+aead6fd : Single properties file to hold config
+:100644 000000 f7e41b7... 0000000... D	config/db.properties
+:100644 000000 5e4928c... 0000000... D	config/mq.properties
+:000000 100644 0000000... 1d2ee24... A	config/rules-processor.properties
+:100644 100644 351dd1e... 8ffb7b5... M	src/main/resources/applicationContext.xml

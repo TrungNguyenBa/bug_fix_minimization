@@ -1,0 +1,30 @@
+diff --git a/include/faunus/species.h b/include/faunus/species.h
+index 96ecd513..5108c93d 100644
+--- a/include/faunus/species.h
++++ b/include/faunus/species.h
+@@ -17,14 +17,14 @@ namespace Faunus {
+     AtomData();
+     Tid id;            //!< Identification number
+     double sigma,      //!< LJ diameter [angstrom]
+-           eps,        //!< LJ epsilon [kJ/mol] (pair potentials should convert to kT)
++           eps,        //!< LJ epsilon [kJ/mol]
+            radius,     //!< Radius [angstrom]
+            muscalar,   //!< Dipole momentscalar [eÅ]
+            mw,         //!< Weight [g/mol]
+            charge,     //!< Charge/valency [e]
+            activity,   //!< Chemical activity [mol/l]
+            dp,         //!< Translational displacement parameter [angstrom]
+-           dprot,      //!< Rotational displacement parameter [degrees]
++           dprot,      //!< Rotational displacement parameter [radians]
+            mean,       //!< Mean value... (charge, sasa, etc.)
+            variance,   //!< Spread around AtomData::mean
+       
+@@ -69,7 +69,7 @@ namespace Faunus {
+         void resize(size_t n) {
+           m.resize(n);
+           for (auto &i : m)
+-            i.resize(n,0);
++            i.resize(n);
+         }
+         PairMatrix(size_t n=0) {
+           resize(n);

@@ -1,0 +1,2 @@
+69b4f71 : Make user renaming a bit more reliable. This should also prevent dupes in some cases
+:100644 100644 348617f... cfcd197... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java

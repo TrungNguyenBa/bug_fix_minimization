@@ -1,0 +1,17 @@
+diff --git a/build.gradle b/build.gradle
+index d6987ef..08c999f 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -2,11 +2,8 @@ apply plugin: 'java'
+ apply plugin: 'eclipse'
+ apply plugin: 'nexus'
+ 
+-version = '1.2.0-SNAPSHOT'
+-
+ sourceCompatibility = 1.6
+-
+-compileJava.options.encoding = 'UTF-8'
++version = '1.2.0-SNAPSHOT'
+ 
+ ext {
+     title = 'mongo-java-server'

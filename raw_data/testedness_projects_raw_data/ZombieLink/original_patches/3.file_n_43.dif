@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/AbstractSerializer.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/AbstractSerializer.java
+index ce012ec..c7c2baa 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/AbstractSerializer.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/AbstractSerializer.java
+@@ -23,7 +23,7 @@ package com.lonepulse.zombielink.request;
+ import org.apache.http.HttpEntity;
+ import org.apache.http.HttpRequest;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ import com.lonepulse.zombielink.util.Entities;
+ import com.lonepulse.zombielink.util.EntityResolutionFailedException;
+ 

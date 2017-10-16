@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/apache/commons/lang3/exception/ExceptionUtilsTest.java b/src/test/java/org/apache/commons/lang3/exception/ExceptionUtilsTest.java
+index 97a2bfc3..ec4875bb 100644
+--- a/src/test/java/org/apache/commons/lang3/exception/ExceptionUtilsTest.java
++++ b/src/test/java/org/apache/commons/lang3/exception/ExceptionUtilsTest.java
+@@ -584,7 +584,7 @@ private static int throwsCheckedException() {
+         try {
+             throw new IOException();
+         } catch (Exception e) {
+-            return ExceptionUtils.<Integer>rethrow(e);
++            return ExceptionUtils.rethrow(e);
+         }
+     }
+ 

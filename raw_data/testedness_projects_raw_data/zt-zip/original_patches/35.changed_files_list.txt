@@ -1,0 +1,2 @@
+cf2a81d : Fix testCharsetEntry(), for jdk1.5 exception on OutputStream creation
+:100644 100644 2bb0ceb... 2ac949d... M	src/test/java/org/zeroturnaround/zip/ZipsTest.java

@@ -1,0 +1,18 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/ItemStackNBTConverter.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/ItemStackNBTConverter.java
+index 6bc31e6e..02aa7f9c 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/ItemStackNBTConverter.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/ItemStackNBTConverter.java
+@@ -32,12 +32,7 @@ public class ItemStackNBTConverter
+ {
+     public static CompoundTag ItemStackToCompund(ItemStack itemStack)
+     {
+-        return ItemStackToCompund(itemStack, "Item");
+-    }
+-
+-    public static CompoundTag ItemStackToCompund(ItemStack itemStack, String tagName)
+-    {
+-        CompoundTag compound = new CompoundTag(tagName, new CompoundMap());
++        CompoundTag compound = new CompoundTag(null, new CompoundMap());
+ 
+         compound.getValue().put("id", new ShortTag("id", (short) itemStack.id));
+         compound.getValue().put("Count", new ByteTag("Count", (byte) itemStack.count));

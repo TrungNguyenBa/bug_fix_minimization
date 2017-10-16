@@ -1,0 +1,45 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java b/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
+index b93f23e3..3d4ae9b1 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/silverfish/EntityMySilverfish.java
+@@ -26,27 +26,33 @@ import de.Keyle.MyPet.entity.types.MyPet;
+ import net.minecraft.server.v1_6_R2.World;
+ 
+ @EntitySize(width = 0.3F, height = 0.7F)
+-public class EntityMySilverfish extends EntityMyPet {
+-    public EntityMySilverfish(World world, MyPet myPet) {
++public class EntityMySilverfish extends EntityMyPet
++{
++    public EntityMySilverfish(World world, MyPet myPet)
++    {
+         super(world, myPet);
+     }
+ 
+     @Override
+-    protected String getDeathSound() {
++    protected String getDeathSound()
++    {
+         return "mob.silverfish.kill";
+     }
+ 
+     @Override
+-    protected String getHurtSound() {
++    protected String getHurtSound()
++    {
+         return "mob.silverfish.hit";
+     }
+ 
+-    protected String getLivingSound() {
++    protected String getLivingSound()
++    {
+         return "mob.silverfish.say";
+     }
+ 
+     @Override
+-    public void playStepSound() {
++    public void playStepSound()
++    {
+         makeSound("mob.silverfish.step", 1.0F, 1.0F);
+     }
+ }
+\ No newline at end of file

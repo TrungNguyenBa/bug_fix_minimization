@@ -1,0 +1,4 @@
+9e541d4 : more testing (uncovering prob with enums)
+:100644 100644 277377d... d8b7503... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 07c7fea... 4632133... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:100644 100644 f96f026... 54ec0fe... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteSimpleTest.java

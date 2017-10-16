@@ -1,0 +1,27 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/web/VisitController.java b/src/main/java/org/springframework/samples/petclinic/web/VisitController.java
+index 491fa08..4b53444 100644
+--- a/src/main/java/org/springframework/samples/petclinic/web/VisitController.java
++++ b/src/main/java/org/springframework/samples/petclinic/web/VisitController.java
+@@ -15,8 +15,6 @@
+  */
+ package org.springframework.samples.petclinic.web;
+ 
+-import java.util.Map;
+-
+ import javax.validation.Valid;
+ 
+ import org.springframework.beans.factory.annotation.Autowired;
+@@ -59,11 +57,11 @@ public class VisitController {
+     }
+ 
+     @RequestMapping(value = "/owners/*/pets/{petId}/visits/new", method = RequestMethod.GET)
+-    public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
++    public String initNewVisitForm(@PathVariable("petId") int petId, Model model) {
+         Pet pet = this.clinicService.findPetById(petId);
+         Visit visit = new Visit();
+         pet.addVisit(visit);
+-        model.put("visit", visit);
++        model.addAttribute("visit", visit);
+         return "pets/createOrUpdateVisitForm";
+     }
+ 

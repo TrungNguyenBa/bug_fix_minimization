@@ -1,0 +1,14 @@
+diff --git a/src/test/java/example/UnpackExample.java b/src/test/java/example/UnpackExample.java
+index 32ed58a..a0bc2f6 100644
+--- a/src/test/java/example/UnpackExample.java
++++ b/src/test/java/example/UnpackExample.java
+@@ -8,8 +8,8 @@ import java.util.Enumeration;
+ import java.util.zip.ZipEntry;
+ import java.util.zip.ZipFile;
+ 
++import org.apache.commons.io.IOUtils;
+ import org.zeroturnaround.zip.ZipUtil;
+-import org.zeroturnaround.zip.commons.IOUtils;
+ 
+ 
+ public class UnpackExample {

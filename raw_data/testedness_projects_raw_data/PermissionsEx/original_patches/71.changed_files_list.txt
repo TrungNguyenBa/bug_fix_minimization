@@ -1,0 +1,10 @@
+0eb4469 : Make generics usage in MemoryBackend+related much saner
+:100644 100644 fe6d424... 903ed3f... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 6b74b7a... e1bc8c9... M	src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+:100644 100644 2be550b... 8852cb3... M	src/main/java/ru/tehkode/permissions/backends/file/FileMatcherGroup.java
+:100644 100644 0e9228f... 6ce2391... M	src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLParser.java
+:100644 000000 d7c15b5... 0000000... D	src/main/java/ru/tehkode/permissions/backends/memory/AbstractMemoryBackend.java
+:100644 100644 77ca777... 77521cb... M	src/main/java/ru/tehkode/permissions/backends/memory/ConfigInstance.java
+:100644 100644 68df323... 0d5f6b4... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryBackend.java
+:100644 100644 1c52c99... cf7c732... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryMatcherGroup.java
+:100644 000000 f45f234... 0000000... D	src/main/java/ru/tehkode/permissions/backends/memory/MemoryMatcherGroupImpl.java

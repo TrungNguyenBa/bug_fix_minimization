@@ -1,0 +1,2 @@
+b265fc8 : Adding instruction to fix build on Maven 3.2.x
+:100644 100644 e9e79c7... b929a64... M	pom.xml

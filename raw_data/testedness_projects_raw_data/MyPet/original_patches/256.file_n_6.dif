@@ -1,0 +1,78 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+index 33b83f7a..63a957da 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+@@ -94,49 +94,42 @@ public class EntityMyEnderman extends EntityMyPet
+      */
+     public boolean a_(EntityHuman entityhuman)
+     {
+-        try
++        if (super.a_(entityhuman))
+         {
+-            if (super.a_(entityhuman))
+-            {
+-                return true;
+-            }
++            return true;
++        }
+ 
+-            ItemStack itemStack = entityhuman.inventory.getItemInHand();
++        ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-            if (getOwner().equals(entityhuman) && itemStack != null)
++        if (getOwner().equals(entityhuman) && itemStack != null)
++        {
++            if (itemStack.id == Item.SHEARS.id)
+             {
+-                if (itemStack.id == Item.SHEARS.id)
++                if (getBlockID() != 0)
+                 {
+-                    if (getBlockID() != 0)
+-                    {
+-                        EntityItem entityitem = this.a(new ItemStack(getBlockID(), 1, getBlockData()), 1.0F);
+-                        entityitem.motY += (double) (this.random.nextFloat() * 0.05F);
+-                        entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+-                        entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
++                    EntityItem entityitem = this.a(new ItemStack(getBlockID(), 1, getBlockData()), 1.0F);
++                    entityitem.motY += (double) (this.random.nextFloat() * 0.05F);
++                    entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
++                    entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+ 
+-                        setBlock(0, 0);
++                    setBlock(0, 0);
+ 
+-                        return true;
+-                    }
++                    return true;
++                }
++            }
++            else if (getBlockID() <= 0 && itemStack.id > 0 && itemStack.id < 256)
++            {
++                setBlock(itemStack.id, itemStack.getData());
++                if (!entityhuman.abilities.canInstantlyBuild)
++                {
++                    --itemStack.count;
+                 }
+-                else if (getBlockID() <= 0 && itemStack.id > 0 && itemStack.id < 256)
++                if (itemStack.count <= 0)
+                 {
+-                    setBlock(itemStack.id, itemStack.getData());
+-                    if (!entityhuman.abilities.canInstantlyBuild)
+-                    {
+-                        --itemStack.count;
+-                    }
+-                    if (itemStack.count <= 0)
+-                    {
+-                        entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+-                    }
++                    entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+                 }
+             }
+         }
+-        catch (Exception e)
+-        {
+-            e.printStackTrace();
+-        }
+         return false;
+     }
+ 

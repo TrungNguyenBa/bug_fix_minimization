@@ -1,0 +1,47 @@
+diff --git a/src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java b/src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java
+index 91a23bb..fe199c7 100644
+--- a/src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java
++++ b/src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java
+@@ -37,7 +37,6 @@ import static org.mockito.Mockito.*;
+  *
+  * @author <a href="mailto:konrad.malawski@java.pl">Konrad 'ktoso' Malawski</a>
+  */
+-// todo remove this test in favor of complete intgration tests
+ public class GitCommitIdMojoTest {
+ 
+   GitCommitIdMojo mojo;
+@@ -45,7 +44,7 @@ public class GitCommitIdMojoTest {
+ 
+   @Before
+   public void setUp() throws Exception {
+-    File dotGitDirectory = AvailableGitTestRepo.GIT_COMMIT_ID.getDir();
++    File dotGitDirectory = new File(new File(".git/").getAbsolutePath());
+     GitDescribeConfig gitDescribeConfig = new GitDescribeConfig();
+     gitDescribeConfig.setSkip(false);
+ 
+@@ -72,7 +71,6 @@ public class GitCommitIdMojoTest {
+   }
+ 
+   @Test
+-  @SuppressWarnings("")
+   public void shouldIncludeExpectedProperties() throws Exception {
+     mojo.execute();
+ 
+@@ -92,7 +90,6 @@ public class GitCommitIdMojoTest {
+   }
+ 
+   @Test
+-  @SuppressWarnings("")
+   public void shouldExcludeAsConfiguredProperties() throws Exception {
+     // given
+     mojo.setExcludeProperties(ImmutableList.of("git.remote.origin.url", ".*.user.*"));
+@@ -121,8 +118,8 @@ public class GitCommitIdMojoTest {
+     assertThat(properties).satisfies(new ContainsKeyCondition("git.commit.time"));
+   }
+ 
++
+   @Test
+-  @SuppressWarnings("")
+   public void shouldHaveNoPrefixWhenConfiguredPrefixIsEmptyStringAsConfiguredProperties() throws Exception {
+     // given
+     mojo.setPrefix("");

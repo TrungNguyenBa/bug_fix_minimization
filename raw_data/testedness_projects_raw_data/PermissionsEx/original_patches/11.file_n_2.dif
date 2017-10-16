@@ -1,0 +1,24 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
+index 3fdf757..25e35c3 100644
+--- a/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
+@@ -16,19 +16,12 @@
+  */
+ package ninja.leaping.permissionsex.data;
+ 
+-import com.google.common.collect.ImmutableSet;
+-
+ import javax.annotation.concurrent.Immutable;
+ import java.util.List;
+ import java.util.Map;
+ import java.util.Set;
+ 
+ public interface ImmutableOptionSubjectData {
+-    /**
+-     * Provide this set to indicate global contexts
+-     */
+-    Set<Map.Entry<String, String>> GLOBAL_CTX = ImmutableSet.of();
+-
+     Map<Set<Map.Entry<String, String>>, Map<String, String>> getAllOptions();
+ 
+     Map<String, String> getOptions(Set<Map.Entry<String, String>> contexts);

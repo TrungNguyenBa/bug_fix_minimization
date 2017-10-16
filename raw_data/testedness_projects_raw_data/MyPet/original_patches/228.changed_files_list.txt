@@ -1,0 +1,2 @@
+22a8d64d : fixed exception when a connection to the donation server is not possible
+:100644 100644 4d168a68... 5b7e0047... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java

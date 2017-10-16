@@ -1,0 +1,10 @@
+36ad482 : Fixes to number encoding/decoding
+:100644 100644 86202f0... 799ce66... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:000000 100644 0000000... e0b7aeb... A	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufMapper.java
+:100644 100644 0f7187f... b8c3f07... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 c64b761... 9c5524d... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufSchemaLoader.java
+:100644 100644 a06dbae... 2814823... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:000000 100644 0000000... 8dcd21c... A	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadComplexPojoTest.java
+:100644 100644 a6c552a... 15ee451... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java
+:100644 100644 a1abd81... 60c7d6f... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
+:100644 100644 287dd16... 004465c... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteSimpleTest.java

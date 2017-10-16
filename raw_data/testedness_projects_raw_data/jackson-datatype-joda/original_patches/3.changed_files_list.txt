@@ -1,0 +1,4 @@
+dc79e33 : [#71] use configured TimeZone when deserializing instants (longs) into LocalDate/LocalDateTime
+:100644 100644 bede129... 6fd1cb5... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalDateDeserializer.java
+:100644 100644 73f4f49... 2016646... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/LocalDateTimeDeserializer.java
+:100644 100644 fe23b5e... 47671f8... M	src/test/java/com/fasterxml/jackson/datatype/joda/deser/MiscDeserializationTest.java

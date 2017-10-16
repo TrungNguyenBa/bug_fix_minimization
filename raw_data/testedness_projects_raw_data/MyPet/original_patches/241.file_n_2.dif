@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java
+index 390d3964..c2a49bdc 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java
+@@ -75,7 +75,7 @@ public class MyPetAIRangedAttack extends MyPetAIGoal
+     @Override
+     public boolean shouldFinish()
+     {
+-        if (entityMyPet.getGoalTarget() == null || !target.isAlive() || myPet.getRangedDamage() <= 0 || !entityMyPet.canMove())
++        if (target == null || !target.isAlive() || myPet.getRangedDamage() <= 0 || !entityMyPet.canMove())
+         {
+             return true;
+         }

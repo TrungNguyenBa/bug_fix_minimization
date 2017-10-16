@@ -1,0 +1,141 @@
+diff --git a/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java b/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java
+index 488aec9..1b93900 100644
+--- a/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java
++++ b/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java
+@@ -4,7 +4,6 @@ import java.util.Arrays;
+ import java.util.Collection;
+ import java.util.Collections;
+ import java.util.List;
+-import java.util.Set;
+ import java.util.regex.Matcher;
+ import java.util.regex.Pattern;
+ 
+@@ -114,37 +113,15 @@ public class DefaultQueryMatcher implements QueryMatcher {
+         boolean valueExists = ((BSONObject) document).containsField(firstKey);
+ 
+         if (value instanceof Collection<?>) {
+-            if (queryValue instanceof BSONObject) {
+-                Set<String> keySet = ((BSONObject) queryValue).keySet();
+-
++            // handle $all
++            if (queryValue instanceof BSONObject && ((BSONObject) queryValue).keySet().contains("$all")) {
+                 // clone first
+-                BSONObject queryValueClone = new BasicBSONObject(((BSONObject) queryValue).toMap());
+-
+-                for (String queryOperator : keySet) {
+-
+-                    Object subQuery = queryValueClone.removeField(queryOperator);
+-
+-                    if (queryOperator.equals(QueryOperator.ALL.getValue())) {
+-                        if (!checkMatchesAllValues(subQuery, value)) {
+-                            return false;
+-                        }
+-                    } else if (queryOperator.equals(QueryOperator.IN.getValue())) {
+-                        final BasicBSONObject inQuery = new BasicBSONObject(queryOperator, subQuery);
+-                        if (!checkMatchesAnyValue(inQuery, value))
+-                            return false;
+-                    } else if (queryOperator.equals(QueryOperator.NOT_IN.getValue())) {
+-                        if (checkMatchesAllValues(subQuery, value))
+-                            return false;
+-                    } else if (queryOperator.equals(QueryOperator.NOT.getValue())) {
+-                        if (checkMatchesAnyValue(subQuery, value))
+-                            return false;
+-                    } else {
+-                        if (!checkMatchesAnyValue(queryValue, value) && !checkMatchesValue(queryValue, value, valueExists)) {
+-                            return false;
+-                        }
+-                    }
++                queryValue = new BasicBSONObject(((BSONObject) queryValue).toMap());
++                Object allQuery = ((BSONObject) queryValue).removeField("$all");
++                if (!checkMatchesAllValues(allQuery, value)) {
++                    return false;
+                 }
+-                return true;
++                // continue matching the remainder of queryValue
+             }
+ 
+             if (checkMatchesAnyValue(queryValue, value)) {
+@@ -291,16 +268,7 @@ public class DefaultQueryMatcher implements QueryMatcher {
+ 
+     private boolean checkExpressionMatch(Object value, boolean valueExists, Object expressionValue, String operator)
+             throws MongoServerException {
+-
+-        final QueryOperator queryOperator;
+-        try {
+-            queryOperator = QueryOperator.fromValue(operator);
+-        } catch (IllegalArgumentException e) {
+-            throw new MongoServerError(10068, "invalid operator: " + operator);
+-        }
+-
+-        switch (queryOperator) {
+-        case IN:
++        if (operator.equals("$in")) {
+             Collection<?> queriedObjects = (Collection<?>) expressionValue;
+             for (Object o : queriedObjects) {
+                 if (Utils.nullAwareEquals(o, value)) {
+@@ -308,31 +276,31 @@ public class DefaultQueryMatcher implements QueryMatcher {
+                 }
+             }
+             return false;
+-        case NOT:
++        } else if (operator.equals("$not")) {
+             return !checkMatchesValue(expressionValue, value, valueExists);
+-        case NOT_EQUALS:
++        } else if (operator.equals("$ne")) {
+             return !Utils.nullAwareEquals(value, expressionValue);
+-        case NOT_IN:
++        } else if (operator.equals("$nin")) {
+             return !checkExpressionMatch(value, valueExists, expressionValue, "$in");
+-        case EXISTS:
++        } else if (operator.equals("$exists")) {
+             return (valueExists == Utils.isTrue(expressionValue));
+-        case GREATER_THAN:
++        } else if (operator.equals("$gt")) {
+             if (!comparableTypes(value, expressionValue))
+                 return false;
+             return comparator.compare(value, expressionValue) > 0;
+-        case GREATER_THAN_OR_EQUAL:
++        } else if (operator.equals("$gte")) {
+             if (!comparableTypes(value, expressionValue))
+                 return false;
+             return comparator.compare(value, expressionValue) >= 0;
+-        case LESS_THAN:
++        } else if (operator.equals("$lt")) {
+             if (!comparableTypes(value, expressionValue))
+                 return false;
+             return comparator.compare(value, expressionValue) < 0;
+-        case LESS_THAN_OR_EQUAL:
++        } else if (operator.equals("$lte")) {
+             if (!comparableTypes(value, expressionValue))
+                 return false;
+             return comparator.compare(value, expressionValue) <= 0;
+-        case MOD: {
++        } else if (operator.equals("$mod")) {
+             if (!(value instanceof Number)) {
+                 return false;
+             }
+@@ -340,20 +308,17 @@ public class DefaultQueryMatcher implements QueryMatcher {
+             @SuppressWarnings("unchecked")
+             List<Number> modValue = (List<Number>) expressionValue;
+             return (((Number) value).intValue() % modValue.get(0).intValue() == modValue.get(1).intValue());
+-        }
+-        case SIZE: {
++        } else if (operator.equals("$size")) {
+             if (!(value instanceof Collection<?>) || !(expressionValue instanceof Number)) {
+                 return false;
+             }
+             int listSize = ((Collection<?>) value).size();
+             double matchingSize = ((Number) expressionValue).doubleValue();
+             return listSize == matchingSize;
+-        }
+-        case ALL:
++        } else if (operator.equals("$all")) {
+             return false;
+-
+-        default:
+-            throw new IllegalArgumentException("unhandled query operator: " + queryOperator);
++        } else {
++            throw new MongoServerError(10068, "invalid operator: " + operator);
+         }
+     }
+ 

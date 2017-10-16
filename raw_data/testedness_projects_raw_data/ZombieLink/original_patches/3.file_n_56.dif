@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java
+index 16ce046..f681562 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/RequestProcessorException.java
+@@ -25,7 +25,7 @@ import java.util.Arrays;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+ import com.lonepulse.zombielink.ZombieLinkRuntimeException;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>This runtime exception is thrown when a {@link AbstractRequestProcessor} fails to execute successfully 

@@ -1,0 +1,2 @@
+11492017 : fix incorrect shown values when using a JS script for the XP calculation
+:100644 100644 8a6d5343... 21c9b33c... M	src/main/java/de/Keyle/MyPet/skill/experience/JavaScript.java

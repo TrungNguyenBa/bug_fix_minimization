@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java b/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+index 3c4cc222..714e2846 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+@@ -51,7 +51,8 @@ public class EntityMySlime extends EntityMyPet
+ 
+     public int getSize()
+     {
+-        return ((MySlime) myPet).size;
++        int size = this.datawatcher.getByte(16);
++        return size <= 0 ? 1 : size;
+     }
+ 
+     public void setSize(int value)

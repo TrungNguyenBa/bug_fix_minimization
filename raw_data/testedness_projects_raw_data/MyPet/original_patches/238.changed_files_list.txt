@@ -1,0 +1,2 @@
+313da18a : fixed bug with lightnings where the damager is a player
+:100644 100644 abcdc5ce... 1cb1bbd8... M	src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java

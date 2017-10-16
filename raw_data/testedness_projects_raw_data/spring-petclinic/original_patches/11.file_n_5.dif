@@ -1,0 +1,21 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/model/Vet.java b/src/main/java/org/springframework/samples/petclinic/model/Vet.java
+index 61c5187..c58bd85 100644
+--- a/src/main/java/org/springframework/samples/petclinic/model/Vet.java
++++ b/src/main/java/org/springframework/samples/petclinic/model/Vet.java
+@@ -56,14 +56,14 @@ public class Vet extends Person {
+ 
+     protected Set<Specialty> getSpecialtiesInternal() {
+         if (this.specialties == null) {
+-            this.specialties = new HashSet<>();
++            this.specialties = new HashSet<Specialty>();
+         }
+         return this.specialties;
+     }
+ 
+     @XmlElement
+     public List<Specialty> getSpecialties() {
+-        List<Specialty> sortedSpecs = new ArrayList<>(getSpecialtiesInternal());
++        List<Specialty> sortedSpecs = new ArrayList<Specialty>(getSpecialtiesInternal());
+         PropertyComparator.sort(sortedSpecs, new MutableSortDefinition("name", true, true));
+         return Collections.unmodifiableList(sortedSpecs);
+     }

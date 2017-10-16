@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java b/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java
+index 76dd3b6d..df73e948 100644
+--- a/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java
++++ b/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java
+@@ -147,7 +147,7 @@ public class JSTypeRegistry implements Serializable {
+ 
+   /**
+    * The type registry has three modes, which control how type ASTs are
+-   * converted to types in {@link #createFromTypeNodes}.
++   * converted to types in {@link @createFromTypeNodes}.
+    */
+   public static enum ResolveMode {
+     /**

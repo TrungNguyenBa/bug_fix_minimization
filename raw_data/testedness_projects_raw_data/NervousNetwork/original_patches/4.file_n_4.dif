@@ -1,0 +1,18 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/api/NetworkComponent.java b/src/main/java/org/tiernolan/nervous/network/api/NetworkComponent.java
+deleted file mode 100644
+index ad1bfd1..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/api/NetworkComponent.java
++++ /dev/null
+@@ -1,12 +0,0 @@
+-package org.tiernolan.nervous.network.api;
+-
+-public interface NetworkComponent {
+-	
+-	/**
+-	 * Gets the associated network manager
+-	 * 
+-	 * @return the network manager
+-	 */
+-	public NetworkManager getNetworkManager();
+-
+-}

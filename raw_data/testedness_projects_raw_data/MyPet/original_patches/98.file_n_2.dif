@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index 6e9798d0..4c94b2c5 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -47,6 +47,7 @@ import org.bukkit.craftbukkit.v1_7_R1.CraftWorld;
+ import org.bukkit.event.entity.CreatureSpawnEvent;
+ import org.bukkit.metadata.FixedMetadataValue;
+ 
++import javax.annotation.Nullable;
+ import java.util.*;
+ 
+ import static org.bukkit.Bukkit.getServer;
+@@ -113,6 +114,7 @@ public abstract class MyPet implements IMyPet, NBTStorage {
+         return 0;
+     }
+ 
++    @Nullable
+     public Location getLocation() {
+         if (status == PetState.Here) {
+             return craftMyPet.getLocation();

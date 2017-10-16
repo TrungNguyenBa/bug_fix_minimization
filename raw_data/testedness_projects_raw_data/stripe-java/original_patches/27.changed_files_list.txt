@@ -1,0 +1,3 @@
+030c4ea : Add missing `Account` fields needed when creating a standalone `Account` for Connect Fix for issue stripe/stripe-java#163
+:100644 100644 e645c2a... 5c2cf18... M	src/main/java/com/stripe/model/Account.java
+:100644 100644 9071bb2... 74d8304... M	src/test/java/com/stripe/model/AccountTest.java

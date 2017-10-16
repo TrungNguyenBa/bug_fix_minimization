@@ -1,0 +1,15 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/BasicExecutionHandler.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/BasicExecutionHandler.java
+index f342665..bb9c543 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/BasicExecutionHandler.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/BasicExecutionHandler.java
+@@ -22,8 +22,8 @@ package com.lonepulse.zombielink.executor;
+ 
+ import org.apache.http.HttpResponse;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
+-import com.lonepulse.zombielink.proxy.InvocationException;
++import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationException;
+ 
+ /**
+  * <p>A minimal implementation of {@link ExecutionHandler} which executes requests <b>synchronously</b>.</p>

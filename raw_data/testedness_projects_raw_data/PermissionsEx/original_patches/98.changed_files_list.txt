@@ -1,0 +1,2 @@
+0ce726b : Make config saving more robust in case of server crash
+:100644 100644 09d2d0c... 64cf392... M	src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java

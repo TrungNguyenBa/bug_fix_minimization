@@ -1,0 +1,2 @@
+b752485 : adjust the test timeout in the hope to make it less flaky
+:100644 100644 ffc6b05... 79d2227... M	src/test/java/de/bwaldvogel/mongo/MongoServerTest.java

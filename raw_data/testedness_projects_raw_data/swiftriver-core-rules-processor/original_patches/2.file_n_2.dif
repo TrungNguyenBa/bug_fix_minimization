@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index f8021b6..fbce792 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -137,7 +137,7 @@
+ 					
+ 					<daemons>
+ 						<daemon>
+-							<id>rules-processor</id>
++							<id>dropqueue-processor</id>
+ 							<mainClass>com.ushahidi.swiftriver.core.rules.RulesProcessor</mainClass>
+ 							<commandLineArguments>
+ 								<commandLineArgument>start</commandLineArgument>

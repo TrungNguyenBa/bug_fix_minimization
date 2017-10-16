@@ -1,0 +1,2 @@
+b2c103c : Fix using commands referring to offline players by name
+:100644 100644 91088da... 19d8e20... M	src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java

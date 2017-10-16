@@ -1,0 +1,27 @@
+diff --git a/src/main/java/com/stripe/Stripe.java b/src/main/java/com/stripe/Stripe.java
+index 931fb77..56e5931 100644
+--- a/src/main/java/com/stripe/Stripe.java
++++ b/src/main/java/com/stripe/Stripe.java
+@@ -33,7 +33,9 @@ public abstract class Stripe {
+ 	 * @param proxy proxy host and port setting
+ 	 */
+ 	public static void setConnectionProxy(final Proxy proxy) {
+-		connectionProxy = proxy == null ? null : new Proxy(proxy.type(), proxy.address());
++		if (proxy != null) {
++			connectionProxy = new Proxy(proxy.type(), proxy.address());
++		}
+ 	}
+ 
+ 	public static Proxy getConnectionProxy() {
+@@ -46,8 +48,9 @@ public abstract class Stripe {
+ 	 * @param auth proxy required userName and password
+ 	 */
+ 	public static void setProxyCredential(final PasswordAuthentication auth) {
+-		proxyCredential = auth == null ? null
+-				: new PasswordAuthentication(auth.getUserName(), auth.getPassword());
++		if (auth != null) {
++			proxyCredential = new PasswordAuthentication(auth.getUserName(), auth.getPassword());
++		}
+ 	}
+ 
+ 	public static PasswordAuthentication getProxyCredential() {

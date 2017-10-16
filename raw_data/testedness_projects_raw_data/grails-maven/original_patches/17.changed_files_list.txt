@@ -1,0 +1,2 @@
+8441325 : Remove extra call to TestApp.
+:100644 100644 6747d9c... 3adc8a6... M	src/main/java/org/grails/maven/plugin/GrailsTestAppMojo.java

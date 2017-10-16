@@ -1,0 +1,4 @@
+2c9c8753 : LANG-693 Method createNumber from NumberUtils doesn't work for floating point numbers other than Float
+:100644 100644 3c6f46d9... 4859882a... M	src/changes/changes.xml
+:100644 100644 064f5043... 1e6ccdc0... M	src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+:100644 100644 b41c0303... 56b0597e... M	src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java

@@ -1,0 +1,3 @@
+52a5375 : make it simple and just let each class have a single instance of the jGitCommon
+:100644 100644 b04cd5a... a9fd2ee... M	src/main/java/pl/project13/jgit/DescribeCommand.java
+:100644 100644 253393e... 811f327... M	src/main/java/pl/project13/maven/git/JGitProvider.java

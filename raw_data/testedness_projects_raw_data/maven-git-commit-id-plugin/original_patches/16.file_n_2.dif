@@ -1,0 +1,12 @@
+diff --git a/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java b/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+index 8271955..3894305 100644
+--- a/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
++++ b/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+@@ -662,7 +662,6 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+     gitDescribeConfig.setTags(true);
+     gitDescribeConfig.setForceLongFormat(forceLongFormat);
+     gitDescribeConfig.setAbbrev(abbrev);
+-    gitDescribeConfig.setDirty("");
+     return gitDescribeConfig;
+   }
+ 

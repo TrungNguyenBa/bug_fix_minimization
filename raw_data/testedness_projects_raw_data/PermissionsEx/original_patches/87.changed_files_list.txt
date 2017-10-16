@@ -1,0 +1,4 @@
+5945496 : Fix world inheritance
+:100644 100644 96e1a7d... f079fe5... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 39c00d5... 75185ec... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 44be54f... 3f95d2a... M	src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java

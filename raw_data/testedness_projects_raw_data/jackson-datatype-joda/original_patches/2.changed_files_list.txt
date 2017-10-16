@@ -1,0 +1,3 @@
+ff1da3f : make sure zoneId and zoneOffset are serialized consistently as jsr310 does
+:100644 100644 71bbaba... e456cd4... M	src/main/java/com/fasterxml/jackson/datatype/joda/ser/DateTimeSerializer.java
+:100644 100644 d2f74c8... a08e6d4... M	src/test/java/com/fasterxml/jackson/datatype/joda/TimeZoneTest.java

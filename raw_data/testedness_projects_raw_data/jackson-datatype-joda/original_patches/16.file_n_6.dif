@@ -1,0 +1,31 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/LocalTimeKeyDeserializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/LocalTimeKeyDeserializer.java
+deleted file mode 100644
+index 232235d..0000000
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/key/LocalTimeKeyDeserializer.java
++++ /dev/null
+@@ -1,24 +0,0 @@
+-package com.fasterxml.jackson.datatype.joda.deser.key;
+-
+-import com.fasterxml.jackson.core.JsonProcessingException;
+-import com.fasterxml.jackson.databind.DeserializationContext;
+-import com.fasterxml.jackson.databind.KeyDeserializer;
+-import org.joda.time.LocalTime;
+-import org.joda.time.format.DateTimeFormatter;
+-import org.joda.time.format.ISODateTimeFormat;
+-
+-import java.io.IOException;
+-
+-public class LocalTimeKeyDeserializer extends KeyDeserializer
+-{
+-    private static final long serialVersionUID = 1L;
+-    private static final DateTimeFormatter parser = ISODateTimeFormat.localTimeParser();
+-
+-    @Override
+-    public LocalTime deserializeKey(String key, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+-        if (key.length() == 0) { // [JACKSON-360]
+-            return null;
+-        }
+-        return parser.parseLocalTime(key);
+-    }
+-}
+\ No newline at end of file

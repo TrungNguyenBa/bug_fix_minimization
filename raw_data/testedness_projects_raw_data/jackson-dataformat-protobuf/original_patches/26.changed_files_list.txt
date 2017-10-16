@@ -1,0 +1,6 @@
+82e51b2 : Further fixes to schema resolution; trying to sort out nested message serialization
+:100644 100644 b0f44a3... 743823d... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
+:100644 100644 5dc0243... b38210d... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java
+:100644 100644 b6dbac6... db24c8b... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:100644 100644 d676951... f2b304a... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/SimpleWriteTest.java
+:100644 100644 61223b0... f733712... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/TestSchemaHandling.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+index abb90e3..29017c5 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+@@ -173,7 +173,7 @@ public class SuperpermsListener implements Listener {
+ 	}
+ 
+ 	private void updateSelective(PermissionEntityEvent event, PermissionUser user) {
+-		final Player p = user.getPlayer();
++		final Player p = plugin.getServer().getPlayer(UUID.fromString(user.getIdentifier()));
+ 		if (p != null) {
+ 			switch (event.getAction()) {
+ 				case SAVED:

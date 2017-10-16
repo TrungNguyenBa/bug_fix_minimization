@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/RemoteEventListener.java b/src/main/java/ru/tehkode/permissions/bukkit/RemoteEventListener.java
+index ec9351a..803ab45 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/RemoteEventListener.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/RemoteEventListener.java
+@@ -92,7 +92,7 @@ public class RemoteEventListener implements Listener {
+ 		}
+ 
+ 		try {
+-			manager.reset(false);
++			manager.reset();
+ 		} catch (PermissionBackendException e) {
+ 			e.printStackTrace();
+ 		}

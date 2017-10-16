@@ -1,0 +1,3 @@
+6f981f77 : Restrict goog.isArray to * properly. Fixes issue 1114 R=blickly
+:100644 100644 8e69edff... e3c599d6... M	src/com/google/javascript/jscomp/type/ClosureReverseAbstractInterpreter.java
+:100644 100644 e6e6f8c5... 8c0b4299... M	test/com/google/javascript/jscomp/ClosureReverseAbstractInterpreterTest.java

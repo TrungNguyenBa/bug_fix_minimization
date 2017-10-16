@@ -1,0 +1,181 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/test/processor/HeaderEndpointTest.java b/src/test/java/com/lonepulse/zombielink/test/processor/HeaderEndpointTest.java
+index 6669be5..28550a0 100644
+--- a/src/test/java/com/lonepulse/zombielink/test/processor/HeaderEndpointTest.java
++++ b/src/test/java/com/lonepulse/zombielink/test/processor/HeaderEndpointTest.java
+@@ -69,7 +69,7 @@ public class HeaderEndpointTest {
+ 	
+ 	
+ 	/**
+-	 * <p>Sets up the test case by performing endpoint injection on {@link #headerEndpoint}.</p>
++	 * <p>Sets up the test case by performing endpoint injection on {@link #headerEndpoint}.
+ 	 * 
+ 	 * @throws java.lang.Exception
+ 	 * 			if the test case setup or endpoint injection failed
+@@ -81,53 +81,40 @@ public class HeaderEndpointTest {
+ 	}
+ 	
+ 	/**
+-	 * <p>Test for a request {@link Header}.</p>
++	 * <p>Tests response header retrieval with {@link Header}. 
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+ 	@Test
+-	public final void testRequestHeader() {
+-		
+-		String subpath = "/requestheader", header = "mobile";
+-		
+-		stubFor(get(urlEqualTo(subpath))
+-				.willReturn(aResponse()
+-				.withStatus(200)));
+-		
+-		headerEndpoint.requestHeader(header);
+-		
+-		verify(getRequestedFor(urlMatching(subpath))
+-			   .withHeader("User-Agent", matching(header)));
+-	}
++	public final void testResponseHeader() {
+ 	
+-	/**
+-	 * <p>Test for {@link HeaderEndpoint#requestHeader(String)} with a <i>skipped header</i>.</p>
+-	 * 
+-	 * @since 1.2.4
+-	 */
+-	@Test
+-	public final void testRequestHeaderSkip() {
+-		
+-		String subpath = "/requestheaderskip";
++		String subpath = "/responseheader", body = "hello", 
++			   header = "Server", headerValue = "Jetty(9.0.x)";
+ 		
+-		stubFor(get(urlEqualTo(subpath))
++		stubFor(get(urlMatching(subpath))
+ 				.willReturn(aResponse()
+ 				.withStatus(200)
+-				.withBody("hello")));
++				.withHeader(header, headerValue)
++				.withBody(body)));
++		
++		StringBuilder responseHeader = new StringBuilder();
++		
++		assertEquals(headerEndpoint.responseHeader(responseHeader), body);
+ 		
+-		headerEndpoint.requestHeaderSkip(null);
+-		verify(getRequestedFor(urlMatching(subpath)));
++		String server = responseHeader.toString();
++		assertTrue(server != null);
++		assertTrue(server.equals(headerValue));
+ 	}
+ 	
+ 	/**
+-	 * <p>Test for {@link HeaderEndpoint#requestHeaderTypeError(int)}.</p>
++	 * <p>Test for {@link HeaderEndpoint#responseHeaderTypeError(Short)}.
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+ 	@Test @SuppressWarnings("unchecked") //safe cast to Class<Throwable>
+-	public final void testRequestHeaderTypeError() throws ClassNotFoundException {
++	public final void testResponseHeaderTypeError() throws ClassNotFoundException {
+ 		
+-		String subpath = "/requestheadertypeerror";
++		String subpath = "/responseheadertypeerror";
+ 		
+ 		stubFor(get(urlEqualTo(subpath))
+ 				.willReturn(aResponse()
+@@ -137,74 +124,65 @@ public class HeaderEndpointTest {
+ 		expectedException.expectCause(Is.isA((Class<Throwable>)
+ 			Class.forName("com.lonepulse.zombielink.request.RequestProcessorException")));
+ 		
+-		assertNull(headerEndpoint.requestHeaderTypeError(512));
++		assertNull(headerEndpoint.responseHeaderTypeError(Short.valueOf((short)60)));
+ 	}
+-
++	
+ 	/**
+-	 * <p>Tests response header retrieval with {@link Header}.</p> 
++	 * <p>Test for a request {@link Header}.
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+ 	@Test
+-	public final void testResponseHeader() {
+-	
+-		String subpath = "/responseheader", body = "hello", 
+-			   header = "Server", headerValue = "Jetty(9.0.x)";
++	public final void testRequestHeader() {
+ 		
+-		stubFor(get(urlMatching(subpath))
++		stubFor(get(urlEqualTo("/requestheader"))
+ 				.willReturn(aResponse()
+-				.withStatus(200)
+-				.withHeader(header, headerValue)
+-				.withBody(body)));
++				.withStatus(200)));
+ 		
+-		StringBuilder responseHeader = new StringBuilder();
++		String header = "mobile";
+ 		
+-		assertEquals(headerEndpoint.responseHeader(responseHeader), body);
++		headerEndpoint.requestHeader(new StringBuilder(header));
+ 		
+-		String server = responseHeader.toString();
+-		assertTrue(server != null);
+-		assertTrue(server.equals(headerValue));
++		verify(getRequestedFor(urlMatching("/requestheader"))
++				.withHeader("User-Agent", matching(header)));
+ 	}
+ 	
+ 	/**
+-	 * <p>Test for {@link HeaderEndpoint#requestHeader(String)} with a <i>skipped header</i>.</p>
++	 * <p>Test for {@link HeaderEndpoint#requestHeaderTypeError(int)}.
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+-	@Test
+-	public final void testResponseHeaderSkip() {
++	@Test @SuppressWarnings("unchecked") //safe cast to Class<Throwable>
++	public final void testRequestHeaderTypeError() throws ClassNotFoundException {
+ 		
+-		String subpath = "/responseheaderskip", body = "hello",
+-			   headerValue = "Wed, 01 Jan 2014 10:00:00 GMT";
++		String subpath = "/requestheadertypeerror";
+ 		
+-		stubFor(get(urlMatching(subpath))
++		stubFor(get(urlEqualTo(subpath))
+ 				.willReturn(aResponse()
+ 				.withStatus(200)
+-				.withBody(body)));
++				.withBody("hello")));
+ 		
+-		assertEquals(headerEndpoint.responseHeaderSkip(headerValue), body);
++		expectedException.expectCause(Is.isA((Class<Throwable>)
++			Class.forName("com.lonepulse.zombielink.request.RequestProcessorException")));
+ 		
+-		verify(getRequestedFor(urlMatching(subpath))
+-			   .withHeader("Expires", matching(headerValue)));
++		assertNull(headerEndpoint.requestHeaderTypeError(512));
+ 	}
+ 	
+ 	/**
+-	 * <p>Test for {@link HeaderSet} and {@link HeaderSet.Header}.</p>
++	 * <p>Test for {@link HeaderSet} and {@link HeaderSet.Header}.
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+ 	@Test
+ 	public final void testHeaderSet() {
+ 		
+-		String subpath = "/headerset";
+-		
+-		stubFor(get(urlEqualTo(subpath))
++		stubFor(get(urlEqualTo("/headerset"))
+ 				.willReturn(aResponse()
+ 				.withStatus(200)));
+ 		
+ 		headerEndpoint.headerSet();
+ 		
+-		verify(getRequestedFor(urlMatching(subpath))
++		verify(getRequestedFor(urlMatching("/headerset"))
+ 				.withHeader("Accept", matching("application/json"))
+ 				.withHeader("Accept-Charset", matching("utf-8")));
+ 	}

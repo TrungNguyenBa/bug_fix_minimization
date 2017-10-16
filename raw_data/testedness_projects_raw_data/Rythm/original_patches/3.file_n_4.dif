@@ -1,0 +1,52 @@
+diff --git a/library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java b/library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
+index f739bb6..fb76a06 100644
+--- a/library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
++++ b/library/src/main/java/com/actinarium/rhythm/RhythmDrawable.java
+@@ -78,9 +78,6 @@ public final class RhythmDrawable extends Drawable {
+      */
+     public static class GridLines implements RhythmDrawableLayer {
+ 
+-        public static final int DEFAULT_GRID_COLOR = 0x60EF43A7;
+-        public static final int DEFAULT_BASELINE_COLOR = 0x8043A7EF;
+-
+         protected boolean mIsVertical;
+         protected int mStep;
+         protected int mThickness = 1;
+@@ -104,8 +101,9 @@ public final class RhythmDrawable extends Drawable {
+          *                determines whether the grid is horizontal ({@link Gravity#TOP} or {@link Gravity#BOTTOM}) or
+          *                vertical ({@link Gravity#LEFT} or {@link Gravity#RIGHT})
+          * @param step    Grid step, in pixels
++         * @param color   Grid line color, in #AARRGGBB format as usual
+          */
+-        public GridLines(@GridGravityConstraint int gravity, int step) {
++        public GridLines(@GridGravityConstraint int gravity, int step, int color) {
+             mStep = step;
+             mGravity = gravity;
+             // If gravity pulls the grid left or right (horizontal pull), then we're talking about vertical lines
+@@ -113,18 +111,7 @@ public final class RhythmDrawable extends Drawable {
+ 
+             mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+             mPaint.setStyle(Paint.Style.FILL);
+-            mPaint.setColor(DEFAULT_GRID_COLOR);
+-        }
+-
+-        /**
+-         * Set grid line color
+-         *
+-         * @param color Grid line color, in #AARRGGBB format as usual
+-         * @return this for chaining
+-         */
+-        public GridLines setColor(int color) {
+             mPaint.setColor(color);
+-            return this;
+         }
+ 
+         /**
+@@ -212,7 +199,6 @@ public final class RhythmDrawable extends Drawable {
+             } else {
+                 // Then we're drawing vertical lines
+                 // Same with vertical lines
+-                @SuppressLint("RtlHardcoded")
+                 int curX = mGravity == Gravity.LEFT
+                         ? left + mOffset
+                         : left + width % mStep + mOffset - mThickness;

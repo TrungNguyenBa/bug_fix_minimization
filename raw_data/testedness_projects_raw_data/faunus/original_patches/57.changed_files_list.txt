@@ -1,0 +1,13 @@
+8a349bda : cigars to fibrils self-assembly example, comments to functions, simplifications to cigars input
+:100644 100644 b8bc99b5... ca86fdec... M	include/faunus/io.h
+:100644 100644 58be5fed... e9e34056... M	include/faunus/point.h
+:100644 100644 96ecd513... 85125bf9... M	include/faunus/species.h
+:100644 100644 78bd6b2b... 7e3bc377... M	include/faunus/spherocylinder.h
+:100644 100644 b82fdf09... c12d635e... M	src/examples/CMakeLists.txt
+:000000 100755 00000000... bd76ae8e... A	src/examples/cigars-mov2pdb.py
+:000000 100644 00000000... 66ade336... A	src/examples/cigars2fibrils.cpp
+:000000 100755 00000000... 3b0362fc... A	src/examples/cigars2fibrils.run
+:100644 100644 d5915ef0... 59c01457... M	src/playground/vacha/psc-nvt.cpp
+:100644 100644 ac2a1f79... 26866b66... M	src/playground/vacha/psc-nvt.input
+:100644 100644 56c4b6ca... 57b1c000... M	src/playground/vacha/psc-nvt.json
+:100644 100644 0a66629c... e4779a90... M	src/species.cpp

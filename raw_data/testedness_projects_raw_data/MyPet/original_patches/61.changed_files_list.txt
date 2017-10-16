@@ -1,0 +1,2 @@
+081ee1cc : do not try to add worlds to worldgroups when they are already registered beforehand fixes #349
+:100644 100644 ba2337be... 340eb748... M	src/main/java/de/Keyle/MyPet/listeners/WorldListener.java

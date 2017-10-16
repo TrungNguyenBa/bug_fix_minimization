@@ -1,0 +1,40 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/RankLadder.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/RankLadder.java
+index 3985f54..4ac683e 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/RankLadder.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/rank/RankLadder.java
+@@ -16,7 +16,7 @@
+  */
+ package ninja.leaping.permissionsex.rank;
+ 
+-import ninja.leaping.permissionsex.data.ImmutableSubjectData;
++import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ 
+ import java.util.List;
+ import java.util.Map;
+@@ -44,7 +44,7 @@ public interface RankLadder {
+      * @param input The subject data to promote
+      * @return The promoted data
+      */
+-    ImmutableSubjectData promote(Set<Map.Entry<String, String>> contexts, ImmutableSubjectData input);
++    ImmutableOptionSubjectData promote(Set<Map.Entry<String, String>> contexts, ImmutableOptionSubjectData input);
+ 
+     /**
+      * Demote the given subject data on this rank ladder in the given context.
+@@ -57,7 +57,7 @@ public interface RankLadder {
+      * @param input The subject data to promote
+      * @return the demoted data
+      */
+-    ImmutableSubjectData demote(Set<Map.Entry<String, String>> contexts, ImmutableSubjectData input);
++    ImmutableOptionSubjectData demote(Set<Map.Entry<String, String>> contexts, ImmutableOptionSubjectData input);
+ 
+     /**
+      * Return if this subject is a member of any subjects that are part of this rank ladder within the given contexts.
+@@ -66,7 +66,7 @@ public interface RankLadder {
+      * @param subject The subject
+      * @return Whether this ladder contains any of the direct parents of the subject in the given contexts
+      */
+-    boolean isOnLadder(Set<Map.Entry<String, String>> contexts, ImmutableSubjectData subject);
++    boolean isOnLadder(Set<Map.Entry<String, String>> contexts, ImmutableOptionSubjectData subject);
+ 
+     /**
+      * Return a new rank ladder with the specified rank added at the highest point in the rank ladder.

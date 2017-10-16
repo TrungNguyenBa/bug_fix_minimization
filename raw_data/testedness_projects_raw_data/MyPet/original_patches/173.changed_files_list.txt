@@ -1,0 +1,2 @@
+e22e643c : ranged attacks will now trigger skills too fixes #170
+:100644 100644 caa3b244... 4af9de5d... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

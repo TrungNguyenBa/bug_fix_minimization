@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java b/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
+index 2b116db1..45b71d12 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/creeper/EntityMyCreeper.java
+@@ -26,7 +26,7 @@ import de.Keyle.MyPet.entity.types.MyPet;
+ import net.minecraft.server.v1_6_R2.World;
+ 
+ 
+-@EntitySize(width = 0.6F, height = 1.9F)
++@EntitySize(width = 0.6F, height = 0.9F)
+ public class EntityMyCreeper extends EntityMyPet
+ {
+     public EntityMyCreeper(World world, MyPet myPet)

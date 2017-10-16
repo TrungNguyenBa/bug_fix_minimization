@@ -1,0 +1,18 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/hooks/PvPChecker.java b/src/main/java/de/Keyle/MyPet/util/hooks/PvPChecker.java
+index db529f4d..7e02c28f 100644
+--- a/src/main/java/de/Keyle/MyPet/util/hooks/PvPChecker.java
++++ b/src/main/java/de/Keyle/MyPet/util/hooks/PvPChecker.java
+@@ -78,13 +78,6 @@ public class PvPChecker {
+ 
+     private static MobArenaHandler pluginMobArena = null;
+ 
+-    public static boolean canHurt(Player attacker, Player defender, boolean bothWays) {
+-        if (!canHurt(attacker, defender) || (bothWays && !canHurt(defender, attacker))) {
+-            return false;
+-        }
+-        return true;
+-    }
+-
+     public static boolean canHurt(Player attacker, Player defender) {
+         if (Configuration.DISABLE_PET_VS_PLAYER) {
+             return false;

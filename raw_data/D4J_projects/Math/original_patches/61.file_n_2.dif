@@ -1,0 +1,37 @@
+diff --git a/src/main/java/org/apache/commons/math/distribution/PoissonDistribution.java b/src/main/java/org/apache/commons/math/distribution/PoissonDistribution.java
+index d20eb53c5..6aca50999 100644
+--- a/src/main/java/org/apache/commons/math/distribution/PoissonDistribution.java
++++ b/src/main/java/org/apache/commons/math/distribution/PoissonDistribution.java
+@@ -32,6 +32,7 @@ import org.apache.commons.math.MathException;
+  * @version $Revision$ $Date$
+  */
+ public interface PoissonDistribution extends IntegerDistribution {
++
+     /**
+      * Get the mean for the distribution.
+      *
+@@ -40,6 +41,18 @@ public interface PoissonDistribution extends IntegerDistribution {
+     double getMean();
+ 
+     /**
++     * Set the mean for the distribution.
++     * The parameter value must be positive; otherwise an
++     * <code>IllegalArgument</code> is thrown.
++     *
++     * @param p the mean
++     * @throws IllegalArgumentException if p &le; 0
++     * @deprecated as of v2.1
++     */
++    @Deprecated
++    void setMean(double p);
++
++    /**
+      * Calculates the Poisson distribution function using a normal approximation.
+      *
+      * @param x the upper bound, inclusive
+@@ -47,4 +60,5 @@ public interface PoissonDistribution extends IntegerDistribution {
+      * @throws MathException if an error occurs computing the normal approximation
+      */
+     double normalApproximateProbability(int x) throws MathException;
++
+ }

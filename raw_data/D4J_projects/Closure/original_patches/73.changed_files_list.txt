@@ -1,0 +1,3 @@
+ee834409 : Codepoint U+007f should not appear raw in output Fixes issue 416 http://code.google.com/p/closure-compiler/issues/detail?id=416
+:100644 100644 558e74fe... 823d897a... M	src/com/google/javascript/jscomp/CodeGenerator.java
+:100644 100644 cae52702... db3e5ddb... M	test/com/google/javascript/jscomp/CodePrinterTest.java

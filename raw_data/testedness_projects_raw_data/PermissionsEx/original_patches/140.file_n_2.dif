@@ -1,0 +1,20 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java b/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
+index b7d3000..df36eec 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
+@@ -191,6 +191,7 @@ public class ErrorReport {
+ 
+ 	public static void handleError(final String cause, final Throwable error, final CommandSender target) {
+ 		if (!ASYNC_EXEC.isShutdown()) {
++			System.out.println("Submitting to async executor for handling");
+ 			ASYNC_EXEC.submit(new Runnable() {
+ 				@Override
+ 				public void run() {
+@@ -203,6 +204,7 @@ public class ErrorReport {
+ 				}
+ 			});
+ 		} else {
++			System.out.println("Not using async");
+ 			String msg = withException(cause, error).buildUserErrorMessage();
+ 			if (target != null) {
+ 				target.sendMessage(msg);

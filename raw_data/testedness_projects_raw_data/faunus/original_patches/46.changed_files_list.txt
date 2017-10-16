@@ -1,0 +1,2 @@
+2d76bb54 : fixed debyehuckelshifted approximate force
+:100644 100644 0c8f2268... d0193388... M	include/faunus/potentials.h

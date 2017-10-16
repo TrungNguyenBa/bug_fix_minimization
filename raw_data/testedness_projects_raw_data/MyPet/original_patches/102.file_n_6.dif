@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java
+index 5626fe53..56a54370 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/MyPigZombie.java
+@@ -74,7 +74,7 @@ public class MyPigZombie extends MyPet implements IMyPetEquipment, IMyPetBaby {
+         List<TagCompound> itemList = new ArrayList<TagCompound>();
+         for (EquipmentSlot slot : EquipmentSlot.values()) {
+             if (getEquipment(slot) != null) {
+-                TagCompound item = ItemStackNBTConverter.itemStackToCompund(getEquipment(slot));
++                TagCompound item = ItemStackNBTConverter.ItemStackToCompund(getEquipment(slot));
+                 item.getCompoundData().put("Slot", new TagInt(slot.getSlotId()));
+                 itemList.add(item);
+             }
+@@ -93,7 +93,7 @@ public class MyPigZombie extends MyPet implements IMyPetEquipment, IMyPetBaby {
+             for (int i = 0; i < equipment.getReadOnlyList().size(); i++) {
+                 TagCompound item = equipment.getTagAs(i, TagCompound.class);
+ 
+-                ItemStack itemStack = ItemStackNBTConverter.compundToItemStack(item);
++                ItemStack itemStack = ItemStackNBTConverter.CompundToItemStack(item);
+                 setEquipment(EquipmentSlot.getSlotById(item.getAs("Slot", TagInt.class).getIntData()), itemStack);
+             }
+         }

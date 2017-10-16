@@ -1,0 +1,3 @@
+7f06d46 : One test has trouble on jenkins, fix it!
+:100644 100644 f7a262d... 996a5dc... M	README.md
+:100644 100644 3c2dbfd... 68b0558... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java

@@ -1,0 +1,17 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/MultiBackend.java b/src/main/java/ru/tehkode/permissions/backends/MultiBackend.java
+index d210967..bb8ffa8 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/MultiBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/MultiBackend.java
+@@ -114,10 +114,10 @@ public class MultiBackend extends PermissionBackend {
+ 	}
+ 
+ 	@Override
+-	public ListenableFuture<List<MatcherGroup>> getMatchingGroups(String type, Context context) {
++	public ListenableFuture<List<MatcherGroup>> getMatchingGroups(String type, Qualifier qual, String qualValue) {
+ 		final List<ListenableFuture<List<MatcherGroup>>> rawResults = new ArrayList<>(backends.size());
+ 		for (PermissionBackend backend : backends) {
+-			rawResults.add(backend.getMatchingGroups(type, context));
++			rawResults.add(backend.getMatchingGroups(type, qual, qualValue));
+ 		}
+ 		return Futures.transform(Futures.allAsList(rawResults), new Function<List<List<MatcherGroup>>, List<MatcherGroup>>() {
+ 			@Override

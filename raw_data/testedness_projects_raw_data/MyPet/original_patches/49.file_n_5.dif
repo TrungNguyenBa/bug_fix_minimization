@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java b/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
+index dcdc75bf..c58c2d23 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
+@@ -52,15 +52,4 @@ public class EntityMyWither extends EntityMyPet {
+         this.datawatcher.a(19, new Integer(0));  // N/A
+         this.datawatcher.a(20, new Integer(0));  // blue (1/0)
+     }
+-
+-    public void onLivingUpdate() {
+-        super.onLivingUpdate();
+-
+-        if (!this.onGround && this.motY < 0.0D) {
+-            this.motY *= 0.6D;
+-        }
+-    }
+-
+-    protected void b(float f) {
+-    }
+ }
+\ No newline at end of file

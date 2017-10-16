@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+index 01eb6e37..67c03850 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+@@ -502,8 +502,12 @@ public class LevelCreator
+         this.inheritanceComboBoxModel.removeAllElements();
+ 
+         inheritanceCheckBox.setSelected(false);
+-        inheritanceCheckBox.setEnabled(false);
+-        if (skillTreeMobType.getSkillTreeNames().size() > 1 || (!skillTreeMobType.getMobTypeName().equals("default") && MyPetSkillTreeMobType.getMobTypeByName("default").getSkillTreeNames().size() > 0))
++        if (skillTreeMobType.getSkillTreeNames().size() == 1 && MyPetSkillTreeMobType.getMobTypeByName("default").getSkillTreeNames().size() == 0)
++        {
++            inheritanceCheckBox.setEnabled(false);
++            inheritanceComboBox.setEnabled(false);
++        }
++        else
+         {
+             inheritanceCheckBox.setEnabled(true);
+             ArrayList<String> skilltreeNames = new ArrayList<String>();

@@ -1,0 +1,40 @@
+diff --git a/src/com/google/javascript/jscomp/MustBeReachingVariableDef.java b/src/com/google/javascript/jscomp/MustBeReachingVariableDef.java
+index 589f6736..cc7dd734 100644
+--- a/src/com/google/javascript/jscomp/MustBeReachingVariableDef.java
++++ b/src/com/google/javascript/jscomp/MustBeReachingVariableDef.java
+@@ -68,8 +68,6 @@ final class MustBeReachingVariableDef extends
+   private static class Definition {
+     final Node node;
+     final Set<Var> depends = Sets.newHashSet();
+-    private boolean unknownDependencies = false;
+-
+     Definition(Node node) {
+       this.node = node;
+     }
+@@ -394,13 +392,8 @@ final class MustBeReachingVariableDef extends
+         new AbstractCfgNodeTraversalCallback() {
+       @Override
+       public void visit(NodeTraversal t, Node n, Node parent) {
+-        if (n.isName()) {
+-          Var dep = jsScope.getVar(n.getString());
+-          if (dep == null) {
+-            def.unknownDependencies = true;
+-          } else {
+-            def.depends.add(dep);
+-          }
++        if (n.isName() && jsScope.isDeclared(n.getString(), true)) {
++          def.depends.add(jsScope.getVar(n.getString()));
+         }
+       }
+     });
+@@ -432,10 +425,6 @@ final class MustBeReachingVariableDef extends
+     GraphNode<Node, Branch> n = getCfg().getNode(useNode);
+     FlowState<MustDef> state = n.getAnnotation();
+     Definition def = state.getIn().reachingDef.get(jsScope.getVar(name));
+-    if (def.unknownDependencies) {
+-      return true;
+-    }
+-
+     for (Var s : def.depends) {
+       if (s.scope != jsScope) {
+         return true;

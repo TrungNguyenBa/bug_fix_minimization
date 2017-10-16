@@ -1,0 +1,46 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/cow/MyCow.java b/src/main/java/de/Keyle/MyPet/entity/types/cow/MyCow.java
+index 7a3fb44d..8199a02d 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/cow/MyCow.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/cow/MyCow.java
+@@ -41,6 +41,20 @@ public class MyCow extends MyPet implements IMyPetBaby
+         super(petOwner);
+     }
+ 
++    public boolean isBaby()
++    {
++        return isBaby;
++    }
++
++    public void setBaby(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyCow) getCraftPet().getHandle()).setBaby(flag);
++        }
++        this.isBaby = flag;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -64,20 +78,6 @@ public class MyCow extends MyPet implements IMyPetBaby
+         return MyPetType.Cow;
+     }
+ 
+-    public boolean isBaby()
+-    {
+-        return isBaby;
+-    }
+-
+-    public void setBaby(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyCow) getCraftPet().getHandle()).setBaby(flag);
+-        }
+-        this.isBaby = flag;
+-    }
+-
+     @Override
+     public String toString()
+     {

@@ -1,0 +1,2 @@
+74f7a56 : Fix potential infinite loop while initializing permissions users.
+:100644 100644 98d33dc... db0e262... M	src/main/java/ru/tehkode/permissions/PermissionUser.java

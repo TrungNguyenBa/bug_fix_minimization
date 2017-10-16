@@ -1,0 +1,3 @@
+e571ef4e : Beginning of manybody potential; Restored minimal input parameters to 10 particles.
+:100644 100644 f223c63c... 78ff6aa7... M	src/examples/minimal.input
+:100644 100644 720931ad... ecc8797b... M	src/playground/CMakeLists.txt

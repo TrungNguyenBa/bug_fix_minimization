@@ -1,0 +1,2 @@
+94ecbf3 : Make GelfLoggingFilter.AdditionalKeys static
+:100644 100644 22d6cec... 205bf7c... M	src/main/java/net/gini/dropwizard/gelf/filters/GelfLoggingFilter.java

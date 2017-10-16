@@ -1,0 +1,2 @@
+2f65c7e : tiny fix to long writes
+:100644 100644 5b00c4d... c50b775... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java

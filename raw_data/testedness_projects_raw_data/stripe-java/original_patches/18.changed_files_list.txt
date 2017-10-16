@@ -1,0 +1,2 @@
+011598d : fixes #202. Add status setter to Charge
+:100644 100644 a3f1fef... 593cc45... M	src/main/java/com/stripe/model/Charge.java

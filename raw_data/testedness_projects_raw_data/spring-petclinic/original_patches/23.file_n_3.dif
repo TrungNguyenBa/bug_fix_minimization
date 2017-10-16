@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPet.java b/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPet.java
+index 39ba53b..f2ed258 100644
+--- a/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPet.java
++++ b/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPet.java
+@@ -19,7 +19,7 @@ import org.springframework.samples.petclinic.model.Pet;
+ 
+ /**
+  * Subclass of Pet that carries temporary id properties which are only relevant for a JDBC implementation of the
+- * PetRepository.
++ * ClinicService.
+  *
+  * @author Juergen Hoeller
+  */

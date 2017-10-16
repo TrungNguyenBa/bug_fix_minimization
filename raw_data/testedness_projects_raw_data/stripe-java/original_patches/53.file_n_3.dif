@@ -1,0 +1,21 @@
+diff --git a/src/test/java/com/stripe/StripeTest.java b/src/test/java/com/stripe/StripeTest.java
+index 42a3855..7392c5c 100644
+--- a/src/test/java/com/stripe/StripeTest.java
++++ b/src/test/java/com/stripe/StripeTest.java
+@@ -46,6 +46,7 @@ import com.stripe.model.Recipient;
+ import com.stripe.model.DeletedRecipient;
+ import com.stripe.model.Refund;
+ import com.stripe.model.ApplicationFee;
++import com.stripe.model.FeeRefund;
+ 
+ public class StripeTest {
+ 	static Map<String, Object> defaultCardParams = new HashMap<String, Object>();
+@@ -371,7 +372,7 @@ public class StripeTest {
+ 		Customer createdCustomer = Customer.create(defaultCustomerParams);
+ 		Map<String, Object> updateParams = new HashMap<String, Object>();
+ 		updateParams.put("description", "");
+-		createdCustomer.update(updateParams);
++		Customer updatedCustomer = createdCustomer.update(updateParams);
+ 	}
+ 
+ 	@Test

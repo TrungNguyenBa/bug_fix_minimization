@@ -1,0 +1,8 @@
+66180bd : Fixed static final members' naming conventions by making them all upper-case with underscores to match the Java standard. The old names are deprecated.
+:100644 100644 224eead... 8776c0b... M	src/main/java/com/allogy/coffeecan/statements/Activity.java
+:100644 100644 542fa24... cb4d244... M	src/main/java/com/allogy/coffeecan/statements/Actor.java
+:100644 100644 fb6df1b... 8494416... M	src/main/java/com/allogy/coffeecan/statements/Agent.java
+:100644 100644 77217af... d31d9be... M	src/main/java/com/allogy/coffeecan/statements/StatementObject.java
+:100644 100644 abc1878... 6f63523... M	src/main/java/com/allogy/coffeecan/vocabulary/ADLActivities.java
+:100644 100644 321d070... ba572ad... M	src/main/java/com/allogy/coffeecan/vocabulary/ADLVerbs.java
+:100644 100644 11401dc... c76ece5... M	src/test/java/com/allogy/coffeecan/statements/LoadFromFileHelper.java

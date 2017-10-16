@@ -1,0 +1,56 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+index dc5fe1a2..1ee0fe6e 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+@@ -78,38 +78,31 @@ public class EntityMyMooshroom extends EntityMyPet
+ 
+     public boolean a_(EntityHuman entityhuman)
+     {
+-        try
++        if (super.a_(entityhuman))
+         {
+-            if (super.a_(entityhuman))
+-            {
+-                return true;
+-            }
++            return true;
++        }
+ 
+-            ItemStack itemStack = entityhuman.inventory.getItemInHand();
++        ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-            if (getOwner().equals(entityhuman) && itemStack != null)
++        if (getOwner().equals(entityhuman) && itemStack != null)
++        {
++            if (itemStack.id == GROW_UP_ITEM.getId())
+             {
+-                if (itemStack.id == GROW_UP_ITEM.getId())
++                if (isBaby())
+                 {
+-                    if (isBaby())
++                    if (!entityhuman.abilities.canInstantlyBuild)
+                     {
+-                        if (!entityhuman.abilities.canInstantlyBuild)
++                        if (--itemStack.count <= 0)
+                         {
+-                            if (--itemStack.count <= 0)
+-                            {
+-                                entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+-                            }
++                            entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+                         }
+-                        this.setBaby(false);
+-                        return true;
+                     }
++                    this.setBaby(false);
++                    return true;
+                 }
+             }
+         }
+-        catch (Exception e)
+-        {
+-            e.printStackTrace();
+-        }
+         return false;
+     }
+ 

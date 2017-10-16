@@ -1,0 +1,15 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/processor/PathEndpointTest.java b/zombielink/src/test/java/com/lonepulse/zombielink/processor/PathEndpointTest.java
+index 50b0dca..3e8565a 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/processor/PathEndpointTest.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/processor/PathEndpointTest.java
+@@ -40,8 +40,8 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
+ import com.lonepulse.zombielink.annotation.Bite;
+ import com.lonepulse.zombielink.annotation.PathParam;
+ import com.lonepulse.zombielink.annotation.Request;
+-import com.lonepulse.zombielink.proxy.InvocationException;
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.InvocationException;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>Performs unit testing on {@link PathEndpoint}.</p>

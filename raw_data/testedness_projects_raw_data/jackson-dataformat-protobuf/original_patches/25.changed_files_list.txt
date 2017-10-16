@@ -1,0 +1,5 @@
+763f28d : fixes to tests now pass
+:100644 100644 7cdff4e... 6fd8493... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ByteAccumulator.java
+:100644 100644 83a3937... 69369c8... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 db24c8b... 79ba122... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:100644 100644 f2b304a... 669331b... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/SimpleWriteTest.java

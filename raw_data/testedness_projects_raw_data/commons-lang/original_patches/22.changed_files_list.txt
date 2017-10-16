@@ -1,0 +1,7 @@
+94faa31b : refactor FastDateParser
+:100644 100644 c49dbbb4... 2ae637b0... M	src/main/java/org/apache/commons/lang3/time/DateUtils.java
+:100644 100644 7863322a... 26538d73... M	src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+:100644 100644 f8c5e46a... 1bdc25ae... M	src/test/java/org/apache/commons/lang3/time/FastDateFormatTest.java
+:100644 100644 75ca3428... 1a460de9... M	src/test/java/org/apache/commons/lang3/time/FastDateParserSDFTest.java
+:100644 100644 3c47bd28... 330935cd... M	src/test/java/org/apache/commons/lang3/time/FastDateParserTest.java
+:000000 100644 00000000... 15b8817c... A	src/test/java/org/apache/commons/lang3/time/FastDateParser_MoreOrLessTest.java

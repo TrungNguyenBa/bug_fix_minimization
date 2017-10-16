@@ -1,0 +1,68 @@
+diff --git a/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java b/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+index 68e8e99..897aac4 100644
+--- a/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
++++ b/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+@@ -34,7 +34,7 @@ import java.util.Map;
+ import java.util.Properties;
+ 
+ import static org.fest.assertions.Assertions.assertThat;
+-import static org.fest.assertions.MapAssert.entry;
++import static org.junit.Assert.assertEquals;
+ import static org.mockito.internal.util.reflection.Whitebox.setInternalState;
+ 
+ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+@@ -250,54 +250,6 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+     assertGitPropertiesPresentInProject(targetProject.getProperties());
+   }
+ 
+-  @Test
+-  public void shouldGenerateDescribeWithTagOnlyWhenForceLongFormatIsFalse() throws Exception {
+-    // given
+-    mavenSandbox.withParentProject("my-pom-project", "pom")
+-        .withChildProject("my-jar-module", "jar")
+-        .withGitRepoInChild(AvailableGitTestRepo.ON_A_TAG)
+-        .create(CleanUp.CLEANUP_FIRST);
+-
+-    MavenProject targetProject = mavenSandbox.getChildProject();
+-
+-    setProjectToExecuteMojoIn(targetProject);
+-    GitDescribeConfig gitDescribeConfig = new GitDescribeConfig();
+-    gitDescribeConfig.setTags(true);
+-    gitDescribeConfig.setForceLongFormat(false);
+-    gitDescribeConfig.setAbbrev(7);
+-    alterMojoSettings("gitDescribe", gitDescribeConfig);
+-
+-    // when
+-    mojo.execute();
+-
+-    // then
+-    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe", "v1.0.0"));
+-  }
+-
+-  @Test
+-  public void shouldGenerateDescribeWithTagAndZeroAndCommitIdWhenForceLongFormatIsTrue() throws Exception {
+-    // given
+-    mavenSandbox.withParentProject("my-pom-project", "pom")
+-        .withChildProject("my-jar-module", "jar")
+-        .withGitRepoInChild(AvailableGitTestRepo.ON_A_TAG)
+-        .create(CleanUp.CLEANUP_FIRST);
+-
+-    MavenProject targetProject = mavenSandbox.getChildProject();
+-
+-    setProjectToExecuteMojoIn(targetProject);
+-    GitDescribeConfig gitDescribeConfig = new GitDescribeConfig();
+-    gitDescribeConfig.setTags(true);
+-    gitDescribeConfig.setForceLongFormat(true);
+-    gitDescribeConfig.setAbbrev(7);
+-    alterMojoSettings("gitDescribe", gitDescribeConfig);
+-
+-    // when
+-    mojo.execute();
+-
+-    // then
+-    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe", "v1.0.0-0-gde4db35"));
+-  }
+-
+   private void alterMojoSettings(String parameterName, Object parameterValue) {
+     setInternalState(mojo, parameterName, parameterValue);
+   }

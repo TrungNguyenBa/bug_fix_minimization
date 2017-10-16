@@ -1,0 +1,3 @@
+ea119a2d : Allow dependency sorting even when closure pass is off. Fixes issue 768
+:100644 100644 cdea3b55... 3756b998... M	src/com/google/javascript/jscomp/Compiler.java
+:100644 100644 83480a1d... 8ae9fd9b... M	test/com/google/javascript/jscomp/IntegrationTest.java

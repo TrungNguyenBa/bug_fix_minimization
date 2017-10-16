@@ -1,0 +1,3 @@
+3bd9ea2 : Fix the last known problem with parser (adjustment of end offsets).
+:100644 100644 4df2a40... 40df72b... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 1f967ed... f896e4f... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java

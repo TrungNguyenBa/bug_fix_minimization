@@ -1,0 +1,4 @@
+c821fafc : LANG-807 RandomStringUtils throws confusing IAE when end <= start
+:100644 100644 1aae92a6... 73a6f548... M	src/changes/changes.xml
+:100644 100644 a7990575... 9dfee222... M	src/main/java/org/apache/commons/lang3/RandomStringUtils.java
+:100644 100644 6c7b0c16... a7f57bf0... M	src/test/java/org/apache/commons/lang3/RandomStringUtilsTest.java

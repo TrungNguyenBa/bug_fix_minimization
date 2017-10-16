@@ -1,0 +1,3 @@
+59eec92e : Do not inline an object literal if it has a property that gets deleted.
+:100644 100644 afaf88a2... d03988cf... M	src/com/google/javascript/jscomp/InlineObjectLiterals.java
+:100644 100644 369fc2f4... 00afc7d5... M	test/com/google/javascript/jscomp/InlineObjectLiteralsTest.java

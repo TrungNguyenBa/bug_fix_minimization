@@ -1,0 +1,2 @@
+a4207b51 : always close reader
+:100644 100644 753cb93b... 32d3595d... M	src/main/java/de/Keyle/MyPet/util/configuration/JSON_Configuration.java

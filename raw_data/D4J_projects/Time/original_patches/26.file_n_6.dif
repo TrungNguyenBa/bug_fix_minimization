@@ -1,0 +1,24 @@
+diff --git a/JodaTime/src/test/java/org/joda/time/MockZone.java b/JodaTime/src/test/java/org/joda/time/MockZone.java
+index b2f8f22f..4915d058 100644
+--- a/JodaTime/src/test/java/org/joda/time/MockZone.java
++++ b/JodaTime/src/test/java/org/joda/time/MockZone.java
+@@ -19,17 +19,15 @@ public class MockZone extends DateTimeZone {
+ 
+     long transition;
+     int winterOffset;
+-    int sizeMillis;
+ 
+-    public MockZone(long transition, int winterOffset, int sizeSecs) {
++    public MockZone(long transition, int winterOffset) {
+         super("MockZone");
+         this.transition = transition;
+         this.winterOffset = winterOffset;
+-        this.sizeMillis = sizeSecs * 1000;
+     }
+ 
+     public int getOffset(long instant) {
+-        return (instant < transition ? winterOffset : winterOffset + sizeMillis);
++        return (instant < transition ? winterOffset : winterOffset + 3600000);
+     }
+ 
+     public int getStandardOffset(long instant) {

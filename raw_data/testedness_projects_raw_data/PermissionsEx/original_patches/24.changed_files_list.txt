@@ -1,0 +1,2 @@
+cf61e76 : Correctly handle circular inheritance while traversing inheritance. Fixes #1949
+:100644 100644 3562f12... cdf4f61... M	src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java

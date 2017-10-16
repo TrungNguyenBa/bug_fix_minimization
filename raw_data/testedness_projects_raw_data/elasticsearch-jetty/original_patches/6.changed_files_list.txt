@@ -1,0 +1,2 @@
+2a973b9 : Update README to correct installation instructions; fixes #33
+:100644 100644 4cdc8cc... 00c9e99... M	README.textile

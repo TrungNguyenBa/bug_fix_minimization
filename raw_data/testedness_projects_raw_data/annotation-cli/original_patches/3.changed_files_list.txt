@@ -1,0 +1,11 @@
+6805c17 : This commit contains fixes #1 for the addition of the OptionReference annotation that will be used to reference instances within a instance that contain options that will be included as part of the current top-level instance.
+:100644 100644 ceddfa4... f07ac25... M	README
+:100644 100644 1c76a57... 0ad0480... M	TODO
+:100644 100644 504024c... d034cd7... M	pom.xml
+:100644 100644 d3ed144... 983d8c6... M	src/main/java/org/valhalla/cli/Options.java
+:100644 100644 85767a0... 8b0e22c... M	src/main/java/org/valhalla/cli/annotations/Option.java
+:000000 100644 0000000... 2bf1afe... A	src/main/java/org/valhalla/cli/annotations/OptionReference.java
+:000000 100644 0000000... 400e478... A	src/test/java/org/valhalla/cli/OptionReferenceEmbeddedImpl.java
+:000000 100644 0000000... 2a5028d... A	src/test/java/org/valhalla/cli/OptionReferenceEmbeddedMethodImpl.java
+:000000 100644 0000000... 49a8053... A	src/test/java/org/valhalla/cli/OptionReferenceEmbeddedTests.java
+:000000 100644 0000000... 33d1ef9... A	src/test/java/org/valhalla/cli/OptionReferenceTests.java

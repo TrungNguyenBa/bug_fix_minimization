@@ -1,0 +1,20 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpointTest.java b/src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpointTest.java
+index 9ebc8e4..f7d256f 100644
+--- a/src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpointTest.java
++++ b/src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpointTest.java
+@@ -329,6 +329,7 @@ public class RequestParamEndpointTest {
+ 		
+ 		requestEndpoint.stringEntity(entity);
+ 		
++		verify(putRequestedFor(urlEqualTo(subpath)));
+ 		verify(putRequestedFor(urlEqualTo(subpath))
+ 			   .withRequestBody(equalTo(EntityUtils.toString(se))));
+ 	}
+@@ -351,6 +352,7 @@ public class RequestParamEndpointTest {
+ 		
+ 		requestEndpoint.serializableEntity(entity);
+ 		
++		verify(putRequestedFor(urlEqualTo(subpath)));
+ 		verify(putRequestedFor(urlEqualTo(subpath))
+ 			   .withRequestBody(equalTo(EntityUtils.toString(se))));
+ 	}

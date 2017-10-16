@@ -1,0 +1,8 @@
+1dba3891 : Templated various functions with taking `Space` as argument
+:100644 100644 c4fa262a... 7a4ac31b... M	README.md
+:100755 100755 6c748830... d7a144dc... M	include/faunus/analysis.h
+:100644 100644 5ba6a81d... 077283d1... M	include/faunus/energy.h
+:100644 100644 4ca292a6... 5a353833... M	include/faunus/group.h
+:100755 100755 f314e2ac... 01ec5239... M	src/analysis.cpp
+:100644 100644 2a6f609f... 082bf003... M	src/energy.cpp
+:100644 100644 f61a3199... 3f5ff653... M	src/group.cpp

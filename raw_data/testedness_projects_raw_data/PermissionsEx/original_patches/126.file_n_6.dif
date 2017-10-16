@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+index 16fb4a6..805b472 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLData.java
+@@ -285,7 +285,7 @@ public class SQLData implements PermissionsUserData, PermissionsGroupData {
+ 	}
+ 
+ 	@Override
+-	public void setOption(String option, String value, String worldName) {
++	public void setOption(String option, String worldName, String value) {
+ 		if (option == null || option.isEmpty()) {
+ 			return;
+ 		}

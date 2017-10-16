@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/exceptions/PermissionsNotAvailable.java b/src/main/java/ru/tehkode/permissions/exceptions/PermissionsNotAvailable.java
+index 3002302..dbaacc9 100644
+--- a/src/main/java/ru/tehkode/permissions/exceptions/PermissionsNotAvailable.java
++++ b/src/main/java/ru/tehkode/permissions/exceptions/PermissionsNotAvailable.java
+@@ -11,6 +11,7 @@ public class PermissionsNotAvailable extends RuntimeException {
+ 	public String getMessage() {
+ 		return super.getMessage();
+ 	}
+-
++	
++	
+ 
+ }

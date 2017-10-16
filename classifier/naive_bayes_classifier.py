@@ -29,7 +29,7 @@ class commits_data:
 			result = "Bug-fix"
 		elif (self.label == '0'):
 			result = "Others"
-		else:
+		else: 
 			result = "N/A"
 		return result
 	def print_commits_data(self):

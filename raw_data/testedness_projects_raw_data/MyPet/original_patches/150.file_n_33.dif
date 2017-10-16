@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/locale/Locales.java b/src/main/java/de/Keyle/MyPet/util/locale/Locales.java
+index 5b9ddbe5..eee94f55 100644
+--- a/src/main/java/de/Keyle/MyPet/util/locale/Locales.java
++++ b/src/main/java/de/Keyle/MyPet/util/locale/Locales.java
+@@ -94,6 +94,7 @@ public class Locales {
+         if (locale.containsKey(key)) {
+             return Colorizer.setColors(locale.getString(key));
+         }
++
+         return key;
+     }
+ 

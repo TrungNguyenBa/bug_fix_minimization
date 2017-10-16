@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java b/src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java
+index eb26a2b..450a1d5 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java
++++ b/src/main/java/com/lonepulse/zombielink/response/XmlResponseParser.java
+@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.util.EntityUtils;
+ 
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ 
+ /**
+  * <p>This is an extension of {@link AbstractResponseParser} which allows an <b>XML response entity</b> 

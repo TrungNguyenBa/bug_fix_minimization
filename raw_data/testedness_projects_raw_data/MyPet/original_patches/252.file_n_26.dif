@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetVehicleListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetVehicleListener.java
+index d16a32fe..e091dad9 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetVehicleListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetVehicleListener.java
+@@ -20,7 +20,7 @@
+ 
+ package de.Keyle.MyPet.listeners;
+ 
+-import de.Keyle.MyPet.entity.types.MyPetList;
++import de.Keyle.MyPet.util.MyPetList;
+ import org.bukkit.entity.Player;
+ import org.bukkit.event.EventHandler;
+ import org.bukkit.event.Listener;

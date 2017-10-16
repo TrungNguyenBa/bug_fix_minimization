@@ -1,0 +1,7 @@
+a6e3765 : Caching fix, file node fix, minor deprecation cleanup
+:100644 100644 2afe9d4... 4f64e4d... M	src/main/java/ru/tehkode/permissions/PermissionGroup.java
+:100644 100644 b1117f9... 71cac35... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 c57f29e... 4b0c353... M	src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+:100644 100644 43990cb... 047bd88... M	src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+:100644 100644 cb827bf... c26e4c8... M	src/main/java/ru/tehkode/permissions/bukkit/commands/UserCommands.java
+:100644 100644 38a72e3... 3706890... M	src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java

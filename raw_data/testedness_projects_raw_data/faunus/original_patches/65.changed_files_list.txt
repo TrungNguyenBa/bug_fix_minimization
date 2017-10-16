@@ -1,0 +1,4 @@
+6bbf0a49 : fixed Tensor input/output operators
+:100755 100755 45223034... c49ddc19... M	include/faunus/analysis.h
+:100644 100644 65540e8f... 3873db42... M	include/faunus/multipole.h
+:100644 100644 5ed70e8f... 2fb8e999... M	include/faunus/point.h

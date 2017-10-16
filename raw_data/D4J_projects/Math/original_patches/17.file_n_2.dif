@@ -1,0 +1,14 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index b6f8c5405..64fb6fdb3 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -52,9 +52,6 @@ If the output is not quite correct, check for invisible trailing spaces!
+   <body>
+     <release version="3.1" date="TBD" description="
+ ">
+-      <action dev="tn" type="fix" issue="MATH-778" due-to="Sébastien Brisard">
+-        Allow unlimited input values for "Dfp#multiply(int)".
+-      </action>
+       <action dev="luc" type="fix" issue="MATH-641" due-to="Curtis Jensen">
+         Added distance to point to 2D Line and Segment.
+       </action>

@@ -1,0 +1,4 @@
+4401cab : initial refactor to use Aether (not working yet)
+:100644 100644 ff2e1d2... 507fd17... M	grails-maven-plugin.iml
+:100644 100644 74f21f2... 2f98a4e... M	pom.xml
+:100755 100755 664e4f6... 8252926... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

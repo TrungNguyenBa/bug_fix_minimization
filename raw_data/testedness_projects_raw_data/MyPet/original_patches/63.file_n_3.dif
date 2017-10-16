@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionSwitch.java b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionSwitch.java
+index 1a5da006..38daf415 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionSwitch.java
++++ b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionSwitch.java
+@@ -137,7 +137,7 @@ public class CommandOptionSwitch implements CommandOptionTabCompleter {
+                             sender.sendMessage(Util.formatText(Locales.getString("Message.Call.Dead", owner), myPet.getPetName(), myPet.getRespawnTime()));
+                             break;
+                         case Flying:
+-                            sender.sendMessage(Util.formatText(Locales.getString("Message.Spawn.Flying", owner), myPet.getPetName()));
++                            sender.sendMessage(Util.formatText(Locales.getString("Message.Spawn.Flying", owner)));
+                             break;
+                     }
+                 }

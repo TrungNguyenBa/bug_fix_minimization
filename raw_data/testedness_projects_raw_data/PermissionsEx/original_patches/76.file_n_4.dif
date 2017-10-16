@@ -1,0 +1,36 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java b/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+index 1653e16..7152448 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java
+@@ -19,7 +19,6 @@ import java.io.IOException;
+ import java.io.OutputStreamWriter;
+ import java.io.Writer;
+ import java.nio.charset.Charset;
+-import java.util.concurrent.Executor;
+ 
+ public class FileConfig {
+ 	public static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+@@ -28,13 +27,11 @@ public class FileConfig {
+ 	private boolean saveSuppressed;
+ 	private final ThreadLocal<PEXMLParser> parser;
+ 	private final Object saveLock = new Object();
+-	private final Executor executor;
+ 
+-	public FileConfig(File file, Executor executor) {
++	public FileConfig(File file) {
+ 		this.file = file;
+ 		this.tempFile = new File(file.getPath() + ".tmp");
+ 		this.oldFile = new File(file.getPath() + ".old");
+-		this.executor = executor;
+ 
+ 		final PEXMLParser localParser = Parboiled.createParser(PEXMLParser.class);
+ 		parser = new ThreadLocal<PEXMLParser>() {
+@@ -73,7 +70,7 @@ public class FileConfig {
+ 			throw new IOException("No result value for parser!");
+ 		}
+ 
+-		return new FileMatcherList(result.resultValue.getChildren(), this, executor);
++		return new FileMatcherList(result.resultValue.getChildren(), this);
+ 	}
+ 
+ 	/**

@@ -1,0 +1,60 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
+index 4763652..50cc114 100644
+--- a/src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
+@@ -195,18 +195,7 @@ public class FileOptionSubjectData implements ImmutableOptionSubjectData {
+ 
+     @Override
+     public ImmutableOptionSubjectData clearOptions() {
+-        if (this.contexts.isEmpty()) {
+-            return this;
+-        }
+-
+-        Map<Set<Context>, DataEntry> newValue = Maps.transformValues(this.contexts, new Function<DataEntry, DataEntry>() {
+-            @Nullable
+-            @Override
+-            public DataEntry apply(@Nullable DataEntry dataEntry) {
+-                return dataEntry.withoutOptions();
+-            }
+-        });
+-        return new FileOptionSubjectData(newValue);
++        return null;
+     }
+ 
+     @Override
+@@ -237,18 +226,7 @@ public class FileOptionSubjectData implements ImmutableOptionSubjectData {
+ 
+     @Override
+     public ImmutableOptionSubjectData clearPermissions() {
+-        if (this.contexts.isEmpty()) {
+-            return this;
+-        }
+-
+-        Map<Set<Context>, DataEntry> newValue = Maps.transformValues(this.contexts, new Function<DataEntry, DataEntry>() {
+-            @Nullable
+-            @Override
+-            public DataEntry apply(@Nullable DataEntry dataEntry) {
+-                return dataEntry.withoutPermissions();
+-            }
+-        });
+-        return new FileOptionSubjectData(newValue);
++        return null;
+     }
+ 
+     @Override
+@@ -311,15 +289,6 @@ public class FileOptionSubjectData implements ImmutableOptionSubjectData {
+         }
+     }
+ 
+-    public int getDefaultValue(Set<Context> contexts) {
+-        DataEntry ent = this.contexts.get(contexts);
+-        return ent == null ? 0 : ent.defaultValue;
+-    }
+-
+-    public ImmutableOptionSubjectData setDefaultValue(Set<Context> contexts, int defaultValue) {
+-        return new FileOptionSubjectData(ImmutableMap.<Set<Context>, DataEntry>builder().putAll(this.contexts).put(contexts, getDataEntryOrNew(contexts).withDefaultValue(defaultValue)).build());
+-    }
+-
+     @Override
+     public String toString() {
+         return "FileOptionSubjectData{" +

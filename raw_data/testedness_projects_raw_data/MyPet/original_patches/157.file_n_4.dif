@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+index ecacd5ac..1f804284 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+@@ -77,7 +77,7 @@ public class BehaviorAggressiveTarget extends AIGoal
+         {
+             EntityLiving entityLiving = (EntityLiving) entityObj;
+ 
+-            if (entityLiving != petEntity && entityLiving.isAlive() && petEntity.e(entityLiving) <= 91)
++            if (petEntity.getEntitySenses().canSee(entityLiving) && entityLiving != petEntity && entityLiving.isAlive() && petEntity.e(entityLiving) <= 91)
+             {
+                 if (entityLiving instanceof EntityPlayer)
+                 {

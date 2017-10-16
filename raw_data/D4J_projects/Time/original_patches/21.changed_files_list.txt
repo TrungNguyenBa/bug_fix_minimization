@@ -1,0 +1,5 @@
+0973b460 : Fix time-zone names in non-English locales on JDK1.6 [3412910]
+:100644 100644 6c4650fa... 2740c1e9... M	RELEASE-NOTES.txt
+:100644 100644 2fb87273... 0f9b9515... M	pom.xml
+:100644 100644 24423f8e... 89e67398... M	src/main/java/org/joda/time/tz/DefaultNameProvider.java
+:100644 100644 a6eaac3b... 5ca0ba1c... M	src/test/java/org/joda/time/TestDateTimeZone.java

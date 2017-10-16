@@ -1,0 +1,22 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPetRepositoryImpl.java b/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPetRepositoryImpl.java
+index e3c02fc..e068791 100644
+--- a/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPetRepositoryImpl.java
++++ b/src/main/java/org/springframework/samples/petclinic/repository/jdbc/JdbcPetRepositoryImpl.java
+@@ -73,7 +73,7 @@ public class JdbcPetRepositoryImpl implements PetRepository {
+ 
+     @Override
+     public List<PetType> findPetTypes() throws DataAccessException {
+-        Map<String, Object> params = new HashMap<>();
++        Map<String, Object> params = new HashMap<String, Object>();
+         return this.namedParameterJdbcTemplate.query(
+                 "SELECT id, name FROM types ORDER BY name",
+                 params,
+@@ -84,7 +84,7 @@ public class JdbcPetRepositoryImpl implements PetRepository {
+     public Pet findById(int id) throws DataAccessException {
+         JdbcPet pet;
+         try {
+-            Map<String, Object> params = new HashMap<>();
++            Map<String, Object> params = new HashMap<String, Object>();
+             params.put("id", id);
+             pet = this.namedParameterJdbcTemplate.queryForObject(
+                     "SELECT id, name, birth_date, type_id, owner_id FROM pets WHERE id=:id",

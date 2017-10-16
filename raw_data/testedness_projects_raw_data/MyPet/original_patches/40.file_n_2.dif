@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/movement/Float.java b/src/main/java/de/Keyle/MyPet/entity/ai/movement/Float.java
+index 0cd31583..849a1d84 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/movement/Float.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/movement/Float.java
+@@ -23,7 +23,6 @@ package de.Keyle.MyPet.entity.ai.movement;
+ import de.Keyle.MyPet.entity.ai.AIGoal;
+ import de.Keyle.MyPet.entity.types.EntityMyPet;
+ import net.minecraft.server.v1_8_R1.EntityPlayer;
+-import net.minecraft.server.v1_8_R1.Navigation;
+ import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+ 
+ public class Float extends AIGoal {
+@@ -37,7 +36,6 @@ public class Float extends AIGoal {
+         this.entityMyPet = entityMyPet;
+         //entityMyPet.getNavigation().e(true);  //ToDo
+         this.owner = ((CraftPlayer) entityMyPet.getOwner().getPlayer()).getHandle();
+-        ((Navigation) entityMyPet.getNavigation()).d(true);
+     }
+ 
+     @Override

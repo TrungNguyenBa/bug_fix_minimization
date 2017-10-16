@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/IMyPetBaby.java b/src/main/java/de/Keyle/MyPet/entity/types/IMyPetBaby.java
+index 491fe05d..5cd36ff2 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/IMyPetBaby.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/IMyPetBaby.java
+@@ -22,7 +22,7 @@ package de.Keyle.MyPet.entity.types;
+ 
+ public interface IMyPetBaby
+ {
+-    public boolean isBaby();
+-
+     public void setBaby(boolean flag);
++
++    public boolean isBaby();
+ }
+\ No newline at end of file

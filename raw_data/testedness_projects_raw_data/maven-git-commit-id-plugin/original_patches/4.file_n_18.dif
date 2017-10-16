@@ -1,0 +1,12 @@
+diff --git a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/info/exclude b/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/info/exclude
+deleted file mode 100644
+index a5196d1..0000000
+--- a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/info/exclude
++++ /dev/null
+@@ -1,6 +0,0 @@
+-# git ls-files --others --exclude-from=.git/info/exclude
+-# Lines that start with '#' are comments.
+-# For a project mostly in C, the following would be a good set of
+-# exclude patterns (uncomment them if you want to use them):
+-# *.[oa]
+-# *~

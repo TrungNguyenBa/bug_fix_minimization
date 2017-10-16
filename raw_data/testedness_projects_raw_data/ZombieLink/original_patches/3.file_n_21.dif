@@ -1,0 +1,15 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationManager.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationManager.java
+index a8e0831..c949773 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationManager.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationManager.java
+@@ -21,8 +21,8 @@ package com.lonepulse.zombielink.executor;
+  */
+ 
+ import com.lonepulse.zombielink.annotation.Config;
+-import com.lonepulse.zombielink.proxy.Zombie;
+-import com.lonepulse.zombielink.proxy.Zombie.Configuration;
++import com.lonepulse.zombielink.inject.Zombie;
++import com.lonepulse.zombielink.inject.Zombie.Configuration;
+ 
+ /**
+  * <p>This contract defines the services for managing <b>request execution configurations</b>. These may 

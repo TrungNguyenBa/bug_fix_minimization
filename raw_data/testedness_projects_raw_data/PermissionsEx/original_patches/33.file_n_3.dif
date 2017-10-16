@@ -1,0 +1,41 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java b/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
+index 8acb589..9bb964d 100644
+--- a/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
++++ b/src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
+@@ -16,6 +16,7 @@
+  */
+ package ninja.leaping.permissionsex.data;
+ 
++import org.spongepowered.api.service.permission.Subject;
+ import org.spongepowered.api.service.permission.context.Context;
+ 
+ import java.util.List;
+@@ -43,13 +44,13 @@ public interface ImmutableOptionSubjectData {
+ 
+     ImmutableOptionSubjectData clearPermissions(Set<Context> contexts);
+ 
+-    Map<Set<Context>, List<Map.Entry<String, String>>> getAllParents();
++    Map<Set<Context>, List<Subject>> getAllParents();
+ 
+-    List<Map.Entry<String, String>> getParents(Set<Context> contexts);
++    List<Subject> getParents(Set<Context> contexts);
+ 
+-    ImmutableOptionSubjectData addParent(Set<Context> contexts, String type, String identifier);
++    ImmutableOptionSubjectData addParent(Set<Context> contexts, Subject subject);
+ 
+-    ImmutableOptionSubjectData removeParent(Set<Context> contexts, String type, String identifier);
++    ImmutableOptionSubjectData removeParent(Set<Context> contexts, Subject subject);
+ 
+     ImmutableOptionSubjectData clearParents();
+ 
+@@ -58,10 +59,4 @@ public interface ImmutableOptionSubjectData {
+     int getDefaultValue(Set<Context> contexts);
+ 
+     ImmutableOptionSubjectData setDefaultValue(Set<Context> contexts, int defaultValue);
+-
+-    /**
+-     * Gets the contexts we have data for
+-     * @return
+-     */
+-    Iterable<Set<Context>> getActiveContexts();
+ }

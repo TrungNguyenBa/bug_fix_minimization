@@ -1,0 +1,2 @@
+d78ca9ca : fixed NPE when LevelUp message is typed and old message is null
+:100644 100644 a89f3aa6... 672b80e2... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java

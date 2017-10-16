@@ -1,0 +1,2 @@
+0951a9d : Fixed PR about abbrevLength - it was available since 2.0.4, not 1.9
+:100644 100644 e947284... 68b366b... M	README.md

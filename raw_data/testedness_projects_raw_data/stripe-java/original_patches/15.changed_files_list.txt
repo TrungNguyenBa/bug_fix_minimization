@@ -1,0 +1,3 @@
+bcda00d : do not need to copy Proxy and PasswordAuthentication given they are immutable
+:100644 100644 931fb77... 35e1355... M	src/main/java/com/stripe/Stripe.java
+:100644 100644 9d290a2... 3797732... M	src/main/java/com/stripe/net/LiveStripeResponseGetter.java

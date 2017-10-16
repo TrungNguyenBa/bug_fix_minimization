@@ -1,0 +1,2 @@
+e8ebabde : item can be null so do not use .toString()
+:100644 100644 08f45251... e0845f9f... M	src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java

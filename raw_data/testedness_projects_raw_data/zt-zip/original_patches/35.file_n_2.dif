@@ -1,0 +1,21 @@
+diff --git a/src/test/java/org/zeroturnaround/zip/ZipsTest.java b/src/test/java/org/zeroturnaround/zip/ZipsTest.java
+index 2ac949d..2bb0ceb 100644
+--- a/src/test/java/org/zeroturnaround/zip/ZipsTest.java
++++ b/src/test/java/org/zeroturnaround/zip/ZipsTest.java
+@@ -236,14 +236,10 @@ public class ZipsTest extends TestCase {
+       Zips.process(src).charset(charset).addEntry(new FileSource(entryName, newEntry)).destination(dest).process();
+     }
+     catch (IllegalArgumentException e) {
+-      if (e.getMessage().equals("Using constructor ZipFile(File, Charset) has failed") ||
+-          e.getMessage().equals("Using constructor ZipOutputStream(OutputStream, Charset) has failed")) {
+-        // this is acceptable when old java doesn't have charset constructor
++      if (e.getMessage().equals("Using constructor ZipFile(File, Charset) has failed")) {
++        // this is acceptable if java doesn't have charset constructor
+         return;
+       }
+-      else {
+-        System.out.println("'" + e.getMessage() + "'");
+-      }
+     }
+ 
+     ZipFile zf = null;

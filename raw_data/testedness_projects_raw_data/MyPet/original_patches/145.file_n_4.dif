@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+index 5a1b800a..9e98418f 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+@@ -93,9 +93,6 @@ public class ControlTarget extends AIGoal {
+                             continue;
+                         }
+                     }
+-                    if (!PvPChecker.canHurtCitizens(entityLiving.getBukkitEntity())) {
+-                        continue;
+-                    }
+                     if (behaviorSkill != null) {
+                         if (behaviorSkill.getBehavior() == BehaviorState.Raid) {
+                             if (entityLiving instanceof EntityTameableAnimal) {

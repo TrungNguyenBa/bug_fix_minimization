@@ -1,0 +1,85 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/test/processor/HeaderEndpoint.java b/src/test/java/com/lonepulse/zombielink/test/processor/HeaderEndpoint.java
+index 5c52a19..92af6e0 100644
+--- a/src/test/java/com/lonepulse/zombielink/test/processor/HeaderEndpoint.java
++++ b/src/test/java/com/lonepulse/zombielink/test/processor/HeaderEndpoint.java
+@@ -47,19 +47,6 @@ import com.lonepulse.zombielink.annotation.Request;
+ public interface HeaderEndpoint {
+ 	
+ 	/**
+-	 * <p>A mock request which inserts a request header.
+-	 * 
+-	 * @param userAgent
+-	 * 			a variable header - <i>User-Agent</i> in this case
+-	 * 
+-	 * @return the textual content of the {@link HttpResponse} body
+-	 * 
+-	 * @since 1.2.4
+-	 */
+-	@Request(path = "/requestheader")
+-	public String requestHeader(@Header("User-Agent") String userAgent);
+-	
+-	/**
+ 	 * <p>Retrieves a response header from a request using {@link Header}.
+ 	 * 
+ 	 * @param server
+@@ -74,37 +61,35 @@ public interface HeaderEndpoint {
+ 	public String responseHeader(@Header("Server") StringBuilder server);
+ 	
+ 	/**
+-	 * <p>A mock request which expects a request header value but instead receives 
+-	 * none form the current invocation.</p>
++	 * <p>A mock request which retrieves a header using an illegal type. This invocation 
++	 * should be unsuccessful and should result in an error. 
+ 	 * 
+-	 * @param userAgent
+-	 * 			a variable header - <i>From</i> in this case
++	 * @param retryAfter
++	 * 			a response header of an illegal type {@link Short}
+ 	 * 
+-	 * @return the textual content of the {@link HttpResponse} body
++	 * @return the parsed response content, which in this case should not be available
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+-	@Request(path = "/requestheaderskip")
+-	public String requestHeaderSkip(@Header("From") String email);
++	@Request(path = "/responseheadertypeerror")
++	public String responseHeaderTypeError(@Header("Retry-After") Short retryAfter);
+ 	
+ 	/**
+-	 * <p>A mock request which expects a response header value form the server 
+-	 * but instead receives none.</p>
++	 * <p>A mock request which inserts a request header.
+ 	 * 
+-	 * @param server
+-	 * 			the {@link StringBuilder} which is annotated with {@code @Header} 
+-	 * 			to treat it as an in-out variable for retrieving the response header
++	 * @param userAgent
++	 * 			a variable header - <i>User-Agent</i> in this case
+ 	 * 
+-	 * @return a response whose header was expected to be retrieved 
++	 * @return the textual content of the {@link HttpResponse} body
+ 	 * 
+ 	 * @since 1.2.4
+ 	 */
+-	@Request(path = "/responseheaderskip")
+-	public String responseHeaderSkip(@Header("Expires") String expires);
++	@Request(path = "/requestheader")
++	public String requestHeader(@Header("User-Agent") StringBuilder userAgent);
+ 	
+ 	/**
+ 	 * <p>A mock request which inserts a header that of an illegal type. This invocation 
+-	 * should be unsuccessful and should result in an error. </p>
++	 * should be unsuccessful and should result in an error. 
+ 	 * 
+ 	 * @param contentLength
+ 	 * 			a variable header of the illegal type {@code int} 
+@@ -117,7 +102,7 @@ public interface HeaderEndpoint {
+ 	public String requestHeaderTypeError(@Header("Content-Length") int contentLength);
+ 	
+ 	/**
+-	 * <p>A mock request which inserts a constant set of headers.</p>
++	 * <p>A mock request which inserts a constant set of headers.
+ 	 * 
+ 	 * @return the textual content of the {@link HttpResponse} body
+ 	 * 

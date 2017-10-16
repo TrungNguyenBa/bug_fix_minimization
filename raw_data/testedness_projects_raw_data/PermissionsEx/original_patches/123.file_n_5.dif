@@ -1,0 +1,242 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 4afbfbf..3ebc9b1 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -45,9 +45,9 @@ import java.util.logging.Logger;
+ public class PermissionManager {
+ 
+ 	public final static int TRANSIENT_PERMISSION = 0;
+-	protected Map<String, PermissionUser> users = new HashMap<>();
+-	protected Map<String, PermissionGroup> groups = new HashMap<>();
+-	protected Map<String, PermissionGroup> defaultGroups = new HashMap<>();
++	protected Map<String, PermissionUser> users = new HashMap<String, PermissionUser>();
++	protected Map<String, PermissionGroup> groups = new HashMap<String, PermissionGroup>();
++	protected Map<String, PermissionGroup> defaultGroups = new HashMap<String, PermissionGroup>();
+ 	protected PermissionBackend backend = null;
+ 	private final PermissionsEx plugin;
+ 	protected Timer timer;
+@@ -78,8 +78,11 @@ public class PermissionManager {
+ 	}
+ 
+ 	public boolean isLocal(PermissionEvent event) {
+-		return netEvents == null || event.getSourceUUID().equals(netEvents.getServerUUID());
++		if (netEvents == null) {
++			return true;
++		}
+ 
++		return event.getSourceUUID().equals(netEvents.getServerUUID());
+ 	}
+ 
+ 	public boolean shouldCreateUserRecords() {
+@@ -175,7 +178,7 @@ public class PermissionManager {
+ 	 * @return true on success false otherwise
+ 	 */
+ 	public boolean has(Player player, String permission) {
+-		return this.has(player.getUniqueId(), permission, player.getWorld().getName());
++		return this.has(player.getName(), permission, player.getWorld().getName());
+ 	}
+ 
+ 	/**
+@@ -187,7 +190,7 @@ public class PermissionManager {
+ 	 * @return true on success false otherwise
+ 	 */
+ 	public boolean has(Player player, String permission, String world) {
+-		return this.has(player.getUniqueId(), permission, world);
++		return this.has(player.getName(), permission, world);
+ 	}
+ 
+ 	/**
+@@ -209,21 +212,6 @@ public class PermissionManager {
+ 	}
+ 
+ 	/**
+-	 * Check if player with UUID has permission in world
+-	 *
+-	 * @param playerId player name
+-	 * @param permission permission as string to check against
+-	 * @param world      world's name as string
+-	 * @return true on success false otherwise
+-	 */
+-	public boolean has(UUID playerId, String permission, String world) {
+-		PermissionUser user = this.getUser(playerId);
+-
+-		return user != null && user.has(permission, world);
+-
+-	}
+-
+-	/**
+ 	 * Return user's object
+ 	 *
+ 	 * @param username get PermissionUser with given name
+@@ -250,7 +238,7 @@ public class PermissionManager {
+ 			}
+ 
+ 			if (userUUID == null) {
+-				plugin.getLogger().warning("Unable to convert user " + username + " to UUID-based storage: Could not determine UUID");
++				plugin.getLogger().warning("Unable to convert user " + username + " to UUID-based storage");
+ 				// We don't know the UUID, so we'll just have to return an unconverted user
+ 				user = createAndLoadUser(username);
+ 				this.users.put(username.toLowerCase(), user);
+@@ -289,9 +277,12 @@ public class PermissionManager {
+ 		PermissionUser user = users.get(identifier);
+ 
+ 		if (user == null) {
++			System.out.println("Has " + identifier + " (before get): " + backend.hasUser(identifier));
+ 			PermissionsUserData data = backend.getUserData(identifier);
+ 
+ 			if (data != null) {
++				System.out.println("Has " + identifier + " (after get): " + backend.hasUser(identifier));
++				System.out.print("Has " + fallbackName + "(fallback): " + backend.hasUser(fallbackName));
+ 				if (fallbackName != null && !backend.hasUser(identifier) && backend.hasUser(fallbackName)) {
+ 					if (isDebug()) {
+ 						getLogger().info("Converting user " + fallbackName + " (UUID " + identifier + ") to UUID-based storage");
+@@ -299,7 +290,6 @@ public class PermissionManager {
+ 
+ 					PermissionsUserData oldData = backend.getUserData(fallbackName);
+ 					BackendDataTransfer.transferUser(oldData, data);
+-					resetUser(fallbackName); // In case somebody requested the old user but conversion was previously unsuccessful
+ 					oldData.remove();
+ 					// Convert
+ 				}
+@@ -335,7 +325,7 @@ public class PermissionManager {
+ 	 * @return unmodifiable list of users
+ 	 */
+ 	public Set<PermissionUser> getUsers() {
+-		Set<PermissionUser> users = new HashSet<>();
++		Set<PermissionUser> users = new HashSet<PermissionUser>();
+ 		for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+ 			users.add(getUser(p));
+ 		}
+@@ -351,7 +341,7 @@ public class PermissionManager {
+ 	 * @return A copy of the list of users cached in memory
+ 	 */
+ 	public Set<PermissionUser> getActiveUsers() {
+-		return new HashSet<>(users.values());
++		return new HashSet<PermissionUser>(users.values());
+ 	}
+ 
+ 	public Collection<String> getUserIdentifiers() {
+@@ -363,7 +353,7 @@ public class PermissionManager {
+ 	}
+ 
+ 	Set<PermissionUser> getActiveUsers(String groupName) {
+-		Set<PermissionUser> users = new HashSet<>();
++		Set<PermissionUser> users = new HashSet<PermissionUser>();
+ 
+ 		for (PermissionUser user : this.getActiveUsers()) {
+ 			if (user.inGroup(groupName, false)) {
+@@ -395,7 +385,7 @@ public class PermissionManager {
+ 	 * @return PermissionUser array for groupnName
+ 	 */
+ 	public Set<PermissionUser> getUsers(String groupName, String worldName, boolean inheritance) {
+-		Set<PermissionUser> users = new HashSet<>();
++		Set<PermissionUser> users = new HashSet<PermissionUser>();
+ 
+ 		for (PermissionUser user : this.getUsers()) {
+ 			if (user.inGroup(groupName, worldName, inheritance)) {
+@@ -407,7 +397,7 @@ public class PermissionManager {
+ 	}
+ 
+ 	public Set<PermissionUser> getUsers(String groupName, boolean inheritance) {
+-		Set<PermissionUser> users = new HashSet<>();
++		Set<PermissionUser> users = new HashSet<PermissionUser>();
+ 
+ 		for (PermissionUser user : this.getUsers()) {
+ 			if (user.inGroup(groupName, inheritance)) {
+@@ -427,10 +417,6 @@ public class PermissionManager {
+ 		this.users.remove(userName.toLowerCase());
+ 	}
+ 
+-	public void resetUser(UUID uid) {
+-		this.users.remove(uid.toString());
+-	}
+-
+ 	/**
+ 	 * Clear cache for specified user
+ 	 *
+@@ -444,21 +430,13 @@ public class PermissionManager {
+ 		}
+ 	}
+ 
+-	public void clearUserCache(UUID uid) {
+-		PermissionUser user = this.getUser(uid);
+-
+-		if (user != null) {
+-			user.clearCache();
+-		}
+-	}
+-
+ 	/**
+ 	 * Clear cache for specified player
+ 	 *
+ 	 * @param player
+ 	 */
+ 	public void clearUserCache(Player player) {
+-		this.clearUserCache(player.getUniqueId());
++		this.clearUserCache(player.getName());
+ 	}
+ 
+ 	/**
+@@ -498,7 +476,7 @@ public class PermissionManager {
+ 	 * @return PermissionGroup array
+ 	 */
+ 	public List<PermissionGroup> getGroupList() {
+-		List<PermissionGroup> ret = new LinkedList<>();
++		List<PermissionGroup> ret = new LinkedList<PermissionGroup>();
+ 		for (String name : backend.getGroupNames()) {
+ 			ret.add(getGroup(name));
+ 		}
+@@ -532,7 +510,7 @@ public class PermissionManager {
+ 	 * @return unmodifiable PermissionGroup list for specified groupName
+ 	 */
+ 	public List<PermissionGroup> getGroups(String groupName, String worldName, boolean inheritance) {
+-		List<PermissionGroup> groups = new LinkedList<>();
++		List<PermissionGroup> groups = new LinkedList<PermissionGroup>();
+ 
+ 		for (PermissionGroup group : this.getGroupList()) {
+ 			if (!groups.contains(group) && group.isChildOf(groupName, worldName, inheritance)) {
+@@ -544,7 +522,7 @@ public class PermissionManager {
+ 	}
+ 
+ 	public List<PermissionGroup> getGroups(String groupName, boolean inheritance) {
+-		List<PermissionGroup> groups = new ArrayList<>();
++		List<PermissionGroup> groups = new ArrayList<PermissionGroup>();
+ 
+ 		for (World world : Bukkit.getServer().getWorlds()) {
+ 			groups.addAll(getGroups(groupName, world.getName(), inheritance));
+@@ -565,7 +543,7 @@ public class PermissionManager {
+ 	 * @return All default groups
+ 	 */
+ 	public List<PermissionGroup> getDefaultGroups(String worldName) {
+-		List<PermissionGroup> defaults = new LinkedList<>();
++		List<PermissionGroup> defaults = new LinkedList<PermissionGroup>();
+ 		for (String name : this.getBackend().getDefaultGroupNames(worldName)) {
+ 			defaults.add(getGroup(name));
+ 		}
+@@ -614,7 +592,7 @@ public class PermissionManager {
+ 	 * @return Map of ladder, key - rank of group, value - group object. Empty map if ladder does not exist
+ 	 */
+ 	public Map<Integer, PermissionGroup> getRankLadder(String ladderName) {
+-		Map<Integer, PermissionGroup> ladder = new HashMap<>();
++		Map<Integer, PermissionGroup> ladder = new HashMap<Integer, PermissionGroup>();
+ 
+ 		for (PermissionGroup group : this.getGroupList()) {
+ 			if (!group.isRanked()) {
+@@ -712,16 +690,13 @@ public class PermissionManager {
+ 		this.clearCache();
+ 
+ 		if (this.backend != null) {
+-			this.backend.close();
+-			initBackend();
++			this.backend.reload();
+ 		}
+ 		this.callEvent(PermissionSystemEvent.Action.RELOADED);
+ 	}
+ 
+ 	public void end() {
+ 		try {
+-			this.backend.close();
+-			this.backend = null;
+ 			reset();
+ 		} catch (PermissionBackendException ignore) {
+ 			// Ignore because we're shutting down so who cares

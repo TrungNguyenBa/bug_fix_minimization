@@ -1,0 +1,20 @@
+0008d534 : MyPet should crash servers less often fixes #126
+:100644 100644 79b121f4... 547b90ae... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 c37181e4... b708f8fc... M	src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+:100644 100644 f5e764b3... bd617182... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+:100644 100644 f1cf5939... 04d33c54... M	src/main/java/de/Keyle/MyPet/entity/types/cow/EntityMyCow.java
+:100644 100644 63a957da... 33b83f7a... M	src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+:100644 100644 cce0ca27... 5043a699... M	src/main/java/de/Keyle/MyPet/entity/types/irongolem/EntityMyIronGolem.java
+:100644 100644 2fb802c0... 13247a1a... M	src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+:100644 100644 1ee0fe6e... dc5fe1a2... M	src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+:100644 100644 b9bb1440... 6cf5b0f2... M	src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+:100644 100644 38e52f2e... 62ed71a0... M	src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+:100644 100644 0580f4ef... 7c60cb3d... M	src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+:100644 100644 2b55098a... 534eaa37... M	src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+:100644 100644 cd942172... d7e50dc1... M	src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+:100644 100644 db38add2... 03f733c8... M	src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+:100644 100644 27a8322b... 47d6cc9d... M	src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+:100644 100644 f68785cb... aa06fa11... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+:100644 100644 e5b1aed3... d77db635... M	src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+:100644 100644 75210e4c... a811d00e... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/beacon/TileEntityBeacon.java
+:100644 100644 91b78714... 6b777a46... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/ranged/MyPetArrow.java

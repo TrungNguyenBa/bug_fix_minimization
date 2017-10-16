@@ -1,0 +1,14 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index dd5c56276..8f3901486 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,9 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="3.0" date="TBD" description="TBD">
+-      <action dev="luc" type="add" issue="MATH-567" due-to="Michel">
+-        Fixed conversion problems to/from 0 in Decimal Floating Point (Dfp) class.
+-      </action>
+       <action dev="luc" type="fix" >
+         Fixed initialization of multistep ODE integrators. Relying on the interpolation model
+         of the starter integrator inside only one step was wrong. The model may have a too

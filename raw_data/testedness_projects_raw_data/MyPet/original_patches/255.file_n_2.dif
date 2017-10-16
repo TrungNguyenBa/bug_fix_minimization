@@ -1,0 +1,40 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index ba4a5f2f..e72a00ea 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -661,31 +661,19 @@ public class MyPetEntityListener implements Listener
+     @EventHandler(priority = EventPriority.MONITOR)
+     public void onEntityDamageByEntityDamageMonitor(final EntityDamageByEntityEvent event)
+     {
+-        if (!event.isCancelled() && MyPetExperience.DAMAGE_WEIGHTED_EXPERIENCE_DISTRIBUTION && event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof Player))
++        if (MyPetExperience.DAMAGE_WEIGHTED_EXPERIENCE_DISTRIBUTION && event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof Player))
+         {
+-            LivingEntity damager = null;
++            LivingEntity damager;
+             if (event.getDamager() instanceof Projectile)
+             {
+                 Projectile projectile = (Projectile) event.getDamager();
+                 damager = projectile.getShooter();
+             }
+-            else if (event.getDamager() instanceof LivingEntity)
++            else
+             {
+                 damager = (LivingEntity) event.getDamager();
+             }
+-            else if (event.getDamager() instanceof LightningStrike)
+-            {
+-                LightningStrike lightning = (LightningStrike) event.getDamager();
+-                if (Lightning.isSkillLightning(lightning))
+-                {
+-                    MyPet lightningMyPet = Lightning.lightningList.get(lightning);
+-                    damager = lightningMyPet.getCraftPet();
+-                }
+-            }
+-            if (damager != null)
+-            {
+-                MyPetExperience.addDamageToEntity(damager, (LivingEntity) event.getEntity(), event.getDamage());
+-            }
++            MyPetExperience.addDamageToEntity(damager, (LivingEntity) event.getEntity(), event.getDamage());
+         }
+     }
+ 

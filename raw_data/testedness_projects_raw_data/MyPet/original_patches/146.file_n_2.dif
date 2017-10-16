@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index 557c6d96..41c1b4b1 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -353,7 +353,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster {
+     }
+ 
+     public Random getRandom() {
+-        return aD();
++        return getRandom();
+     }
+ 
+     /**

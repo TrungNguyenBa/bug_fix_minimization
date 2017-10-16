@@ -1,0 +1,48 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/CommandChooseSkilltree.java b/src/main/java/de/Keyle/MyPet/commands/CommandChooseSkilltree.java
+index badd89bd..0f914937 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/CommandChooseSkilltree.java
++++ b/src/main/java/de/Keyle/MyPet/commands/CommandChooseSkilltree.java
+@@ -26,10 +26,7 @@ import de.Keyle.MyPet.entity.types.MyPetList;
+ import de.Keyle.MyPet.skill.skills.implementation.inventory.ItemStackNBTConverter;
+ import de.Keyle.MyPet.skill.skilltree.SkillTree;
+ import de.Keyle.MyPet.skill.skilltree.SkillTreeMobType;
+-import de.Keyle.MyPet.util.Configuration;
+-import de.Keyle.MyPet.util.MyPetPlayer;
+-import de.Keyle.MyPet.util.Permissions;
+-import de.Keyle.MyPet.util.Util;
++import de.Keyle.MyPet.util.*;
+ import de.Keyle.MyPet.util.iconmenu.IconMenu;
+ import de.Keyle.MyPet.util.iconmenu.IconMenuItem;
+ import de.Keyle.MyPet.util.locale.Locales;
+@@ -162,20 +159,22 @@ public class CommandChooseSkilltree implements CommandExecutor, TabCompleter {
+                             selectable = myPet.getExperience().getLevel() >= addedSkilltree.getRequiredLevel();
+                         }
+ 
+-                        List<String> description = new ArrayList<String>();
+-                        if (requiredLevel > 1) {
+-                            String reqLevelMessage = ChatColor.RESET + "▶▶▶  ";
++                        int requireOffset = requiredLevel > 1 ? 1 : 0;
++                        String[] descriptionArray = new String[addedSkilltree.getDescription().size() + requireOffset];
++                        if (requireOffset == 1) {
++                            descriptionArray[0] = ChatColor.RESET + "▶▶▶  ";
+                             if (selectable) {
+-                                reqLevelMessage += ChatColor.GREEN;
++                                descriptionArray[0] += ChatColor.GREEN;
+                             } else {
+-                                reqLevelMessage += ChatColor.DARK_RED;
++                                descriptionArray[0] += ChatColor.DARK_RED;
+                             }
+-                            reqLevelMessage += Util.formatText(Locales.getString("Message.Skilltree.RequiresLevel.Item", myPetOwner), requiredLevel) + ChatColor.RESET + "  ◀◀◀";
+-                            description.add(reqLevelMessage);
++                            descriptionArray[0] += Util.formatText(Locales.getString("Message.Skilltree.RequiresLevel.Item", myPetOwner), requiredLevel) + ChatColor.RESET + "  ◀◀◀";
+                         }
+-                        description.addAll(addedSkilltree.getDescription());
+ 
+-                        option.addLore(description);
++                        for (int j = 0; j < addedSkilltree.getDescription().size(); j++) {
++                            descriptionArray[j + requireOffset] = ChatColor.RESET + Colorizer.setColors(String.valueOf(addedSkilltree.getDescription().get(j)));
++                        }
++                        option.setLore(descriptionArray);
+                         menu.setOption(i, option);
+                         skilltreeSlotMap.put(i, addedSkilltree);
+                     }

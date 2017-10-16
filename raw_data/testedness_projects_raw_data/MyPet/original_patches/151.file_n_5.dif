@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/api/entity/MyPetEntity.java b/src/main/java/de/Keyle/MyPet/api/entity/MyPetEntity.java
+index 1dc7fa5a..caa1ac6e 100644
+--- a/src/main/java/de/Keyle/MyPet/api/entity/MyPetEntity.java
++++ b/src/main/java/de/Keyle/MyPet/api/entity/MyPetEntity.java
+@@ -6,7 +6,8 @@ import de.Keyle.MyPet.entity.types.MyPetType;
+ import de.Keyle.MyPet.util.MyPetPlayer;
+ import org.bukkit.entity.Creature;
+ 
+-public interface MyPetEntity extends Creature {
++public interface MyPetEntity extends Creature
++{
+     public MyPet getMyPet();
+ 
+     public EntityMyPet getHandle();

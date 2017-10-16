@@ -1,0 +1,34 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/processor/DeserializerEndpointTest.java b/zombielink/src/test/java/com/lonepulse/zombielink/processor/DeserializerEndpointTest.java
+index f1ccd95..cc36df4 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/processor/DeserializerEndpointTest.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/processor/DeserializerEndpointTest.java
+@@ -42,9 +42,9 @@ import org.simpleframework.xml.core.Persister;
+ import com.github.tomakehurst.wiremock.junit.WireMockRule;
+ import com.google.gson.Gson;
+ import com.lonepulse.zombielink.annotation.Bite;
++import com.lonepulse.zombielink.inject.InvocationException;
++import com.lonepulse.zombielink.inject.Zombie;
+ import com.lonepulse.zombielink.model.User;
+-import com.lonepulse.zombielink.proxy.InvocationException;
+-import com.lonepulse.zombielink.proxy.Zombie;
+ import com.lonepulse.zombielink.response.AbstractDeserializer;
+ import com.lonepulse.zombielink.response.Deserializers;
+ 
+@@ -164,7 +164,7 @@ public class DeserializerEndpointTest {
+ 	}
+ 	
+ 	/**
+-	 * <p>Test for {@link DeserializerEndpoint#plain()}.
++	 * <p>Test for {@link DeserializerEndpoint#raw()}.
+ 	 *
+ 	 * @since 1.2.4
+ 	 */
+@@ -177,7 +177,7 @@ public class DeserializerEndpointTest {
+ 				.willReturn(aResponse()
+ 				.withBody(body)));
+ 		
+-		String responseContent = deserializerEndpoint.plain();
++		String responseContent = deserializerEndpoint.raw();
+ 		
+ 		verify(getRequestedFor(urlEqualTo(subpath)));
+ 		assertEquals(body, responseContent);

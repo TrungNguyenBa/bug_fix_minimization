@@ -1,0 +1,3 @@
+bbdb7b7 : Fix handling of not-inheritable permissions. Fixes #1386
+:100644 100644 d7ad1bf... ce77439... M	src/main/java/ru/tehkode/permissions/PermissionEntity.java
+:100644 100644 ea2232c... 16146cd... M	src/main/java/ru/tehkode/permissions/PermissionGroup.java

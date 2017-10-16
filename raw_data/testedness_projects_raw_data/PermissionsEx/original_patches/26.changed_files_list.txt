@@ -1,0 +1,5 @@
+916aa6b : Make Sponge subjects persist past reloads
+:100644 100644 f4628bc... 8736b28... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+:100644 100644 ede187f... 6f574a6... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java
+:100644 100644 8b418d0... 991ea17... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
+:100644 100644 e0ad12d... d9fe896... M	src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java

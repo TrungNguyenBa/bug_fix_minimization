@@ -1,0 +1,2 @@
+7950fe6 : Add missing fields to Account object
+:100644 100644 932dcce... f32c504... M	src/main/java/com/stripe/model/Account.java

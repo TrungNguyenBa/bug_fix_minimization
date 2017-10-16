@@ -1,0 +1,2 @@
+34d8ca4 : chaining validation so we can see multiple error messages when there are multiple validation errors
+:100644 100644 b47d027... ad1ebdf... M	src/main/java/org/springframework/samples/petclinic/web/PetValidator.java

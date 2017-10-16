@@ -1,0 +1,4 @@
+317793eef : Prevent infinite loops in multi-directional direct optimization method when the start point is exactly at the optimal point JIRA: MATH-283
+:100644 100644 955d0d837... 929560c36... M	src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java
+:100644 100644 5cdc07df4... 504b8e79f... M	src/site/xdoc/changes.xml
+:100644 100644 8652af3d0... 71f6ecb9b... M	src/test/java/org/apache/commons/math/optimization/direct/MultiDirectionalTest.java

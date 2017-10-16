@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java b/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java
+index 3358482d..312102ec 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/wolf/MyWolf.java
+@@ -39,7 +39,7 @@ public class MyWolf extends MyPet implements IMyPetBaby
+ {
+     protected boolean isSitting = false;
+     protected boolean isBaby = false;
+-    protected boolean isTamed = false;
++    protected boolean isTamed = true;
+     protected boolean isAngry = false;
+     protected DyeColor collarColor = DyeColor.RED;
+ 

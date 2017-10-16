@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java b/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+index 28e0470e..a82857be 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java
+@@ -87,7 +87,7 @@ public class EntityMySnowman extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "step.snow";
++        return !playIdleSound() ? null : "step.snow";
+     }
+ 
+     public void onLivingUpdate()

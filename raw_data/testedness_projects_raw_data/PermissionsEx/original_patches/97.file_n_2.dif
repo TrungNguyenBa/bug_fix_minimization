@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index cdf2e33..93708c7 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -333,7 +333,7 @@ public class PermissionManager {
+ 			users.add(getUser(p));
+ 		}
+ 		for (String name : backend.getUserIdentifiers()) {
+-			users.add(getUser(name, null, false));
++			users.add(getUser(name));
+ 		}
+ 		return Collections.unmodifiableSet(users);
+ 	}

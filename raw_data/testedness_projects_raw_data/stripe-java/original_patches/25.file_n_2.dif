@@ -1,0 +1,10 @@
+diff --git a/.gitignore b/.gitignore
+index bb3441c..6eb71eb 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -3,5 +3,3 @@
+ .project
+ .settings
+ target
+-.idea
+-*.iml

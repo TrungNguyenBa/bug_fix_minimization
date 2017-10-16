@@ -1,0 +1,12 @@
+diff --git a/pom.xml b/pom.xml
+index b929a64..e9e79c7 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -408,7 +408,6 @@
+ 		        <artifactId>cobertura-maven-plugin</artifactId>
+ 				<version>${cobertura.version}</version>
+ 		        <configuration>
+-		        	<check/>
+ 		        </configuration>
+ 		        <executions>
+ 		          <execution>

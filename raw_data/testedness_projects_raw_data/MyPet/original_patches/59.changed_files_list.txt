@@ -1,0 +1,3 @@
+98aaf057 : make a pet invisible when the owner is can be disabled by config option fixes #359
+:100644 100644 39ade1bb... 1c113a41... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 72387f24... f70e08ce... M	src/main/java/de/Keyle/MyPet/util/Configuration.java

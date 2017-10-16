@@ -1,0 +1,4 @@
+a0e178a : Fix generation of empty String values
+:100644 100644 799ce66... ae94a49... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 2814823... 0cc58c9... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:100644 100644 15ee451... db5fc1e... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ReadSimpleTest.java

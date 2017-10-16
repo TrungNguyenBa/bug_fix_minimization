@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/jscomp/deps/DependencyInfo.java b/src/com/google/javascript/jscomp/deps/DependencyInfo.java
+index 52e04cd8..e65a03fb 100644
+--- a/src/com/google/javascript/jscomp/deps/DependencyInfo.java
++++ b/src/com/google/javascript/jscomp/deps/DependencyInfo.java
+@@ -17,6 +17,8 @@
+ package com.google.javascript.jscomp.deps;
+ 
+ import java.util.Collection;
++import java.util.Collections;
++import java.util.List;
+ 
+ /**
+  * A data structure for JS dependency information for a single .js file.

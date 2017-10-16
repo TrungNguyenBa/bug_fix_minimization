@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+index bd25bcf6..2c450e70 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/enderman/EntityMyEnderman.java
+@@ -59,7 +59,7 @@ public class EntityMyEnderman extends EntityMyPet
+     @Override
+     protected String getLivingSound()
+     {
+-        return isScreaming() ? "mob.endermen.scream" : "mob.endermen.idle";
++        return !playIdleSound() ? null : isScreaming() ? "mob.endermen.scream" : "mob.endermen.idle";
+     }
+ 
+     public boolean handlePlayerInteraction(EntityHuman entityhuman)

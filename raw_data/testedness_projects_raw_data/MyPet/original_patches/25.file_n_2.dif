@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java
+index e113903c..8315346c 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java
++++ b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionCreate.java
+@@ -209,13 +209,12 @@ public class CommandOptionCreate implements CommandOptionTabCompleter {
+                                 int variant = Integer.parseInt(variantString);
+                                 if (myPetType == MyPetType.Horse) {
+                                     variant = Math.min(Math.max(0, variant), 1030);
+-                                    TagCompound.getCompoundData().put("Variant", new TagInt(variant));
+                                 } else if (myPetType == MyPetType.Rabbit) {
+                                     if (variant != 99 && (variant > 5 || variant < 0)) {
+                                         variant = 0;
+                                     }
+-                                    TagCompound.getCompoundData().put("Variant", new TagByte(variant));
+                                 }
++                                TagCompound.getCompoundData().put("Variant", new TagInt(variant));
+                             }
+                         } else if (args[i].startsWith("cat:")) {
+                             String catTypeString = args[i].replace("cat:", "");

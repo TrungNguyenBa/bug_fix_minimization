@@ -1,0 +1,30 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+index c317d6d9..c4d0eb16 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+@@ -591,23 +591,15 @@ public class LevelCreator {
+         permissionTextField.setText(skillTree.getPermission());
+         permissionDisplayTextField.setText("MyPet.custom.skilltree." + skillTree.getPermission());
+ 
+-        if (skillTree.getMaxLevel() > 0) {
++        if (skillTree.getMaxLevel() != 0) {
+             maxLevelCheckBox.setSelected(true);
+             maxLevelTextField.setEnabled(true);
+             maxLevelTextField.setText("" + skillTree.getMaxLevel());
+-        } else {
+-            maxLevelCheckBox.setSelected(false);
+-            maxLevelTextField.setEnabled(false);
+-            maxLevelTextField.setText("");
+         }
+-        if (skillTree.getRequiredLevel() > 1) {
++        if (skillTree.getRequiredLevel() != 0) {
+             requiredLevelCheckBox.setSelected(true);
+             requiredLevelTextField.setEnabled(true);
+             requiredLevelTextField.setText("" + skillTree.getRequiredLevel());
+-        } else {
+-            requiredLevelCheckBox.setSelected(false);
+-            requiredLevelTextField.setEnabled(false);
+-            requiredLevelTextField.setText("");
+         }
+ 
+         this.inheritanceComboBoxModel.removeAllElements();

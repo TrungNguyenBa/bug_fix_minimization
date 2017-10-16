@@ -1,0 +1,4 @@
+4a1a31c6 : Fix a bunch of bugs in record type sup/inf with proxy types Fixes issue 603
+:100755 100755 a8ed1d18... b418dbdd... M	src/com/google/javascript/rhino/jstype/RecordType.java
+:100644 100644 ce46b96b... 20818551... M	test/com/google/javascript/rhino/jstype/JSTypeTest.java
+:100644 100644 d11199f0... 48405323... M	test/com/google/javascript/rhino/jstype/RecordTypeTest.java

@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java b/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
+index a351414..9b29af4 100644
+--- a/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
++++ b/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
+@@ -844,7 +844,7 @@ public class ZipUtilTest extends TestCase {
+ 
+     // unpack the archive that has the backslashes
+     // and double check that the file structure is preserved
+-    ZipUtil.iterate(initialSrc, new ZipUtil.BackslashUnpacker(dest));
++    ZipUtil.iterate(initialSrc, new ZipUtil.BackslashUnpacker(dest, IdentityNameMapper.INSTANCE));
+ 
+     File parentDir = new File(dest, "testDirectory");
+     assertTrue("Sub directory 'destDirectory' wasn't created", parentDir.isDirectory());

@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTHolder.java b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTHolder.java
+index 40ba231d..3e6965d9 100644
+--- a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTHolder.java
++++ b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/NBTHolder.java
+@@ -25,7 +25,8 @@ import net.minecraft.server.v1_6_R2.NBTBase;
+ /**
+  * This class will be removed with Minecraft 1.7
+  */
+-public abstract class NBTHolder {
++public abstract class NBTHolder
++{
+     protected String name;
+ 
+     public abstract NBTBase getNBT();

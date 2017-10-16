@@ -1,0 +1,2 @@
+ddb3ec2 : Move LiveStripeResponseGetterTest to the correct folder
+:100644 100644 02fea52... 02fea52... R100	src/test/java/com/stripe/model/LiveStripeResponseGetterTest.java	src/test/java/com/stripe/net/LiveStripeResponseGetterTest.java

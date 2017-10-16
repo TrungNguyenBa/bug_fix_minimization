@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/annotation/POST.java b/zombielink/src/main/java/com/lonepulse/zombielink/annotation/POST.java
+index cbdb474..2d7951b 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/annotation/POST.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/annotation/POST.java
+@@ -40,7 +40,7 @@ import com.lonepulse.zombielink.annotation.Request.RequestMethod;
+  * <br>
+  * <p>
+  * <code>
+- * <pre><b>@POST(path = "/gists")</b>&nbsp;&nbsp;@Serialize(JSON)
++ * <pre><b>@POST(path = "/gists")</b>&nbsp;&nbsp;@Serializer(JSON)
+  *void createGist(@Entity Gist gist);</pre>
+  * </code>
+  * </p>

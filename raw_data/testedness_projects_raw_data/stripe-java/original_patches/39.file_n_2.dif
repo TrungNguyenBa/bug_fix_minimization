@@ -1,0 +1,8 @@
+diff --git a/.travis.yml b/.travis.yml
+index f5a14cf..c8149f5 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -1,2 +1,2 @@
+ language: java
+-install: mvn install -DskipTests=true -Dgpg.skip=true
++install: mvn install --quiet -DskipTests=true -Dgpg.skip=true

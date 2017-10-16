@@ -1,0 +1,15 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
+index 7c3e55b..86174b4 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
+@@ -8,9 +8,7 @@ import java.util.Map;
+ import com.fasterxml.jackson.core.SerializableString;
+ import com.squareup.protoparser.MessageType.Field;
+ 
+-public class ProtobufField
+-// sorted in increasing order
+-    implements Comparable<ProtobufField>
++public class ProtobufField implements Comparable<ProtobufField>
+ {
+     /**
+      * Numeric tag, unshifted

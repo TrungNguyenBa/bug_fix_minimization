@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java b/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
+index 994b6ec8..3908e3e1 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/witch/EntityMyWitch.java
+@@ -47,7 +47,7 @@ public class EntityMyWitch extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.witch.idle";
++        return !playIdleSound() ? null : "mob.witch.idle";
+     }
+ 
+     protected void initDatawatcher()

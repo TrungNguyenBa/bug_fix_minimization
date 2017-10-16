@@ -1,0 +1,27 @@
+diff --git a/include/faunus/energy.h b/include/faunus/energy.h
+index 3f84e2f2..377c4189 100644
+--- a/include/faunus/energy.h
++++ b/include/faunus/energy.h
+@@ -1360,11 +1360,10 @@ namespace Faunus {
+           string _info() { return "Energy from Penalty Function\n"; }
+           std::vector<Group*> gvec; // vector of pointer(s) to group(s) needed to define reaction coordinate(s)
+           Tfunction func;
+-          Tspace* spcPtr;
+-          typedef decltype(func(spcPtr,spcPtr->p,gvec)) Treturn;
++          Tspace *spcPtr;
+           typedef Energybase<Tspace> Tbase;
+         public:
+-          std::pair<Treturn,Treturn> connected_pair;
++          std::pair<double,double> connected_pair;
+           Tpenalty pf;
+           PenaltyEnergy(Faunus::MPI::MPIController &mpi, InputMap &in) :
+             pf(mpi,in.get<int>("loop_update",1e5),
+@@ -1382,7 +1381,7 @@ namespace Faunus {
+           }
+           double external(const p_vec &p) {
+             auto coor = func(spcPtr,p,gvec);
+-            if (!Tbase::isTrial(p)) connected_pair.first=coor;
++            if(!Tbase::isTrial(p)) connected_pair.first=coor;
+             else connected_pair.second=coor;
+             return pf.find(coor);
+           }

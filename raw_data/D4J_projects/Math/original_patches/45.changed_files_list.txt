@@ -1,0 +1,4 @@
+bc4e9db01 : Fixed an integer overflow in OpenMapRealMatrix.
+:100644 100644 4369db778... f05c8783a... M	src/main/java/org/apache/commons/math/linear/OpenMapRealMatrix.java
+:100644 100644 29f713266... e6dd4d12c... M	src/site/xdoc/changes.xml
+:000000 100644 000000000... b44be399b... A	src/test/java/org/apache/commons/math/linear/OpenMapRealMatrixTest.java

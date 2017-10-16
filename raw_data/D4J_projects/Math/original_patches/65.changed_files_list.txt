@@ -1,0 +1,6 @@
+a4f9188a5 : MATH-377 fixed
+:100644 100644 d1531a812... 468dca712... M	src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+:100644 100644 3abf3f0d8... 597f6c42f... M	src/main/java/org/apache/commons/math/linear/SingularValueDecompositionImpl.java
+:100644 100644 10f776263... 5a60da853... M	src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+:100644 100644 e39870a36... 5d5a42b93... M	src/site/xdoc/changes.xml
+:100644 100644 f2b850f48... 3c82eecec... M	src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java

@@ -1,0 +1,30 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+index 0d19514..c84b75b 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+@@ -41,6 +41,7 @@ import ninja.leaping.permissionsex.backend.AbstractDataStore;
+ import ninja.leaping.permissionsex.backend.ConversionUtils;
+ import ninja.leaping.permissionsex.backend.DataStore;
+ import ninja.leaping.permissionsex.backend.memory.MemoryContextInheritance;
++import ninja.leaping.permissionsex.data.Caching;
+ import ninja.leaping.permissionsex.data.ContextInheritance;
+ import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ import ninja.leaping.permissionsex.exception.PermissionsLoadingException;
+@@ -294,7 +295,7 @@ public final class FileDataStore extends AbstractDataStore {
+     }
+ 
+     @Override
+-    public ContextInheritance getContextInheritanceInternal() {
++    public ContextInheritance getContextInheritance(Caching<ContextInheritance> inheritance) {
+         try {
+             return this.permissionsConfig.getValue(TypeToken.of(MemoryContextInheritance.class));
+         } catch (ObjectMappingException e) {
+@@ -303,7 +304,7 @@ public final class FileDataStore extends AbstractDataStore {
+     }
+ 
+     @Override
+-    public ListenableFuture<ContextInheritance> setContextInheritanceInternal(final ContextInheritance inheritance) {
++    public ListenableFuture<ContextInheritance> setContextInheritance(final ContextInheritance inheritance) {
+         if (!(inheritance instanceof MemoryContextInheritance)) {
+             throw new RuntimeException("Invalid inheritance provided, was a " + inheritance.getClass() + "but must be a MemoryContextInheritance");
+         }

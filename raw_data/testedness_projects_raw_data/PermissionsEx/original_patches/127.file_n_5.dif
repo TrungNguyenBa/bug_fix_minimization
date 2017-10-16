@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index 1060da4..4ae2e38 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -88,6 +88,7 @@ public class PermissionsEx extends JavaPlugin {
+ 	}
+ 
+ 	private static class PermissionsExLogger extends PluginLogger {
++		private String logMessage;
+ 		/**
+ 		 * Protected method to construct a logger for a named subsystem.
+ 		 * <p/>

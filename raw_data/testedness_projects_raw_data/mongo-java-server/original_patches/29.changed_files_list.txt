@@ -1,0 +1,2 @@
+f3651c8 : copy two unit tests from https://github.com/foursquare/fongo/issues/28
+:100644 100644 a75b5d9... 7b83027... M	src/test/java/de/bwaldvogel/MemoryBackendTest.java

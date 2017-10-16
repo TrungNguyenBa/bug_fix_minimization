@@ -1,0 +1,4 @@
+aa09ac7ca : Fixed wrong return values when enpoints are roots in Brent solver with a user provided initial guess JIRA: MATH-344
+:100644 100644 e0cb42714... 7fc090e2b... M	src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+:100644 100644 77f3faaca... 9008d9520... M	src/site/xdoc/changes.xml
+:100644 100644 587487155... a3bc425eb... M	src/test/java/org/apache/commons/math/analysis/solvers/BrentSolverTest.java

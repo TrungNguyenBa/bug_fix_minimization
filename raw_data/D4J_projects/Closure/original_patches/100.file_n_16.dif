@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/jscomp/Tracer.java b/src/com/google/javascript/jscomp/Tracer.java
+index 2a137aec..fe4229e1 100644
+--- a/src/com/google/javascript/jscomp/Tracer.java
++++ b/src/com/google/javascript/jscomp/Tracer.java
+@@ -224,7 +224,7 @@ final class Tracer {
+   static final int MAX_TRACE_SIZE = 1000;
+ 
+   /**
+-   * For unit testing. Can't use {@link com.google.common.time.Clock} because
++   * For unit testing. Can't use {@link com.google.common.time} because
+    * this code is in base and has minimal dependencies.
+    */
+   static interface InternalClock {

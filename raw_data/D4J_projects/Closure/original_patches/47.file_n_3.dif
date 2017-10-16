@@ -1,0 +1,18 @@
+diff --git a/src/com/google/debugging/sourcemap/SourceMapConsumerV3.java b/src/com/google/debugging/sourcemap/SourceMapConsumerV3.java
+index 5ee9108c..3b07ae45 100644
+--- a/src/com/google/debugging/sourcemap/SourceMapConsumerV3.java
++++ b/src/com/google/debugging/sourcemap/SourceMapConsumerV3.java
+@@ -483,11 +483,10 @@ public class SourceMapConsumerV3 implements SourceMapConsumer,
+     if (entry.getSourceFileId() == UNMAPPED) {
+       return null;
+     } else {
+-      // Adjust the line/column here to be start at 1.
+       Builder x = OriginalMapping.newBuilder()
+         .setOriginalFile(sources[entry.getSourceFileId()])
+-        .setLineNumber(entry.getSourceLine() + 1)
+-        .setColumnPosition(entry.getSourceColumn() + 1);
++        .setLineNumber(entry.getSourceLine())
++        .setColumnPosition(entry.getSourceColumn());
+       if (entry.getNameId() != UNMAPPED) {
+         x.setIdentifier(names[entry.getNameId()]);
+       }

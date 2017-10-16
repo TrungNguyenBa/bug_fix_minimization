@@ -1,0 +1,2 @@
+a78d3e55 : use the public repo instead of the snapshot repo
+:100644 100644 cf4fd511... d9167249... M	pom.xml

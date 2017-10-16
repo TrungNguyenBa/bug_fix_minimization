@@ -1,0 +1,3 @@
+df3f534d : fixed ride bug caused by player teleportation
+:100644 100644 5342e4df... b181ab0b... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 f6cc9351... 2089f00d... M	src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java

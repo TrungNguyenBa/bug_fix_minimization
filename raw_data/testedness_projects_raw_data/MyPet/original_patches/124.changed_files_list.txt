@@ -1,0 +1,2 @@
+e11b344c : fixed NPE when the selected buff is 0
+:100644 100644 1f7157c6... cc01e4fc... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java

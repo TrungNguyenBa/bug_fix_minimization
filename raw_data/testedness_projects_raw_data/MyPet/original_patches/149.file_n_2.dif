@@ -1,0 +1,15 @@
+diff --git a/pom.xml b/pom.xml
+index d9167249..cf4fd511 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -67,8 +67,8 @@
+ 
+     <repositories>
+         <repository>
+-            <id>oss-sonartype-repo</id>
+-            <url>https://oss.sonatype.org/content/groups/public/</url>
++            <id>oss-sonartype-snapshot-repo</id>
++            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+         </repository>
+         <repository>
+             <id>mypet-repo</id>

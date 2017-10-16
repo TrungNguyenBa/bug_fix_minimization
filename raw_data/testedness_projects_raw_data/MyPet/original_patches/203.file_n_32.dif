@@ -1,0 +1,123 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+index c0afd43a..5133ef6a 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+@@ -38,30 +38,38 @@ public class EntityMyMooshroom extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return "mob.cow.hurt";
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
++
++            this.setBaby(((MyMooshroom) myPet).isBaby());
++        }
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public boolean isBaby()
+     {
+-        return "mob.cow.hurt";
++        return ((MyMooshroom) myPet).isBaby;
+     }
+ 
+-    /**
+-     * Returns the default sound of the MyPet
+-     */
+-    protected String getLivingSound()
++    public void setBaby(boolean flag)
+     {
+-        return !playIdleSound() ? null : "mob.cow.say";
++        if (flag)
++        {
++            this.datawatcher.watch(12, new Integer(Integer.MIN_VALUE));
++        }
++        else
++        {
++            this.datawatcher.watch(12, new Integer(0));
++        }
++        ((MyMooshroom) myPet).isBaby = flag;
++    }
++
++    protected void initDatawatcher()
++    {
++        super.initDatawatcher();
++        this.datawatcher.a(12, new Integer(0)); // age
+     }
+ 
+     public boolean handlePlayerInteraction(EntityHuman entityhuman)
+@@ -94,42 +102,34 @@ public class EntityMyMooshroom extends EntityMyPet
+         return false;
+     }
+ 
+-    protected void initDatawatcher()
+-    {
+-        super.initDatawatcher();
+-        this.datawatcher.a(12, new Integer(0)); // age
+-    }
+-
+-    public boolean isBaby()
++    public void playStepSound()
+     {
+-        return ((MyMooshroom) myPet).isBaby;
++        makeSound("mob.cow.step", 0.15F, 1.0F);
+     }
+ 
+-    public void setBaby(boolean flag)
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
+     {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(12, new Integer(Integer.MIN_VALUE));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(12, new Integer(0));
+-        }
+-        ((MyMooshroom) myPet).isBaby = flag;
++        return "mob.cow.hurt";
+     }
+ 
+-    public void playStepSound()
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
+-        makeSound("mob.cow.step", 0.15F, 1.0F);
++        return "mob.cow.hurt";
+     }
+ 
+-    public void setMyPet(MyPet myPet)
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-
+-            this.setBaby(((MyMooshroom) myPet).isBaby());
+-        }
++        return !playIdleSound() ? null : "mob.cow.say";
+     }
+ }
+\ No newline at end of file

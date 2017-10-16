@@ -1,0 +1,4 @@
+975ab9f : Implement BukkitDev-compatible autoupdater. Fixes #1384
+:100644 100644 ff950ee... e52072d... M	pom.xml
+:100644 100644 f7bfaa3... d9a0ecf... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+:100644 100644 c7ec1c5... ba8267b... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java

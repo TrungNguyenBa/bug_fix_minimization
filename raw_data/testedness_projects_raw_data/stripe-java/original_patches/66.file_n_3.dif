@@ -1,0 +1,17 @@
+diff --git a/src/test/java/com/stripe/StripeTest.java b/src/test/java/com/stripe/StripeTest.java
+index 6695091..1ea8a38 100644
+--- a/src/test/java/com/stripe/StripeTest.java
++++ b/src/test/java/com/stripe/StripeTest.java
+@@ -314,11 +314,8 @@ public class StripeTest {
+ 	public void testCustomerCardAddition() throws StripeException {
+ 		Customer createdCustomer = Customer.create(defaultCustomerParams);
+ 		createdCustomer.createCard(defaultCardParams);
+-		Token token = Token.create(defaultTokenParams);
+-		createdCustomer.createCard(token.getId());
+-
+ 		Customer updatedCustomer = Customer.retrieve(createdCustomer.getId());
+-		assertEquals((Integer) updatedCustomer.getCards().getData().size(), (Integer) 3);
++		assertEquals((Integer) updatedCustomer.getCards().getData().size(), (Integer) 2);
+ 	}
+ 
+ 	@Test

@@ -1,0 +1,5 @@
+19918d4 : fix for Allow initialization once per run (with multiple modules) #53
+:100644 100644 814ebcc... f7a262d... M	README.md
+:100644 100644 5b4c860... 63043ca... M	pom.xml
+:100644 100644 640569c... ef8f6fd... M	src/main/java/pl/project13/jgit/DescribeCommand.java
+:100644 100644 a19fcac... 631683e... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java

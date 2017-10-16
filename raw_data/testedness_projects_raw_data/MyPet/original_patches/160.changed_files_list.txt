@@ -1,0 +1,2 @@
+578078b5 : pet will not attack when the player hits a target but deals no damage fixes #188
+:100644 100644 4c9cec19... 2e20c22e... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

@@ -1,0 +1,29 @@
+diff --git a/test/com/google/javascript/jscomp/IntegrationTest.java b/test/com/google/javascript/jscomp/IntegrationTest.java
+index 2a1766e6..a9e2d908 100644
+--- a/test/com/google/javascript/jscomp/IntegrationTest.java
++++ b/test/com/google/javascript/jscomp/IntegrationTest.java
+@@ -1669,24 +1669,6 @@ public class IntegrationTest extends IntegrationTestCase {
+     assertEquals(result, lastCompiler.toSource());
+   }
+ 
+-  public void testIssue724() {
+-    CompilerOptions options = createCompilerOptions();
+-    CompilationLevel.ADVANCED_OPTIMIZATIONS
+-        .setOptionsForCompilationLevel(options);
+-    String code =
+-        "isFunction = function(functionToCheck) {" +
+-        "  var getType = {};" +
+-        "  return functionToCheck && " +
+-        "      getType.toString.apply(functionToCheck) === " +
+-        "     '[object Function]';" +
+-        "};";
+-    String result =
+-        "isFunction=function(a){var b={};" +
+-        "return a&&\"[object Function]\"===b.b.a(a)}";
+-
+-    test(options, code, result);
+-  }
+-
+   public void testCoaleseVariables() {
+     CompilerOptions options = createCompilerOptions();
+ 

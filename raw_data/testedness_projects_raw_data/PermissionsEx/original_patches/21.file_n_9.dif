@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/util/command/CommandContext.java b/src/main/java/ninja/leaping/permissionsex/util/command/CommandContext.java
+index a86578f..fa3cf09 100644
+--- a/src/main/java/ninja/leaping/permissionsex/util/command/CommandContext.java
++++ b/src/main/java/ninja/leaping/permissionsex/util/command/CommandContext.java
+@@ -64,8 +64,4 @@ public class CommandContext {
+         }
+         parsedArgs.put(key, value);
+     }
+-
+-    public boolean hasAny(String key) {
+-        return parsedArgs.containsKey(key);
+-    }
+ }

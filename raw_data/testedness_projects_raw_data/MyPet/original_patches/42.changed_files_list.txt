@@ -1,0 +1,2 @@
+16abadfa : fix string replacing fixes #414
+:100644 100644 fa429af7... 2778cbf1... M	src/main/java/de/Keyle/MyPet/util/Util.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+index 8aa15aa..d1040b7 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileData.java
+@@ -64,7 +64,7 @@ public class FileData implements PermissionsUserData, PermissionsGroupData {
+ 
+ 	@Override
+ 	public void setPermissions(List<String> permissions, String worldName) {
+-		this.node.set(formatPath(worldName, "permissions"), permissions == null || permissions.isEmpty() ? null : permissions);
++		this.node.set(formatPath(worldName, "permissions"), permissions.isEmpty() ? null : permissions);
+ 		save();
+ 	}
+ 

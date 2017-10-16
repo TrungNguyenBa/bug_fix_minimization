@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java b/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
+index 6014fbf..3271880 100644
+--- a/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
++++ b/src/test/java/org/zeroturnaround/zip/ZipUtilTest.java
+@@ -281,7 +281,7 @@ public class ZipUtilTest extends TestCase {
+     ZipUtil.pack(convertToEntries(entryDescriptions, encoding), out);
+     
+     byte[] zipBytes = out.toByteArray();
+-    assertEquals(244, zipBytes.length);
++    assertEquals(116, zipBytes.length);
+     assertEntries(entryDescriptions, zipBytes, encoding);
+   }
+ 

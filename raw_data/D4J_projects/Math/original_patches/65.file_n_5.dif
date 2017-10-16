@@ -1,0 +1,14 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index 5d5a42b93..e39870a36 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,9 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="2.2" date="TBD" description="TBD">
+-      <action dev="dimpbx" type="fix" issue="MATH-377">
+-        Fixed bug in chi-square computation in AbstractLeastSquaresOptimizer.
+-      </action>
+       <action dev="luc" type="add" issue="MATH-400" due-to="J. Lewis Muir">
+         Added support for Gaussian curve fitting.
+       </action>

@@ -1,0 +1,4 @@
+f0b00da : Select Tag to validate pet type
+:100644 100644 7068dd8... b47d027... M	src/main/java/org/springframework/samples/petclinic/web/PetValidator.java
+:100644 100644 ee9c0a9... 6a74060... M	src/main/webapp/WEB-INF/jsp/pets/createOrUpdatePetForm.jsp
+:000000 100644 0000000... f93256a... A	src/main/webapp/WEB-INF/tags/selectField.tag

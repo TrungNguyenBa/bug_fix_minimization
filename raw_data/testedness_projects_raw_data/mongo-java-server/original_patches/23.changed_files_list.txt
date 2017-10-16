@@ -1,0 +1,2 @@
+78f1792 : type safety
+:100644 100644 5eff2e3... 6a8d3c4... M	src/main/java/de/bwaldvogel/mongo/wire/MongoWireProtocolHandler.java

@@ -1,0 +1,2 @@
+8c7e0f51 : use CitizensAPI to determine whether Player is NPC
+:100644 100644 9f7e9d99... 2cfaddc1... M	src/main/java/de/Keyle/MyPet/util/MyPetPvP.java

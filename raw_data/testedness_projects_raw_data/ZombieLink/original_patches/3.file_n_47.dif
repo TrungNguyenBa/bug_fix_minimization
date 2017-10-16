@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/InterceptionProcessor.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/InterceptionProcessor.java
+index 5402c8b..f0ba472 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/InterceptionProcessor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/InterceptionProcessor.java
+@@ -31,7 +31,7 @@ import java.util.Map;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+ import com.lonepulse.zombielink.annotation.Intercept;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>This {@link AbstractRequestProcessor} executes any {@link Interceptor}s that fall within the current 

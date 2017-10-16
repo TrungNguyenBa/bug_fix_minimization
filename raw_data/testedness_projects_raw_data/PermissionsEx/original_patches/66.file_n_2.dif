@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index c451741..89aa126 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -350,7 +350,7 @@ public class PermissionsEx extends JavaPlugin implements NativeInterface {
+ 	}
+ 
+ 	public boolean isDebug() {
+-		return permissionsManager != null && permissionsManager.isDebug();
++		return permissionsManager.isDebug();
+ 	}
+ 
+ 	public static Plugin getPlugin() {

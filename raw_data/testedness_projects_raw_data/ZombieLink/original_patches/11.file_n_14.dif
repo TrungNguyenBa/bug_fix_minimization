@@ -1,0 +1,12 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/package-info.java b/src/main/java/com/lonepulse/zombielink/package-info.java
+index 00aeff9..344bae9 100644
+--- a/src/main/java/com/lonepulse/zombielink/package-info.java
++++ b/src/main/java/com/lonepulse/zombielink/package-info.java
+@@ -1,5 +1,6 @@
+ /**
+- * <p>Contains the <i>core</i> contracts and implementations which common to all modules.
++ * <p>Contains the <i>core</i> contracts and implementations which interface 
++ * with the <b>Apache HTTP Components</b> library.
+  * 
+  * @since 1.1.1
+  * <br><br>

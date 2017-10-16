@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionsGroupData.java b/src/main/java/ru/tehkode/permissions/PermissionsGroupData.java
+index 6300a56..05a663e 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionsGroupData.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionsGroupData.java
+@@ -1,6 +1,10 @@
+ package ru.tehkode.permissions;
+ 
++import java.util.List;
++
+ public interface PermissionsGroupData extends PermissionsData {
++
++
+ 	public boolean isDefault(String world);
+ 
+ 	public void setDefault(boolean def, String world);

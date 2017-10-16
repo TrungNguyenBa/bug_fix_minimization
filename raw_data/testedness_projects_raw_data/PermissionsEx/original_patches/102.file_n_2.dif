@@ -1,0 +1,42 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+index 8a4c76f..ccd64c3 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+@@ -54,7 +54,7 @@ public class SQLBackend extends PermissionBackend {
+ 	protected Map<String, List<String>> worldInheritanceCache = new HashMap<>();
+ 	private Map<String, Object> tableNames;
+ 	private BasicDataSource ds;
+-	protected final String dbDriver;
++	private String dbDriver;
+ 	private final ExecutorService executor;
+ 
+ 	public SQLBackend(PermissionManager manager, ConfigurationSection config) throws PermissionBackendException {
+@@ -72,10 +72,6 @@ public class SQLBackend extends PermissionBackend {
+ 		dbDriver = dbUri.split(":", 2)[0];
+ 
+ 		this.ds = new BasicDataSource();
+-		String driverClass = getDriverClass(dbDriver);
+-		if (driverClass != null) {
+-			this.ds.setDriverClassName(driverClass);
+-		}
+ 		this.ds.setUrl("jdbc:" + dbUri);
+ 		this.ds.setUsername(dbUser);
+ 		this.ds.setPassword(dbPassword);
+@@ -98,17 +94,6 @@ public class SQLBackend extends PermissionBackend {
+ 		this.deployTables();
+ 	}
+ 
+-	protected static String getDriverClass(String alias) {
+-		if (alias.equals("mysql")) {
+-			return "com.mysql.jdbc.Driver";
+-		} else if (alias.equals("sqlite")) {
+-			return "org.sqlite.JDBC";
+-		} else if (alias.matches("postgres?")) {
+-			return "org.postgresql.Driver";
+-		}
+-		return null;
+-	}
+-
+ 	public SQLConnection getSQL() throws SQLException {
+ 		if (ds == null) {
+ 			throw new SQLException("SQL connection information was not correct, could not retrieve connection");

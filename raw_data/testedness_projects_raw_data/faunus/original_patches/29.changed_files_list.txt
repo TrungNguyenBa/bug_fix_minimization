@@ -1,0 +1,5 @@
+725f83c2 : Partly fixed xtc bug; updated jana playground
+:100644 100644 12e7212d... 75cf76d2... M	include/faunus/io.h
+:000000 100644 00000000... b861dbd1... A	src/playground/jana/README.txt
+:100644 100644 91f237e0... 74934cbc... M	src/playground/jana/wall.cpp
+:100755 100755 6d07755f... 9e7b01d1... M	src/playground/jana/wall.run

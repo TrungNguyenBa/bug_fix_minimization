@@ -1,0 +1,3 @@
+8cf08115 : Negative zero is a special case, and needs to be handled differently to prevent it from getting confused with decrement fixes issue 657
+:100644 100644 8023324c... 3522e89e... M	src/com/google/javascript/jscomp/CodeConsumer.java
+:100644 100644 420ffba4... a76dfa64... M	test/com/google/javascript/jscomp/CodePrinterTest.java

@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTreeLevel.java b/src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTreeLevel.java
+index 440909ca..37d2a9f4 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTreeLevel.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skilltree/SkillTreeLevel.java
+@@ -84,6 +84,7 @@ public class SkillTreeLevel {
+         for (ISkillInfo skill : skillList) {
+             newLevel.addSkill(skill.cloneSkill());
+         }
++
+         return newLevel;
+     }
+ 

@@ -1,0 +1,2 @@
+c6517a1 : Revert "Fix paths in unit tests so that they do not fail on OS Windows"
+:100644 100644 7d35e53... 6f7ef19... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java

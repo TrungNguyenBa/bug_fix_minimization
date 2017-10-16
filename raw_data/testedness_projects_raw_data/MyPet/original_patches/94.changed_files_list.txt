@@ -1,0 +1,2 @@
+5a66e01b : getChunkAt may return null so use isChunkLoaded fixes #244
+:100644 100644 8f0c7e2a... 64b8be6b... M	src/main/java/de/Keyle/MyPet/entity/types/snowman/EntityMySnowman.java

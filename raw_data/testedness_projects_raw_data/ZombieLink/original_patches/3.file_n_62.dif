@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/AbstractDeserializer.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/AbstractDeserializer.java
+index bf91c00..fb61a63 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/AbstractDeserializer.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/AbstractDeserializer.java
+@@ -24,7 +24,7 @@ import org.apache.http.HttpEntity;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.util.EntityUtils;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>An abstract implementation of {@link Deserializer} which directs <i>deserialization</i> for 

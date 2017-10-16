@@ -1,0 +1,3 @@
+ff877aff : fixed pet disapearing on pet activation
+:100644 100644 41c09595... 892c9675... M	src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+:100644 100644 a91e4504... b6039c4f... M	src/main/java/de/Keyle/MyPet/util/MyPetWorldGroup.java

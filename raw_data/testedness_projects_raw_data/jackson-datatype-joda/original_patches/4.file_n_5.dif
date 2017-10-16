@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java
+index 32c3c76..a77ab2b 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/deser/DateTimeDeserializer.java
+@@ -32,7 +32,7 @@ public class DateTimeDeserializer
+     public static <T extends ReadableInstant> JsonDeserializer<T> forType(Class<T> cls)
+     {
+         return (JsonDeserializer<T>) new DateTimeDeserializer(cls,
+-                FormatConfig.DEFAULT_DATETIME_PARSER);
++                FormatConfig.DEFAULT_DATETIME_FORMAT);
+     }
+ 
+     @Override

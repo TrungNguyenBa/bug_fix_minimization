@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index a1fd6e3..5b3b1ea 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -17,7 +17,7 @@
+ 
+ 		<!-- Spring -->
+ 		<spring-framework.version>4.1.1.RELEASE</spring-framework.version>
+-		<spring-data-jpa.version>1.7.0.RELEASE</spring-data-jpa.version>
++		<spring-data-jpa.version>1.6.2.RELEASE</spring-data-jpa.version>
+ 
+ 
+ 		<!-- Java EE / Java SE dependencies -->

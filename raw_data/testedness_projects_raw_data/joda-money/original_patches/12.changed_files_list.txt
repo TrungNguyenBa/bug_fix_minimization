@@ -1,0 +1,2 @@
+47d872a : Change CNY to 2 decimal places
+:100644 100644 c49bd99... b4d002b... M	src/changes/changes.xml

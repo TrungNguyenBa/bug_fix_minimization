@@ -1,0 +1,19 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 09923fe..4b24a96 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -327,12 +327,8 @@ public class PermissionManager {
+ 		if (group == null) {
+ 			group = this.backend.getGroup(groupname);
+ 			if (group != null) {
+-			   this.groups.put(groupname.toLowerCase(), group);
+-				try {
+-					group.initialize();
+-				} catch (Exception e) {
+-					this.groups.remove(groupname.toLowerCase());
+-				}
++				group.initialize();
++				this.groups.put(groupname.toLowerCase(), group);
+ 			} else {
+ 				throw new IllegalStateException("Group " + groupname + " is null");
+ 			}

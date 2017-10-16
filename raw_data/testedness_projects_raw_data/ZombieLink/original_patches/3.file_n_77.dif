@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java b/zombielink/src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java
+index 67865c7..3737902 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java
+@@ -23,7 +23,7 @@ package com.lonepulse.zombielink.executor;
+ import com.lonepulse.zombielink.annotation.Config;
+ import com.lonepulse.zombielink.annotation.Endpoint;
+ import com.lonepulse.zombielink.annotation.GET;
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>An endpoint which uses a custom {@link Zombie.Configuration}.</p>

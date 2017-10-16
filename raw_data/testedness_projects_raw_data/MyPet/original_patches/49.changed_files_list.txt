@@ -1,0 +1,5 @@
+2b89232b : withers, ghasts and blazes will not take falldamage anymore and glide down instead of falling fixes #372
+:100644 100644 f6e784ea... 398c79ca... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 38df5b0f... 77d3ba37... M	src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+:100644 100644 f4235756... 3bbcd584... M	src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
+:100644 100644 c58c2d23... dcdc75bf... M	src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java

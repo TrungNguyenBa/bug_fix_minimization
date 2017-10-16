@@ -1,0 +1,3 @@
+50c86ffe : fixed and improved attack AI goals
+:100644 100644 854fc78a... 9b3354b2... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIMeleeAttack.java
+:100644 100644 6fea5e68... 6d3006db... M	src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java

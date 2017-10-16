@@ -1,0 +1,48 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java b/src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
+index 70ed542a..57fe4ed0 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
+@@ -35,13 +35,10 @@ public class EntityMyGhast extends EntityMyPet
+         this.height = 3.5F;
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public void setPathfinder()
+     {
+-        return "mob.ghast.death";
++        super.setPathfinder();
++        petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 5.5, 20));
+     }
+ 
+     /**
+@@ -54,16 +51,19 @@ public class EntityMyGhast extends EntityMyPet
+     }
+ 
+     /**
+-     * Returns the default sound of the MyPet
++     * Returns the sound that is played when the MyPet dies
+      */
+-    protected String getLivingSound()
++    @Override
++    protected String getDeathSound()
+     {
+-        return !playIdleSound() ? null : "mob.ghast.moan";
++        return "mob.ghast.death";
+     }
+ 
+-    public void setPathfinder()
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        super.setPathfinder();
+-        petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 5.5, 20));
++        return !playIdleSound() ? null : "mob.ghast.moan";
+     }
+ }
+\ No newline at end of file

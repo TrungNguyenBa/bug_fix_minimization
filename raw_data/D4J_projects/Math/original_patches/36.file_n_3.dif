@@ -1,0 +1,16 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index e7005bbf8..51d89fd4e 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,11 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="3.0" date="TBD" description="TBD">
+-      <action dev="erans" type="fix" issue="MATH-744" due-to="Thundre">
+-        Fixed "doubleValue" and "floatValue" method in "BigFraction" when
+-        numerator and denominator are larger than the range of the
+-        corresponding primitive type.
+-      </action>
+       <action dev="erans" type="update" issue="MATH-488">
+         Removed "MathException" (from package "o.a.c.math").
+       </action>

@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+index a89f3aa6..cabe60eb 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
++++ b/src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+@@ -58,8 +58,8 @@ public class LevelCreator
+     JCheckBox permissionCheckbox;
+     JTextField displayNameTextField;
+     JTextField permissionTextField;
+-    JCheckBox levelUpMessageCheckBox;
+-    JTextField levelUpMessageInput;
++    private JCheckBox levelUpMessageCheckBox;
++    private JTextField levelUpMessageInput;
+     JFrame levelCreatorFrame;
+ 
+     DefaultTreeModel skillTreeTreeModel;

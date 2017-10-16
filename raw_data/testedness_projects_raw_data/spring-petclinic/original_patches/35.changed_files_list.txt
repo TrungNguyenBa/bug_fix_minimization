@@ -1,0 +1,4 @@
+c193916 : started changes to migrate to Bootstrap 3 (work in progress)
+:100644 100644 36f8a73... c8493e4... M	pom.xml
+:100644 100644 76c1844... 738b4b1... M	src/main/webapp/WEB-INF/jsp/fragments/bodyHeader.jsp
+:100644 100644 f1eea21... 6b1b358... M	src/main/webapp/WEB-INF/jsp/fragments/headTag.jsp

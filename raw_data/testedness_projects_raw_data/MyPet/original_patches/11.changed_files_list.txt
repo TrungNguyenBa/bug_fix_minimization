@@ -1,0 +1,3 @@
+1ffe94f5 : fixed problem with missing/renamed method in latest 1.8.8 Craftbukkit build fixes #532
+:100644 100644 9305dac9... 44d026bc... M	pom.xml
+:100644 100644 325a8a8a... a8d26309... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/CustomInventory.java

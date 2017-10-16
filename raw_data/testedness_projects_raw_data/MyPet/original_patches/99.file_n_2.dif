@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/CommandRespawn.java b/src/main/java/de/Keyle/MyPet/commands/CommandRespawn.java
+index 16898245..0d41e807 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/CommandRespawn.java
++++ b/src/main/java/de/Keyle/MyPet/commands/CommandRespawn.java
+@@ -53,7 +53,7 @@ public class CommandRespawn implements CommandExecutor, TabCompleter {
+             Player petOwner = (Player) sender;
+             if (MyPetList.hasMyPet(petOwner)) {
+                 MyPet myPet = MyPetList.getMyPet(petOwner);
+-                if (!Economy.canUseEconomy() || !Permissions.has(petOwner, "MyPet.user.command.respawn")) {
++                if (!Economy.canUseEconomy() || !Permissions.has(petOwner, "MyPet.command.user.respawn")) {
+                     myPet.sendMessageToOwner(Locales.getString("Message.No.CanUse", petOwner));
+                     return true;
+                 }

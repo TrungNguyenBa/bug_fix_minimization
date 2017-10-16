@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/support/SurvivalGames.java b/src/main/java/de/Keyle/MyPet/util/support/SurvivalGames.java
+index 5e99738d..9d778be4 100644
+--- a/src/main/java/de/Keyle/MyPet/util/support/SurvivalGames.java
++++ b/src/main/java/de/Keyle/MyPet/util/support/SurvivalGames.java
+@@ -65,7 +65,7 @@ public class SurvivalGames implements Listener
+             MyPetPlayer player = MyPetPlayer.getMyPetPlayer(event.getPlayer());
+             if (player.hasMyPet() && player.getMyPet().getStatus() == PetState.Here)
+             {
+-                player.getMyPet().removePet(true);
++                player.getMyPet().removePet();
+                 player.getPlayer().sendMessage(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.NotAllowedHere", player.getPlayer())));
+             }
+         }

@@ -1,0 +1,91 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
+index 76f24a2..39984a4 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufMessage.java
+@@ -14,11 +14,15 @@ public class ProtobufMessage
+ 
+     protected final String _name;
+ 
++    /**
++     *<p>
++     * NOTE: although final, entries are added straight into Map, after
++     * constructor has finished. Same is true for <code>_fields</code>
++     */
++    protected final Map<String,ProtobufField> _fieldsByName;
++
+     protected final ProtobufField[] _fields;
+ 
+-    // note: assigned on init()
+-    protected FieldLookup _fieldsByName;
+-    
+     /**
+      * Arrays of fields indexed by id (offset by <code>_idOffset</code>), if
+      * fields ids are in contiguous (enough) range.
+@@ -29,9 +33,11 @@ public class ProtobufMessage
+ 
+     protected int _idOffset = -1;
+     
+-    public ProtobufMessage(String name, ProtobufField[] fields)
++    public ProtobufMessage(String name, Map<String,ProtobufField> fieldsByName,
++            ProtobufField[] fields)
+     {
+         _name = name;
++        _fieldsByName = fieldsByName;
+         _fields = fields;
+     }
+ 
+@@ -43,7 +49,6 @@ public class ProtobufMessage
+     public void init(ProtobufField first)
+     {
+         _firstField = first;
+-        _fieldsByName = FieldLookup.construct(_fields);
+ 
+         // Let's see, as well, whether we can create a direct lookup index.
+         // Note that fields have been sorted by caller already.
+@@ -74,7 +79,7 @@ public class ProtobufMessage
+     }
+ 
+     public static ProtobufMessage bogusMessage(String desc) {
+-        ProtobufMessage bogus = new ProtobufMessage(desc, NO_FIELDS);
++        ProtobufMessage bogus = new ProtobufMessage(desc, Collections.<String,ProtobufField>emptyMap(), NO_FIELDS);
+         bogus.init(null);
+         return bogus;
+     }
+@@ -87,7 +92,7 @@ public class ProtobufMessage
+             return f;
+         }
+         // regardless, find the field
+-        return _fieldsByName.findField(name);
++        return _fieldsByName.get(name);
+     }
+     
+     public int getFieldCount() { return _fields.length; }
+@@ -95,7 +100,7 @@ public class ProtobufMessage
+     public String getName() { return _name; }
+ 
+     public ProtobufField field(String name) {
+-        return _fieldsByName.findField(name);
++        return _fieldsByName.get(name);
+     }
+ 
+     // !!! TODO: optimize?
+@@ -117,15 +122,16 @@ public class ProtobufMessage
+         return null;
+     }
+ 
++    // !!! TODO: optimize?
+     public ProtobufField field(SerializableString name) {
+-        return _fieldsByName.findField(name.getValue());
++        return _fieldsByName.get(name.getValue());
+     }
+ 
+     public String fieldsAsString() {
+-        return Arrays.asList(_fields).toString();
++        return _fieldsByName.keySet().toString();
+     }
+ 
+     public Iterable<ProtobufField> fields() {
+-        return Arrays.asList(_fields);
++        return _fieldsByName.values();
+     }
+ }

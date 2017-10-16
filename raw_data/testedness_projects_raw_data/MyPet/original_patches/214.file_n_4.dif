@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetCaptureHelper.java b/src/main/java/de/Keyle/MyPet/util/MyPetCaptureHelper.java
+index 4851bfbc..760a8878 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetCaptureHelper.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetCaptureHelper.java
+@@ -48,7 +48,7 @@ public class MyPetCaptureHelper
+                     }
+                     if (newHealth <= leashTarget.getMaxHealth() && newHealth > 2)
+                     {
+-                        attacker.sendMessage(String.format("%1.2f", newHealth) + "/" + String.format("%1.2f", leashTarget.getMaxHealth()) + " " + MyPetLocales.getString("Name.HP", attacker));
++                        attacker.sendMessage(newHealth + "/" + leashTarget.getMaxHealth() + " " + MyPetLocales.getString("Name.HP", attacker));
+                     }
+                     break;
+                 case Angry:

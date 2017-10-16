@@ -1,0 +1,18 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaOwnerRepositoryImpl.java b/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaOwnerRepositoryImpl.java
+index c7398df..fd0f217 100644
+--- a/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaOwnerRepositoryImpl.java
++++ b/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaOwnerRepositoryImpl.java
+@@ -70,12 +70,7 @@ public class JpaOwnerRepositoryImpl implements OwnerRepository {
+ 
+     @Override
+     public void save(Owner owner) {
+-    	if (owner.getId() == null) {
+-    		this.em.persist(owner);     		
+-    	}
+-    	else {
+-    		this.em.merge(owner);    
+-    	}
++        this.em.persist(owner);
+ 
+     }
+ 

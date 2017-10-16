@@ -1,0 +1,46 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/MyMooshroom.java b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/MyMooshroom.java
+index 3c8557bf..bc4f4217 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/MyMooshroom.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/MyMooshroom.java
+@@ -41,6 +41,20 @@ public class MyMooshroom extends MyPet implements IMyPetBaby
+         super(petOwner);
+     }
+ 
++    public boolean isBaby()
++    {
++        return isBaby;
++    }
++
++    public void setBaby(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyMooshroom) getCraftPet().getHandle()).setBaby(flag);
++        }
++        this.isBaby = flag;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -64,20 +78,6 @@ public class MyMooshroom extends MyPet implements IMyPetBaby
+         return MyPetType.Mooshroom;
+     }
+ 
+-    public boolean isBaby()
+-    {
+-        return isBaby;
+-    }
+-
+-    public void setBaby(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyMooshroom) getCraftPet().getHandle()).setBaby(flag);
+-        }
+-        this.isBaby = flag;
+-    }
+-
+     @Override
+     public String toString()
+     {

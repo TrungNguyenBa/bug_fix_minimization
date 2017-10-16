@@ -1,0 +1,25 @@
+diff --git a/src/main/java/com/stripe/net/LiveStripeResponseGetter.java b/src/main/java/com/stripe/net/LiveStripeResponseGetter.java
+index 3797732..9d290a2 100644
+--- a/src/main/java/com/stripe/net/LiveStripeResponseGetter.java
++++ b/src/main/java/com/stripe/net/LiveStripeResponseGetter.java
+@@ -122,12 +122,14 @@ public class LiveStripeResponseGetter implements StripeResponseGetter {
+ 		HttpURLConnection conn;
+ 		if (Stripe.getConnectionProxy() != null) {
+ 			conn = (HttpURLConnection) stripeURL.openConnection(Stripe.getConnectionProxy());
+-			Authenticator.setDefault(new Authenticator() {
+-				@Override
+-				protected PasswordAuthentication getPasswordAuthentication() {
+-					return Stripe.getProxyCredential();
+-				}
+-			});
++			if (Stripe.getProxyCredential() != null) {
++				Authenticator.setDefault(new Authenticator() {
++					@Override
++					protected PasswordAuthentication getPasswordAuthentication() {
++						return Stripe.getProxyCredential();
++					}
++				});
++			}
+ 		} else {
+ 			conn = (HttpURLConnection) stripeURL.openConnection();
+ 		}

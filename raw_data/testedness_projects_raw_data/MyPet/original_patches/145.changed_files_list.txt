@@ -1,0 +1,8 @@
+a933bbfa : fix problem with non-player Citizens NPCs
+:100644 100644 859a9e60... 71cf0410... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+:100644 100644 28178236... af445730... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+:100644 100644 9e98418f... 5a1b800a... M	src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+:100644 100644 425bccef... 7d3cde7d... M	src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+:100644 100644 14c8b592... 50951f40... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtByTarget.java
+:100644 100644 4ddf74e1... b2dc186b... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+:100644 100644 9fea5ce1... 5ec0de0b... M	src/main/java/de/Keyle/MyPet/util/PvPChecker.java

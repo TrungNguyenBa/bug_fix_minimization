@@ -1,0 +1,74 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java b/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
+index 78c413f1..1cc086da 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
+@@ -42,6 +42,34 @@ public class MyPig extends MyPet implements IMyPetBaby
+         super(petOwner);
+     }
+ 
++    public boolean hasSaddle()
++    {
++        return hasSaddle;
++    }
++
++    public void setSaddle(boolean saddle)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyPig) getCraftPet().getHandle()).setSaddle(saddle);
++        }
++        this.hasSaddle = saddle;
++    }
++
++    public boolean isBaby()
++    {
++        return isBaby;
++    }
++
++    public void setBaby(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyPig) getCraftPet().getHandle()).setBaby(flag);
++        }
++        this.isBaby = flag;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -70,34 +98,6 @@ public class MyPig extends MyPet implements IMyPetBaby
+         return MyPetType.Pig;
+     }
+ 
+-    public boolean hasSaddle()
+-    {
+-        return hasSaddle;
+-    }
+-
+-    public boolean isBaby()
+-    {
+-        return isBaby;
+-    }
+-
+-    public void setBaby(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyPig) getCraftPet().getHandle()).setBaby(flag);
+-        }
+-        this.isBaby = flag;
+-    }
+-
+-    public void setSaddle(boolean saddle)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyPig) getCraftPet().getHandle()).setSaddle(saddle);
+-        }
+-        this.hasSaddle = saddle;
+-    }
+-
+     @Override
+     public String toString()
+     {

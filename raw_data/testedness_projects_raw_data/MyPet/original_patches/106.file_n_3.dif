@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java b/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
+index 15afbaba..1ba94b1b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
+@@ -65,7 +65,7 @@ public class MyPig extends MyPet implements IMyPetBaby {
+                 ItemStack item = new ItemStack(Material.SADDLE);
+                 setSaddle(item);
+             }
+-        } else if (info.containsKeyAs("Saddle", TagCompound.class)) {
++        } else {
+             TagCompound itemTag = info.get("Saddle");
+             ItemStack item = CraftItemStack.asBukkitCopy(ItemStackNBTConverter.CompundToItemStack(itemTag));
+             setSaddle(item);

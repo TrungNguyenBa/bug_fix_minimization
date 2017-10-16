@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java
+index b9c9b21c..374d0d26 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java
+@@ -24,6 +24,7 @@ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.skill.ISkillActive;
+ import de.Keyle.MyPet.skill.skills.info.ISkillInfo;
+ import de.Keyle.MyPet.skill.skills.info.KnockbackInfo;
++import de.Keyle.MyPet.util.Colorizer;
+ import de.Keyle.MyPet.util.locale.MyPetLocales;
+ import net.minecraft.server.v1_6_R2.MathHelper;
+ import org.bukkit.craftbukkit.v1_6_R2.entity.CraftEntity;
+@@ -75,7 +76,7 @@ public class Knockback extends KnockbackInfo implements ISkillInstance, ISkillAc
+                 chance = Math.min(chance, 100);
+                 if (!quiet)
+                 {
+-                    myPet.sendMessageToOwner(MyPetLocales.getString("Message.Skill.Knockback.Upgrade", myPet.getOwner().getLanguage()).replace("%petname%", myPet.getPetName()).replace("%chance%", "" + chance));
++                    myPet.sendMessageToOwner(Colorizer.setColors(MyPetLocales.getString("Message.Skill.Knockback.Upgrade", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%chance%", "" + chance));
+                 }
+             }
+         }

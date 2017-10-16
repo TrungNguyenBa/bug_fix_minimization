@@ -1,0 +1,2 @@
+9489b92 : currently reverting to hibernate validator 4.3.1.Final as there seems to be some issues with EL lib
+:100644 100644 4d3d52b... 233a5b6... M	pom.xml

@@ -1,0 +1,17 @@
+diff --git a/src/main/java/org/graylog2/logging/GelfHandler.java b/src/main/java/org/graylog2/logging/GelfHandler.java
+index 6f91ceb..d67497a 100644
+--- a/src/main/java/org/graylog2/logging/GelfHandler.java
++++ b/src/main/java/org/graylog2/logging/GelfHandler.java
+@@ -143,10 +143,10 @@ public class GelfHandler
+ 				try
+ 				{
+ 					if (graylogHost.startsWith("tcp:")) {
+-						String tcpGraylogHost = graylogHost.substring(4, graylogHost.length());
++						String tcpGraylogHost = graylogHost.substring(0, 4);
+ 						gelfSender = new GelfTCPSender(tcpGraylogHost, graylogPort);
+ 					} else if (graylogHost.startsWith("udp:")) {
+-						String udpGraylogHost = graylogHost.substring(4, graylogHost.length());
++						String udpGraylogHost = graylogHost.substring(0, 4);
+ 						gelfSender = new GelfUDPSender(udpGraylogHost, graylogPort);
+ 					} else {
+ 						gelfSender = new GelfUDPSender(graylogHost, graylogPort);

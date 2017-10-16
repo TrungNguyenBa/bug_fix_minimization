@@ -1,0 +1,16 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+index 29aaf82f..0e5e9ea8 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+@@ -115,9 +115,6 @@ public class EntityMyChicken extends EntityMyPet {
+         return (MyChicken) myPet;
+     }
+ 
+-    /**
+-     * -> disable falldamage
+-     */
+-    public void e(float f, float f1) {
++    protected void b(float f) {
+     }
+ }
+\ No newline at end of file

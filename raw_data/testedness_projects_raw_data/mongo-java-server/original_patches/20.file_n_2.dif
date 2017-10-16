@@ -1,0 +1,40 @@
+diff --git a/src/test/java/de/bwaldvogel/mongo/MongoServerTest.java b/src/test/java/de/bwaldvogel/mongo/MongoServerTest.java
+index 79d2227..ffc6b05 100644
+--- a/src/test/java/de/bwaldvogel/mongo/MongoServerTest.java
++++ b/src/test/java/de/bwaldvogel/mongo/MongoServerTest.java
+@@ -13,7 +13,7 @@ import com.mongodb.ServerAddress;
+ 
+ public class MongoServerTest {
+ 
+-    @Test(timeout = 10000)
++    @Test(timeout = 5000)
+     public void testStopListenting() {
+         MongoServer server = new MongoServer();
+         MongoClient client = null;
+@@ -46,7 +46,7 @@ public class MongoServerTest {
+         }
+     }
+ 
+-    @Test(timeout = 10000)
++    @Test(timeout = 1000)
+     public void testShutdownNow() {
+         MongoServer server = new MongoServer();
+         MongoClient client = null;
+@@ -59,7 +59,7 @@ public class MongoServerTest {
+         server.shutdownNow();
+     }
+ 
+-    @Test(timeout = 5000)
++    @Test(timeout = 1000)
+     public void testGetLocalAddress() {
+         MongoServer server = new MongoServer();
+         assertThat(server.getLocalAddress()).isNull();
+@@ -73,7 +73,7 @@ public class MongoServerTest {
+         assertThat(server.getLocalAddress()).isNull();
+     }
+ 
+-    @Test(timeout = 10000)
++    @Test
+     public void testShutdownAndRestart() throws Exception {
+         MongoServer server = new MongoServer();
+         InetSocketAddress serverAddress = server.bind();

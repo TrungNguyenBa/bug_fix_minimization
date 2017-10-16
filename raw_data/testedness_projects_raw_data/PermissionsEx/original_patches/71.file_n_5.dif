@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLParser.java b/src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLParser.java
+index 6ce2391..0e9228f 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLParser.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/config/PEXMLParser.java
+@@ -117,7 +117,7 @@ public class PEXMLParser extends BaseParser<Object> {
+ 	}
+ 
+ 	Rule MappingDelimeter() {
+-		return Sequence(FirstOf("=", "->", ":"), WhiteSpace());
++		return FirstOf("= ", "-> ", ": ");
+ 	}
+ 
+ 	/* Copied from parboiled example code:

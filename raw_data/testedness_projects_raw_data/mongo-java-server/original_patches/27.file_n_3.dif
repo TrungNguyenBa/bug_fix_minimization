@@ -1,0 +1,18 @@
+diff --git a/src/test/java/de/bwaldvogel/MemoryBackendTest.java b/src/test/java/de/bwaldvogel/MemoryBackendTest.java
+index 996e22f..fbfcc5d 100644
+--- a/src/test/java/de/bwaldvogel/MemoryBackendTest.java
++++ b/src/test/java/de/bwaldvogel/MemoryBackendTest.java
+@@ -985,13 +985,6 @@ public class MemoryBackendTest {
+     }
+ 
+     @Test
+-    public void testQueryWithDotNotationFieldSelector() throws Exception {
+-    	collection.insert(json("index: 1, foo: { a: 'a1', b: 'b1'}"));
+-    	DBObject obj = collection.findOne(json("{}"), json("foo.a: 1, foo.b: 1"));
+-        assertThat(obj.keySet()).containsOnly("_id", "foo");
+-    }
+-
+-    @Test
+     public void testQuerySystemNamespace() throws Exception {
+         assertThat(db.getCollection("system.foobar").findOne()).isNull();
+         assertThat(db.getCollectionNames()).containsOnly("system.indexes");

@@ -1,0 +1,24 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java
+index fc87b74..8bdb731 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/TypeResolver.java
+@@ -2,7 +2,6 @@ package com.fasterxml.jackson.dataformat.protobuf.schema;
+ 
+ import java.util.*;
+ 
+-import com.fasterxml.jackson.core.util.InternCache;
+ import com.squareup.protoparser.EnumType;
+ import com.squareup.protoparser.MessageType;
+ import com.squareup.protoparser.Type;
+@@ -77,10 +76,7 @@ public class TypeResolver
+             valuesByName.put(v.getName(), id);
+             ++exp;
+         }
+-        // 17-Mar-2015, tatu: Number of intern()s here should be nominal;
+-        //    but intern()ing itself helps in keeping name/id enum translation fast
+-        String name = InternCache.instance.intern(nativeEnum.getName());
+-        return new ProtobufEnum(name, valuesByName, standard);
++        return new ProtobufEnum(nativeEnum.getName(), valuesByName, standard);
+     }
+ 
+     public ProtobufMessage resolve(MessageType rawType)

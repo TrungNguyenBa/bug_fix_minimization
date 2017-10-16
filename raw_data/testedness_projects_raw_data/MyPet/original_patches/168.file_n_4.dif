@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoader.java b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoader.java
+index 632ee9e4..b9ef67f4 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoader.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoader.java
+@@ -104,7 +104,7 @@ public abstract class SkillTreeLoader
+                             if (skillClone != null)
+                             {
+                                 skillClone.setIsInherited(true);
+-                                startSkillTree.addSkillToLevel(level.getLevel(), skillClone, true);
++                                startSkillTree.addSkillToLevel(level.getLevel(), skillClone);
+                             }
+                         }
+                     }

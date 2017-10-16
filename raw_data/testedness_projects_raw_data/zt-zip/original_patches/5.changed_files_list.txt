@@ -1,0 +1,2 @@
+b6afa9a : Close InputStream after processing each ZipEntrySource
+:100644 100644 b593d4d... fc577ae... M	src/main/java/org/zeroturnaround/zip/Zips.java

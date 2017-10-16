@@ -1,0 +1,2 @@
+e51abcc : Include full command args in onCommand error report
+:100644 100644 96b2385... a47e7ff... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

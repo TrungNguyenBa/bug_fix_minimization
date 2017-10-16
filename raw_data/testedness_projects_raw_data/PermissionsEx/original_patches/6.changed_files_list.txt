@@ -1,0 +1,9 @@
+52d14ba : Make fixes necessary for complete backend import
+:100644 100644 039515e... dc4e7a5... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+:100644 100644 81c7bbf... ea507cc... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/ConversionUtils.java
+:100644 100644 0d19514... 1020290... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/file/FileDataStore.java
+:100644 100644 e13cea7... 86e6d10... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/memory/MemoryContextInheritance.java
+:100644 100644 4646228... b35fb7c... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/ContextInheritance.java
+:100644 100644 e8a5a5f... 40fb629... M	permissionsex-core/src/main/po/de.po
+:100644 100644 db56dfb... 4e77d24... M	permissionsex-core/src/main/po/keys.pot
+:100644 100644 10b81b1... 6d9f03a... M	permissionsex-core/src/main/po/zh_HK.po

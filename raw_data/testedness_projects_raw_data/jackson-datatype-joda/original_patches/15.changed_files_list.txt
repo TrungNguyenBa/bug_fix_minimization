@@ -1,0 +1,6 @@
+34e107e : Fixed #46
+:100644 100644 27d1adf... eae5873... M	release-notes/CREDITS
+:100644 100644 c83243d... 19e46b9... M	release-notes/VERSION
+:100644 100644 6d5e4ad... d902096... M	src/main/java/com/fasterxml/jackson/datatype/joda/deser/IntervalDeserializer.java
+:100644 100644 ac6a47a... c529c96... M	src/test/java/com/fasterxml/jackson/datatype/joda/MixedListTest.java
+:100644 100644 909bcb6... 20209e1... R098	src/test/java/com/fasterxml/jackson/datatype/joda/JodaDeserializationTest.java	src/test/java/com/fasterxml/jackson/datatype/joda/deser/MiscDeserializationTest.java

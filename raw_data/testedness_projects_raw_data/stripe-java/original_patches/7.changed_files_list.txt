@@ -1,0 +1,3 @@
+7b314b7 : Fix whitespace (the project uses tabs)
+:100644 100644 37f8e40... 0aad60f... M	src/main/java/com/stripe/net/LiveStripeResponseGetter.java
+:100644 100644 bc283ca... ca2a287... M	src/test/java/com/stripe/net/LiveStripeResponseGetterTest.java

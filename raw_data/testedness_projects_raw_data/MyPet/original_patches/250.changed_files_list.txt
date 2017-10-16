@@ -1,0 +1,2 @@
+b37cc199 : return empty list instead of null
+:100644 100644 1034acd0... d6d0f5d3... M	src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java

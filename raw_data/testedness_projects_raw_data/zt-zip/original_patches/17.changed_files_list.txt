@@ -1,0 +1,5 @@
+b670b2d : Still removing the dep on commons-io
+:000000 100644 0000000... c6a3227... A	src/main/java/org/zeroturnaround/zip/commons/FileUtils.java
+:000000 100644 0000000... 4cffb1b... A	src/main/java/org/zeroturnaround/zip/commons/FilenameUtils.java
+:000000 100644 0000000... fc35d1e... A	src/main/java/org/zeroturnaround/zip/commons/IOUtils.java
+:100644 100644 f7044f2... f7044f2... R100	src/test/java/org/zeroturnaround/zip/FileUtilTest.java	src/test/java/org/zeroturnaround/zip/ZTFileUtilTest.java

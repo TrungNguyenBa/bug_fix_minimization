@@ -1,0 +1,19 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/MyPetInfo.java b/src/main/java/de/Keyle/MyPet/entity/MyPetInfo.java
+index ff22aea1..13dc5a79 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/MyPetInfo.java
++++ b/src/main/java/de/Keyle/MyPet/entity/MyPetInfo.java
+@@ -32,11 +32,11 @@ import java.lang.annotation.Target;
+ @Target(ElementType.TYPE)
+ public @interface MyPetInfo
+ {
++    public LeashFlag[] leashFlags() default {LeashFlag.LowHp};
++
+     public Material[] food() default {};
+ 
+     public double hp() default 20D;
+ 
+-    public LeashFlag[] leashFlags() default {LeashFlag.LowHp};
+-
+     public double walkSpeed() default 0.30D;
+ }
+\ No newline at end of file

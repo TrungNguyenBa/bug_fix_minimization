@@ -1,0 +1,28 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/web/VetController.java b/src/main/java/org/springframework/samples/petclinic/web/VetController.java
+index 7c72bf8..0f54785 100644
+--- a/src/main/java/org/springframework/samples/petclinic/web/VetController.java
++++ b/src/main/java/org/springframework/samples/petclinic/web/VetController.java
+@@ -15,8 +15,6 @@
+  */
+ package org.springframework.samples.petclinic.web;
+ 
+-import java.util.Map;
+-
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.samples.petclinic.model.Vets;
+ import org.springframework.samples.petclinic.service.ClinicService;
+@@ -42,12 +40,12 @@ public class VetController {
+     }
+ 
+     @RequestMapping("/vets")
+-    public String showVetList(Map<String, Object> model) {
++    public String showVetList(Model model) {
+         // Here we are returning an object of type 'Vets' rather than a collection of Vet objects 
+         // so it is simpler for Object-Xml mapping
+         Vets vets = new Vets();
+         vets.getVetList().addAll(this.clinicService.findVets());
+-        model.put("vets", vets);
++        model.addAttribute("vets", vets);
+         return "vets/vetList";
+     }
+ 

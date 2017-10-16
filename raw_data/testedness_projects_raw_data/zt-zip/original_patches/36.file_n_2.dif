@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipUtil.java b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+index d75b3a3..6368950 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipUtil.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+@@ -2148,7 +2148,7 @@ public final class ZipUtil {
+   /**
+    * @return transformers by path.
+    */
+-  static Map byPath(ZipEntryTransformerEntry[] entries) {
++  private static Map byPath(ZipEntryTransformerEntry[] entries) {
+     Map result = new HashMap();
+     for (int i = 0; i < entries.length; i++) {
+       ZipEntryTransformerEntry entry = entries[i];

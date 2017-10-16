@@ -1,0 +1,38 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/caching/CachingUserData.java b/src/main/java/ru/tehkode/permissions/backends/caching/CachingUserData.java
+deleted file mode 100644
+index 41c52f8..0000000
+--- a/src/main/java/ru/tehkode/permissions/backends/caching/CachingUserData.java
++++ /dev/null
+@@ -1,32 +0,0 @@
+-package ru.tehkode.permissions.backends.caching;
+-
+-import ru.tehkode.permissions.PermissionsUserData;
+-
+-import java.util.concurrent.Executor;
+-
+-/**
+- * User data using a cache.
+- */
+-public class CachingUserData extends CachingData implements PermissionsUserData {
+-	private final PermissionsUserData userData;
+-	public CachingUserData(PermissionsUserData userData, Executor executor) {
+-		super(executor);
+-		this.userData = userData;
+-	}
+-
+-	@Override
+-	protected PermissionsUserData getBackingData() {
+-		return this.userData;
+-	}
+-
+-	@Override
+-	public boolean setIdentifier(final String identifier) {
+-		executor.execute(new Runnable() {
+-			@Override
+-			public void run() {
+-				getBackingData().setIdentifier(identifier);
+-			}
+-		});
+-		return true; // TODO make this more accurate
+-	}
+-}

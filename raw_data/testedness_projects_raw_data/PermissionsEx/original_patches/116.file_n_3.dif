@@ -1,0 +1,28 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index dc3784e..e42907b 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -352,21 +352,17 @@ public class PermissionManager {
+ 		return backend.getUserNames();
+ 	}
+ 
+-	Set<PermissionUser> getActiveUsers(String groupName, boolean inheritance) {
++	Set<PermissionUser> getActiveUsers(String groupName) {
+ 		Set<PermissionUser> users = new HashSet<>();
+ 
+ 		for (PermissionUser user : this.getActiveUsers()) {
+-			if (user.inGroup(groupName, inheritance)) {
++			if (user.inGroup(groupName, false)) {
+ 				users.add(user);
+ 			}
+ 		}
+ 
+ 		return Collections.unmodifiableSet(users);
+ 	}
+-
+-	Set<PermissionUser> getActiveUsers(String groupName) {
+-		return getActiveUsers(groupName, false);
+-	}
+ 	/**
+ 	 * Return all users in group
+ 	 *

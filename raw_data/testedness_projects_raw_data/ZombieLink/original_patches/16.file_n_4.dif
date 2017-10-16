@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/core/request/FormParamProcessor.java b/src/main/java/com/lonepulse/zombielink/core/request/FormParamProcessor.java
+index 2576a15..47147af 100644
+--- a/src/main/java/com/lonepulse/zombielink/core/request/FormParamProcessor.java
++++ b/src/main/java/com/lonepulse/zombielink/core/request/FormParamProcessor.java
+@@ -88,7 +88,7 @@ class FormParamProcessor extends AbstractRequestProcessor {
+ 	 * @since 1.2.4
+ 	 */
+ 	@Override
+-	protected void process(HttpRequestBase httpRequestBase, ProxyInvocationConfiguration config) throws RequestProcessorException {
++	public void process(HttpRequestBase httpRequestBase, ProxyInvocationConfiguration config) throws RequestProcessorException {
+ 
+ 		try {
+ 			

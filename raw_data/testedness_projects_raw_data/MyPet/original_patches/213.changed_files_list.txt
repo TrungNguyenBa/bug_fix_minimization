@@ -1,0 +1,6 @@
+95936471 : fixed bug in skillupgrade for skills which are affected by the health/damage update
+:100644 100644 2354da8b... 4eb7d5c0... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
+:100644 100644 10455b92... 87e6b582... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/HP.java
+:100644 100644 77e8ea4b... 605b647f... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/HPregeneration.java
+:100644 100644 c21365e9... 31b37bf5... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Lightning.java
+:100644 100644 28de3530... 309d45d7... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java

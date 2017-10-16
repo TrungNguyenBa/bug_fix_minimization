@@ -1,0 +1,31 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index ea4f9821..2e20c22e 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -114,7 +114,7 @@ public class EntityListener implements Listener
+                 {
+                     damager = (Player) event.getDamager();
+                 }
+-                if (Configuration.LEASH_ITEM.compare(damager.getItemInHand()))
++                if (damager.getItemInHand().getTypeId() == Configuration.LEASH_ITEM)
+                 {
+                     boolean infoShown = false;
+                     if (CommandInfo.canSee(PetInfoDisplay.Name.adminOnly, damager, myPet))
+@@ -271,7 +271,7 @@ public class EntityListener implements Listener
+ 
+                     Class<? extends MyPet> myPetClass = MyPetType.getMyPetTypeByEntityType(leashTarget.getType()).getMyPetClass();
+ 
+-                    if (Configuration.LEASH_ITEM.compare(damager.getItemInHand()) || !Permissions.has(damager, "MyPet.user.leash." + MyPetType.getMyPetTypeByEntityType(leashTarget.getType()).getTypeName()))
++                    if (damager.getItemInHand().getTypeId() != Configuration.LEASH_ITEM || !Permissions.has(damager, "MyPet.user.leash." + MyPetType.getMyPetTypeByEntityType(leashTarget.getType()).getTypeName()))
+                     {
+                         return;
+                     }
+@@ -747,7 +747,7 @@ public class EntityListener implements Listener
+             if (damager instanceof Player)
+             {
+                 Player player = (Player) damager;
+-                if (Configuration.LEASH_ITEM.compare(player.getItemInHand()) && damagedEntity instanceof CraftMyPet)
++                if (player.getItemInHand().getTypeId() == Configuration.LEASH_ITEM && damagedEntity instanceof CraftMyPet)
+                 {
+                     return;
+                 }

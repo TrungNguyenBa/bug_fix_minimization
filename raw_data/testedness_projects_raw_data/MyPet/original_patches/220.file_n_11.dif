@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java b/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+index af1a62b1..d799611c 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+@@ -100,7 +100,7 @@ public class EntityMyVillager extends EntityMyPet
+ 
+             if (getOwner().equals(entityhuman) && itemStack != null && canUseItem())
+             {
+-                if (itemStack.id == GROW_UP_ITEM && getOwner().getPlayer().isSneaking())
++                if (itemStack.id == GROW_UP_ITEM)
+                 {
+                     if (isBaby())
+                     {

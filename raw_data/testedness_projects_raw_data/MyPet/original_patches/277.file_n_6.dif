@@ -1,0 +1,50 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIOwnerHurtByTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIOwnerHurtByTarget.java
+index a709c3ec..614d6b90 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIOwnerHurtByTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIOwnerHurtByTarget.java
+@@ -29,7 +29,6 @@ import de.Keyle.MyPet.util.MyPetPvP;
+ import net.minecraft.server.v1_5_R3.EntityLiving;
+ import net.minecraft.server.v1_5_R3.EntityPlayer;
+ import net.minecraft.server.v1_5_R3.EntityTameableAnimal;
+-import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer;
+ import org.bukkit.entity.Player;
+ 
+ public class MyPetAIOwnerHurtByTarget extends MyPetAIGoal
+@@ -38,7 +37,6 @@ public class MyPetAIOwnerHurtByTarget extends MyPetAIGoal
+     private EntityLiving lastDamager;
+     private MyPet myPet;
+     private Behavior behaviorSkill = null;
+-    private EntityPlayer owner;
+ 
+     public MyPetAIOwnerHurtByTarget(EntityMyPet entityMyPet)
+     {
+@@ -48,7 +46,6 @@ public class MyPetAIOwnerHurtByTarget extends MyPetAIGoal
+         {
+             behaviorSkill = (Behavior) myPet.getSkills().getSkill("Behavior");
+         }
+-        owner = ((CraftPlayer) petEntity.getOwner().getPlayer()).getHandle();
+     }
+ 
+     @Override
+@@ -62,6 +59,12 @@ public class MyPetAIOwnerHurtByTarget extends MyPetAIGoal
+         {
+             return false;
+         }
++
++        EntityLiving owner = this.petEntity.getOwner();
++        if (owner == null)
++        {
++            return false;
++        }
+         this.lastDamager = owner.aF();
+ 
+ 
+@@ -75,7 +78,7 @@ public class MyPetAIOwnerHurtByTarget extends MyPetAIGoal
+         }
+         if (lastDamager instanceof EntityPlayer)
+         {
+-            if (owner == lastDamager)
++            if (this.petEntity.getOwner() == lastDamager)
+             {
+                 return false;
+             }

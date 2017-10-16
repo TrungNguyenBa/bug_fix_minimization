@@ -1,0 +1,13 @@
+diff --git a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissible.java b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissible.java
+index b0d2d33..ee3023b 100644
+--- a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissible.java
++++ b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissible.java
+@@ -24,7 +24,7 @@ import com.google.common.collect.Maps;
+ import com.google.common.util.concurrent.FutureCallback;
+ import com.google.common.util.concurrent.Futures;
+ import ninja.leaping.permissionsex.PermissionsEx;
+-import ninja.leaping.permissionsex.data.calculated.CalculatedSubject;
++import ninja.leaping.permissionsex.data.CalculatedSubject;
+ import ninja.leaping.permissionsex.data.ImmutableSubjectData;
+ import ninja.leaping.permissionsex.data.SubjectCache;
+ import ninja.leaping.permissionsex.exception.PermissionsLoadingException;

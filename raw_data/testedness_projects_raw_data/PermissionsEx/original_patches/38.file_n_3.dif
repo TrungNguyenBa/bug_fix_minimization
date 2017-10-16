@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+index f05a2cb..57aa930 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+@@ -365,7 +365,7 @@ public class PermissionsEx extends JavaPlugin implements NativeInterface {
+ 
+ 	@Override
+ 	public boolean isOnline(UUID uuid) {
+-		return getServer().getPlayer(uuid).isOnline();
++		return false;
+ 	}
+ 
+ 	@Override

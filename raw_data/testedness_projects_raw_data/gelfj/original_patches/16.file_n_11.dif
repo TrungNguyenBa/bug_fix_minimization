@@ -1,0 +1,33 @@
+diff --git a/src/test/java/org/graylog2/logging/MockGelfHandlerSender.java b/src/test/java/org/graylog2/logging/MockGelfHandlerSender.java
+deleted file mode 100644
+index b18dd4b..0000000
+--- a/src/test/java/org/graylog2/logging/MockGelfHandlerSender.java
++++ /dev/null
+@@ -1,27 +0,0 @@
+-package org.graylog2.logging;
+-
+-import org.graylog2.GelfMessage;
+-import org.graylog2.GelfUDPSender;
+-
+-import java.io.IOException;
+-
+-/**
+- * @author lkmikkel
+- */
+-public class MockGelfHandlerSender extends GelfUDPSender {
+-    private static GelfMessage lastMessage;
+-
+-    public MockGelfHandlerSender() throws IOException {
+-        super("localhost");
+-    }
+-
+-    @Override
+-    public boolean sendMessage(GelfMessage message) {
+-        lastMessage = message;
+-        return true;
+-    }
+-
+-    public GelfMessage getLastMessage() {
+-        return lastMessage;
+-    }
+-}

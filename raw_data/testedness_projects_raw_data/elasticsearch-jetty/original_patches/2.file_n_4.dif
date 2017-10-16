@@ -1,0 +1,47 @@
+diff --git a/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java b/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java
+index ebe1e5e..f4cb629 100644
+--- a/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java
++++ b/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java
+@@ -27,7 +27,7 @@ import java.util.concurrent.CountDownLatch;
+ /**
+  * @author imotov
+  */
+-public class JettyHttpServerRestChannel extends HttpChannel {
++public class JettyHttpServerRestChannel implements HttpChannel {
+     private final RestRequest restRequest;
+ 
+     private final HttpServletResponse resp;
+@@ -37,7 +37,6 @@ public class JettyHttpServerRestChannel extends HttpChannel {
+     private final CountDownLatch latch;
+ 
+     public JettyHttpServerRestChannel(RestRequest restRequest, HttpServletResponse resp) {
+-        super(restRequest);
+         this.restRequest = restRequest;
+         this.resp = resp;
+         this.latch = new CountDownLatch(1);
+@@ -67,11 +66,22 @@ public class JettyHttpServerRestChannel extends HttpChannel {
+             resp.addHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Content-Length");
+         }
+         try {
+-            int contentLength = response.content().length();
++            int contentLength = response.contentLength();
++            if (response.prefixContentLength() > 0) {
++                contentLength += response.prefixContentLength();
++            }
++            if (response.suffixContentLength() > 0) {
++                contentLength += response.suffixContentLength();
++            }
+             resp.setContentLength(contentLength);
+             ServletOutputStream out = resp.getOutputStream();
+-            response.content().writeTo(out);
+-            // TODO: close in a finally?
++            if (response.prefixContent() != null) {
++                out.write(response.prefixContent(), 0, response.prefixContentLength());
++            }
++            out.write(response.content(), 0, response.contentLength());
++            if (response.suffixContent() != null) {
++                out.write(response.suffixContent(), 0, response.suffixContentLength());
++            }
+             out.close();
+         } catch (IOException e) {
+             sendFailure = e;

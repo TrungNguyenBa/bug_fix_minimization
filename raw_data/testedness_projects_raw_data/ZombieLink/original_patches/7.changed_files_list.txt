@@ -1,0 +1,23 @@
+668ccb1 : Infer a raw response when parser is unspecified; update test cases; fix bugs (issue #9)
+:100644 100644 633d7fa... 16725a6... M	src/main/java/com/lonepulse/zombielink/annotation/Parser.java
+:100644 100644 4ffe7a4... ff1229f... M	src/main/java/com/lonepulse/zombielink/executor/AsyncRequestExecutor.java
+:100644 100644 e5d01b7... 099fc48... M	src/main/java/com/lonepulse/zombielink/executor/BasicRequestExecutor.java
+:100644 100644 92c61ab... ba066a3... M	src/main/java/com/lonepulse/zombielink/inject/EndpointDirectory.java
+:100644 100644 0dd1b42... c807379... M	src/main/java/com/lonepulse/zombielink/inject/Zombie.java
+:100644 100644 b5ff34f... f2b5013... M	src/main/java/com/lonepulse/zombielink/response/AbstractResponseParser.java
+:100644 100644 30a5257... 8d0e0a0... M	src/main/java/com/lonepulse/zombielink/response/AsyncHandler.java
+:100644 100644 761a5e5... fbf653b... M	src/main/java/com/lonepulse/zombielink/response/EntityProcessor.java
+:100644 100644 07d84dc... b11bc6b... R089	src/main/java/com/lonepulse/zombielink/response/StringResponseParser.java	src/main/java/com/lonepulse/zombielink/response/RawResponseParser.java
+:100644 100644 aa5b729... 3a7e46d... M	src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java
+:100644 100644 aace9be... e019344... M	src/main/java/com/lonepulse/zombielink/response/ResponseProcessorChain.java
+:100644 100644 9c73d01... cd7a380... M	src/test/java/com/lonepulse/zombielink/executor/ConfigEndpoint.java
+:100644 100644 5e9458f... aae4299... M	src/test/java/com/lonepulse/zombielink/inject/MockEndpoint.java
+:100644 100644 c2228cb... 7bd5046... M	src/test/java/com/lonepulse/zombielink/inject/RequestValidationTest.java
+:100644 100644 f375a22... c15fee1... M	src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
+:100644 100644 8c0f886... 94b566f... M	src/test/java/com/lonepulse/zombielink/processor/HeaderEndpoint.java
+:100644 100644 f21e1e6... af2d604... M	src/test/java/com/lonepulse/zombielink/processor/HttpMethodEndpoint.java
+:100644 100644 15e7bd2... 6309bba... M	src/test/java/com/lonepulse/zombielink/processor/ParserEndpoint.java
+:100644 100644 d6b4714... c447711... M	src/test/java/com/lonepulse/zombielink/processor/ParserEndpointTest.java
+:100644 100644 67201f4... d69912f... M	src/test/java/com/lonepulse/zombielink/processor/PathEndpoint.java
+:100644 100644 eeedc70... be6fc86... M	src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpoint.java
+:100644 100644 ca58c6b... 426e029... M	src/test/java/com/lonepulse/zombielink/processor/StateEndpoint.java

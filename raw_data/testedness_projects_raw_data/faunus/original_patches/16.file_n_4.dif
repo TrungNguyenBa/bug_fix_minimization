@@ -1,0 +1,12 @@
+diff --git a/include/faunus/common.h b/include/faunus/common.h
+index b8da7075..a6f3fbd9 100644
+--- a/include/faunus/common.h
++++ b/include/faunus/common.h
+@@ -20,7 +20,6 @@
+ #include <numeric>
+ #include <type_traits>
+ #include <tuple>
+-#include <iterator>
+ #endif
+ 
+ 

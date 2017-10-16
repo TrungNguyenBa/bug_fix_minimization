@@ -1,0 +1,4 @@
+b21ab91b : use the petTypes array to set possible pet types
+:100644 100644 0d96f1bc... abd9dc8c... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.form
+:100644 100644 08b229ad... 29ec7c88... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java
+:100644 100644 69e35b0f... c016e572... M	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderNBT.java

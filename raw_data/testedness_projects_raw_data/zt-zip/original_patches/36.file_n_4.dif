@@ -1,0 +1,216 @@
+diff --git a/src/test/java/org/zeroturnaround/zip/ZipsTest.java b/src/test/java/org/zeroturnaround/zip/ZipsTest.java
+index 2bb0ceb..7ede1ed 100644
+--- a/src/test/java/org/zeroturnaround/zip/ZipsTest.java
++++ b/src/test/java/org/zeroturnaround/zip/ZipsTest.java
+@@ -16,7 +16,6 @@ package org.zeroturnaround.zip;
+  */
+ 
+ import java.io.File;
+-import java.io.FileOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.nio.charset.Charset;
+@@ -24,19 +23,15 @@ import java.util.HashSet;
+ import java.util.Set;
+ import java.util.zip.ZipEntry;
+ import java.util.zip.ZipFile;
+-import java.util.zip.ZipOutputStream;
+ 
+ import junit.framework.TestCase;
+ 
+ import org.apache.commons.io.FileUtils;
+-import org.apache.commons.io.IOUtils;
+ import org.zeroturnaround.zip.FileSource;
+ import org.zeroturnaround.zip.ZipEntryCallback;
+ import org.zeroturnaround.zip.ZipEntrySource;
+ import org.zeroturnaround.zip.ZipUtil;
+ import org.zeroturnaround.zip.Zips;
+-import org.zeroturnaround.zip.transform.ByteArrayZipEntryTransformer;
+-import org.zeroturnaround.zip.transform.ZipEntryTransformer;
+ 
+ public class ZipsTest extends TestCase {
+ 
+@@ -45,7 +40,7 @@ public class ZipsTest extends TestCase {
+ 
+     File dest = File.createTempFile("temp", ".zip");
+     try {
+-      Zips.process(src).addEntries(new ZipEntrySource[0]).destination(dest).process();
++      Zips.process(src).addEntries(new ZipEntrySource[0]).destination(dest).execute();
+     }
+     finally {
+       FileUtils.deleteQuietly(dest);
+@@ -60,7 +55,7 @@ public class ZipsTest extends TestCase {
+     File newEntry = new File("src/test/resources/" + fileName);
+     File dest = File.createTempFile("temp.zip", ".zip");
+ 
+-    Zips.process(src).addEntry(new FileSource(fileName, newEntry)).destination(dest).process();
++    Zips.process(src).addEntry(new FileSource(fileName, newEntry)).destination(dest).execute();
+     assertTrue(ZipUtil.containsEntry(dest, fileName));
+   }
+ 
+@@ -69,7 +64,7 @@ public class ZipsTest extends TestCase {
+ 
+     File dest = File.createTempFile("temp", ".zip");
+     try {
+-      Zips.process(src).removeEntry("bar.txt").destination(dest).process();
++      Zips.process(src).removeEntry("bar.txt").destination(dest).execute();
+       assertTrue("Result zip misses entry 'foo.txt'", ZipUtil.containsEntry(dest, "foo.txt"));
+       assertTrue("Result zip misses entry 'foo1.txt'", ZipUtil.containsEntry(dest, "foo1.txt"));
+       assertTrue("Result zip misses entry 'foo2.txt'", ZipUtil.containsEntry(dest, "foo2.txt"));
+@@ -86,7 +81,7 @@ public class ZipsTest extends TestCase {
+     File dest = File.createTempFile("temp", ".zip");
+     try {
+ 
+-      Zips.process(src).removeEntries(new String[] { "bar.txt", "a/b" }).destination(dest).process();
++      Zips.process(src).removeEntries(new String[] { "bar.txt", "a/b" }).destination(dest).execute();
+ 
+       assertFalse("Result zip still contains 'bar.txt'", ZipUtil.containsEntry(dest, "bar.txt"));
+       assertFalse("Result zip still contains dir 'a/b'", ZipUtil.containsEntry(dest, "a/b"));
+@@ -107,7 +102,7 @@ public class ZipsTest extends TestCase {
+     File src = new File("src/test/resources/demo-dirs.zip");
+     File dest = File.createTempFile("temp", ".zip");
+     try {
+-      Zips.process(src).addEntry(new FileSource(fileName, newEntry)).removeEntries(new String[] { "bar.txt", "a/b" }).destination(dest).process();
++      Zips.process(src).addEntry(new FileSource(fileName, newEntry)).removeEntries(new String[] { "bar.txt", "a/b" }).destination(dest).execute();
+ 
+       assertFalse("Result zip still contains 'bar.txt'", ZipUtil.containsEntry(dest, "bar.txt"));
+       assertFalse("Result zip still contains dir 'a/b'", ZipUtil.containsEntry(dest, "a/b"));
+@@ -132,7 +127,7 @@ public class ZipsTest extends TestCase {
+       assertFalse(ZipUtil.containsEntry(dest, fileName));
+       File newEntry = new File("src/test/resources/" + fileName);
+ 
+-      Zips.process(dest).addEntry(new FileSource(fileName, newEntry)).process();
++      Zips.process(dest).addEntry(new FileSource(fileName, newEntry)).execute();
+       assertTrue(ZipUtil.containsEntry(dest, fileName));
+     }
+     finally {
+@@ -148,7 +143,7 @@ public class ZipsTest extends TestCase {
+     File workFile = File.createTempFile("temp", ".zip");
+     try {
+       FileUtils.copyFile(original, workFile);
+-      Zips.process(workFile).addEntry(new FileSource(fileName, newEntry)).removeEntries(new String[] { "bar.txt", "a/b" }).process();
++      Zips.process(workFile).addEntry(new FileSource(fileName, newEntry)).removeEntries(new String[] { "bar.txt", "a/b" }).execute();
+       assertFalse("Result zip still contains 'bar.txt'", ZipUtil.containsEntry(workFile, "bar.txt"));
+       assertFalse("Result zip still contains dir 'a/b'", ZipUtil.containsEntry(workFile, "a/b"));
+       assertTrue("Result doesn't containt 'attic'", ZipUtil.containsEntry(workFile, "attic/treasure.txt"));
+@@ -168,7 +163,7 @@ public class ZipsTest extends TestCase {
+     File dest = File.createTempFile("temp", ".zip");
+     final ZipFile zf = new ZipFile(src);
+     try {
+-      Zips.process(src).addEntries(new ZipEntrySource[0]).preserveTimestamps().destination(dest).process();
++      Zips.process(src).addEntries(new ZipEntrySource[0]).preserveTimestamps().destination(dest).execute();
+       Zips.process(dest).iterate(new ZipEntryCallback() {
+         public void process(InputStream in, ZipEntry zipEntry) throws IOException {
+           String name = zipEntry.getName();
+@@ -188,7 +183,7 @@ public class ZipsTest extends TestCase {
+     File dest = File.createTempFile("temp", ".zip");
+     final ZipFile zf = new ZipFile(src);
+     try {
+-      Zips.process(src).addEntries(new ZipEntrySource[0]).destination(dest).process();
++      Zips.process(src).addEntries(new ZipEntrySource[0]).destination(dest).execute();
+       Zips.process(dest).iterate(new ZipEntryCallback() {
+         public void process(InputStream in, ZipEntry zipEntry) throws IOException {
+           String name = zipEntry.getName();
+@@ -210,7 +205,7 @@ public class ZipsTest extends TestCase {
+ 
+     File dest = File.createTempFile("temp", ".zip");
+     try {
+-      Zips.process(src).addEntry(new FileSource(filename, newEntry)).removeEntry(filename).destination(dest).process();
++      Zips.process(src).addEntry(new FileSource(filename, newEntry)).removeEntry(filename).destination(dest).execute();
+       assertTrue("Result zip misses entry 'foo.txt'", ZipUtil.containsEntry(dest, "foo.txt"));
+       assertTrue("Result zip misses entry 'foo1.txt'", ZipUtil.containsEntry(dest, "foo1.txt"));
+       assertTrue("Result zip misses entry 'foo2.txt'", ZipUtil.containsEntry(dest, "foo2.txt"));
+@@ -233,7 +228,7 @@ public class ZipsTest extends TestCase {
+     Charset charset = Charset.forName("UTF-8");
+     String entryName = "中文.txt";
+     try {
+-      Zips.process(src).charset(charset).addEntry(new FileSource(entryName, newEntry)).destination(dest).process();
++      Zips.process(src).charset(charset).addEntry(new FileSource(entryName, newEntry)).destination(dest).execute();
+     }
+     catch (IllegalArgumentException e) {
+       if (e.getMessage().equals("Using constructor ZipFile(File, Charset) has failed")) {
+@@ -241,7 +236,6 @@ public class ZipsTest extends TestCase {
+         return;
+       }
+     }
+-
+     ZipFile zf = null;
+     try {
+       zf = Zips.getZipFile(dest, charset);
+@@ -272,7 +266,7 @@ public class ZipsTest extends TestCase {
+   public void testAddEntryFile() throws Exception {
+     File fileToPack = new File("src/test/resources/TestFile.txt");
+     File dest = File.createTempFile("temp", ".zip");
+-    Zips.get().destination(dest).addFile(fileToPack).process();
++    Zips.get().destination(dest).addFile(fileToPack).execute();
+     assertTrue(dest.exists());
+     ZipUtil.explode(dest);
+     assertTrue((new File(dest, "TestFile.txt")).exists());
+@@ -285,7 +279,7 @@ public class ZipsTest extends TestCase {
+     File fileToPack = new File("src/test/resources/TestFile.txt");
+     File fileToPackII = new File("src/test/resources/TestFile-II.txt");
+     File dest = File.createTempFile("temp", ".zip");
+-    Zips.get().destination(dest).addFile(fileToPack).addFile(fileToPackII).process();
++    Zips.get().destination(dest).addFile(fileToPack).addFile(fileToPackII).execute();
+ 
+     assertTrue(dest.exists());
+ 
+@@ -302,7 +296,7 @@ public class ZipsTest extends TestCase {
+     File dest = File.createTempFile("temp", ".zip");
+     File parent = new File("src/test/resources/TestFile.txt").getParentFile();
+     // System.out.println("Parent file is " + parent);
+-    Zips.get().destination(dest).addFile(parent, true).process();
++    Zips.get().destination(dest).addFile(parent, true).execute();
+     ZipUtil.explode(dest);
+     assertTrue("Root dir is not preserved", (new File(dest, parent.getName())).exists());
+   }
+@@ -311,48 +305,9 @@ public class ZipsTest extends TestCase {
+     File dest = File.createTempFile("temp", ".zip");
+     File parent = new File("src/test/resources/TestFile.txt").getParentFile();
+     // System.out.println("Parent file is " + parent);
+-    Zips.get().destination(dest).addFile(parent).process();
++    Zips.get().destination(dest).addFile(parent).execute();
+     ZipUtil.explode(dest);
+     assertFalse("Root dir is preserved", (new File(dest, parent.getName())).exists());
+     assertTrue("Child file is missing", (new File(dest, "TestFile.txt")).exists());
+   }
+-
+-  public void testByteArrayTransformer() throws IOException {
+-    final String name = "foo";
+-    final byte[] contents = "bar".getBytes();
+-
+-    File source = File.createTempFile("temp", ".zip");
+-    File destination = File.createTempFile("temp", ".zip");
+-    try {
+-      // Create the ZIP file
+-      ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(source));
+-      try {
+-        zos.putNextEntry(new ZipEntry(name));
+-        zos.write(contents);
+-        zos.closeEntry();
+-      }
+-      finally {
+-        IOUtils.closeQuietly(zos);
+-      }
+-
+-      // Transform the ZIP file
+-      ZipEntryTransformer transformer = new ByteArrayZipEntryTransformer() {
+-        protected byte[] transform(ZipEntry zipEntry, byte[] input) throws IOException {
+-          String s = new String(input);
+-          assertEquals(new String(contents), s);
+-          return s.toUpperCase().getBytes();
+-        }
+-      };
+-      Zips.process(source).destination(destination).addTransformer(name, transformer).transform();
+-
+-      // Test the ZipUtil
+-      byte[] actual = ZipUtil.unpackEntry(destination, name);
+-      assertNotNull(actual);
+-      assertEquals(new String(contents).toUpperCase(), new String(actual));
+-    }
+-    finally {
+-      FileUtils.deleteQuietly(source);
+-      FileUtils.deleteQuietly(destination);
+-    }
+-  }
+ }

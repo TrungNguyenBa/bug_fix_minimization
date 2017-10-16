@@ -1,0 +1,4 @@
+362ed178 : Fix to allow offsets from -00:01 to -00:59
+:100644 100644 469fa6f2... 4a010c58... M	RELEASE-NOTES.txt
+:100644 100644 afa75d79... a127604b... M	src/main/java/org/joda/time/DateTimeZone.java
+:100644 100644 3b4221e0... cec86cd4... M	src/test/java/org/joda/time/TestDateTimeZone.java

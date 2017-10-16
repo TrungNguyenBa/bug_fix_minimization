@@ -1,0 +1,4 @@
+50504f6 : fixed bug when using forceLongFormat on gitDescribe (setting it to true had no effect)
+:100644 100644 bd7931b... 902d50d... M	src/main/java/pl/project13/jgit/DescribeCommand.java
+:100644 100644 8817a8d... 767235a... M	src/main/java/pl/project13/jgit/DescribeResult.java
+:100644 100644 897aac4... 68e8e99... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java

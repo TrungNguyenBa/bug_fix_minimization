@@ -1,0 +1,14 @@
+diff --git a/src/main/java/org/apache/commons/lang3/time/FastDateParser.java b/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+index a1fc8279..4dc897b6 100644
+--- a/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
++++ b/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+@@ -855,9 +855,6 @@ int modify(FastDateParser parser, final int iValue) {
+                 final TimeZone tz = TimeZone.getTimeZone(tzId);
+                 for(int i= 1; i<zoneNames.length; ++i) {
+                     String zoneName = zoneNames[i];
+-                    if (zoneName == null) {
+-                        break;
+-                    }
+                     if (tzNames.put(zoneName.toLowerCase(locale), tz) == null) {
+                         simpleQuote(sb.append('|'), zoneName);
+                     }

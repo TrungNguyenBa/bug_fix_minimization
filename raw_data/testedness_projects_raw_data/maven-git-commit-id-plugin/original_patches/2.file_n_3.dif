@@ -1,0 +1,13 @@
+diff --git a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+index a616cce..8b21b45 100644
+--- a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
++++ b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+@@ -65,7 +65,7 @@ public class GitCommitIdMojo extends AbstractMojo {
+   // these properties will be exposed to maven
+   public static final String BRANCH = "branch";
+   public static final String DIRTY = "dirty";
+-  public static final String COMMIT_ID = "commit.id.full";
++  public static final String COMMIT_ID = "commit.id";
+   public static final String COMMIT_ID_ABBREV = "commit.id.abbrev";
+   public static final String COMMIT_DESCRIBE = "commit.id.describe";
+   public static final String COMMIT_SHORT_DESCRIBE = "commit.id.describe-short";

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/stripe/model/Subscription.java b/src/main/java/com/stripe/model/Subscription.java
+index 2f4c3a7..7e31e31 100644
+--- a/src/main/java/com/stripe/model/Subscription.java
++++ b/src/main/java/com/stripe/model/Subscription.java
+@@ -42,7 +42,7 @@ public class Subscription extends APIResource {
+ 	public Subscription cancel(Map<String, Object> params) throws AuthenticationException,
+ 			InvalidRequestException, APIConnectionException, CardException,
+ 			APIException {
+-		return cancel(params, null);
++		return cancel(null);
+ 	}
+ 
+ 	public Subscription cancel(Map<String, Object> params, String apiKey) throws AuthenticationException,

@@ -1,0 +1,49 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+index 5b92fd9..1fb9587 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+@@ -216,11 +216,13 @@ public class ProtobufGenerator extends GeneratorBase
+         }
+         ProtobufField f = _currField;
+         if (f != null) {
+-            f = f.nextIf(name);
++            ProtobufField next = f.nextIf(name);
++            if (next != null) {
++                f = next;
++            } else {
++                f = _currMessage.field(name);
++            }
+         } else  {
+-            f = _currMessage.firstIf(name);
+-        }
+-        if (f == null) {
+             f = _currMessage.field(name);
+         }
+         if (f == null) {
+@@ -239,18 +241,20 @@ public class ProtobufGenerator extends GeneratorBase
+     }
+ 
+     @Override
+-    public final void writeFieldName(SerializableString sstr) throws IOException {
++    public final void writeFieldName(SerializableString name) throws IOException {
+         if (!_inObject) {
+             _reportError("Can not write field name: current context not an OBJECT but "+_pbContext.getTypeDesc());
+         }
+         ProtobufField f = _currField;
+-        final String name = sstr.getValue();
++        
+         if (f != null) {
+-            f = f.nextIf(name);
++            ProtobufField next = f.nextIf(name.getValue());
++            if (next != null) {
++                f = next;
++            } else {
++                f = _currMessage.field(name);
++            }
+         } else  {
+-            f = _currMessage.firstIf(name);
+-        }
+-        if (f == null) {
+             f = _currMessage.field(name);
+         }
+         if (f == null) {

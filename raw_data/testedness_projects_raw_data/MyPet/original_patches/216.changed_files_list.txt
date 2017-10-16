@@ -1,0 +1,3 @@
+1bc1a84a : fixed info command always display own donation rank
+:100644 100644 6a4bef69... 3db76a8d... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
+:100644 100644 0fcbf762... cc9cb53e... M	src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java

@@ -1,0 +1,15 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/RequestExecutor.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/RequestExecutor.java
+index ac0be83..1450927 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/RequestExecutor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/RequestExecutor.java
+@@ -24,8 +24,8 @@ import org.apache.http.HttpResponse;
+ import org.apache.http.client.HttpClient;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>This contract defines the services offered for executing requests which were created for an 

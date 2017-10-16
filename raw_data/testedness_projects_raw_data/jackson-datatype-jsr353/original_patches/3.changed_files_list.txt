@@ -1,0 +1,2 @@
+76d69c9 : fix idea gitignore for `.idea` folder
+:100644 100644 84914ec... c3bde80... M	.gitignore

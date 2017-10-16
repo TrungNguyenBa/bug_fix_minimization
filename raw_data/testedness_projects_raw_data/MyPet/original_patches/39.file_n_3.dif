@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/rabbit/EntityMyRabbit.java b/src/main/java/de/Keyle/MyPet/entity/types/rabbit/EntityMyRabbit.java
+index dad95efe..25c323d8 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/rabbit/EntityMyRabbit.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/rabbit/EntityMyRabbit.java
+@@ -113,7 +113,7 @@ public class EntityMyRabbit extends EntityMyPet {
+         if (myPet != null) {
+             super.setMyPet(myPet);
+ 
+-            this.setVariant(getMyPet().getVariant().getId());
++            this.setVariant(getMyPet().getVariant());
+             this.setBaby(getMyPet().isBaby());
+         }
+     }

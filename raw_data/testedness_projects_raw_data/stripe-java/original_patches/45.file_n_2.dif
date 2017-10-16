@@ -1,0 +1,16 @@
+diff --git a/src/test/java/com/stripe/StripeTest.java b/src/test/java/com/stripe/StripeTest.java
+index c1e9fea..ca7d139 100644
+--- a/src/test/java/com/stripe/StripeTest.java
++++ b/src/test/java/com/stripe/StripeTest.java
+@@ -196,11 +196,6 @@ public class StripeTest {
+ 	}
+ 
+ 	@Test
+-	public void testAPIBase() throws StripeException {
+-		assertEquals("https://api.stripe.com", Stripe.getApiBase());
+-	}
+-
+-	@Test
+ 	public void testAccountRetrieve() throws StripeException {
+ 		Account retrievedAccount = Account.retrieve();
+ 		assertEquals("test+bindings@stripe.com", retrievedAccount.getEmail());

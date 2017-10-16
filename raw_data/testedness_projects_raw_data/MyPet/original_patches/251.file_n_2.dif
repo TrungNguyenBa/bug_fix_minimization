@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
+index bf36cf74..cf16cfa6 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
+@@ -427,7 +427,7 @@ public class CommandAdmin implements CommandExecutor, TabCompleter
+                     return true;
+                 }
+ 
+-                MyPetPlayer newOwner = MyPetPlayer.getMyPetPlayer(owner.getName());
++                MyPetPlayer newOwner = MyPetPlayer.getMyPetPlayer(sender.getName());
+                 if (!newOwner.hasMyPet())
+                 {
+                     InactiveMyPet inactiveMyPet = new InactiveMyPet(newOwner);

@@ -1,0 +1,22 @@
+diff --git a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+index 8f88366..3b0c4d0 100644
+--- a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
++++ b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+@@ -120,7 +120,7 @@ public class GitCommitIdMojo extends AbstractMojo {
+    * Specifies whether the execution in pom projects should be skipped.
+    * Override this value to false if you want to force the plugin to run on 'pom' packaged projects.
+    *
+-   * @parameter parameter="git.skipPoms" default-value="true"
++   * @parameter default-value="true"
+    */
+   @SuppressWarnings("UnusedDeclaration")
+   private boolean skipPoms;
+@@ -285,7 +285,7 @@ public class GitCommitIdMojo extends AbstractMojo {
+       return;
+     }
+ 
+-    if (isPomProject(project) && skipPoms) {
++    if (isPomProject(project)) {
+       log("isPomProject is true and skipPoms is true, return");
+       return;
+     }

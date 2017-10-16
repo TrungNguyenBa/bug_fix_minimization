@@ -1,0 +1,4 @@
+dcae84b2e : Fixed errors in SummaryStatistics causing overriden statistics not to be updated if the supplied impls are commons-math classes.  JIRA: MATH-691.
+:100644 100644 1203d516c... da987cd3c... M	src/main/java/org/apache/commons/math/stat/descriptive/SummaryStatistics.java
+:100644 100644 f7278cc8a... df07eb3c2... M	src/site/xdoc/changes.xml
+:100644 100644 0194778a8... 53cf5656d... M	src/test/java/org/apache/commons/math/stat/descriptive/SummaryStatisticsTest.java

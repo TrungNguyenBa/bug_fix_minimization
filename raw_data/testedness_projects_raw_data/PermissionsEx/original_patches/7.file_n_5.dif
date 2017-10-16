@@ -1,0 +1,19 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java
+index a3938bc..5d8de43 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/backend/sql/SqlDataStore.java
+@@ -155,12 +155,12 @@ public final class SqlDataStore extends AbstractDataStore {
+     }
+ 
+     @Override
+-    public ContextInheritance getContextInheritanceInternal() {
++    public ContextInheritance getContextInheritance(Caching<ContextInheritance> inheritance) {
+         return null;
+     }
+ 
+     @Override
+-    public ListenableFuture<ContextInheritance> setContextInheritanceInternal(ContextInheritance inheritance) {
++    public ListenableFuture<ContextInheritance> setContextInheritance(ContextInheritance inheritance) {
+         return null;
+     }
+ 

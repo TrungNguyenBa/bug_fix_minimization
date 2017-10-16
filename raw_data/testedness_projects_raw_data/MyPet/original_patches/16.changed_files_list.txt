@@ -1,0 +1,11 @@
+22c3bc83 : PvP protection works both ways now fixes #493
+:100644 100644 227d6eb2... f83ccd0b... M	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+:100644 100644 6b6a7b2c... 981027fb... M	src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+:100644 100644 76a0c7ef... 4c92d7b5... M	src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+:100644 100644 081b8bf5... 3a372f67... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtByTarget.java
+:100644 100644 b6801f48... 0128203d... M	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+:100644 100644 5f644fa5... e0b5c6b0... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 04dfc248... ac93cc14... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:100644 100644 3c88a150... 8f452b88... M	src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+:100644 100644 c3f339bd... b93608fe... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Stomp.java
+:100644 100644 7e02c28f... db529f4d... M	src/main/java/de/Keyle/MyPet/util/hooks/PvPChecker.java

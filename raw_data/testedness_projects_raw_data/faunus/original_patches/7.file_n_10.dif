@@ -1,0 +1,13 @@
+diff --git a/src/examples/unittests.cpp b/src/examples/unittests.cpp
+index 3aca5562..c2f3d4c4 100644
+--- a/src/examples/unittests.cpp
++++ b/src/examples/unittests.cpp
+@@ -204,7 +204,7 @@ TEST_CASE("Quaternion", "Check vector rotation")
+ 
+ TEST_CASE("Tables and averages","Check table of averages")
+ {
+-  typedef Table2D<float,Average<float> > Ttable;
++  typedef Analysis::Table2D<float,Average<float> > Ttable;
+   Ttable table(0.1, Ttable::XYDATA);
+   table(2.1)+=1;
+   table(2.1)+=3;

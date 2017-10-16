@@ -1,0 +1,4 @@
+2aee36e6 : Fix inlining bug in https://code.google.com/p/closure-compiler/issues/detail?id=1053 ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=50726739
+:100644 100644 b1500532... 5c9df618... M	src/com/google/javascript/jscomp/InlineVariables.java
+:100644 100644 cdacc5f7... f89f10c0... M	src/com/google/javascript/jscomp/ReferenceCollectingCallback.java
+:100644 100644 23f9fee5... d1c0ed71... M	test/com/google/javascript/jscomp/InlineVariablesTest.java

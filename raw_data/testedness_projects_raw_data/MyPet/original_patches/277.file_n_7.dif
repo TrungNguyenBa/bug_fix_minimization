@@ -1,0 +1,49 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index a0c678e1..0a233082 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -35,7 +35,6 @@ import net.minecraft.server.v1_5_R3.*;
+ import org.bukkit.Location;
+ import org.bukkit.Material;
+ import org.bukkit.craftbukkit.v1_5_R3.entity.CraftEntity;
+-import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer;
+ import org.bukkit.entity.LivingEntity;
+ import org.bukkit.entity.Player;
+ import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
+@@ -203,9 +202,9 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster
+         return false;
+     }
+ 
+-    public MyPetPlayer getOwner()
++    public EntityLiving getOwner()
+     {
+-        return myPet.getOwner();
++        return this.world.a(myPet.getOwner().getName());
+     }
+ 
+     public boolean damageEntity(DamageSource damagesource, int i)
+@@ -290,13 +289,13 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster
+             return false;
+         }
+ 
+-        Player owner = this.getOwner().getPlayer();
++        Player owner = (Player) this.getOwner().getBukkitEntity();
+ 
+         if (isMyPet() && entityhuman.getBukkitEntity() == owner)
+         {
+             if (this.hasRider())
+             {
+-                ((CraftPlayer) owner).getHandle().mount(null);
++                this.getOwner().mount(null);
+                 return true;
+             }
+             if (myPet.getSkills().isSkillActive("Ride"))
+@@ -305,7 +304,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster
+                 {
+                     if (MyPetPermissions.hasExtended(owner, "MyPet.user.extended.Ride"))
+                     {
+-                        ((CraftPlayer) owner).getHandle().mount(this);
++                        this.getOwner().mount(this);
+                         return true;
+                     }
+                     else

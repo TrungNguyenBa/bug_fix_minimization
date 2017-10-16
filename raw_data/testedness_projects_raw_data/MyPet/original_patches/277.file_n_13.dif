@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+index 38e52f2e..066585ee 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+@@ -108,7 +108,7 @@ public class EntityMyPig extends EntityMyPet
+ 
+         ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-        if (getOwner().equals(entityhuman) && itemStack != null)
++        if (entityhuman == getOwner() && itemStack != null)
+         {
+             if (itemStack.id == 329 && !((MyPig) myPet).hasSaddle())
+             {

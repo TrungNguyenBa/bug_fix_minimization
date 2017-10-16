@@ -1,0 +1,2 @@
+0485b2b2 : Don't try to reflect damage from creepers, the are already dead fixes #504
+:100644 100644 ac93cc14... 40601612... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

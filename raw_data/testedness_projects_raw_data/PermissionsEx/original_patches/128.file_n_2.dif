@@ -1,0 +1,55 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionGroup.java b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+index 4f64e4d..2afe9d4 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionGroup.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+@@ -251,10 +251,6 @@ public class PermissionGroup extends PermissionEntity implements Comparable<Perm
+ 		return this.manager.getUsers(this.getName());
+ 	}
+ 
+-	protected Set<PermissionUser> getActiveUsers() {
+-		return this.manager.getActiveUsers(this.getName());
+-	}
+-
+ 	public boolean isDefault(String worldName) {
+ 		return getData().isDefault(worldName);
+ 	}
+@@ -279,38 +275,8 @@ public class PermissionGroup extends PermissionEntity implements Comparable<Perm
+ 		this.clearMembersCache();
+ 	}
+ 
+-	@Override
+-	public void setPrefix(String prefix, String worldName) {
+-		super.setPrefix(prefix, worldName);
+-		clearMembersCache();
+-	}
+-
+-	@Override
+-	public void setSuffix(String suffix, String worldName) {
+-		super.setSuffix(suffix, worldName);
+-		clearMembersCache();
+-	}
+-
+-	@Override
+-	public void setPermissions(List<String> permissions, String world) {
+-		super.setPermissions(permissions, world);
+-		clearMembersCache();
+-	}
+-
+-	@Override
+-	public void setOption(String option, String value, String world) {
+-		super.setOption(option, value, world);
+-		clearMembersCache();
+-	}
+-
+-	@Override
+-	public void setParents(List<PermissionGroup> parents, String world) {
+-		super.setParents(parents, world);
+-		clearMembersCache();
+-	}
+-
+ 	protected void clearMembersCache() {
+-		for (PermissionUser user : this.getActiveUsers()) {
++		for (PermissionUser user : this.getUsers()) {
+ 			user.clearCache();
+ 		}
+ 	}

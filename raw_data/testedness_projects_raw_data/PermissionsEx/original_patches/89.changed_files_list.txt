@@ -1,0 +1,2 @@
+4c66bee : Null-safe backend disable
+:100644 100644 bc6ea79... 96e1a7d... M	src/main/java/ru/tehkode/permissions/PermissionManager.java

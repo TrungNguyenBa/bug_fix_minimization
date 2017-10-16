@@ -1,0 +1,14 @@
+diff --git a/src/test/java/org/graylog2/log/GelfAppenderTest.java b/src/test/java/org/graylog2/log/GelfAppenderTest.java
+index b5cb296..fc76d80 100644
+--- a/src/test/java/org/graylog2/log/GelfAppenderTest.java
++++ b/src/test/java/org/graylog2/log/GelfAppenderTest.java
+@@ -153,9 +153,6 @@ public class GelfAppenderTest {
+ 
+         @Override
+         public boolean sendMessage(GelfMessage message) {
+-            if (!message.isValid()) {
+-              return false;
+-            }
+             this.lastMessage = message;
+             return true;
+         }

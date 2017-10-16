@@ -1,0 +1,15 @@
+diff --git a/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java b/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java
+index f4cb629..6f2c8b0 100644
+--- a/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java
++++ b/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerRestChannel.java
+@@ -62,8 +62,8 @@ public class JettyHttpServerRestChannel implements HttpChannel {
+         if (restRequest.method() == RestRequest.Method.OPTIONS) {
+             // also add more access control parameters
+             resp.addHeader("Access-Control-Max-Age", "1728000");
+-            resp.addHeader("Access-Control-Allow-Methods", "OPTIONS, HEAD, GET, POST, PUT, DELETE");
+-            resp.addHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Content-Length");
++            resp.addHeader("Access-Control-Allow-Methods", "PUT, DELETE");
++            resp.addHeader("Access-Control-Allow-Headers", "X-Requested-With");
+         }
+         try {
+             int contentLength = response.contentLength();

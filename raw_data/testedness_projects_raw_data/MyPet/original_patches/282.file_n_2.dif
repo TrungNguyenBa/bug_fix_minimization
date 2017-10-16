@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+index a79e6800..fac4790e 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+@@ -62,7 +62,7 @@ public class EntityMyMagmaCube extends EntityMyPet
+         {
+             this.a(es.height() * value, es.width() * value);
+         }
+-        if (petPathfinderSelector != null && petPathfinderSelector.hasGoal("MeleeAttack"))
++        if (petPathfinderSelector.hasGoal("MeleeAttack"))
+         {
+             petPathfinderSelector.replaceGoal("MeleeAttack", new MyPetAIMeleeAttack(this, 0.1F, 2 + getSize(), 20));
+         }

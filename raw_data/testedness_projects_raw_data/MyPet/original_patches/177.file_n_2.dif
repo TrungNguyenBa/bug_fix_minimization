@@ -1,0 +1,81 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/SkillsInfo.java b/src/main/java/de/Keyle/MyPet/skill/skills/SkillsInfo.java
+index a42ad244..845f3fdc 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/SkillsInfo.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/SkillsInfo.java
+@@ -20,20 +20,20 @@
+ 
+ package de.Keyle.MyPet.skill.skills;
+ 
++import com.google.common.collect.BiMap;
++import com.google.common.collect.HashBiMap;
+ import de.Keyle.MyPet.skill.skills.info.ISkillInfo;
+ import de.Keyle.MyPet.skill.skilltree.SkillTreeSkill;
+ import de.Keyle.MyPet.util.logger.MyPetLogger;
+ import org.bukkit.ChatColor;
+ 
+ import java.lang.reflect.Constructor;
+-import java.util.HashMap;
+-import java.util.Map;
+ import java.util.Set;
+ 
+ public class SkillsInfo
+ {
+-    private static Map<Class<? extends SkillTreeSkill>, String> registeredSkillsNames = new HashMap<Class<? extends SkillTreeSkill>, String>();
+-    private static Map<String, Class<? extends SkillTreeSkill>> registeredNamesSkills = new HashMap<String, Class<? extends SkillTreeSkill>>();
++    private static BiMap<Class<? extends SkillTreeSkill>, String> registeredSkillsNames = HashBiMap.create();
++    private static BiMap<String, Class<? extends SkillTreeSkill>> registeredNamesSkills = registeredSkillsNames.inverse();
+ 
+     public static void registerSkill(Class<? extends SkillTreeSkill> clazz)
+     {
+@@ -42,33 +42,35 @@ public class SkillsInfo
+             MyPetLogger.write(ChatColor.RED + clazz.getName() + " doesn't implements [ISkillInfo]!");
+             return;
+         }
+-        try
++        if (!registeredSkillsNames.containsKey(clazz))
+         {
+-            //MyPetLogger.write("Skill Annotations: " + Arrays.toString(clazz.getAnnotations()));
+-            SkillName sn = clazz.getAnnotation(SkillName.class);
+-            if (sn != null)
++            try
+             {
+-                String skillName = sn.value();
+-                if (!registeredNamesSkills.containsKey(skillName) && !registeredSkillsNames.containsKey(clazz))
++                //MyPetLogger.write("Skill Annotations: " + Arrays.toString(clazz.getAnnotations()));
++                SkillName sn = clazz.getAnnotation(SkillName.class);
++                if (sn != null)
+                 {
+-                    registeredSkillsNames.put(clazz, skillName);
+-                    registeredNamesSkills.put(skillName, clazz);
+-                    //DebugLogger.info("registered skill: " + clazz.getName());
++                    String skillName = sn.value();
++                    if (!registeredNamesSkills.containsKey(skillName))
++                    {
++                        registeredSkillsNames.put(clazz, skillName);
++                        //DebugLogger.info("registered skill: " + clazz.getName());
++                    }
++                    else
++                    {
++                        MyPetLogger.write(ChatColor.RED + "There is already a skill registered with the the name " + skillName);
++                    }
+                 }
+                 else
+                 {
+-                    MyPetLogger.write(ChatColor.RED + "There is already a skill registered with the the name " + skillName);
++                    MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not annotated with [SkillName]!");
+                 }
+             }
+-            else
++            catch (Exception e)
+             {
+-                MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not annotated with [SkillName]!");
++                MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not a valid skill!");
+             }
+         }
+-        catch (Exception e)
+-        {
+-            MyPetLogger.write(ChatColor.RED + clazz.getName() + " is not a valid skill!");
+-        }
+     }
+ 
+     @SuppressWarnings("unchecked")

@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+index de9278e3..0992c93b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+@@ -150,7 +150,7 @@ public class EntityMySkeleton extends EntityMyPet
+ 
+         ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-        if (getOwner().equals(entityhuman) && itemStack != null)
++        if (entityhuman == getOwner() && itemStack != null)
+         {
+             if (itemStack.id == Item.SHEARS.id)
+             {
+@@ -172,7 +172,7 @@ public class EntityMySkeleton extends EntityMyPet
+                 }
+                 return true;
+             }
+-            else if (checkForEquipment(itemStack) && getOwner().getPlayer().isSneaking())
++            else if (checkForEquipment(itemStack) && getOwner().isSneaking())
+             {
+                 if (!MyPetPermissions.hasExtended(myPet.getOwner().getPlayer(), "MyPet.user.extended.Equip"))
+                 {

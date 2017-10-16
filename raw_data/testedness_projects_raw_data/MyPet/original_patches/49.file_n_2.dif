@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+index 398c79ca..f6e784ea 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+@@ -585,7 +585,7 @@ public abstract class EntityMyPet extends EntityCreature implements IMonster {
+         if (motionForward <= 0.0F) {
+             motionForward *= 0.25F;
+         }
+-        // sideways is slower too but not as slow as backwards
++        // sideways is slower too
+         motionSideways *= 0.85F;
+ 
+         float speed = 0.22222F;

@@ -1,0 +1,20 @@
+diff --git a/pom.xml b/pom.xml
+index 2997c471..7a4cd4bf 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -34,7 +34,6 @@
+ 
+         <minecraft.version>1.7.8</minecraft.version>
+         <bukkit.version>R0.1-SNAPSHOT</bukkit.version>
+-        <bukkit.packet>v1_7_R3</bukkit.packet>
+ 
+         <citizensapi.version>2.0.9-SNAPSHOT</citizensapi.version>
+         <mcmmo.version>1.4.07</mcmmo.version>
+@@ -456,7 +455,6 @@
+                             <Project-Version>${project.version}</Project-Version>
+                             <Project-Build>${BUILD_NUMBER}</Project-Build>
+                             <Project-Minecraft-Version>${minecraft.version}</Project-Minecraft-Version>
+-                            <Project-Bukkit-Packet>${bukkit.packet}</Project-Bukkit-Packet>
+                             <Git-Commit>${GIT_COMMIT}</Git-Commit>
+                         </manifestEntries>
+                     </archive>

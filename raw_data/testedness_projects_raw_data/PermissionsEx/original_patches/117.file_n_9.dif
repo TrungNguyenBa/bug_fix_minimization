@@ -1,0 +1,13 @@
+diff --git a/src/main/resources/sql/mysql.sql b/src/main/resources/sql/mysql.sql
+index d6b9dd6..cbcdf53 100644
+--- a/src/main/resources/sql/mysql.sql
++++ b/src/main/resources/sql/mysql.sql
+@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `{permissions_entity}` (
+   `suffix` varchar(255) NOT NULL,
+   `default` tinyint(1) NOT NULL DEFAULT '0',
+   PRIMARY KEY (`id`),
+-  UNIQUE KEY `name` (`name`, `type`),
++  UNIQUE KEY `name` (`name`),
+   KEY `default` (`default`)
+ ) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ 

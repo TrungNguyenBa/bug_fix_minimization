@@ -1,0 +1,4 @@
+28c16dd : fix test files initialization and move all tests to 'org.zeroturnaround.zip' package
+:100644 100644 27c11b7... 67f33af... R096	src/test/java/ZipTransformTest.java	src/test/java/org/zeroturnaround/zip/ZipTransformTest.java
+:100644 100644 8ba188e... 119d601... R092	src/test/java/ZipUtilInPlaceTest.java	src/test/java/org/zeroturnaround/zip/ZipUtilInPlaceTest.java
+:100644 100644 0dec83a... 5666b31... R084	src/test/java/ZipUtilTest.java	src/test/java/org/zeroturnaround/zip/ZipUtilTest.java

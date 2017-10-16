@@ -1,0 +1,3 @@
+aa89d05b : Only remove prototype properties defined with simple assigment statements. Fixes issue 459.
+:100644 100644 2b966b50... 4472638c... M	src/com/google/javascript/jscomp/AnalyzePrototypeProperties.java
+:100644 100644 e412f29d... 5663d6d5... M	test/com/google/javascript/jscomp/RemoveUnusedPrototypePropertiesTest.java

@@ -1,0 +1,4 @@
+114ff23 : implement $rename operator
+:100644 100644 fdec7c5... 018f2a0... M	core/src/main/java/de/bwaldvogel/mongo/backend/AbstractMongoCollection.java
+:100644 100644 06c497e... 573ea2a... M	core/src/main/java/de/bwaldvogel/mongo/backend/Utils.java
+:100644 100644 3814763... 4d963f6... M	test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java

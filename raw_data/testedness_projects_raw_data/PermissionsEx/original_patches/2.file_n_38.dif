@@ -1,0 +1,13 @@
+diff --git a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeTranslations.java b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeTranslations.java
+index 00a8c82..92e8b84 100644
+--- a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeTranslations.java
++++ b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeTranslations.java
+@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
+ /**
+  * Utility class to handle translations to a given locale
+  */
+-class SpongeTranslations {
++public class SpongeTranslations {
+ 
+     private SpongeTranslations() {}
+ 

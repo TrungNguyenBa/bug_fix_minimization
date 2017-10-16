@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java
+index 91226f9..ffb3e2e 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/MissingEntityException.java
+@@ -21,7 +21,7 @@ package com.lonepulse.zombielink.request;
+  */
+ 
+ import com.lonepulse.zombielink.annotation.Entity;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>This runtime exception is thrown when an @{@link Entity} annotation failed to be discovered on the 

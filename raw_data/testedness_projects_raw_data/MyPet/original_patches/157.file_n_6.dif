@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+index b769c81e..9cbd027b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+@@ -74,7 +74,7 @@ public class BehaviorFarmTarget extends AIGoal
+         for (Object entityObj : this.petEntity.world.a(EntityMonster.class, this.petOwnerEntity.boundingBox.grow((double) range, (double) range, (double) range)))
+         {
+             EntityMonster entityMonster = (EntityMonster) entityObj;
+-            if (!entityMonster.isAlive() || petEntity.e(entityMonster) > 91)
++            if (!entityMonster.isAlive() || petEntity.e(entityMonster) > 91 || !petEntity.getEntitySenses().canSee(entityMonster))
+             {
+                 continue;
+             }

@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/gui/GuiMain.java b/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
+index ef20a999..acc2ccac 100644
+--- a/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
++++ b/src/main/java/de/Keyle/MyPet/gui/GuiMain.java
+@@ -183,6 +183,5 @@ public class GuiMain {
+         SkillsInfo.registerSkill(SprintInfo.class);
+         SkillsInfo.registerSkill(ThornsInfo.class);
+         SkillsInfo.registerSkill(WitherInfo.class);
+-        SkillsInfo.registerSkill(StompInfo.class);
+     }
+ }
+\ No newline at end of file

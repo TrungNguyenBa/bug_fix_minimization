@@ -1,0 +1,4 @@
+d06ac163 : Fix may-use data flow analysis in the presence of ON_EX edges. Fixes issue 794
+:100644 100644 9867a140... 8361ac9b... M	src/com/google/javascript/jscomp/MaybeReachingVariableUse.java
+:100644 100644 103262c2... 6e5c4004... M	test/com/google/javascript/jscomp/FlowSensitiveInlineVariablesTest.java
+:100644 100644 7924eb37... c6086fe4... M	test/com/google/javascript/jscomp/MaybeReachingVariableUseTest.java

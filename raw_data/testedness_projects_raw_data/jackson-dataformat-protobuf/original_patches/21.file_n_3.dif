@@ -1,0 +1,13 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
+index be71cc9..de6c8cc 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java
+@@ -16,7 +16,7 @@ public class WriteComplexPojoTest extends ProtobufTestBase
+     /**********************************************************
+      */
+ 
+-    public void testMediaItemSimple() throws Exception
++    public void testIntArraySparse() throws Exception
+     {
+         /*
+         final protected static String PROTOC_INT_ARRAY = "message Ints {\n"

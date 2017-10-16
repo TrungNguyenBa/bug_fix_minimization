@@ -1,0 +1,2 @@
+dbdd88f : fix for JDK6
+:100644 100644 8345bc0... 6ff1366... M	core/src/main/java/de/bwaldvogel/mongo/backend/AbstractMongoCollection.java

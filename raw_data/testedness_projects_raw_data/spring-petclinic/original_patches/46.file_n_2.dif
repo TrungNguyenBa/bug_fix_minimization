@@ -1,0 +1,19 @@
+diff --git a/src/test/java/org/springframework/samples/petclinic/web/VisitsViewTests-config.xml b/src/test/java/org/springframework/samples/petclinic/web/VisitsViewTests-config.xml
+deleted file mode 100644
+index 8458ba2..0000000
+--- a/src/test/java/org/springframework/samples/petclinic/web/VisitsViewTests-config.xml
++++ /dev/null
+@@ -1,13 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!--
+-	- DispatcherServlet application context for PetClinic's web tier.
+--->
+-<beans xmlns="http://www.springframework.org/schema/beans"
+-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+-
+-    <import resource="classpath:spring/business-config.xml"/>
+-    <import resource="classpath:spring/mvc-core-config.xml"/>
+-
+-</beans>

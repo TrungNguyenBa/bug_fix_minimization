@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuItem.java b/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuItem.java
+index 15f6116f..a9dbf3ca 100644
+--- a/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuItem.java
++++ b/src/main/java/de/Keyle/MyPet/util/iconmenu/IconMenuItem.java
+@@ -48,6 +48,7 @@ public class IconMenuItem {
+     }
+ 
+     public IconMenuItem setData(int data) {
++        Validate.isTrue(data >= 0 && data <= 16, "Data must be between 0 and 15");
+         if (this.data != data) {
+             this.data = data;
+             hasChanged = true;

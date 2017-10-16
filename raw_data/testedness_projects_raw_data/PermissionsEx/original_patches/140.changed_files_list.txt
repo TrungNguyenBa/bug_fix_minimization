@@ -1,0 +1,3 @@
+bb8c43e : Actually print error report from PermissiblePEX
+:100644 100644 df36eec... b7d3000... M	src/main/java/ru/tehkode/permissions/bukkit/ErrorReport.java
+:100644 100644 d6ef16f... 0c14d7a... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/PermissiblePEX.java

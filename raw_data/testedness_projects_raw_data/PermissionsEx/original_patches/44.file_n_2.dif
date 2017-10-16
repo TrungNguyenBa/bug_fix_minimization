@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+index 0062799..879b1da 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/SuperpermsListener.java
+@@ -178,10 +178,6 @@ public class SuperpermsListener implements Listener {
+ 		if (event.getResult() != PlayerLoginEvent.Result.ALLOWED) {
+ 			try {
+ 				removeAttachment(event.getPlayer());
+-				Player player = plugin.getServer().getPlayer(event.getPlayer().getUniqueId());
+-				if (player != null && player.isOnline()) {
+-					updateAttachment(player);
+-				}
+ 			} catch (Throwable t) {
+ 				ErrorReport.handleError("Superperms event login denied", t);
+ 			}

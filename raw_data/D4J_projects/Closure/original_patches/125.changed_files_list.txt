@@ -1,0 +1,3 @@
+8cef0018 : Skip checks if constructor has no instance type.
+:100644 100644 ab71542e... de14c04e... M	src/com/google/javascript/jscomp/TypeCheck.java
+:100644 100644 a957dd65... cb982cbb... M	test/com/google/javascript/jscomp/TypeCheckTest.java

@@ -1,0 +1,4 @@
+87b154f8 : More recursion unrolling Fixes issue 691
+:100644 100644 83cdb420... d50320a0... M	src/com/google/javascript/jscomp/CodeGenerator.java
+:100644 100644 52dfa9b2... 31c62d92... M	src/com/google/javascript/jscomp/CodePrinter.java
+:100644 100644 a70f0489... 8ba5d995... M	test/com/google/javascript/jscomp/CodePrinterTest.java

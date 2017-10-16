@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/info/SprintInfo.java b/src/main/java/de/Keyle/MyPet/skill/skills/info/SprintInfo.java
+index 8e059a09..da1d30d7 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/info/SprintInfo.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/info/SprintInfo.java
+@@ -21,8 +21,8 @@
+ package de.Keyle.MyPet.skill.skills.info;
+ 
+ import de.Keyle.MyPet.gui.skilltreecreator.skills.SkillPropertiesPanel;
+-import de.Keyle.MyPet.skill.skills.SkillName;
+-import de.Keyle.MyPet.skill.skilltree.SkillTreeSkill;
++import de.Keyle.MyPet.skill.SkillName;
++import de.Keyle.MyPet.skill.SkillTreeSkill;
+ 
+ @SkillName("Sprint")
+ public class SprintInfo extends SkillTreeSkill implements ISkillInfo

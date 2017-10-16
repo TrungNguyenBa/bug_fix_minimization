@@ -1,0 +1,23 @@
+diff --git a/src/main/java/org/graylog2/GelfMessage.java b/src/main/java/org/graylog2/GelfMessage.java
+index 36c5faa..32d9107 100644
+--- a/src/main/java/org/graylog2/GelfMessage.java
++++ b/src/main/java/org/graylog2/GelfMessage.java
+@@ -54,8 +54,7 @@ public class GelfMessage {
+ 
+         map.put("version", getVersion());
+         map.put("host", getHost());
+-        String shortMsg = getShortMessage();
+-        map.put("short_message", shortMsg != null ? shortMsg : "<empty>");
++        map.put("short_message", getShortMessage());
+         map.put("full_message", getFullMessage());
+         map.put("timestamp", getTimestamp());
+ 
+@@ -261,7 +260,7 @@ public class GelfMessage {
+     }
+ 
+     public boolean isValid() {
+-        return !isEmpty(version) && !isEmpty(host) && !isEmpty(facility);
++        return !isEmpty(version) && !isEmpty(host) && !isEmpty(shortMessage) && !isEmpty(facility);
+     }
+ 
+     public boolean isEmpty(String str) {

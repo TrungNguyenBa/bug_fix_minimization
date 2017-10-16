@@ -1,0 +1,2 @@
+eadc2d9 : Prevent state leakage in inheritance
+:100644 100644 a264b82... 2c3bbb7... M	src/main/java/ru/tehkode/permissions/PermissionUser.java

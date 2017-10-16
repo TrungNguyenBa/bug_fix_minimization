@@ -1,0 +1,17 @@
+diff --git a/pom.xml b/pom.xml
+index 44d9b00..9328612 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -59,12 +59,6 @@
+             <version>4.9</version>
+             <scope>test</scope>
+         </dependency>
+-        <dependency>
+-            <groupId>com.google.guava</groupId>
+-            <artifactId>guava</artifactId>
+-            <version>18.0-rc1</version>
+-            <scope>test</scope>
+-        </dependency>
+     </dependencies>
+ 
+     <build>

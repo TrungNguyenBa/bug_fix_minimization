@@ -1,0 +1,38 @@
+diff --git a/src/main/java/org/joda/money/format/AmountPrinterParser.java b/src/main/java/org/joda/money/format/AmountPrinterParser.java
+index fca7789..1eb5621 100644
+--- a/src/main/java/org/joda/money/format/AmountPrinterParser.java
++++ b/src/main/java/org/joda/money/format/AmountPrinterParser.java
+@@ -64,7 +64,7 @@ final class AmountPrinterParser implements MoneyPrinter, MoneyParser, Serializab
+             str = zeroConvert.toString();
+         }
+         final int decPoint = str.indexOf('.');
+-        final int afterDecPoint = decPoint + 1;
++        final int afterDecPoint = decPoint + 1;;
+         if (activeStyle.getGroupingStyle() == GroupingStyle.NONE) {
+             if (decPoint < 0) {
+                 appendable.append(str);
+@@ -82,7 +82,7 @@ final class AmountPrinterParser implements MoneyPrinter, MoneyParser, Serializab
+             int post = (decPoint < 0 ? 0 : str.length() - decPoint - 1);
+             for (int i = 0; pre > 0; i++, pre--) {
+                 appendable.append(str.charAt(i));
+-                if (pre > groupingSize && pre % groupingSize == 1) {
++                if (pre > 3 && pre % groupingSize == 1) {
+                     appendable.append(groupingChar);
+                 }
+             }
+@@ -90,13 +90,11 @@ final class AmountPrinterParser implements MoneyPrinter, MoneyParser, Serializab
+                 appendable.append(activeStyle.getDecimalPointCharacter());
+             }
+             if (activeStyle.getGroupingStyle() == GroupingStyle.BEFORE_DECIMAL_POINT) {
+-                if (decPoint >= 0) {
+-                    appendable.append(str.substring(afterDecPoint));
+-                }
++                appendable.append(str.substring(afterDecPoint));
+             } else {
+                 for (int i = 0; i < post; i++) {
+                     appendable.append(str.charAt(i + afterDecPoint));
+-                    if (i % groupingSize == (groupingSize - 1) && (i + 1) < post) {
++                    if (i % groupingSize == 2) {
+                         appendable.append(groupingChar);
+                     }
+                 }

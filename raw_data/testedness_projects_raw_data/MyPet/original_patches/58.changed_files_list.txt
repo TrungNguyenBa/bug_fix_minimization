@@ -1,0 +1,3 @@
+53f3ef37 : adjust the follow speed of pets so they can catch up to the player most of the time fixes #359
+:100644 100644 c1581376... 7ba1dbcf... M	src/main/java/de/Keyle/MyPet/entity/ai/movement/FollowOwner.java
+:100644 100644 1c113a41... b22e9654... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java

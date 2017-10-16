@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/util/Metadata.java b/zombielink/src/main/java/com/lonepulse/zombielink/util/Metadata.java
+index ace6bc6..48291b8 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/util/Metadata.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/util/Metadata.java
+@@ -40,7 +40,7 @@ import com.lonepulse.zombielink.annotation.PUT;
+ import com.lonepulse.zombielink.annotation.Request;
+ import com.lonepulse.zombielink.annotation.Request.RequestMethod;
+ import com.lonepulse.zombielink.annotation.TRACE;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>A collection of <b>generic</b> utility services which enables the discovery of metadata on endpoint 

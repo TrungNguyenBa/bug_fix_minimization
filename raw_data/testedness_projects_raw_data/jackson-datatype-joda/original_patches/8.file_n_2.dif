@@ -1,0 +1,22 @@
+diff --git a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
+index 3abeda9..c413b51 100644
+--- a/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
++++ b/src/main/java/com/fasterxml/jackson/datatype/joda/cfg/JacksonJodaDateFormat.java
+@@ -23,8 +23,7 @@ public class JacksonJodaDateFormat extends JacksonJodaFormatBase
+ 
+     protected final boolean _explicitTimezone;
+     
+-    public JacksonJodaDateFormat(DateTimeFormatter defaultFormatter)
+-    {
++    public JacksonJodaDateFormat(DateTimeFormatter defaultFormatter) {
+         super();
+         _formatter = defaultFormatter;
+         _jdkTimezone = defaultFormatter.getZone().toTimeZone();
+@@ -91,7 +90,6 @@ public class JacksonJodaDateFormat extends JacksonJodaFormatBase
+         if (_locale != null) {
+             formatter = formatter.withLocale(_locale);
+         }
+-        // copy TimeZone from previous formatter
+         formatter = formatter.withZone(_formatter.getZone());
+         
+         return new JacksonJodaDateFormat(this, formatter);

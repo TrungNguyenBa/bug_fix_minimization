@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java
+index abc43e73..798ca3fb 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java
+@@ -210,7 +210,7 @@ public class SkillTreeLoaderNBT extends SkillTreeLoader {
+                             skillList.add(skillCompound);
+                         }
+                     }
+-                    levelCompound.getCompoundData().put("Skills", new TagList(skillList));
++                    levelCompound.getCompoundData().put("Name", new TagList(skillList));
+                     levelList.add(levelCompound);
+                 }
+                 skilltreeCompound.getCompoundData().put("Level", new TagList(levelList));

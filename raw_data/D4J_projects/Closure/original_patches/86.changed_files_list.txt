@@ -1,0 +1,4 @@
+0907b661 : Fix improper analysis of NEW, the bad way: by assuming NEW always returns a non-local result. Fixes issue 303.
+:100644 100644 5262f2d6... 9049aae7... M	src/com/google/javascript/jscomp/NodeUtil.java
+:100644 100644 36f5c6bc... 2d6c9f18... M	test/com/google/javascript/jscomp/NodeUtilTest.java
+:100644 100644 36dfdfc9... 33218422... M	test/com/google/javascript/jscomp/PureFunctionIdentifierTest.java

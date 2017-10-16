@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/snowman/MySnowman.java b/src/main/java/de/Keyle/MyPet/entity/types/snowman/MySnowman.java
+index 374fb22a..034be136 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/snowman/MySnowman.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/snowman/MySnowman.java
+@@ -31,8 +31,6 @@ import static org.bukkit.Material.SNOW_BALL;
+ 
+ @MyPetInfo(food = {CARROT, SNOW_BALL})
+ public class MySnowman extends MyPet {
+-    public static boolean FIX_SNOW_TRACK = true;
+-
+     public MySnowman(MyPetPlayer petOwner) {
+         super(petOwner);
+     }

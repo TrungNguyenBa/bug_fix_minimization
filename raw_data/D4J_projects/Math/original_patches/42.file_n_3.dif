@@ -1,0 +1,15 @@
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index 1d2e38b07..b8e3a1d09 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,10 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="3.0" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-713" due-to="Thomas Neidhart">
+-        Fixed case of unconstrained variables that still occur in the objective function
+-        in simplex solver.
+-      </action>
+       <action dev="luc" type="add" issue="MATH-710" due-to="Eldar Agalarov">
+         The fast cryptographically secure pseudorandom number generator ISAAC has been added.
+       </action>

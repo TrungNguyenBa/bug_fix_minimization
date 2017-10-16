@@ -1,0 +1,5 @@
+b988d7c9 : Faster group-2-group cutoff interactions that also works for i2all energy function
+:100644 100644 93591699... 729c2b21... M	include/faunus/energy.h
+:100644 100644 c4006ca0... 6a66dc53... M	include/faunus/move.h
+:100644 100644 72bf3646... 9f446e1e... M	include/faunus/space.h
+:100644 100644 b0b51ad0... ee539a7d... M	src/examples/manybody.cpp

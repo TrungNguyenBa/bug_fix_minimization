@@ -1,0 +1,3 @@
+f64a3f51 : a really terrible fix for issue 291 fixes issue 291
+:100644 100644 11f0af2e... 6c4ee4a9... M	src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java
+:100644 100644 1de263fe... 47d3e5c3... M	test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java

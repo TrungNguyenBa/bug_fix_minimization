@@ -1,0 +1,48 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java
+index cd7e983e..df79e8ed 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/MyMagmaCube.java
+@@ -41,6 +41,21 @@ public class MyMagmaCube extends MyPet implements IMyPetSlimeSize
+         super(petOwner);
+     }
+ 
++    public int getSize()
++    {
++        return size;
++    }
++
++    public void setSize(int value)
++    {
++        value = Math.max(1, value);
++        if (status == PetState.Here)
++        {
++            ((EntityMyMagmaCube) getCraftPet().getHandle()).setSize(value);
++        }
++        this.size = value;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -64,21 +79,6 @@ public class MyMagmaCube extends MyPet implements IMyPetSlimeSize
+         return MyPetType.MagmaCube;
+     }
+ 
+-    public int getSize()
+-    {
+-        return size;
+-    }
+-
+-    public void setSize(int value)
+-    {
+-        value = Math.max(1, value);
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyMagmaCube) getCraftPet().getHandle()).setSize(value);
+-        }
+-        this.size = value;
+-    }
+-
+     @Override
+     public String toString()
+     {

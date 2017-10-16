@@ -1,0 +1,46 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/blaze/MyBlaze.java b/src/main/java/de/Keyle/MyPet/entity/types/blaze/MyBlaze.java
+index 304d7ff3..41fee411 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/blaze/MyBlaze.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/blaze/MyBlaze.java
+@@ -40,6 +40,20 @@ public class MyBlaze extends MyPet
+         super(petOwner);
+     }
+ 
++    public boolean isOnFire()
++    {
++        return isOnFire;
++    }
++
++    public void setOnFire(boolean flag)
++    {
++        if (status == PetState.Here)
++        {
++            ((EntityMyBlaze) getCraftPet().getHandle()).setOnFire(flag);
++        }
++        isOnFire = flag;
++    }
++
+     @Override
+     public CompoundTag getExtendedInfo()
+     {
+@@ -63,20 +77,6 @@ public class MyBlaze extends MyPet
+         return MyPetType.Blaze;
+     }
+ 
+-    public boolean isOnFire()
+-    {
+-        return isOnFire;
+-    }
+-
+-    public void setOnFire(boolean flag)
+-    {
+-        if (status == PetState.Here)
+-        {
+-            ((EntityMyBlaze) getCraftPet().getHandle()).setOnFire(flag);
+-        }
+-        isOnFire = flag;
+-    }
+-
+     @Override
+     public String toString()
+     {

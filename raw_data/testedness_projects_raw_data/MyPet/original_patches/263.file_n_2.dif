@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/support/Minigames.java b/src/main/java/de/Keyle/MyPet/util/support/Minigames.java
+index 920c31a1..917f3e5d 100644
+--- a/src/main/java/de/Keyle/MyPet/util/support/Minigames.java
++++ b/src/main/java/de/Keyle/MyPet/util/support/Minigames.java
+@@ -47,7 +47,7 @@ public class Minigames implements Listener
+         if (DISABLE_PETS_IN_MINIGAMES && MyPetPlayer.isMyPetPlayer(event.getPlayer()))
+         {
+             MyPetPlayer player = MyPetPlayer.getMyPetPlayer(event.getPlayer());
+-            if (player.hasMyPet() && player.getMyPet().getStatus() == PetState.Here)
++            if (player.getMyPet().getStatus() == PetState.Here)
+             {
+                 player.getMyPet().removePet();
+                 player.getPlayer().sendMessage(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_Minigames")));
+@@ -61,7 +61,7 @@ public class Minigames implements Listener
+         if (DISABLE_PETS_IN_MINIGAMES && MyPetPlayer.isMyPetPlayer(event.getPlayer()))
+         {
+             MyPetPlayer player = MyPetPlayer.getMyPetPlayer(event.getPlayer());
+-            if (player.hasMyPet() && player.getMyPet().getStatus() == PetState.Here)
++            if (player.getMyPet().getStatus() == PetState.Here)
+             {
+                 player.getMyPet().removePet();
+                 player.getPlayer().sendMessage(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_Minigames")));

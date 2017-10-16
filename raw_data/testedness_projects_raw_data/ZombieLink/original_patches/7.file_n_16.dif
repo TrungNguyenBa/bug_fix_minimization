@@ -1,0 +1,21 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java b/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
+index c15fee1..f375a22 100644
+--- a/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
++++ b/src/test/java/com/lonepulse/zombielink/processor/AsyncEndpoint.java
+@@ -23,6 +23,8 @@ package com.lonepulse.zombielink.processor;
+ 
+ import com.lonepulse.zombielink.annotation.Asynchronous;
+ import com.lonepulse.zombielink.annotation.Endpoint;
++import com.lonepulse.zombielink.annotation.Parser;
++import com.lonepulse.zombielink.annotation.Parser.ParserType;
+ import com.lonepulse.zombielink.annotation.Request;
+ import com.lonepulse.zombielink.response.AsyncHandler;
+ 
+@@ -38,6 +40,7 @@ import com.lonepulse.zombielink.response.AsyncHandler;
+  * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
+ @Asynchronous
++@Parser(ParserType.STRING)
+ @Endpoint(host = "0.0.0.0", port = "8080")
+ public interface AsyncEndpoint {
+ 	

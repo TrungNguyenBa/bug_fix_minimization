@@ -1,0 +1,3 @@
+4a724c7 : fix for MAVEN-219 "Grails 2.3.0 WAR file created from maven does not include plugins"
+:100644 100644 4695a2f... 1a02cec... M	pom.xml
+:100755 100755 dc0d245... db434b8... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java

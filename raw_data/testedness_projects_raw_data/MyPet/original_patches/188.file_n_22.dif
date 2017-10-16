@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java b/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
+index ae9cc52e..5ef7841f 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/wither/EntityMyWither.java
+@@ -47,7 +47,7 @@ public class EntityMyWither extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.wither.idle";
++        return !playIdleSound() ? null : "mob.wither.idle";
+     }
+ 
+     protected void initDatawatcher()

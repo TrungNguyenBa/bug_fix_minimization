@@ -1,0 +1,108 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+index 62ed71a0..38e52f2e 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/EntityMyPig.java
+@@ -101,67 +101,60 @@ public class EntityMyPig extends EntityMyPet
+      */
+     public boolean a_(EntityHuman entityhuman)
+     {
+-        try
++        if (super.a_(entityhuman))
+         {
+-            if (super.a_(entityhuman))
+-            {
+-                return true;
+-            }
++            return true;
++        }
+ 
+-            ItemStack itemStack = entityhuman.inventory.getItemInHand();
++        ItemStack itemStack = entityhuman.inventory.getItemInHand();
+ 
+-            if (getOwner().equals(entityhuman) && itemStack != null)
++        if (getOwner().equals(entityhuman) && itemStack != null)
++        {
++            if (itemStack.id == 329 && !((MyPig) myPet).hasSaddle())
+             {
+-                if (itemStack.id == 329 && !((MyPig) myPet).hasSaddle())
++                if (!entityhuman.abilities.canInstantlyBuild)
+                 {
+-                    if (!entityhuman.abilities.canInstantlyBuild)
+-                    {
+-                        --itemStack.count;
+-                    }
+-                    if (itemStack.count <= 0)
+-                    {
+-                        entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+-                    }
+-                    ((MyPig) myPet).setSaddle(true);
+-                    return true;
++                    --itemStack.count;
+                 }
+-                else if (itemStack.id == Item.SHEARS.id && ((MyPig) myPet).hasSaddle())
++                if (itemStack.count <= 0)
+                 {
+-                    if (!this.world.isStatic)
++                    entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
++                }
++                ((MyPig) myPet).setSaddle(true);
++                return true;
++            }
++            else if (itemStack.id == Item.SHEARS.id && ((MyPig) myPet).hasSaddle())
++            {
++                if (!this.world.isStatic)
++                {
++                    ((MyPig) myPet).setSaddle(false);
++                    if (!entityhuman.abilities.canInstantlyBuild)
+                     {
+-                        ((MyPig) myPet).setSaddle(false);
+-                        if (!entityhuman.abilities.canInstantlyBuild)
+-                        {
+-                            EntityItem entityitem = this.a(new ItemStack(Item.SADDLE.id, 1, 1), 1.0F);
+-                            entityitem.motY += (double) (this.random.nextFloat() * 0.05F);
+-                            entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+-                            entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+-                        }
+-                        makeSound("mob.sheep.shear", 1.0F, 1.0F);
++                        EntityItem entityitem = this.a(new ItemStack(Item.SADDLE.id, 1, 1), 1.0F);
++                        entityitem.motY += (double) (this.random.nextFloat() * 0.05F);
++                        entityitem.motX += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
++                        entityitem.motZ += (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F);
+                     }
+-                    itemStack.damage(1, entityhuman);
++                    makeSound("mob.sheep.shear", 1.0F, 1.0F);
+                 }
+-                else if (itemStack.id == GROW_UP_ITEM.getId())
++                itemStack.damage(1, entityhuman);
++            }
++            else if (itemStack.id == GROW_UP_ITEM.getId())
++            {
++                if (isBaby())
+                 {
+-                    if (isBaby())
++                    if (!entityhuman.abilities.canInstantlyBuild)
+                     {
+-                        if (!entityhuman.abilities.canInstantlyBuild)
++                        if (--itemStack.count <= 0)
+                         {
+-                            if (--itemStack.count <= 0)
+-                            {
+-                                entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+-                            }
++                            entityhuman.inventory.setItem(entityhuman.inventory.itemInHandIndex, null);
+                         }
+-                        this.setBaby(false);
+-                        return true;
+                     }
++                    this.setBaby(false);
++                    return true;
+                 }
+             }
+         }
+-        catch (Exception e)
+-        {
+-            e.printStackTrace();
+-        }
+         return false;
+     }
+ 

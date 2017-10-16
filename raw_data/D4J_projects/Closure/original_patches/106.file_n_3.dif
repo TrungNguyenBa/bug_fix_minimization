@@ -1,0 +1,20 @@
+diff --git a/src/com/google/javascript/jscomp/GlobalNamespace.java b/src/com/google/javascript/jscomp/GlobalNamespace.java
+index 47ea27a1..58f1370b 100644
+--- a/src/com/google/javascript/jscomp/GlobalNamespace.java
++++ b/src/com/google/javascript/jscomp/GlobalNamespace.java
+@@ -900,15 +900,6 @@ class GlobalNamespace {
+       if (type == Type.OTHER || globalSets != 1 || localSets != 0) {
+         return false;
+       }
+-
+-      // Don't try to collapse if the one global set is a twin reference.
+-      // We could theoretically handle this case in CollapseProperties, but
+-      // it's probably not worth the effort.
+-      Preconditions.checkNotNull(declaration);
+-      if (declaration.getTwin() != null) {
+-        return false;
+-      }
+-
+       if (isClassOrEnum) {
+         return true;
+       }

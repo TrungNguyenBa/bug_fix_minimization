@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+index b049eb44..27652c5a 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java
+@@ -786,7 +786,7 @@ public class MyPetEntityListener implements Listener
+             }
+             event.setDroppedExp(0);
+ 
+-            if (MyPetConfiguration.USE_LEVEL_SYSTEM && (MyPetExperience.LOSS_FIXED > 0 || MyPetExperience.LOSS_PERCENT > 0))
++            if (MyPetConfiguration.USE_LEVEL_SYSTEM && MyPetExperience.LOSS_FIXED > 0 || MyPetExperience.LOSS_PERCENT > 0)
+             {
+                 double lostExpirience = MyPetExperience.LOSS_FIXED;
+                 lostExpirience += myPet.getExperience().getRequiredExp() * MyPetExperience.LOSS_PERCENT / 100;

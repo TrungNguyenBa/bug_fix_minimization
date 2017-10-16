@@ -1,0 +1,8 @@
+55c3202e : The level can not get lower than the skilltree requirement (on death & skilltree switch) Fixes #214
+:100644 100644 d20ce467... b14730c0... M	experience-scripts/exp.js
+:100644 100644 c6f3a1e7... 9888169c... M	src/main/java/de/Keyle/MyPet/commands/CommandChooseSkilltree.java
+:100644 100644 a76840c9... e6132fbc... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:100644 100644 115c513e... 112532e5... M	src/main/java/de/Keyle/MyPet/skill/Experience.java
+:100644 100644 ba00b4aa... ef77dc68... M	src/main/java/de/Keyle/MyPet/skill/experience/Default.java
+:100644 100644 5152ded2... 7fad9ebb... M	src/main/java/de/Keyle/MyPet/skill/experience/Experience.java
+:100644 100644 aa2e3b22... c94e3ca2... M	src/main/java/de/Keyle/MyPet/skill/experience/JavaScript.java

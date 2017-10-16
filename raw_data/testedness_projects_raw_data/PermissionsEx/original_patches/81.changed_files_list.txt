@@ -1,0 +1,2 @@
+f0a15f1 : Properly list user identifier
+:100644 100644 518e9de... 91088da... M	src/main/java/ru/tehkode/permissions/bukkit/commands/PermissionsCommand.java

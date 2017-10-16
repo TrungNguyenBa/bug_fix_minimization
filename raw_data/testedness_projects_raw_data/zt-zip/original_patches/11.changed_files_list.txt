@@ -1,0 +1,13 @@
+74df058 : Fix javadocs. Address doclint warnings on javadoc creation (jdk 1.8)
+:100644 100644 5ea07dd... 4b71d26... M	src/main/java/org/zeroturnaround/zip/ZTFilePermissionsStrategy.java
+:100644 100644 cbfc9ea... 82b4879... M	src/main/java/org/zeroturnaround/zip/ZipEntryCallback.java
+:100644 100644 2a2168a... 5acb05e... M	src/main/java/org/zeroturnaround/zip/ZipInfoCallback.java
+:100644 100644 e71e3e7... 9880a51... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java
+:100644 100644 9b63b57... b593d4d... M	src/main/java/org/zeroturnaround/zip/Zips.java
+:100644 100644 b377d4b... c3816e0... M	src/main/java/org/zeroturnaround/zip/commons/FileUtils.java
+:100644 100644 a3f7e33... 537c4bf... M	src/main/java/org/zeroturnaround/zip/extra/AsiExtraField.java
+:100644 100644 0397021... d7a5794... M	src/main/java/org/zeroturnaround/zip/transform/ByteArrayZipEntryTransformer.java
+:100644 100644 1a70800... 7164982... M	src/main/java/org/zeroturnaround/zip/transform/FileZipEntryTransformer.java
+:100644 100644 1fe9f81... 85f0dad... M	src/main/java/org/zeroturnaround/zip/transform/StreamZipEntryTransformer.java
+:100644 100644 160a76a... e2d2eec... M	src/main/java/org/zeroturnaround/zip/transform/StringZipEntryTransformer.java
+:100644 100644 d40a9dc... 729f083... M	src/main/java/org/zeroturnaround/zip/transform/ZipEntryTransformer.java

@@ -1,0 +1,14 @@
+diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+index 84f44dd6..5beb66f7 100644
+--- a/RELEASE-NOTES.txt
++++ b/RELEASE-NOTES.txt
+@@ -48,9 +48,6 @@ Deprecations since 2.3
+ 
+ Bug fixes since 2.3
+ -------------------
+-- Period.normalizedStandard(PeriodType) [#79]
+-  Fix handling of PeriodType when either years or months missing
+-
+ - Better Javadoc for parsing of numbers in format patterns [#60]
+ 
+ - Remove uncaughtException calls [#59]

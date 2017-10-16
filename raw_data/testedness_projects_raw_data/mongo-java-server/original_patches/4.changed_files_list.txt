@@ -1,0 +1,5 @@
+1c7ada5 : fix $pull operator. closes #20
+:100644 100644 1e355a3... 5c0e430... M	core/src/main/java/de/bwaldvogel/mongo/backend/AbstractMongoCollection.java
+:100644 100644 d561fd2... f23a742... M	core/src/main/java/de/bwaldvogel/mongo/backend/DefaultQueryMatcher.java
+:100644 100644 b79b747... 6c288e5... M	core/src/main/java/de/bwaldvogel/mongo/backend/QueryMatcher.java
+:100644 100644 7d354b8... 6449627... M	test-common/src/main/java/de/bwaldvogel/mongo/backend/AbstractBackendTest.java

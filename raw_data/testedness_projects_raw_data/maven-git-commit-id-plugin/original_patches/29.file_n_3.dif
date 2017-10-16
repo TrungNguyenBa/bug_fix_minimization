@@ -1,0 +1,31 @@
+diff --git a/src/test/java/pl/project13/maven/git/GitDirLocatorTest.java b/src/test/java/pl/project13/maven/git/GitDirLocatorTest.java
+index 6799dd6..c71ef3b 100644
+--- a/src/test/java/pl/project13/maven/git/GitDirLocatorTest.java
++++ b/src/test/java/pl/project13/maven/git/GitDirLocatorTest.java
+@@ -42,18 +42,14 @@ public class GitDirLocatorTest {
+   public void shouldUseTheManuallySpecifiedDirectory() throws Exception {
+     // given
+     File dotGitDir = Files.createTempDir();
+-    try {
+-
+-      // when
+-      GitDirLocator locator = new GitDirLocator(project, reactorProjects);
+-      File foundDirectory = locator.lookupGitDirectory(dotGitDir);
+-
+-      // then
+-      assert foundDirectory != null;
+-      assertThat(foundDirectory.getAbsolutePath()).isEqualTo(dotGitDir.getAbsolutePath());
+-    } finally {
+-      dotGitDir.delete();
+-    }
++
++    // when
++    GitDirLocator locator = new GitDirLocator(project, reactorProjects);
++    File foundDirectory = locator.lookupGitDirectory(dotGitDir);
++
++    // then
++    assert foundDirectory != null;
++    assertThat(foundDirectory.getAbsolutePath()).isEqualTo(dotGitDir.getAbsolutePath());
+   }
+ 
+ }

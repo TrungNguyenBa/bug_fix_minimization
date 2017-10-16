@@ -1,0 +1,12 @@
+diff --git a/src/main/java/com/stripe/model/EventDataDeserializer.java b/src/main/java/com/stripe/model/EventDataDeserializer.java
+index 11b9bfc..6506eb0 100644
+--- a/src/main/java/com/stripe/model/EventDataDeserializer.java
++++ b/src/main/java/com/stripe/model/EventDataDeserializer.java
+@@ -36,7 +36,6 @@ public class EventDataDeserializer implements JsonDeserializer<EventData> {
+         objectMap.put("fee", Fee.class);
+         objectMap.put("account", BankAccount.class);
+         objectMap.put("balance", Balance.class);
+-        objectMap.put("card", Card.class);
+     }
+     
+     private Object deserializeJsonPrimitive(JsonPrimitive element) {

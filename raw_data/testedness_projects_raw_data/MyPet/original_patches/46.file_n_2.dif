@@ -1,0 +1,40 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java b/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
+index 39552965..f9e6f8b0 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/horse/EntityMyHorse.java
+@@ -76,7 +76,7 @@ public class EntityMyHorse extends EntityMyPet {
+     }
+ 
+     public void setAge(int value) {
+-        this.datawatcher.watch(12, Byte.valueOf((byte) MathHelper.clamp(value, -1, 1)));
++        this.datawatcher.watch(12, new Integer(value));
+     }
+ 
+     public void setArmor(int value) {
+@@ -231,7 +231,7 @@ public class EntityMyHorse extends EntityMyPet {
+ 
+     protected void initDatawatcher() {
+         super.initDatawatcher();
+-        this.datawatcher.a(12, Byte.valueOf((byte) 0)); // age
++        this.datawatcher.a(12, Integer.valueOf(0));     // age
+         this.datawatcher.a(16, Integer.valueOf(0));     // saddle & chest
+         this.datawatcher.a(19, Byte.valueOf((byte) 0)); // horse type
+         this.datawatcher.a(20, Integer.valueOf(0));     // variant
+@@ -241,7 +241,7 @@ public class EntityMyHorse extends EntityMyPet {
+ 
+     public void setBaby(boolean flag) {
+         if (flag) {
+-            this.datawatcher.watch(12, Byte.valueOf((byte) MathHelper.clamp(-24000, -1, 1)));
++            this.datawatcher.watch(12, Integer.valueOf(-24000));
+         } else {
+             this.datawatcher.watch(12, new Byte((byte) 0));
+         }
+@@ -254,7 +254,7 @@ public class EntityMyHorse extends EntityMyPet {
+             rearCounter = -1;
+         }
+         if (ageCounter > -1 && ageCounter-- == 0) {
+-            this.datawatcher.watch(12, Byte.valueOf((byte) MathHelper.clamp(getMyPet().getAge() + ageFailCounter++, -1, 1)));
++            this.datawatcher.watch(12, new Integer(getMyPet().getAge() + ageFailCounter++));
+             ageCounter = -1;
+             ageFailCounter %= 1000;
+         }

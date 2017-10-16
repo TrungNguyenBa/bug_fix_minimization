@@ -1,0 +1,3 @@
+5302d87 : Reduce cases where player name is written to user datase, implement more methods for permission subscriptions
+:100644 100644 f7af4a4... fbcb97f... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java
+:100644 100644 293cb95... ae354f4... M	src/main/java/ru/tehkode/permissions/bukkit/regexperms/PEXPermissionSubscriptionMap.java

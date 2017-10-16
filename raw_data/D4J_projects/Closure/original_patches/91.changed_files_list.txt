@@ -1,0 +1,3 @@
+7eb2d84d : don't emit unsafe global this warnings when the @lends annotation is used correctly. fixes issue 248
+:100644 100644 b6993d90... 91008e49... M	src/com/google/javascript/jscomp/CheckGlobalThis.java
+:100644 100644 e0e98204... 8c8394c9... M	test/com/google/javascript/jscomp/CheckGlobalThisTest.java

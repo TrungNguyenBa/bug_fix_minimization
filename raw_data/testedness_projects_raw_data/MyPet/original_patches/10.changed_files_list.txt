@@ -1,0 +1,2 @@
+6420b08d : fix missing XP values for 1.8 mobs fixes #536
+:100644 100644 e99a7d8a... be797859... M	src/main/java/de/Keyle/MyPet/skill/MonsterExperience.java

@@ -1,0 +1,2 @@
+51f703a3 : fixed a typo
+:100644 100644 f30c451b... ad1fb993... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/Beacon.form

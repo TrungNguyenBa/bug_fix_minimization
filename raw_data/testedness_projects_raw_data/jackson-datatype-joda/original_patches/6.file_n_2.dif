@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index c379863..0c0a9f4 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -23,7 +23,7 @@ Joda (http://joda-time.sourceforge.net/) data types.
+   </scm>
+   <properties>
+     <version.jackson.annotations>2.6.0-rc3</version.jackson.annotations>
+-    <version.jackson.core>2.6.0-rc4-SNAPSHOT</version.jackson.core>
++    <version.jackson.core>2.6.0-rc3</version.jackson.core>
+     <!-- Generate PackageVersion.java into this directory. -->
+     <packageVersion.dir>com/fasterxml/jackson/datatype/joda</packageVersion.dir>
+     <packageVersion.package>${project.groupId}.joda</packageVersion.package>

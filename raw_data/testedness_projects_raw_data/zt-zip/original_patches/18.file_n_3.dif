@@ -1,0 +1,15 @@
+diff --git a/src/test/java/org/zeroturnaround/zip/ZipsTest.java b/src/test/java/org/zeroturnaround/zip/ZipsTest.java
+index 3ab9351..5c4a23a 100644
+--- a/src/test/java/org/zeroturnaround/zip/ZipsTest.java
++++ b/src/test/java/org/zeroturnaround/zip/ZipsTest.java
+@@ -240,10 +240,6 @@ public class ZipsTest extends TestCase {
+   }
+ 
+   public void testCharsetEntry() throws IOException {
+-    if (!ZipFileUtil.isCharsetSupported()) {
+-      return; // skip
+-    }
+-
+     File src = new File(MainExamplesTest.DEMO_ZIP);
+     final String fileName = "TestFile.txt";
+     assertFalse(ZipUtil.containsEntry(src, fileName));

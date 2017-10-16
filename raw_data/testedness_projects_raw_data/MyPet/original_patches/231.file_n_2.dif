@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
+index 2c40c5eb..858fa5d6 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
+@@ -79,7 +79,7 @@ public class CommandInfo implements CommandExecutor, TabCompleter
+                 MyPetPlayer myPetPlayer = MyPetPlayer.getMyPetPlayer(player);
+                 MyPet myPet = MyPetList.getMyPet(playerName);
+ 
+-                if (canSee(PetInfoDisplay.Name.adminOnly, myPetPlayer, myPet))
++                if (canSee(PetInfoDisplay.Name.adminOnly, myPetPlayer, myPet) && myPet.getOwner() != myPetPlayer)
+                 {
+                     player.sendMessage(MyPetBukkitUtil.setColors("%aqua%%petname%%white%:").replace("%petname%", myPet.getPetName()));
+                     infoShown = true;

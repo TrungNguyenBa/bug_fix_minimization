@@ -1,0 +1,12 @@
+9cae1ec : make ApplicationFee.refunds a list object instead of array
+:100644 100644 45a0c83... 4ec12a8... M	CHANGELOG
+:100644 100644 ace4423... 15b989e... M	VERSION
+:100644 100644 a23213b... 3583ef0... M	src/main/java/com/stripe/model/ApplicationFee.java
+:100644 100644 6e5e942... 55d29fa... M	src/main/java/com/stripe/model/FeeRefund.java
+:000000 100644 0000000... cd8b422... A	src/main/java/com/stripe/model/FeeRefundCollection.java
+:000000 100644 0000000... 3628476... A	src/main/java/com/stripe/model/FeeRefundCollectionDeserializer.java
+:100644 100644 4ab9a52... 1ebeba8... M	src/main/java/com/stripe/net/APIResource.java
+:100644 100644 ef740c0... a6a6e28... M	src/test/java/com/stripe/StripeTest.java
+:100644 100644 98c3208... a207445... M	src/test/java/com/stripe/model/DeserializerTest.java
+:000000 100644 0000000... ee0ae85... A	src/test/resources/com/stripe/model/appfee_refund_list.json
+:000000 100644 0000000... cdfa7cb... A	src/test/resources/com/stripe/model/appfee_refund_sublist.json

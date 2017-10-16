@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java b/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+index c1137b4..399acb0 100644
+--- a/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
++++ b/src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+@@ -298,10 +298,6 @@ public class PermissionsExPlugin implements PermissionService, ImplementationInt
+         });
+     }
+ 
+-    PermissionsEx getManager() {
+-        return this.manager;
+-    }
+-
+ 
+     @Override
+     public PEXSubjectCollection getUserSubjects() {

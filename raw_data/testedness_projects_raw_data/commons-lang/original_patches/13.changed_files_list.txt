@@ -1,0 +1,2 @@
+51512905 : LANG-1171 Remove log of excluded methods in StringUtilsTest.testStringUtilsCharSequenceContract()
+:100644 100644 a57a7f5c... c49ee6a0... M	src/test/java/org/apache/commons/lang3/StringUtilsTest.java

@@ -1,0 +1,4 @@
+e56846a : Fix a problem with packed arrays
+:100644 100644 6fd8493... e796d4e... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ByteAccumulator.java
+:100644 100644 69369c8... 4cc7796... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 a7a2712... 3b8639c... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/SimpleWriteTest.java

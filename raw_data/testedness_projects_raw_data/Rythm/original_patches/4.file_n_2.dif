@@ -1,0 +1,20 @@
+diff --git a/library/src/main/AndroidManifest.xml b/library/src/main/AndroidManifest.xml
+index a08f456..34f1faf 100644
+--- a/library/src/main/AndroidManifest.xml
++++ b/library/src/main/AndroidManifest.xml
+@@ -1,12 +1,12 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-          package="com.actinarium.rhythm">
++    package="com.actinarium.rhythm" >
+ 
+     <application>
+ 
+         <service
+-                android:name=".RhythmNotificationService"
+-                android:exported="false">
++            android:name=".RhythmService"
++            android:exported="false" >
+         </service>
+ 
+     </application>

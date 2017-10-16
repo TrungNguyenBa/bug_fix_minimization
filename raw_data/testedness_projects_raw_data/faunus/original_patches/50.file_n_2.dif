@@ -1,0 +1,24 @@
+diff --git a/include/faunus/energy.h b/include/faunus/energy.h
+index d2f25597..fb9ecd81 100644
+--- a/include/faunus/energy.h
++++ b/include/faunus/energy.h
+@@ -708,18 +708,8 @@ namespace Faunus {
+           return 0;
+         }
+ 
+-        /**
+-         * @note This will work only for particles contained inside
+-         * Space main particle vector.
+-         */
+         Point f_p2p(const Tparticle &a, const Tparticle &b) FOVERRIDE {
+-          int i=&(spc->p)-&a;
+-          int j=&(spc->p)-&b;
+-          assert(i>=0);
+-          assert(j>=0);
+-          assert(i<(int)spc->p.size());
+-          assert(j<(int)spc->p.size());
+-          auto f=force_list.find( opair<int>(i,j) );
++          auto f=force_list.find( opair<int>(a.id,b.id) );
+           if (f!=this->force_list.end()) {
+             auto r = spc->geo.vdist(a,b);
+             return f->second(a,b,r.squaredNorm(),r);

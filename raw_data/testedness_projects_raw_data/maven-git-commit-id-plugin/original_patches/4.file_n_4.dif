@@ -1,0 +1,7 @@
+diff --git a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/COMMIT_EDITMSG b/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/COMMIT_EDITMSG
+deleted file mode 100644
+index 17354a8..0000000
+--- a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/COMMIT_EDITMSG
++++ /dev/null
+@@ -1 +0,0 @@
+-Third line

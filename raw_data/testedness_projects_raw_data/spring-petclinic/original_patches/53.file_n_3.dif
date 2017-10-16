@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaPetRepositoryImpl.java b/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaPetRepositoryImpl.java
+index 4823aab..ea185cc 100644
+--- a/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaPetRepositoryImpl.java
++++ b/src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaPetRepositoryImpl.java
+@@ -53,7 +53,7 @@ public class JpaPetRepositoryImpl implements PetRepository {
+ 
+     @Override
+     public void save(Pet pet) {
+-        this.em.persist(pet);
++        this.em.merge(pet);
+     }
+ 
+ }

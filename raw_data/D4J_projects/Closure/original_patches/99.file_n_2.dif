@@ -1,0 +1,31 @@
+diff --git a/gen/com/google/javascript/jscomp/FunctionInformationMap.java b/gen/com/google/javascript/jscomp/FunctionInformationMap.java
+index 7d09eb4d..7ecd5bd7 100644
+--- a/gen/com/google/javascript/jscomp/FunctionInformationMap.java
++++ b/gen/com/google/javascript/jscomp/FunctionInformationMap.java
+@@ -212,7 +212,7 @@ public  final class FunctionInformationMap extends
+       return size;
+     }
+     
+-    @java.lang.Override
++    @Override
+     protected Object writeReplace() throws java.io.ObjectStreamException {
+       return super.writeReplace();
+     }
+@@ -687,7 +687,7 @@ public  final class FunctionInformationMap extends
+       return size;
+     }
+     
+-    @java.lang.Override
++    @Override
+     protected Object writeReplace() throws java.io.ObjectStreamException {
+       return super.writeReplace();
+     }
+@@ -1014,7 +1014,7 @@ public  final class FunctionInformationMap extends
+     return size;
+   }
+   
+-  @java.lang.Override
++  @Override
+   protected Object writeReplace() throws java.io.ObjectStreamException {
+     return super.writeReplace();
+   }

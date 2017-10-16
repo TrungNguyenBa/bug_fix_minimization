@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java
+index a90b4cc2..71b537a1 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java
+@@ -70,7 +70,7 @@ public class Ranged extends RangedInfo implements ISkillInstance
+                 }
+                 if (!quiet)
+                 {
+-                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddDamage", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%dmg%", "" + damage));
++                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddDamage", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%dmg%", "" + damage));
+                 }
+             }
+             if (isPassive != (damage <= 0))

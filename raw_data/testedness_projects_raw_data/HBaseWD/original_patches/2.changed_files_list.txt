@@ -1,0 +1,3 @@
+3bc49c9 : HBASEWD-17: Wrong interval pairs when end key is empty in original scan
+:100644 100644 4e4fedf... ba7d39b... M	src/main/java/com/sematext/hbase/wd/AbstractRowKeyDistributor.java
+:100644 100644 317561a... e9c2eb4... M	src/test/java/com/sematext/hbase/wd/RowKeyDistributorTestBase.java

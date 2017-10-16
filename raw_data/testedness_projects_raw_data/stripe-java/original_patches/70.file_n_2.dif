@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/stripe/model/BankAccount.java b/src/main/java/com/stripe/model/BankAccount.java
+index e996fc3..2ad6f4a 100644
+--- a/src/main/java/com/stripe/model/BankAccount.java
++++ b/src/main/java/com/stripe/model/BankAccount.java
+@@ -28,7 +28,7 @@ public class BankAccount extends StripeObject {
+ 	}
+ 
+ 	public void setBankName(String bankName) {
+-		this.bankName = bankName;
++		this.bankName= bankName;
+ 	}
+ 
+ 	public Boolean getValidated() {

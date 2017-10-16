@@ -1,0 +1,37 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 96e1a7d..bc6ea79 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -124,7 +124,7 @@ public class PermissionManager {
+ 			if (reloadEntity) {
+ 				switch (event.getType()) {
+ 					case USER:
+-						resetUser(event.getEntityIdentifier());
++						users.remove(event.getEntityIdentifier());
+ 						break;
+ 					case GROUP:
+ 						PermissionGroup group = groups.remove(event.getEntityIdentifier());
+@@ -157,8 +157,8 @@ public class PermissionManager {
+ 			}
+ 
+ 			try {
+-				if (getBackend() != null) {
+-					getBackend().reload();
++				if (backend != null) {
++					backend.reload();
+ 				}
+ 				clearCache();
+ 			} catch (PermissionBackendException e) {
+@@ -730,10 +730,8 @@ public class PermissionManager {
+ 
+ 	public void end() {
+ 		try {
+-			if (this.backend != null) {
+-				this.backend.close();
+-				this.backend = null;
+-			}
++			this.backend.close();
++			this.backend = null;
+ 			reset();
+ 		} catch (PermissionBackendException ignore) {
+ 			// Ignore because we're shutting down so who cares

@@ -1,0 +1,91 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java
+index 11b16bf2..b58ea7dc 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java
+@@ -25,9 +25,9 @@ import de.Keyle.MyPet.entity.types.MyPet.PetState;
+ import de.Keyle.MyPet.entity.types.MyPetList;
+ import de.Keyle.MyPet.skill.skills.implementation.Behavior;
+ import de.Keyle.MyPet.skill.skills.info.BehaviorInfo.BehaviorState;
+-import de.Keyle.MyPet.util.Permissions;
+-import de.Keyle.MyPet.util.Util;
+-import de.Keyle.MyPet.util.locale.Locales;
++import de.Keyle.MyPet.util.MyPetPermissions;
++import de.Keyle.MyPet.util.MyPetUtil;
++import de.Keyle.MyPet.util.locale.MyPetLocales;
+ import org.bukkit.command.Command;
+ import org.bukkit.command.CommandExecutor;
+ import org.bukkit.command.CommandSender;
+@@ -63,7 +63,7 @@ public class CommandBehavior implements CommandExecutor, TabCompleter
+ 
+                 if (myPet.getStatus() == PetState.Despawned)
+                 {
+-                    sender.sendMessage(Util.formatText(Locales.getString("Message.CallFirst", petOwner), myPet.getPetName()));
++                    sender.sendMessage(MyPetUtil.formatText(MyPetLocales.getString("Message.CallFirst", petOwner), myPet.getPetName()));
+                     return true;
+                 }
+                 else if (myPet.getSkills().hasSkill("Behavior"))
+@@ -73,45 +73,45 @@ public class CommandBehavior implements CommandExecutor, TabCompleter
+                     {
+                         if ((args[0].equalsIgnoreCase("friendly") || args[0].equalsIgnoreCase("friend")))
+                         {
+-                            if (!Permissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Friendly") || !behaviorSkill.isModeUsable(BehaviorState.Friendly))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Friendly") || !behaviorSkill.isModeUsable(BehaviorState.Friendly))
+                             {
+-                                myPet.sendMessageToOwner(Locales.getString("Message.NotAllowed", petOwner));
++                                myPet.sendMessageToOwner(MyPetLocales.getString("Message.NotAllowed", petOwner));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(Behavior.BehaviorState.Friendly);
+                         }
+                         else if ((args[0].equalsIgnoreCase("aggressive") || args[0].equalsIgnoreCase("Aggro")))
+                         {
+-                            if (!Permissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.aggressive") || !behaviorSkill.isModeUsable(BehaviorState.Aggressive))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.aggressive") || !behaviorSkill.isModeUsable(BehaviorState.Aggressive))
+                             {
+-                                myPet.sendMessageToOwner(Locales.getString("Message.NotAllowed", petOwner));
++                                myPet.sendMessageToOwner(MyPetLocales.getString("Message.NotAllowed", petOwner));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(Behavior.BehaviorState.Aggressive);
+                         }
+                         else if (args[0].equalsIgnoreCase("farm"))
+                         {
+-                            if (!Permissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Farm") || !behaviorSkill.isModeUsable(BehaviorState.Farm))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Farm") || !behaviorSkill.isModeUsable(BehaviorState.Farm))
+                             {
+-                                myPet.sendMessageToOwner(Locales.getString("Message.NotAllowed", petOwner));
++                                myPet.sendMessageToOwner(MyPetLocales.getString("Message.NotAllowed", petOwner));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(BehaviorState.Farm);
+                         }
+                         else if (args[0].equalsIgnoreCase("raid"))
+                         {
+-                            if (!Permissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Raid") || !behaviorSkill.isModeUsable(BehaviorState.Raid))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Raid") || !behaviorSkill.isModeUsable(BehaviorState.Raid))
+                             {
+-                                myPet.sendMessageToOwner(Locales.getString("Message.NotAllowed", petOwner));
++                                myPet.sendMessageToOwner(MyPetLocales.getString("Message.NotAllowed", petOwner));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(Behavior.BehaviorState.Raid);
+                         }
+                         else if (args[0].equalsIgnoreCase("duel"))
+                         {
+-                            if (!Permissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Duel") || !behaviorSkill.isModeUsable(BehaviorState.Duel))
++                            if (!MyPetPermissions.hasExtended(petOwner, "MyPet.user.extended.Behavior.Duel") || !behaviorSkill.isModeUsable(BehaviorState.Duel))
+                             {
+-                                myPet.sendMessageToOwner(Locales.getString("Message.NotAllowed", petOwner));
++                                myPet.sendMessageToOwner(MyPetLocales.getString("Message.NotAllowed", petOwner));
+                                 return true;
+                             }
+                             behaviorSkill.activateBehavior(Behavior.BehaviorState.Duel);
+@@ -135,7 +135,7 @@ public class CommandBehavior implements CommandExecutor, TabCompleter
+             }
+             else
+             {
+-                sender.sendMessage(Locales.getString("Message.DontHavePet", petOwner));
++                sender.sendMessage(MyPetLocales.getString("Message.DontHavePet", petOwner));
+             }
+             return true;
+         }

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/HPregeneration.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/HPregeneration.java
+index e6741865..5127ea1d 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/HPregeneration.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/HPregeneration.java
+@@ -97,7 +97,7 @@ public class HPregeneration extends HPregenerationInfo implements ISkillInstance
+             }
+             if (!quiet && valuesEdit)
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddHpRegeneration", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%sec%", "" + regenTime).replace("%hp%", "" + increaseHpBy));
++                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.AddHpRegeneration", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%sec%", "" + regenTime).replace("%hp%", "" + increaseHpBy));
+             }
+         }
+     }

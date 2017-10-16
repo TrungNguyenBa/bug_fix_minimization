@@ -1,0 +1,31 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+index 076e6d0..e6f8f44 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+@@ -18,7 +18,7 @@ package ninja.leaping.permissionsex.command;
+ 
+ import com.google.common.collect.ImmutableSet;
+ import ninja.leaping.permissionsex.PermissionsEx;
+-import ninja.leaping.permissionsex.data.ImmutableSubjectData;
++import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ import ninja.leaping.permissionsex.data.SubjectCache;
+ import ninja.leaping.permissionsex.util.command.CommandContext;
+ import ninja.leaping.permissionsex.util.command.CommandException;
+@@ -51,7 +51,7 @@ public class ParentCommands {
+                         checkSubjectPermission(src, subject, "permissionsex.parent.add");
+                         Set<Map.Entry<String, String>> contexts = ImmutableSet.copyOf(args.<Map.Entry<String, String>>getAll("context"));
+                         SubjectCache dataCache = args.hasAny("transient") ? pex.getTransientSubjects(subject.getKey()) : pex.getSubjects(subject.getKey());
+-                        ImmutableSubjectData data = getSubjectData(dataCache, subject.getValue());
++                        ImmutableOptionSubjectData data = getSubjectData(dataCache, subject.getValue());
+                         Map.Entry<String, String> parent = args.getOne("parent");
+                         messageSubjectOnFuture(
+                                 dataCache.update(subject.getValue(), data.addParent(contexts, parent.getKey(), parent.getValue())), src,
+@@ -72,7 +72,7 @@ public class ParentCommands {
+                         checkSubjectPermission(src, subject, "permissionsex.parent.remove");
+                         Set<Map.Entry<String, String>> contexts = ImmutableSet.copyOf(args.<Map.Entry<String, String>>getAll("context"));
+                         SubjectCache dataCache = args.hasAny("transient") ? pex.getTransientSubjects(subject.getKey()) : pex.getSubjects(subject.getKey());
+-                        ImmutableSubjectData data = getSubjectData(dataCache, subject.getValue());
++                        ImmutableOptionSubjectData data = getSubjectData(dataCache, subject.getValue());
+                         Map.Entry<String, String> parent = args.getOne("parent");
+                         messageSubjectOnFuture(
+                                 dataCache.update(subject.getValue(), data.removeParent(contexts, parent.getKey(), parent.getValue())), src,

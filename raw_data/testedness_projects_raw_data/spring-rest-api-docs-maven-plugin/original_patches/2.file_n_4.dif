@@ -1,0 +1,46 @@
+diff --git a/src/main/java/com/pehrs/spring/api/doc/SpringRESTAPIDoclet.java b/src/main/java/com/pehrs/spring/api/doc/SpringRESTAPIDoclet.java
+index dd359b5..5a8b8af 100644
+--- a/src/main/java/com/pehrs/spring/api/doc/SpringRESTAPIDoclet.java
++++ b/src/main/java/com/pehrs/spring/api/doc/SpringRESTAPIDoclet.java
+@@ -41,20 +41,19 @@ import freemarker.template.TemplateException;
+ 
+ public class SpringRESTAPIDoclet {
+ 
+-	public static final String SYSARG_EXCLUDE_PATTERN = "exclude.pattern";
+-	public static final String SYSARG_URL_PREFIX = "url.prefix";
+-	public static final String SYSARG_POM_VERSION = "pom.version";
+-	public static final String SYSARG_POM_NAME = "pom.name";
+-	public static final String SYSARG_POM_ARTIFACT_ID = "pom.artifact.id";
+-	public static final String SYSARG_POM_GROUP_ID = "pom.group.id";
+-	public static final String SYSARG_TARGET = "target";
+-	public static final String SYSARG_FILE_EXT = "file.ext";
+-	public static final String SYSARG_FILE_EXT_DEFAULT = ".html";
+-	public static final String SYSARG_CLASS_SUFFIX = "class.suffix";
+-	public static final String SYSARG_CLASS_SUFFIX_DEFAULT = "";
+-	public static final String SYSARG_CLASS_PREFIX = "class.prefix";
+-	public static final String SYSARG_CLASS_PREFIX_DEFAULT = "";
+-	public static final String SYSARG_TEMPLATE_DIR = "template.dir";
++	private static final String SYSARG_EXCLUDE_PATTERN = "exclude.pattern";
++	private static final String SYSARG_URL_PREFIX = "url.prefix";
++	private static final String SYSARG_POM_VERSION = "pom.version";
++	private static final String SYSARG_POM_NAME = "pom.name";
++	private static final String SYSARG_POM_ARTIFACT_ID = "pom.artifact.id";
++	private static final String SYSARG_POM_GROUP_ID = "pom.group.id";
++	private static final String SYSARG_TARGET = "target";
++	private static final String SYSARG_FILE_EXT = "file.ext";
++	private static final String SYSARG_FILE_EXT_DEFAULT = ".html";
++	private static final String SYSARG_CLASS_SUFFIX = "class.suffix";
++	private static final String SYSARG_CLASS_SUFFIX_DEFAULT = "";
++	private static final String SYSARG_CLASS_PREFIX = "class.prefix";
++	private static final String SYSARG_CLASS_PREFIX_DEFAULT = "";
+ 	
+ 	private static final String DATAMODEL_POM_VERSION = "pom_version";
+ 	private static final String DATAMODEL_POM_ARTIFACT_ID = "pom_artifact_id";
+@@ -68,6 +67,7 @@ public class SpringRESTAPIDoclet {
+ 
+ 	private static final String TEMPLATE_RESOURCE_DIR = "/com/pehrs/spring/api/doc/templates";
+ 
++	private static final String SYSARG_TEMPLATE_DIR = "template.dir";
+ 
+ 	private static final String SPRING_CONTROLLER_ANNOTATION_CLASSNAME = "org.springframework.stereotype.Controller";
+ 	private static final String SPRING_PATH_VARIABLE_ANNOTATION_CLASSNAME = "org.springframework.web.bind.annotation.PathVariable";

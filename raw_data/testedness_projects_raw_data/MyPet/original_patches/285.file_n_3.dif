@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+index 31775992..f245487b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/blaze/EntityMyBlaze.java
+@@ -45,7 +45,7 @@ public class EntityMyBlaze extends EntityMyPet
+ 
+     public boolean isOnFire()
+     {
+-        return ((MyBlaze) myPet).isOnFire;
++        return this.datawatcher.getByte(16) == 1;
+     }
+ 
+     public void setOnFire(boolean flag)

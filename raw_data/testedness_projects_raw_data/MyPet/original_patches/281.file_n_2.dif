@@ -1,0 +1,16 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
+index cc791c01..420fb7d4 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
+@@ -290,10 +290,7 @@ public class CommandRelease implements CommandExecutor, TabCompleter
+                     sender.sendMessage(MyPetBukkitUtil.setColors(MyPetLanguage.getString("Msg_Release")).replace("%petname%", myPet.petName));
+                     MyPetList.removeInactiveMyPet(MyPetList.setMyPetInactive(myPet.getOwner()));
+                     DebugLogger.info(sender.getName() + " released pet.");
+-                    if (MyPetConfiguration.STORE_PETS_ON_PET_RELEASE)
+-                    {
+-                        DebugLogger.info(MyPetPlugin.getPlugin().savePets(false) + " pet(s) saved.");
+-                    }
++                    DebugLogger.info(MyPetPlugin.getPlugin().savePets(false) + " pet(s) saved.");
+                     return true;
+                 }
+                 else

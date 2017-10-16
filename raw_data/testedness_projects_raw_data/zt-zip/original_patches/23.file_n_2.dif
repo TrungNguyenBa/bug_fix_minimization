@@ -1,0 +1,47 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipUtil.java b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+index bf13789..2d61b9d 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipUtil.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+@@ -1027,9 +1027,8 @@ public final class ZipUtil {
+         }
+       });
+     }
+-    else {
++    else
+       pack(sourceDir, targetZipFile);
+-    }
+   }
+ 
+   /**
+@@ -1161,9 +1160,9 @@ public final class ZipUtil {
+       String filename = filenames[i];
+       File file = new File(dir, filename);
+       boolean isDir = file.isDirectory();
+-      String path = pathPrefix + file.getName(); //nosonar
++      String path = pathPrefix + file.getName();
+       if (isDir) {
+-        path += PATH_SEPARATOR; //nosonar
++        path += PATH_SEPARATOR;
+       }
+ 
+       // Create a ZIP entry
+@@ -2162,16 +2161,13 @@ public final class ZipUtil {
+     public void process(InputStream in, ZipEntry zipEntry) throws IOException {
+       if (names.add(zipEntry.getName())) {
+         ZipEntryTransformer entry = (ZipEntryTransformer) entryByPath.remove(zipEntry.getName());
+-        if (entry != null) {
++        if (entry != null)
+           entry.transform(in, zipEntry, out);
+-        }
+-        else {
++        else
+           ZipEntryUtil.copyEntry(zipEntry, in, out);
+-        }
+       }
+-      else if (log.isDebugEnabled()) {
++      else if (log.isDebugEnabled())
+         log.debug("Duplicate entry: {}", zipEntry.getName());
+-      }
+     }
+ 
+     /**

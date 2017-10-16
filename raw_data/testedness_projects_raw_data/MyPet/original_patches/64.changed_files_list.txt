@@ -1,0 +1,4 @@
+429ca6fd : Store whether a pet wants to respawn fixes #325
+:100644 100644 1ce034fd... f4f14082... M	src/main/java/de/Keyle/MyPet/entity/types/InactiveMyPet.java
+:100644 100644 2840e85b... abd3bc83... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 3b992ff4... 311b6e47... M	src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java

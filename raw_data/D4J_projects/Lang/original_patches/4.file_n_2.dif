@@ -1,0 +1,12 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 62fb4180..80161590 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -22,7 +22,6 @@
+   <body>
+ 
+   <release version="3.2" date="TBA" description="Next release">
+-    <action issue="LANG-882" type="update">LookupTranslator now works with implementations of CharSequence other than String </action>
+     <action issue="LANG-754" type="fix">ClassUtils.getShortName(String) will now only do a reverse lookup for array types</action>  
+     <action issue="LANG-886" type="add">Added CharSetUtils.containsAny(String, String)</action>
+     <action issue="LANG-846" type="update">Provide CharSequenceUtils.regionMatches with a proper green implementation instead of inefficiently converting to Strings</action>

@@ -1,0 +1,14 @@
+diff --git a/library/src/main/res/values/strings.xml b/library/src/main/res/values/strings.xml
+index 63a27fb..628aa57 100644
+--- a/library/src/main/res/values/strings.xml
++++ b/library/src/main/res/values/strings.xml
+@@ -1,8 +1,3 @@
+-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
++<resources>
+     <string name="app_name">Rhythm</string>
+-
+-    <string name="notif_control">Control: <xliff:g id="control_title" example="Card overlay">%s</xliff:g></string>
+-    <string name="notif_config">Config: <xliff:g id="config_title" example="Grid and keylines">%s</xliff:g></string>
+-    <string name="notif_error_title">Couldn’t connect to Rhythm</string>
+-    <string name="notif_error_text">Check if your Application implements RhythmManager.Host</string>
+ </resources>

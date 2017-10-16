@@ -1,0 +1,19 @@
+diff --git a/src/main/java/org/tiernolan/nervous/network/api/connection/Connection.java b/src/main/java/org/tiernolan/nervous/network/api/connection/Connection.java
+deleted file mode 100644
+index 04c0d5c..0000000
+--- a/src/main/java/org/tiernolan/nervous/network/api/connection/Connection.java
++++ /dev/null
+@@ -1,13 +0,0 @@
+-package org.tiernolan.nervous.network.api.connection;
+-
+-import org.tiernolan.nervous.network.api.protocol.ProtocolComponent;
+-
+-public interface Connection extends ProtocolComponent {
+-
+-	/**
+-	 * Closes the connection.  This method has no effect if 
+-	 * the connection is already closed
+-	 */
+-	public void close();
+-	
+-}

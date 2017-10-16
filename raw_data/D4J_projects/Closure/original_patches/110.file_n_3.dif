@@ -1,0 +1,15 @@
+diff --git a/src/com/google/javascript/rhino/Node.java b/src/com/google/javascript/rhino/Node.java
+index 6a3e9e03..558a3aa3 100644
+--- a/src/com/google/javascript/rhino/Node.java
++++ b/src/com/google/javascript/rhino/Node.java
+@@ -551,10 +551,6 @@ public class Node implements Cloneable, Serializable {
+       return null;
+     }
+     Node n = first;
+-    if (n == null) {
+-      throw new RuntimeException("node is not a child");
+-    }
+-
+     while (n.next != child) {
+       n = n.next;
+       if (n == null) {

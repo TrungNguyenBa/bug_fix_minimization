@@ -1,0 +1,12 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
+index d010570..32f6ef3 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLConnection.java
+@@ -22,7 +22,6 @@ import java.sql.Connection;
+ import java.sql.PreparedStatement;
+ import java.sql.SQLException;
+ import java.sql.Statement;
+-import java.sql.Types;
+ import java.util.logging.Level;
+ import java.util.regex.Matcher;
+ import java.util.regex.Pattern;

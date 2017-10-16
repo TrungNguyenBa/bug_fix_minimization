@@ -1,0 +1,29 @@
+diff --git a/src/test/java/com/ushahidi/swiftriver/core/rules/RulesUpdateQueueConsumerTest.java b/src/test/java/com/ushahidi/swiftriver/core/rules/RulesUpdateQueueConsumerTest.java
+index 833c5c3..16ac2df 100644
+--- a/src/test/java/com/ushahidi/swiftriver/core/rules/RulesUpdateQueueConsumerTest.java
++++ b/src/test/java/com/ushahidi/swiftriver/core/rules/RulesUpdateQueueConsumerTest.java
+@@ -25,7 +25,6 @@ import java.util.List;
+ import java.util.concurrent.ConcurrentHashMap;
+ import java.util.concurrent.ConcurrentMap;
+ 
+-import org.codehaus.jackson.map.ObjectMapper;
+ import org.junit.Before;
+ import org.junit.Test;
+ import org.mockito.ArgumentCaptor;
+@@ -50,8 +49,6 @@ public class RulesUpdateQueueConsumerTest {
+ 	
+ 	private RulesRegistry rulesRegistry;
+ 	
+-	private ObjectMapper objectMapper = new ObjectMapper();
+-	
+ 	@Before
+ 	public void setUp() {
+ 		dropRulesMap = new ConcurrentHashMap<Long, List<Object>>();
+@@ -60,7 +57,6 @@ public class RulesUpdateQueueConsumerTest {
+ 		rulesUpdateQueueConsumer = new RulesUpdateQueueConsumer();
+ 		rulesUpdateQueueConsumer.setDropRulesMap(dropRulesMap);
+ 		rulesUpdateQueueConsumer.setRulesRegistry(rulesRegistry);
+-		rulesUpdateQueueConsumer.setObjectMapper(objectMapper);
+ 	}
+ 	
+ 	@Test

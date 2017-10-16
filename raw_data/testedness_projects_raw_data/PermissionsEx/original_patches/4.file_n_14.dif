@@ -1,0 +1,12 @@
+diff --git a/permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java b/permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
+index 21b0773..6c85e58 100644
+--- a/permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
++++ b/permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
+@@ -18,7 +18,6 @@ package ninja.leaping.permissionsex.data;
+ 
+ import ninja.leaping.configurate.ConfigurationNode;
+ import ninja.leaping.permissionsex.PermissionsExTest;
+-import ninja.leaping.permissionsex.data.calculated.CalculatedSubject;
+ import ninja.leaping.permissionsex.exception.PermissionsLoadingException;
+ import org.junit.Test;
+ 

@@ -1,0 +1,2 @@
+c82759c : Correct info about transport protocol in graylogHost
+:100644 100644 cee3df3... 2a7a582... M	README.md

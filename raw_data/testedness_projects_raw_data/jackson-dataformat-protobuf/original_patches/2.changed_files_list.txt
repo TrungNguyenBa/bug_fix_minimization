@@ -1,0 +1,7 @@
+9fc4035 : Fix #10; add tons of new unit tests as well
+:100644 100644 142d44f... 56cdd10... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 ef7b346... a98c429... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+:100644 100644 7148b81... 71a35b5... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+:000000 100644 0000000... 8acce55... A	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteBinaryTest.java
+:100644 100644 2cd31db... cc4de36... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteSimpleTest.java
+:100644 100644 8005aab... 76307b1... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java

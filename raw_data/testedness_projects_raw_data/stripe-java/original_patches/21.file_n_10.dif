@@ -1,0 +1,26 @@
+diff --git a/src/main/java/com/stripe/model/DeletedBitcoinReceiver.java b/src/main/java/com/stripe/model/DeletedBitcoinReceiver.java
+index cb47d68..4a5e2c3 100644
+--- a/src/main/java/com/stripe/model/DeletedBitcoinReceiver.java
++++ b/src/main/java/com/stripe/model/DeletedBitcoinReceiver.java
+@@ -1,5 +1,20 @@
+ package com.stripe.model;
+ 
+ 
+-public class DeletedBitcoinReceiver extends DeletedExternalAccount {
++public class DeletedBitcoinReceiver extends StripeObject implements DeletedStripeObject {
++  String id;
++  Boolean deleted;
++
++  public String getId() {
++    return id;
++  }
++  public void setId(String id) {
++    this.id = id;
++  }
++  public Boolean getDeleted() {
++    return deleted;
++  }
++  public void setDeleted(Boolean deleted) {
++    this.deleted = deleted;
++  }
+ }

@@ -1,0 +1,21 @@
+diff --git a/include/faunus/move.h b/include/faunus/move.h
+index 4ffe1e5d..0aaab41e 100644
+--- a/include/faunus/move.h
++++ b/include/faunus/move.h
+@@ -1699,7 +1699,6 @@ namespace Faunus {
+       bool insert() {
+         inmol = randomMol();
+         randomState( molvec[inmol] );
+-        return true;
+       }
+       
+     protected:
+@@ -1734,8 +1733,6 @@ namespace Faunus {
+           // in case of insertion
+           
+         }
+-
+-        return 0;
+           
+       }
+       

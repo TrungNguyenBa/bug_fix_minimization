@@ -1,0 +1,6 @@
+a0f3e0435 : fixed dimension error in operate method for RealMatrixImpl and BigMatrixImpl JIRA: MATH-209
+:100644 100644 7cd61cb2c... 919a5bab1... M	src/java/org/apache/commons/math/linear/BigMatrixImpl.java
+:100644 100644 791064425... 3a717ff83... M	src/java/org/apache/commons/math/linear/RealMatrixImpl.java
+:100644 100644 7b76af9ad... 3a61b1d7b... M	src/site/xdoc/changes.xml
+:100644 100644 f30e04b9c... 2f52c3508... M	src/test/org/apache/commons/math/linear/BigMatrixImplTest.java
+:100644 100644 7553f3675... 383a9598e... M	src/test/org/apache/commons/math/linear/RealMatrixImplTest.java

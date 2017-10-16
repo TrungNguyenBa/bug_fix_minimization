@@ -1,0 +1,35 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
+index 27da3f0..b5e9615 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
+@@ -19,7 +19,6 @@ public class PermissionsExConfig {
+ 	private final String defaultBackend;
+ 	private final boolean updaterEnabled;
+ 	private final boolean alwaysUpdate;
+-	private final boolean informPlayers;
+ 
+ 	public PermissionsExConfig(Configuration config) {
+ 		this.config = config;
+@@ -32,7 +31,6 @@ public class PermissionsExConfig {
+ 		this.defaultBackend = getString("permissions.backend", PermissionBackend.DEFAULT_BACKEND);
+ 		this.updaterEnabled = getBoolean("updater", true);
+ 		this.alwaysUpdate = getBoolean("alwaysUpdate", false);
+-		this.informPlayers = getBoolean("permissions.informplayers.changes", false);
+ 	}
+ 
+ 	private boolean getBoolean(String key, boolean def) {
+@@ -83,13 +81,7 @@ public class PermissionsExConfig {
+ 		return updaterEnabled;
+ 	}
+ 
+-	public boolean alwaysUpdate() {
+-		return alwaysUpdate;
+-	}
+-
+-	public boolean informPlayers() {
+-		return informPlayers;
+-	}
++	public boolean alwaysUpdate() { return alwaysUpdate; }
+ 
+ 	public ConfigurationSection getBackendConfig(String backend) {
+ 		ConfigurationSection section = config.getConfigurationSection("permissions.backends." + backend);

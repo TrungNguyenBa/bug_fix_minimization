@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+index 75185ec..39c00d5 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+@@ -81,8 +81,6 @@ public class FileBackend extends PermissionBackend {
+ 						return parentWorlds;
+ 					}
+ 				}
+-			} else {
+-				return parentWorlds;
+ 			}
+ 		}
+ 

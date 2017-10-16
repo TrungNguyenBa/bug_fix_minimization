@@ -1,0 +1,2 @@
+def198f : fixed adding files from directory based on accept filter, it also fixed test (that failed only on windows): ZipsTest.testAddEntryFilter()
+:100644 100644 f8888e3... b9a5f86... M	src/main/java/org/zeroturnaround/zip/Zips.java

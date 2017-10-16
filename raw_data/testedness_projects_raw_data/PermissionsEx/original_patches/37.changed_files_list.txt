@@ -1,0 +1,2 @@
+d06c8e4 : Fixes NullPointerException when calling isOnline()
+:100644 100644 f05a2cb... 846f486... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

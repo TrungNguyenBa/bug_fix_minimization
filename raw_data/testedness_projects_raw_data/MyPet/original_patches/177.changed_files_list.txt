@@ -1,0 +1,2 @@
+64394216 : I can't use BiMaps here because of the SkilltreeCreator The BukkitDev Team would nag if I would shade the libs into MyPet
+:100644 100644 845f3fdc... a42ad244... M	src/main/java/de/Keyle/MyPet/skill/skills/SkillsInfo.java

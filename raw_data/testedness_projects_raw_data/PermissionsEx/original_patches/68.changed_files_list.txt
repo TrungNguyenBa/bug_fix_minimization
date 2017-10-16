@@ -1,0 +1,2 @@
+89af83e : Actually fix default file backend configuration creation
+:100644 100644 f8c1320... 7f36cc9... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java

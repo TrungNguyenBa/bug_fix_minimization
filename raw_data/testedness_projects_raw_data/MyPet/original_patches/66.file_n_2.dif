@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+index e0c0804f..6f30ece7 100644
+--- a/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
++++ b/src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+@@ -284,9 +284,6 @@ public class MyPetPlugin extends JavaPlugin implements IScheduler {
+         }
+         loadGroups(groupsFile);
+         loadData(NBTPetFile);
+-        if (pluginStorage == null) {
+-            pluginStorage = new PluginStorage(new TagCompound());
+-        }
+ 
+         Timer.startTimer();
+ 

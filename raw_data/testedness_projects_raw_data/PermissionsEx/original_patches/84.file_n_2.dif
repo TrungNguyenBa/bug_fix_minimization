@@ -1,0 +1,18 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
+index 4159bc9..de84649 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/GroupCommands.java
+@@ -151,10 +151,10 @@ public class GroupCommands extends PermissionsCommand {
+ 		}
+ 
+ 		if (args.containsKey("newsuffix")) {
+-			group.setSuffix(args.get("newsuffix"), worldName);
+-			sender.sendMessage(group.getIdentifier() + "'s suffix" + (worldName != null ? " (in world \"" + worldName + "\") " : "") + " has been set to \"" + group.getSuffix() + "\"");
++			group.setPrefix(args.get("newsuffix"), worldName);
++			sender.sendMessage(group.getIdentifier() + "'s suffix" + (worldName != null ? " (in world \"" + worldName + "\") " : "") + " has been set to \"" + group.getPrefix() + "\"");
+ 		} else {
+-			sender.sendMessage(group.getIdentifier() + "'s suffix" + (worldName != null ? " (in world \"" + worldName + "\") " : "") + " is \"" + group.getSuffix() + "\"");
++			sender.sendMessage(group.getIdentifier() + "'s suffix" + (worldName != null ? " (in world \"" + worldName + "\") " : "") + " is \"" + group.getPrefix() + "\"");
+ 		}
+ 	}
+ 

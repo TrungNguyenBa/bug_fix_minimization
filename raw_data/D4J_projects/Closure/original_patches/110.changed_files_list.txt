@@ -1,0 +1,4 @@
+13fb7fcb : Handle function declarations in ScopedAliases. Fixes issue 1111 R=johnlenz
+:100644 100644 3a771c95... fbd46d33... M	src/com/google/javascript/jscomp/ScopedAliases.java
+:100644 100644 558a3aa3... 6a3e9e03... M	src/com/google/javascript/rhino/Node.java
+:100644 100644 9150a1c8... 30aa1903... M	test/com/google/javascript/jscomp/ScopedAliasesTest.java

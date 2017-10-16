@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/PlainDeserializer.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/PlainDeserializer.java
+index bc4c320..63ae47f 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/PlainDeserializer.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/PlainDeserializer.java
+@@ -24,7 +24,7 @@ import org.apache.http.HttpEntity;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.util.EntityUtils;
+ 
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ 
+ /**
+  * <p>This {@link AbstractDeserializer} extracts the response data as a <b>raw String</b>. 

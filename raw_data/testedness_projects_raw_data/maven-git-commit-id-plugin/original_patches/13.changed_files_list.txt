@@ -1,0 +1,2 @@
+8ae6d92 : Fix paths in unit tests so that they do not fail on OS Windows
+:100644 100644 6f7ef19... 7d35e53... M	src/test/java/pl/project13/maven/git/GitCommitIdMojoTest.java

@@ -1,0 +1,129 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+index 7a11a9a2..5dc93df8 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java
+@@ -43,30 +43,39 @@ public class EntityMyChicken extends EntityMyPet
+         nextEggTimer = (random.nextInt(6000) + 6000);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    @Override
+-    protected String getDeathSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return "mob.chicken.hurt";
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
++
++            this.setBaby(((MyChicken) myPet).isBaby());
++        }
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    @Override
+-    protected String getHurtSound()
++    public boolean isBaby()
+     {
+-        return "mob.chicken.hurt";
++        return ((MyChicken) myPet).isBaby;
+     }
+ 
+-    /**
+-     * Returns the default sound of the MyPet
+-     */
+-    protected String getLivingSound()
++    public void setBaby(boolean flag)
+     {
+-        return !playIdleSound() ? null : "mob.chicken.say";
++        if (flag)
++        {
++            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
++        }
++        else
++        {
++            this.datawatcher.watch(12, new Integer(0));
++        }
++        ((MyChicken) myPet).isBaby = flag;
++    }
++
++
++    protected void initDatawatcher()
++    {
++        super.initDatawatcher();
++        this.datawatcher.a(12, new Integer(0)); // age
+     }
+ 
+     public boolean handlePlayerInteraction(EntityHuman entityhuman)
+@@ -99,28 +108,27 @@ public class EntityMyChicken extends EntityMyPet
+         return false;
+     }
+ 
+-    protected void initDatawatcher()
++    public void playStepSound()
+     {
+-        super.initDatawatcher();
+-        this.datawatcher.a(12, new Integer(0)); // age
++        makeSound("mob.chicken.step", 0.15F, 1.0F);
+     }
+ 
+-    public boolean isBaby()
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    @Override
++    protected String getHurtSound()
+     {
+-        return ((MyChicken) myPet).isBaby;
++        return "mob.chicken.hurt";
+     }
+ 
+-    public void setBaby(boolean flag)
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    @Override
++    protected String getDeathSound()
+     {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(12, new Integer(0));
+-        }
+-        ((MyChicken) myPet).isBaby = flag;
++        return "mob.chicken.hurt";
+     }
+ 
+     public void onLivingUpdate()
+@@ -140,18 +148,11 @@ public class EntityMyChicken extends EntityMyPet
+         }
+     }
+ 
+-    public void playStepSound()
+-    {
+-        makeSound("mob.chicken.step", 0.15F, 1.0F);
+-    }
+-
+-    public void setMyPet(MyPet myPet)
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-
+-            this.setBaby(((MyChicken) myPet).isBaby());
+-        }
++        return !playIdleSound() ? null : "mob.chicken.say";
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,13 @@
+diff --git a/test/com/google/javascript/jscomp/RenameLabelsTest.java b/test/com/google/javascript/jscomp/RenameLabelsTest.java
+index 55281135..ccfa8e21 100644
+--- a/test/com/google/javascript/jscomp/RenameLabelsTest.java
++++ b/test/com/google/javascript/jscomp/RenameLabelsTest.java
+@@ -85,8 +85,4 @@ public class RenameLabelsTest extends CompilerTestCase {
+          "a(); while (1) break;");
+   }
+ 
+-  public void testRenameReused() {
+-    test("foo:{break foo}; foo:{break foo}", "a:{break a};a:{break a}");
+-  }
+-
+ }

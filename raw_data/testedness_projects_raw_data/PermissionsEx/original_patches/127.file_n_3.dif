@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+index ef11b55..15d708f 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+@@ -44,7 +44,7 @@ public class SQLBackend extends PermissionBackend {
+ 	private Map<String, Object> tableNames;
+ 	private ThreadLocal<SQLConnection> conn;
+ 
+-	public SQLBackend(PermissionManager manager, ConfigurationSection config) {
++	public SQLBackend(PermissionManager manager, Configuration config) {
+ 		super(manager, config);
+ 		final String dbUri = getConfig().getString("uri", "");
+ 		final String dbUser = getConfig().getString("user", "");

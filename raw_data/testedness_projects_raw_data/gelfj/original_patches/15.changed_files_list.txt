@@ -1,0 +1,2 @@
+723a5b6 : FIX when graylogHost starts with tcp: or udp:
+:100644 100644 d67497a... 6f91ceb... M	src/main/java/org/graylog2/logging/GelfHandler.java

@@ -1,0 +1,17 @@
+diff --git a/src/com/google/javascript/rhino/jstype/FunctionPrototypeType.java b/src/com/google/javascript/rhino/jstype/FunctionPrototypeType.java
+index b4f44fed..f1aeb7b6 100644
+--- a/src/com/google/javascript/rhino/jstype/FunctionPrototypeType.java
++++ b/src/com/google/javascript/rhino/jstype/FunctionPrototypeType.java
+@@ -39,8 +39,12 @@
+ 
+ package com.google.javascript.rhino.jstype;
+ 
++import com.google.javascript.rhino.ErrorReporter;
+ import com.google.javascript.rhino.jstype.ObjectType;
+ 
++import java.util.List;
++import java.util.Set;
++
+ /**
+  * Represents the prototype of a {@link FunctionType}.
+  * @author nicksantos@google.com (Nick Santos)

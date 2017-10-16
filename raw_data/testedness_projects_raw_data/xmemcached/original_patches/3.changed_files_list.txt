@@ -1,0 +1,7 @@
+7d16a99 : Impl namespace in memcached.
+:100644 100644 ef4472f... e178fa8... M	src/main/java/net/rubyeye/xmemcached/MemcachedClient.java
+:000000 100644 0000000... 95e06b7... A	src/main/java/net/rubyeye/xmemcached/MemcachedClientCallable.java
+:100644 100644 614c716... 0b72906... M	src/main/java/net/rubyeye/xmemcached/XMemcachedClient.java
+:100644 100644 103e912... d6a0736... M	src/main/java/net/rubyeye/xmemcached/impl/KeyIteratorImpl.java
+:100644 100644 10adb25... 4327c20... M	src/main/java/net/rubyeye/xmemcached/utils/ByteUtils.java
+:100644 100644 f0238b5... 9611fbb... M	src/test/java/net/rubyeye/xmemcached/test/unittest/XMemcachedClientTest.java

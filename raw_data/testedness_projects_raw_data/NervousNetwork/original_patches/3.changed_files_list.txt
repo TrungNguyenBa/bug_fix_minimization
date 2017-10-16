@@ -1,0 +1,4 @@
+dab3d6e : Fixed sync timing for write mode
+:100644 100644 bb0bd69... 82a7d00... M	src/main/java/org/tiernolan/nervous/network/connection/ChannelHandler.java
+:100644 100644 fb59eac... 8e0528c... M	src/main/java/org/tiernolan/nervous/network/connection/SelectorHandler.java
+:100644 100644 e25902a... 584a96b... M	src/test/java/org/tiernolan/nervous/network/connection/SelectorTest.java

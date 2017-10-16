@@ -1,0 +1,4 @@
+4f212d9 : Implemented Issues 5 and 6, updated README
+:100644 100644 cd65486... 79defa1... M	README.md
+:100644 100644 5869cee... f3b2317... M	src/main/java/org/skife/config/TimeSpan.java
+:100644 100644 691e66d... 9370f63... M	src/test/java/org/skife/config/TestTimeSpan.java

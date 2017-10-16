@@ -1,0 +1,3 @@
+38fad13 : Rename test file to be more general
+:100644 100644 dded611... 22388fb... M	src/main/java/com/stripe/model/Charge.java
+:100644 100644 58103e3... 98c3208... R091	src/test/java/com/stripe/model/EventDataDeserializerTest.java	src/test/java/com/stripe/model/DeserializerTest.java

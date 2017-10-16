@@ -1,0 +1,2 @@
+62a6b85 : Fix InPlaceAction to use tmpFile from argument, not field. #17
+:100644 100644 d75b3a3... 6fb618e... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java

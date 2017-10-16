@@ -1,0 +1,139 @@
+fa575035 : remove the "MyPet" prefix from most of the classes
+:100644 100644 ce9c6134... 08d12968... M	src/main/java/de/Keyle/MyPet/MyPetPlugin.java
+:100644 100644 9e2bb9da... 89d1b69a... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
+:100644 100644 5ec085e7... 3e8d2d9a... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandBeacon.java
+:100644 100644 b58ea7dc... 11b16bf2... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandBehavior.java
+:100644 100644 c481d666... 50836653... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandCall.java
+:100644 100644 f7cfbcd9... ee536235... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandCaptureHelper.java
+:100644 100644 4bf97cd0... 794ccb99... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandChooseSkilltree.java
+:100644 100644 f568a74a... bdea6593... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandHelp.java
+:100644 100644 31daa2b6... 8ce10e06... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandInfo.java
+:100644 100644 102e928a... 9c775766... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandInventory.java
+:100644 100644 9dc624c1... 39bec34c... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandName.java
+:100644 100644 334f736b... cc620777... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandPetType.java
+:100644 100644 57329aaa... 67fd7134... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandPickup.java
+:100644 100644 e0bb7595... 985fec89... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandRelease.java
+:100644 100644 cf110043... 9d8ee07f... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandRespawn.java
+:100644 100644 a8cb4bac... b4bbb3cc... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandSendAway.java
+:100644 100644 e521ea20... c6f6edf4... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandShowSkillTree.java
+:100644 100644 4d5fe81f... 222c8911... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandSkill.java
+:100644 100644 e7e0d838... 301ee866... M	src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java
+:100644 100644 a9ac5393... 501b21e9... R096	src/main/java/de/Keyle/MyPet/entity/ai/MyPetAIGoal.java	src/main/java/de/Keyle/MyPet/entity/ai/AIGoal.java
+:100644 100644 c14ba335... f221f276... R078	src/main/java/de/Keyle/MyPet/entity/ai/MyPetAIGoalSelector.java	src/main/java/de/Keyle/MyPet/entity/ai/AIGoalSelector.java
+:100644 100644 b833c02e... 14a2c4aa... R095	src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIMeleeAttack.java	src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
+:100644 100644 332e57f3... 0b33e5ec... R096	src/main/java/de/Keyle/MyPet/entity/ai/attack/MyPetAIRangedAttack.java	src/main/java/de/Keyle/MyPet/entity/ai/attack/RangedAttack.java
+:100644 100644 cb06b360... e42fe693... R088	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAIControl.java	src/main/java/de/Keyle/MyPet/entity/ai/movement/Control.java
+:100644 100644 cd5de66e... b3605032... R096	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAIEatGrass.java	src/main/java/de/Keyle/MyPet/entity/ai/movement/EatGrass.java
+:100644 100644 1395e580... 687fa987... R093	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAIFloat.java	src/main/java/de/Keyle/MyPet/entity/ai/movement/Float.java
+:100644 100644 395dd126... 23ffbe00... R089	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAIFollowOwner.java	src/main/java/de/Keyle/MyPet/entity/ai/movement/FollowOwner.java
+:100644 100644 a895c7bd... 42468071... R091	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAILookAtPlayer.java	src/main/java/de/Keyle/MyPet/entity/ai/movement/LookAtPlayer.java
+:100644 100644 4e96e4d3... 7baaede8... R093	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAIRandomLookaround.java	src/main/java/de/Keyle/MyPet/entity/ai/movement/RandomLookaround.java
+:100644 100644 8456d557... 24612b2d... R094	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAISit.java	src/main/java/de/Keyle/MyPet/entity/ai/movement/Sit.java
+:100644 100644 892653c8... d3cad233... R094	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAISprint.java	src/main/java/de/Keyle/MyPet/entity/ai/movement/Sprint.java
+:100644 100644 dc6bac21... 3e6a70bb... R090	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIAggressiveTarget.java	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorAggressiveTarget.java
+:100644 100644 f49ae5bb... 93714763... R094	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIDuelTarget.java	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorDuelTarget.java
+:100644 100644 8b040de4... 49fc46fe... R095	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIFarmTarget.java	src/main/java/de/Keyle/MyPet/entity/ai/target/BehaviorFarmTarget.java
+:100644 100644 bef58da2... f7ab403b... R088	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIControlTarget.java	src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+:100644 100644 6484cd6b... d41dc74a... R089	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIHurtByTarget.java	src/main/java/de/Keyle/MyPet/entity/ai/target/HurtByTarget.java
+:100644 100644 1eb66592... d5dceec7... R092	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIOwnerHurtByTarget.java	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtByTarget.java
+:100644 100644 4cd380c4... f9071f7e... R091	src/main/java/de/Keyle/MyPet/entity/ai/target/MyPetAIOwnerHurtTarget.java	src/main/java/de/Keyle/MyPet/entity/ai/target/OwnerHurtTarget.java
+:100644 100644 a3ed8f56... a5161366... M	src/main/java/de/Keyle/MyPet/entity/types/CraftMyPet.java
+:100644 100644 2754f8b9... 272c4760... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java
+:100644 100644 4965a099... 3137fe46... M	src/main/java/de/Keyle/MyPet/entity/types/IMyPet.java
+:100644 100644 b7ab8b0f... ee34d684... M	src/main/java/de/Keyle/MyPet/entity/types/InactiveMyPet.java
+:100644 100644 9d38f35b... 9bfb3188... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+:100644 100644 2251873a... c21f7d41... M	src/main/java/de/Keyle/MyPet/entity/types/MyPetList.java
+:100644 100644 6bea9589... 51918957... M	src/main/java/de/Keyle/MyPet/entity/types/bat/MyBat.java
+:100644 100644 d7cd1c76... 71e55c0d... M	src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
+:100644 100644 308afb99... 02f06ad7... M	src/main/java/de/Keyle/MyPet/entity/types/ghast/MyGhast.java
+:100644 100644 6c791059... fa3972ff... M	src/main/java/de/Keyle/MyPet/entity/types/giant/EntityMyGiant.java
+:100644 100644 8a5aef06... 786604d7... M	src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+:100644 100644 c25f5d47... c8bfd62d... M	src/main/java/de/Keyle/MyPet/entity/types/ocelot/EntityMyOcelot.java
+:100644 100644 452cb047... 08dac8e9... M	src/main/java/de/Keyle/MyPet/entity/types/sheep/EntityMySheep.java
+:100644 100644 8581b22f... 7405f0db... M	src/main/java/de/Keyle/MyPet/entity/types/slime/EntityMySlime.java
+:100644 100644 ec270f97... 8298e494... M	src/main/java/de/Keyle/MyPet/entity/types/squid/EntityMySquid.java
+:100644 100644 1bf720d7... 33fb35de... M	src/main/java/de/Keyle/MyPet/entity/types/wolf/EntityMyWolf.java
+:100644 100644 b0905590... 094cc2c7... M	src/main/java/de/Keyle/MyPet/gui/GuiMain.java
+:100644 100644 7058d02f... cabe60eb... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java
+:100644 100644 29ec7c88... 6d8d8adb... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/SkilltreeCreator.java
+:100644 100644 af7a54ca... 955d4c9e... R084	src/main/java/de/Keyle/MyPet/listeners/MyPetEntityListener.java	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+:100644 100644 a9566c4d... d5c05184... R078	src/main/java/de/Keyle/MyPet/listeners/MyPetLevelUpListener.java	src/main/java/de/Keyle/MyPet/listeners/LevelUpListener.java
+:100644 100644 8e4d8491... 2251c95a... R076	src/main/java/de/Keyle/MyPet/listeners/MyPetPlayerListener.java	src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+:100644 100644 ba2de4f6... 5e5922c4... R096	src/main/java/de/Keyle/MyPet/listeners/MyPetVehicleListener.java	src/main/java/de/Keyle/MyPet/listeners/VehicleListener.java
+:100644 100644 ed227b4d... aafb1d22... R084	src/main/java/de/Keyle/MyPet/listeners/MyPetWorldListener.java	src/main/java/de/Keyle/MyPet/listeners/WorldListener.java
+:100644 100644 82376d01... 907ef87e... R091	src/main/java/de/Keyle/MyPet/skill/MyPetExperience.java	src/main/java/de/Keyle/MyPet/skill/Experience.java
+:000000 100644 00000000... 42a0b459... A	src/main/java/de/Keyle/MyPet/skill/MonsterExperience.java
+:100644 000000 ca84f07e... 00000000... D	src/main/java/de/Keyle/MyPet/skill/MyPetMonsterExperience.java
+:100644 100644 9cfab96b... 603f02d5... R083	src/main/java/de/Keyle/MyPet/skill/MyPetSkillTree.java	src/main/java/de/Keyle/MyPet/skill/SkillTree.java
+:100644 100644 1b2f9e9d... 9970141d... R092	src/main/java/de/Keyle/MyPet/skill/MyPetSkillTreeLevel.java	src/main/java/de/Keyle/MyPet/skill/SkillTreeLevel.java
+:100644 100644 9b431bba... f2dc2a2b... R082	src/main/java/de/Keyle/MyPet/skill/MyPetSkillTreeMobType.java	src/main/java/de/Keyle/MyPet/skill/SkillTreeMobType.java
+:100644 100644 fdf88c07... 5272612d... R096	src/main/java/de/Keyle/MyPet/skill/MyPetSkillTreeSkill.java	src/main/java/de/Keyle/MyPet/skill/SkillTreeSkill.java
+:100644 100644 50b3ce2e... 74bea282... R084	src/main/java/de/Keyle/MyPet/skill/MyPetSkills.java	src/main/java/de/Keyle/MyPet/skill/Skills.java
+:100644 100644 5dedc173... 7e8a2dc0... R085	src/main/java/de/Keyle/MyPet/skill/MyPetSkillsInfo.java	src/main/java/de/Keyle/MyPet/skill/SkillsInfo.java
+:100644 100644 3b7d1fb3... 8637247b... M	src/main/java/de/Keyle/MyPet/skill/experience/JavaScript.java
+:100644 100644 42d56130... 7d659b43... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Beacon.java
+:100644 100644 51d9b7fb... 07845d76... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Behavior.java
+:100644 100644 5993183b... b44a4068... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Control.java
+:100644 100644 bd518a98... 64d69260... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Damage.java
+:100644 100644 2d198853... 285dcf79... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Fire.java
+:100644 100644 0b61a3f8... e192167b... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/HP.java
+:100644 100644 8d0d4622... b739b349... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/HPregeneration.java
+:100644 100644 f1571950... 263265ad... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
+:100644 100644 f726a362... 8f8609fb... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Knockback.java
+:100644 100644 273dc4e7... b54857c8... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Lightning.java
+:100644 100644 a974a00f... 5ecf3778... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Pickup.java
+:100644 100644 d706c725... 25c08ded... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Poison.java
+:100644 100644 18026301... 4f48c685... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ranged.java
+:100644 100644 945785c2... 3e80d5f5... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Ride.java
+:100644 100644 1f5e1643... ff922a5d... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Slow.java
+:100644 100644 38b9ec27... c50a1e22... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Sprint.java
+:100644 100644 3c5915f0... 6f7a808a... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Thorns.java
+:100644 100644 811ecfd8... a5833508... M	src/main/java/de/Keyle/MyPet/skill/skills/implementation/Wither.java
+:100644 100644 f123d348... 31561d78... R098	src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/MyPetCustomInventory.java	src/main/java/de/Keyle/MyPet/skill/skills/implementation/inventory/CustomInventory.java
+:100644 100644 e89f556c... 9f48a7e7... M	src/main/java/de/Keyle/MyPet/skill/skills/info/BeaconInfo.java
+:100644 100644 3a959682... 7d1534cf... M	src/main/java/de/Keyle/MyPet/skill/skills/info/BehaviorInfo.java
+:100644 100644 d13fc738... 2331ba30... M	src/main/java/de/Keyle/MyPet/skill/skills/info/ControlInfo.java
+:100644 100644 96b4edb0... 72566248... M	src/main/java/de/Keyle/MyPet/skill/skills/info/DamageInfo.java
+:100644 100644 997bd93d... 2ff90a6f... M	src/main/java/de/Keyle/MyPet/skill/skills/info/FireInfo.java
+:100644 100644 dfbdf612... c02e3569... M	src/main/java/de/Keyle/MyPet/skill/skills/info/HPInfo.java
+:100644 100644 3270b12e... 9565becd... M	src/main/java/de/Keyle/MyPet/skill/skills/info/HPregenerationInfo.java
+:100644 100644 dc211006... 43b4a10e... M	src/main/java/de/Keyle/MyPet/skill/skills/info/InventoryInfo.java
+:100644 100644 13a50700... 7022f186... M	src/main/java/de/Keyle/MyPet/skill/skills/info/KnockbackInfo.java
+:100644 100644 a7a242a3... 366842e5... M	src/main/java/de/Keyle/MyPet/skill/skills/info/LightningInfo.java
+:100644 100644 4148dd97... cd5cf30e... M	src/main/java/de/Keyle/MyPet/skill/skills/info/PickupInfo.java
+:100644 100644 071fba20... 07c26988... M	src/main/java/de/Keyle/MyPet/skill/skills/info/PoisonInfo.java
+:100644 100644 5e4c9484... f0cbc9ab... M	src/main/java/de/Keyle/MyPet/skill/skills/info/RangedInfo.java
+:100644 100644 5d844cc4... f046e523... M	src/main/java/de/Keyle/MyPet/skill/skills/info/RideInfo.java
+:100644 100644 96054e07... 3a0fdfe5... M	src/main/java/de/Keyle/MyPet/skill/skills/info/SlowInfo.java
+:100644 100644 5855096d... da1d30d7... M	src/main/java/de/Keyle/MyPet/skill/skills/info/SprintInfo.java
+:100644 100644 1f55f591... 7b3662ad... M	src/main/java/de/Keyle/MyPet/skill/skills/info/ThornsInfo.java
+:100644 100644 843d6c46... 74e24a42... M	src/main/java/de/Keyle/MyPet/skill/skills/info/WitherInfo.java
+:100644 100644 6bcae830... d1d1d620... R065	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoader.java	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoader.java
+:100644 100644 d07c4fbd... abfb1d81... R086	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderJSON.java	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderJSON.java
+:100644 100644 c016e572... 426c7137... R084	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderNBT.java	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderNBT.java
+:100644 100644 a382a375... 0957b45c... R086	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/MyPetSkillTreeLoaderYAML.java	src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderYAML.java
+:100644 100644 f2c79d7a... add237f5... R093	src/main/java/de/Keyle/MyPet/util/MyPetBackup.java	src/main/java/de/Keyle/MyPet/util/Backup.java
+:100644 100644 e6cf8947... ee7adaae... R077	src/main/java/de/Keyle/MyPet/util/MyPetBukkitUtil.java	src/main/java/de/Keyle/MyPet/util/BukkitUtil.java
+:100644 100644 89a03216... 4568e6dc... R073	src/main/java/de/Keyle/MyPet/util/MyPetCaptureHelper.java	src/main/java/de/Keyle/MyPet/util/CaptureHelper.java
+:100644 100644 9c14beec... 313cfb57... R086	src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java	src/main/java/de/Keyle/MyPet/util/Configuration.java
+:100644 100644 a96d4415... aee37568... R088	src/main/java/de/Keyle/MyPet/util/MyPetEconomy.java	src/main/java/de/Keyle/MyPet/util/Economy.java
+:100644 100644 d32e87ca... d1faa28d... M	src/main/java/de/Keyle/MyPet/util/MyPetPlayer.java
+:100644 100644 c5bf58f6... b1cb0c03... R099	src/main/java/de/Keyle/MyPet/util/MyPetPermissions.java	src/main/java/de/Keyle/MyPet/util/Permissions.java
+:100644 100644 e297bebd... 4b116faa... R099	src/main/java/de/Keyle/MyPet/util/MyPetPvP.java	src/main/java/de/Keyle/MyPet/util/PvPChecker.java
+:100644 100644 b7b4f992... 13af67e0... R097	src/main/java/de/Keyle/MyPet/util/MyPetTimer.java	src/main/java/de/Keyle/MyPet/util/Timer.java
+:100644 100644 781d0b47... b1c0d96d... R099	src/main/java/de/Keyle/MyPet/util/MyPetUtil.java	src/main/java/de/Keyle/MyPet/util/Util.java
+:100644 100644 b6039c4f... d40a2ad8... R080	src/main/java/de/Keyle/MyPet/util/MyPetWorldGroup.java	src/main/java/de/Keyle/MyPet/util/WorldGroup.java
+:100644 100644 32d3595d... 2a93fa9f... R096	src/main/java/de/Keyle/MyPet/util/configuration/JSON_Configuration.java	src/main/java/de/Keyle/MyPet/util/configuration/ConfigurationJSON.java
+:100644 100644 51fc2683... ee359ca4... R098	src/main/java/de/Keyle/MyPet/util/configuration/NBT_Configuration.java	src/main/java/de/Keyle/MyPet/util/configuration/ConfigurationNBT.java
+:100644 100644 7f5a4c6b... 8bf12ae1... R095	src/main/java/de/Keyle/MyPet/util/configuration/SnakeYAML_Configuration.java	src/main/java/de/Keyle/MyPet/util/configuration/ConfigurationSnakeYAML.java
+:100644 100644 6bfb99c7... 713bff33... R086	src/main/java/de/Keyle/MyPet/util/configuration/YAML_Configuration.java	src/main/java/de/Keyle/MyPet/util/configuration/ConfigurationYAML.java
+:100644 100644 1349dd22... d89e2c5e... R078	src/main/java/de/Keyle/MyPet/util/locale/MyPetLocales.java	src/main/java/de/Keyle/MyPet/util/locale/Locales.java
+:100644 100644 066e43ea... ea410750... R081	src/main/java/de/Keyle/MyPet/util/locale/MyPetResourceBundle.java	src/main/java/de/Keyle/MyPet/util/locale/ResourceBundle.java
+:100644 100644 dfd29757... 8cc2a658... M	src/main/java/de/Keyle/MyPet/util/support/BattleArena.java
+:100644 100644 362c3f2f... d0b4ec8f... M	src/main/java/de/Keyle/MyPet/util/support/Minigames.java
+:100644 100644 84b8838c... 89bd3473... M	src/main/java/de/Keyle/MyPet/util/support/MobArena.java
+:100644 100644 351f8603... 50af5473... M	src/main/java/de/Keyle/MyPet/util/support/MyHungerGames.java
+:100644 100644 131fc38b... 4496605c... M	src/main/java/de/Keyle/MyPet/util/support/PvPArena.java
+:100644 100644 4a239c7f... 764c20c9... M	src/main/java/de/Keyle/MyPet/util/support/SurvivalGames.java
+:100644 100644 dc5e6519... 09741a06... M	src/test/java/de/Keyle/MyPet/test/skill/skills/SkillNameTest.java
+:100644 100644 51c632ac... cde58576... M	src/test/java/de/Keyle/MyPet/test/skill/skills/SkillPropertiesTest.java

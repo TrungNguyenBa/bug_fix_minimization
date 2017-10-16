@@ -1,0 +1,13 @@
+diff --git a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeCommander.java b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeCommander.java
+index cb60b62..58d7c9b 100644
+--- a/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeCommander.java
++++ b/permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/SpongeCommander.java
+@@ -39,7 +39,7 @@ import java.util.Set;
+ /**
+  * An abstraction over the Sponge CommandSource that handles PEX-specific message formatting and localization
+  */
+-class SpongeCommander implements Commander<TextBuilder> {
++public class SpongeCommander implements Commander<TextBuilder> {
+     private final PermissionsExPlugin pex;
+     private final CommandSource commandSource;
+     private final SpongeMessageFormatter formatter;

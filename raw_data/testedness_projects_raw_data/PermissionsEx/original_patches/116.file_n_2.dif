@@ -1,0 +1,20 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionGroup.java b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+index ee34685..e69aa78 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionGroup.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+@@ -250,14 +250,10 @@ public class PermissionGroup extends PermissionEntity implements Comparable<Perm
+ 		return this.manager.getUsers(this.getIdentifier());
+ 	}
+ 
+-	public Set<PermissionUser> getActiveUsers() {
++	protected Set<PermissionUser> getActiveUsers() {
+ 		return this.manager.getActiveUsers(this.getIdentifier());
+ 	}
+ 
+-	public Set<PermissionUser> getActiveUsers(boolean inheritance) {
+-		return this.manager.getActiveUsers(this.getIdentifier(), inheritance);
+-	}
+-
+ 	public boolean isDefault(String worldName) {
+ 		return getData().isDefault(worldName);
+ 	}

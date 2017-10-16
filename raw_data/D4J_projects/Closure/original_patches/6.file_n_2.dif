@@ -1,0 +1,81 @@
+diff --git a/src/com/google/javascript/jscomp/TypeValidator.java b/src/com/google/javascript/jscomp/TypeValidator.java
+index 12ce5b33..be049b09 100644
+--- a/src/com/google/javascript/jscomp/TypeValidator.java
++++ b/src/com/google/javascript/jscomp/TypeValidator.java
+@@ -363,22 +363,28 @@ class TypeValidator {
+       JSType leftType, Node owner, String propName) {
+     // The NoType check is a hack to make typedefs work OK.
+     if (!leftType.isNoType() && !rightType.canAssignTo(leftType)) {
+-      // Do not type-check interface methods, because we expect that
+-      // they will have dummy implementations that do not match the type
+-      // annotations.
+-      JSType ownerType = getJSType(owner);
+-      if (ownerType.isFunctionPrototypeType()) {
+-        FunctionType ownerFn = ownerType.toObjectType().getOwnerFunction();
+-        if (ownerFn.isInterface() &&
+-            rightType.isFunctionType() && leftType.isFunctionType()) {
+-          return true;
++      if (bothIntrinsics(rightType, leftType)) {
++        // We have a superior warning for this mistake, which gives you
++        // the line numbers of both types.
++        registerMismatch(rightType, leftType, null);
++      } else {
++        // Do not type-check interface methods, because we expect that
++        // they will have dummy implementations that do not match the type
++        // annotations.
++        JSType ownerType = getJSType(owner);
++        if (ownerType.isFunctionPrototypeType()) {
++          FunctionType ownerFn = ownerType.toObjectType().getOwnerFunction();
++          if (ownerFn.isInterface() &&
++              rightType.isFunctionType() && leftType.isFunctionType()) {
++            return true;
++          }
+         }
+-      }
+ 
+-      mismatch(t, n,
+-          "assignment to property " + propName + " of " +
+-          getReadableJSTypeName(owner, true),
+-          rightType, leftType);
++        mismatch(t, n,
++            "assignment to property " + propName + " of " +
++            getReadableJSTypeName(owner, true),
++            rightType, leftType);
++      }
+       return false;
+     }
+     return true;
+@@ -398,12 +404,23 @@ class TypeValidator {
+   boolean expectCanAssignTo(NodeTraversal t, Node n, JSType rightType,
+       JSType leftType, String msg) {
+     if (!rightType.canAssignTo(leftType)) {
+-      mismatch(t, n, msg, rightType, leftType);
++      if (bothIntrinsics(rightType, leftType)) {
++        // We have a superior warning for this mistake, which gives you
++        // the line numbers of both types.
++        registerMismatch(rightType, leftType, null);
++      } else {
++        mismatch(t, n, msg, rightType, leftType);
++      }
+       return false;
+     }
+     return true;
+   }
+ 
++  private boolean bothIntrinsics(JSType rightType, JSType leftType) {
++    return (leftType.isConstructor() || leftType.isEnumType()) &&
++        (rightType.isConstructor() || rightType.isEnumType());
++  }
++
+   /**
+    * Expect that the type of an argument matches the type of the parameter
+    * that it's fulfilling.
+@@ -676,7 +693,7 @@ class TypeValidator {
+       }
+ 
+       registerIfMismatch(
+-          fnTypeA.getReturnType(), fnTypeB.getReturnType(), error);
++        fnTypeA.getReturnType(), fnTypeB.getReturnType(), error);
+     }
+   }
+ 

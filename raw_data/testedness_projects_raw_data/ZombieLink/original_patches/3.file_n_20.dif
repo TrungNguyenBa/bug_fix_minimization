@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationFailedException.java b/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationFailedException.java
+index c9c0c64..2ec061b 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationFailedException.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/executor/ConfigurationFailedException.java
+@@ -21,7 +21,7 @@ package com.lonepulse.zombielink.executor;
+  */
+ 
+ import com.lonepulse.zombielink.ZombieLinkRuntimeException;
+-import com.lonepulse.zombielink.proxy.Zombie;
++import com.lonepulse.zombielink.inject.Zombie;
+ 
+ /**
+  * <p>This exception is thrown due to a failure in <b>managing</b> a {@link Zombie.Configuration}.</p>

@@ -1,0 +1,3 @@
+48abb04 : Fix #38, #40 process and iterate are transformers-aware
+:100644 100644 4cc1707... c561368... M	src/main/java/org/zeroturnaround/zip/Zips.java
+:100644 100644 0bd51ab... 5e2ec5a... M	src/test/java/org/zeroturnaround/zip/ZipsTest.java

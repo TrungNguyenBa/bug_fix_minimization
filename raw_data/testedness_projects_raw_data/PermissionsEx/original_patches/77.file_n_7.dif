@@ -1,0 +1,18 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+index 0f1f476..6100ce1 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
++++ b/src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java
+@@ -637,4 +637,13 @@ public class SQLBackend extends PermissionBackend {
+ 		}
+ 		super.close();
+ 	}
++
++	/**
++	 * Removes the given entity id from the cache.
++	 *
++	 * @param entityId The id to remove
++	 */
++	void uncache(int entityId) {
++		matcherCache.remove(entityId);
++	}
+ }

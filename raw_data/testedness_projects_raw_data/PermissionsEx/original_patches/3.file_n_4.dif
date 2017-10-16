@@ -1,0 +1,22 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+index fe2549d..076e6d0 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+@@ -43,7 +43,7 @@ public class ParentCommands {
+     private static CommandSpec getAddParentCommand(final PermissionsEx pex) {
+         return CommandSpec.builder()
+                 .setAliases("add", "a", "+")
+-                .setArguments(subject(_("parent"), pex, PermissionsEx.SUBJECTS_GROUP))
++                .setArguments(subject(_("parent"), pex, "group"))
+                 .setExecutor(new PermissionsExExecutor(pex) {
+                     @Override
+                     public <TextType> void execute(Commander<TextType> src, CommandContext args) throws CommandException {
+@@ -64,7 +64,7 @@ public class ParentCommands {
+     private static CommandSpec getRemoveParentCommand(final PermissionsEx pex) {
+         return CommandSpec.builder()
+                 .setAliases("remove", "rem", "delete", "del", "-")
+-                .setArguments(subject(_("parent"), pex, PermissionsEx.SUBJECTS_GROUP))
++                .setArguments(subject(_("parent"), pex))
+                 .setExecutor(new PermissionsExExecutor(pex) {
+                     @Override
+                     public <TextType> void execute(Commander<TextType> src, CommandContext args) throws CommandException {

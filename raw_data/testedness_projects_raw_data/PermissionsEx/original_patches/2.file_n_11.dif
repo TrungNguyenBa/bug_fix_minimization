@@ -1,0 +1,18 @@
+diff --git a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
+index e624531..2954dca 100644
+--- a/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
++++ b/permissionsex-core/src/main/java/ninja/leaping/permissionsex/command/OptionCommands.java
+@@ -49,11 +49,11 @@ public class OptionCommands {
+                         final String value = args.getOne("value");
+                         if (value == null) {
+                             messageSubjectOnFuture(
+-                                    dataCache.set(subject.getValue(), data.setOption(contexts, key, null)), src,
++                                    dataCache.update(subject.getValue(), data.setOption(contexts, key, null)), src,
+                                     _("Unset option '%s' for %s in %s context", key, src.fmt().hl(src.fmt().subject(subject)), formatContexts(src, contexts)));
+                         } else {
+                             messageSubjectOnFuture(
+-                                    dataCache.set(subject.getValue(), data.setOption(contexts, key, value)), src,
++                                    dataCache.update(subject.getValue(), data.setOption(contexts, key, value)), src,
+                                     _("Set option %s for %s in %s context", src.fmt().option(key, value), src.fmt().hl(src.fmt().subject(subject)), formatContexts(src, contexts)));
+                         }
+                     }

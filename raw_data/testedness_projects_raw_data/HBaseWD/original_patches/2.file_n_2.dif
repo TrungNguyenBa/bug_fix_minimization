@@ -1,0 +1,17 @@
+diff --git a/src/main/java/com/sematext/hbase/wd/AbstractRowKeyDistributor.java b/src/main/java/com/sematext/hbase/wd/AbstractRowKeyDistributor.java
+index ba7d39b..4e4fedf 100644
+--- a/src/main/java/com/sematext/hbase/wd/AbstractRowKeyDistributor.java
++++ b/src/main/java/com/sematext/hbase/wd/AbstractRowKeyDistributor.java
+@@ -49,10 +49,9 @@ public abstract class AbstractRowKeyDistributor implements Parametrizable {
+     byte[][] stopKeys;
+     if (Arrays.equals(originalStopKey, HConstants.EMPTY_END_ROW)) {
+       Arrays.sort(startKeys, Bytes.BYTES_RAWCOMPARATOR);
+-      // stop keys are the start key of the next interval
+-      stopKeys = getAllDistributedKeys(HConstants.EMPTY_BYTE_ARRAY);
++      stopKeys = new byte[startKeys.length][];
+       for (int i = 0; i < stopKeys.length - 1; i++) {
+-        stopKeys[i] = stopKeys[i + 1];
++        stopKeys[i] = startKeys[i + 1];
+       }
+       stopKeys[stopKeys.length - 1] = HConstants.EMPTY_END_ROW;
+     } else {

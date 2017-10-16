@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/spider/EntityMySpider.java b/src/main/java/de/Keyle/MyPet/entity/types/spider/EntityMySpider.java
+index ad83c728..1b24eec5 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/spider/EntityMySpider.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/spider/EntityMySpider.java
+@@ -47,7 +47,7 @@ public class EntityMySpider extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.spider.say";
++        return !playIdleSound() ? null : "mob.spider.say";
+     }
+ 
+     protected void initDatawatcher()

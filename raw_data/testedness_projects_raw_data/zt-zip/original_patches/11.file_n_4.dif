@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipInfoCallback.java b/src/main/java/org/zeroturnaround/zip/ZipInfoCallback.java
+index 5acb05e..2a2168a 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipInfoCallback.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipInfoCallback.java
+@@ -31,8 +31,6 @@ public interface ZipInfoCallback {
+    * Invoked for each entry in a ZIP file.
+    * 
+    * @param zipEntry ZIP entry.
+-   *
+-   * @throws java.io.IOException when any processing exception occurs
+    */
+   void process(ZipEntry zipEntry) throws IOException;
+   

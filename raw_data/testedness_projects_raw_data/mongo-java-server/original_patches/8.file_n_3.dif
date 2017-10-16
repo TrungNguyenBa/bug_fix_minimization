@@ -1,0 +1,25 @@
+diff --git a/core/src/main/java/de/bwaldvogel/mongo/backend/Utils.java b/core/src/main/java/de/bwaldvogel/mongo/backend/Utils.java
+index 573ea2a..06c497e 100644
+--- a/core/src/main/java/de/bwaldvogel/mongo/backend/Utils.java
++++ b/core/src/main/java/de/bwaldvogel/mongo/backend/Utils.java
+@@ -232,17 +232,15 @@ public class Utils {
+         }
+     }
+ 
+-    public static Object removeListSafe(Object document, String key) {
++    public static void removeListSafe(Object document, String key) {
+         if (document instanceof BSONObject) {
+-            return ((BSONObject) document).removeField(key);
++            ((BSONObject) document).removeField(key);
+         } else if (document instanceof List<?>) {
+             int pos = Integer.parseInt(key);
+             @SuppressWarnings("unchecked")
+             List<Object> list = ((List<Object>) document);
+             if (list.size() > pos) {
+-                return list.set(pos, null);
+-            } else {
+-                return null;
++                list.set(pos, null);
+             }
+         } else {
+             throw new IllegalArgumentException();

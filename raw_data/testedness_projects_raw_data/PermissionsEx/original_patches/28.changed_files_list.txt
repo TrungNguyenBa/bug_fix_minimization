@@ -1,0 +1,2 @@
+7201cb0 : Correct handling of updating when starting with a null map
+:100644 100644 1e723d5... e2e013a... M	src/main/java/ninja/leaping/permissionsex/backends/memory/MemoryOptionSubjectData.java

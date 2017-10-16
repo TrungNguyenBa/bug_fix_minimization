@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetPvP.java b/src/main/java/de/Keyle/MyPet/util/MyPetPvP.java
+index 42f4954d..c13347b2 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetPvP.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetPvP.java
+@@ -117,10 +117,6 @@ public class MyPetPvP
+             if (defender.hasMetadata("NPC"))
+             {
+                 NPC npc = CitizensAPI.getNPCRegistry().getNPC(defender);
+-                if (npc == null || npc.data() == null)
+-                {
+-                    return true;
+-                }
+                 return !npc.data().get("protected", true);
+             }
+         }

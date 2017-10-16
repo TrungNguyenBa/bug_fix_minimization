@@ -1,0 +1,2 @@
+826adf7 : Make the maven dependencies provided
+:100644 100644 7580c7e... c7d22c9... M	pom.xml

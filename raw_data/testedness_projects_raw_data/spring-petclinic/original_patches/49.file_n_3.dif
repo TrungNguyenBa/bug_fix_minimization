@@ -1,0 +1,14 @@
+diff --git a/src/main/webapp/WEB-INF/jsp/pets/createOrUpdatePetForm.jsp b/src/main/webapp/WEB-INF/jsp/pets/createOrUpdatePetForm.jsp
+index 6a74060..ee9c0a9 100644
+--- a/src/main/webapp/WEB-INF/jsp/pets/createOrUpdatePetForm.jsp
++++ b/src/main/webapp/WEB-INF/jsp/pets/createOrUpdatePetForm.jsp
+@@ -42,7 +42,8 @@
+         <petclinic:inputField label="Name" name="name"/>
+         <petclinic:inputField label="Birth Date" name="birthDate"/>
+         <div class="control-group">
+-            <petclinic:selectField name="type" label="Type " names="${types}" size="5"/>
++            <label class="control-label">Type </label>
++            <form:select path="type" items="${types}" size="5"/>
+         </div>
+         <div class="form-actions">
+             <c:choose>

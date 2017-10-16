@@ -1,0 +1,3 @@
+211dc016 : Fix tests and code in UCE that do unsound optimizations in finally blocks.
+:100644 100644 4cd16415... e6d88a8b... M	src/com/google/javascript/jscomp/UnreachableCodeElimination.java
+:100644 100644 4493c8d0... d6785b0f... M	test/com/google/javascript/jscomp/UnreachableCodeEliminationTest.java

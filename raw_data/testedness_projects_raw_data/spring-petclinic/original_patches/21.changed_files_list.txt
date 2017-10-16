@@ -1,0 +1,2 @@
+c8e3602 : fixed bug: vets.html did not display properly
+:100644 100644 ea844ec... ebbb8d6... M	src/main/java/org/springframework/samples/petclinic/web/VetController.java

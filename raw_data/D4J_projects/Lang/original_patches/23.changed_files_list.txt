@@ -1,0 +1,3 @@
+46356183 : LANG-636 ExtendedMessageFormat doesn't override equals(Object)
+:100644 100644 e4742ad3... 55ee7d13... M	src/main/java/org/apache/commons/lang3/text/ExtendedMessageFormat.java
+:100644 100644 845a2bd0... e2bde90b... M	src/test/java/org/apache/commons/lang3/text/ExtendedMessageFormatTest.java

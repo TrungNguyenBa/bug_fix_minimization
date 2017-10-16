@@ -1,0 +1,2 @@
+0432e83a : Registered the merged contribution from Jake Wang in changes.xml (Fix #123)
+:100644 100644 39413113... 2b2d53cb... M	src/changes/changes.xml

@@ -1,0 +1,17 @@
+diff --git a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+index 8eeea4a..b504db8 100755
+--- a/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
++++ b/src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+@@ -703,10 +703,8 @@ public abstract class AbstractGrailsMojo extends AbstractMojo {
+         for (Object o : dependencyArtifacts) {
+             Artifact artifact = (Artifact) o;
+             String groupId = artifact.getGroupId();
+-            String artifactId = artifact.getArtifactId();
+-
+-            if (groupId.equals("org.codehaus.groovy") &&
+-                    (artifactId.equals("groovy-all") || artifactId.equals("groovy"))) {
++            if (artifact.getArtifactId().equals("org.codehaus.groovy") &&
++                    (groupId.equals("groovy-all") || groupId.equals("groovy"))) {
+                 return artifact;
+             }
+         }

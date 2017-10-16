@@ -1,0 +1,31 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/Experience.java b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+index c08080ec..5b2a3459 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/Experience.java
++++ b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+@@ -64,12 +64,13 @@ public class Experience {
+             CALCULATION_MODE = "Default";
+         }
+ 
+-        reset();
++        Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, 1, getLevel(), true));
+     }
+ 
+     public void reset() {
++        int lastLevel = getLevel();
+         exp = 0;
+-        Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), 0, true));
++        Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, lastLevel, getLevel(), true));
+     }
+ 
+     public void setExp(double exp) {
+@@ -84,9 +85,7 @@ public class Experience {
+         int tmplvl = getLevel();
+         this.exp = expEvent.getExp();
+ 
+-        if (tmplvl != getLevel()) {
+-            Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmplvl, true));
+-        }
++        Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmplvl, true));
+     }
+ 
+     public double getExp() {

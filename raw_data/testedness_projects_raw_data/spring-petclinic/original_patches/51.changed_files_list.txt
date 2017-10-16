@@ -1,0 +1,2 @@
+840c0a4 : fixing JPA query for Vets
+:100644 100644 3049fb8... e4c222b... M	src/main/java/org/springframework/samples/petclinic/repository/jpa/JpaVetRepositoryImpl.java

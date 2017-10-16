@@ -1,0 +1,128 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java b/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+index c229d90b..c45436c6 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/villager/EntityMyVillager.java
+@@ -38,28 +38,15 @@ public class EntityMyVillager extends EntityMyPet
+         super(world, myPet);
+     }
+ 
+-    /**
+-     * Returns the sound that is played when the MyPet dies
+-     */
+-    protected String getDeathSound()
+-    {
+-        return "mob.villager.defaultdeath";
+-    }
+-
+-    /**
+-     * Returns the sound that is played when the MyPet get hurt
+-     */
+-    protected String getHurtSound()
++    public void setMyPet(MyPet myPet)
+     {
+-        return "mob.villager.defaulthurt";
+-    }
++        if (myPet != null)
++        {
++            super.setMyPet(myPet);
+ 
+-    /**
+-     * Returns the default sound of the MyPet
+-     */
+-    protected String getLivingSound()
+-    {
+-        return !playIdleSound() ? null : "mob.villager.default";
++            this.setProfession(((MyVillager) myPet).getProfession());
++            this.setBaby(((MyVillager) myPet).isBaby());
++        }
+     }
+ 
+     public int getProfession()
+@@ -73,6 +60,31 @@ public class EntityMyVillager extends EntityMyPet
+         ((MyVillager) myPet).profession = value;
+     }
+ 
++    public boolean isBaby()
++    {
++        return ((MyVillager) myPet).isBaby;
++    }
++
++    public void setBaby(boolean flag)
++    {
++        if (flag)
++        {
++            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
++        }
++        else
++        {
++            this.datawatcher.watch(12, new Integer(0));
++        }
++        ((MyVillager) myPet).isBaby = flag;
++    }
++
++    protected void initDatawatcher()
++    {
++        super.initDatawatcher();
++        this.datawatcher.a(12, new Integer(0)); // age
++        this.datawatcher.a(16, new Integer(0)); // profession
++    }
++
+     public boolean handlePlayerInteraction(EntityHuman entityhuman)
+     {
+         if (super.handlePlayerInteraction(entityhuman))
+@@ -103,39 +115,27 @@ public class EntityMyVillager extends EntityMyPet
+         return false;
+     }
+ 
+-    protected void initDatawatcher()
+-    {
+-        super.initDatawatcher();
+-        this.datawatcher.a(12, new Integer(0)); // age
+-        this.datawatcher.a(16, new Integer(0)); // profession
+-    }
+-
+-    public boolean isBaby()
++    /**
++     * Returns the sound that is played when the MyPet get hurt
++     */
++    protected String getHurtSound()
+     {
+-        return ((MyVillager) myPet).isBaby;
++        return "mob.villager.defaulthurt";
+     }
+ 
+-    public void setBaby(boolean flag)
++    /**
++     * Returns the sound that is played when the MyPet dies
++     */
++    protected String getDeathSound()
+     {
+-        if (flag)
+-        {
+-            this.datawatcher.watch(12, Integer.valueOf(Integer.MIN_VALUE));
+-        }
+-        else
+-        {
+-            this.datawatcher.watch(12, new Integer(0));
+-        }
+-        ((MyVillager) myPet).isBaby = flag;
++        return "mob.villager.defaultdeath";
+     }
+ 
+-    public void setMyPet(MyPet myPet)
++    /**
++     * Returns the default sound of the MyPet
++     */
++    protected String getLivingSound()
+     {
+-        if (myPet != null)
+-        {
+-            super.setMyPet(myPet);
+-
+-            this.setProfession(((MyVillager) myPet).getProfession());
+-            this.setBaby(((MyVillager) myPet).isBaby());
+-        }
++        return !playIdleSound() ? null : "mob.villager.default";
+     }
+ }
+\ No newline at end of file

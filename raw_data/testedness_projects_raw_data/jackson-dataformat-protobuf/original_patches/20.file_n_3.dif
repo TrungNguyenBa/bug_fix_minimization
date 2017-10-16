@@ -1,0 +1,13 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+index 4632133..07c7fea 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufTestBase.java
+@@ -103,7 +103,7 @@ abstract class ProtobufTestBase extends TestCase
+     /* POJO classes to use with protoc definitions
+     /**********************************************************
+      */
+-
++    
+     static class Point {
+         public int x;
+         public int y;

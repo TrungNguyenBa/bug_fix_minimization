@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/api/commands/CommandOptionTabCompleter.java b/src/main/java/de/Keyle/MyPet/api/commands/CommandOptionTabCompleter.java
+index f9344d0a..05563fb2 100644
+--- a/src/main/java/de/Keyle/MyPet/api/commands/CommandOptionTabCompleter.java
++++ b/src/main/java/de/Keyle/MyPet/api/commands/CommandOptionTabCompleter.java
+@@ -24,6 +24,7 @@ import org.bukkit.command.CommandSender;
+ 
+ import java.util.List;
+ 
+-public interface CommandOptionTabCompleter extends CommandOption {
++public interface CommandOptionTabCompleter extends CommandOption
++{
+     public List<String> onTabComplete(CommandSender commandSender, String[] strings);
+ }
+\ No newline at end of file

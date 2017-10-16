@@ -1,0 +1,31 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/inject/EndpointDirectory.java b/src/main/java/com/lonepulse/zombielink/inject/EndpointDirectory.java
+index ba066a3..92c61ab 100644
+--- a/src/main/java/com/lonepulse/zombielink/inject/EndpointDirectory.java
++++ b/src/main/java/com/lonepulse/zombielink/inject/EndpointDirectory.java
+@@ -21,7 +21,7 @@ package com.lonepulse.zombielink.inject;
+  */
+ 
+ import java.util.Map;
+-import java.util.HashMap;
++import java.util.concurrent.ConcurrentHashMap;
+ 
+ import com.lonepulse.zombielink.util.Directory;
+ 
+@@ -30,7 +30,7 @@ import com.lonepulse.zombielink.util.Directory;
+  * 
+  * @version 1.2.0
+  * <br><br>
+- * @since 1.1.1
++ * @sincve 1.1.1
+  * <br><br>
+  * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
+@@ -45,7 +45,7 @@ enum EndpointDirectory implements Directory<Class<?>, Object> {
+ 	INSTANCE;
+ 
+ 	
+-	private static Map<String, Object> ENDPOINTS = new HashMap<String, Object>();
++	private static Map<String, Object> ENDPOINTS = new ConcurrentHashMap<String, Object>();
+ 	
+ 	
+ 	/**

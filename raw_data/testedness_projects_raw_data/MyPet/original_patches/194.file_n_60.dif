@@ -1,0 +1,20 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderYAML.java b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderYAML.java
+index 83dd6e5b..cf3b6044 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderYAML.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skilltreeloader/SkillTreeLoaderYAML.java
+@@ -20,13 +20,9 @@
+ 
+ package de.Keyle.MyPet.skill.skilltreeloader;
+ 
+-import de.Keyle.MyPet.skill.skills.SkillProperties;
+-import de.Keyle.MyPet.skill.skills.SkillProperties.NBTdatatypes;
+-import de.Keyle.MyPet.skill.skills.SkillsInfo;
++import de.Keyle.MyPet.skill.*;
++import de.Keyle.MyPet.skill.SkillProperties.NBTdatatypes;
+ import de.Keyle.MyPet.skill.skills.info.ISkillInfo;
+-import de.Keyle.MyPet.skill.skilltree.SkillTree;
+-import de.Keyle.MyPet.skill.skilltree.SkillTreeLevel;
+-import de.Keyle.MyPet.skill.skilltree.SkillTreeMobType;
+ import de.Keyle.MyPet.util.Util;
+ import de.Keyle.MyPet.util.configuration.ConfigurationSnakeYAML;
+ import de.Keyle.MyPet.util.logger.DebugLogger;

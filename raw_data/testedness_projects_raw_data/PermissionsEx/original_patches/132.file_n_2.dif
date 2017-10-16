@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
+index 53210e9..fdfab03 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
+@@ -127,7 +127,7 @@ public class RegexPermissions {
+ 
+ 	private void uninjectAllPermissibles() {
+ 		for (Player player : plugin.getServer().getOnlinePlayers()) {
+-			uninjectPermissible(player);
++			injectPermissible(player);
+ 		}
+ 	}
+ 

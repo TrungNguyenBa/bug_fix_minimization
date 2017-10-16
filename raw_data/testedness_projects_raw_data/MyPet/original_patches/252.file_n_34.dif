@@ -1,0 +1,45 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
+index 055db1f8..7b2a8074 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
++++ b/src/main/java/de/Keyle/MyPet/skill/skills/implementation/Inventory.java
+@@ -53,7 +53,7 @@ public class Inventory extends InventoryInfo implements ISkillInstance, ISkillSt
+     public void setMyPet(MyPet myPet)
+     {
+         this.myPet = myPet;
+-        inv.setName(myPet.getPetName());
++        inv.setName(myPet.petName);
+     }
+ 
+     public MyPet getMyPet()
+@@ -75,7 +75,7 @@ public class Inventory extends InventoryInfo implements ISkillInstance, ISkillSt
+                 inv.setSize(rows * 9);
+                 if (!quiet)
+                 {
+-                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.Inventory", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()).replace("%size%", "" + inv.getSize()));
++                    myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.Inventory", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName).replace("%size%", "" + inv.getSize()));
+                 }
+             }
+             if (upgrade.getProperties().getValue().containsKey("drop"))
+@@ -107,19 +107,19 @@ public class Inventory extends InventoryInfo implements ISkillInstance, ISkillSt
+             }
+             if (!myPet.getLocation().getBlock().isLiquid())
+             {
+-                inv.setName(myPet.getPetName());
++                inv.setName(myPet.petName);
+                 openInventory(myPet.getOwner().getPlayer());
+                 return true;
+             }
+             else
+             {
+-                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.InventoryWhileSwimming", myPet.getOwner().getLanguage()).replace("%petname%", myPet.getPetName())));
++                myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.InventoryWhileSwimming", myPet.getOwner().getLanguage()).replace("%petname%", myPet.petName)));
+                 return false;
+             }
+         }
+         else
+         {
+-            myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.NoInventory", myPet.getOwner().getLanguage())).replace("%petname%", myPet.getPetName()));
++            myPet.sendMessageToOwner(MyPetBukkitUtil.setColors(MyPetLocales.getString("Message.NoInventory", myPet.getOwner().getLanguage())).replace("%petname%", myPet.petName));
+             return false;
+         }
+     }

@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index c8493e4..36f8a73 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -59,7 +59,7 @@
+ 
+ 
+ 		<!-- Web dependencies -->
+-		<webjars-bootstrap.version>3.0.1</webjars-bootstrap.version>
++		<webjars-bootstrap.version>2.3.0</webjars-bootstrap.version>
+ 		<webjars-jquery-ui.version>1.10.3</webjars-jquery-ui.version>
+ 		<webjars-jquery.version>2.0.3-1</webjars-jquery.version>
+ 		<dandelion.datatables.version>0.9.2</dandelion.datatables.version>

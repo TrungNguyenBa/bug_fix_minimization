@@ -1,0 +1,4 @@
+0cefc4c2 : FieldUtils.safeMultiply(long,int) [3520651]
+:100644 100644 790834fc... 51e26971... M	RELEASE-NOTES.txt
+:100644 100644 55ed991d... 1e045b22... M	src/main/java/org/joda/time/field/FieldUtils.java
+:100644 100644 2933d41d... e60d1923... M	src/test/java/org/joda/time/field/TestFieldUtils.java

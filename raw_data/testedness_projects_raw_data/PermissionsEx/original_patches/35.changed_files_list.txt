@@ -1,0 +1,2 @@
+14772d4 : Remove @Setting path declarations where not necessary
+:100644 100644 03529ba... 6b2e2e1... M	src/main/java/ninja/leaping/permissionsex/config/PermissionsExConfiguration.java

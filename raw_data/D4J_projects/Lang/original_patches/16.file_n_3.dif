@@ -1,0 +1,12 @@
+diff --git a/src/site/changes/changes.xml b/src/site/changes/changes.xml
+index 1240bbcb..8e18ede7 100644
+--- a/src/site/changes/changes.xml
++++ b/src/site/changes/changes.xml
+@@ -22,7 +22,6 @@
+   <body>
+ 
+   <release version="3.0.2" date="unreleased" description="September release">  
+-    <action type="fix" issue="LANG-746">NumberUtils does not handle upper-case hex: 0X and -0X</action>
+     <action type="update" issue="LANG-736">CharUtils static final array CHAR_STRING is not needed to compute CHAR_STRING_ARRAY</action>
+     <action type="fix" issue="LANG-744">StringUtils throws java.security.AccessControlException on Google App Engine</action>
+     <action type="add" issue="LANG-695">SystemUtils.IS_OS_UNIX doesn't recognize FreeBSD as a Unix system</action>

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+index fd53733c..77eeec2f 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/skeleton/EntityMySkeleton.java
+@@ -85,7 +85,7 @@ public class EntityMySkeleton extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.skeleton.say";
++        return !playIdleSound() ? null : "mob.skeleton.say";
+     }
+ 
+     public ItemStack getPetEquipment(int slot)

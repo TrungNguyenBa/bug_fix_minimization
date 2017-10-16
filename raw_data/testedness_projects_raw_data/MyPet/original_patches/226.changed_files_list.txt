@@ -1,0 +1,2 @@
+cfd0cad3 : fixed missing worldgroup registration when a new world is created
+:100644 100644 a0a9aacb... ed227b4d... M	src/main/java/de/Keyle/MyPet/listeners/MyPetWorldListener.java

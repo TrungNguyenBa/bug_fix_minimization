@@ -1,0 +1,3 @@
+b1ff8235 : do not try to read tags which don't exists fixes #231
+:100644 100644 8d8658ed... 5c421c14... M	src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java
+:100644 100644 1ba94b1b... 15afbaba... M	src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java

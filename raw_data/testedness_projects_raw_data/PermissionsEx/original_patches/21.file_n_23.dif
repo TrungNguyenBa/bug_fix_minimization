@@ -1,0 +1,15 @@
+diff --git a/src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java b/src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java
+index 141b3ac..c0d49e3 100644
+--- a/src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java
++++ b/src/test/java/ninja/leaping/permissionsex/util/command/TestMessageFormatter.java
+@@ -49,8 +49,8 @@ class TestMessageFormatter implements MessageFormatter<String> {
+     }
+ 
+     @Override
+-    public String highlighted(String text) {
+-        return "*" + text + "*";
++    public String highlighted(Translatable text) {
++        return "*" + translated(text) + "*";
+     }
+ 
+     @Override

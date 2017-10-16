@@ -1,0 +1,18 @@
+diff --git a/include/faunus/move.h b/include/faunus/move.h
+index 1b6b76f4..74a0087b 100644
+--- a/include/faunus/move.h
++++ b/include/faunus/move.h
+@@ -102,11 +102,11 @@ namespace Faunus {
+                   mu_trial = p[i].alpha*E + p[i].mup;        // Total new dipole moment
+                   mu_err = mu_trial - p[i].mu*p[i].muscalar;     // Difference between former and current state
+                   mu_err_norm[i] = mu_err.norm();// Get norm of previous row
+-                  p[i].muscalar = mu_trial.norm();// Update dip scalar in particle
++                  p[i].muscalar = mu_trial.norm();                          // Update dipole scalar in particle
+                   if(p[i].muscalar < 1e-6) {
+                     continue;
+                   }
+-                  p[i].mu = mu_trial/p[i].muscalar;// Update article dip.
++                  p[i].mu = mu_trial/p[i].muscalar;                         // Update dipole vector in particle
+                 }
+                 //count++;
+               } while (mu_err_norm.maxCoeff() > threshold);                 // Check if threshold is ok

@@ -1,0 +1,4 @@
+6924915e : don't try to inline properties that we don't recognize, because they may be prototype properties. This isn't a perfect fix, but should get most cases. Fixes issue 724
+:100644 100644 62ff35dd... 8c3159d6... M	src/com/google/javascript/jscomp/InlineObjectLiterals.java
+:100644 100644 2e15d4f4... 369fc2f4... M	test/com/google/javascript/jscomp/InlineObjectLiteralsTest.java
+:100644 100644 a9e2d908... 2a1766e6... M	test/com/google/javascript/jscomp/IntegrationTest.java

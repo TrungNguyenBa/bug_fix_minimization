@@ -1,0 +1,10 @@
+332572b4 : Fixed failing tests due to state file format change for cuboid derived geometries
+:100644 100644 07943b82... 875ceb3a... M	include/faunus/space.h
+:100644 100644 80557a90... 1f47b4d1... M	src/examples/bulk.state
+:100755 100755 7bd45126... d7abfe35... M	src/examples/membrane.run
+:100644 100644 5925593f... 47808db2... M	src/examples/membrane.state
+:100644 100644 9e988290... 410a1048... M	src/examples/membrane.test
+:100644 100644 457d95ad... 797201b9... M	src/examples/slitpolymer.state
+:100644 100644 be09b2f4... 6b5fb168... M	src/examples/stockmayer.state
+:100644 100644 07b18959... 9ca4994c... M	src/examples/water.state
+:100644 100644 348d3b07... 917e432c... M	src/examples/water2.state

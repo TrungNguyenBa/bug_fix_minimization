@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/MyPetInfo.java b/src/main/java/de/Keyle/MyPet/entity/MyPetInfo.java
+index 0e4a23eb..ff22aea1 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/MyPetInfo.java
++++ b/src/main/java/de/Keyle/MyPet/entity/MyPetInfo.java
+@@ -30,7 +30,8 @@ import java.lang.annotation.Target;
+ 
+ @Retention(RetentionPolicy.RUNTIME)
+ @Target(ElementType.TYPE)
+-public @interface MyPetInfo {
++public @interface MyPetInfo
++{
+     public Material[] food() default {};
+ 
+     public double hp() default 20D;

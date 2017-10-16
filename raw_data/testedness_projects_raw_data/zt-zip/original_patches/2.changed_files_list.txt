@@ -1,0 +1,3 @@
+2e78b34 : Some minor fixes
+:100644 100644 506a385... 528e76b... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java
+:100644 100644 9b29af4... a351414... M	src/test/java/org/zeroturnaround/zip/ZipUtilTest.java

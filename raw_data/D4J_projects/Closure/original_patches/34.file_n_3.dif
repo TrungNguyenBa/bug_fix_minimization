@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/jscomp/CodePrinter.java b/src/com/google/javascript/jscomp/CodePrinter.java
+index 31c62d92..52dfa9b2 100644
+--- a/src/com/google/javascript/jscomp/CodePrinter.java
++++ b/src/com/google/javascript/jscomp/CodePrinter.java
+@@ -331,7 +331,7 @@ class CodePrinter {
+     @Override
+     void appendOp(String op, boolean binOp) {
+       if (binOp) {
+-        if (getLastChar() != ' ' && op.charAt(0) != ',') {
++        if (getLastChar() != ' ') {
+           append(" ");
+         }
+         append(op);

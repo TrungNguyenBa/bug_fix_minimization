@@ -1,0 +1,29 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index 7502e6d..f74086b 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -641,15 +641,6 @@ public class PermissionManager {
+ 	/**
+ 	 * Reset all in-memory groups and users, clean up runtime stuff, reloads backend
+ 	 */
+-	public void reset() throws PermissionBackendException {
+-		reset(true);
+-	}
+-
+-	/**
+-	 * Reset all in-memory groups and users, clean up runtime stuff, reloads backend
+-	 *
+-	 * @param callEvent Call the reload event
+-	 */
+ 	public void reset(boolean callEvent) throws PermissionBackendException {
+ 		this.clearCache();
+ 
+@@ -665,7 +656,7 @@ public class PermissionManager {
+ 				this.backend.close();
+ 				this.backend = null;
+ 			}
+-			reset();
++			reset(true);
+ 		} catch (PermissionBackendException ignore) {
+ 			// Ignore because we're shutting down so who cares
+ 		}

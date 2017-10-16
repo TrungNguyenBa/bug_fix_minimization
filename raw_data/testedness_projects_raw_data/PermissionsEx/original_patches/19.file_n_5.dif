@@ -1,0 +1,30 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java b/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+index 21f3d9f..1347d26 100644
+--- a/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
++++ b/src/main/java/ninja/leaping/permissionsex/command/ParentCommands.java
+@@ -16,7 +16,6 @@
+  */
+ package ninja.leaping.permissionsex.command;
+ 
+-import com.google.common.collect.ImmutableSet;
+ import ninja.leaping.permissionsex.PermissionsEx;
+ import ninja.leaping.permissionsex.data.ImmutableOptionSubjectData;
+ import ninja.leaping.permissionsex.data.SubjectCache;
+@@ -50,7 +49,7 @@ public class ParentCommands {
+                     public <TextType> void execute(Commander<TextType> src, CommandContext args) throws CommandException {
+                         Map.Entry<String, String> subject = subjectOrSelf(src, args);
+                         checkSubjectPermission(src, subject, "permissionsex.parent.add");
+-                        Set<Map.Entry<String, String>> contexts = ImmutableSet.copyOf(args.<Map.Entry<String, String>>getAll("context"));
++                        Set<Map.Entry<String, String>> contexts = GLOBAL; // TODO: Handle context flags
+                         SubjectCache dataCache = args.hasAny("transient") ? pex.getTransientSubjects(subject.getKey()) : pex.getSubjects(subject.getKey());
+                         ImmutableOptionSubjectData data = getSubjectData(dataCache, subject.getValue());
+                         Map.Entry<String, String> parent = args.getOne("parent");
+@@ -71,7 +70,7 @@ public class ParentCommands {
+                     public <TextType> void execute(Commander<TextType> src, CommandContext args) throws CommandException {
+                         Map.Entry<String, String> subject = subjectOrSelf(src, args);
+                         checkSubjectPermission(src, subject, "permissionsex.parent.remove");
+-                        Set<Map.Entry<String, String>> contexts = ImmutableSet.copyOf(args.<Map.Entry<String, String>>getAll("context"));
++                        Set<Map.Entry<String, String>> contexts = GLOBAL; // TODO: Handle context flags
+                         SubjectCache dataCache = args.hasAny("transient") ? pex.getTransientSubjects(subject.getKey()) : pex.getSubjects(subject.getKey());
+                         ImmutableOptionSubjectData data = getSubjectData(dataCache, subject.getValue());
+                         Map.Entry<String, String> parent = args.getOne("parent");

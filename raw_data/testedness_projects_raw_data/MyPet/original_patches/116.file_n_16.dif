@@ -1,0 +1,21 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java b/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
+index 1ba94b1b..5fc1b06c 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pig/MyPig.java
+@@ -25,7 +25,6 @@ import de.Keyle.MyPet.entity.types.IMyPetBaby;
+ import de.Keyle.MyPet.entity.types.MyPet;
+ import de.Keyle.MyPet.entity.types.MyPetType;
+ import de.Keyle.MyPet.skill.skills.implementation.inventory.ItemStackNBTConverter;
+-import de.Keyle.MyPet.util.ConfigItem;
+ import de.Keyle.MyPet.util.MyPetPlayer;
+ import de.keyle.knbt.TagByte;
+ import de.keyle.knbt.TagCompound;
+@@ -38,8 +37,6 @@ import static org.bukkit.Material.CARROT_ITEM;
+ 
+ @MyPetInfo(food = {CARROT_ITEM})
+ public class MyPig extends MyPet implements IMyPetBaby {
+-    public static ConfigItem GROW_UP_ITEM;
+-
+     protected boolean isBaby = false;
+     public ItemStack saddle = null;
+ 

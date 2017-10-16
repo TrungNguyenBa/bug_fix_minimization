@@ -1,0 +1,20 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/transform/StringZipEntryTransformer.java b/src/main/java/org/zeroturnaround/zip/transform/StringZipEntryTransformer.java
+index e2d2eec..160a76a 100644
+--- a/src/main/java/org/zeroturnaround/zip/transform/StringZipEntryTransformer.java
++++ b/src/main/java/org/zeroturnaround/zip/transform/StringZipEntryTransformer.java
+@@ -25,15 +25,6 @@ public abstract class StringZipEntryTransformer implements ZipEntryTransformer {
+ 
+   /**
+    * Transforms the given String into a new one.
+-   *
+-   * @param zipEntry
+-   *          zip entry metadata
+-   * @param input
+-   *          zip entry contents
+-   *          
+-   * @return String - transformed entry contents
+-   *
+-   * @throws IOException if transformation cannot be completed succesfully
+    */
+   protected abstract String transform(ZipEntry zipEntry, String input) throws IOException;
+ 

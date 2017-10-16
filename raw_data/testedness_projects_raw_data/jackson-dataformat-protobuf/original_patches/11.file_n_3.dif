@@ -1,0 +1,16 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
+index 355090e..eea4f29 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufReadContext.java
+@@ -76,9 +76,9 @@ public final class ProtobufReadContext
+         ProtobufReadContext ctxt = _child;
+         if (ctxt == null) {
+             _child = ctxt = new ProtobufReadContext(this, _messageType,
+-                    TYPE_ARRAY, _endOffset);
++                    TYPE_ARRAY, 0);
+         } else {
+-            ctxt.reset(_messageType, TYPE_ARRAY, _endOffset);
++            ctxt.reset(_messageType, TYPE_ARRAY, 0);
+         }
+         return ctxt;
+     }

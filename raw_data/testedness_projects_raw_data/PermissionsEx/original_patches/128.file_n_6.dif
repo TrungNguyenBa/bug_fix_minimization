@@ -1,0 +1,30 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/commands/UserCommands.java b/src/main/java/ru/tehkode/permissions/bukkit/commands/UserCommands.java
+index c26e4c8..cb827bf 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/commands/UserCommands.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/commands/UserCommands.java
+@@ -91,14 +91,13 @@ public class UserCommands extends PermissionsCommand {
+ 		sender.sendMessage("'" + userName + "' is a member of:");
+ 		printEntityInheritance(sender, user.getParents());
+ 
+-		Map<String, List<PermissionGroup>> allParents = user.getAllParents();
+-		for (String world : allParents.keySet()) {
++		for (String world : user.getAllGroups().keySet()) {
+ 			if (world == null) {
+ 				continue;
+ 			}
+ 
+ 			sender.sendMessage("  @" + world + ":");
+-			printEntityInheritance(sender, allParents.get(world));
++			printEntityInheritance(sender, user.getAllGroups().get(world));
+ 		}
+ 
+ 		sender.sendMessage(userName + "'s permissions:");
+@@ -565,7 +564,7 @@ public class UserCommands extends PermissionsCommand {
+ 		}
+ 
+ 		if (!groups.isEmpty()) {
+-			user.setParents(groups, worldName);
++			user.setGroupObjects(groups, worldName);
+ 			sender.sendMessage(ChatColor.WHITE + "User groups set!");
+ 		} else {
+ 			sender.sendMessage(ChatColor.RED + "No groups set!");

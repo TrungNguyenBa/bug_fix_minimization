@@ -1,0 +1,13 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java b/zombielink/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
+index 552c9fe..7b88238 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/response/HeaderProcessor.java
+@@ -26,7 +26,7 @@ import java.util.Map;
+ import org.apache.http.HttpResponse;
+ 
+ import com.lonepulse.zombielink.annotation.Header;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ import com.lonepulse.zombielink.util.Metadata;
+ 
+ /**

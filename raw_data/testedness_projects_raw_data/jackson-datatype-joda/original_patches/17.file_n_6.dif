@@ -1,0 +1,35 @@
+diff --git a/src/test/java/com/fasterxml/jackson/datatype/joda/JodaSerializationTest.java b/src/test/java/com/fasterxml/jackson/datatype/joda/JodaSerializationTest.java
+index e980f0b..8a7617a 100644
+--- a/src/test/java/com/fasterxml/jackson/datatype/joda/JodaSerializationTest.java
++++ b/src/test/java/com/fasterxml/jackson/datatype/joda/JodaSerializationTest.java
+@@ -189,7 +189,8 @@ public class JodaSerializationTest extends JodaTestBase
+     public void testPeriodSer() throws IOException
+     {
+         Period in = new Period(1, 2, 3, 4);
+-        assertEquals(quote("PT1H2M3.004S"), MAPPER.writeValueAsString(in));
++        String json = MAPPER.writeValueAsString(in);
++        assertEquals(quote("PT1H2M3.004S"), json);
+     }
+     
+     public void testPeriodSerWithTypeInfo() throws IOException
+@@ -197,7 +198,8 @@ public class JodaSerializationTest extends JodaTestBase
+         Period in = new Period(1, 2, 3, 4);
+         ObjectMapper mapper = jodaMapper();
+         mapper.addMixInAnnotations(Period.class, ObjectConfiguration.class);
+-        assertEquals("[\"org.joda.time.Period\",\"PT1H2M3.004S\"]", mapper.writeValueAsString(in));
++        String json = mapper.writeValueAsString(in);
++        assertEquals("[\"org.joda.time.Period\",\"PT1H2M3.004S\"]", json);
+     }
+ 
+     /*
+@@ -211,10 +213,6 @@ public class JodaSerializationTest extends JodaTestBase
+         Duration d = new Duration(3123422);
+         String json = MAPPER.writeValueAsString(d);
+         assertEquals("3123422", json);
+-
+-        assertEquals(quote("PT3123.422S"), MAPPER.writer()
+-                .without(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+-                .writeValueAsString(d));
+     }
+     
+     public void testDurationSerWithTypeInfo() throws IOException

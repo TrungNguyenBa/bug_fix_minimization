@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java b/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+index 7c660d6..aa7f8a0 100644
+--- a/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
++++ b/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+@@ -264,7 +264,7 @@ public class PermissionsEx implements ImplementationInterface {
+         }
+     }
+ 
+-    public Set<String> getRegisteredSubjectTypes() {
++    public Iterable<String> getRegisteredSubjectTypes() {
+         return this.activeDataStore.getRegisteredTypes();
+     }
+ 

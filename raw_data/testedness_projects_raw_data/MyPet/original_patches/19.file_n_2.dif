@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
+index f56bc999..cc13208b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
+@@ -25,7 +25,6 @@ import de.Keyle.MyPet.entity.ai.AIGoal;
+ import de.Keyle.MyPet.entity.types.EntityMyPet;
+ import de.Keyle.MyPet.entity.types.IMyPetEquipment;
+ import de.Keyle.MyPet.entity.types.MyPet;
+-import net.minecraft.server.v1_8_R2.EntityArmorStand;
+ import net.minecraft.server.v1_8_R2.EntityLiving;
+ 
+ public class MeleeAttack extends AIGoal {
+@@ -58,9 +57,6 @@ public class MeleeAttack extends AIGoal {
+         if (!targetEntity.isAlive()) {
+             return false;
+         }
+-        if (targetEntity instanceof EntityArmorStand) {
+-            return false;
+-        }
+         if (petEntity.getMyPet().getRangedDamage() > 0 && this.petEntity.f(targetEntity.locX, targetEntity.getBoundingBox().b, targetEntity.locZ) >= 20) {
+             return false;
+         }

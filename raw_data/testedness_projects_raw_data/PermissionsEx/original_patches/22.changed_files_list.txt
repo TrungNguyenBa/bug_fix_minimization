@@ -1,0 +1,11 @@
+b8828ea : Fix caching data reference holding, other minor things
+:100644 100644 c0bbedb... ba6b646... M	src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+:100644 100644 970a792... 83bb41d... M	src/main/java/ninja/leaping/permissionsex/data/CacheListenerHolder.java
+:100644 100644 572c399... 6c49219... M	src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+:100644 100644 cdf4f61... 23c749b... M	src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java
+:100644 100644 95f8f2a... a4c90f1... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+:100644 100644 f43bb35... 3b32817... M	src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java
+:100644 100644 afe63bd... f940f7f... M	src/main/java/ninja/leaping/permissionsex/sponge/SpongeMessageFormatter.java
+:100644 100644 61bc5ff... 9ffdfa7... M	src/main/po/de.po
+:100644 100644 ca35c33... 7ae7a8c... M	src/main/po/en_US.po
+:100644 100644 699b6bd... 0500f28... M	src/main/po/keys.pot

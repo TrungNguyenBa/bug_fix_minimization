@@ -1,0 +1,7 @@
+6564dea : refactor BSON decoder
+:100644 100644 b55260c... 8f4a542... M	src/main/java/de/bwaldvogel/mongo/backend/memory/MemoryBackend.java
+:000000 100644 0000000... b12a78c... A	src/main/java/de/bwaldvogel/mongo/wire/BsonConstants.java
+:000000 100644 0000000... 53a45d2... A	src/main/java/de/bwaldvogel/mongo/wire/BsonDecoder.java
+:100644 100644 09174a5... 3b8b504... M	src/main/java/de/bwaldvogel/mongo/wire/MongoWireProtocolHandler.java
+:000000 100644 0000000... e3c8f27... A	src/test/java/de/bwaldvogel/mongo/wire/BsonDecoderTest.java
+:100644 000000 6e6c401... 0000000... D	src/test/java/de/bwaldvogel/mongo/wire/MongoWireProtocolHandlerTest.java

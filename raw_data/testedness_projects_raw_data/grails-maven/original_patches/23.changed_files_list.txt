@@ -1,0 +1,2 @@
+cef9ba3 : Fixed documentation for MvnTest since integration tests does not come into play anymore
+:100644 100644 bdd9e70... 5a41b0f... M	src/main/java/org/grails/maven/plugin/MvnTestMojo.java

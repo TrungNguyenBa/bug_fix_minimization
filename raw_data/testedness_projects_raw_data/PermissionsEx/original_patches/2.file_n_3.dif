@@ -1,0 +1,13 @@
+diff --git a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissionAttachment.java b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissionAttachment.java
+index fc6898d..ed07270 100644
+--- a/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissionAttachment.java
++++ b/permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissionAttachment.java
+@@ -55,7 +55,7 @@ public class PEXPermissionAttachment extends PermissionAttachment implements Cac
+ 
+     private void updateData(ImmutableSubjectData newData) {
+         if (newData != this.subjectData) {
+-            this.cache.set(getIdentifier(), newData);
++            this.cache.update(getIdentifier(), newData);
+         }
+     }
+ 

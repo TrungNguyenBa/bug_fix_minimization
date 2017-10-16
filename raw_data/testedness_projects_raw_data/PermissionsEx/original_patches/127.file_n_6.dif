@@ -1,0 +1,16 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
+index c7ec1c5..fe840ed 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/PermissionsExConfig.java
+@@ -58,10 +58,6 @@ public class PermissionsExConfig {
+ 	}
+ 
+ 	public ConfigurationSection getBackendConfig(String backend) {
+-		ConfigurationSection section = config.getConfigurationSection("permissions.backends." + backend);
+-		if (section == null) {
+-			section = config.createSection("permissions.backends." + backend);
+-		}
+-		return section;
++		return config.getConfigurationSection("permissions.backends." + backend);
+ 	}
+ }

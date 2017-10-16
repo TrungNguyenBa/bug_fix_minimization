@@ -1,0 +1,2 @@
+54b7d87 : Fixing log back warning per #59
+:100644 100644 751726a... 830ef37... M	src/main/resources/logback.xml

@@ -1,0 +1,17 @@
+diff --git a/src/main/java/de/bwaldvogel/mongo/MongoServer.java b/src/main/java/de/bwaldvogel/mongo/MongoServer.java
+index 76e6a2c..1769cea 100644
+--- a/src/main/java/de/bwaldvogel/mongo/MongoServer.java
++++ b/src/main/java/de/bwaldvogel/mongo/MongoServer.java
+@@ -108,11 +108,7 @@ public class MongoServer {
+         return getLocalAddress();
+     }
+ 
+-    /**
+-     * @return the local address the server was bound or null if the server is
+-     *         not listening
+-     */
+-    public InetSocketAddress getLocalAddress() {
++    protected InetSocketAddress getLocalAddress() {
+         if (channel == null)
+             return null;
+         return (InetSocketAddress) channel.localAddress();

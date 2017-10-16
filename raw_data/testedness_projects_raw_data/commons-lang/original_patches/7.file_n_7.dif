@@ -1,0 +1,129 @@
+diff --git a/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java b/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java
+index 4f84cc77..f0445525 100644
+--- a/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java
++++ b/src/main/java/org/apache/commons/lang3/time/FastDatePrinter.java
+@@ -25,7 +25,6 @@
+ import java.util.ArrayList;
+ import java.util.Calendar;
+ import java.util.Date;
+-import java.util.GregorianCalendar;
+ import java.util.List;
+ import java.util.Locale;
+ import java.util.TimeZone;
+@@ -211,11 +210,15 @@ private void init() {
+                 rule = new TextField(Calendar.ERA, ERAs);
+                 break;
+             case 'y': // year (number)
++            case 'Y': // week year
+                 if (tokenLen == 2) {
+                     rule = TwoDigitYearField.INSTANCE;
+                 } else {
+                     rule = selectNumberRule(Calendar.YEAR, tokenLen < 4 ? 4 : tokenLen);
+                 }
++                if (c == 'Y') {
++                    rule = new WeekYear((NumberRule) rule);
++                }
+                 break;
+             case 'M': // month in year (text and number)
+                 if (tokenLen >= 4) {
+@@ -438,7 +441,7 @@ String format(Object obj) {
+      */
+     @Override
+     public String format(final long millis) {
+-        final Calendar c = newCalendar();  // hard code GregorianCalendar
++        final Calendar c = newCalendar();
+         c.setTimeInMillis(millis);
+         return applyRulesToString(c);
+     }
+@@ -453,12 +456,11 @@ private String applyRulesToString(final Calendar c) {
+     }
+ 
+     /**
+-     * Creation method for ne calender instances.
++     * Creation method for new calender instances.
+      * @return a new Calendar instance.
+      */
+-    private GregorianCalendar newCalendar() {
+-        // hard code GregorianCalendar
+-        return new GregorianCalendar(mTimeZone, mLocale);
++    private Calendar newCalendar() {
++        return Calendar.getInstance(mTimeZone, mLocale);
+     }
+ 
+     /* (non-Javadoc)
+@@ -466,7 +468,7 @@ private GregorianCalendar newCalendar() {
+      */
+     @Override
+     public String format(final Date date) {
+-        final Calendar c = newCalendar();  // hard code GregorianCalendar
++        final Calendar c = newCalendar();
+         c.setTime(date);
+         return applyRulesToString(c);
+     }
+@@ -492,7 +494,7 @@ public StringBuffer format(final long millis, final StringBuffer buf) {
+      */
+     @Override
+     public StringBuffer format(final Date date, final StringBuffer buf) {
+-        final Calendar c = newCalendar();  // hard code GregorianCalendar
++        final Calendar c = newCalendar();
+         c.setTime(date);
+         return applyRules(c, buf);
+     }
+@@ -519,7 +521,7 @@ public StringBuffer format(final Calendar calendar, final StringBuffer buf) {
+      */
+     @Override
+     public <B extends Appendable> B format(final Date date, final B buf) {
+-        final Calendar c = newCalendar();  // hard code GregorianCalendar
++        final Calendar c = newCalendar();
+         c.setTime(date);
+         return applyRules(c, buf);
+     }
+@@ -528,9 +530,13 @@ public StringBuffer format(final Calendar calendar, final StringBuffer buf) {
+      * @see org.apache.commons.lang3.time.DatePrinter#format(java.util.Calendar, java.lang.Appendable)
+      */
+     @Override
+-    public <B extends Appendable> B format(final Calendar calendar, final B buf) {
++    public <B extends Appendable> B format(Calendar calendar, final B buf) {
+         // do not pass in calendar directly, this will cause TimeZone of FastDatePrinter to be ignored
+-        return format(calendar.getTime(), buf);
++        if(!calendar.getTimeZone().equals(mTimeZone)) {
++            calendar = (Calendar)calendar.clone();
++            calendar.setTimeZone(mTimeZone);
++        }
++        return applyRules(calendar, buf);
+     }
+ 
+     /**
+@@ -1202,6 +1208,32 @@ public void appendTo(final Appendable buffer, final int value) throws IOExceptio
+         }
+     }
+ 
++    /**
++     * <p>Inner class to output the numeric day in week.</p>
++     */
++    private static class WeekYear implements NumberRule {
++        private final NumberRule mRule;
++
++        WeekYear(final NumberRule rule) {
++            mRule = rule;
++        }
++
++        @Override
++        public int estimateLength() {
++            return mRule.estimateLength();
++        }
++
++        @Override
++        public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
++            mRule.appendTo(buffer, CalendarReflection.getWeekYear(calendar));
++        }
++
++        @Override
++        public void appendTo(final Appendable buffer, final int value) throws IOException {
++            mRule.appendTo(buffer, value);
++        }
++    }
++
+     //-----------------------------------------------------------------------
+ 
+     private static final ConcurrentMap<TimeZoneDisplayKey, String> cTimeZoneDisplayCache =

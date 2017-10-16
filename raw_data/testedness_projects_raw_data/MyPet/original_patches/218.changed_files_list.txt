@@ -1,0 +1,3 @@
+82adecd0 : changed follow start distance from float to double
+:100644 100644 739e3713... 75439c67... M	src/main/java/de/Keyle/MyPet/entity/ai/movement/MyPetAIFollowOwner.java
+:100644 100644 1ae87cde... f2d876e3... M	src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java b/src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
+index 33100049..71e55c0d 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/ghast/EntityMyGhast.java
+@@ -49,7 +49,7 @@ public class EntityMyGhast extends EntityMyPet
+ 
+     protected String getLivingSound()
+     {
+-        return "mob.ghast.moan";
++        return !playIdleSound() ? null : "mob.ghast.moan";
+     }
+ 
+     public void setPathfinder()

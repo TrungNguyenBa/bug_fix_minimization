@@ -1,0 +1,6 @@
+60cb5aa8 : Transfer to melba, smaller updates
+:100755 100755 fde2ac4f... c22bcccb... M	include/faunus/analysis.h
+:100644 100644 5bb5a68c... 5a503061... M	src/examples/stockmayer.cpp
+:100755 100755 734fc035... 629297d7... M	src/playground/stenqvist/compile.sh
+:100644 100644 b8be2447... 53c21e90... M	src/playground/stenqvist/nemo.cpp
+:000000 100755 00000000... eb468a9a... A	src/playground/stenqvist/stockmayer.run

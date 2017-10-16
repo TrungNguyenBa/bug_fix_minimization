@@ -1,0 +1,3 @@
+86bb025 : Comment empty list encoding and add test for the behavior
+:100644 100644 8784791... 88884b9... M	src/main/java/com/stripe/net/LiveStripeResponseGetter.java
+:100644 100644 c77ecb5... 2e0a348... M	src/test/java/com/stripe/net/LiveStripeResponseGetterTest.java

@@ -1,0 +1,36 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionGroup.java b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+index 4366e19..6c86285 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionGroup.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionGroup.java
+@@ -350,28 +350,16 @@ public abstract class PermissionGroup extends PermissionEntity implements Compar
+ 	 * @return true if this group is descendant or direct parent of specified group
+ 	 */
+ 	public boolean isChildOf(PermissionGroup group, String worldName, boolean checkInheritance) {
+-		return isChildOf(group, worldName, checkInheritance ? new HashSet<String>() : null);
+-	}
+-
+-	private boolean isChildOf(PermissionGroup group, String worldName, Set<String> visitedParents) {
+ 		if (group == null) {
+ 			return false;
+ 		}
+ 
+-		if (visitedParents != null) {
+-			visitedParents.add(this.getName());
+-		}
+-
+-		for (String parentGroup : this.getParentGroupsNamesImpl(worldName)) {
+-			if (visitedParents != null && visitedParents.contains(parentGroup)) {
+-				continue;
+-			}
+-
+-			if (group.getName().equals(parentGroup)) {
++		for (PermissionGroup parentGroup : this.getParentGroups(worldName)) {
++			if (group.equals(parentGroup)) {
+ 				return true;
+ 			}
+ 
+-			if (visitedParents != null && manager.getGroup(parentGroup).isChildOf(group, worldName, visitedParents)) {
++			if (checkInheritance && parentGroup.isChildOf(group, worldName, checkInheritance)) {
+ 				return true;
+ 			}
+ 		}

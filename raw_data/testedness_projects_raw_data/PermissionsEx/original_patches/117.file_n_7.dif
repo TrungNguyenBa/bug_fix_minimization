@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java b/src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
+index 790e195..2175790 100644
+--- a/src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
++++ b/src/main/java/ru/tehkode/permissions/backends/memory/MemoryData.java
+@@ -37,10 +37,6 @@ public class MemoryData implements PermissionsGroupData, PermissionsUserData {
+ 	}
+ 
+ 	@Override
+-	public void load() {
+-	}
+-
+-	@Override
+ 	public boolean isDefault(String world) {
+ 		return defaultVals.containsKey(world) ? defaultVals.get(world) : false;
+ 	}

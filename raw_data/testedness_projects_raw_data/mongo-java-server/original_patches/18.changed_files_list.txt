@@ -1,0 +1,2 @@
+c0e0f24 : move QueryOperator to the right source directory
+:100644 100644 528b626... 528b626... R100	src/test/java/de/bwaldvogel/mongo/backend/QueryOperator.java	src/main/java/de/bwaldvogel/mongo/backend/QueryOperator.java

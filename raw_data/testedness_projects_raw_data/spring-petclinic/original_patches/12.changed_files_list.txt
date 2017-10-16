@@ -1,0 +1,3 @@
+80ff54a : Fix #89 Web layer: use @Valid whenever possible
+:100644 100644 ea8aeaa... bf82302... M	src/main/java/org/springframework/samples/petclinic/web/PetController.java
+:100644 100644 03a1bca... 0621c98... M	src/main/java/org/springframework/samples/petclinic/web/PetValidator.java

@@ -1,0 +1,4 @@
+f346f45 : change from Integer to int, enable long running connection tries with maxRetries = -1
+:100644 100644 3eada3e... 103b852... M	src/main/java/org/graylog2/GelfAMQPSender.java
+:100644 100644 ec5e898... 4c0f582... M	src/main/java/org/graylog2/log/GelfAppender.java
+:100644 100644 c732ebe... 841b3cc... M	src/main/java/org/graylog2/logging/GelfHandler.java

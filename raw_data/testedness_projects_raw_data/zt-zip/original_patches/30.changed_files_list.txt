@@ -1,0 +1,3 @@
+90618ae : #41, Zips.addFile accepts a filter for filenames
+:100644 100644 0ee67b0... d51b75c... M	src/main/java/org/zeroturnaround/zip/Zips.java
+:100644 100644 f398469... b3aeded... M	src/test/java/org/zeroturnaround/zip/ZipsTest.java

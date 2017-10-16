@@ -1,0 +1,17 @@
+32a42cd : Refactor data baker to allom more implementations if that becomes interesting
+:100644 100644 ee3023b... b0d2d33... M	permissionsex-bukkit/src/main/java/ninja/leaping/permissionsex/bukkit/PEXPermissible.java
+:100644 100644 088b761... 4c5c193... M	permissionsex-bukkit/src/main/po/keys.pot
+:100644 100644 207daae... 30d70b7... M	permissionsex-core/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+:100644 000000 3a32848... 0000000... D	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java
+:100644 100644 e6cc9f6... d4accf9... R097	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/BakedSubjectData.java	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/calculated/BakedSubjectData.java
+:100644 100644 6f20b06... 5ef2565... R085	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/CalculatedSubject.java	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/calculated/CalculatedSubject.java
+:000000 100644 0000000... a531fc2... A	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/calculated/InheritanceSubjectDataBaker.java
+:000000 100644 0000000... 984ced6... A	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/calculated/SubjectDataBaker.java
+:000000 100644 0000000... 77edb24... A	permissionsex-core/src/main/java/ninja/leaping/permissionsex/data/calculated/SubjectDataBakers.java
+:100644 100644 40fb629... 68f0b7b... M	permissionsex-core/src/main/po/de.po
+:100644 100644 4e77d24... 9337491... M	permissionsex-core/src/main/po/keys.pot
+:100644 100644 6d9f03a... 95db6c9... M	permissionsex-core/src/main/po/zh_HK.po
+:100644 100644 6c85e58... 21b0773... M	permissionsex-core/src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java
+:100644 100644 77dfd8e... 0ab961b... M	permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java
+:100644 100644 d1259f9... 98e87f1... M	permissionsex-sponge/src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
+:100644 100644 d3612f2... 056bf5c... M	permissionsex-sponge/src/main/po/keys.pot

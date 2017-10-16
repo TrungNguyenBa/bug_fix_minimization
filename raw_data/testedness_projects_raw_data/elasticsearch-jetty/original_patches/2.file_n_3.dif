@@ -1,0 +1,32 @@
+diff --git a/src/main/java/com/sonian/elasticsearch/http/filter/logging/LoggingFilterHttpServerAdapter.java b/src/main/java/com/sonian/elasticsearch/http/filter/logging/LoggingFilterHttpServerAdapter.java
+index 1294766..cbb9d41 100644
+--- a/src/main/java/com/sonian/elasticsearch/http/filter/logging/LoggingFilterHttpServerAdapter.java
++++ b/src/main/java/com/sonian/elasticsearch/http/filter/logging/LoggingFilterHttpServerAdapter.java
+@@ -104,7 +104,7 @@ public class LoggingFilterHttpServerAdapter implements FilterHttpServerAdapter {
+         return buf;
+     }
+ 
+-    private class LoggingHttpChannel extends HttpChannel {
++    private class LoggingHttpChannel implements HttpChannel {
+         private final HttpRequest request;
+         
+         private final HttpChannel channel;
+@@ -136,7 +136,6 @@ public class LoggingFilterHttpServerAdapter implements FilterHttpServerAdapter {
+         private final String opaqueId;
+ 
+         public LoggingHttpChannel(HttpRequest request, HttpChannel channel, String format, boolean logBody) {
+-            super(request);
+             this.channel = channel;
+             this.request = request;
+ 
+@@ -241,8 +240,8 @@ public class LoggingFilterHttpServerAdapter implements FilterHttpServerAdapter {
+         public void sendResponse(RestResponse response) {
+             int contentLength = -1;
+             try {
+-                contentLength = response.content().length();
+-            } catch (RuntimeException ex) {
++                contentLength = response.contentLength();
++            } catch (IOException ex) {
+                 // Ignore
+             }
+             channel.sendResponse(response);

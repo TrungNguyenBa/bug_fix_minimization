@@ -1,0 +1,54 @@
+diff --git a/include/faunus/json.h b/include/faunus/json.h
+index 527bf490..3cfa69df 100644
+--- a/include/faunus/json.h
++++ b/include/faunus/json.h
+@@ -100,15 +100,15 @@ namespace Faunus {
+       }
+ 
+     /**
+-     * @brief Loads a JSON file, reads atom pair properties and returns a vector map
++     * @brief Loads a JSON file, reads pair properties and returns a vector map
+      *
+      * Example:
+      * ~~~~
+      * auto map = atomPairMap("input.json", "pairproperties", "nemorep");
+      * for (auto &m : map)
+-     *   cout << m.second.transpose() << endl; // -> 12 23 0.2 -2 3 4 5 ...
++     *   cout << m.second.transpose() << endl;
+      * ~~~~
+-     * where the input json file could look like this:
++     * where the input file could look like this:
+      * ~~~~
+      * {
+      *   "pairproperties" : {
+@@ -119,23 +119,23 @@ namespace Faunus {
+      * }
+      * ~~~~
+      */
+-    inline std::map<opair<int>,Eigen::VectorXd>
+-      atomPairMap(const string &file, const string &section, const string &key) {
+-        assert(!section.empty() && !key.empty());
++    std::map<opair<int>,Eigen::VectorXd>
++      atomPairMap(const string &file, string section, string key) {
+         typedef Eigen::VectorXd Tvec;
+         typedef opair<int> Tpair;
+         std::map<Tpair,Tvec> map;
+-        string atom1, atom2;
+         auto j=json::open(file);
+         for (auto &a : json::object(section, j)) {
++          string atom1, atom2;
+           std::istringstream is(a.first);
+           is >> atom1 >> atom2;
+           Tpair pair( atom[atom1].id, atom[atom2].id );
+-          string str = json::value<string>(a.second, key,"");
+-          std::istringstream is2(str), tmp(str);
++
++          auto pstr = json::value<string>(a.second, key, "");
++          std::istringstream is2(pstr), tmp(pstr);
+           int size = std::distance(std::istream_iterator<string>(tmp), std::istream_iterator<string>());
+           Tvec v(size);
+-          for (int i=0; i<size; i++)
++          for (int i=0; i<v.size(); i++)
+             is2 >> v[i];
+           map[pair] = v;
+         }

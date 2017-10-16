@@ -1,0 +1,3 @@
+6608e83 : Reverse ordering of SQL permissions in dump files. Fixes #1175
+:100644 100644 a8aff05... 06a9c35... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 37b4c64... 4c4bdd4... M	src/main/java/ru/tehkode/permissions/backends/SQLBackend.java

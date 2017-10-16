@@ -1,0 +1,2 @@
+718b9da : Fix shade plugin relocations
+:100644 100644 e3c0e7c... 621ab26... M	pom.xml

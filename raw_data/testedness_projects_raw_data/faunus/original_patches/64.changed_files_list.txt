@@ -1,0 +1,13 @@
+f4012e43 : fixed rdf, reduced header dependencies, cigar-npt compiling
+:100755 100755 d086adbd... 5992d148... M	include/faunus/analysis.h
+:100644 100644 4e1d5155... b38c1412... M	include/faunus/geometry.h
+:100644 100644 ecfb85fe... 3df6f7f6... M	include/faunus/io.h
+:100644 100644 a9cce81b... 6699f8be... M	include/faunus/potentials.h
+:100644 100644 567db3ca... 7fe437fc... M	include/faunus/species.h
+:100644 100644 821fe4ba... cbaaa7ab... M	include/faunus/textio.h
+:100644 100644 230021f3... 85150a22... M	src/examples/bulk.cpp
+:100644 100644 e066dd43... 9824876a... M	src/examples/water.cpp
+:100644 100644 6eea224f... 39818b51... M	src/io.cpp
+:100644 100644 a0679bb7... 414a2918... M	src/playground/vacha/cigar-npt.cpp
+:100644 100644 7dd7b9ac... 2058db45... M	src/potentials.cpp
+:100644 100644 f05c6b11... a71158c4... M	src/textio.cpp

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/movement/LookAtPlayer.java b/src/main/java/de/Keyle/MyPet/entity/ai/movement/LookAtPlayer.java
+index f3be50ad..183242ac 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/movement/LookAtPlayer.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/movement/LookAtPlayer.java
+@@ -63,7 +63,7 @@ public class LookAtPlayer extends AIGoal {
+         if (!this.targetPlayer.isAlive()) {
+             return true;
+         }
+-        if (this.petEntity.f(this.targetPlayer) > this.range) {
++        if (this.petEntity.e(this.targetPlayer) > this.range * this.range) {
+             return true;
+         }
+         if (this.petEntity.passenger != null) {

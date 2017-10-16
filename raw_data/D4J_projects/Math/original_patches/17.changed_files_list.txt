@@ -1,0 +1,4 @@
+621806b79 : [MATH-778] Allow unlimited input values for Dfp#multiply.
+:100644 100644 64fb6fdb3... b6f8c5405... M	src/changes/changes.xml
+:100644 100644 d278a3128... 3a9198271... M	src/main/java/org/apache/commons/math3/dfp/Dfp.java
+:100644 100644 f7549764f... 6f224665c... M	src/test/java/org/apache/commons/math3/dfp/DfpTest.java

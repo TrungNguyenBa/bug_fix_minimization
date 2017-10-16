@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java b/src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java
+index 927e17f5b..75c9757ae 100644
+--- a/src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java
++++ b/src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java
+@@ -48,7 +48,7 @@ public abstract class BaseOptimizer<PAIR> {
+         this.checker = checker;
+ 
+         evaluations = new Incrementor(0, new MaxEvalCallback());
+-        iterations = new Incrementor(Integer.MAX_VALUE, new MaxIterCallback());
++        iterations = new Incrementor(0, new MaxIterCallback());
+     }
+ 
+     /**

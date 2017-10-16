@@ -1,0 +1,40 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+index 11857cf9..d84ca5dd 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/PlayerListener.java
+@@ -182,7 +182,7 @@ public class PlayerListener implements Listener {
+                                         runMyPet.sendMessageToOwner(Locales.getString("Message.Spawn.Respawn.In", myPet.getOwner()).replace("%petname%", myPet.getPetName()).replace("%time%", "" + myPet.getRespawnTime()));
+                                         break;
+                                     case Flying:
+-                                        runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner()), myPet.getPetName()));
++                                        runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner())));
+                                         break;
+                                     case Success:
+                                         runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Command.Call.Success", myPet.getOwner()), runMyPet.getPetName()));
+@@ -317,7 +317,7 @@ public class PlayerListener implements Listener {
+                                         }
+                                         break;
+                                     case Flying:
+-                                        runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner()), myPet.getPetName()));
++                                        runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner())));
+                                         break;
+                                     case Success:
+                                         if (runMyPet != myPet) {
+@@ -357,7 +357,7 @@ public class PlayerListener implements Listener {
+                                             runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.NoSpace", myPet.getOwner()), runMyPet.getPetName()));
+                                             break;
+                                         case Flying:
+-                                            runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner()), myPet.getPetName()));
++                                            runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner())));
+                                             break;
+                                         case NotAllowed:
+                                             runMyPet.sendMessageToOwner(Locales.getString("Message.No.AllowedHere", myPet.getOwner()).replace("%petname%", myPet.getPetName()));
+@@ -416,7 +416,7 @@ public class PlayerListener implements Listener {
+                                     }
+                                     break;
+                                 case Flying:
+-                                    runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner()), myPet.getPetName()));
++                                    runMyPet.sendMessageToOwner(Util.formatText(Locales.getString("Message.Spawn.Flying", myPet.getOwner())));
+                                     break;
+                                 case Success:
+                                     if (runMyPet != myPet) {

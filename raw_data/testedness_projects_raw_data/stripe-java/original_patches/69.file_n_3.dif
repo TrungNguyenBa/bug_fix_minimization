@@ -1,0 +1,20 @@
+diff --git a/src/main/java/com/stripe/model/Money.java b/src/main/java/com/stripe/model/Money.java
+deleted file mode 100644
+index d5adace..0000000
+--- a/src/main/java/com/stripe/model/Money.java
++++ /dev/null
+@@ -1,14 +0,0 @@
+-package com.stripe.model;
+-
+-public class Money {
+-	Integer amount;
+-	String currency;
+-
+-	public Integer getAmount() {
+-		return amount;
+-	}
+-
+-	public String getCurrency() {
+-		return currency;
+-	}
+-}

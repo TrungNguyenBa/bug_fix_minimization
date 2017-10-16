@@ -1,0 +1,7 @@
+8af124a2 : Working on Linux. Override overlap-check implemented as user-input in input-file.
+:100644 100644 28b95fd7... 84bd7f8c... M	include/faunus/group.h
+:100644 100644 5ce4faef... a1edb44a... M	include/faunus/inputfile.h
+:100644 100644 0f188fdd... 4fd6da76... M	include/faunus/space.h
+:100644 100644 f93d3d4b... b15dd754... M	include/faunus/textio.h
+:100644 100644 236fbfa1... 938c89f0... M	src/playground/stenqvist/nemo.cpp
+:100755 100755 2511da8f... 6eb5aeff... M	src/playground/stenqvist/stockmayer.run

@@ -1,0 +1,4 @@
+00fea9d80 : MATH-546 Wrong  variable type ("int" instead of "double").
+:100644 100644 b73ac9d3e... e09bbc357... M	src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java
+:100644 100644 154001edc... e4f9c3431... M	src/site/xdoc/changes.xml
+:100644 100644 33b2d8af8... 0bb04203d... M	src/test/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClustererTest.java

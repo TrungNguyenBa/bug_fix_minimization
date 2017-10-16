@@ -1,0 +1,3 @@
+c3b630fc : [].join(',') --> [].join() Fixes issue 558
+:100644 100644 1c4a3458... afaf85a8... M	src/com/google/javascript/jscomp/PeepholeReplaceKnownMethods.java
+:100644 100644 3a6e5b70... d0f0daf4... M	test/com/google/javascript/jscomp/PeepholeReplaceKnownMethodsTest.java

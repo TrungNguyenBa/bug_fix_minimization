@@ -1,0 +1,17 @@
+diff --git a/pom.xml b/pom.xml
+index ebc1418..4b53a0f 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -90,12 +90,6 @@
+ 
+     <dependencies>
+         <dependency>
+-            <groupId>org.codehaus.groovy</groupId>
+-            <artifactId>groovy-all</artifactId>
+-            <version>${groovy.version}</version>
+-        </dependency>
+-
+-        <dependency>
+             <groupId>jline</groupId>
+             <artifactId>jline</artifactId>
+             <version>2.11</version>

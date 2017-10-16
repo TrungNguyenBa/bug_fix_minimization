@@ -1,0 +1,18 @@
+diff --git a/pom.xml b/pom.xml
+index fbce792..3da14c7 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -120,13 +120,6 @@
+ 	<build>
+ 		<finalName>rules-processor</finalName>
+ 		<plugins>
+- 			<plugin>
+-				<artifactId>maven-compiler-plugin</artifactId>
+- 				<configuration>
+-					<source>1.5</source>
+-					<target>1.5</target>
+-				</configuration>
+-			</plugin>
+ 			<plugin>
+ 				<groupId>org.codehaus.mojo</groupId>
+ 				<artifactId>appassembler-maven-plugin</artifactId>

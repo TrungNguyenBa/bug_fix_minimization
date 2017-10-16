@@ -1,0 +1,3 @@
+0b3a8a31 : Adding tests and resolving LANG-710, reported by Benjamin Valentin. Note that this changed such that the code will now escape an unfinished entity (i.e. &#030). This matches browser behaviour.
+:100644 100644 ffd969f3... 3d4c2383... M	src/main/java/org/apache/commons/lang3/text/translate/NumericEntityUnescaper.java
+:100644 100644 9e2d2496... 6cfa772c... M	src/test/java/org/apache/commons/lang3/text/translate/NumericEntityUnescaperTest.java

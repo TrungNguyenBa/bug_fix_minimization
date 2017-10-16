@@ -1,0 +1,78 @@
+diff --git a/src/main/java/de/Keyle/MyPet/skill/Experience.java b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+index 5b2a3459..62c04901 100644
+--- a/src/main/java/de/Keyle/MyPet/skill/Experience.java
++++ b/src/main/java/de/Keyle/MyPet/skill/Experience.java
+@@ -64,13 +64,17 @@ public class Experience {
+             CALCULATION_MODE = "Default";
+         }
+ 
+-        Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, 1, getLevel(), true));
++        for (int i = 1; i <= getLevel(); i++) {
++            Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, i, true));
++        }
+     }
+ 
+     public void reset() {
+-        int lastLevel = getLevel();
+         exp = 0;
+-        Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, lastLevel, getLevel(), true));
++
++        for (int i = 1; i <= getLevel(); i++) {
++            Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, i, true));
++        }
+     }
+ 
+     public void setExp(double exp) {
+@@ -85,7 +89,9 @@ public class Experience {
+         int tmplvl = getLevel();
+         this.exp = expEvent.getExp();
+ 
+-        Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmplvl, true));
++        for (int i = tmplvl; i < getLevel(); i++) {
++            Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, i + 1, true));
++        }
+     }
+ 
+     public double getExp() {
+@@ -103,10 +109,10 @@ public class Experience {
+         int tmpLvl = getLevel();
+         this.exp = event.getExp();
+ 
+-        if (tmpLvl < getLevel()) {
+-            Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmpLvl));
++        for (int i = tmpLvl; i < getLevel(); i++) {
++            boolean quiet = i != getLevel() - 1;
++            Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, i + 1, quiet));
+         }
+-
+         return event.getNewExp() - event.getOldExp();
+     }
+ 
+@@ -122,10 +128,10 @@ public class Experience {
+             int tmpLvl = getLevel();
+             this.exp = expEvent.getExp();
+ 
+-            if (tmpLvl < getLevel()) {
+-                Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmpLvl));
++            for (int i = tmpLvl; i < getLevel(); i++) {
++                boolean quiet = i != getLevel() - 1;
++                Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, i + 1, quiet));
+             }
+-
+             return expEvent.getNewExp() - expEvent.getOldExp();
+         }
+         return 0;
+@@ -144,10 +150,10 @@ public class Experience {
+             int tmpLvl = getLevel();
+             this.exp = expEvent.getExp();
+ 
+-            if (tmpLvl < getLevel()) {
+-                Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, getLevel(), tmpLvl));
++            for (int i = tmpLvl; i < getLevel(); i++) {
++                boolean quiet = i != getLevel() - 1;
++                Bukkit.getServer().getPluginManager().callEvent(new MyPetLevelUpEvent(myPet, i + 1, quiet));
+             }
+-
+             return expEvent.getNewExp() - expEvent.getOldExp();
+         }
+         return 0;

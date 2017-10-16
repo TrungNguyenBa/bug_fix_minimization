@@ -1,0 +1,39 @@
+diff --git a/src/main/java/org/zeroturnaround/zip/ZipUtil.java b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+index 9880a51..e71e3e7 100644
+--- a/src/main/java/org/zeroturnaround/zip/ZipUtil.java
++++ b/src/main/java/org/zeroturnaround/zip/ZipUtil.java
+@@ -326,7 +326,6 @@ public final class ZipUtil {
+    *          target file to be created or overwritten.
+    * @return <code>true</code> if the entry was found and unpacked,
+    *         <code>false</code> if the entry was not found.
+-   * @throws java.io.IOException if file is not found or writing to it fails
+    */
+   public static boolean unpackEntry(InputStream is, String name, File file) throws IOException {
+     return handle(is, name, new FileUnpacker(file));
+@@ -542,8 +541,6 @@ public final class ZipUtil {
+    *          input ZIP stream (it will not be closed automatically).
+    * @param action
+    *          action to be called for each entry.
+-   * @param charset
+-   *          charset to process entries in
+    *
+    * @see ZipEntryCallback
+    * @see #iterate(File, ZipEntryCallback)
+@@ -602,8 +599,6 @@ public final class ZipUtil {
+    *          names of entries to iterate
+    * @param action
+    *          action to be called for each entry.
+-   * @param charset
+-   *          charset to process entries in
+    *
+    * @see ZipEntryCallback
+    * @see #iterate(File, String[], ZipEntryCallback)
+@@ -1092,8 +1087,6 @@ public final class ZipUtil {
+    *          root directory.
+    * @param targetZipFile
+    *          ZIP file that will be created or overwritten.
+-   * @param preserveRoot
+-   *          true if the resulted archive should have the top directory entry
+    */
+   public static void pack(final File sourceDir, final File targetZipFile, final boolean preserveRoot) {
+     if (preserveRoot) {

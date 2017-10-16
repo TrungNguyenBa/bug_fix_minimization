@@ -1,0 +1,13 @@
+diff --git a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+index 9706cce..3acdb0e 100644
+--- a/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
++++ b/src/main/java/pl/project13/maven/git/GitCommitIdMojo.java
+@@ -481,7 +481,7 @@ public class GitCommitIdMojo extends AbstractMojo {
+     try {
+       buildHost = InetAddress.getLocalHost().getHostName();
+     } catch (UnknownHostException e) {
+-      log("Unable to get build host, skipping property " + BUILD_HOST + ". Error message was: " + e.getMessage());
++      log("Unable to get build host");
+     }
+     put(properties, BUILD_HOST, buildHost);
+   }

@@ -1,0 +1,3 @@
+7b8a9ec : #18 fixing error related to VisitsViewTests
+:100644 100644 8458ba2... 8458ba2... R100	src/test/java/org/springframework/samples/petclinic/web/VisitsViewTest-config.xml	src/test/java/org/springframework/samples/petclinic/web/VisitsViewTests-config.xml
+:100644 100644 8254513... ace89a0... R097	src/test/java/org/springframework/samples/petclinic/web/VisitsViewTest.java	src/test/java/org/springframework/samples/petclinic/web/VisitsViewTests.java

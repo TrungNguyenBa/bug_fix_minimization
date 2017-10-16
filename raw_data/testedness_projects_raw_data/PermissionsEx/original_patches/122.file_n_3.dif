@@ -1,0 +1,21 @@
+diff --git a/src/main/java/ru/tehkode/permissions/PermissionManager.java b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+index b456988..4afbfbf 100644
+--- a/src/main/java/ru/tehkode/permissions/PermissionManager.java
++++ b/src/main/java/ru/tehkode/permissions/PermissionManager.java
+@@ -158,7 +158,6 @@ public class PermissionManager {
+ 
+ 			try {
+ 				if (backend != null) {
+-					backend.close();
+ 					backend.reload();
+ 				}
+ 				clearCache();
+@@ -687,6 +686,8 @@ public class PermissionManager {
+ 		}
+ 
+ 		PermissionBackend backend = PermissionBackend.getBackend(backendType, this, config);
++		backend.reload();
++		backend.validate();
+ 		return backend;
+ 	}
+ 

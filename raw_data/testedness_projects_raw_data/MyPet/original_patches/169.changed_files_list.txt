@@ -1,0 +1,2 @@
+c7b816c2 : fixed damage of ranged attacks fixes #176
+:100644 100644 b6f23337... 40ae743c... M	src/main/java/de/Keyle/MyPet/listeners/EntityListener.java

@@ -1,0 +1,10 @@
+diff --git a/src/examples/water2.state b/src/examples/water2.state
+index 917e432c..348d3b07 100644
+--- a/src/examples/water2.state
++++ b/src/examples/water2.state
+@@ -1,4 +1,4 @@
+-18.9651906478024 18.9651906478024 18.9651906478024
++6821.370495778857
+ 648
+ -8.620840689894809
+ -8.614484743590831

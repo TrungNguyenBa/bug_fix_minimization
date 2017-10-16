@@ -1,0 +1,31 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
+index 1a63ddc9..069be6de 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/attack/MeleeAttack.java
+@@ -57,7 +57,7 @@ public class MeleeAttack extends AIGoal {
+         if (!targetEntity.isAlive()) {
+             return false;
+         }
+-        if (petEntity.getMyPet().getRangedDamage() > 0 && this.petEntity.f(targetEntity.locX, targetEntity.boundingBox.b, targetEntity.locZ) >= 20) {
++        if (petEntity.getMyPet().getRangedDamage() > 0 && this.petEntity.e(targetEntity.locX, targetEntity.boundingBox.b, targetEntity.locZ) >= 16) {
+             return false;
+         }
+         this.targetEntity = targetEntity;
+@@ -71,7 +71,7 @@ public class MeleeAttack extends AIGoal {
+         } else if (this.targetEntity != this.petEntity.getGoalTarget()) {
+             return true;
+         }
+-        if (petEntity.getMyPet().getRangedDamage() > 0 && this.petEntity.f(targetEntity.locX, targetEntity.boundingBox.b, targetEntity.locZ) >= 20) {
++        if (petEntity.getMyPet().getRangedDamage() > 0 && this.petEntity.e(targetEntity.locX, targetEntity.boundingBox.b, targetEntity.locZ) >= 16) {
+             return true;
+         }
+         return false;
+@@ -98,7 +98,7 @@ public class MeleeAttack extends AIGoal {
+             this.timeUntilNextNavigationUpdate = (4 + this.petEntity.getRandom().nextInt(7));
+             this.petEntity.petNavigation.navigateTo(targetEntity);
+         }
+-        if (this.petEntity.f(targetEntity.locX, targetEntity.boundingBox.b, targetEntity.locZ) - (targetEntity.length * (2. / 3.)) <= this.range && this.ticksUntilNextHitLeft-- <= 0) {
++        if (Math.sqrt(this.petEntity.e(targetEntity.locX, targetEntity.boundingBox.b, targetEntity.locZ)) - (targetEntity.length * (2. / 3.)) <= this.range && this.ticksUntilNextHitLeft-- <= 0) {
+             this.ticksUntilNextHitLeft = ticksUntilNextHit;
+             if (this.petEntity instanceof IMyPetEquipment) {
+                 if (((IMyPetEquipment) this.petEntity).getEquipment(EquipmentSlot.Weapon) != null) {

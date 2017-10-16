@@ -1,0 +1,2 @@
+0df8693c : fixed strange head position when spawning a MyPet
+:100644 100644 5608d584... 651f5afd... M	src/main/java/de/Keyle/MyPet/entity/types/MyPet.java

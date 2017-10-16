@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/jscomp/JSModuleGraph.java b/src/com/google/javascript/jscomp/JSModuleGraph.java
+index 47e14745..ecffc6f9 100644
+--- a/src/com/google/javascript/jscomp/JSModuleGraph.java
++++ b/src/com/google/javascript/jscomp/JSModuleGraph.java
+@@ -290,7 +290,7 @@ public class JSModuleGraph {
+    * a symbol that is not required until a later module, then that
+    * file will be moved to the later module.
+    *
+-   * @param inputs The original list of sources. Used to ensure that the sort
++   * @param The original list of sources. Used to ensure that the sort
+    *     is stable.
+    * @return The sorted list of sources.
+    */

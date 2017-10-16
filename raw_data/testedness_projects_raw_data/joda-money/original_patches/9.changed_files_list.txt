@@ -1,0 +1,2 @@
+542abc6 : Fix Javadoc
+:100644 100644 1bc4be8... 82be25d... M	src/main/java/org/joda/money/Money.java

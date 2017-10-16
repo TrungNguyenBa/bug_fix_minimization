@@ -1,0 +1,5 @@
+a95e3ee : Fix a problem with enum value writes
+:100644 100644 d8b7503... 542ffd7... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufGenerator.java
+:100644 100644 a31be8e... 1253bd1... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufEnum.java
+:100644 100644 b569b2a... 9c0c89e... M	src/main/java/com/fasterxml/jackson/dataformat/protobuf/schema/ProtobufField.java
+:100644 100644 be71cc9... a1abd81... M	src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteComplexPojoTest.java

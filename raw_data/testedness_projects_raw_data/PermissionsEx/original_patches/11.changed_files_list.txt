@@ -1,0 +1,5 @@
+1be7b26 : Implement inheritance-excluded permissions. Fixes #2063
+:100644 100644 25e35c3... 3fdf757... M	src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
+:100644 100644 0b63422... 3bafd4d... M	src/main/java/ninja/leaping/permissionsex/data/SubjectDataBaker.java
+:100644 100644 270411a... 60eb3c6... M	src/main/po/keys.pot
+:000000 100644 0000000... c30376b... A	src/test/java/ninja/leaping/permissionsex/data/SubjectDataBakerTest.java

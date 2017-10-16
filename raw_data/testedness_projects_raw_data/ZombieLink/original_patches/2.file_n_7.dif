@@ -1,0 +1,31 @@
+diff --git a/zombielink/src/test/java/com/lonepulse/zombielink/processor/SerializerEndpoint.java b/zombielink/src/test/java/com/lonepulse/zombielink/processor/SerializerEndpoint.java
+index 69f75d8..0067fdf 100644
+--- a/zombielink/src/test/java/com/lonepulse/zombielink/processor/SerializerEndpoint.java
++++ b/zombielink/src/test/java/com/lonepulse/zombielink/processor/SerializerEndpoint.java
+@@ -24,8 +24,6 @@ import static com.lonepulse.zombielink.annotation.Entity.ContentType.JSON;
+ import static com.lonepulse.zombielink.annotation.Entity.ContentType.PLAIN;
+ import static com.lonepulse.zombielink.annotation.Entity.ContentType.XML;
+ 
+-import java.util.List;
+-
+ import com.google.gson.Gson;
+ import com.lonepulse.zombielink.annotation.Detach;
+ import com.lonepulse.zombielink.annotation.Endpoint;
+@@ -65,17 +63,6 @@ public interface SerializerEndpoint {
+ 	void serializeJson(@Entity User user);
+ 	
+ 	/**
+-	 * <p>A mock request which receives a generic type that is serialized to a JSON array.</p>
+-	 * 
+-	 * @param users
+-	 * 			the list of {@link User}s to be serialized to a JSON array
+-	 * 
+-	 * @since 1.3.3
+-	 */
+-	@PUT("/jsonarray")
+-	void serializeGenericTypeToJson(@Entity List<User> users);
+-	
+-	/**
+ 	 * <p>A mock request which sends an XML serialized model.</p>
+ 	 * 
+ 	 * @param user

@@ -1,0 +1,2 @@
+4b90c765 : used project properties instead of fixed values in plugin.yml
+:100644 100644 aee29437... 7babbe19... M	src/main/resources/plugin.yml

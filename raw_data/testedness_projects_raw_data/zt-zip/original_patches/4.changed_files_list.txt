@@ -1,0 +1,3 @@
+8f6d13c : fixed buffering when creating and updating ZIP streams
+:100644 100644 c23ca63... 3ba1666... M	src/main/java/org/zeroturnaround/zip/ZipUtil.java
+:100644 100644 3271880... 6014fbf... M	src/test/java/org/zeroturnaround/zip/ZipUtilTest.java

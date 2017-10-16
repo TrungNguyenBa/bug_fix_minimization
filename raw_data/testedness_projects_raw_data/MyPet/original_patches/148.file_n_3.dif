@@ -1,0 +1,42 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/WorldGroup.java b/src/main/java/de/Keyle/MyPet/util/WorldGroup.java
+index 46c1dc05..fbf57ff7 100644
+--- a/src/main/java/de/Keyle/MyPet/util/WorldGroup.java
++++ b/src/main/java/de/Keyle/MyPet/util/WorldGroup.java
+@@ -61,11 +61,6 @@ public class WorldGroup {
+         return this.worlds;
+     }
+ 
+-    @Override
+-    public String toString() {
+-        return "WorldGroup{name=" + name + ", worlds=" + worlds + "}";
+-    }
+-
+     /**
+      * Checks whether a world group contains the world
+      *
+@@ -76,10 +71,15 @@ public class WorldGroup {
+         return this.worlds.contains(worldName);
+     }
+ 
++    @Override
++    public String toString() {
++        return "WorldGroup{name=" + name + ", worlds=" + worlds + "}";
++    }
++
+     /**
+      * Returns all available world groups
+      *
+-     * @return Collection<WorldGroup>
++     * @return WorldGroup[]
+      */
+     public static Collection<WorldGroup> getGroups() {
+         return Collections.unmodifiableCollection(allGroups.values());
+@@ -96,7 +96,7 @@ public class WorldGroup {
+     }
+ 
+     /**
+-     * Returns the group by name
++     * Returns the group the world is in
+      *
+      * @param name World
+      * @return WorldGroup

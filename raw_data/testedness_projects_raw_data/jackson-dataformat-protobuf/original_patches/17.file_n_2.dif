@@ -1,0 +1,104 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+index 7738e60..f0c6b32 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+@@ -592,56 +592,46 @@ public class ProtobufParser extends ParserMinimalBase
+ 
+     private JsonToken _readNextValue(FieldType t) throws IOException
+     {
+-        JsonToken type;
+-
+         switch (_currentField.type) {
+         case DOUBLE:
+             _numberDouble = Double.longBitsToDouble(_decode64Bits());
+             _numTypesValid = NR_DOUBLE;
+-            type = JsonToken.VALUE_NUMBER_FLOAT;
+-            break;
++            return JsonToken.VALUE_NUMBER_FLOAT;
+                 
+         case FLOAT:
+             _numberDouble = (double) Float.intBitsToFloat(_decode32Bits());
+             _numTypesValid = NR_DOUBLE;
+-            type =  JsonToken.VALUE_NUMBER_FLOAT;
+-            break;
++            return JsonToken.VALUE_NUMBER_FLOAT;
+ 
+         case VINT32_Z:
+             _numberInt = ProtobufUtil.zigzagDecode(_decodeVInt());
+             _numTypesValid = NR_INT;
+-            type =  JsonToken.VALUE_NUMBER_INT;
+-            break;
++            return JsonToken.VALUE_NUMBER_INT;
+ 
+         case VINT64_Z:
+             _numberLong = ProtobufUtil.zigzagDecode(_decodeVLong());
+             _numTypesValid = NR_LONG;
+-            type =  JsonToken.VALUE_NUMBER_INT;
+-            break;
++            return JsonToken.VALUE_NUMBER_INT;
+ 
+         case VINT32_STD:
+             _numberInt = _decodeVInt();
+             _numTypesValid = NR_INT;
+-            type =  JsonToken.VALUE_NUMBER_INT;
+-            break;
++            return JsonToken.VALUE_NUMBER_INT;
+ 
+         case VINT64_STD:
+             _numberLong = _decodeVLong();
+             _numTypesValid = NR_LONG;
+-            type =  JsonToken.VALUE_NUMBER_INT;
+-            break;
++            return JsonToken.VALUE_NUMBER_INT;
+ 
+         case FIXINT32:
+             _numberInt = _decode32Bits();
+             _numTypesValid = NR_INT;
+-            type =  JsonToken.VALUE_NUMBER_INT;
+-            break;
++            return JsonToken.VALUE_NUMBER_INT;
+ 
+         case FIXINT64:
+             _numberLong = _decode64Bits();
+             _numTypesValid = NR_LONG;
+-            type =  JsonToken.VALUE_NUMBER_INT;
+-            break;
++            return JsonToken.VALUE_NUMBER_INT;
+ 
+         case BOOLEAN:
+             if (_inputPtr >= _inputEnd) {
+@@ -651,26 +641,21 @@ public class ProtobufParser extends ParserMinimalBase
+                 int i = _inputBuffer[_inputPtr++];
+                 // let's be strict here
+                 if (i == 1) {
+-                    type = JsonToken.VALUE_TRUE; 
+-                } else if (i == 0) {
+-                    type = JsonToken.VALUE_FALSE; 
+-                } else {
+-                    _reportError(String.format("Invalid byte value for bool field %s: 0x%2x; should be either 0x0 or 0x1",
+-                            _currentField.name, i));
+-                    type = null;
++                    return JsonToken.VALUE_TRUE; 
++                }
++                if (i == 0) {
++                    return JsonToken.VALUE_FALSE; 
+                 }
++                _reportError(String.format("Invalid byte value for bool field %s: 0x%2x; should be either 0x0 or 0x1",
++                        _currentField.name, i));
+             }
+-            break;
+-
+-        default:
++        
+         case STRING:
+         case BYTES:
+         case ENUM:
+         case MESSAGE:
+-            throw new UnsupportedOperationException("Type "+_currentField.type+" not yet supported");
+         }
+-        _state = STATE_ROOT_KEY;
+-        return type;
++        throw new UnsupportedOperationException();
+     }
+     
+     private JsonToken _skipUnknownAtRoot(int currType)

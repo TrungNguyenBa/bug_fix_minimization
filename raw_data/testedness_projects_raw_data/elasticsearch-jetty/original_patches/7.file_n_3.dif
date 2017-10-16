@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerTransport.java b/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerTransport.java
+index 0dfd44c..557d206 100644
+--- a/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerTransport.java
++++ b/src/main/java/com/sonian/elasticsearch/http/jetty/JettyHttpServerTransport.java
+@@ -232,7 +232,7 @@ public class JettyHttpServerTransport extends AbstractLifecycleComponent<HttpSer
+ 
+     @Override
+     public HttpInfo info() {
+-        return new HttpInfo(boundAddress(), 0);
++        return new HttpInfo(null, 0);
+     }
+ 
+     @Override

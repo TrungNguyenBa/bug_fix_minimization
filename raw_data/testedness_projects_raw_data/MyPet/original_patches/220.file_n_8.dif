@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+index 05107080..e353f2ba 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/pigzombie/EntityMyPigZombie.java
+@@ -137,7 +137,7 @@ public class EntityMyPigZombie extends EntityMyPet
+ 
+             if (getOwner().equals(entityhuman) && itemStack != null && canUseItem())
+             {
+-                if (itemStack.id == Item.SHEARS.id && getOwner().getPlayer().isSneaking())
++                if (itemStack.id == Item.SHEARS.id)
+                 {
+                     if (!canEquip())
+                     {

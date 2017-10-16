@@ -1,0 +1,7 @@
+08650a0 : Changes to backend loading and cache fixes
+:100644 100644 465e438... e69aa78... M	src/main/java/ru/tehkode/permissions/PermissionGroup.java
+:100644 100644 4afbfbf... b456988... M	src/main/java/ru/tehkode/permissions/PermissionManager.java
+:100644 100644 2dec148... 22adcea... M	src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+:100644 100644 0fb4072... 67f84ad... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 85d4e10... 54f7f8a... M	src/main/java/ru/tehkode/permissions/backends/memory/MemoryBackend.java
+:100644 100644 387e199... 75c9292... M	src/main/java/ru/tehkode/permissions/backends/sql/SQLBackend.java

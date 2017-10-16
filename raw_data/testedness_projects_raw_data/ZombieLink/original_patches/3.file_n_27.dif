@@ -1,0 +1,15 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/processor/Processors.java b/zombielink/src/main/java/com/lonepulse/zombielink/processor/Processors.java
+index 0a98b23..8226b16 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/processor/Processors.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/processor/Processors.java
+@@ -29,8 +29,8 @@ import com.lonepulse.zombielink.annotation.Entity;
+ import com.lonepulse.zombielink.annotation.FormParam;
+ import com.lonepulse.zombielink.annotation.PathParam;
+ import com.lonepulse.zombielink.annotation.QueryParam;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
+-import com.lonepulse.zombielink.proxy.InvocationException;
++import com.lonepulse.zombielink.inject.InvocationContext;
++import com.lonepulse.zombielink.inject.InvocationException;
+ import com.lonepulse.zombielink.request.RequestProcessorChain;
+ import com.lonepulse.zombielink.response.ResponseProcessorChain;
+ 

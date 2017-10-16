@@ -1,0 +1,13 @@
+diff --git a/pom.xml b/pom.xml
+index 2658ae0..deac2a6 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -6,7 +6,7 @@
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.sonian</groupId>
+   <artifactId>elasticsearch-jetty</artifactId>
+-  <version>0.90.10-SNAPSHOT</version>
++  <version>0.90.1-SNAPSHOT</version>
+   <packaging>jar</packaging>
+   <description>Jetty plugin for ElasticSearch</description>
+   <inceptionYear>2011</inceptionYear>

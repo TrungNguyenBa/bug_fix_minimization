@@ -1,0 +1,15 @@
+diff --git a/src/test/java/org/apache/commons/lang3/time/FastDateParser_TimeZoneStrategyTest.java b/src/test/java/org/apache/commons/lang3/time/FastDateParser_TimeZoneStrategyTest.java
+index be08454b..34a67c01 100644
+--- a/src/test/java/org/apache/commons/lang3/time/FastDateParser_TimeZoneStrategyTest.java
++++ b/src/test/java/org/apache/commons/lang3/time/FastDateParser_TimeZoneStrategyTest.java
+@@ -33,9 +33,7 @@ public void testTimeZoneStrategyPattern() {
+             for(final String[] zone :  zones) {
+                 for(int t = 1; t<zone.length; ++t) {
+                     final String tzDisplay = zone[t];
+-                    if (tzDisplay == null) {
+-                        break;
+-                    }
++
+                     try {
+                         parser.parse(tzDisplay);
+                     }

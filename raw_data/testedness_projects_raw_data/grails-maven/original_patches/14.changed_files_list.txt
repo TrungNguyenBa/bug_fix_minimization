@@ -1,0 +1,7 @@
+269ea48 : Change dependency resolution logic to use Aether and make plugin require Maven 3.1+
+:100644 100644 2f98a4e... 7d13622... M	pom.xml
+:100755 100755 8252926... 4716d84... M	src/main/java/org/grails/maven/plugin/AbstractGrailsMojo.java
+:100644 100644 559498d... b086d3b... M	src/main/java/org/grails/maven/plugin/tools/DefaultGrailsServices.java
+:100644 100644 7f98b85... 1319b6f... M	src/main/java/org/grails/maven/plugin/tools/ForkedGrailsRuntime.java
+:100644 100644 1094490... d44da58... M	src/main/java/org/grails/maven/plugin/tools/GrailsServices.java
+:100644 000000 f6c70f3... 0000000... D	src/test/java/org/grails/maven/plugin/tools/GrailsServicesTest.java

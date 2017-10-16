@@ -1,0 +1,15 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java
+index c362e772..56cd5fe1 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandStop.java
+@@ -55,6 +55,10 @@ public class CommandStop implements CommandExecutor
+                 myPet.getCraftPet().getHandle().setTarget(null);
+                 myPet.getCraftPet().getHandle().setGoalTarget(null);
+                 myPet.getCraftPet().getHandle().goalTarget = null;
++                if (myPet.getCraftPet().getHandle().canMove())
++                {
++                    myPet.getCraftPet().getHandle().getNavigation().a(myPet.getCraftPet().getHandle().getOwner(), myPet.getCraftPet().getHandle().getWalkSpeed());
++                }
+             }
+             else
+             {

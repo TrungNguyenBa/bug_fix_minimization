@@ -1,0 +1,5 @@
+4b35cff : Add command to bulk-convert users to UUID now that Bukkit's OfflinePlayer objects are more likely to return a valid uuid
+:100644 100644 5b70713... 4e533cc... M	src/main/java/ru/tehkode/permissions/backends/PermissionBackend.java
+:100644 100644 0f68586... 2e56eb4... M	src/main/java/ru/tehkode/permissions/backends/file/FileBackend.java
+:100644 100644 18acd31... 1abce48... M	src/main/java/ru/tehkode/permissions/bukkit/commands/UtilityCommands.java
+:100644 100644 8d61585... fae0c12... M	src/main/resources/plugin.yml

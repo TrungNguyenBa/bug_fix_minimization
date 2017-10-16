@@ -1,0 +1,4 @@
+4605af0 : adds defaultCurrency to account, fixes #46
+:100644 100644 3d26415... 8d14594... M	src/main/java/com/stripe/model/Account.java
+:100644 100644 57018ea... 822de5c... M	src/test/java/com/stripe/StripeTest.java
+:100644 100644 21d7543... a2a9689... M	src/test/resources/com/stripe/model/account_event.json

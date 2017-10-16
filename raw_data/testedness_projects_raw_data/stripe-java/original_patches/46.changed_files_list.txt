@@ -1,0 +1,6 @@
+05a4725 : v1.14.1
+:100644 100644 1179e33... 1b0bbf2... M	CHANGELOG
+:100644 100644 21abeb1... e0f7262... M	README.md
+:100644 100644 850e742... 63e799c... M	VERSION
+:100644 100644 77e3239... b924d3e... M	pom.xml
+:100644 100644 6eb296c... 975d3e2... M	src/main/java/com/stripe/Stripe.java

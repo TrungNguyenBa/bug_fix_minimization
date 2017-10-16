@@ -1,0 +1,14 @@
+1556cb6 : Add processor-chain aggregator; udpate proxy factory; remove deprecated request builders; update test cases and fix bugs (issue #6) (closes #8)
+:100644 100644 bb80763... 09e4933... M	src/main/java/com/lonepulse/zombielink/core/processor/EndpointProxyFactory.java
+:000000 100644 0000000... b22124d... A	src/main/java/com/lonepulse/zombielink/core/processor/Processors.java
+:100644 000000 976a95a... 0000000... D	src/main/java/com/lonepulse/zombielink/core/request/AbstractRequestBuilder.java
+:100644 000000 02bd218... 0000000... D	src/main/java/com/lonepulse/zombielink/core/request/BasicRequestBuilder.java
+:100644 100644 184e78a... d87aec3... M	src/main/java/com/lonepulse/zombielink/core/request/EntityProcessor.java
+:100644 000000 87476af... 0000000... D	src/main/java/com/lonepulse/zombielink/core/request/MissingRequestAnnotationException.java
+:100644 000000 9cd4fab... 0000000... D	src/main/java/com/lonepulse/zombielink/core/request/RequestBuilder.java
+:100644 000000 2a63a63... 0000000... D	src/main/java/com/lonepulse/zombielink/core/request/RequestBuilderException.java
+:100644 000000 193121b... 0000000... D	src/main/java/com/lonepulse/zombielink/core/request/RequestBuilders.java
+:100644 100644 405ac44... ec93fd2... M	src/main/java/com/lonepulse/zombielink/core/request/RequestProcessorChain.java
+:100644 100644 3ce5caa... ea16c70... M	src/main/java/com/lonepulse/zombielink/core/request/package-info.java
+:100644 100644 392ea32... 12537f9... M	src/test/java/com/lonepulse/zombielink/test/endpoint/MockEndpoint.java
+:100644 100644 8accbcd... 3d1f043... M	src/test/java/com/lonepulse/zombielink/test/endpoint/MockEndpointTest.java

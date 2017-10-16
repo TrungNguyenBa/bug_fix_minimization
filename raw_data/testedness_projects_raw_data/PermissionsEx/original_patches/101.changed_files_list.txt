@@ -1,0 +1,2 @@
+9241f94 : Fix isVirtual checks for permissions entities
+:100644 100644 ce77439... 5839e1e... M	src/main/java/ru/tehkode/permissions/PermissionEntity.java

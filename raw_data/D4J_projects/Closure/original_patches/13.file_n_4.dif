@@ -1,0 +1,15 @@
+diff --git a/test/com/google/javascript/jscomp/IntegrationTestCase.java b/test/com/google/javascript/jscomp/IntegrationTestCase.java
+index e3007a64..a04b6adc 100644
+--- a/test/com/google/javascript/jscomp/IntegrationTestCase.java
++++ b/test/com/google/javascript/jscomp/IntegrationTestCase.java
+@@ -208,6 +208,10 @@ abstract class IntegrationTestCase extends TestCase {
+ 
+     (new CreateSyntheticBlocks(
+         compiler, "synStart", "synEnd")).process(externs, n);
++    (new Normalize(compiler, false)).process(externs, n);
++    (MakeDeclaredNamesUnique.getContextualRenameInverter(compiler)).process(
++        externs, n);
++    (new Denormalize(compiler)).process(externs, n);
+     return n;
+   }
+ 

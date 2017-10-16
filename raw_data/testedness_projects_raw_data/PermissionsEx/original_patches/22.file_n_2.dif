@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java b/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+index ba6b646..c0bbedb 100644
+--- a/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
++++ b/src/main/java/ninja/leaping/permissionsex/PermissionsEx.java
+@@ -57,7 +57,7 @@ import java.util.concurrent.ConcurrentMap;
+ import java.util.concurrent.ExecutionException;
+ 
+ public class PermissionsEx implements ImplementationInterface {
+-    private static final Map.Entry<String, String> DEFAULT_IDENTIFIER = Maps.immutableEntry("system", "default");
++    private static final Map.Entry<String, String> DEFAULT_IDENTIFIER = Maps.immutableEntry("default", "global");
+     private final PermissionsExConfiguration config;
+     private final ImplementationInterface impl;
+     private DataStore activeDataStore;

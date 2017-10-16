@@ -1,0 +1,14 @@
+diff --git a/xdocs/changes.xml b/xdocs/changes.xml
+index a9d126ce2..1cc4de54b 100644
+--- a/xdocs/changes.xml
++++ b/xdocs/changes.xml
+@@ -49,9 +49,6 @@ Commons Math Release Notes</title>
+       <action dev="psteitz" type="update" issue="MATH-148" due-to="Joni Salonen">
+         Added QR Decomposition.
+       </action>
+-      <action dev="psteitz" type="fix" issue="MATH-60" due-to="Nhung Nnguyen">
+-        Modified ProperFractionFormat to reject embedded minus signs.
+-      </action>
+     </release>
+     <release version="1.1" date="2005-12-17"  
+  description="This is a maintenance release containing bug fixes and enhancements.

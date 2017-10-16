@@ -1,0 +1,2 @@
+dde90afd : xcode fix. sort of.
+:100644 100644 f759db04... 4bebc4b3... M	xcode/faunus/faunus.xcodeproj/project.pbxproj

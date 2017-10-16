@@ -1,0 +1,16 @@
+diff --git a/src/main/java/org/graylog2/GelfTCPSender.java b/src/main/java/org/graylog2/GelfTCPSender.java
+index 4b9b332..0319907 100644
+--- a/src/main/java/org/graylog2/GelfTCPSender.java
++++ b/src/main/java/org/graylog2/GelfTCPSender.java
+@@ -9,8 +9,9 @@ public class GelfTCPSender implements GelfSender {
+ 	private int port;
+ 	private Socket socket;
+ 
+-    public GelfTCPSender() {
+-    }
++	public GelfTCPSender(String host) throws IOException {
++		this(host, DEFAULT_PORT);
++	}
+ 
+ 	public GelfTCPSender(String host, int port) throws IOException {
+ 		this.host = InetAddress.getByName(host);

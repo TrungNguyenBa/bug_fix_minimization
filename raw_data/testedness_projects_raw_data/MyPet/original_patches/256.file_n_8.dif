@@ -1,0 +1,34 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+index 13247a1a..2fb802c0 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/magmacube/EntityMyMagmaCube.java
+@@ -116,21 +116,14 @@ public class EntityMyMagmaCube extends EntityMyPet
+      */
+     public void l_()
+     {
+-        try
+-        {
+-            super.l_();
+-
+-            if (this.onGround && jumpDelay-- <= 0 && lastPathEntity != getNavigation().d())
+-            {
+-                getControllerJump().a();
+-                jumpDelay = (this.random.nextInt(20) + 10);
+-                lastPathEntity = getNavigation().d();
+-                makeSound("mob.magmacube." + (getSize() > 1 ? "big" : "small"), ba(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) / 0.8F);
+-            }
+-        }
+-        catch (Exception e)
++        super.l_();
++
++        if (this.onGround && jumpDelay-- <= 0 && lastPathEntity != getNavigation().d())
+         {
+-            e.printStackTrace();
++            getControllerJump().a();
++            jumpDelay = (this.random.nextInt(20) + 10);
++            lastPathEntity = getNavigation().d();
++            makeSound("mob.magmacube." + (getSize() > 1 ? "big" : "small"), ba(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) / 0.8F);
+         }
+     }
+ }
+\ No newline at end of file

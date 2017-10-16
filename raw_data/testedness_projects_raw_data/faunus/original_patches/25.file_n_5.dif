@@ -1,0 +1,12 @@
+diff --git a/src/playground/stenqvist/nemo.cpp b/src/playground/stenqvist/nemo.cpp
+index 53c21e90..b8be2447 100644
+--- a/src/playground/stenqvist/nemo.cpp
++++ b/src/playground/stenqvist/nemo.cpp
+@@ -131,7 +131,6 @@ int main() {
+     cout << loop.timing();
+   }
+   diel.sampleKirkwood(spc);
+-  diel.saveKirkwood();
+ 
+   //getSystemEnergyExternal(spc, TpairLJ(in),"EndLennardJones");
+   getSystemEnergyExternal(spc, TpairDDW(in),"EndDipoleDipoleWolf");

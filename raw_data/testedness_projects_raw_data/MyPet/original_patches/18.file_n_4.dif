@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPetType.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPetType.java
+index 3364c37a..54c772ae 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPetType.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPetType.java
+@@ -130,7 +130,7 @@ public enum MyPetType {
+     private Class<? extends EntityMyPet> entityClass;
+     private Class<? extends MyPet> myPetClass;
+ 
+-    MyPetType(EntityType bukkitType, String typeName, Class<? extends EntityMyPet> entityClass, Class<? extends MyPet> myPetClass) {
++    private MyPetType(EntityType bukkitType, String typeName, Class<? extends EntityMyPet> entityClass, Class<? extends MyPet> myPetClass) {
+         this.bukkitType = bukkitType;
+         this.name = typeName;
+         this.entityClass = entityClass;

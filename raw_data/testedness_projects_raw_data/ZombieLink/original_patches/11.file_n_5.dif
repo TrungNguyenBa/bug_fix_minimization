@@ -1,0 +1,14 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java b/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+index 78901d5..1c9abfd 100644
+--- a/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
++++ b/src/main/java/com/lonepulse/zombielink/executor/RequestExecutors.java
+@@ -26,8 +26,8 @@ import java.lang.reflect.Method;
+ import org.apache.http.HttpResponse;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
++import com.lonepulse.zombielink.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.annotation.Asynchronous;
+-import com.lonepulse.zombielink.inject.ProxyInvocationConfiguration;
+ import com.lonepulse.zombielink.util.Resolver;
+ 
+ /**

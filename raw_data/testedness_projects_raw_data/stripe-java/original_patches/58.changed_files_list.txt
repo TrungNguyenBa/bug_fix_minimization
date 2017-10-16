@@ -1,0 +1,2 @@
+d2d3a70 : fixes #60, correct url for refunding application fees
+:100644 100644 9194714... 7f36209... M	src/main/java/com/stripe/model/ApplicationFee.java

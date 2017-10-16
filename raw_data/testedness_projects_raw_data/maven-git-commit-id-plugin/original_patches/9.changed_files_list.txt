@@ -1,0 +1,2 @@
+94e2404 : Fix for possible NPE as discussed in https://github.com/ktoso/maven-git-commit-id-plugin/issues/153
+:100644 100644 35c3ed0... 1e02d1b... M	src/main/java/pl/project13/maven/git/GitCommitIdMojo.java

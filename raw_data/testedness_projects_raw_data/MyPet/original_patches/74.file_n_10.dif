@@ -1,0 +1,16 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java b/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+index ee935814..32cca1c2 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
++++ b/src/main/java/de/Keyle/MyPet/entity/ai/target/ControlTarget.java
+@@ -128,9 +128,9 @@ public class ControlTarget extends AIGoal {
+             return true;
+         } else if (petEntity.getGoalTarget().world != petEntity.world) {
+             return true;
+-        } else if (petEntity.f(petEntity.getGoalTarget()) > 400) {
++        } else if (petEntity.e(petEntity.getGoalTarget()) > 400) {
+             return true;
+-        } else if (petEntity.f(petEntity.getOwner().getEntityPlayer()) > 600) {
++        } else if (petEntity.e(petEntity.getOwner().getEntityPlayer()) > 600) {
+             return true;
+         }
+         return false;

@@ -1,0 +1,16 @@
+diff --git a/src/test/resources/com/stripe/model/account_event.json b/src/test/resources/com/stripe/model/account_event.json
+index 1ed8b8b..a2a9689 100644
+--- a/src/test/resources/com/stripe/model/account_event.json
++++ b/src/test/resources/com/stripe/model/account_event.json
+@@ -12,9 +12,9 @@
+       "details_submitted":true,
+       "charge_enabled":true,
+       "currencies_supported":[
+-        "cad"
++        "CAD"
+       ],
+-      "default_currency":"cad",
++      "default_currency":"CAD",
+       "object":"account"
+     },
+     "previous_attributes":{

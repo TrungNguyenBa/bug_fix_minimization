@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java b/src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java
+index 4634fbb7..6d50e5ef 100644
+--- a/src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java
++++ b/src/main/java/de/Keyle/MyPet/util/MyPetConfiguration.java
+@@ -204,7 +204,7 @@ public class MyPetConfiguration
+         config.addDefault("MyPet.Info.AdminOnly.PetSkilltree", true);
+ 
+         config.addDefault("MyPet.Info.OverHead.Name", true);
+-        config.addDefault("MyPet.Info.OverHead.Prefix", "<aqua>");
++        config.addDefault("MyPet.Info.OverHead.Prefix", "%aqua%");
+         config.addDefault("MyPet.Info.OverHead.Suffix", "");
+ 
+         for (MyPetType petType : MyPetType.values())

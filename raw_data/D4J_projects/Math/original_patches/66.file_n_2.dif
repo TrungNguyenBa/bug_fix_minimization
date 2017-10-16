@@ -1,0 +1,22 @@
+diff --git a/src/main/java/org/apache/commons/math/ConvergingAlgorithmImpl.java b/src/main/java/org/apache/commons/math/ConvergingAlgorithmImpl.java
+index 0c4eabeda..883578b64 100644
+--- a/src/main/java/org/apache/commons/math/ConvergingAlgorithmImpl.java
++++ b/src/main/java/org/apache/commons/math/ConvergingAlgorithmImpl.java
+@@ -139,14 +139,14 @@ public abstract class ConvergingAlgorithmImpl implements ConvergingAlgorithm {
+     /**
+      * Increment the iterations counter by 1.
+      *
+-     * @throws MaxIterationsExceededException if the maximal number
++     * @throws OptimizationException if the maximal number
+      * of iterations is exceeded.
+      * @since 2.2
+      */
+     protected void incrementIterationsCounter()
+-        throws MaxIterationsExceededException {
++        throws ConvergenceException {
+         if (++iterationCount > maximalIterationCount) {
+-            throw new MaxIterationsExceededException(maximalIterationCount);
++            throw new ConvergenceException(new MaxIterationsExceededException(maximalIterationCount));
+         }
+     }
+ }

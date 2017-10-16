@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+index 33ff3243..8019ca63 100644
+--- a/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
++++ b/src/main/java/de/Keyle/MyPet/listeners/EntityListener.java
+@@ -811,7 +811,7 @@ public class EntityListener implements Listener {
+             EntityDamageByEntityEvent edbee = (EntityDamageByEntityEvent) deadEntity.getLastDamageCause();
+ 
+             Entity damager = edbee.getDamager();
+-            if (damager instanceof Projectile && ((Projectile) damager).getShooter() instanceof Entity) {
++            if (damager instanceof Projectile) {
+                 damager = (Entity) ((Projectile) damager).getShooter();
+             }
+             if (damager instanceof CraftMyPet) {

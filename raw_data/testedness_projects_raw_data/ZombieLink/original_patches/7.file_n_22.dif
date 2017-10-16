@@ -1,0 +1,21 @@
+diff --git a/src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpoint.java b/src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpoint.java
+index be6fc86..eeedc70 100644
+--- a/src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpoint.java
++++ b/src/test/java/com/lonepulse/zombielink/processor/RequestParamEndpoint.java
+@@ -33,6 +33,8 @@ import org.apache.http.entity.StringEntity;
+ 
+ import com.lonepulse.zombielink.annotation.Endpoint;
+ import com.lonepulse.zombielink.annotation.Entity;
++import com.lonepulse.zombielink.annotation.Parser;
++import com.lonepulse.zombielink.annotation.Parser.ParserType;
+ import com.lonepulse.zombielink.annotation.QueryParam;
+ import com.lonepulse.zombielink.annotation.Request;
+ import com.lonepulse.zombielink.model.User;
+@@ -50,6 +52,7 @@ import com.lonepulse.zombielink.request.RequestMethod;
+  * <br><br> 
+  * @author <a href="mailto:lahiru@lonepulse.com">Lahiru Sahan Jayasinghe</a>
+  */
++@Parser(ParserType.STRING)
+ @Endpoint(host = "0.0.0.0", port = "8080")
+ public interface RequestParamEndpoint {
+ 	

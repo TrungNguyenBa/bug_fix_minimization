@@ -1,0 +1,13 @@
+diff --git a/src/main/java/ninja/leaping/permissionsex/data/CacheListenerHolder.java b/src/main/java/ninja/leaping/permissionsex/data/CacheListenerHolder.java
+index 83bb41d..970a792 100644
+--- a/src/main/java/ninja/leaping/permissionsex/data/CacheListenerHolder.java
++++ b/src/main/java/ninja/leaping/permissionsex/data/CacheListenerHolder.java
+@@ -63,8 +63,4 @@ public class CacheListenerHolder<Key> {
+ 
+         getListeners(key).remove(listener);
+     }
+-
+-    public void removeAll(Key key) {
+-        listeners.remove(key);
+-    }
+ }

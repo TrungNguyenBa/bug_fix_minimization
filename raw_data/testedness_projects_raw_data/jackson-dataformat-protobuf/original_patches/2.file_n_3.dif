@@ -1,0 +1,21 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+index a98c429..ef7b346 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/protobuf/ProtobufParser.java
+@@ -2302,12 +2302,10 @@ public class ProtobufParser extends ParserMinimalBase
+ 
+     protected final static long _long(int i1, int i2)
+     {
+-        // important: LSB all the way, hence:
+-        long high = i2;
+-        high <<= 32;
+-        long low = i1;
+-        low = (low << 32) >>> 32;
+-        return high | low;
++        long l1 = i1;
++        long l2 = i2;
++        l2 = (l2 << 32) >>> 32;
++        return (l1 << 32) + l2;
+     }
+ 
+     /*

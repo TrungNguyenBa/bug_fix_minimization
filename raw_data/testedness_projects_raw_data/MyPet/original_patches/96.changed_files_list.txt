@@ -1,0 +1,3 @@
+3b3da494 : fixed fall damage for players riding a MyPet chicken or bat fixes #237
+:100644 100644 9c55aadd... f81cbef3... M	src/main/java/de/Keyle/MyPet/entity/types/bat/EntityMyBat.java
+:100644 100644 304d99db... cff304f4... M	src/main/java/de/Keyle/MyPet/entity/types/chicken/EntityMyChicken.java

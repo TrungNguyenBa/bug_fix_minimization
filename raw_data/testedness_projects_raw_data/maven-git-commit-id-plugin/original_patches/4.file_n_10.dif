@@ -1,0 +1,14 @@
+diff --git a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/hooks/post-update.sample b/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/hooks/post-update.sample
+deleted file mode 100755
+index ec17ec1..0000000
+--- a/src/test/resources/_git_three_commits_and_two_tags_currently_on_commit_without_tag/hooks/post-update.sample
++++ /dev/null
+@@ -1,8 +0,0 @@
+-#!/bin/sh
+-#
+-# An example hook script to prepare a packed repository for use over
+-# dumb transports.
+-#
+-# To enable this hook, rename this file to "post-update".
+-
+-exec git update-server-info

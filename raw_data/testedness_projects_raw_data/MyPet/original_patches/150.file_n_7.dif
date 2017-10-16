@@ -1,0 +1,12 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRemove.java b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRemove.java
+index 9bb9cfee..461fa9dd 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRemove.java
++++ b/src/main/java/de/Keyle/MyPet/commands/admin/CommandOptionRemove.java
+@@ -58,6 +58,7 @@ public class CommandOptionRemove implements CommandOptionTabCompleter {
+                 }
+             }
+         }
++
+         return true;
+     }
+ 

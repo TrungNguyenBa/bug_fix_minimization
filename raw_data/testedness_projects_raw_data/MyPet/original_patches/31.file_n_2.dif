@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+index f05663a4..00ca175d 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/mooshroom/EntityMyMooshroom.java
+@@ -104,7 +104,7 @@ public class EntityMyMooshroom extends EntityMyPet {
+ 
+     public void setBaby(boolean flag) {
+         if (flag) {
+-            this.datawatcher.watch(12, Byte.valueOf(Byte.MIN_VALUE));
++            this.datawatcher.watch(12, new Integer(Integer.MIN_VALUE));
+         } else {
+             this.datawatcher.watch(12, new Byte((byte) 0));
+         }

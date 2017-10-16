@@ -1,0 +1,27 @@
+diff --git a/src/main/java/com/stripe/model/DeletedAlipayAccount.java b/src/main/java/com/stripe/model/DeletedAlipayAccount.java
+index b8ca55e..5cd6077 100644
+--- a/src/main/java/com/stripe/model/DeletedAlipayAccount.java
++++ b/src/main/java/com/stripe/model/DeletedAlipayAccount.java
+@@ -1,4 +1,19 @@
+ package com.stripe.model;
+ 
+-public class DeletedAlipayAccount extends DeletedExternalAccount {
+-}
++public class DeletedAlipayAccount extends StripeObject implements DeletedStripeObject {
++    String id;
++    Boolean deleted;
++
++    public String getId() {
++        return id;
++    }
++    public void setId(String id) {
++        this.id = id;
++    }
++    public Boolean getDeleted() {
++        return deleted;
++    }
++    public void setDeleted(Boolean deleted) {
++        this.deleted = deleted;
++    }
++}
+\ No newline at end of file

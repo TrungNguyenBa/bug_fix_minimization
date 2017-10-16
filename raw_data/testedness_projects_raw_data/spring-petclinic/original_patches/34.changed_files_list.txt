@@ -1,0 +1,2 @@
+67ae72f : Remove public to methods from the ClinicService
+:100644 100644 c4a65e6... e72b5c1... M	src/main/java/org/springframework/samples/petclinic/service/ClinicService.java

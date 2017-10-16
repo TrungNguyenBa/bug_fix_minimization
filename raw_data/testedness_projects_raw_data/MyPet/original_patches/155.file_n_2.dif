@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java
+index e0845f9f..08f45251 100644
+--- a/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java
++++ b/src/main/java/de/Keyle/MyPet/util/itemstringinterpreter/ConfigItem.java
+@@ -141,7 +141,7 @@ public class ConfigItem
+ 
+     public String toString()
+     {
+-        return "ConfigItem{mode: " + durabilityMode.name() + ", item: " + item + "}";
++        return "ConfigItem{mode: " + durabilityMode.name() + ", item: " + item.toString() + "}";
+     }
+ 
+     public static ConfigItem createConfigItem(String data)

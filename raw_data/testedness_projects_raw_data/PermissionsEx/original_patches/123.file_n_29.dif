@@ -1,0 +1,15 @@
+diff --git a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
+index 4326427..53210e9 100644
+--- a/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
++++ b/src/main/java/ru/tehkode/permissions/bukkit/regexperms/RegexPermissions.java
+@@ -97,6 +97,10 @@ public class RegexPermissions {
+ 	}
+ 
+ 	private void uninjectPermissible(Player player) {
++		if (player.hasPermission("permissionsex.disabled")) { // this user shouldn't get permissionsex matching
++			return;
++		}
++
+ 		try {
+ 			boolean success = false;
+ 			for (PermissibleInjector injector : injectors) {

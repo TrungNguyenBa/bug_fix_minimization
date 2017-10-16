@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/commands/CommandCall.java b/src/main/java/de/Keyle/MyPet/commands/CommandCall.java
+index dc6dd3f8..0f0aaf8a 100644
+--- a/src/main/java/de/Keyle/MyPet/commands/CommandCall.java
++++ b/src/main/java/de/Keyle/MyPet/commands/CommandCall.java
+@@ -55,7 +55,7 @@ public class CommandCall implements CommandExecutor {
+                         sender.sendMessage(Util.formatText(Locales.getString("Message.Call.Dead", petOwner), myPet.getPetName(), myPet.getRespawnTime()));
+                         break;
+                     case Flying:
+-                        sender.sendMessage(Util.formatText(Locales.getString("Message.Spawn.Flying", petOwner), myPet.getPetName()));
++                        sender.sendMessage(Util.formatText(Locales.getString("Message.Spawn.Flying", petOwner)));
+                         break;
+                 }
+                 return true;

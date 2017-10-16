@@ -1,0 +1,2 @@
+589a776a : make the jump field static
+:100644 100644 8d57da87... 766615ce... M	src/main/java/de/Keyle/MyPet/entity/types/EntityMyPet.java

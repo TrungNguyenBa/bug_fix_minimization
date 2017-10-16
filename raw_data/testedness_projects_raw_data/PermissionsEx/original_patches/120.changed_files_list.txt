@@ -1,0 +1,2 @@
+d05045b : Perform locking around config writing
+:100644 100644 4b0c353... 8112529... M	src/main/java/ru/tehkode/permissions/backends/file/FileConfig.java

@@ -1,0 +1,2 @@
+6434ede : Ignoring .idea folder
+:100644 100644 5cbf52a... 6a3c9d1... M	.gitignore

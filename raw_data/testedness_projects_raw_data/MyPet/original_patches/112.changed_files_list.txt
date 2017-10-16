@@ -1,0 +1,2 @@
+97f51403 : do not try to read the armor tag when the tag is not there fixes #227
+:100644 100644 fa814152... 8d8658ed... M	src/main/java/de/Keyle/MyPet/entity/types/horse/MyHorse.java

@@ -1,0 +1,4 @@
+d6d733f4 : Fixes issue 787.  Removing or replacing a Node is the AST caused any following Function nodes to be skipped in the late peephole folding. To prevent this save off the "next" node before visiting a Node.
+:100644 100644 13704018... eeeb6a97... M	src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java
+:100644 100644 20842be2... bf644af5... M	test/com/google/javascript/jscomp/IntegrationTest.java
+:100644 100644 a04b6adc... e3007a64... M	test/com/google/javascript/jscomp/IntegrationTestCase.java

@@ -1,0 +1,2 @@
+97886353 : fixed html file for the Ranged skill
+:100644 100644 d72f1e43... ab928f08... M	src/main/resources/html/skills/Ranged.html

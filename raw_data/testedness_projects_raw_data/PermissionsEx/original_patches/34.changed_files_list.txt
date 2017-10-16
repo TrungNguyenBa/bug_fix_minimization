@@ -1,0 +1,9 @@
+4643104 : Implement most of data storage objects (apart from get/set parent methods)
+:100644 100644 26cfe99... d0f1585... M	src/main/java/ninja/leaping/permissionsex/backends/file/FileDataStore.java
+:100644 100644 50cc114... 4763652... M	src/main/java/ninja/leaping/permissionsex/backends/file/FileOptionSubjectData.java
+:100644 100644 531c89a... 9bb964d... M	src/main/java/ninja/leaping/permissionsex/data/ImmutableOptionSubjectData.java
+:100644 100644 e30286c... c2df00e... M	src/main/java/ninja/leaping/permissionsex/data/SubjectCache.java
+:100644 100644 db99747... 3ec75c3... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXOptionSubjectData.java
+:100644 100644 beb605c... fa868e6... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSubject.java
+:100644 100644 6ff2ac8... 43d60ac... M	src/main/java/ninja/leaping/permissionsex/sponge/PEXSubjectCollection.java
+:100644 100644 a8e45dc... 602c06d... M	src/main/java/ninja/leaping/permissionsex/sponge/PermissionsExPlugin.java

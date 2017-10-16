@@ -1,0 +1,2 @@
+ff9bd5e2 : Hydrophobic wall: 1/r6 --> fully fledged LJ.
+:100644 100644 922f3bf2... 8aa54347... M	include/faunus/externalpotential.h

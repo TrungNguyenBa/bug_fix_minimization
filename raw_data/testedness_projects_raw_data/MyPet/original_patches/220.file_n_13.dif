@@ -1,0 +1,22 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java b/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+index beac862e..775dfb79 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/zombie/EntityMyZombie.java
+@@ -173,7 +173,7 @@ public class EntityMyZombie extends EntityMyPet
+ 
+             if (getOwner().equals(entityhuman) && itemStack != null)
+             {
+-                if (itemStack.id == Item.SHEARS.id && getOwner().getPlayer().isSneaking())
++                if (itemStack.id == Item.SHEARS.id)
+                 {
+                     if (!canEquip())
+                     {
+@@ -221,7 +221,7 @@ public class EntityMyZombie extends EntityMyPet
+                     }
+                     return true;
+                 }
+-                else if (itemStack.id == GROW_UP_ITEM && getOwner().getPlayer().isSneaking())
++                else if (itemStack.id == GROW_UP_ITEM)
+                 {
+                     if (isBaby())
+                     {

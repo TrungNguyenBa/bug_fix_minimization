@@ -1,0 +1,12 @@
+diff --git a/readme.md b/readme.md
+index 0547aaa..46d7839 100644
+--- a/readme.md
++++ b/readme.md
+@@ -1,6 +1,6 @@
+ # Spring PetClinic Sample Application
+ 
+-## What does it look like?
++-## What does it look like?
+ -spring-petclinic has been deployed here on cloudfoundry: http://gopetclinic.cfapps.io/
+ 
+ 

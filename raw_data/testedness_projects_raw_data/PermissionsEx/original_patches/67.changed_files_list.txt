@@ -1,0 +1,2 @@
+68e5dff : Make PermissionsEx#isDebug return something sensible even if permissionsManager is null
+:100644 100644 ea293c6... 7ebeee1... M	src/main/java/ru/tehkode/permissions/bukkit/PermissionsEx.java

@@ -1,0 +1,107 @@
+diff --git a/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java b/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+index 6a6b35b..4eda20e 100644
+--- a/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
++++ b/src/test/java/pl/project13/maven/git/GitCommitIdMojoIntegrationTest.java
+@@ -51,9 +51,6 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+   public static Collection useNativeGit() {
+     return asList(UseJGit, UseNativeGit);
+   }
+-  public static Collection useDirty() {
+-    return asList(true, false);
+-  }
+ 
+   @Test
+   @Parameters(method = "useNativeGit")
+@@ -301,8 +298,6 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+ 
+     setProjectToExecuteMojoIn(targetProject);
+     GitDescribeConfig gitDescribeConfig = createGitDescribeConfig(false, 7);
+-    gitDescribeConfig.setDirty("-dirty"); // checking if dirty works as expected
+-
+     alterMojoSettings("gitDescribe", gitDescribeConfig);
+     alterMojoSettings("useNativeGit", useNativeGit);
+ 
+@@ -310,8 +305,7 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+     mojo.execute();
+ 
+     // then
+-    assertThat(targetProject.getProperties().stringPropertyNames()).contains("git.commit.id.describe");
+-    assertThat(targetProject.getProperties().getProperty("git.commit.id.describe")).isEqualTo("v1.0.0-dirty");
++    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe", "v1.0.0"));
+   }
+ 
+   @Test
+@@ -334,13 +328,8 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+     mojo.execute();
+ 
+     // then
+-    Set<String> propNames = targetProject.getProperties().stringPropertyNames();
+-
+-    assertThat(propNames).contains("git.commit.id.describe");
+-    assertThat(targetProject.getProperties().getProperty("git.commit.id.describe")).isEqualTo("v1.0.0");
+-
+-    assertThat(propNames).contains("git.commit.id.describe-short");
+-    assertThat(targetProject.getProperties().getProperty("git.commit.id.describe-short")).isEqualTo("v1.0.0");
++    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe", "v1.0.0"));
++    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe-short", "v1.0.0"));
+   }
+ 
+   @Test
+@@ -363,8 +352,7 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+     mojo.execute();
+ 
+     // then
+-    assertThat(targetProject.getProperties().stringPropertyNames()).contains("git.commit.id.describe");
+-    assertThat(targetProject.getProperties().getProperty("git.commit.id.describe")).isEqualTo("v1.0.0-0-gde4db35");
++    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe", "v1.0.0-0-gde4db35"));
+   }
+ 
+   @Test
+@@ -387,13 +375,8 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+     mojo.execute();
+ 
+     // then
+-    Set<String> propNames = targetProject.getProperties().stringPropertyNames();
+-
+-    assertThat(propNames).contains("git.commit.id.describe");
+-    assertThat(targetProject.getProperties().getProperty("git.commit.id.describe")).isEqualTo("v1.0.0-0-gde4db35917");
+-
+-    assertThat(propNames).contains("git.commit.id.describe-short");
+-    assertThat(targetProject.getProperties().getProperty("git.commit.id.describe-short")).isEqualTo("v1.0.0-0");
++    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe", "v1.0.0-0-gde4db35917"));
++    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe-short", "v1.0.0-0"));
+   }
+ 
+   @Test
+@@ -415,8 +398,7 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+     mojo.execute();
+ 
+     // then
+-    assertThat(targetProject.getProperties().stringPropertyNames()).contains("git.commit.id.abbrev");
+-    assertThat(targetProject.getProperties().getProperty("git.commit.id.abbrev")).isEqualTo("de4db35");
++    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.abbrev", "de4db35"));
+   }
+ 
+   @Test
+@@ -537,8 +519,7 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+     mojo.execute();
+ 
+     // then
+-    assertThat(targetProject.getProperties().stringPropertyNames()).contains("git.commit.id.describe");
+-    assertThat(targetProject.getProperties().getProperty("git.commit.id.describe")).isEqualTo("0b0181b");
++    assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe", "0b0181b"));
+   }
+ 
+   @Test
+@@ -647,10 +628,7 @@ public class GitCommitIdMojoIntegrationTest extends GitIntegrationTest {
+       mojo.execute();
+ 
+       // then
+-      assertThat(targetProject.getProperties().stringPropertyNames()).contains("git.commit.id.describe");
+-      assertThat(targetProject.getProperties().getProperty("git.commit.id.describe")).isEqualTo(gitDescribeMatchNeedle + "-66-g1c6cf6f");
+-
+-      assertThat(targetProject.getProperties().stringPropertyNames()).contains("git.commit.id");
++      assertThat(targetProject.getProperties()).includes(entry("git.commit.id.describe", gitDescribeMatchNeedle));
+       assertThat(targetProject.getProperties().get("git.commit.id")).isNotEqualTo(commitIdOfMatchNeedle);
+     }
+   }

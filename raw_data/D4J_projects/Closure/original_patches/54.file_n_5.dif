@@ -1,0 +1,13 @@
+diff --git a/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java b/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+index 2faffbd1..3af33366 100644
+--- a/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
++++ b/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+@@ -587,7 +587,7 @@ class PrototypeObjectType extends ObjectType {
+   }
+ 
+   void setOwnerFunction(FunctionType type) {
+-    Preconditions.checkState(ownerFunction == null || type == null);
++    Preconditions.checkState(ownerFunction == null);
+     ownerFunction = type;
+   }
+ 

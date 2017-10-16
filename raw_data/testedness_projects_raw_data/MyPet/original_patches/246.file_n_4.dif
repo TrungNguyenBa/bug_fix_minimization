@@ -1,0 +1,63 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+index 29934838..d6d4363b 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
++++ b/src/main/java/de/Keyle/MyPet/entity/types/MyPet.java
+@@ -117,10 +117,23 @@ public abstract class MyPet implements IMyPet
+     public MyPet(MyPetPlayer Owner)
+     {
+         this.petOwner = Owner;
++        if (MyPetConfiguration.AUTOMATIC_SKILLTREE_ASSIGNMENT)
++        {
++            if (MyPetSkillTreeMobType.getSkillTreeNames(this.getPetType()).size() > 0)
++            {
++                for (MyPetSkillTree skillTree : MyPetSkillTreeMobType.getSkillTrees(this.getPetType()))
++                {
++                    if (MyPetPermissions.has(Owner.getPlayer(), "MyPet.custom.skilltree." + skillTree.getPermission()))
++                    {
++                        this.skillTree = skillTree;
++                        break;
++                    }
++                }
++            }
++        }
+         skills = new MyPetSkills(this);
+         experience = new MyPetExperience(this);
+         hungerTime = MyPetConfiguration.HUNGER_SYSTEM_TIME;
+-        autoAssignSkilltree();
+     }
+ 
+     public void setPetName(String newName)
+@@ -165,24 +178,6 @@ public abstract class MyPet implements IMyPet
+         return true;
+     }
+ 
+-    public boolean autoAssignSkilltree()
+-    {
+-        if (MyPetConfiguration.AUTOMATIC_SKILLTREE_ASSIGNMENT && skillTree == null && this.petOwner.isOnline())
+-        {
+-            if (MyPetSkillTreeMobType.getSkillTreeNames(this.getPetType()).size() > 0)
+-            {
+-                for (MyPetSkillTree skillTree : MyPetSkillTreeMobType.getSkillTrees(this.getPetType()))
+-                {
+-                    if (MyPetPermissions.has(this.petOwner.getPlayer(), "MyPet.custom.skilltree." + skillTree.getPermission()))
+-                    {
+-                        return setSkilltree(skillTree);
+-                    }
+-                }
+-            }
+-        }
+-        return false;
+-    }
+-
+     public void removePet()
+     {
+         if (status == PetState.Here)
+@@ -272,8 +267,6 @@ public abstract class MyPet implements IMyPet
+                     setWorldGroup(MyPetWorldGroup.getGroup(craftMyPet.getWorld().getName()).getName());
+                 }
+ 
+-                autoAssignSkilltree();
+-
+                 return SpawnFlags.Success;
+             }
+         }

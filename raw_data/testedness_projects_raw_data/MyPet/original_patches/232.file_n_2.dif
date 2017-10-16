@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
+index fbef00a7..a7221961 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandAdmin.java
+@@ -476,7 +476,7 @@ public class CommandAdmin implements CommandExecutor, TabCompleter
+                 {
+                     InactiveMyPet inactiveMyPet = new InactiveMyPet(newOwner);
+                     inactiveMyPet.setPetType(myPetType);
+-                    inactiveMyPet.setPetName(MyPetLocales.getString("Name." + inactiveMyPet.getPetType().getTypeName(), inactiveMyPet.getOwner().getLanguage()));
++                    inactiveMyPet.setPetName(myPetType.getTypeName());
+                     inactiveMyPet.setLocation(owner.getLocation());
+ 
+                     CompoundTag compoundTag = inactiveMyPet.getInfo();

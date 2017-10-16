@@ -1,0 +1,20 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java
+index 3928d43..34a2b3b 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/protobuf/WriteStringsTest.java
+@@ -47,13 +47,14 @@ public class WriteStringsTest extends ProtobufTestBase
+     {
+         ProtobufSchema schema = ProtobufSchemaLoader.std.parse(PROTOC_NAME);
+         final ObjectWriter w = MAPPER.writer(schema);
++        
+         StringBuilder sb = new StringBuilder();
+         do {
+             sb.append("Bob");
+         } while (sb.length() < 128);
+         final String LONG_NAME = sb.toString();
+         final int longLen = LONG_NAME.length();
+-
++        
+         byte[] bytes = w.writeValueAsBytes(new Name("Bill", LONG_NAME));
+         // 5 bytes for fields (tag, length), 4 for first name, N for second
+         assertEquals(9 + longLen, bytes.length);

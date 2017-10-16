@@ -1,0 +1,14 @@
+diff --git a/src/main/java/de/Keyle/MyPet/entity/EntitySize.java b/src/main/java/de/Keyle/MyPet/entity/EntitySize.java
+index 754e69cc..77ec3a76 100644
+--- a/src/main/java/de/Keyle/MyPet/entity/EntitySize.java
++++ b/src/main/java/de/Keyle/MyPet/entity/EntitySize.java
+@@ -27,7 +27,8 @@ import java.lang.annotation.Target;
+ 
+ @Retention(RetentionPolicy.RUNTIME)
+ @Target(ElementType.TYPE)
+-public @interface EntitySize {
++public @interface EntitySize
++{
+     public float width();
+ 
+     public float height();

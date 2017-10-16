@@ -1,0 +1,16 @@
+diff --git a/pom.xml b/pom.xml
+index bec2b77..55a7515 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -333,10 +333,7 @@
+   <pluginRepositories>
+     <pluginRepository>
+       <id>sonatype-snapshots</id>
+-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+-      <snapshots>
+-        <enabled>true</enabled>
+-      </snapshots>
++      <url>https://oss.sonatype.org/content/repositories/snapshot</url>
+     </pluginRepository>
+   </pluginRepositories>
+   <repositories>

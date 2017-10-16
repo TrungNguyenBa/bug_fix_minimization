@@ -1,0 +1,14 @@
+diff --git a/zombielink/src/main/java/com/lonepulse/zombielink/request/AbstractRequestProcessor.java b/zombielink/src/main/java/com/lonepulse/zombielink/request/AbstractRequestProcessor.java
+index 50798f0..031f778 100644
+--- a/zombielink/src/main/java/com/lonepulse/zombielink/request/AbstractRequestProcessor.java
++++ b/zombielink/src/main/java/com/lonepulse/zombielink/request/AbstractRequestProcessor.java
+@@ -30,8 +30,8 @@ import org.apache.http.client.methods.HttpPut;
+ import org.apache.http.client.methods.HttpRequestBase;
+ 
+ import com.lonepulse.zombielink.annotation.Request.RequestMethod;
++import com.lonepulse.zombielink.inject.InvocationContext;
+ import com.lonepulse.zombielink.processor.Processor;
+-import com.lonepulse.zombielink.proxy.InvocationContext;
+ 
+ /**
+  * <p>This is an abstract implementation of {@link Processor} which specifies a template for processing 

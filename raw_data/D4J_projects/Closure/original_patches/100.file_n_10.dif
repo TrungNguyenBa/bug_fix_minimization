@@ -1,0 +1,12 @@
+diff --git a/src/com/google/javascript/jscomp/DefaultCodingConvention.java b/src/com/google/javascript/jscomp/DefaultCodingConvention.java
+index 82a96364..814b01c1 100644
+--- a/src/com/google/javascript/jscomp/DefaultCodingConvention.java
++++ b/src/com/google/javascript/jscomp/DefaultCodingConvention.java
+@@ -15,6 +15,7 @@
+  */
+ package com.google.javascript.jscomp;
+ 
++import com.google.javascript.jscomp.CodingConvention.AssertionFunctionSpec;
+ import com.google.javascript.rhino.Node;
+ import com.google.javascript.rhino.jstype.FunctionType;
+ import com.google.javascript.rhino.jstype.JSTypeRegistry;

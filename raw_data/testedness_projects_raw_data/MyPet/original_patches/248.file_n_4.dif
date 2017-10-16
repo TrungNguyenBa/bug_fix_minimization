@@ -1,0 +1,13 @@
+diff --git a/src/main/java/de/Keyle/MyPet/chatcommands/CommandSkill.java b/src/main/java/de/Keyle/MyPet/chatcommands/CommandSkill.java
+index d199c7d5..69ca73a3 100644
+--- a/src/main/java/de/Keyle/MyPet/chatcommands/CommandSkill.java
++++ b/src/main/java/de/Keyle/MyPet/chatcommands/CommandSkill.java
+@@ -70,7 +70,7 @@ public class CommandSkill implements CommandExecutor, TabCompleter
+                 {
+                     if (skill.isActive())
+                     {
+-                        sender.sendMessage(MyPetBukkitUtil.setColors("  %green%%skillname%%white% " + skill.getFormattedValue()).replace("%skillname%", skill.getName()));
++                        sender.sendMessage(MyPetBukkitUtil.setColors("%green%%skillname%%white% " + skill.getFormattedValue()).replace("%skillname%", skill.getName()));
+                     }
+                 }
+                 return true;

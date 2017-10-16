@@ -1,0 +1,2 @@
+bc04a01e : removed private keyword for the leveup message gui fields
+:100644 100644 cabe60eb... a89f3aa6... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/LevelCreator.java

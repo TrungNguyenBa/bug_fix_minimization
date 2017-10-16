@@ -1,0 +1,3 @@
+d2bc383 : Fix return type of CustomerCardCollection.retrieve, add a test
+:100644 100644 52b66a9... 2d3dfb2... M	src/main/java/com/stripe/model/CustomerCardCollection.java
+:100644 100644 f579720... e11916f... M	src/test/java/com/stripe/StripeTest.java

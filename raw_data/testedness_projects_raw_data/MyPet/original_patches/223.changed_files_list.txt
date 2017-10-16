@@ -1,0 +1,2 @@
+65d6acb8 : fixed time reset bug in HPreg skill properties
+:100644 100644 799667c3... bff26981... M	src/main/java/de/Keyle/MyPet/gui/skilltreecreator/skills/HealthRegeneration.java

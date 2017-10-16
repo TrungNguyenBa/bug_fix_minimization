@@ -1,0 +1,24 @@
+diff --git a/src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java b/src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java
+index 3a7e46d..aa5b729 100644
+--- a/src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java
++++ b/src/main/java/com/lonepulse/zombielink/response/ResponseParsers.java
+@@ -41,7 +41,7 @@ public enum ResponseParsers implements ResponseParser<Object> {
+ 	 * 
+ 	 * @since 1.1.0
+ 	 */
+-	RAW(new RawResponseParser()),
++	STRING(new StringResponseParser()),
+ 	
+ 	/**
+ 	 * See {@link JsonResponseParser}.
+@@ -120,8 +120,8 @@ public enum ResponseParsers implements ResponseParser<Object> {
+ 				case XML:
+ 					return ResponseParsers.XML.responseParser;
+ 					
+-				case RAW: case UNDEFINED: default:
+-					return ResponseParsers.RAW.responseParser;
++				case STRING: case UNDEFINED: default:
++					return ResponseParsers.STRING.responseParser;
+ 			}
+ 		}
+ 	};

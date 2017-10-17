@@ -1,0 +1,110 @@
+2c2
+< index ed76a29..8d28c5f 100644
+---
+> index ed76a2950..3822a89e6 100644
+4a5,26
+> @@ -993,8 +993,8 @@ public class Complex implements FieldElement<Complex>, Serializable  {
+>       *  </code>
+>       * </pre>
+>       * where the (real) functions on the right-hand side are
+> -     * {@link FastMath#sin}, {@link FastMath#cos}, {@link FastMath#cosh} and
+> -     * {@link FastMath#sinh}.
+> +     * {@link java.lang.Math#sin}, {@link java.lang.Math#cos},
+> +     * {@link FastMath#cosh} and {@link FastMath#sinh}.
+>       * <br/>
+>       * Returns {@link Complex#NaN} if either real or imaginary part of the
+>       * input argument is {@code NaN}.
+> @@ -1004,8 +1004,8 @@ public class Complex implements FieldElement<Complex>, Serializable  {
+>       * <pre>
+>       *  Examples:
+>       *  <code>
+> -     *   tan(a &plusmn; INFINITY i) = 0 &plusmn; i
+> -     *   tan(&plusmn;INFINITY + bi) = NaN + NaN i
+> +     *   tan(1 &plusmn; INFINITY i) = 0 + NaN i
+> +     *   tan(&plusmn;INFINITY + i) = NaN + NaN i
+>       *   tan(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
+>       *   tan(&plusmn;&pi;/2 + 0 i) = &plusmn;INFINITY + NaN i
+>       *  </code>
+22c44,66
+< @@ -1066,15 +1060,9 @@ public class Complex implements FieldElement<Complex>, Serializable  {
+---
+> @@ -1044,8 +1038,8 @@ public class Complex implements FieldElement<Complex>, Serializable  {
+>       *  </code>
+>       * </pre>
+>       * where the (real) functions on the right-hand side are
+> -     * {@link FastMath#sin}, {@link FastMath#cos}, {@link FastMath#cosh} and
+> -     * {@link FastMath#sinh}.
+> +     * {@link java.lang.Math#sin}, {@link java.lang.Math#cos},
+> +     * {@link FastMath#cosh} and {@link FastMath#sinh}.
+>       * <br/>
+>       * Returns {@link Complex#NaN} if either real or imaginary part of the
+>       * input argument is {@code NaN}.
+> @@ -1055,8 +1049,8 @@ public class Complex implements FieldElement<Complex>, Serializable  {
+>       * <pre>
+>       *  Examples:
+>       *  <code>
+> -     *   tanh(a &plusmn; INFINITY i) = NaN + NaN i
+> -     *   tanh(&plusmn;INFINITY + bi) = &plusmn;1 + 0 i
+> +     *   tanh(1 &plusmn; INFINITY i) = NaN + NaN i
+> +     *   tanh(&plusmn;INFINITY + i) = NaN + 0 i
+>       *   tanh(&plusmn;INFINITY &plusmn; INFINITY i) = NaN + NaN i
+>       *   tanh(0 + (&pi;/2)i) = NaN + INFINITY i
+>       *  </code>
+> @@ -1066,15 +1060,10 @@ public class Complex implements FieldElement<Complex>, Serializable  {
+35a80
+> +
+38a84,137
+> diff --git a/src/test/java/org/apache/commons/math/complex/ComplexTest.java b/src/test/java/org/apache/commons/math/complex/ComplexTest.java
+> index c31cb90f1..f694310fe 100644
+> --- a/src/test/java/org/apache/commons/math/complex/ComplexTest.java
+> +++ b/src/test/java/org/apache/commons/math/complex/ComplexTest.java
+> @@ -996,13 +996,6 @@ public class ComplexTest {
+>          Complex z = new Complex(3, 4);
+>          Complex expected = new Complex(-0.000187346, 0.999356);
+>          TestUtils.assertEquals(expected, z.tan(), 1.0e-5);
+> -        /* Check that no overflow occurs (MATH-722) */
+> -        Complex actual = new Complex(3.0, 1E10).tan();
+> -        expected = new Complex(0, 1);
+> -        TestUtils.assertEquals(expected, actual, 1.0e-5);
+> -        actual = new Complex(3.0, -1E10).tan();
+> -        expected = new Complex(0, -1);
+> -        TestUtils.assertEquals(expected, actual, 1.0e-5);
+>      }
+>  
+>      @Test
+> @@ -1012,8 +1005,8 @@ public class ComplexTest {
+>  
+>      @Test
+>      public void testTanInf() {
+> -        TestUtils.assertSame(Complex.valueOf(0.0, 1.0), oneInf.tan());
+> -        TestUtils.assertSame(Complex.valueOf(0.0, -1.0), oneNegInf.tan());
+> +        TestUtils.assertSame(zeroNaN, oneInf.tan());
+> +        TestUtils.assertSame(zeroNaN, oneNegInf.tan());
+>          TestUtils.assertSame(Complex.NaN, infOne.tan());
+>          TestUtils.assertSame(Complex.NaN, negInfOne.tan());
+>          TestUtils.assertSame(Complex.NaN, infInf.tan());
+> @@ -1033,13 +1026,6 @@ public class ComplexTest {
+>          Complex z = new Complex(3, 4);
+>          Complex expected = new Complex(1.00071, 0.00490826);
+>          TestUtils.assertEquals(expected, z.tanh(), 1.0e-5);
+> -        /* Check that no overflow occurs (MATH-722) */
+> -        Complex actual = new Complex(1E10, 3.0).tanh();
+> -        expected = new Complex(1, 0);
+> -        TestUtils.assertEquals(expected, actual, 1.0e-5);
+> -        actual = new Complex(-1E10, 3.0).tanh();
+> -        expected = new Complex(-1, 0);
+> -        TestUtils.assertEquals(expected, actual, 1.0e-5);
+>      }
+>  
+>      @Test
+> @@ -1051,8 +1037,8 @@ public class ComplexTest {
+>      public void testTanhInf() {
+>          TestUtils.assertSame(Complex.NaN, oneInf.tanh());
+>          TestUtils.assertSame(Complex.NaN, oneNegInf.tanh());
+> -        TestUtils.assertSame(Complex.valueOf(1.0, 0.0), infOne.tanh());
+> -        TestUtils.assertSame(Complex.valueOf(-1.0, 0.0), negInfOne.tanh());
+> +        TestUtils.assertSame(nanZero, infOne.tanh());
+> +        TestUtils.assertSame(nanZero, negInfOne.tanh());
+>          TestUtils.assertSame(Complex.NaN, infInf.tanh());
+>          TestUtils.assertSame(Complex.NaN, infNegInf.tanh());
+>          TestUtils.assertSame(Complex.NaN, negInfInf.tanh());

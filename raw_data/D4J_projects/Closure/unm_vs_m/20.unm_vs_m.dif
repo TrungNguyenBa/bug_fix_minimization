@@ -1,0 +1,34 @@
+2c2
+< index 86521bd..bfa1707 100644
+---
+> index 86521bdd..813a2eec 100644
+5,7c5,15
+< @@ -217,8 +217,7 @@ class PeepholeSubstituteAlternateSyntax
+<        // slightly different semantics than '' + (a). See
+<        // http://code.google.com/p/closure-compiler/issues/detail?id=759
+---
+> @@ -210,15 +210,9 @@ class PeepholeSubstituteAlternateSyntax
+>      Node callTarget = n.getFirstChild();
+>      if (callTarget != null && callTarget.isName() &&
+>            callTarget.getString().equals("String")) {
+> -      // Fold String(a) to '' + (a) on immutable literals,
+> -      // which allows further optimizations
+> -      //
+> -      // We can't do this in the general case, because String(a) has
+> -      // slightly different semantics than '' + (a). See
+> -      // http://code.google.com/p/closure-compiler/issues/detail?id=759
+> +      // Fold String(a) to ''+(a) - which allows further optimizations
+14a23,35
+> diff --git a/test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java b/test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java
+> index d1a569d0..c8f8bf4e 100644
+> --- a/test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java
+> +++ b/test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java
+> @@ -1028,8 +1028,6 @@ public class PeepholeSubstituteAlternateSyntaxTest extends CompilerTestCase {
+>    public void testSimpleFunctionCall() {
+>      test("var a = String(23)", "var a = '' + 23");
+>      test("var a = String('hello')", "var a = '' + 'hello'");
+> -    testSame("var a = String('hello', bar());");
+> -    testSame("var a = String({valueOf: function() { return 1; }});");
+>    }
+>  
+>    private static class StringCompareTestCase extends CompilerTestCase {

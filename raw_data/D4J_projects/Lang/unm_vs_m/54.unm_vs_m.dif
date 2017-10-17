@@ -1,0 +1,21 @@
+2c2
+< index 9607953..139d9a7 100644
+---
+> index 9607953b..139d9a7f 100644
+14a15,30
+> diff --git a/src/test/org/apache/commons/lang/LocaleUtilsTest.java b/src/test/org/apache/commons/lang/LocaleUtilsTest.java
+> index 2c4324c9..18555447 100644
+> --- a/src/test/org/apache/commons/lang/LocaleUtilsTest.java
+> +++ b/src/test/org/apache/commons/lang/LocaleUtilsTest.java
+> @@ -498,11 +498,4 @@ public class LocaleUtilsTest extends TestCase {
+>          } catch (UnsupportedOperationException ex) {}
+>      }
+>  
+> -    /**
+> -     * Tests #LANG-328 - only language+variant
+> -     */
+> -    public void testLang328() {
+> -        assertValidToLocale("fr__POSIX", "fr", "", "POSIX");
+> -    }
+> -
+>  }

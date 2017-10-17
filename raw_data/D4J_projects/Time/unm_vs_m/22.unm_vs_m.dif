@@ -1,0 +1,182 @@
+1,5c1,20
+< diff --git a/src/main/java/org/joda/time/base/BasePeriod.java b/src/main/java/org/joda/time/base/BasePeriod.java
+< index a5dcb74..679b734 100644
+< --- a/src/main/java/org/joda/time/base/BasePeriod.java
+< +++ b/src/main/java/org/joda/time/base/BasePeriod.java
+< @@ -219,13 +219,8 @@ public abstract class BasePeriod
+---
+> diff --git a/JodaTime/RELEASE-NOTES.txt b/JodaTime/RELEASE-NOTES.txt
+> index 3f7e1e33..83f549c9 100644
+> --- a/JodaTime/RELEASE-NOTES.txt
+> +++ b/JodaTime/RELEASE-NOTES.txt
+> @@ -217,10 +217,6 @@ Bug fixes since 1.6
+>  - Duration.toString
+>    Fixed to work correctly for negative values
+>  
+> -- Duraton.toPeriod(), new Period(long), new MutablePeriod(long) [3264409]
+> -  Fixed to obey Javadoc.
+> -  Previously, they didn't obey the Javadoc if the default time-zone had no daylight savings.
+> -
+>  - Period formatting concurrency [2820871]
+>    Fix possible concurrency hole in PeriodFormatBuilder.Separator
+>  
+> diff --git a/JodaTime/src/main/java/org/joda/time/MutablePeriod.java b/JodaTime/src/main/java/org/joda/time/MutablePeriod.java
+> index 78db7917..4e40d551 100644
+> --- a/JodaTime/src/main/java/org/joda/time/MutablePeriod.java
+> +++ b/JodaTime/src/main/java/org/joda/time/MutablePeriod.java
+> @@ -177,7 +177,7 @@ public class MutablePeriod
+8c23,65
+<      protected BasePeriod(long duration) {
+---
+>      public MutablePeriod(long duration) {
+> -        super(duration);
+> +        super(duration, null, null);
+>      }
+>  
+>      /**
+> diff --git a/JodaTime/src/main/java/org/joda/time/Period.java b/JodaTime/src/main/java/org/joda/time/Period.java
+> index 7ec80720..1e0a6d82 100644
+> --- a/JodaTime/src/main/java/org/joda/time/Period.java
+> +++ b/JodaTime/src/main/java/org/joda/time/Period.java
+> @@ -379,7 +379,7 @@ public final class Period
+>       * @param duration  the duration, in milliseconds
+>       */
+>      public Period(long duration) {
+> -        super(duration);
+> +        super(duration, null, null);
+>      }
+>  
+>      /**
+> diff --git a/JodaTime/src/main/java/org/joda/time/base/BasePeriod.java b/JodaTime/src/main/java/org/joda/time/base/BasePeriod.java
+> index a5dcb74b..e2da9f00 100644
+> --- a/JodaTime/src/main/java/org/joda/time/base/BasePeriod.java
+> +++ b/JodaTime/src/main/java/org/joda/time/base/BasePeriod.java
+> @@ -28,7 +28,6 @@ import org.joda.time.ReadableDuration;
+>  import org.joda.time.ReadableInstant;
+>  import org.joda.time.ReadablePartial;
+>  import org.joda.time.ReadablePeriod;
+> -import org.joda.time.chrono.ISOChronology;
+>  import org.joda.time.convert.ConverterManager;
+>  import org.joda.time.convert.PeriodConverter;
+>  import org.joda.time.field.FieldUtils;
+> @@ -211,24 +210,6 @@ public abstract class BasePeriod
+>      }
+>  
+>      /**
+> -     * Creates a period from the given millisecond duration with the standard period type
+> -     * and ISO rules, ensuring that the calculation is performed with the time-only period type.
+> -     * <p>
+> -     * The calculation uses the hour, minute, second and millisecond fields.
+> -     *
+> -     * @param duration  the duration, in milliseconds
+> -     */
+> -    protected BasePeriod(long duration) {
+10,11c67
+< +        this(duration, null, null);
+<          // bug [3264409]
+---
+> -        // bug [3264409]
+16a73,135
+> -    }
+> -
+> -    /**
+>       * Creates a period from the given millisecond duration, which is only really
+>       * suitable for durations less than one day.
+>       * <p>
+> diff --git a/JodaTime/src/test/java/org/joda/time/TestDuration_Basics.java b/JodaTime/src/test/java/org/joda/time/TestDuration_Basics.java
+> index 5850b561..4caa6e20 100644
+> --- a/JodaTime/src/test/java/org/joda/time/TestDuration_Basics.java
+> +++ b/JodaTime/src/test/java/org/joda/time/TestDuration_Basics.java
+> @@ -444,51 +444,15 @@ public class TestDuration_Basics extends TestCase {
+>  
+>      //-----------------------------------------------------------------------
+>      public void testToPeriod() {
+> -        DateTimeZone zone = DateTimeZone.getDefault();
+> -        try {
+> -            DateTimeZone.setDefault(DateTimeZone.forID("Europe/Paris"));
+>          long length =
+>              (4L + (3L * 7L) + (2L * 30L) + 365L) * DateTimeConstants.MILLIS_PER_DAY +
+>              5L * DateTimeConstants.MILLIS_PER_HOUR +
+>              6L * DateTimeConstants.MILLIS_PER_MINUTE +
+>              7L * DateTimeConstants.MILLIS_PER_SECOND + 8L;
+> -            Duration dur = new Duration(length);
+> -            Period test = dur.toPeriod();
+> -            assertEquals(0, test.getYears());  // (4 + (3 * 7) + (2 * 30) + 365) == 450
+> -            assertEquals(0, test.getMonths());
+> -            assertEquals(0, test.getWeeks());
+> -            assertEquals(0, test.getDays());
+> -            assertEquals((450 * 24) + 5, test.getHours());
+> -            assertEquals(6, test.getMinutes());
+> -            assertEquals(7, test.getSeconds());
+> -            assertEquals(8, test.getMillis());
+> -        } finally {
+> -            DateTimeZone.setDefault(zone);
+> -        }
+> -    }
+> -
+> -    public void testToPeriod_fixedZone() throws Throwable {
+> -        DateTimeZone zone = DateTimeZone.getDefault();
+> -        try {
+> -            DateTimeZone.setDefault(DateTimeZone.forOffsetHours(2));
+> -            long length =
+> -                (4L + (3L * 7L) + (2L * 30L) + 365L) * DateTimeConstants.MILLIS_PER_DAY +
+> -                5L * DateTimeConstants.MILLIS_PER_HOUR +
+> -                6L * DateTimeConstants.MILLIS_PER_MINUTE +
+> -                7L * DateTimeConstants.MILLIS_PER_SECOND + 8L;
+> -            Duration dur = new Duration(length);
+> -            Period test = dur.toPeriod();
+> -            assertEquals(0, test.getYears());  // (4 + (3 * 7) + (2 * 30) + 365) == 450
+> -            assertEquals(0, test.getMonths());
+> -            assertEquals(0, test.getWeeks());
+> -            assertEquals(0, test.getDays());
+> -            assertEquals((450 * 24) + 5, test.getHours());
+> -            assertEquals(6, test.getMinutes());
+> -            assertEquals(7, test.getSeconds());
+> -            assertEquals(8, test.getMillis());
+> -        } finally {
+> -            DateTimeZone.setDefault(zone);
+> -        }
+> +        Duration test = new Duration(length);
+> +        Period result = test.toPeriod();
+> +        assertEquals(new Period(test), result);
+> +        assertEquals(new Period(test.getMillis()), result);
+19c138,174
+<      /**
+---
+>      //-----------------------------------------------------------------------
+> diff --git a/JodaTime/src/test/java/org/joda/time/TestPeriod_Constructors.java b/JodaTime/src/test/java/org/joda/time/TestPeriod_Constructors.java
+> index 29f7bdf8..d1369ee5 100644
+> --- a/JodaTime/src/test/java/org/joda/time/TestPeriod_Constructors.java
+> +++ b/JodaTime/src/test/java/org/joda/time/TestPeriod_Constructors.java
+> @@ -171,31 +171,6 @@ public class TestPeriod_Constructors extends TestCase {
+>          assertEquals(8, test.getMillis());
+>      }
+>  
+> -    public void testConstructor_long_fixedZone() throws Throwable {
+> -        DateTimeZone zone = DateTimeZone.getDefault();
+> -        try {
+> -            DateTimeZone.setDefault(DateTimeZone.forOffsetHours(2));
+> -            long length =
+> -                (4L + (3L * 7L) + (2L * 30L) + 365L) * DateTimeConstants.MILLIS_PER_DAY +
+> -                5L * DateTimeConstants.MILLIS_PER_HOUR +
+> -                6L * DateTimeConstants.MILLIS_PER_MINUTE +
+> -                7L * DateTimeConstants.MILLIS_PER_SECOND + 8L;
+> -            Period test = new Period(length);
+> -            assertEquals(PeriodType.standard(), test.getPeriodType());
+> -            // only time fields are precise in AllType
+> -            assertEquals(0, test.getYears());  // (4 + (3 * 7) + (2 * 30) + 365) == 450
+> -            assertEquals(0, test.getMonths());
+> -            assertEquals(0, test.getWeeks());
+> -            assertEquals(0, test.getDays());
+> -            assertEquals((450 * 24) + 5, test.getHours());
+> -            assertEquals(6, test.getMinutes());
+> -            assertEquals(7, test.getSeconds());
+> -            assertEquals(8, test.getMillis());
+> -        } finally {
+> -            DateTimeZone.setDefault(zone);
+> -        }
+> -    }
+> -
+>      //-----------------------------------------------------------------------
+>      public void testConstructor_long_PeriodType1() throws Throwable {
+>          long length = 4 * DateTimeConstants.MILLIS_PER_DAY +

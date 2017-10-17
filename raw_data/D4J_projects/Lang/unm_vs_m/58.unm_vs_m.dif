@@ -1,0 +1,35 @@
+0a1,14
+> diff --git a/src/java/org/apache/commons/lang/NumberUtils.java b/src/java/org/apache/commons/lang/NumberUtils.java
+> index 18a05efe..b52b29d8 100644
+> --- a/src/java/org/apache/commons/lang/NumberUtils.java
+> +++ b/src/java/org/apache/commons/lang/NumberUtils.java
+> @@ -192,7 +192,8 @@ public final class NumberUtils {
+>                  case 'L' :
+>                      if (dec == null
+>                          && exp == null
+> -                        && (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {
+> +                        && isDigits(numeric.substring(1))
+> +                        && (numeric.charAt(0) == '-' || Character.isDigit(numeric.charAt(0)))) {
+>                          try {
+>                              return createLong(numeric);
+>                          } catch (NumberFormatException nfe) {
+2c16
+< index eb74e72..c0f06a4 100644
+---
+> index eb74e72f..c0f06a47 100644
+14a29,43
+> diff --git a/src/test/org/apache/commons/lang/math/NumberUtilsTest.java b/src/test/org/apache/commons/lang/math/NumberUtilsTest.java
+> index f3e7cc43..57532381 100644
+> --- a/src/test/org/apache/commons/lang/math/NumberUtilsTest.java
+> +++ b/src/test/org/apache/commons/lang/math/NumberUtilsTest.java
+> @@ -1365,10 +1365,4 @@ public class NumberUtilsTest extends TestCase {
+>          assertTrue(NumberUtils.FLOAT_MINUS_ONE.floatValue() == -1.0f);
+>      }
+>      
+> -    public void testLang300() {
+> -        NumberUtils.createNumber("-1l");
+> -        NumberUtils.createNumber("01l");
+> -        NumberUtils.createNumber("1l");
+> -    }
+> -    
+>  }

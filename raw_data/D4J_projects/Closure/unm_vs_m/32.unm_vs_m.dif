@@ -1,0 +1,140 @@
+2c2
+< index cfdccbe..f6a6400 100644
+---
+> index cfdccbe6..f1f57359 100644
+5,9c5,7
+< @@ -1355,14 +1355,12 @@ public final class JsDocInfoParser {
+<      // Track the start of the line to count whitespace that
+<      // the tokenizer skipped. Because this case is rare, it's easier
+<      // to do this here than in the tokenizer.
+< -    int lineStartChar = -1;
+---
+> @@ -1352,19 +1352,10 @@ public final class JsDocInfoParser {
+>  
+>      boolean ignoreStar = false;
+10a9,13
+> -    // Track the start of the line to count whitespace that
+> -    // the tokenizer skipped. Because this case is rare, it's easier
+> -    // to do this here than in the tokenizer.
+> -    int lineStartChar = -1;
+> -
+14,15c17,18
+<            if (ignoreStar) {
+<              // Mark the position after the star as the new start of the line.
+---
+> -          if (ignoreStar) {
+> -            // Mark the position after the star as the new start of the line.
+17,18c20,22
+<            } else {
+<              // The star is part of the comment.
+---
+> -          } else {
+> -            // The star is part of the comment.
+> +          if (!ignoreStar) {
+20c24,26
+< @@ -1381,7 +1379,6 @@ public final class JsDocInfoParser {
+---
+>                builder.append(' ');
+>              }
+> @@ -1381,34 +1372,16 @@ public final class JsDocInfoParser {
+28,31c34,37
+< @@ -1389,19 +1386,7 @@ public final class JsDocInfoParser {
+<            ignoreStar = false;
+<            state = State.SEARCHING_ANNOTATION;
+<  
+---
+> -        default:
+> -          ignoreStar = false;
+> -          state = State.SEARCHING_ANNOTATION;
+> -
+41c47
+<                // All tokens must be separated by a space.
+---
+> -              // All tokens must be separated by a space.
+44a51,63
+> -
+> -          if (token == JsDocToken.EOC ||
+> -              token == JsDocToken.EOF ||
+> +        case ANNOTATION:
+> +        case EOC:
+> +        case EOF:
+>            // When we're capturing a license block, annotations
+>            // in the block are ok.
+> -              (token == JsDocToken.ANNOTATION &&
+> -               option != WhitespaceOption.PRESERVE)) {
+> +          if (!(option == WhitespaceOption.PRESERVE &&
+> +                token == JsDocToken.ANNOTATION)) {
+>              String multilineText = builder.toString();
+46,48c65,66
+<            if (token == JsDocToken.EOC ||
+<                token == JsDocToken.EOF ||
+< @@ -1426,6 +1411,9 @@ public final class JsDocInfoParser {
+---
+>              if (option != WhitespaceOption.PRESERVE) {
+> @@ -1426,6 +1399,16 @@ public final class JsDocInfoParser {
+51a70,75
+> +          // FALL THROUGH
+> +
+> +        default:
+> +          ignoreStar = false;
+> +          state = State.SEARCHING_ANNOTATION;
+> +
+54a79
+> +
+57a83,138
+> diff --git a/test/com/google/javascript/jscomp/IntegrationTest.java b/test/com/google/javascript/jscomp/IntegrationTest.java
+> index efdad8c2..0f49999d 100644
+> --- a/test/com/google/javascript/jscomp/IntegrationTest.java
+> +++ b/test/com/google/javascript/jscomp/IntegrationTest.java
+> @@ -1657,23 +1657,6 @@ public class IntegrationTest extends TestCase {
+>      testSame(options, code);
+>    }
+>  
+> -  public void testIssue701() {
+> -    // Check ASCII art in license comments.
+> -    String ascii = "/**\n" +
+> -        " * @preserve\n" +
+> -        "   This\n" +
+> -        "     is\n" +
+> -        "       ASCII    ART\n" +
+> -        "*/";
+> -    String result = "/*\n\n" +
+> -        "   This\n" +
+> -        "     is\n" +
+> -        "       ASCII    ART\n" +
+> -        "*/\n";
+> -    testSame(createCompilerOptions(), ascii);
+> -    assertEquals(result, lastCompiler.toSource());
+> -  }
+> -
+>    public void testCoaleseVariables() {
+>      CompilerOptions options = createCompilerOptions();
+>  
+> diff --git a/test/com/google/javascript/jscomp/parsing/JsDocInfoParserTest.java b/test/com/google/javascript/jscomp/parsing/JsDocInfoParserTest.java
+> index 26accc96..26731216 100644
+> --- a/test/com/google/javascript/jscomp/parsing/JsDocInfoParserTest.java
+> +++ b/test/com/google/javascript/jscomp/parsing/JsDocInfoParserTest.java
+> @@ -1275,7 +1275,7 @@ public class JsDocInfoParserTest extends BaseJSTypeTestCase {
+>      this.fileLevelJsDocBuilder = node.getJsDocBuilderForNode();
+>      String comment = "@preserve Foo\nBar\n\nBaz*/";
+>      parse(comment);
+> -    assertEquals(" Foo\nBar\n\nBaz", node.getJSDocInfo().getLicense());
+> +    assertEquals(" Foo\n Bar\n\n Baz", node.getJSDocInfo().getLicense());
+>    }
+>  
+>    public void testParseLicense() throws Exception {
+> @@ -1283,14 +1283,6 @@ public class JsDocInfoParserTest extends BaseJSTypeTestCase {
+>      this.fileLevelJsDocBuilder = node.getJsDocBuilderForNode();
+>      String comment = "@license Foo\nBar\n\nBaz*/";
+>      parse(comment);
+> -    assertEquals(" Foo\nBar\n\nBaz", node.getJSDocInfo().getLicense());
+> -  }
+> -
+> -  public void testParseLicenseAscii() throws Exception {
+> -    Node node = new Node(1);
+> -    this.fileLevelJsDocBuilder = node.getJsDocBuilderForNode();
+> -    String comment = "@license Foo\n *   Bar\n\n  Baz*/";
+> -    parse(comment);
+>      assertEquals(" Foo\n Bar\n\n Baz", node.getJSDocInfo().getLicense());
+>    }
+>  

@@ -1,0 +1,201 @@
+2c2
+< index 28aee43..d1b36ea 100644
+---
+> index 28aee4348..ea0f20da1 100644
+5c5,36
+< @@ -163,7 +163,6 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+---
+> @@ -34,9 +34,8 @@ import org.apache.commons.math.optimization.VectorialPointValuePair;
+>   *
+>   * <p>The resolution engine is a simple translation of the MINPACK <a
+>   * href="http://www.netlib.org/minpack/lmder.f">lmder</a> routine with minor
+> - * changes. The changes include the over-determined resolution, the use of
+> - * inherited convergence checker and the Q.R. decomposition which has been
+> - * rewritten following the algorithm described in the
+> + * changes. The changes include the over-determined resolution and the Q.R.
+> + * decomposition which has been rewritten following the algorithm described in the
+>   * P. Lascaux and R. Theodor book <i>Analyse num&eacute;rique matricielle
+>   * appliqu&eacute;e &agrave; l'art de l'ing&eacute;nieur</i>, Masson 1986.</p>
+>   * <p>The authors of the original fortran version are:
+> @@ -144,7 +143,6 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+>       * Build an optimizer for least squares problems.
+>       * <p>The default values for the algorithm settings are:
+>       *   <ul>
+> -     *    <li>{@link #setConvergenceChecker vectorial convergence checker}: null</li>
+>       *    <li>{@link #setInitialStepBoundFactor initial step bound factor}: 100.0</li>
+>       *    <li>{@link #setMaxIterations maximal iterations}: 1000</li>
+>       *    <li>{@link #setCostRelativeTolerance cost relative tolerance}: 1.0e-10</li>
+> @@ -152,10 +150,6 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+>       *    <li>{@link #setOrthoTolerance orthogonality tolerance}: 1.0e-10</li>
+>       *   </ul>
+>       * </p>
+> -     * <p>These default values may be overridden after construction. If the {@link
+> -     * #setConvergenceChecker vectorial convergence checker} is set to a non-null value, it
+> -     * will be used instead of the {@link #setCostRelativeTolerance cost relative tolerance}
+> -     * and {@link #setParRelativeTolerance parameters relative tolerance} settings.
+>       */
+>      public LevenbergMarquardtOptimizer() {
+>  
+> @@ -163,7 +157,6 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+13c44,74
+< @@ -245,13 +244,11 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+---
+> @@ -186,8 +179,7 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+>  
+>      /**
+>       * Set the desired relative error in the sum of squares.
+> -     * <p>This setting is used only if the {@link #setConvergenceChecker vectorial
+> -     * convergence checker} is set to null.</p>
+> +     *
+>       * @param costRelativeTolerance desired relative error in the sum of squares
+>       */
+>      public void setCostRelativeTolerance(double costRelativeTolerance) {
+> @@ -196,8 +188,7 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+>  
+>      /**
+>       * Set the desired relative error in the approximate solution parameters.
+> -     * <p>This setting is used only if the {@link #setConvergenceChecker vectorial
+> -     * convergence checker} is set to null.</p>
+> +     *
+>       * @param parRelativeTolerance desired relative error
+>       * in the approximate solution parameters
+>       */
+> @@ -207,8 +198,7 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+>  
+>      /**
+>       * Set the desired max cosine on the orthogonality.
+> -     * <p>This setting is always used, regardless of the {@link #setConvergenceChecker
+> -     * vectorial convergence checker} being null or non-null.</p>
+> +     *
+>       * @param orthoTolerance desired max cosine on the orthogonality
+>       * between the function vector and the columns of the jacobian
+>       */
+> @@ -245,13 +235,11 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+27c88
+< @@ -303,7 +300,7 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+---
+> @@ -303,7 +291,7 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+36c97
+< @@ -345,7 +342,6 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+---
+> @@ -345,7 +333,6 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+44c105
+< @@ -414,20 +410,14 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+---
+> @@ -414,19 +401,11 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+49c110
+<                      // we use the vectorial convergence checker
+---
+> -                    // we use the vectorial convergence checker
+54c115
+<                      // we use the Levenberg-Marquardt specific convergence parameters
+---
+> -                    // we use the Levenberg-Marquardt specific convergence parameters
+59a121
+> -                    }
+62d123
+< -                }
+65c126,226
+<                  // (2.2204e-16 is the machine epsilon for IEEE754)
+---
+> diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+> index e6611f35d..69b7f604b 100644
+> --- a/src/site/xdoc/changes.xml
+> +++ b/src/site/xdoc/changes.xml
+> @@ -52,11 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+>      If the output is not quite correct, check for invisible trailing spaces!
+>       -->
+>      <release version="2.2" date="TBD" description="TBD">
+> -      <action dev="luc" type="fix" issue="MATH-362" >
+> -        Fixed Levenberg-Marquardt optimizer that did not use the vectorial convergence checker.
+> -        Now this optimizer can use either the general vectorial convergence checker or its own
+> -        specialized convergence settings.
+> -      </action>
+>        <action dev="psteitz" type="fix" issue="MATH-371" due-to="Kevin Childs">
+>          Fixed loss of significance error in PersonsCorrelation p-value computation causing p-values
+>          smaller than the machine epsilon (~1E-16) to be reported as 0.
+> diff --git a/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java b/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java
+> index 06f1721fb..aabeab6bc 100644
+> --- a/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java
+> +++ b/src/test/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizerTest.java
+> @@ -485,7 +485,7 @@ public class LevenbergMarquardtOptimizerTest
+>              circle.addPoint(points[i][0], points[i][1]);
+>          }
+>          LevenbergMarquardtOptimizer optimizer = new LevenbergMarquardtOptimizer();
+> -        optimizer.setConvergenceChecker(new SimpleVectorialValueChecker(1.0e-8, 1.0e-8));
+> +        optimizer.setConvergenceChecker(new SimpleVectorialValueChecker(1.0e-10, 1.0e-10));
+>          VectorialPointValuePair optimum =
+>              optimizer.optimize(circle, target, weights, new double[] { -12, -12 });
+>          Point2D.Double center = new Point2D.Double(optimum.getPointRef()[0], optimum.getPointRef()[1]);
+> diff --git a/src/test/java/org/apache/commons/math/optimization/general/MinpackTest.java b/src/test/java/org/apache/commons/math/optimization/general/MinpackTest.java
+> index 59467b224..7ff333113 100644
+> --- a/src/test/java/org/apache/commons/math/optimization/general/MinpackTest.java
+> +++ b/src/test/java/org/apache/commons/math/optimization/general/MinpackTest.java
+> @@ -152,14 +152,14 @@ public class MinpackTest extends TestCase {
+>      minpackTest(new FreudensteinRothFunction(new double[] { 5.0, -20.0 },
+>                                               12432.833948863, 6.9988751744895,
+>                                               new double[] {
+> -                                               11.4121122022341,
+> -                                               -0.8968550851268697
+> +                                               11.4130046614746,
+> +                                               -0.896796038685958
+>                                               }), false);
+>      minpackTest(new FreudensteinRothFunction(new double[] { 50.0, -200.0 },
+>                                               11426454.595762, 6.99887517242903,
+>                                               new double[] {
+> -                                               11.412069435091231,
+> -                                               -0.8968582807605691
+> +                                               11.4127817857886,
+> +                                               -0.89680510749204
+>                                               }), false);
+>    }
+>  
+> @@ -325,7 +325,7 @@ public class MinpackTest extends TestCase {
+>      minpackTest(new JennrichSampsonFunction(10, new double[] { 0.3, 0.4 },
+>                                              64.5856498144943, 11.1517793413499,
+>                                              new double[] {
+> -                                             0.2578330049, 0.257829976764542
+> +                                             0.257819926636811, 0.257829976764542
+>                                              }), false);
+>    }
+>  
+> @@ -499,8 +499,8 @@ public class MinpackTest extends TestCase {
+>                                   function.getTarget(), function.getWeight(),
+>                                   function.getStartPoint());
+>            assertFalse(exceptionExpected);
+> -          function.checkTheoreticalMinCost(optimizer.getRMS());
+> -          function.checkTheoreticalMinParams(optimum);
+> +          assertTrue(function.checkTheoreticalMinCost(optimizer.getRMS()));
+> +          assertTrue(function.checkTheoreticalMinParams(optimum));
+>        } catch (OptimizationException lsse) {
+>            assertTrue(exceptionExpected);
+>        } catch (FunctionEvaluationException fe) {
+> @@ -561,21 +561,24 @@ public class MinpackTest extends TestCase {
+>            return startParams.length;
+>        }
+>  
+> -      public void checkTheoreticalMinCost(double rms) {
+> +      public boolean checkTheoreticalMinCost(double rms) {
+>            double threshold = costAccuracy * (1.0 + theoreticalMinCost);
+> -          assertEquals(theoreticalMinCost, Math.sqrt(m) * rms, threshold);
+> +          return Math.abs(Math.sqrt(m) * rms - theoreticalMinCost) <= threshold;
+>        }
+>  
+> -      public void checkTheoreticalMinParams(VectorialPointValuePair optimum) {
+> +      public boolean checkTheoreticalMinParams(VectorialPointValuePair optimum) {
+>            double[] params = optimum.getPointRef();
+>            if (theoreticalMinParams != null) {
+>                for (int i = 0; i < theoreticalMinParams.length; ++i) {
+>                    double mi = theoreticalMinParams[i];
+>                    double vi = params[i];
+> -                  assertEquals(mi, vi, paramsAccuracy * (1.0 + Math.abs(mi)));
+> +                  if (Math.abs(mi - vi) > (paramsAccuracy * (1.0 + Math.abs(mi)))) {
+> +                      return false;
+>                    }
+>                }
+>            }
+> +          return true;
+> +      }
+>  
+>        public MultivariateMatrixFunction jacobian() {
+>            return new MultivariateMatrixFunction() {

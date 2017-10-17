@@ -1,0 +1,134 @@
+0a1,30
+> diff --git a/pom.xml b/pom.xml
+> index e3b934c40..43d1c2893 100644
+> --- a/pom.xml
+> +++ b/pom.xml
+> @@ -133,9 +133,6 @@
+>        <name>Eldar Agalarov</name>
+>      </contributor>
+>      <contributor>
+> -      <name>Tim Allison</name>
+> -    </contributor>
+> -    <contributor>
+>        <name>C. Scott Ananian</name>
+>      </contributor>
+>      <contributor>
+> diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+> index c73a55b03..7b277f648 100644
+> --- a/src/changes/changes.xml
+> +++ b/src/changes/changes.xml
+> @@ -51,11 +51,6 @@ If the output is not quite correct, check for invisible trailing spaces!
+>    </properties>
+>    <body>
+>      <release version="x.y" date="TBD" description="TBD">
+> -      <action dev="tn" type=fix issue="MATH-996" due-to="Tim Allison">
+> -        Creating a "Fraction" or "BigFraction" object with a maxDenominator parameter
+> -        does not throw a "FractionConversionException" in case the value is very close
+> -        to fraction.
+> -      </action>
+>        <action dev="tn" type="add" issue="MATH-1028" due-to="Thorsten Schäfer">
+>          Added new distance metric "EarthMoversDistance".
+>        </action>
+2c32
+< index 4ca33eb..ed4108d 100644
+---
+> index 4ca33eb04..5b0a6b4ce 100644
+5c35,37
+< @@ -303,9 +303,6 @@ public class BigFraction
+---
+> @@ -301,11 +301,6 @@ public class BigFraction
+>              p2 = (a1 * p1) + p0;
+>              q2 = (a1 * q1) + q0;
+7,8c39,40
+<                  // in maxDenominator mode, if the last fraction was very close to the actual value
+<                  // q2 may overflow in the next iteration; in this case return the last one.
+---
+> -                // in maxDenominator mode, if the last fraction was very close to the actual value
+> -                // q2 may overflow in the next iteration; in this case return the last one.
+16c48
+< index 002dae9..8065885 100644
+---
+> index 002dae934..08d3b9556 100644
+19c51,84
+< @@ -212,9 +212,6 @@ public class Fraction
+---
+> @@ -83,9 +83,6 @@ public class Fraction
+>      /** Serializable version identifier */
+>      private static final long serialVersionUID = 3698073679419233275L;
+>  
+> -    /** The default epsilon used for convergence. */
+> -    private static final double DEFAULT_EPSILON = 1e-5;
+> -
+>      /** The denominator. */
+>      private final int denominator;
+>  
+> @@ -99,7 +96,7 @@ public class Fraction
+>       *         converge.
+>       */
+>      public Fraction(double value) throws FractionConversionException {
+> -        this(value, DEFAULT_EPSILON, 100);
+> +        this(value, 1.0e-5, 100);
+>      }
+>  
+>      /**
+> @@ -185,7 +182,8 @@ public class Fraction
+>              throw new FractionConversionException(value, a0, 1l);
+>          }
+>  
+> -        // check for (almost) integer arguments, which should not go to iterations.
+> +        // check for (almost) integer arguments, which should not go
+> +        // to iterations.
+>          if (FastMath.abs(a0 - value) < epsilon) {
+>              this.numerator = (int) a0;
+>              this.denominator = 1;
+> @@ -208,13 +206,7 @@ public class Fraction
+>              long a1 = (long)FastMath.floor(r1);
+>              p2 = (a1 * p1) + p0;
+>              q2 = (a1 * q1) + q0;
+> -
+21,22c86,87
+<                  // in maxDenominator mode, if the last fraction was very close to the actual value
+<                  // q2 may overflow in the next iteration; in this case return the last one.
+---
+> -                // in maxDenominator mode, if the last fraction was very close to the actual value
+> -                // q2 may overflow in the next iteration; in this case return the last one.
+28a94,132
+> diff --git a/src/test/java/org/apache/commons/math3/fraction/BigFractionTest.java b/src/test/java/org/apache/commons/math3/fraction/BigFractionTest.java
+> index 71efb97ba..7b06ded2a 100644
+> --- a/src/test/java/org/apache/commons/math3/fraction/BigFractionTest.java
+> +++ b/src/test/java/org/apache/commons/math3/fraction/BigFractionTest.java
+> @@ -154,9 +154,6 @@ public class BigFractionTest {
+>          assertFraction(8, 13, new BigFraction(0.6152, 99));
+>          assertFraction(510, 829, new BigFraction(0.6152, 999));
+>          assertFraction(769, 1250, new BigFraction(0.6152, 9999));
+> -        
+> -        // MATH-996
+> -        assertFraction(1, 2, new BigFraction(0.5000000001, 10));
+>      }
+>  
+>      @Test
+> diff --git a/src/test/java/org/apache/commons/math3/fraction/FractionTest.java b/src/test/java/org/apache/commons/math3/fraction/FractionTest.java
+> index 96b7c08d1..37e22d105 100644
+> --- a/src/test/java/org/apache/commons/math3/fraction/FractionTest.java
+> +++ b/src/test/java/org/apache/commons/math3/fraction/FractionTest.java
+> @@ -129,9 +129,6 @@ public class FractionTest {
+>          assertFraction(8, 13,     new Fraction(0.6152,   99));
+>          assertFraction(510, 829,  new Fraction(0.6152,  999));
+>          assertFraction(769, 1250, new Fraction(0.6152, 9999));
+> -
+> -        // MATH-996
+> -        assertFraction(1, 2, new Fraction(0.5000000001, 10));
+>      }
+>  
+>      @Test
+> @@ -144,9 +141,7 @@ public class FractionTest {
+>  
+>      private void checkIntegerOverflow(double a) {
+>          try {
+> -            @SuppressWarnings("unused")
+> -            Fraction f = new Fraction(a, 1.0e-12, 1000);
+> -            //System.out.println(f.getNumerator() + "/" + f.getDenominator());
+> +            new Fraction(a, 1.0e-12, 1000);
+>              Assert.fail("an exception should have been thrown");
+>          } catch (ConvergenceException ce) {
+>              // expected behavior

@@ -1,0 +1,145 @@
+2c2
+< index fd1ce2d..3778120 100644
+---
+> index fd1ce2d85..22ed1578e 100644
+5c5,6
+< @@ -79,7 +79,6 @@ import java.io.PrintStream;
+---
+> @@ -78,8 +78,6 @@ import java.io.PrintStream;
+>   * @since 2.2
+8c9
+<      /** StrictMath.log(Double.MAX_VALUE): {@value} */
+---
+> -    /** StrictMath.log(Double.MAX_VALUE): {@value} */
+13c14,15
+< @@ -392,21 +391,12 @@ public class FastMath {
+---
+> @@ -391,25 +389,15 @@ public class FastMath {
+>        // for numbers with magnitude 20 or so,
+16c18
+<        if (x > 20) {
+---
+> -      if (x > 20) {
+18c20
+<                // Avoid overflow (MATH-905).
+---
+> -              // Avoid overflow (MATH-905).
+22,23c24,25
+<                return 0.5 * exp(x);
+<            }
+---
+> -              return 0.5 * exp(x);
+> -          }
+26,27c28
+< +      if (x < -20) {
+<                // Avoid overflow (MATH-905).
+---
+> -              // Avoid overflow (MATH-905).
+31,32c32,38
+<                return 0.5 * exp(-x);
+< -          }
+---
+> -              return 0.5 * exp(-x);
+> +      if (x > 20.0) {
+> +          return exp(x)/2.0;
+>        }
+> +
+> +      if (x < -20) {
+> +          return exp(-x)/2.0;
+35,36c41,47
+<        final double hiPrec[] = new double[2];
+< @@ -462,21 +452,12 @@ public class FastMath {
+---
+> -      final double hiPrec[] = new double[2];
+> +      double hiPrec[] = new double[2];
+>        if (x < 0.0) {
+>            x = -x;
+>        }
+> @@ -461,22 +449,12 @@ public class FastMath {
+>        // for values of z larger than about 20,
+39c50
+<        if (x > 20) {
+---
+> -      if (x > 20) {
+41c52
+<                // Avoid overflow (MATH-905).
+---
+> -              // Avoid overflow (MATH-905).
+45,46c56,57
+<                return 0.5 * exp(x);
+<            }
+---
+> -              return 0.5 * exp(x);
+> -          }
+49,50c60
+< +      if (x < -20) {
+<                // Avoid overflow (MATH-905).
+---
+> -              // Avoid overflow (MATH-905).
+54,55c64,70
+<                return -0.5 * exp(-x);
+< -          }
+---
+> -              return -0.5 * exp(-x);
+> +      if (x > 20.0) {
+> +          return exp(x)/2.0;
+>        }
+> +
+> +      if (x < -20) {
+> +          return -exp(-x)/2.0;
+58a74,128
+> diff --git a/src/test/java/org/apache/commons/math3/util/FastMathTest.java b/src/test/java/org/apache/commons/math3/util/FastMathTest.java
+> index 282e7b299..9490e1e5f 100644
+> --- a/src/test/java/org/apache/commons/math3/util/FastMathTest.java
+> +++ b/src/test/java/org/apache/commons/math3/util/FastMathTest.java
+> @@ -158,50 +158,6 @@ public class FastMathTest {
+>      }
+>  
+>      @Test
+> -    public void testMath905LargePositive() {
+> -        final double start = StrictMath.log(Double.MAX_VALUE);
+> -        final double endT = StrictMath.sqrt(2) * StrictMath.sqrt(Double.MAX_VALUE);
+> -        final double end = 2 * StrictMath.log(endT);
+> -
+> -        double maxErr = 0;
+> -        for (double x = start; x < end; x += 1e-3) {
+> -            final double tst = FastMath.cosh(x);
+> -            final double ref = Math.cosh(x);
+> -            maxErr = FastMath.max(maxErr, FastMath.abs(ref - tst) / FastMath.ulp(ref));            
+> -        }
+> -        Assert.assertEquals(0, maxErr, 3);
+> -
+> -        for (double x = start; x < end; x += 1e-3) {
+> -            final double tst = FastMath.sinh(x);
+> -            final double ref = Math.sinh(x);
+> -            maxErr = FastMath.max(maxErr, FastMath.abs(ref - tst) / FastMath.ulp(ref));            
+> -        }
+> -        Assert.assertEquals(0, maxErr, 3);
+> -    }
+> -
+> -    @Test
+> -    public void testMath905LargeNegative() {
+> -        final double start = -StrictMath.log(Double.MAX_VALUE);
+> -        final double endT = StrictMath.sqrt(2) * StrictMath.sqrt(Double.MAX_VALUE);
+> -        final double end = -2 * StrictMath.log(endT);
+> -
+> -        double maxErr = 0;
+> -        for (double x = start; x > end; x -= 1e-3) {
+> -            final double tst = FastMath.cosh(x);
+> -            final double ref = Math.cosh(x);
+> -            maxErr = FastMath.max(maxErr, FastMath.abs(ref - tst) / FastMath.ulp(ref));            
+> -        }
+> -        Assert.assertEquals(0, maxErr, 3);
+> -
+> -        for (double x = start; x > end; x -= 1e-3) {
+> -            final double tst = FastMath.sinh(x);
+> -            final double ref = Math.sinh(x);
+> -            maxErr = FastMath.max(maxErr, FastMath.abs(ref - tst) / FastMath.ulp(ref));            
+> -        }
+> -        Assert.assertEquals(0, maxErr, 3);
+> -    }
+> -
+> -    @Test
+>      public void testHyperbolicInverses() {
+>          double maxErr = 0;
+>          for (double x = -30; x < 30; x += 0.01) {

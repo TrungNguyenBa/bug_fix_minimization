@@ -1,0 +1,65 @@
+2c2
+< index a7b95b0..0fc5ae8 100644
+---
+> index a7b95b00..fe64ce56 100644
+5c5
+< @@ -575,7 +575,7 @@ final class NameAnalyzer implements CompilerPass {
+---
+> @@ -575,13 +575,7 @@ final class NameAnalyzer implements CompilerPass {
+9a10,15
+> -          // The rhs of the assignment is the caller, so it's used by the
+> -          // context. Don't associate it w/ the lhs.
+> -          // FYI: this fixes only the specific case where the assignment is the
+> -          // caller expression, but it could be nested deeper in the caller and
+> -          // we would still get a bug.
+> -          // See testAssignWithCall2 for an example of this.
+11,13c17,61
+<            // The rhs of the assignment is the caller, so it's used by the
+<            // context. Don't associate it w/ the lhs.
+<            // FYI: this fixes only the specific case where the assignment is the
+---
+>            recordDepScope(recordNode, ns);
+>          }
+>        }
+> @@ -851,7 +845,8 @@ final class NameAnalyzer implements CompilerPass {
+>  
+>      @Override
+>      public void visit(NodeTraversal t, Node n, Node parent) {
+> -      if (!(n.isName() || (NodeUtil.isGet(n) && !parent.isGetProp()))) {
+> +      if (!(n.isName() ||
+> +            NodeUtil.isGet(n) && !parent.isGetProp())) {
+>          // This is not a simple or qualified name.
+>          return;
+>        }
+> @@ -919,7 +914,7 @@ final class NameAnalyzer implements CompilerPass {
+>  
+>        // A value whose result is the return value of a function call
+>        // can be an alias to global object.
+> -      // Here we add an alias to the general "global" object
+> +      // Here we add a alias to the general "global" object
+>        // to act as a placeholder for the actual (unnamed) value.
+>        if (maybeHiddenAlias(n)) {
+>          recordAlias(name, WINDOW);
+> diff --git a/test/com/google/javascript/jscomp/NameAnalyzerTest.java b/test/com/google/javascript/jscomp/NameAnalyzerTest.java
+> index 857491bd..0bc5ae4d 100644
+> --- a/test/com/google/javascript/jscomp/NameAnalyzerTest.java
+> +++ b/test/com/google/javascript/jscomp/NameAnalyzerTest.java
+> @@ -1232,18 +1232,6 @@ public class NameAnalyzerTest extends CompilerTestCase {
+>          "");
+>    }
+>  
+> -  public void testAssignWithCall() {
+> -    test("var fun, x; (fun = function(){ x; })();",
+> -        "var x; (function(){ x; })();");
+> -  }
+> -
+> -  // Currently this crashes the compiler because it erroneoursly removes var x
+> -  // and later a sanity check fails.
+> -  public void testAssignWithCall2() {
+> -    test("var fun, x; (123, fun = function(){ x; })();",
+> -        "(123, function(){ x; })();");
+> -  }
+> -
+>    public void testNestedAssign1() {
+>      test("var a, b = a = 1, c = 2", "");
+>    }

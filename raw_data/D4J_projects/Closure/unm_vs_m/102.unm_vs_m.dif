@@ -1,0 +1,73 @@
+0a1,3
+> diff --git a/lib/google_common_deploy.jar b/lib/google_common_deploy.jar
+> index 4e6e1529..16c35fcc 100755
+> Binary files a/lib/google_common_deploy.jar and b/lib/google_common_deploy.jar differ
+2c5
+< index 1db94e2..4aa4555 100644
+---
+> index 1db94e2f..4aa45558 100644
+18a22,85
+> diff --git a/src/com/google/javascript/jscomp/SyntacticScopeCreator.java b/src/com/google/javascript/jscomp/SyntacticScopeCreator.java
+> index db992021..bb3e3881 100644
+> --- a/src/com/google/javascript/jscomp/SyntacticScopeCreator.java
+> +++ b/src/com/google/javascript/jscomp/SyntacticScopeCreator.java
+> @@ -37,10 +37,6 @@ class SyntacticScopeCreator implements ScopeCreator {
+>    private String sourceName;
+>    private final RedeclarationHandler redeclarationHandler;
+>  
+> -  // The arguments variable is special, in that it's declared in every local
+> -  // scope, but not explicitly declared.
+> -  private static final String ARGUMENTS = "arguments";
+> -
+>    public static final DiagnosticType VAR_MULTIPLY_DECLARED_ERROR =
+>        DiagnosticType.error(
+>            "JSC_VAR_MULTIPLY_DECLARED_ERROR",
+> @@ -230,8 +226,7 @@ class SyntacticScopeCreator implements ScopeCreator {
+>    private void declareVar(String name, Node n, Node parent,
+>                            Node gramps, JSType declaredType,
+>                            Node nodeWithLineNumber) {
+> -    if (scope.isDeclared(name, false)
+> -        || (scope.isLocal() && name.equals(ARGUMENTS))) {
+> +    if (scope.isDeclared(name, false)) {
+>        redeclarationHandler.onRedeclaration(
+>            scope, name, n, parent, gramps, nodeWithLineNumber);
+>      } else {
+> diff --git a/test/com/google/javascript/jscomp/CompilerRunnerTest.java b/test/com/google/javascript/jscomp/CompilerRunnerTest.java
+> index b9d70375..c51444f0 100644
+> --- a/test/com/google/javascript/jscomp/CompilerRunnerTest.java
+> +++ b/test/com/google/javascript/jscomp/CompilerRunnerTest.java
+> @@ -40,11 +40,7 @@ public class CompilerRunnerTest extends TestCase {
+>    /** Externs for the test */
+>    private final JSSourceFile[] externs = new JSSourceFile[] {
+>      JSSourceFile.fromCode("externs",
+> -        "var arguments;" +
+> -        "/** @constructor \n * @param {...*} var_args \n " +
+> -        "* @return {!Array} */ " +
+> -        "function Array(var_args) {}\n"
+> -        + "/** @constructor */ function Window() {}\n"
+> +        "/** @constructor */ function Window() {}\n"
+>          + "/** @type {string} */ Window.prototype.name;\n"
+>          + "/** @type {Window} */ var window;"
+>          + "/** @nosideeffects */ function noSideEffects() {}")
+> @@ -172,21 +168,6 @@ public class CompilerRunnerTest extends TestCase {
+>           "eval(\"1\");(0,eval)(\"2\");");
+>    }
+>  
+> -  public void testIssue115() {
+> -    CompilerRunner.FLAG_compilation_level.setForTest(
+> -        CompilationLevel.SIMPLE_OPTIMIZATIONS);
+> -    CompilerRunner.FLAG_warning_level.setForTest(
+> -        WarningLevel.VERBOSE);
+> -    test("function f() { " +
+> -         "  var arguments = Array.prototype.slice.call(arguments, 0);" +
+> -         "  return arguments[0]; " +
+> -         "}",
+> -         "function f() { " +
+> -         "  arguments = Array.prototype.slice.call(arguments, 0);" +
+> -         "  return arguments[0]; " +
+> -         "}");
+> -  }
+> -
+>    public void testDebugFlag1() {
+>      CompilerRunner.FLAG_compilation_level.setForTest(
+>          CompilationLevel.SIMPLE_OPTIMIZATIONS);

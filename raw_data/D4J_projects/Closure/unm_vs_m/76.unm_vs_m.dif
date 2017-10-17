@@ -1,0 +1,209 @@
+2c2
+< index aaab0d6..63a7f29 100644
+---
+> index aaab0d62..879056f7 100644
+5,8c5,15
+< @@ -297,40 +297,26 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+<            // If the currently node is the first child of
+<            // AND/OR, be conservative only consider the READs
+<            // of the second operand.
+---
+> @@ -290,41 +290,10 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+>    private boolean isVariableStillLiveWithinExpression(
+>        Node n, Node exprRoot, String variable) {
+>      while (n != exprRoot) {
+> -      VariableLiveness state = VariableLiveness.MAYBE_LIVE;
+> -      switch (n.getParent().getType()) {
+> -        case Token.OR:
+> -        case Token.AND:
+> -          // If the currently node is the first child of
+> -          // AND/OR, be conservative only consider the READs
+> -          // of the second operand.
+17,21c24,28
+<  
+<          case Token.HOOK:
+<            // If current node is the condition, check each following
+<            // branch, otherwise it is a conditional branch and the
+<            // other branch can be ignored.
+---
+> -
+> -        case Token.HOOK:
+> -          // If current node is the condition, check each following
+> -          // branch, otherwise it is a conditional branch and the
+> -          // other branch can be ignored.
+27,28c34,35
+<  
+<          default:
+---
+> -
+> -        default:
+31,32c38
+< +            if (!ControlFlowGraph.isEnteringNewCfgNode(sibling)) {
+<              state = isVariableReadBeforeKill(sibling, variable);
+---
+> -            state = isVariableReadBeforeKill(sibling, variable);
+37a44,45
+> +        if (!ControlFlowGraph.isEnteringNewCfgNode(sibling)) {
+> +          VariableLiveness state = isVariableReadBeforeKill(sibling, variable);
+41c49
+<          return true;
+---
+> @@ -332,6 +301,8 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+43a52
+>            }
+46,47d54
+< +      }
+<        }
+50c57,58
+< @@ -351,9 +337,6 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+---
+>      return false;
+> @@ -351,10 +322,6 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+57c65
+<  
+---
+> -
+60,63c68,76
+< @@ -376,25 +359,9 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+<        // Conditionals
+<        case Token.OR:
+<        case Token.AND:
+---
+>          Preconditions.checkState(n.getParent().getType() == Token.ASSIGN);
+> @@ -372,61 +339,16 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+>        }
+>      }
+>  
+> -    switch (n.getType()) {
+> -      // Conditionals
+> -      case Token.OR:
+> -      case Token.AND:
+68,69c81,82
+<          // With a AND/OR the first branch always runs, but the second is
+<          // may not.
+---
+> -        // With a AND/OR the first branch always runs, but the second is
+> -        // may not.
+77c90
+<        case Token.HOOK:
+---
+> -      case Token.HOOK:
+83,86c96,99
+<          return checkHookBranchReadBeforeKill(
+<              n.getFirstChild().getNext(), n.getLastChild(), variable);
+<  
+< @@ -402,11 +369,13 @@ class DeadAssignmentsElimination extends AbstractPostOrderCallback implements
+---
+> -        return checkHookBranchReadBeforeKill(
+> -            n.getFirstChild().getNext(), n.getLastChild(), variable);
+> -
+> -      default:
+96d108
+< +      }
+98c110,127
+<  
+---
+> -
+> -    return VariableLiveness.MAYBE_LIVE;
+> -  }
+> -
+> -  private VariableLiveness checkHookBranchReadBeforeKill(
+> -      Node trueCase, Node falseCase, String variable) {
+> -    VariableLiveness v1 = isVariableReadBeforeKill(
+> -      trueCase, variable);
+> -    VariableLiveness v2 = isVariableReadBeforeKill(
+> -      falseCase, variable);
+> -    // With a hook it is unknown which branch will run, so
+> -    // we must be conservative.  A read by either is a READ, and
+> -    // a KILL is only considered if both KILL.
+> -    if (v1 == VariableLiveness.READ || v2 == VariableLiveness.READ) {
+> -      return VariableLiveness.READ;
+> -    } else if (v1 == VariableLiveness.KILL && v2 == VariableLiveness.KILL) {
+> -      return VariableLiveness.KILL;
+> -    } else {
+99a129,213
+>    }
+> -  }
+>  }
+> diff --git a/test/com/google/javascript/jscomp/DeadAssignmentsEliminationTest.java b/test/com/google/javascript/jscomp/DeadAssignmentsEliminationTest.java
+> index b66a8237..486fe5a7 100644
+> --- a/test/com/google/javascript/jscomp/DeadAssignmentsEliminationTest.java
+> +++ b/test/com/google/javascript/jscomp/DeadAssignmentsEliminationTest.java
+> @@ -445,76 +445,11 @@ public class DeadAssignmentsEliminationTest extends CompilerTestCase {
+>    }
+>  
+>  
+> -  public void testInExpression1() {
+> +  public void testInExpression() {
+>      inFunction("var a; return a=(a=(a=3));", "var a; return 3;");
+>      inFunction("var a; return a=(a=(a=a));", "var a; return a;");
+>      inFunction("var a; return a=(a=(a=a+1)+1);", "var a; return a+1+1;");
+>      inFunction("var a; return a=(a=(a=f(a)+1)+1);", "var a; return f(a)+1+1;");
+>      inFunction("var a; return a=f(a=f(a=f(a)));", "var a; return f(f(f(a)));");
+>    }
+> -
+> -  public void testInExpression2() {
+> -    // This can be improved.  "a = 1" is dead but "a" is read in the following
+> -    // expression.
+> -    inFunction(
+> -        "var a; a = 1; if ((a = 2) || (a = 3) || (a)) {}",
+> -        "var a; a = 1; if ((    2) || (a = 3) || (a)) {}");
+> -
+> -    inFunction(
+> -        "var a; (a = 1) || (a = 2)",
+> -        "var a; 1 || 2");
+> -
+> -    inFunction("var a; (a = 1) || (a = 2); return a");
+> -
+> -    inFunction(
+> -        "var a; a = 1; a ? a = 2 : a;",
+> -        "var a; a = 1; a ?     2 : a;");
+> -
+> -    inFunction("var a; a = 1; a ? a = 2 : a; return a");
+> -
+> -    inFunction(
+> -        "var a; a = 1; a ? a : a = 2;",
+> -        "var a; a = 1; a ? a : 2;");
+> -
+> -    inFunction("var a; a = 1; a ? a : a =2; return a");
+> -
+> -    inFunction(
+> -        "var a; (a = 1) ? a = 2 : a = 3;",
+> -        "var a;      1  ?     2 :     3;");
+> -
+> -    // This can be improved.  "a = 1" is dead but "a" is read in the following
+> -    // expression.
+> -    inFunction("var a; (a = 1) ? a = 2 : a = 3; return a");
+> -  }
+> -
+> -  public void testIssue384a() {
+> -    inFunction(
+> -            " var a, b;\n" +
+> -            " if (f(b = true) || f(b = false))\n" +
+> -            "   a = b;\n" +
+> -            " else\n" +
+> -            "   a = null;\n" +
+> -            " return a;");
+> -  }
+> -
+> -  public void testIssue384b() {
+> -    inFunction(
+> -            " var a, b;\n" +
+> -            " (f(b = true) || f(b = false)) ? (a = b) : (a = null);\n" +
+> -            " return a;");
+> -  }
+> -
+> -  public void testIssue384c() {
+> -    inFunction(
+> -            " var a, b;\n" +
+> -            " (a ? f(b = true) : f(b = false)) && (a = b);\n" +
+> -            " return a;");
+> -  }
+> -
+> -  public void testIssue384d() {
+> -    inFunction(
+> -            " var a, b;\n" +
+> -            " (f(b = true) || f(b = false)) && (a = b);\n" +
+> -            " return a;");
+> -  }
+>  }

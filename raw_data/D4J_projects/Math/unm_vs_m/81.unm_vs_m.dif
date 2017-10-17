@@ -1,0 +1,100 @@
+2c2
+< index 3fc328d..2d0d72f 100644
+---
+> index 3fc328d8b..53a40f08c 100644
+5,8c5,13
+< @@ -600,7 +600,6 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+<          lowerSpectra = Math.min(lowerSpectra, lower);
+<          final double upper = dCurrent + eCurrent;
+<          work[upperStart + m - 1] = upper;
+---
+> @@ -595,12 +595,8 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+>          }
+>  
+>          final double dCurrent = main[m - 1];
+> -        final double lower = dCurrent - eCurrent;
+> -        work[lowerStart + m - 1] = lower;
+> -        lowerSpectra = Math.min(lowerSpectra, lower);
+> -        final double upper = dCurrent + eCurrent;
+> -        work[upperStart + m - 1] = upper;
+9a15,16
+> +        work[lowerStart + m - 1] = dCurrent - eCurrent;
+> +        work[upperStart + m - 1] = dCurrent + eCurrent;
+13c20,29
+< @@ -903,8 +902,8 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+---
+> @@ -651,7 +647,7 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+>  
+>                  tau = (range[1] - range[0]) * MathUtils.EPSILON * n + 2 * minPivot;
+>  
+> -                // decompose T-&lambda;I as LDL<sup>T</sup>
+> +                // decompose T&lambda;I as LDL<sup>T</sup>
+>                  ldlTDecomposition(lambda, begin, n);
+>  
+>                  // apply general dqd/dqds method
+> @@ -903,8 +899,8 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+24c40
+< @@ -1541,7 +1540,7 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+---
+> @@ -1541,7 +1537,7 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+32a49,108
+> diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+> index 6e2774018..82b4e024b 100644
+> --- a/src/site/xdoc/changes.xml
+> +++ b/src/site/xdoc/changes.xml
+> @@ -39,10 +39,6 @@ The <action> type attribute can be add,update,fix,remove.
+>    </properties>
+>    <body>
+>      <release version="2.1" date="TBD" description="TBD">
+> -      <action dev="luc" type="fix" issue="MATH-308" due-to="Dimitri Pourbaix">
+> -        Fixed an ArrayIndexOutOfBoundsException in eigen decomposition. Kudos to Dimitri
+> -        for debugging this, it was really difficult.
+> -      </action>
+>        <action dev="psteitz" type="fix" issue="MATH-309" due-to="Mikkel Meyer Andersen">
+>          Fixed parameter test in RandomDataImpl#nextExponential. The method now throws
+>          IllegalArgumentException for mean = 0.
+> diff --git a/src/test/java/org/apache/commons/math/linear/EigenDecompositionImplTest.java b/src/test/java/org/apache/commons/math/linear/EigenDecompositionImplTest.java
+> index 2ed181fe3..9d7563921 100644
+> --- a/src/test/java/org/apache/commons/math/linear/EigenDecompositionImplTest.java
+> +++ b/src/test/java/org/apache/commons/math/linear/EigenDecompositionImplTest.java
+> @@ -108,40 +108,6 @@ public class EigenDecompositionImplTest extends TestCase {
+>          assertEquals(0.1, ed.getRealEigenvalue(3), 1.0e-15);
+>      }
+>  
+> -    // the following test triggered an ArrayIndexOutOfBoundsException in commons-math 2.0
+> -    public void testMath308() {
+> -
+> -        double[] mainTridiagonal = {
+> -            22.330154644539597, 46.65485522478641, 17.393672330044705, 54.46687435351116, 80.17800767709437
+> -        };
+> -        double[] secondaryTridiagonal = {
+> -            13.04450406501361, -5.977590941539671, 2.9040909856707517, 7.1570352792841225
+> -        };
+> -
+> -        // the reference values have been computed using routine DSTEMR
+> -        // from the fortran library LAPACK version 3.2.1
+> -        double[] refEigenValues = {
+> -            82.044413207204002, 53.456697699894512, 52.536278520113882, 18.847969733754262, 14.138204224043099
+> -        };
+> -        RealVector[] refEigenVectors = {
+> -            new ArrayRealVector(new double[] { -0.000462690386766, -0.002118073109055,  0.011530080757413,  0.252322434584915,  0.967572088232592 }),
+> -            new ArrayRealVector(new double[] {  0.314647769490148,  0.750806415553905, -0.167700312025760, -0.537092972407375,  0.143854968127780 }),
+> -            new ArrayRealVector(new double[] {  0.222368839324646,  0.514921891363332, -0.021377019336614,  0.801196801016305, -0.207446991247740 }),
+> -            new ArrayRealVector(new double[] {  0.713933751051495, -0.190582113553930,  0.671410443368332, -0.056056055955050,  0.006541576993581 }),
+> -            new ArrayRealVector(new double[] {  0.584677060845929, -0.367177264979103, -0.721453187784497,  0.052971054621812, -0.005740715188257 })
+> -        };
+> -
+> -        EigenDecomposition decomposition =
+> -            new EigenDecompositionImpl(mainTridiagonal, secondaryTridiagonal, MathUtils.SAFE_MIN);
+> -
+> -        double[] eigenValues = decomposition.getRealEigenvalues();
+> -        for (int i = 0; i < refEigenValues.length; ++i) {
+> -            assertEquals(refEigenValues[i], eigenValues[i], 1.0e-5);
+> -            assertEquals(0, refEigenVectors[i].subtract(decomposition.getEigenvector(i)).getNorm(), 2.0e-7);
+> -        }
+> -
+> -    }
+> -
+>      /** test a matrix already in tridiagonal form. */
+>      public void testTridiagonal() {
+>          Random r = new Random(4366663527842l);

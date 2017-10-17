@@ -1,0 +1,34 @@
+2c2
+< index 3522e89..4381487 100644
+---
+> index 3522e89e..8023324c 100644
+5c5,6
+< @@ -242,7 +242,7 @@ abstract class CodeConsumer {
+---
+> @@ -241,12 +241,11 @@ abstract class CodeConsumer {
+>      // This is not pretty printing. This is to prevent misparsing of x- -4 as
+8c9
+<      boolean negativeZero = isNegativeZero(x);
+---
+> -    boolean negativeZero = isNegativeZero(x);
+13a15,34
+> -    if ((long) x == x && !negativeZero) {
+> +    if ((long) x == x && !isNegativeZero(x)) {
+>        long value = (long) x;
+>        long mantissa = value;
+>        int exp = 0;
+> diff --git a/test/com/google/javascript/jscomp/CodePrinterTest.java b/test/com/google/javascript/jscomp/CodePrinterTest.java
+> index a76dfa64..420ffba4 100644
+> --- a/test/com/google/javascript/jscomp/CodePrinterTest.java
+> +++ b/test/com/google/javascript/jscomp/CodePrinterTest.java
+> @@ -1367,10 +1367,4 @@ public class CodePrinterTest extends TestCase {
+>      String actual = printNode(current).replace("\n", "");
+>      assertEquals(expected, actual);
+>    }
+> -
+> -  public void testMinusNegativeZero() {
+> -    // Negative zero is weird, because we have to be able to distinguish
+> -    // it from positive zero (there are some subtle differences in behavior).
+> -    assertPrint("x- -0", "x- -0.0");
+> -  }
+>  }

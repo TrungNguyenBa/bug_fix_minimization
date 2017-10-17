@@ -1,0 +1,84 @@
+2c2
+< index 01293c9..b34921e 100644
+---
+> index 01293c98..52248611 100644
+5,7c5,13
+< @@ -492,9 +492,6 @@ class DisambiguateProperties<T> implements CompilerPass {
+<            child != null;
+<            child = child.getNext()) {
+---
+> @@ -488,13 +488,9 @@ class DisambiguateProperties<T> implements CompilerPass {
+>       * Processes a OBJECTLIT node.
+>       */
+>      private void handleObjectLit(NodeTraversal t, Node n) {
+> -      for (Node child = n.getFirstChild();
+> -          child != null;
+> -          child = child.getNext()) {
+> +      Node child = n.getFirstChild();
+> +      while (child != null) {
+14a21,85
+> @@ -512,6 +508,7 @@ class DisambiguateProperties<T> implements CompilerPass {
+>                  (type == null ? "null" : type.toString()), n.toString(), ""));
+>            }
+>          }
+> +        child = child.getNext();
+>        }
+>      }
+>  
+> diff --git a/test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java b/test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java
+> index c2d4b77f..e72ac65e 100644
+> --- a/test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java
+> +++ b/test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java
+> @@ -117,18 +117,6 @@ public class DisambiguatePropertiesTest extends CompilerTestCase {
+>      testSets(true, js, js, expected);
+>    }
+>  
+> -  public void testOneType4() {
+> -    String js = ""
+> -        + "/** @constructor */ function Foo() {}\n"
+> -        + "Foo.prototype = {'a': 0};\n"
+> -        + "/** @type Foo */\n"
+> -        + "var F = new Foo;\n"
+> -        + "F['a'] = 0;";
+> -    String expected = "{}";
+> -    testSets(false, js, js, expected);
+> -    testSets(true, js, js, expected);
+> -  }
+> -
+>    public void testPrototypeAndInstance() {
+>      String js = ""
+>          + "/** @constructor */ function Foo() {}\n"
+> @@ -232,33 +220,6 @@ public class DisambiguatePropertiesTest extends CompilerTestCase {
+>      testSets(true, js, output, "{a=[[Bar.prototype], [Foo.prototype]]}");
+>    }
+>  
+> -  public void testTwoTypes4() {
+> -    String js = ""
+> -        + "/** @constructor */ function Foo() {}\n"
+> -        + "Foo.prototype = {a: 0};"
+> -        + "/** @type Foo */\n"
+> -        + "var F = new Foo;\n"
+> -        + "F.a = 0;"
+> -        + "/** @constructor */ function Bar() {}\n"
+> -        + "Bar.prototype = {'a': 0};"
+> -        + "/** @type Bar */\n"
+> -        + "var B = new Bar;\n"
+> -        + "B['a'] = 0;";
+> -
+> -    String output = ""
+> -        + "function Foo(){}"
+> -        + "Foo.prototype = {a: 0};"
+> -        + "var F=new Foo;"
+> -        + "F.a=0;"
+> -        + "function Bar(){}"
+> -        + "Bar.prototype = {'a': 0};"
+> -        + "var B=new Bar;"
+> -        + "B['a']=0";
+> -
+> -    testSets(false, js, output, "{a=[[Foo.prototype]]}");
+> -    testSets(true, js, output, "{a=[[Foo.prototype]]}");
+> -  }
+> -
+>    public void testTwoFields() {
+>      String js = ""
+>          + "/** @constructor */ function Foo() {}\n"

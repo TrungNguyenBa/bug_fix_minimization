@@ -1,0 +1,59 @@
+2c2
+< index 756290f..89d8073 100644
+---
+> index 756290f9..ac96c588 100644
+5c5,15
+< @@ -137,11 +137,11 @@ public class FastDateFormat extends Format {
+---
+> @@ -16,9 +16,6 @@
+>   */
+>  package org.apache.commons.lang.time;
+>  
+> -import java.io.IOException;
+> -import java.io.ObjectInputStream;
+> -
+>  import java.text.DateFormat;
+>  import java.text.DateFormatSymbols;
+>  import java.text.FieldPosition;
+> @@ -137,11 +134,11 @@ public class FastDateFormat extends Format {
+19c29,31
+< @@ -1019,10 +1019,6 @@ public class FastDateFormat extends Format {
+---
+> @@ -1017,13 +1014,6 @@ public class FastDateFormat extends Format {
+>          return "FastDateFormat[" + mPattern + "]";
+>      }
+21,22c33,34
+<      // Serializing
+<      //-----------------------------------------------------------------------
+---
+> -    // Serializing
+> -    //-----------------------------------------------------------------------
+27c39
+<      
+---
+> -    
+29a42,65
+>      /**
+> diff --git a/src/test/org/apache/commons/lang/time/FastDateFormatTest.java b/src/test/org/apache/commons/lang/time/FastDateFormatTest.java
+> index e981682b..96f6a46b 100644
+> --- a/src/test/org/apache/commons/lang/time/FastDateFormatTest.java
+> +++ b/src/test/org/apache/commons/lang/time/FastDateFormatTest.java
+> @@ -28,8 +28,6 @@ import junit.framework.TestCase;
+>  import junit.framework.TestSuite;
+>  import junit.textui.TestRunner;
+>  
+> -import org.apache.commons.lang.SerializationUtils;
+> -
+>  /**
+>   * Unit tests {@link org.apache.commons.lang.time.FastDateFormat}.
+>   *
+> @@ -280,9 +278,4 @@ public class FastDateFormatTest extends TestCase {
+>          cal.set(1,2,2);
+>          assertEquals("0001/03/02", format.format(cal));
+>      }
+> -
+> -    public void testLang303() {
+> -        FastDateFormat format = FastDateFormat.getInstance("yyyy/MM/dd");
+> -        format = (FastDateFormat) SerializationUtils.deserialize( SerializationUtils.serialize( format ) );
+> -    }
+>  }

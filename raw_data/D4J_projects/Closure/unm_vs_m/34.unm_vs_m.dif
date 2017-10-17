@@ -1,0 +1,149 @@
+2c2
+< index d50320a..f28378c 100644
+---
+> index d50320a0..83cdb420 100644
+5,6c5,24
+< @@ -119,7 +119,9 @@ class CodeGenerator {
+<          cc.addOp(opstr, true);
+---
+> @@ -100,6 +100,8 @@ class CodeGenerator {
+>            "Bad binary operator \"%s\": expected 2 arguments but got %s",
+>            opstr, childCount);
+>        int p = NodeUtil.precedence(type);
+> +      addExpr(first, p, context);
+> +      cc.addOp(opstr, true);
+>  
+>        // For right-hand-side of operations, only pass context if it's
+>        // the IN_FOR_INIT_CLAUSE one.
+> @@ -110,16 +112,12 @@ class CodeGenerator {
+>        // we can simply generate a * b * c.
+>        if (last.getType() == type &&
+>            NodeUtil.isAssociative(type)) {
+> -        addExpr(first, p, context);
+> -        cc.addOp(opstr, true);
+>          addExpr(last, p, rhsContext);
+>        } else if (NodeUtil.isAssignmentOp(n) && NodeUtil.isAssignmentOp(last)) {
+>          // Assignments are the only right-associative binary operators
+> -        addExpr(first, p, context);
+> -        cc.addOp(opstr, true);
+10,11d27
+< +        addExpr(first, p, context);
+< +        cc.addOp(opstr, true);
+16,20c32,52
+< @@ -749,7 +751,7 @@ class CodeGenerator {
+<      Node current = firstNonOperator;
+<      do {
+<        current = current.getParent();
+< -      cc.addOp(opStr, true);
+---
+> @@ -220,7 +218,26 @@ class CodeGenerator {
+>  
+>        case Token.COMMA:
+>          Preconditions.checkState(childCount == 2);
+> -        unrollBinaryOperator(n, Token.COMMA, ",", context, Context.OTHER, 0, 0);
+> +
+> +        // We could use addList recursively here, but sometimes we produce
+> +        // very deeply nested commas and run out of stack space, so we
+> +        // just unroll the recursion.
+> +        //
+> +        // We assume COMMA nodes are left-recursive.
+> +        Node firstNonComma = n.getFirstChild();
+> +        while (firstNonComma.getType() == Token.COMMA) {
+> +          firstNonComma = firstNonComma.getFirstChild();
+> +        }
+> +
+> +        addExpr(firstNonComma, 0, context);
+> +
+> +        Node current = firstNonComma;
+> +        do {
+> +          current = current.getParent();
+22,23c54,61
+<        addExpr(current.getFirstChild().getNext(), rightPrecedence, rhsContext);
+<      } while (current != n);
+---
+> +          addExpr(current.getFirstChild().getNext(), 0, Context.OTHER);
+> +        } while (current != n);
+> +
+>          break;
+>  
+>        case Token.NUMBER:
+> @@ -729,31 +746,6 @@ class CodeGenerator {
+>      cc.endSourceMapping(n);
+24a63,91
+>  
+> -  /**
+> -   * We could use addList recursively here, but sometimes we produce
+> -   * very deeply nested operators and run out of stack space, so we
+> -   * just unroll the recursion when possible.
+> -   *
+> -   * We assume nodes are left-recursive.
+> -   */
+> -  private void unrollBinaryOperator(
+> -      Node n, int op, String opStr, Context context,
+> -      Context rhsContext, int leftPrecedence, int rightPrecedence) {
+> -    Node firstNonOperator = n.getFirstChild();
+> -    while (firstNonOperator.getType() == op) {
+> -      firstNonOperator = firstNonOperator.getFirstChild();
+> -    }
+> -
+> -    addExpr(firstNonOperator, leftPrecedence, context);
+> -
+> -    Node current = firstNonOperator;
+> -    do {
+> -      current = current.getParent();
+> -      cc.addOp(opStr, true);
+> -      addExpr(current.getFirstChild().getNext(), rightPrecedence, rhsContext);
+> -    } while (current != n);
+> -  }
+> -
+>    static boolean isSimpleNumber(String s) {
+>      int len = s.length();
+>      for (int index = 0; index < len; index++) {
+26c93
+< index 31c62d9..52dfa9b 100644
+---
+> index 31c62d92..52dfa9b2 100644
+37a105,147
+> diff --git a/test/com/google/javascript/jscomp/CodePrinterTest.java b/test/com/google/javascript/jscomp/CodePrinterTest.java
+> index 8ba5d995..a70f0489 100644
+> --- a/test/com/google/javascript/jscomp/CodePrinterTest.java
+> +++ b/test/com/google/javascript/jscomp/CodePrinterTest.java
+> @@ -1354,13 +1354,6 @@ public class CodePrinterTest extends TestCase {
+>      assertPrint("var a = { '$\\\\' : 5 };", "var a={\"$\\\\\":5}");
+>    }
+>  
+> -  public void testCommaSpacing() {
+> -    assertPrint("var a = (b = 5, c = 5);",
+> -        "var a=(b=5,c=5)");
+> -    assertPrettyPrint("var a = (b = 5, c = 5);",
+> -        "var a = (b = 5, c = 5);\n");
+> -  }
+> -
+>    public void testManyCommas() {
+>      int numCommas = 10000;
+>      List<String> numbers = Lists.newArrayList("0", "1");
+> @@ -1379,24 +1372,6 @@ public class CodePrinterTest extends TestCase {
+>      assertEquals(expected, actual);
+>    }
+>  
+> -  public void testManyAdds() {
+> -    int numAdds = 10000;
+> -    List<String> numbers = Lists.newArrayList("0", "1");
+> -    Node current = new Node(Token.ADD, Node.newNumber(0), Node.newNumber(1));
+> -    for (int i = 2; i < numAdds; i++) {
+> -      current = new Node(Token.ADD, current);
+> -
+> -      // 1000 is printed as 1E3, and screws up our test.
+> -      int num = i % 1000;
+> -      numbers.add(String.valueOf(num));
+> -      current.addChildToBack(Node.newNumber(num));
+> -    }
+> -
+> -    String expected = Joiner.on("+").join(numbers);
+> -    String actual = printNode(current).replace("\n", "");
+> -    assertEquals(expected, actual);
+> -  }
+> -
+>    public void testMinusNegativeZero() {
+>      // Negative zero is weird, because we have to be able to distinguish
+>      // it from positive zero (there are some subtle differences in behavior).

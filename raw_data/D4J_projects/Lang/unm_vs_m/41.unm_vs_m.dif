@@ -1,0 +1,125 @@
+2c2
+< index 478b377..d5de42b 100644
+---
+> index 478b3777..ebfd25a6 100644
+5c5
+< @@ -188,23 +188,10 @@ public class ClassUtils {
+---
+> @@ -188,24 +188,6 @@ public class ClassUtils {
+10,11c10,11
+<  
+<          // Handle array encoding
+---
+> -
+> -        // Handle array encoding
+17c17
+<              // Strip Object type encoding
+---
+> -            // Strip Object type encoding
+22c22
+<  
+---
+> -
+26c26
+<  
+---
+> -
+29c29,30
+< @@ -213,7 +200,7 @@ public class ClassUtils {
+---
+>                  INNER_CLASS_SEPARATOR_CHAR, lastDotIdx == -1 ? 0 : lastDotIdx + 1);
+> @@ -213,7 +195,7 @@ public class ClassUtils {
+38c39,48
+< @@ -255,18 +242,12 @@ public class ClassUtils {
+---
+> @@ -242,7 +224,7 @@ public class ClassUtils {
+>          if (cls == null) {
+>              return StringUtils.EMPTY;
+>          }
+> -        return getPackageName(cls.getName());
+> +        return cls.getPackage().getName();
+>      }
+>  
+>      /**
+> @@ -255,19 +237,9 @@ public class ClassUtils {
+46,47c56,57
+<  
+<          // Strip array encoding
+---
+> -
+> -        // Strip array encoding
+51c61
+<          // Strip Object type encoding
+---
+> -        // Strip Object type encoding
+55c65
+<  
+---
+> -
+57a68,133
+>              return StringUtils.EMPTY;
+> diff --git a/src/test/org/apache/commons/lang/ClassUtilsTest.java b/src/test/org/apache/commons/lang/ClassUtilsTest.java
+> index 896d542e..48986d6f 100644
+> --- a/src/test/org/apache/commons/lang/ClassUtilsTest.java
+> +++ b/src/test/org/apache/commons/lang/ClassUtilsTest.java
+> @@ -92,35 +92,6 @@ public class ClassUtilsTest extends TestCase {
+>          assertEquals("ClassUtils", ClassUtils.getShortClassName(ClassUtils.class));
+>          assertEquals("Map.Entry", ClassUtils.getShortClassName(Map.Entry.class));
+>          assertEquals("", ClassUtils.getShortClassName((Class) null));
+> -
+> -        // LANG-535
+> -        assertEquals("String[]", ClassUtils.getShortClassName(String[].class));
+> -        assertEquals("Map.Entry[]", ClassUtils.getShortClassName(Map.Entry[].class));
+> -
+> -        // Primitives
+> -        assertEquals("boolean", ClassUtils.getShortClassName(boolean.class));
+> -        assertEquals("byte", ClassUtils.getShortClassName(byte.class));
+> -        assertEquals("char", ClassUtils.getShortClassName(char.class));
+> -        assertEquals("short", ClassUtils.getShortClassName(short.class));
+> -        assertEquals("int", ClassUtils.getShortClassName(int.class));
+> -        assertEquals("long", ClassUtils.getShortClassName(long.class));
+> -        assertEquals("float", ClassUtils.getShortClassName(float.class));
+> -        assertEquals("double", ClassUtils.getShortClassName(double.class));
+> -
+> -        // Primitive Arrays
+> -        assertEquals("boolean[]", ClassUtils.getShortClassName(boolean[].class));
+> -        assertEquals("byte[]", ClassUtils.getShortClassName(byte[].class));
+> -        assertEquals("char[]", ClassUtils.getShortClassName(char[].class));
+> -        assertEquals("short[]", ClassUtils.getShortClassName(short[].class));
+> -        assertEquals("int[]", ClassUtils.getShortClassName(int[].class));
+> -        assertEquals("long[]", ClassUtils.getShortClassName(long[].class));
+> -        assertEquals("float[]", ClassUtils.getShortClassName(float[].class));
+> -        assertEquals("double[]", ClassUtils.getShortClassName(double[].class));
+> -
+> -        // Arrays of arrays of ...
+> -        assertEquals("String[][]", ClassUtils.getShortClassName(String[][].class));
+> -        assertEquals("String[][][]", ClassUtils.getShortClassName(String[][][].class));
+> -        assertEquals("String[][][][]", ClassUtils.getShortClassName(String[][][][].class));
+>      }
+>      
+>      public void test_getShortClassName_String() {
+> @@ -141,24 +112,6 @@ public class ClassUtilsTest extends TestCase {
+>          assertEquals("java.lang", ClassUtils.getPackageName(String.class));
+>          assertEquals("java.util", ClassUtils.getPackageName(Map.Entry.class));
+>          assertEquals("", ClassUtils.getPackageName((Class)null));
+> -
+> -        // LANG-535
+> -        assertEquals("java.lang", ClassUtils.getPackageName(String[].class));
+> -
+> -        // Primitive Arrays
+> -        assertEquals("", ClassUtils.getPackageName(boolean[].class));
+> -        assertEquals("", ClassUtils.getPackageName(byte[].class));
+> -        assertEquals("", ClassUtils.getPackageName(char[].class));
+> -        assertEquals("", ClassUtils.getPackageName(short[].class));
+> -        assertEquals("", ClassUtils.getPackageName(int[].class));
+> -        assertEquals("", ClassUtils.getPackageName(long[].class));
+> -        assertEquals("", ClassUtils.getPackageName(float[].class));
+> -        assertEquals("", ClassUtils.getPackageName(double[].class));
+> -
+> -        // Arrays of arrays of ...
+> -        assertEquals("java.lang", ClassUtils.getPackageName(String[][].class));
+> -        assertEquals("java.lang", ClassUtils.getPackageName(String[][][].class));
+> -        assertEquals("java.lang", ClassUtils.getPackageName(String[][][][].class));
+>      }
+>      
+>      public void test_getPackageName_String() {

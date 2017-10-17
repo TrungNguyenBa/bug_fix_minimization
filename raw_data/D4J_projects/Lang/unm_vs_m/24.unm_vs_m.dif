@@ -1,0 +1,31 @@
+2c2
+< index d9b3c6d..4a1d845 100644
+---
+> index d9b3c6de..f1f36a88 100644
+5c5,6
+< @@ -1410,7 +1410,7 @@ public class NumberUtils {
+---
+> @@ -1409,8 +1409,8 @@ public class NumberUtils {
+>              }
+8c9
+<                  // not allowing L with an exponent or decimal point
+---
+> -                // not allowing L with an exponent or decimal point
+9a11
+> +                // not allowing L with an exponent
+13a16,30
+> diff --git a/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java b/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
+> index bb94ab31..779eb746 100644
+> --- a/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
+> +++ b/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
+> @@ -1139,10 +1139,6 @@ public class NumberUtilsTest extends TestCase {
+>          // LANG-521
+>          val = "2.";
+>          assertTrue("isNumber(String) LANG-521 failed", NumberUtils.isNumber(val));
+> -
+> -        // LANG-664
+> -        val = "1.1L";
+> -        assertFalse("isNumber(String) LANG-664 failed", NumberUtils.isNumber(val));
+>      }
+>  
+>      private boolean checkCreateNumber(String val) {

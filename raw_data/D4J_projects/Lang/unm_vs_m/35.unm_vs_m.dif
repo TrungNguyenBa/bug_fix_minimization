@@ -1,0 +1,100 @@
+2c2
+< index 3a543ce..ac22f8f 100644
+---
+> index 3a543ce2..79c80bdc 100644
+5,8c5,22
+< @@ -3292,7 +3292,7 @@ public class ArrayUtils {
+<          } else if (element != null) {
+<              type = element.getClass();
+<          } else {
+---
+> @@ -3280,21 +3280,13 @@ public class ArrayUtils {
+>       * @param element  the object to add, may be <code>null</code>
+>       * @return A new array containing the existing elements plus the new element
+>       * The returned array type will be that of the input array (unless null),
+> -     * in which case it will have the same type as the element.
+> -     * If both are null, an IllegalArgumentException is thrown
+> +     * in which case it will have the same type as the element (unless that is also null)
+> +     * in which case the returned type will be Object[].
+>       * @since 2.1
+> -     * @throws IllegalArgumentException if both arguments are null
+>       */
+>      public static <T> T[] add(T[] array, T element) {
+> -        Class<?> type;
+> -        if (array != null){
+> -            type = array.getClass();
+> -        } else if (element != null) {
+> -            type = element.getClass();
+> -        } else {
+10,12c24,27
+< +            type = Object.class;
+<          }
+<          @SuppressWarnings("unchecked") // type must be T
+---
+> -        }
+> -        @SuppressWarnings("unchecked") // type must be T
+> +        Class<?> type = array != null ? array.getClass() : (element != null ? element.getClass() : Object.class);
+> +        // TODO - this is NOT safe to ignore - see LANG-571
+14c29,39
+< @@ -3571,7 +3571,7 @@ public class ArrayUtils {
+---
+>          newArray[newArray.length - 1] = element;
+>          return newArray;
+> @@ -3562,7 +3554,6 @@ public class ArrayUtils {
+>       * @return A new array containing the existing elements and the new element
+>       * @throws IndexOutOfBoundsException if the index is out of range
+>       * (index < 0 || index > array.length).
+> -     * @throws IllegalArgumentException if both array and element are null
+>       */
+>      public static <T> T[] add(T[] array, int index, T element) {
+>          Class<?> clss = null;
+> @@ -3571,7 +3562,9 @@ public class ArrayUtils {
+19c44,46
+< +            return (T[]) new Object[] { null };
+---
+> +            // TODO this is not type-safe - see LANG-571
+> +            final T[] emptyArray = (T[]) new Object[] { null };
+> +            return emptyArray;
+22a50,91
+> diff --git a/src/test/java/org/apache/commons/lang3/ArrayUtilsAddTest.java b/src/test/java/org/apache/commons/lang3/ArrayUtilsAddTest.java
+> index 8d2e0e16..e38e4811 100644
+> --- a/src/test/java/org/apache/commons/lang3/ArrayUtilsAddTest.java
+> +++ b/src/test/java/org/apache/commons/lang3/ArrayUtilsAddTest.java
+> @@ -222,25 +222,6 @@ public class ArrayUtilsAddTest extends TestCase {
+>          assertEquals(Object.class, newArray.getClass().getComponentType());
+>      }
+>  
+> -    public void testLANG571(){
+> -        String[] stringArray=null;
+> -        String aString=null;
+> -        try {
+> -            @SuppressWarnings("unused")
+> -            String[] sa = ArrayUtils.add(stringArray, aString);
+> -            fail("Should have caused IllegalArgumentException");
+> -        } catch (IllegalArgumentException iae){
+> -            //expected
+> -        }
+> -        try {
+> -            @SuppressWarnings("unused")
+> -            String[] sa = ArrayUtils.add(stringArray, 0, aString);
+> -            fail("Should have caused IllegalArgumentException");
+> -        } catch (IllegalArgumentException iae){
+> -            //expected
+> -        }
+> -    }
+> -
+>      public void testAddObjectArrayToObjectArray() {
+>          assertNull(ArrayUtils.addAll((Object[]) null, (Object[]) null));
+>          Object[] newArray;
+> diff --git a/xdocs/changes.xml b/xdocs/changes.xml
+> index e805b6de..dd68c279 100644
+> --- a/xdocs/changes.xml
+> +++ b/xdocs/changes.xml
+> @@ -23,7 +23,6 @@
+>  
+>    <release version="3.0" date="Unreleased" description="Backwards incompatible update of Commons Lang to Java 5">
+>      <action type="update">Push down WordUtils to "text" sub-package.</action>
+> -    <action type="fix" issue="LANG-571">ArrayUtils.add(T[] array[, offset], T element) can create unexpected ClassCastException</action>
+>    </release>
+>  
+>    <release version="2.4" date="2008-03-18" description="">

@@ -1,0 +1,70 @@
+2c2
+< index 294ac57..8214827 100644
+---
+> index 294ac5726..2ca34470c 100644
+5,8c5,13
+< @@ -346,9 +346,10 @@ public class OpenMapRealVector extends SparseRealVector
+<           * this only. Indeed, if this[i] = 0d and v[i] = 0d, then
+<           * this[i] / v[i] = NaN, and not 0d.
+<           */
+---
+> @@ -341,14 +341,10 @@ public class OpenMapRealVector extends SparseRealVector
+>      public OpenMapRealVector ebeDivide(RealVector v) {
+>          checkVectorDimensions(v.getDimension());
+>          OpenMapRealVector res = new OpenMapRealVector(this);
+> -        /*
+> -         * MATH-803: it is not sufficient to loop through non zero entries of
+> -         * this only. Indeed, if this[i] = 0d and v[i] = 0d, then
+> -         * this[i] / v[i] = NaN, and not 0d.
+> -         */
+19,22c24,34
+< @@ -370,18 +371,6 @@ public class OpenMapRealVector extends SparseRealVector
+<           *
+<           * These special cases are handled below.
+<           */
+---
+> @@ -363,25 +359,6 @@ public class OpenMapRealVector extends SparseRealVector
+>              iter.advance();
+>              res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));
+>          }
+> -        /*
+> -         * MATH-803: the above loop assumes that 0d * x  = 0d for any double x,
+> -         * which allows to consider only the non-zero entries of this. However,
+> -         * this fails if this[i] == 0d and (v[i] = NaN or v[i] = Infinity).
+> -         *
+> -         * These special cases are handled below.
+> -         */
+37a50,82
+> diff --git a/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java b/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java
+> index 3978fa552..d5e09f906 100644
+> --- a/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java
+> +++ b/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java
+> @@ -237,25 +237,14 @@ public class SparseRealVectorTest extends RealVectorAbstractTest {
+>  
+>          @Override
+>          public boolean isNaN() {
+> -            boolean isNaN = false;
+> -            for (int i = 0; i < data.length; i++) {
+> -                isNaN |= Double.isNaN(data[i]);
+> -            }
+> -            return isNaN;
+> +            throw unsupported();
+>          }
+>  
+>          @Override
+>          public boolean isInfinite() {
+> -            boolean isInfinite = false;
+> -            for (int i = 0; i < data.length; i++) {
+> -                final double x = data[i];
+> -                if (Double.isNaN(x)) {
+> -                    return false;
+> -                }
+> -                isInfinite |= Double.isInfinite(x);
+> -            }
+> -            return isInfinite;
+> +            throw unsupported();
+>          }
+> +
+>      }
+>  
+>      @Override

@@ -1,0 +1,18 @@
+2c2
+< index 8b5028c..3fda4ec 100644
+---
+> index 8b5028c4..3fda4ecc 100644
+12a13,25
+> diff --git a/src/test/org/apache/commons/lang/BooleanUtilsTest.java b/src/test/org/apache/commons/lang/BooleanUtilsTest.java
+> index 97068466..cc44051e 100644
+> --- a/src/test/org/apache/commons/lang/BooleanUtilsTest.java
+> +++ b/src/test/org/apache/commons/lang/BooleanUtilsTest.java
+> @@ -330,8 +330,6 @@ public class BooleanUtilsTest extends TestCase {
+>          assertEquals(true, BooleanUtils.toBoolean("YeS"));
+>          assertEquals(true, BooleanUtils.toBoolean("YEs"));
+>          assertEquals(true, BooleanUtils.toBoolean("YES"));
+> -        assertEquals(false, BooleanUtils.toBoolean("yes?"));
+> -        assertEquals(false, BooleanUtils.toBoolean("tru"));
+>      }
+>  
+>      public void test_toBoolean_String_String_String() {

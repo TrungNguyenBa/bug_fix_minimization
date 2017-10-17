@@ -1,0 +1,33 @@
+2c2
+< index 3998966..615e4a9 100644
+---
+> index 3998966a..85fda048 100644
+5c5,15
+< @@ -907,7 +907,7 @@ public class ClassUtils {
+---
+> @@ -890,8 +890,7 @@ public class ClassUtils {
+>      }
+>  
+>      /**
+> -     * <p>Converts an array of <code>Object</code> in to an array of <code>Class</code> objects.
+> -     * If any of these objects is null, a null element will be inserted into the array.</p>
+> +     * <p>Converts an array of <code>Object</code> in to an array of <code>Class</code> objects.</p>
+>       *
+>       * <p>This method returns <code>null</code> for a <code>null</code> input array.</p>
+>       *
+> @@ -907,7 +906,7 @@ public class ClassUtils {
+13a24,37
+> diff --git a/src/test/java/org/apache/commons/lang3/ClassUtilsTest.java b/src/test/java/org/apache/commons/lang3/ClassUtilsTest.java
+> index 010ea934..2ea74e71 100644
+> --- a/src/test/java/org/apache/commons/lang3/ClassUtilsTest.java
+> +++ b/src/test/java/org/apache/commons/lang3/ClassUtilsTest.java
+> @@ -906,9 +906,6 @@ public class ClassUtilsTest extends TestCase {
+>  
+>          assertTrue(Arrays.equals(new Class[] { String.class, Integer.class, Double.class },
+>                  ClassUtils.toClass(new Object[] { "Test", 1, 99d })));
+> -
+> -        assertTrue(Arrays.equals(new Class[] { String.class, null, Double.class },
+> -                ClassUtils.toClass(new Object[] { "Test", null, 99d })));
+>      }
+>  
+>      public void test_getShortCanonicalName_Object() {

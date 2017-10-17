@@ -1,0 +1,34 @@
+2c2
+< index d3def01..edb7805 100644
+---
+> index d3def01b..5edb4f05 100644
+5c5
+< @@ -513,9 +513,7 @@ public class TypeCheck implements NodeTraversal.Callback, CompilerPass {
+---
+> @@ -513,9 +513,6 @@ public class TypeCheck implements NodeTraversal.Callback, CompilerPass {
+10c10
+<            // Object literal keys are not typeable
+---
+> -          // Object literal keys are not typeable
+14a15,35
+> diff --git a/test/com/google/javascript/jscomp/TypeCheckTest.java b/test/com/google/javascript/jscomp/TypeCheckTest.java
+> index 604db374..160759d9 100644
+> --- a/test/com/google/javascript/jscomp/TypeCheckTest.java
+> +++ b/test/com/google/javascript/jscomp/TypeCheckTest.java
+> @@ -7779,16 +7779,6 @@ public class TypeCheckTest extends CompilerTypeTestCase {
+>      assertEquals(100.0, getTypedPercent(js), 0.1);
+>    }
+>  
+> -  public void testGetTypedPercent5() throws Exception {
+> -    String js = "/** @enum {number} */ keys = {A: 1,B: 2,C: 3};";
+> -    assertEquals(100.0, getTypedPercent(js), 0.1);
+> -  }
+> -
+> -  public void testGetTypedPercent6() throws Exception {
+> -    String js = "a = {TRUE: 1, FALSE: 0};";
+> -    assertEquals(100.0, getTypedPercent(js), 0.1);
+> -  }
+> -
+>    private double getTypedPercent(String js) throws Exception {
+>      Node n = compiler.parseTestCode(js);
+>  

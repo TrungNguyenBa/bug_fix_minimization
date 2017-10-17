@@ -1,0 +1,92 @@
+2c2
+< index e5138b5..0dd0ded 100644
+---
+> index e5138b58..9ca1bc5c 100644
+5c5
+< @@ -640,18 +640,18 @@ public class DateUtils {
+---
+> @@ -640,19 +640,19 @@ public class DateUtils {
+12d11
+< +            }
+13a13
+> +        }
+22d21
+< +            }
+23a23
+> +        }
+25a26,100
+>          int minutes = val.get(Calendar.MINUTE);
+> diff --git a/src/test/org/apache/commons/lang/time/DateUtilsTest.java b/src/test/org/apache/commons/lang/time/DateUtilsTest.java
+> index 6ded24d6..6f6a434c 100644
+> --- a/src/test/org/apache/commons/lang/time/DateUtilsTest.java
+> +++ b/src/test/org/apache/commons/lang/time/DateUtilsTest.java
+> @@ -693,69 +693,6 @@ public class DateUtilsTest extends TestCase {
+>      }
+>  
+>      /**
+> -     * Tests the Changes Made by LANG-346 to the DateUtils.modify() private method invoked
+> -     * by DateUtils.round().
+> -     */
+> -    public void testRoundLang346() throws Exception
+> -    {
+> -        TimeZone.setDefault(defaultZone);
+> -        dateTimeParser.setTimeZone(defaultZone);
+> -        Calendar testCalendar = Calendar.getInstance();
+> -        testCalendar.set(2007, 6, 2, 8, 8, 50);
+> -        Date date = testCalendar.getTime();
+> -        assertEquals("Minute Round Up Failed",
+> -                     dateTimeParser.parse("July 2, 2007 08:09:00.000"),
+> -                     DateUtils.round(date, Calendar.MINUTE));
+> -
+> -        testCalendar.set(2007, 6, 2, 8, 8, 20);
+> -        date = testCalendar.getTime();
+> -        assertEquals("Minute No Round Failed",
+> -                     dateTimeParser.parse("July 2, 2007 08:08:00.000"),
+> -                     DateUtils.round(date, Calendar.MINUTE));
+> -
+> -        testCalendar.set(2007, 6, 2, 8, 8, 50);
+> -        testCalendar.set(Calendar.MILLISECOND, 600);
+> -        date = testCalendar.getTime();
+> -
+> -        assertEquals("Second Round Up with 600 Milli Seconds Failed",
+> -                     dateTimeParser.parse("July 2, 2007 08:08:51.000"),
+> -                     DateUtils.round(date, Calendar.SECOND));
+> -
+> -        testCalendar.set(2007, 6, 2, 8, 8, 50);
+> -        testCalendar.set(Calendar.MILLISECOND, 200);
+> -        date = testCalendar.getTime();
+> -        assertEquals("Second Round Down with 200 Milli Seconds Failed",
+> -                     dateTimeParser.parse("July 2, 2007 08:08:50.000"),
+> -                     DateUtils.round(date, Calendar.SECOND));
+> -
+> -        testCalendar.set(2007, 6, 2, 8, 8, 20);
+> -        testCalendar.set(Calendar.MILLISECOND, 600);
+> -        date = testCalendar.getTime();
+> -        assertEquals("Second Round Up with 200 Milli Seconds Failed",
+> -                     dateTimeParser.parse("July 2, 2007 08:08:21.000"),
+> -                     DateUtils.round(date, Calendar.SECOND));
+> -
+> -        testCalendar.set(2007, 6, 2, 8, 8, 20);
+> -        testCalendar.set(Calendar.MILLISECOND, 200);
+> -        date = testCalendar.getTime();
+> -        assertEquals("Second Round Down with 200 Milli Seconds Failed",
+> -                     dateTimeParser.parse("July 2, 2007 08:08:20.000"),
+> -                     DateUtils.round(date, Calendar.SECOND));
+> -
+> -        testCalendar.set(2007, 6, 2, 8, 8, 50);
+> -        date = testCalendar.getTime();
+> -        assertEquals("Hour Round Down Failed",
+> -                     dateTimeParser.parse("July 2, 2007 08:00:00.000"),
+> -                     DateUtils.round(date, Calendar.HOUR));
+> -
+> -        testCalendar.set(2007, 6, 2, 8, 31, 50);
+> -        date = testCalendar.getTime();
+> -        assertEquals("Hour Round Up Failed",
+> -                     dateTimeParser.parse("July 2, 2007 09:00:00.000"),
+> -                     DateUtils.round(date, Calendar.HOUR));
+> -    }
+> -
+> -    /**
+>       * Tests various values with the trunc method
+>       */
+>      public void testTruncate() throws Exception {

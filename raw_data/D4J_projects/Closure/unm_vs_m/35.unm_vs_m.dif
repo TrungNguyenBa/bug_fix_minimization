@@ -1,0 +1,114 @@
+2c2
+< index fb6be1e..13e1092 100644
+---
+> index fb6be1eb..13e10920 100644
+28a29,137
+> diff --git a/src/com/google/javascript/rhino/jstype/JSType.java b/src/com/google/javascript/rhino/jstype/JSType.java
+> index 7317e947..8592ca60 100644
+> --- a/src/com/google/javascript/rhino/jstype/JSType.java
+> +++ b/src/com/google/javascript/rhino/jstype/JSType.java
+> @@ -1170,13 +1170,4 @@ public abstract class JSType implements Serializable {
+>     *     annotations. Otherwise, it's for warnings.
+>     */
+>    abstract String toStringHelper(boolean forAnnotations);
+> -
+> -  /**
+> -   * Modify this type so that it matches the specified type.
+> -   *
+> -   * This is useful for reverse type-inference, where we want to
+> -   * infer that an object literal matches its contraint (much like
+> -   * how the java compiler does reverse-inference to figure out generics).
+> -   */
+> -  public void matchConstraint(ObjectType contraint) {}
+>  }
+> diff --git a/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java b/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+> index 1a51afb6..f4b537d2 100644
+> --- a/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+> +++ b/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+> @@ -550,30 +550,4 @@ class PrototypeObjectType extends ObjectType {
+>      }
+>      return this;
+>    }
+> -
+> -  @Override
+> -  public void matchConstraint(ObjectType constraintObj) {
+> -    // Handle the case where the constraint object is a record type.
+> -    //
+> -    // param constraintObj {{prop: (number|undefined)}}
+> -    // function f(constraintObj) {}
+> -    // f({});
+> -    //
+> -    // We want to modify the object literal to match the constraint, by
+> -    // taking any each property on the record and trying to match
+> -    // properties on this object.
+> -    if (constraintObj.isRecordType()) {
+> -      for (String prop : constraintObj.getOwnPropertyNames()) {
+> -        JSType propType = constraintObj.getPropertyType(prop);
+> -        if (!isPropertyTypeDeclared(prop)) {
+> -          JSType typeToInfer = propType;
+> -          if (!hasProperty(prop)) {
+> -            typeToInfer = getNativeType(JSTypeNative.VOID_TYPE)
+> -                .getLeastSupertype(propType);
+> -          }
+> -          defineInferredProperty(prop, typeToInfer, null);
+> -        }
+> -      }
+> -    }
+> -  }
+>  }
+> diff --git a/src/com/google/javascript/rhino/jstype/ProxyObjectType.java b/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+> index 66898e24..e025d519 100644
+> --- a/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+> +++ b/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+> @@ -419,9 +419,4 @@ class ProxyObjectType extends ObjectType {
+>      }
+>      return this;
+>    }
+> -
+> -  @Override
+> -  public void matchConstraint(ObjectType contraint) {
+> -    referencedType.matchConstraint(contraint);
+> -  }
+>  }
+> diff --git a/src/com/google/javascript/rhino/jstype/UnionType.java b/src/com/google/javascript/rhino/jstype/UnionType.java
+> index fcb01729..f54d8d48 100644
+> --- a/src/com/google/javascript/rhino/jstype/UnionType.java
+> +++ b/src/com/google/javascript/rhino/jstype/UnionType.java
+> @@ -586,11 +586,4 @@ public class UnionType extends JSType {
+>      }
+>      return currentCommonSuper;
+>    }
+> -
+> -  @Override
+> -  public void matchConstraint(ObjectType constraintObj) {
+> -    for (JSType alternate : alternates) {
+> -      alternate.matchConstraint(constraintObj);
+> -    }
+> -  }
+>  }
+> diff --git a/test/com/google/javascript/jscomp/TypeCheckTest.java b/test/com/google/javascript/jscomp/TypeCheckTest.java
+> index fad6c28e..4989d6b6 100644
+> --- a/test/com/google/javascript/jscomp/TypeCheckTest.java
+> +++ b/test/com/google/javascript/jscomp/TypeCheckTest.java
+> @@ -5617,21 +5617,6 @@ public class TypeCheckTest extends CompilerTypeTestCase {
+>          "and no more than 1 argument(s).");
+>    }
+>  
+> -  public void testIssue669() throws Exception {
+> -    testTypes(
+> -        "/** @return {{prop1: (Object|undefined)}} */" +
+> -         "function f(a) {" +
+> -         "  var results;" +
+> -         "  if (a) {" +
+> -         "    results = {};" +
+> -         "    results.prop1 = {a: 3};" +
+> -         "  } else {" +
+> -         "    results = {prop2: 3};" +
+> -         "  }" +
+> -         "  return results;" +
+> -         "}");
+> -  }
+> -
+>    /**
+>     * Tests that the || operator is type checked correctly, that is of
+>     * the type of the first argument or of the second argument. See

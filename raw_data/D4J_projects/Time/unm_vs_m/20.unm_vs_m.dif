@@ -1,0 +1,45 @@
+0a1,14
+> diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+> index e47e1dee..978a1de1 100644
+> --- a/RELEASE-NOTES.txt
+> +++ b/RELEASE-NOTES.txt
+> @@ -51,9 +51,6 @@ Bug fixes since 2.0
+>    Names now returned in locales other than English
+>    The names may differ between JDK1.5 and 1.6 due to the underlying JDK data
+>  
+> -- Time zone id parsing fixed for some longer time zones [3427389]
+> -  Time zones like "America/Dawson_Creek" were not parsed as "America/Dawson" was matched first
+> -
+>  - Interval/MutableInterval toString() now contains the time-zone offset [https://github.com/JodaOrg/joda-time/pull/2]
+>  
+>  - Javadoc fix to MutablePeriod [3413869]
+2c16
+< index ebb4b08..558a586 100644
+---
+> index ebb4b087..558a5864 100644
+14d27
+< -                	}
+18a32
+> -            }
+25a40,60
+> diff --git a/src/test/java/org/joda/time/format/TestDateTimeFormatterBuilder.java b/src/test/java/org/joda/time/format/TestDateTimeFormatterBuilder.java
+> index 54033bb4..31aa53c0 100644
+> --- a/src/test/java/org/joda/time/format/TestDateTimeFormatterBuilder.java
+> +++ b/src/test/java/org/joda/time/format/TestDateTimeFormatterBuilder.java
+> @@ -252,16 +252,6 @@ public class TestDateTimeFormatterBuilder extends TestCase {
+>          assertEquals(dt, f.withOffsetParsed().parseDateTime("2007-03-04 12:30 Europe/Paris"));
+>      }
+>  
+> -    public void test_printParseZoneDawsonCreek() {  // clashes with shorter Dawson
+> -        DateTimeFormatterBuilder bld = new DateTimeFormatterBuilder()
+> -            .appendPattern("yyyy-MM-dd HH:mm ").appendTimeZoneId();
+> -        DateTimeFormatter f = bld.toFormatter();
+> -        
+> -        DateTime dt = new DateTime(2007, 3, 4, 12, 30, 0, DateTimeZone.forID("America/Dawson_Creek"));
+> -        assertEquals("2007-03-04 12:30 America/Dawson_Creek", f.print(dt));
+> -        assertEquals(dt, f.parseDateTime("2007-03-04 12:30 America/Dawson_Creek"));
+> -    }
+> -
+>      public void test_printParseOffset() {
+>          DateTimeFormatterBuilder bld = new DateTimeFormatterBuilder()
+>              .appendPattern("yyyy-MM-dd HH:mm ").appendTimeZoneOffset("Z", true, 2, 2);

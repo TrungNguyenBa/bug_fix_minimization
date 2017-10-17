@@ -1,0 +1,81 @@
+0a1,14
+> diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+> index b6f8c5405..64fb6fdb3 100644
+> --- a/src/changes/changes.xml
+> +++ b/src/changes/changes.xml
+> @@ -52,9 +52,6 @@ If the output is not quite correct, check for invisible trailing spaces!
+>    <body>
+>      <release version="3.1" date="TBD" description="
+>  ">
+> -      <action dev="tn" type="fix" issue="MATH-778" due-to="Sébastien Brisard">
+> -        Allow unlimited input values for "Dfp#multiply(int)".
+> -      </action>
+>        <action dev="luc" type="fix" issue="MATH-641" due-to="Curtis Jensen">
+>          Added distance to point to 2D Line and Segment.
+>        </action>
+2c16
+< index 3a91982..0f78330 100644
+---
+> index 3a9198271..d278a3128 100644
+5,8c19,27
+< @@ -1600,11 +1600,7 @@ public class Dfp implements FieldElement<Dfp> {
+<       * @return product of this and x
+<       */
+<      public Dfp multiply(final int x) {
+---
+> @@ -1595,24 +1595,12 @@ public class Dfp implements FieldElement<Dfp> {
+>  
+>      }
+>  
+> -    /** Multiply this by a single digit x.
+> -     * @param x multiplicand
+> -     * @return product of this and x
+> -     */
+> -    public Dfp multiply(final int x) {
+10c29
+<              return multiplyFast(x);
+---
+> -            return multiplyFast(x);
+13a33,70
+> -    }
+> -
+>      /** Multiply this by a single digit 0&lt;=x&lt;radix.
+> -     * There are speed advantages in this special case.
+> +     * There are speed advantages in this special case
+>       * @param x multiplicand
+>       * @return product of this and x
+>       */
+> -    private Dfp multiplyFast(final int x) {
+> +    public Dfp multiply(final int x) {
+>          Dfp result = newInstance(this);
+>  
+>          /* handle special cases */
+> diff --git a/src/test/java/org/apache/commons/math3/dfp/DfpTest.java b/src/test/java/org/apache/commons/math3/dfp/DfpTest.java
+> index 6f224665c..f7549764f 100644
+> --- a/src/test/java/org/apache/commons/math3/dfp/DfpTest.java
+> +++ b/src/test/java/org/apache/commons/math3/dfp/DfpTest.java
+> @@ -906,17 +906,13 @@ public class DfpTest {
+>               nan,
+>               0, "Multiply #36");
+>  
+> -        test(field.newDfp("1").multiply(10000),
+> -             field.newDfp("10000"),
+> -             0, "Multiply #37");
+> -
+> -        test(field.newDfp("2").multiply(1000000),
+> -             field.newDfp("2000000"),
+> -             0, "Multiply #38");
+> +        test(field.newDfp("1").multiply(10000),  // out of range
+> +             nan,
+> +             DfpField.FLAG_INVALID, "Multiply #37");
+>  
+> -        test(field.newDfp("1").multiply(-1),
+> -             field.newDfp("-1"),
+> -             0, "Multiply #39");
+> +        test(field.newDfp("1").multiply(-1),  // out of range
+> +             nan,
+> +             DfpField.FLAG_INVALID, "Multiply #38");
+16c73
+<      /** Multiply this by a single digit 0&lt;=x&lt;radix.
+---
+>      @Test

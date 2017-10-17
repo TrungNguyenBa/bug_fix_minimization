@@ -1,0 +1,167 @@
+0a1,25
+> diff --git a/src/com/google/javascript/jscomp/NodeUtil.java b/src/com/google/javascript/jscomp/NodeUtil.java
+> index 8bf7ecff..b6f5b24c 100644
+> --- a/src/com/google/javascript/jscomp/NodeUtil.java
+> +++ b/src/com/google/javascript/jscomp/NodeUtil.java
+> @@ -1645,20 +1645,6 @@ public final class NodeUtil {
+>    }
+>  
+>    /**
+> -   * Gets the root node of a qualified name. Must be either NAME or THIS.
+> -   */
+> -  static Node getRootOfQualifiedName(Node qName) {
+> -    for (Node current = qName; true;
+> -         current = current.getFirstChild()) {
+> -      int type = current.getType();
+> -      if (type == Token.NAME || type == Token.THIS) {
+> -        return current;
+> -      }
+> -      Preconditions.checkState(type == Token.GETPROP);
+> -    }
+> -  }
+> -
+> -  /**
+>     * Sets the debug information (source file info and orignal name)
+>     * on the given node.
+>     *
+2c27
+< index c7005b2..4bd6bfb 100644
+---
+> index c7005b2b..dbb815cf 100644
+5,8c30,37
+< @@ -896,16 +896,9 @@ final class TypedScopeCreator implements ScopeCreator {
+<        // scope where the root object appears. This helps out people
+<        // who declare "global" names in an anonymous namespace.
+<        Scope scopeToDeclareIn = scope;
+---
+> @@ -892,24 +892,9 @@ final class TypedScopeCreator implements ScopeCreator {
+>        String variableName = n.getQualifiedName();
+>        Preconditions.checkArgument(!variableName.isEmpty());
+>  
+> -      // If n is a property, then we should really declare it in the
+> -      // scope where the root object appears. This helps out people
+> -      // who declare "global" names in an anonymous namespace.
+> -      Scope scopeToDeclareIn = scope;
+12,14c41,43
+<  
+<          // don't try to declare in the global scope if there's
+<          // already a symbol there with this name.
+---
+> -
+> -        // don't try to declare in the global scope if there's
+> -        // already a symbol there with this name.
+19c48
+<  
+---
+> -
+21c50,157
+<        if (scopeToDeclareIn.isDeclared(variableName, false)) {
+---
+> -      if (scopeToDeclareIn.isDeclared(variableName, false)) {
+> -        Var oldVar = scopeToDeclareIn.getVar(variableName);
+> +      if (scope.isDeclared(variableName, false)) {
+> +        Var oldVar = scope.getVar(variableName);
+>          validator.expectUndeclaredVariable(
+>              sourceName, n, parent, oldVar, variableName, type);
+>        } else {
+> @@ -917,7 +902,7 @@ final class TypedScopeCreator implements ScopeCreator {
+>            setDeferredType(n, type);
+>          }
+>          CompilerInput input = compiler.getInput(sourceName);
+> -        scopeToDeclareIn.declare(variableName, n, type, input, inferred);
+> +        scope.declare(variableName, n, type, input, inferred);
+>  
+>          if (shouldDeclareOnGlobalThis) {
+>            ObjectType globalThis =
+> @@ -936,11 +921,11 @@ final class TypedScopeCreator implements ScopeCreator {
+>  
+>          // If we're in the global scope, also declare var.prototype
+>          // in the scope chain.
+> -        if (scopeToDeclareIn.isGlobal() && type instanceof FunctionType) {
+> +        if (scope.isGlobal() && type instanceof FunctionType) {
+>            FunctionType fnType = (FunctionType) type;
+>            if (fnType.isConstructor() || fnType.isInterface()) {
+>              FunctionType superClassCtor = fnType.getSuperClassConstructor();
+> -            scopeToDeclareIn.declare(variableName + ".prototype", n,
+> +            scope.declare(variableName + ".prototype", n,
+>                  fnType.getPrototype(), compiler.getInput(sourceName),
+>                  /* declared iff there's an explicit supertype */
+>                  superClassCtor == null ||
+> @@ -952,20 +937,6 @@ final class TypedScopeCreator implements ScopeCreator {
+>      }
+>  
+>      /**
+> -     * Check if the given node is a property of a name in the global scope.
+> -     */
+> -    private boolean isQnameRootedInGlobalScope(Node n) {
+> -      Node root = NodeUtil.getRootOfQualifiedName(n);
+> -      if (root.getType() == Token.NAME) {
+> -        Var var = scope.getVar(root.getString());
+> -        if (var != null) {
+> -          return var.isGlobal();
+> -        }
+> -      }
+> -      return false;
+> -    }
+> -
+> -    /**
+>       * Look for a type declaration on a GETPROP node.
+>       *
+>       * @param info The doc info for this property.
+> diff --git a/test/com/google/javascript/jscomp/TypeCheckTest.java b/test/com/google/javascript/jscomp/TypeCheckTest.java
+> index c8cc8eff..1424a3b5 100644
+> --- a/test/com/google/javascript/jscomp/TypeCheckTest.java
+> +++ b/test/com/google/javascript/jscomp/TypeCheckTest.java
+> @@ -4757,29 +4757,6 @@ public class TypeCheckTest extends CompilerTypeTestCase {
+>          "};");
+>    }
+>  
+> -  public void testQualifiedNameInference5() throws Exception {
+> -    testTypes(
+> -        "var ns = {}; " +
+> -        "(function() { " +
+> -        "    /** @param {number} x */ ns.foo = function(x) {}; })();" +
+> -        "(function() { ns.foo(true); })();",
+> -        "actual parameter 1 of ns.foo does not match formal parameter\n" +
+> -        "found   : boolean\n" +
+> -        "required: number");
+> -  }
+> -
+> -  public void testQualifiedNameInference6() throws Exception {
+> -    testTypes(
+> -        "var ns = {}; " +
+> -        "/** @param {number} x */ ns.foo = function(x) {};" +
+> -        "(function() { " +
+> -        "    ns.foo = function(x) {};" +
+> -        "    ns.foo(true); })();",
+> -        "actual parameter 1 of ns.foo does not match formal parameter\n" +
+> -        "found   : boolean\n" +
+> -        "required: number");
+> -  }
+> -
+>    public void testSheqRefinedScope() throws Exception {
+>      Node n = parseAndTypeCheck(
+>          "/** @constructor */function A() {}\n" +
+> diff --git a/test/com/google/javascript/jscomp/TypedScopeCreatorTest.java b/test/com/google/javascript/jscomp/TypedScopeCreatorTest.java
+> index 400293ff..789c5464 100644
+> --- a/test/com/google/javascript/jscomp/TypedScopeCreatorTest.java
+> +++ b/test/com/google/javascript/jscomp/TypedScopeCreatorTest.java
+> @@ -772,18 +772,6 @@ public class TypedScopeCreatorTest extends CompilerTestCase {
+>          "{}", findTokenType(Token.OBJECTLIT, globalScope).toString());
+>    }
+>  
+> -  public void testGlobalQualifiedNameInLocalScope() {
+> -    testSame(
+> -        "var ns = {}; " +
+> -        "(function() { " +
+> -        "    /** @param {number} x */ ns.foo = function(x) {}; })();" +
+> -        "(function() { ns.foo(3); })();");
+> -    assertNotNull(globalScope.getVar("ns.foo"));
+> -    assertEquals(
+> -        "function (number): undefined",
+> -        globalScope.getVar("ns.foo").getType().toString());
+> -  }
+> -
+>    private JSType findNameType(final String name, Scope scope) {
+>      return findTypeOnMatchedNode(new Predicate<Node>() {
+>        @Override public boolean apply(Node n) {

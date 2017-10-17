@@ -1,0 +1,29 @@
+2c2
+< index 3a66750..d9ff87a 100644
+---
+> index 3a667500..53637dca 100644
+13a14,37
+> @@ -258,10 +258,6 @@ abstract class CodeConsumer {
+>      }
+>    }
+>  
+> -  static boolean isNegativeZero(double x) {
+> -    return x == 0.0 && Math.copySign(1, x) == -1.0;
+> -  }
+> -
+>    static boolean isWordChar(char ch) {
+>      return (ch == '_' ||
+>              ch == '$' ||
+> diff --git a/test/com/google/javascript/jscomp/CodePrinterTest.java b/test/com/google/javascript/jscomp/CodePrinterTest.java
+> index be81d235..48f683f3 100644
+> --- a/test/com/google/javascript/jscomp/CodePrinterTest.java
+> +++ b/test/com/google/javascript/jscomp/CodePrinterTest.java
+> @@ -1268,8 +1268,4 @@ public class CodePrinterTest extends TestCase {
+>      assertPrint("var x = {0.2: 1};", "var x={\"0.2\":1}");
+>      assertPrint("var x = {'0.2': 1};", "var x={\"0.2\":1}");
+>    }
+> -
+> -  public void testIssue582() {
+> -    assertPrint("var x = -0.0;", "var x=-0.0");
+> -  }
+>  }

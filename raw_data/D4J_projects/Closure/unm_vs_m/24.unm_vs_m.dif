@@ -1,0 +1,62 @@
+2c2
+< index c248002..30d29d0 100644
+---
+> index c248002e..7a943f83 100644
+16c16
+< @@ -284,16 +284,15 @@ class ScopedAliases implements HotSwapCompilerPass {
+---
+> @@ -284,18 +284,13 @@ class ScopedAliases implements HotSwapCompilerPass {
+21,22c21,22
+<            // Bleeding functions already get a BAD_PARAMETERS error, so just
+<            // do nothing.
+---
+> -          // Bleeding functions already get a BAD_PARAMETERS error, so just
+> -          // do nothing.
+24,25c24,25
+<            // Parameters of the scope function also get a BAD_PARAMETERS
+<            // error.
+---
+> -          // Parameters of the scope function also get a BAD_PARAMETERS
+> -          // error.
+29a30,31
+>          }
+>        }
+30a33,60
+>  
+>      private void validateScopeCall(NodeTraversal t, Node n, Node parent) {
+>        if (preprocessorSymbolTable != null) {
+> diff --git a/test/com/google/javascript/jscomp/ScopedAliasesTest.java b/test/com/google/javascript/jscomp/ScopedAliasesTest.java
+> index 30f85d2c..96a9920f 100644
+> --- a/test/com/google/javascript/jscomp/ScopedAliasesTest.java
+> +++ b/test/com/google/javascript/jscomp/ScopedAliasesTest.java
+> @@ -313,18 +313,18 @@ public class ScopedAliasesTest extends CompilerTestCase {
+>          " * @constructor\n" +
+>          " */\n" +
+>          "foo.Foo = function() {};" +
+> -        "/** @param {Foo.Bar} x */ foo.Foo.actual = function(x) {3};" +
+> +        "/** @param {Foo.Bar} x */ function actual(x) {3}" +
+>          "var Foo = foo.Foo;" +
+>          "/** @constructor */ Foo.Bar = function() {};" +
+> -        "/** @param {foo.Foo.Bar} x */ foo.Foo.expected = function(x) {};",
+> +        "/** @param {foo.Foo.Bar} x */ function expected(x) {}",
+>  
+>          "/**\n" +
+>          " * @constructor\n" +
+>          " */\n" +
+>          "foo.Foo = function() {};" +
+> -        "/** @param {foo.Foo.Bar} x */ foo.Foo.actual = function(x) {3};" +
+> +        "/** @param {foo.Foo.Bar} x */ function actual(x) {3}" +
+>          "/** @constructor */ foo.Foo.Bar = function() {};" +
+> -        "/** @param {foo.Foo.Bar} x */ foo.Foo.expected = function(x) {};");
+> +        "/** @param {foo.Foo.Bar} x */ function expected(x) {}");
+>      verifyTypes();
+31a62,68
+>  
+> @@ -410,8 +410,6 @@ public class ScopedAliasesTest extends CompilerTestCase {
+>          ScopedAliases.GOOG_SCOPE_NON_ALIAS_LOCAL);
+>      testScopedFailure("var x = goog.dom, y = 10",
+>          ScopedAliases.GOOG_SCOPE_NON_ALIAS_LOCAL);
+> -    testScopedFailure("function f() {}",
+> -        ScopedAliases.GOOG_SCOPE_NON_ALIAS_LOCAL);
+33a71
+>    // Alias Recording Tests

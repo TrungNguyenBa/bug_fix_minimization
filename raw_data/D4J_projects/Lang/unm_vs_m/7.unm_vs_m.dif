@@ -1,0 +1,66 @@
+0a1,12
+> diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+> index 32624b49..0cd39eec 100644
+> --- a/src/changes/changes.xml
+> +++ b/src/changes/changes.xml
+> @@ -35,7 +35,6 @@
+>      <action issue="LANG-828" type="fix">FastDateParser does not handle non-Gregorian calendars properly</action>
+>      <action issue="LANG-826" type="fix">FastDateParser does not handle non-ASCII digits correctly</action>
+>      <action issue="LANG-825" type="add">Create StrBuilder APIs similar to String.format(String, Object...)</action>
+> -    <action issue="LANG-822" type="fix">NumberUtils#createNumber - bad behaviour for leading "--"</action>
+>      <action issue="LANG-818" type="fix">FastDateFormat's "z" pattern does not respect timezone of Calendar instances passed to format()</action>
+>      <action issue="LANG-817" type="fix">Add org.apache.commons.lang3.SystemUtils.IS_OS_WINDOWS_8</action>
+>      <action issue="LANG-813" type="fix">StringUtils.equalsIgnoreCase doesn't check string reference equality</action>
+2c14
+< index 064f547..d49da7f 100644
+---
+> index 064f547a..cca5a3f5 100644
+5c17
+< @@ -449,6 +449,9 @@ public class NumberUtils {
+---
+> @@ -449,6 +449,13 @@ public class NumberUtils {
+9a22,25
+> +            // this is protection for poorness in java.lang.BigDecimal.
+> +            // it accepts this as a legal value, but it does not appear 
+> +            // to be in specification of class. OS X Java parses it to 
+> +            // a wrong value.
+15c31
+< @@ -715,13 +718,10 @@ public class NumberUtils {
+---
+> @@ -715,13 +722,6 @@ public class NumberUtils {
+20,23c36,39
+<              // this is protection for poorness in java.lang.BigDecimal.
+<              // it accepts this as a legal value, but it does not appear 
+<              // to be in specification of class. OS X Java parses it to 
+<              // a wrong value.
+---
+> -            // this is protection for poorness in java.lang.BigDecimal.
+> -            // it accepts this as a legal value, but it does not appear 
+> -            // to be in specification of class. OS X Java parses it to 
+> -            // a wrong value.
+28a45,69
+> diff --git a/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java b/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
+> index b97289a7..e66fa614 100644
+> --- a/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
+> +++ b/src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java
+> @@ -229,20 +229,6 @@ public class NumberUtilsTest {
+>          // LANG-693
+>          assertEquals("createNumber(String) LANG-693 failed", Double.valueOf(Double.MAX_VALUE), NumberUtils
+>                      .createNumber("" + Double.MAX_VALUE));
+> -        
+> -        // LANG-822
+> -        // ensure that the underlying negative number would create a BigDecimal
+> -        final Number bigNum = NumberUtils.createNumber("-1.1E-700F");
+> -        assertEquals(BigDecimal.class,bigNum.getClass());
+> -        assertNotNull(bigNum);
+> -
+> -        // Check that the code fails to create a valid number when preceeded by -- rather than -
+> -        try {
+> -            NumberUtils.createNumber("--1.1E-700F");
+> -            fail("Expected NumberFormatException");
+> -        } catch (NumberFormatException nfe) {
+> -            // expected
+> -        }
+>      }
+>  
+>      @Test

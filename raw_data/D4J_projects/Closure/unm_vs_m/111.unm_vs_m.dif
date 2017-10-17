@@ -1,0 +1,25 @@
+2c2
+< index e3c599d..1706e34 100644
+---
+> index e3c599d6..8e69edff 100644
+5c5
+< @@ -51,8 +51,7 @@ public class ClosureReverseAbstractInterpreter
+---
+> @@ -51,8 +51,9 @@ public class ClosureReverseAbstractInterpreter
+10a11,12
+> +          // Ideally, we would like to return any subtype of Array.
+> +          // Since that's not possible, we don't restrict the type.
+14a17,29
+> diff --git a/test/com/google/javascript/jscomp/ClosureReverseAbstractInterpreterTest.java b/test/com/google/javascript/jscomp/ClosureReverseAbstractInterpreterTest.java
+> index 8c0b4299..e6e6f8c5 100644
+> --- a/test/com/google/javascript/jscomp/ClosureReverseAbstractInterpreterTest.java
+> +++ b/test/com/google/javascript/jscomp/ClosureReverseAbstractInterpreterTest.java
+> @@ -205,7 +205,7 @@ public class ClosureReverseAbstractInterpreterTest extends
+>    public void testGoogIsArray2() throws Exception {
+>      testClosureFunction("goog.isArray",
+>          ALL_TYPE,
+> -        ARRAY_TYPE,
+> +        ALL_TYPE, // TODO(johnlenz): should be ARRAY_TYPE?
+>          ALL_TYPE);
+>    }
+>  

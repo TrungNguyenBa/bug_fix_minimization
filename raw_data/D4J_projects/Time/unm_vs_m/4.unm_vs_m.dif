@@ -1,0 +1,82 @@
+0a1,15
+> diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+> index 64b87dca..69ff24bc 100644
+> --- a/RELEASE-NOTES.txt
+> +++ b/RELEASE-NOTES.txt
+> @@ -63,10 +63,6 @@ Bug fixes since 2.3
+>  - Period.normalizedStandard(PeriodType) [#79]
+>    Fix handling of PeriodType when either years or months missing
+>  
+> -- Partial.with(DateTimeFieldType,int) [#88]
+> -  Validation in this method was not as thorough as that in the constructor
+> -  This allowed invalid partials to be created
+> -
+>  - Better Javadoc for parsing of numbers in format patterns [#60]
+>  
+>  - Remove uncaughtException calls [#59]
+2c17
+< index 8e8e603..0d4edf4 100644
+---
+> index 8e8e6034..aaf0a0fd 100644
+5c20,29
+< @@ -461,7 +461,7 @@ public final class Partial
+---
+> @@ -1,5 +1,5 @@
+>  /*
+> - *  Copyright 2001-2013 Stephen Colebourne
+> + *  Copyright 2001-2009 Stephen Colebourne
+>   *
+>   *  Licensed under the Apache License, Version 2.0 (the "License");
+>   *  you may not use this file except in compliance with the License.
+> @@ -459,9 +459,8 @@ public final class Partial
+>              newValues[i] = value;
+>              System.arraycopy(iTypes, i, newTypes, i + 1, newTypes.length - i - 1);
+7,8c31,32
+<              // use public constructor to ensure full validation
+<              // this isn't overly efficient, but is safe
+---
+> -            // use public constructor to ensure full validation
+> -            // this isn't overly efficient, but is safe
+9a34
+> +            
+13a39,78
+> diff --git a/src/test/java/org/joda/time/TestPartial_Basics.java b/src/test/java/org/joda/time/TestPartial_Basics.java
+> index ceaa1500..715d2c19 100644
+> --- a/src/test/java/org/joda/time/TestPartial_Basics.java
+> +++ b/src/test/java/org/joda/time/TestPartial_Basics.java
+> @@ -357,15 +357,6 @@ public class TestPartial_Basics extends TestCase {
+>          check(test, 10, 20);
+>      }
+>  
+> -    public void testWith3() {
+> -        Partial test = createHourMinPartial();
+> -        try {
+> -            test.with(DateTimeFieldType.clockhourOfDay(), 6);
+> -            fail();
+> -        } catch (IllegalArgumentException ex) {}
+> -        check(test, 10, 20);
+> -    }
+> -
+>      public void testWith3a() {
+>          Partial test = createHourMinPartial();
+>          Partial result = test.with(DateTimeFieldType.secondOfMinute(), 15);
+> diff --git a/src/test/java/org/joda/time/TestPartial_Constructors.java b/src/test/java/org/joda/time/TestPartial_Constructors.java
+> index 9a91bfad..f302fa58 100644
+> --- a/src/test/java/org/joda/time/TestPartial_Constructors.java
+> +++ b/src/test/java/org/joda/time/TestPartial_Constructors.java
+> @@ -345,15 +345,6 @@ public class TestPartial_Constructors extends TestCase {
+>          } catch (IllegalArgumentException ex) {
+>              assertMessageContains(ex, "must not", "duplicate");
+>          }
+> -        
+> -        types = new DateTimeFieldType[] {
+> -            DateTimeFieldType.dayOfMonth(), DateTimeFieldType.clockhourOfDay(), DateTimeFieldType.hourOfDay() };
+> -        try {
+> -            new Partial(types, values);
+> -            fail();
+> -        } catch (IllegalArgumentException ex) {
+> -            assertMessageContains(ex, "must not", "duplicate");
+> -        }
+>      }
+>  
+>      /**

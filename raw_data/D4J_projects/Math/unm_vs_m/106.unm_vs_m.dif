@@ -1,0 +1,96 @@
+2c2
+< index a98b665..df2713d 100644
+---
+> index a98b6657c..5dfa386a1 100644
+5c5,28
+< @@ -162,11 +162,7 @@ public class ProperFractionFormat extends FractionFormat {
+---
+> @@ -24,10 +24,6 @@ import org.apache.commons.math.util.MathUtils;
+>  /**
+>   * Formats a Fraction number in proper format.  The number format for each of
+>   * the whole number, numerator and, denominator can be configured.
+> - * <p>
+> - * Minus signs are only allowed in the whole number part - i.e.,
+> - * "-3 1/2" is legitimate and denotes -7/2, but "-3 -1/2" is invalid and
+> - * will result in a <code>ParseException</code>.
+>   * 
+>   * @since 1.1
+>   * @version $Revision$ $Date$
+> @@ -118,11 +114,6 @@ public class ProperFractionFormat extends FractionFormat {
+>      /**
+>       * Parses a string to produce a {@link Fraction} object.  This method
+>       * expects the string to be formatted as a proper fraction.
+> -     * <p>
+> -     * Minus signs are only allowed in the whole number part - i.e.,
+> -     * "-3 1/2" is legitimate and denotes -7/2, but "-3 -1/2" is invalid and
+> -     * will result in a <code>ParseException</code>.
+> -     * 
+>       * @param source the string to parse
+>       * @param pos input/ouput parsing parameter.
+>       * @return the parsed {@link Fraction} object.
+> @@ -162,12 +153,6 @@ public class ProperFractionFormat extends FractionFormat {
+10c33
+<              // minus signs should be leading, invalid expression
+---
+> -            // minus signs should be leading, invalid expression
+14c37
+<  
+---
+> -
+17c40,41
+< @@ -201,11 +197,7 @@ public class ProperFractionFormat extends FractionFormat {
+---
+>          char c = parseNextCharacter(source, pos);
+> @@ -201,12 +186,6 @@ public class ProperFractionFormat extends FractionFormat {
+22c46
+<              // minus signs must be leading, invalid
+---
+> -            // minus signs must be leading, invalid
+26c50
+<  
+---
+> -
+28a53,95
+>          int d = den.intValue();
+> diff --git a/src/test/org/apache/commons/math/fraction/FractionFormatTest.java b/src/test/org/apache/commons/math/fraction/FractionFormatTest.java
+> index edfe945a8..eef784044 100644
+> --- a/src/test/org/apache/commons/math/fraction/FractionFormatTest.java
+> +++ b/src/test/org/apache/commons/math/fraction/FractionFormatTest.java
+> @@ -229,23 +229,6 @@ public class FractionFormatTest extends TestCase {
+>          }
+>      }
+>      
+> -    public void testParseProperInvalidMinus() {
+> -        String source = "2 -2 / 3";
+> -        try {
+> -            Fraction c = properFormat.parse(source);
+> -            fail("invalid minus in improper fraction.");
+> -        } catch (ParseException ex) {
+> -            // expected
+> -        }
+> -        source = "2 2 / -3";
+> -        try {
+> -            Fraction c = properFormat.parse(source);
+> -            fail("invalid minus in improper fraction.");
+> -        } catch (ParseException ex) {
+> -            // expected
+> -        }
+> -    }
+> -    
+>      public void testNumeratorFormat() {
+>      	NumberFormat old = properFormat.getNumeratorFormat();
+>          NumberFormat nf = NumberFormat.getInstance();
+> diff --git a/xdocs/changes.xml b/xdocs/changes.xml
+> index a9d126ce2..1cc4de54b 100644
+> --- a/xdocs/changes.xml
+> +++ b/xdocs/changes.xml
+> @@ -49,9 +49,6 @@ Commons Math Release Notes</title>
+>        <action dev="psteitz" type="update" issue="MATH-148" due-to="Joni Salonen">
+>          Added QR Decomposition.
+>        </action>
+> -      <action dev="psteitz" type="fix" issue="MATH-60" due-to="Nhung Nnguyen">
+> -        Modified ProperFractionFormat to reject embedded minus signs.
+> -      </action>
+>      </release>
+>      <release version="1.1" date="2005-12-17"  
+>   description="This is a maintenance release containing bug fixes and enhancements.

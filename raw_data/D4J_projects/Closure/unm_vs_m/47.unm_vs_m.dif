@@ -1,0 +1,280 @@
+0a1,36
+> diff --git a/src/com/google/debugging/sourcemap/FilePosition.java b/src/com/google/debugging/sourcemap/FilePosition.java
+> index f84320a0..cc7243bb 100644
+> --- a/src/com/google/debugging/sourcemap/FilePosition.java
+> +++ b/src/com/google/debugging/sourcemap/FilePosition.java
+> @@ -20,6 +20,9 @@ package com.google.debugging.sourcemap;
+>   * Represents a position in a source file.
+>   *
+>   */
+> +/**
+> + * Represents a position in a source file.
+> + */
+>  public class FilePosition {
+>    private final int line;
+>    private final int column;
+> @@ -30,18 +33,15 @@ public class FilePosition {
+>    }
+>  
+>    /**
+> -   * Returns the line number of this position.
+> -   * Note: The v1 and v2 source maps use a line number with the first line
+> -   * being 1, whereas the v3 source map corrects this and uses a first line
+> -   * number of 0 to be consistent with the column representation.
+> +   * Returns the line number of this postion.
+>     */
+>    public int getLine() {
+>      return line;
+>    }
+>  
+>    /**
+> -   * @return the character index on the line
+> -   * of this position, with the first column being 0.
+> +   * Returns the character index on the line
+> +   * of this position.
+>     */
+>    public int getColumn() {
+>      return column;
+2c38
+< index 5ee9108..d67dc10 100644
+---
+> index 5ee9108c..3b07ae45 100644
+5,6c41,45
+< @@ -486,8 +486,8 @@ public class SourceMapConsumerV3 implements SourceMapConsumer,
+<        // Adjust the line/column here to be start at 1.
+---
+> @@ -483,11 +483,10 @@ public class SourceMapConsumerV3 implements SourceMapConsumer,
+>      if (entry.getSourceFileId() == UNMAPPED) {
+>        return null;
+>      } else {
+> -      // Adjust the line/column here to be start at 1.
+17c56
+< index 7192408..835dfa4 100644
+---
+> index 71924081..04ff6233 100644
+20,23c59,75
+< @@ -135,15 +135,10 @@ public class SourceMap {
+<      // zero based.
+<      // We don't change this for the v1 or v2 source maps but for
+<      // v3 we make them both 0 based.
+---
+> @@ -22,8 +22,6 @@ import com.google.debugging.sourcemap.FilePosition;
+>  import com.google.debugging.sourcemap.SourceMapFormat;
+>  import com.google.debugging.sourcemap.SourceMapGenerator;
+>  import com.google.debugging.sourcemap.SourceMapGeneratorFactory;
+> -import com.google.debugging.sourcemap.SourceMapGeneratorV1;
+> -import com.google.debugging.sourcemap.SourceMapGeneratorV2;
+>  import com.google.javascript.rhino.Node;
+>  
+>  import java.io.IOException;
+> @@ -131,19 +129,9 @@ public class SourceMap {
+>  
+>      String originalName = (String) node.getProp(Node.ORIGINALNAME_PROP);
+>  
+> -    // Strangely, Rhino source lines are one based but columns are
+> -    // zero based.
+> -    // We don't change this for the v1 or v2 source maps but for
+> -    // v3 we make them both 0 based.
+29c81
+<  
+---
+> -
+36a89,286
+> diff --git a/test/com/google/debugging/sourcemap/SourceMapGeneratorV1Test.java b/test/com/google/debugging/sourcemap/SourceMapGeneratorV1Test.java
+> index 1d3c3a33..b3b23994 100644
+> --- a/test/com/google/debugging/sourcemap/SourceMapGeneratorV1Test.java
+> +++ b/test/com/google/debugging/sourcemap/SourceMapGeneratorV1Test.java
+> @@ -25,10 +25,6 @@ import com.google.javascript.jscomp.SourceMap.Format;
+>   */
+>  public class SourceMapGeneratorV1Test extends SourceMapTestCase {
+>  
+> -  public SourceMapGeneratorV1Test() {
+> -    disableColumnValidation();
+> -  }
+> -
+>    @Override
+>    protected SourceMapConsumer getSourceMapConsumer() {
+>      return new SourceMapConsumerV1();
+> diff --git a/test/com/google/debugging/sourcemap/SourceMapGeneratorV2Test.java b/test/com/google/debugging/sourcemap/SourceMapGeneratorV2Test.java
+> index 0932b54e..370467ce 100644
+> --- a/test/com/google/debugging/sourcemap/SourceMapGeneratorV2Test.java
+> +++ b/test/com/google/debugging/sourcemap/SourceMapGeneratorV2Test.java
+> @@ -28,10 +28,6 @@ import java.io.IOException;
+>   */
+>  public class SourceMapGeneratorV2Test extends SourceMapTestCase {
+>  
+> -  public SourceMapGeneratorV2Test() {
+> -    disableColumnValidation();
+> -  }
+> -
+>    @Override
+>    protected SourceMapConsumer getSourceMapConsumer() {
+>      return new SourceMapConsumerV2();
+> diff --git a/test/com/google/debugging/sourcemap/SourceMapGeneratorV3Test.java b/test/com/google/debugging/sourcemap/SourceMapGeneratorV3Test.java
+> index 6e2f45e2..1d008f6f 100644
+> --- a/test/com/google/debugging/sourcemap/SourceMapGeneratorV3Test.java
+> +++ b/test/com/google/debugging/sourcemap/SourceMapGeneratorV3Test.java
+> @@ -32,9 +32,6 @@ import java.util.List;
+>   */
+>  public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>  
+> -  public SourceMapGeneratorV3Test() {
+> -  }
+> -
+>    @Override
+>    protected SourceMapConsumer getSourceMapConsumer() {
+>      return new SourceMapConsumerV3();
+> @@ -57,7 +54,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>                     "\"version\":3,\n" +
+>                     "\"file\":\"testcode\",\n" +
+>                     "\"lineCount\":1,\n" +
+> -                   "\"mappings\":\"AAAAA,QAASA,UAAS,EAAG;\",\n" +
+> +                   "\"mappings\":\"AACAA,QAASA,UAAS,EAAG;\",\n" +
+>                     "\"sources\":[\"testcode\"],\n" +
+>                     "\"names\":[\"__BASIC__\"]\n" +
+>                     "}\n");
+> @@ -81,7 +78,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>                     "\"version\":3,\n" +
+>                     "\"file\":\"testcode\",\n" +
+>                     "\"lineCount\":1,\n" +
+> -                   "\"mappings\":\"AAAAA,QAASA,UAAS,CAACC,UAAD,CAAaC,UAAb," +
+> +                   "\"mappings\":\"AACAA,QAASA,UAAS,CAACC,UAAD,CAAaC,UAAb," +
+>                         "CAAyB,CAAE,IAAIC,QAAU,SAAhB;\",\n" +
+>                     "\"sources\":[\"testcode\"],\n" +
+>                     "\"names\":[\"__BASIC__\",\"__PARAM1__\",\"__PARAM2__\"," +
+> @@ -129,20 +126,6 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>                     "}\n");
+>    }
+>  
+> -  public void testGoldenOutput0a() throws Exception {
+> -    // Empty source map test
+> -    checkSourceMap("a;",
+> -
+> -                   "{\n" +
+> -                   "\"version\":3,\n" +
+> -                   "\"file\":\"testcode\",\n" +
+> -                   "\"lineCount\":1,\n" +
+> -                   "\"mappings\":\"AAAAA;\",\n" +
+> -                   "\"sources\":[\"testcode\"],\n" +
+> -                   "\"names\":[\"a\"]\n" +
+> -                   "}\n");
+> -  }
+> -
+>    public void testGoldenOutput1() throws Exception {
+>      detailLevel = SourceMap.DetailLevel.ALL;
+>  
+> @@ -152,7 +135,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>                     "\"version\":3,\n" +
+>                     "\"file\":\"testcode\",\n" +
+>                     "\"lineCount\":1,\n" +
+> -                   "\"mappings\":\"AAAAA,QAASA,EAAC,CAACC,GAAD,CAAMC,GAAN," +
+> +                   "\"mappings\":\"AACAA,QAASA,EAAC,CAACC,GAAD,CAAMC,GAAN," +
+>                         "CAAW,CAAED,GAAA,CAAMA,GAAN,CAAYC,GAAZ,CAAkB,CAAG," +
+>                         "OAAOD,IAA9B;\",\n" +
+>                     "\"sources\":[\"testcode\"],\n" +
+> @@ -167,7 +150,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>                     "\"version\":3,\n" +
+>                     "\"file\":\"testcode\",\n" +
+>                     "\"lineCount\":1,\n" +
+> -                   "\"mappings\":\"AAAAA,QAASA,EAATA,CAAWC,GAAXD,CAAgBE," +
+> +                   "\"mappings\":\"AACAA,QAASA,EAATA,CAAWC,GAAXD,CAAgBE," +
+>                         "GAAhBF,EAAuBC,GAAvBD,CAA6BC,GAA7BD,CAAmCE,GAAnCF," +
+>                         "SAAmDC,IAAnDD;\",\n" +
+>                     "\"sources\":[\"testcode\"],\n" +
+> @@ -183,7 +166,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>                     "\"version\":3,\n" +
+>                     "\"file\":\"testcode\",\n" +
+>                     "\"lineCount\":1,\n" +
+> -                   "\"mappings\":\"AAAAA,QAASA,EAAC,CAACC,GAAD,CAAMC,GAAN," +
+> +                   "\"mappings\":\"AACAA,QAASA,EAAC,CAACC,GAAD,CAAMC,GAAN," +
+>                         "CAAW,CAIrBD,GAAA,CAAMA,GAAN,CAAYC,GAAZ,CAAkBD," +
+>                         "GAClB,OAAOA,IALc;\",\n" +
+>                     "\"sources\":[\"testcode\"],\n" +
+> @@ -199,7 +182,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>                     "\"version\":3,\n" +
+>                     "\"file\":\"testcode\",\n" +
+>                     "\"lineCount\":1,\n" +
+> -                   "\"mappings\":\"AAAAA;\",\n" +
+> +                   "\"mappings\":\"AACAA;\",\n" +
+>                     "\"sources\":[\"c:\\\\myfile.js\"],\n" +
+>                     "\"names\":[\"foo\"]\n" +
+>                     "}\n");
+> @@ -213,7 +196,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>                     "\"version\":3,\n" +
+>                     "\"file\":\"testcode\",\n" +
+>                     "\"lineCount\":1,\n" +
+> -                   "\"mappings\":\"AAAAA,GAAOC,IAAOC;\",\n" +
+> +                   "\"mappings\":\"AACAA,GAAOC,IAAOC;\",\n" +
+>                     "\"sources\":[\"c:\\\\myfile.js\"],\n" +
+>                     "\"names\":[\"foo\",\"boo\",\"goo\"]\n" +
+>                     "}\n");
+> @@ -259,7 +242,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>          "\"version\":3,\n" +
+>          "\"file\":\"testcode\",\n" +
+>          "\"lineCount\":6,\n" +
+> -        "\"mappings\":\"A;;;;AAGA,IAAIA,IAAIC,CAAJD,CAAQ,mxCAARA;AAA8xCE," +
+> +        "\"mappings\":\"A;;;;AAIA,IAAIA,IAAIC,CAAJD,CAAQ,mxCAARA;AAA8xCE," +
+>              "CAA9xCF,CAAkyCG,CAAlyCH,CAAsyCI;\",\n" +
+>          "\"sources\":[\"c:\\\\myfile.js\"],\n" +
+>          "\"names\":[\"foo\",\"a\",\"c\",\"d\",\"e\"]\n" +
+> @@ -303,7 +286,7 @@ public class SourceMapGeneratorV3Test extends SourceMapTestCase {
+>          "\"version\":3,\n" +
+>          "\"file\":\"testcode\",\n" +
+>          "\"lineCount\":6,\n" +
+> -        "\"mappings\":\"A;;;;IAGIA,IAAIC,CAAJD;AAA8xCE,CAA9xCF,CAAkyCG," +
+> +        "\"mappings\":\"A;;;;IAIIA,IAAIC,CAAJD;AAA8xCE,CAA9xCF,CAAkyCG," +
+>              "CAAlyCH,CAAsyCI;\",\n" +
+>          "\"sources\":[\"c:\\\\myfile.js\"],\n" +
+>          "\"names\":[\"foo\",\"a\",\"c\",\"d\",\"e\"]\n" +
+> diff --git a/test/com/google/debugging/sourcemap/SourceMapTestCase.java b/test/com/google/debugging/sourcemap/SourceMapTestCase.java
+> index 694f93f4..802fef59 100644
+> --- a/test/com/google/debugging/sourcemap/SourceMapTestCase.java
+> +++ b/test/com/google/debugging/sourcemap/SourceMapTestCase.java
+> @@ -37,15 +37,7 @@ import java.util.Map.Entry;
+>   */
+>  public abstract class SourceMapTestCase extends TestCase {
+>  
+> -  private boolean validateColumns = true;
+> -
+> -  public SourceMapTestCase() {
+> -  }
+> -
+> -  void disableColumnValidation() {
+> -    validateColumns = false;
+> -  }
+> -
+> +  public SourceMapTestCase() {}
+>  
+>    static final JSSourceFile[] EXTERNS = {
+>        JSSourceFile.fromCode("externs", "")
+> @@ -242,16 +234,6 @@ public abstract class SourceMapTestCase extends TestCase {
+>        assertEquals(mapping.getLineNumber(),
+>                     inputToken.position.getLine() + 1);
+>  
+> -      int start = inputToken.position.getColumn() + 1;
+> -      if (inputToken.tokenName.startsWith("STR")) {
+> -        // include the preceding quote.
+> -        start--;
+> -      }
+> -
+> -      if (validateColumns) {
+> -        assertEquals(start, mapping.getColumnPosition());
+> -      }
+> -
+>        // Ensure that if the token name does not being with an 'STR' (meaning a
+>        // string) it has an original name.
+>        if (!inputToken.tokenName.startsWith("STR")) {
+> diff --git a/test/com/google/javascript/jscomp/SourceMapTest.java b/test/com/google/javascript/jscomp/SourceMapTest.java
+> index 84f4492d..10fcfd12 100644
+> --- a/test/com/google/javascript/jscomp/SourceMapTest.java
+> +++ b/test/com/google/javascript/jscomp/SourceMapTest.java
+> @@ -31,9 +31,6 @@ import java.util.List;
+>   */
+>  public class SourceMapTest extends SourceMapTestCase {
+>  
+> -  public SourceMapTest() {
+> -  }
+> -
+>    private List<SourceMap.LocationMapping> mappings;
+>  
+>    public void testPrefixReplacement1() throws IOException {

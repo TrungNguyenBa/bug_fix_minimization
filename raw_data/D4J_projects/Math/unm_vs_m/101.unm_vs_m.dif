@@ -1,0 +1,53 @@
+2c2
+< index 0757d9b..b404bc4 100644
+---
+> index 0757d9b91..c22d87305 100644
+5c5
+< @@ -374,8 +374,7 @@ public class ComplexFormat extends Format implements Serializable {
+---
+> @@ -374,9 +374,7 @@ public class ComplexFormat extends Format implements Serializable {
+11,12c11,12
+< +        if (
+<              source.substring(startIndex, endIndex).compareTo(
+---
+> -            source.substring(startIndex, endIndex).compareTo(
+> +        if (source.substring(startIndex, endIndex).compareTo(
+14a15,52
+>              // character examined.
+> diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+> index f5aabb0d1..0761b2445 100644
+> --- a/src/site/xdoc/changes.xml
+> +++ b/src/site/xdoc/changes.xml
+> @@ -44,9 +44,6 @@ Commons Math Release Notes</title>
+>        <action dev="brentworden" type="fix" issue="MATH-193" due-to="Michael Heuer and Sebb">
+>          Javadoc and style fixes.
+>        </action>
+> -      <action dev="luc" type="fix" issue="MATH-198" due-to="Frederick Salardi">
+> -        added an error detection for missing imaginary character while parsing complex string
+> -      </action>
+>      </release>
+>      <release version="1.2" date="2008-02-24"
+>      description="This release combines bug fixes and new features. Most notable
+> diff --git a/src/test/org/apache/commons/math/complex/ComplexFormatAbstractTest.java b/src/test/org/apache/commons/math/complex/ComplexFormatAbstractTest.java
+> index 2260a0906..2cb1eff13 100644
+> --- a/src/test/org/apache/commons/math/complex/ComplexFormatAbstractTest.java
+> +++ b/src/test/org/apache/commons/math/complex/ComplexFormatAbstractTest.java
+> @@ -19,7 +19,6 @@ package org.apache.commons.math.complex;
+>  
+>  import java.text.NumberFormat;
+>  import java.text.ParseException;
+> -import java.text.ParsePosition;
+>  import java.util.Locale;
+>  
+>  import junit.framework.TestCase;
+> @@ -349,10 +348,4 @@ public abstract class ComplexFormatAbstractTest extends TestCase {
+>              // success
+>          }
+>      }
+> -
+> -    public void testForgottenImaginaryCharacter() {
+> -        ParsePosition pos = new ParsePosition(0);
+> -        assertNull(new ComplexFormat().parse("1 + 1", pos));
+> -        assertEquals(5, pos.getErrorIndex());
+> -    }
+>  }

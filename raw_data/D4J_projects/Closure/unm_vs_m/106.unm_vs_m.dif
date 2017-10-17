@@ -1,0 +1,71 @@
+0a1,3
+> diff --git a/lib/google_common_deploy.jar b/lib/google_common_deploy.jar
+> index ccc9d678..46d7efa3 100755
+> Binary files a/lib/google_common_deploy.jar and b/lib/google_common_deploy.jar differ
+2c5
+< index 47ea27a..d7e85df 100644
+---
+> index 47ea27a1..58f1370b 100644
+5,8c8,15
+< @@ -904,10 +904,6 @@ class GlobalNamespace {
+<        // Don't try to collapse if the one global set is a twin reference.
+<        // We could theoretically handle this case in CollapseProperties, but
+<        // it's probably not worth the effort.
+---
+> @@ -900,15 +900,6 @@ class GlobalNamespace {
+>        if (type == Type.OTHER || globalSets != 1 || localSets != 0) {
+>          return false;
+>        }
+> -
+> -      // Don't try to collapse if the one global set is a twin reference.
+> -      // We could theoretically handle this case in CollapseProperties, but
+> -      // it's probably not worth the effort.
+13c20
+<  
+---
+> -
+15a23
+>        }
+17c25
+< index bdfc2e8..1311638 100644
+---
+> index bdfc2e80..d7983173 100644
+29a38,75
+> diff --git a/test/com/google/javascript/jscomp/CheckSideEffectsTest.java b/test/com/google/javascript/jscomp/CheckSideEffectsTest.java
+> index b3d11692..76dc7260 100644
+> --- a/test/com/google/javascript/jscomp/CheckSideEffectsTest.java
+> +++ b/test/com/google/javascript/jscomp/CheckSideEffectsTest.java
+> @@ -81,9 +81,4 @@ public class CheckSideEffectsTest extends CompilerTestCase {
+>      test("function A() { this.foo; }", e);
+>      test("function A() { /** @type Number */ this.foo; }", ok);
+>    }
+> -
+> -  public void testJSDocComments() {
+> -    test("function A() { /** This is a jsdoc comment */ this.foo; }", ok);
+> -    test("function A() { /* This is a normal comment */ this.foo; }", e);
+> -  }
+>  }
+> diff --git a/test/com/google/javascript/jscomp/CollapsePropertiesTest.java b/test/com/google/javascript/jscomp/CollapsePropertiesTest.java
+> index cac15c28..b5c2960b 100644
+> --- a/test/com/google/javascript/jscomp/CollapsePropertiesTest.java
+> +++ b/test/com/google/javascript/jscomp/CollapsePropertiesTest.java
+> @@ -1096,19 +1096,4 @@ public class CollapsePropertiesTest extends CompilerTestCase {
+>           "var a$b = CreateClass({c: function() {}});" +
+>           "var a$d = CreateClass({c: a$b.prototype.c});");
+>    }
+> -
+> -  public void testCrashInCommaOperator() {
+> -    test("var a = {}; a.b = function() {},a.b();",
+> -         "var a$b; a$b=function() {},a$b();");
+> -  }
+> -
+> -  public void testCrashInNestedAssign() {
+> -    test("var a = {}; if (a.b = function() {}) a.b();",
+> -         "var a$b; if (a$b=function() {}) { a$b(); }");
+> -  }
+> -
+> -  public void testTwinReferenceCancelsChildCollapsing() {
+> -    test("var a = {}; if (a.b = function() {}) { a.b.c = 3; a.b(a.b.c); }",
+> -         "var a$b; if (a$b = function() {}) { a$b.c = 3; a$b(a$b.c); }");
+> -  }
+>  }

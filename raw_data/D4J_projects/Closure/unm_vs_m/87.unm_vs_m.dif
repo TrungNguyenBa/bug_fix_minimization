@@ -1,0 +1,94 @@
+2c2
+< index 6c4ee4a..9498fa6 100644
+---
+> index 6c4ee4a9..11f0af2e 100644
+5c5,30
+< @@ -520,29 +520,17 @@ public class PeepholeSubstituteAlternateSyntax
+---
+> @@ -272,7 +272,7 @@ public class PeepholeSubstituteAlternateSyntax
+>      Node elseBranch = thenBranch.getNext();
+>  
+>      if (elseBranch == null) {
+> -      if (isFoldableExpressBlock(thenBranch)) {
+> +      if (isExpressBlock(thenBranch)) {
+>          Node expr = getBlockExpression(thenBranch);
+>          if (isPropertyAssignmentInExpression(expr)) {
+>            // Keep opportunities for CollapseProperties such as
+> @@ -353,8 +353,8 @@ public class PeepholeSubstituteAlternateSyntax
+>        return returnNode;
+>      }
+>  
+> -    boolean thenBranchIsExpressionBlock = isFoldableExpressBlock(thenBranch);
+> -    boolean elseBranchIsExpressionBlock = isFoldableExpressBlock(elseBranch);
+> +    boolean thenBranchIsExpressionBlock = isExpressBlock(thenBranch);
+> +    boolean elseBranchIsExpressionBlock = isExpressBlock(elseBranch);
+>  
+>      if (thenBranchIsExpressionBlock && elseBranchIsExpressionBlock) {
+>        Node thenOp = getBlockExpression(thenBranch).getFirstChild();
+> @@ -516,33 +516,10 @@ public class PeepholeSubstituteAlternateSyntax
+>     * @return Whether the node is a block with a single statement that is
+>     *     an expression.
+>     */
+> -  private boolean isFoldableExpressBlock(Node n) {
+> +  private boolean isExpressBlock(Node n) {
+8c33
+<          Node maybeExpr = n.getFirstChild();
+---
+> -        Node maybeExpr = n.getFirstChild();
+10,15c35,40
+<            // IE has a bug where event handlers behave differently when
+<            // their return value is used vs. when their return value is in
+<            // an EXPR_RESULT. It's pretty freaking weird. See:
+<            // http://code.google.com/p/closure-compiler/issues/detail?id=291
+<            // We try to detect this case, and not fold EXPR_RESULTs
+<            // into other expressions.
+---
+> -          // IE has a bug where event handlers behave differently when
+> -          // their return value is used vs. when their return value is in
+> -          // an EXPR_RESULT. It's pretty freaking weird. See:
+> -          // http://code.google.com/p/closure-compiler/issues/detail?id=291
+> -          // We try to detect this case, and not fold EXPR_RESULTs
+> -          // into other expressions.
+18,20c43,45
+<  
+<              // We only have to worry about methods with an implicit 'this'
+<              // param, or this doesn't happen.
+---
+> -
+> -            // We only have to worry about methods with an implicit 'this'
+> -            // param, or this doesn't happen.
+28c53
+<  
+---
+> -
+32c57
+< +          return NodeUtil.isExpressionNode(maybeExpr);
+---
+> +        return NodeUtil.isExpressionNode(n.getFirstChild());
+35a61,86
+> @@ -553,7 +530,7 @@ public class PeepholeSubstituteAlternateSyntax
+>     * @return The expression node.
+>     */
+>    private Node getBlockExpression(Node n) {
+> -    Preconditions.checkState(isFoldableExpressBlock(n));
+> +    Preconditions.checkState(isExpressBlock(n));
+>      return n.getFirstChild();
+>    }
+>  
+> diff --git a/test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java b/test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java
+> index 47d3e5c3..1de263fe 100644
+> --- a/test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java
+> +++ b/test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java
+> @@ -562,12 +562,4 @@ public class PeepholeSubstituteAlternateSyntaxTest extends CompilerTestCase {
+>  
+>      foldSame("function f() { try{ return a } finally { a = 2 } return a; }");
+>    }
+> -
+> -  public void testIssue291() {
+> -    fold("if (true) { f.onchange(); }", "if (1) f.onchange();");
+> -    foldSame("if (f) { f.onchange(); }");
+> -    foldSame("if (f) { f.bar(); } else { f.onchange(); }");
+> -    fold("if (f) { f.bonchange(); }", "f && f.bonchange();");
+> -    foldSame("if (f) { f['x'](); }");
+> -  }
+>  }

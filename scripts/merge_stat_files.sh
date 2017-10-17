@@ -1,11 +1,12 @@
 #! /bin/bash
 
-if [[ "$#" -ne 1 ]]; then
-	echo "usage $0 <file directory>"
+if [[ "$#" -ne 1 ] || [ "$#" -ne 2 ]]; then
+	echo "usage $0 <file directory> <ignored files list (optional)>"
 	exit
 fi
 #parent directory 
 pdirectory=$1
+ignored_file=$2
 projects_String=$(ls -1 $pdirectory)
 #get all projects
 IFS=$'\n| |\t' read -rd '' -a projects <<< "$projects_String"

@@ -1,0 +1,61 @@
+2c2
+< index 936af02..709534b 100644
+---
+> index 936af02e..c916cf84 100644
+5c5,13
+< @@ -249,8 +249,7 @@ class IRFactory {
+---
+> @@ -74,7 +74,6 @@ import com.google.javascript.rhino.head.ast.WithStatement;
+>  import com.google.javascript.rhino.jstype.StaticSourceFile;
+>  
+>  import java.util.Set;
+> -import java.util.regex.Pattern;
+>  
+>  /**
+>   * IRFactory transforms the new AST to the old AST.
+> @@ -249,8 +248,9 @@ class IRFactory {
+11c19,21
+< +    if (comment.getValue().indexOf("/* @") != -1 || comment.getValue().indexOf("\n * @") != -1) {
+---
+> +    String value = comment.getValue();
+> +    if (value.indexOf("/* @") != -1 ||
+> +        value.indexOf("\n * @") != -1) {
+14a25,62
+> diff --git a/test/com/google/javascript/jscomp/parsing/ParserTest.java b/test/com/google/javascript/jscomp/parsing/ParserTest.java
+> index b09bc342..1298aa44 100644
+> --- a/test/com/google/javascript/jscomp/parsing/ParserTest.java
+> +++ b/test/com/google/javascript/jscomp/parsing/ParserTest.java
+> @@ -691,33 +691,6 @@ public class ParserTest extends BaseJSTypeTestCase {
+>      parse("/* \n * @type {number} */ var x = 3;", SUSPICIOUS_COMMENT_WARNING);
+>    }
+>  
+> -  public void testSuspiciousBlockCommentWarning3() {
+> -    parse("/* \n *@type {number} */ var x = 3;", SUSPICIOUS_COMMENT_WARNING);
+> -  }
+> -
+> -  public void testSuspiciousBlockCommentWarning4() {
+> -    parse(
+> -        "  /*\n" +
+> -        "   * @type {number}\n" +
+> -        "   */\n" +
+> -        "  var x = 3;",
+> -        SUSPICIOUS_COMMENT_WARNING);
+> -  }
+> -
+> -  public void testSuspiciousBlockCommentWarning5() {
+> -    parse(
+> -        "  /*\n" +
+> -        "   * some random text here\n" +
+> -        "   * @type {number}\n" +
+> -        "   */\n" +
+> -        "  var x = 3;",
+> -        SUSPICIOUS_COMMENT_WARNING);
+> -  }
+> -
+> -  public void testSuspiciousBlockCommentWarning6() {
+> -    parse("/* @type{number} */ var x = 3;", SUSPICIOUS_COMMENT_WARNING);
+> -  }
+> -
+>    public void testCatchClauseForbidden() {
+>      parseError("try { } catch (e if true) {}",
+>          "Catch clauses are not supported");

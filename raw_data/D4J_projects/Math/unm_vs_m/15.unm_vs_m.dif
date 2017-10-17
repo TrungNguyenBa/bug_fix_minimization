@@ -1,0 +1,54 @@
+0a1,14
+> diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+> index 7ee686e97..dac692977 100644
+> --- a/src/changes/changes.xml
+> +++ b/src/changes/changes.xml
+> @@ -52,9 +52,6 @@ If the output is not quite correct, check for invisible trailing spaces!
+>    <body>
+>      <release version="3.1" date="TBD" description="
+>  ">
+> -      <action dev="erans" type="fix" issue="MATH-904" due-to="Jeff Hain">
+> -        Fixed "pow" method in class "FastMath".
+> -      </action>
+>        <action dev="erans" type="update" issue="MATH-902" due-to="Bruce A. Johnson">
+>          Created a "maximum number of iterations" stopping criterion in the
+>          convergence checkers (package "o.a.c.m.optimization") that allows the
+2c16
+< index 9dc84c6..d571325 100644
+---
+> index 9dc84c631..fd1ce2d85 100644
+5c19,20
+< @@ -310,7 +310,6 @@ public class FastMath {
+---
+> @@ -309,8 +309,6 @@ public class FastMath {
+>  
+8c23
+<      /** 2^53 - double numbers this large must be even. */
+---
+> -    /** 2^53 - double numbers this large must be even. */
+13c28
+< @@ -1539,7 +1538,7 @@ public class FastMath {
+---
+> @@ -1539,7 +1537,7 @@ public class FastMath {
+21a37,57
+> diff --git a/src/test/java/org/apache/commons/math3/util/FastMathTest.java b/src/test/java/org/apache/commons/math3/util/FastMathTest.java
+> index aee304e75..282e7b299 100644
+> --- a/src/test/java/org/apache/commons/math3/util/FastMathTest.java
+> +++ b/src/test/java/org/apache/commons/math3/util/FastMathTest.java
+> @@ -158,16 +158,6 @@ public class FastMathTest {
+>      }
+>  
+>      @Test
+> -    public void testMath904() {
+> -        final double x = -1;
+> -        final double y = (5 + 1e-15) * 1e15;
+> -        Assert.assertEquals(Math.pow(x, y),
+> -                            FastMath.pow(x, y), 0);
+> -        Assert.assertEquals(Math.pow(x, -y),
+> -                            FastMath.pow(x, -y), 0);
+> -    }
+> -
+> -    @Test
+>      public void testMath905LargePositive() {
+>          final double start = StrictMath.log(Double.MAX_VALUE);
+>          final double endT = StrictMath.sqrt(2) * StrictMath.sqrt(Double.MAX_VALUE);

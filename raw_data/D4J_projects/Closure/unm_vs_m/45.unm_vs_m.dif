@@ -1,0 +1,65 @@
+2c2
+< index c93a073..be72a58 100644
+---
+> index c93a073c..393ced60 100644
+4a5,13
+> @@ -693,7 +693,7 @@ class RemoveUnusedVars
+>     * y.foo = 3; // is a reference.
+>     * </code>
+>     *
+> -   * Interpreting assignments could mark a variable as referenced that
+> +   * Interpreting assigments could mark a variable as referenced that
+>     * wasn't referenced before, in order to keep it alive. Because we find
+>     * references by lazily traversing subtrees, marking a variable as
+>     * referenced could trigger new traversals of new subtrees, which could
+27c36,45
+< @@ -905,7 +901,7 @@ class RemoveUnusedVars
+---
+> @@ -896,18 +892,14 @@ class RemoveUnusedVars
+>      // way.
+>      final boolean mayHaveSecondarySideEffects;
+>  
+> -    // If true, the value may have escaped and any modification is a use.
+> -    final boolean maybeAliased;
+> -
+>      Assign(Node assignNode, Node nameNode, boolean isPropertyAssign) {
+>        Preconditions.checkState(NodeUtil.isAssignmentOp(assignNode));
+>        this.assignNode = assignNode;
+32d49
+< +      this.maybeAliased = !assignNode.getParent().isExprResult();
+34c51,52
+<            maybeAliased ||
+---
+> -          maybeAliased ||
+> +          !assignNode.getParent().isExprResult() ||
+35a54,83
+>            NodeUtil.mayHaveSideEffects(assignNode.getLastChild());
+>      }
+> diff --git a/test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java b/test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java
+> index fdeca052..686b1d82 100644
+> --- a/test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java
+> +++ b/test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java
+> @@ -735,23 +735,4 @@ public class RemoveUnusedVarsTest extends CompilerTestCase {
+>          "for (var i in x) { x[i].call(x); }" +
+>          "window['Foo'] = Foo;");
+>    }
+> -
+> -  public void testIssue618_1() {
+> -    this.removeGlobal = false;
+> -    testSame(
+> -        "function f() {\n" +
+> -        "  var a = [], b;\n" +
+> -        "  a.push(b = []);\n" +
+> -        "  b[0] = 1;\n" +
+> -        "  return a;\n" +
+> -        "}");
+> -  }
+> -
+> -  public void testIssue618_2() {
+> -    this.removeGlobal = false;
+> -    testSame(
+> -        "var b;\n" +
+> -        "a.push(b = []);\n" +
+> -        "b[0] = 1;\n");
+> -  }
+>  }

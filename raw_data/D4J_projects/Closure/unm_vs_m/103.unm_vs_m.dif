@@ -1,0 +1,143 @@
+2c2
+< index 6ef2548..3b67af3 100644
+---
+> index 6ef25483..d5bcabe1 100644
+5c5
+< @@ -891,7 +891,6 @@ final class ControlFlowAnalysis implements Callback, CompilerPass {
+---
+> @@ -891,13 +891,12 @@ final class ControlFlowAnalysis implements Callback, CompilerPass {
+12a13,19
+>      }
+>      for (Node c = n.getFirstChild(); c != null; c = c.getNext()) {
+> -      if (!ControlFlowGraph.isEnteringNewCfgNode(c) && mayThrowException(c)) {
+> +      if (mayThrowException(c)) {
+>          return true;
+>        }
+>      }
+14c21
+< index ca5edbd..4937879 100644
+---
+> index ca5edbd6..9d9de035 100644
+17c24,25
+< @@ -760,16 +760,9 @@ class DisambiguateProperties<T> implements CompilerPass {
+---
+> @@ -733,7 +733,7 @@ class DisambiguateProperties<T> implements CompilerPass {
+>        }
+19,20c27,38
+<        // If the property does not exist on the referenced type but the original
+<        // type is an object type, see if any subtype has the property.
+---
+>  
+> -    @Override public ObjectType getTypeWithProperty(String field, JSType type) {
+> +    @Override public JSType getTypeWithProperty(String field, JSType type) {
+>        if (!(type instanceof ObjectType)) {
+>          if (type.autoboxesTo() != null) {
+>            type = type.autoboxesTo();
+> @@ -758,18 +758,6 @@ class DisambiguateProperties<T> implements CompilerPass {
+>          }
+>          objType = objType.getImplicitPrototype();
+>        }
+> -      // If the property does not exist on the referenced type but the original
+> -      // type is an object type, see if any subtype has the property.
+24,26c42,44
+<          // getGreatestSubtypeWithProperty does not guarantee that the property
+<          // is defined on the returned type, it just indicates that it might be,
+<          // so we have to double check.
+---
+> -        // getGreatestSubtypeWithProperty does not guarantee that the property
+> -        // is defined on the returned type, it just indicates that it might be,
+> -        // so we have to double check.
+33a52,144
+> diff --git a/test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java b/test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java
+> index 82d7bd9a..a76b4a49 100644
+> --- a/test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java
+> +++ b/test/com/google/javascript/jscomp/CheckUnreachableCodeTest.java
+> @@ -136,11 +136,6 @@ public class CheckUnreachableCodeTest extends CompilerTestCase {
+>      testSame("switch (x) { default: throw x; break; }");
+>    }
+>  
+> -  public void testInstanceOfThrowsException() {
+> -    testSame("function f() {try { if (value instanceof type) return true; } " +
+> -             "catch (e) { }}");
+> -  }
+> -  
+>    private void assertUnreachable(String js) {
+>      test(js, js, CheckUnreachableCode.UNREACHABLE_CODE);
+>    }
+> diff --git a/test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java b/test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java
+> index f63e9370..4175682a 100644
+> --- a/test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java
+> +++ b/test/com/google/javascript/jscomp/ControlFlowAnalysisTest.java
+> @@ -1240,12 +1240,6 @@ public class ControlFlowAnalysisTest extends TestCase {
+>      testCfg(src, expectedWhenNotTraversingFunctions, false);
+>    }
+>  
+> -  public void testInstanceOf() {
+> -    String src = "try { x instanceof 'x' } catch (e) { }";
+> -    ControlFlowGraph<Node> cfg = createCfg(src, true);
+> -    assertCrossEdge(cfg, Token.EXPR_RESULT, Token.BLOCK, Branch.ON_EX);
+> -  }
+> -  
+>    public void testSynBlock() {
+>      String src = "START(); var x; END()";
+>      ControlFlowGraph<Node> cfg = createCfg(src, true);
+> diff --git a/test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java b/test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java
+> index 7facdb34..3c2f0eaf 100644
+> --- a/test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java
+> +++ b/test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java
+> @@ -584,28 +584,6 @@ public class DisambiguatePropertiesTest extends CompilerTestCase {
+>      testSets(true, js, "{a=[[Bar.prototype, Foo.prototype]]}");
+>    }
+>  
+> -  public void testSupertypeReferenceOfSubtypeProperty() {
+> -    String externs = ""
+> -        + "/** @constructor */ function Ext() {}"
+> -        + "Ext.prototype.a;";
+> -    String js = ""
+> -        + "/** @constructor */ function Foo() {}\n"
+> -        + "/** @constructor \n@extends Foo*/ function Bar() {}\n"
+> -        + "Bar.prototype.a;\n"
+> -        + "/** @param {Foo} foo */"
+> -        + "function foo(foo) {\n"
+> -        + "  var x = foo.a;\n"
+> -        + "}\n";
+> -    String result = ""
+> -        + "function Foo() {}\n"
+> -        + "function Bar() {}\n"
+> -        + "Bar.prototype.Bar_prototype$a;\n"
+> -        + "function foo(foo) {\n"
+> -        + "  var x = foo.Bar_prototype$a;\n"
+> -        + "}\n";
+> -    testSets(false, externs, js, result, "{a=[[Bar.prototype]]}");
+> -  }
+> -
+>    public void testObjectLiteralNotRenamed() {
+>      String js = ""
+>          + "var F = {a:'a', b:'b'};"
+> @@ -913,26 +891,6 @@ public class DisambiguatePropertiesTest extends CompilerTestCase {
+>      testSets(true, js, output, "{a=[[Bar.prototype], [Foo.prototype]]}");
+>    }
+>  
+> -  public void testCustomInherits() {
+> -    String js = "Object.prototype.inheritsFrom = function(shuper) {\n" +
+> -        "  /** @constructor */\n" +
+> -        "  function Inheriter() { }\n" +
+> -        "  Inheriter.prototype = shuper.prototype;\n" +
+> -        "  this.prototype = new Inheriter();\n" +
+> -        "  this.superConstructor = shuper;\n" +
+> -        "};\n" +
+> -        "function Foo(var1, var2, strength) {\n" +
+> -        "  Foo.superConstructor.call(this, strength);\n" +
+> -        "}" +
+> -        "Foo.inheritsFrom(Object);";
+> -
+> -    String externs = "" +
+> -        "function Function(var_args) {}" +
+> -        "/** @return {*} */Function.prototype.call = function(var_args) {};";
+> -
+> -    testSets(false, externs, js, js, "{}");
+> -  }
+> -
+>    public void runFindHighestTypeInChain() {
+>      // Check that this doesn't go into an infinite loop.
+>      DisambiguateProperties.forJSTypeSystem(new Compiler())

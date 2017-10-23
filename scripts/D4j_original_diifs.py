@@ -24,7 +24,7 @@ class data:
 directory="/Users/trung/Documents/Umass_rs/bug_fix_minimization/raw_data"
 list_of_D4J_project_names = ["Closure", "Lang", "Math", "Time"]
 
-data_list_full = []
+data_list= []
 for project in list_of_D4J_project_names:
 	dir_project =  directory+ "/D4J_projects/"+project
 	dir_original=dir_project + "/original_patches"
@@ -56,7 +56,7 @@ for project in list_of_D4J_project_names:
 
 #read all collected data to a csv file
 with open("/Users/trung/Documents/Umass_rs/bug_fix_minimization/csv_data/"+"D4J_original_all_diffs.csv", 'w') as csvfile:
-	fieldnames = ['PID', 'BID','FILE','inserted','deleted','modified']
+	fieldnames = ['PID', 'BID','File','inserted','deleted','modified']
 	writer=csv.DictWriter(csvfile, fieldnames=fieldnames)
 	writer.writeheader()
 	for d in data_list:

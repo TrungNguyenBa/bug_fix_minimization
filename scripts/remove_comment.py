@@ -54,3 +54,13 @@ def remove_spaces(text):
 			newtext = newtext + line.strip() + "\n"
 	return newtext
 
+
+filename = sys.argv[1]
+code_w_comments = open(filename).read()
+code_wo_spaces = remove_spaces(code_w_comments)
+code_wo_comments = remove_comments(code_wo_spaces)
+
+fh = open(filename + "_nospcm_", "w")
+fh.write(code_wo_comments)
+fh.close()
+

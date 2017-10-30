@@ -1,8 +1,9 @@
 #! /bin/bash
 
-if [[ "$#" -ne 1 ] || [ "$#" -ne 2 ]]; then
+if [ "$#" -ne 1 ] && [ "$#" -ne 2 ]; then
+	echo "$#"
 	echo "usage $0 <file directory> <ignored files list (optional)>"
-	exit
+	return 1
 fi
 #parent directory 
 pdirectory=$1

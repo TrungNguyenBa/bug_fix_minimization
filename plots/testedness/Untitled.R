@@ -1,4 +1,8 @@
 commit_changes_files <- data.frame(PID=character(),BID=integer(),nfcm=integer(),nfcunm=integer(),nf_diff=integer())
+all_diff <- read.csv("/Users/trung/Documents/Umass_rs/bug_fix_minimization/csv_data/all_diffs.csv")
+all_diff_or <-read.csv("/Users/trung/Documents/Umass_rs/bug_fix_minimization/csv_data/D4J_original_all_diffs.csv")
+commit_changes <- unique(all_diff_or, by=c("PID","BID"))
+merge_diff <- read.csv ("/Users/trung/Documents/Umass_rs/bug_fix_minimization/csv_data/D4J_diiff_alls.csv")
 for (p in unique(commit_changes$PID)) {
   nw <- all_diff[all_diff$PID == p,]
   print (p)

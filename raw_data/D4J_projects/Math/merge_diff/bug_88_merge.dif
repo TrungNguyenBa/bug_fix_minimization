@@ -1,0 +1,83 @@
+diff --git a/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java b/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+index a6d7419cf..ba577223d 100644
+--- a/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
++++ b/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+@@ -23,9 +23,7 @@ import java.io.ObjectOutputStream;
+ import java.io.Serializable;
+ import java.util.ArrayList;
+ import java.util.Collection;
+-import java.util.HashSet;
+ import java.util.List;
+-import java.util.Set;
+ 
+ import org.apache.commons.math.linear.MatrixUtils;
+ import org.apache.commons.math.linear.RealMatrix;
+@@ -323,27 +321,39 @@ class SimplexTableau implements Serializable {
+      */
+     protected RealPointValuePair getSolution() {
+         double[] coefficients = new double[getOriginalNumDecisionVariables()];
+-        Integer basicRow =
+-            getBasicRow(getNumObjectiveFunctions() + getOriginalNumDecisionVariables());
+-        double mostNegative = basicRow == null ? 0 : getEntry(basicRow, getRhsOffset());
+-        Set<Integer> basicRows = new HashSet<Integer>();
++        double mostNegative = getDecisionVariableValue(getOriginalNumDecisionVariables());
+         for (int i = 0; i < coefficients.length; i++) {
+-            basicRow = getBasicRow(getNumObjectiveFunctions() + i);
+-            if (basicRows.contains(basicRow)) {
+-                // if multiple variables can take a given value 
+-                // then we choose the first and set the rest equal to 0
+-                coefficients[i] = 0;
+-            } else {
+-                basicRows.add(basicRow);
+             coefficients[i] =
+-                    (basicRow == null ? 0 : getEntry(basicRow, getRhsOffset())) -
+-                    (restrictToNonNegative ? 0 : mostNegative);
+-            }
++                getDecisionVariableValue(i) - (restrictToNonNegative ? 0 : mostNegative); 
+         }
+         return new RealPointValuePair(coefficients, f.getValue(coefficients));
+     }
+ 
+     /**
++     * Get the value of the given decision variable.  This is not the actual
++     * value as it is guaranteed to be >= 0 and thus must be corrected before
++     * being returned to the user.
++     * 
++     * @param decisionVariable The index of the decision variable
++     * @return The value of the given decision variable.
++     */
++    protected double getDecisionVariableValue(final int decisionVariable) {
++      int col = getNumObjectiveFunctions() + decisionVariable;  
++      Integer basicRow = getBasicRow(col);
++      if (basicRow == null) {
++          return 0;
++      }
++      // if there are multiple variables that can take the value on the RHS
++      // then we'll give the first variable that value
++      for (int i = getNumObjectiveFunctions(); i < col; i++) {
++          if (tableau.getEntry(basicRow, i) == 1) {
++              return 0;
++          }
++      }
++      return getEntry(basicRow, getRhsOffset()); 
++  }
++
++    /**
+      * Subtracts a multiple of one row from another.
+      * <p>
+      * After application of this operation, the following will hold:
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index 4f53d0cb4..fc02c1b83 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -39,10 +39,6 @@ The <action> type attribute can be add,update,fix,remove.
+   </properties>
+   <body>
+     <release version="2.0" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-272" due-to="Benjamin McCann">
+-        Fixed a problem when setting some variables (several variables were set
+-        instead of only one)
+-      </action>
+       <action dev="luc" type="add" due-to="Gilles Sadowski">
+         Added a way to limit the number of functions evaluations in optimizers
+         (the number of iterations could already be limited)

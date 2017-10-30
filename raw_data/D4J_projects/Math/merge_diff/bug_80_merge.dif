@@ -1,0 +1,28 @@
+diff --git a/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+index 9d1b797be..3fc328d8b 100644
+--- a/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
++++ b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+@@ -1132,7 +1132,7 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+     private boolean flipIfWarranted(final int n, final int step) {
+         if (1.5 * work[pingPong] < work[4 * (n - 1) + pingPong]) {
+             // flip array
+-            int j = 4 * (n - 1);
++            int j = 4 * n - 1;
+             for (int i = 0; i < j; i += 4) {
+                 for (int k = 0; k < 4; k += step) {
+                     final double tmp = work[i + k];
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index e1a7df0ce..6e2774018 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -39,10 +39,6 @@ The <action> type attribute can be add,update,fix,remove.
+   </properties>
+   <body>
+     <release version="2.1" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-318" due-to="Dimitri Pourbaix">
+-        Fixed an index computation error in eigen decomposition. Once again, kudos to Dimitri
+-        for debugging this.
+-      </action>
+       <action dev="luc" type="fix" issue="MATH-308" due-to="Dimitri Pourbaix">
+         Fixed an ArrayIndexOutOfBoundsException in eigen decomposition. Kudos to Dimitri
+         for debugging this, it was really difficult.

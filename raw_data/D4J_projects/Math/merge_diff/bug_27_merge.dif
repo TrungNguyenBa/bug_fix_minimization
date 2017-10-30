@@ -1,0 +1,27 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 9bc1c7857..2ae0029df 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -52,9 +52,6 @@ If the output is not quite correct, check for invisible trailing spaces!
+   <body>
+     <release version="3.1" date="TBD" description="
+ ">
+-      <action dev="erans" type="fix" issue="MATH-835" due-to="Baste Nesse Buanes">
+-        Fixed overflow in method "percentageValue" in class "Fraction".
+-      </action>
+       <action dev="erans" type="fix" issue="MATH-622">
+         Raised (to 10) the default number of fractional digits to print out.
+       </action>
+diff --git a/src/main/java/org/apache/commons/math3/fraction/Fraction.java b/src/main/java/org/apache/commons/math3/fraction/Fraction.java
+index f81ff0a94..f84218ebd 100644
+--- a/src/main/java/org/apache/commons/math3/fraction/Fraction.java
++++ b/src/main/java/org/apache/commons/math3/fraction/Fraction.java
+@@ -594,7 +594,7 @@ public class Fraction
+      * @return the fraction percentage as a <tt>double</tt>.
+      */
+     public double percentageValue() {
+-        return 100 * doubleValue();
++        return multiply(100).doubleValue();
+     }
+ 
+     /**

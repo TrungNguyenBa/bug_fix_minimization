@@ -1,0 +1,43 @@
+diff --git a/src/com/google/javascript/jscomp/Normalize.java b/src/com/google/javascript/jscomp/Normalize.java
+index 1db94e2f..4aa45558 100644
+--- a/src/com/google/javascript/jscomp/Normalize.java
++++ b/src/com/google/javascript/jscomp/Normalize.java
+@@ -86,12 +86,12 @@ class Normalize implements CompilerPass, Callback {
+   @Override
+   public void process(Node externs, Node root) {
+     NodeTraversal.traverse(compiler, root, this);
+-    removeDuplicateDeclarations(root);
+     if (MAKE_LOCAL_NAMES_UNIQUE) {
+       MakeDeclaredNamesUnique renamer = new MakeDeclaredNamesUnique();
+       NodeTraversal t = new NodeTraversal(compiler, renamer);
+       t.traverseRoots(externs, root);
+     }
++    removeDuplicateDeclarations(root);
+     new PropogateConstantAnnotations(compiler, assertOnChange)
+         .process(externs, root);
+   }
+diff --git a/src/com/google/javascript/jscomp/SyntacticScopeCreator.java b/src/com/google/javascript/jscomp/SyntacticScopeCreator.java
+index db992021..bb3e3881 100644
+--- a/src/com/google/javascript/jscomp/SyntacticScopeCreator.java
++++ b/src/com/google/javascript/jscomp/SyntacticScopeCreator.java
+@@ -37,10 +37,6 @@ class SyntacticScopeCreator implements ScopeCreator {
+   private String sourceName;
+   private final RedeclarationHandler redeclarationHandler;
+ 
+-  // The arguments variable is special, in that it's declared in every local
+-  // scope, but not explicitly declared.
+-  private static final String ARGUMENTS = "arguments";
+-
+   public static final DiagnosticType VAR_MULTIPLY_DECLARED_ERROR =
+       DiagnosticType.error(
+           "JSC_VAR_MULTIPLY_DECLARED_ERROR",
+@@ -230,8 +226,7 @@ class SyntacticScopeCreator implements ScopeCreator {
+   private void declareVar(String name, Node n, Node parent,
+                           Node gramps, JSType declaredType,
+                           Node nodeWithLineNumber) {
+-    if (scope.isDeclared(name, false)
+-        || (scope.isLocal() && name.equals(ARGUMENTS))) {
++    if (scope.isDeclared(name, false)) {
+       redeclarationHandler.onRedeclaration(
+           scope, name, n, parent, gramps, nodeWithLineNumber);
+     } else {

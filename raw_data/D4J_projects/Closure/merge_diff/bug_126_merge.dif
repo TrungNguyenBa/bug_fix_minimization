@@ -1,0 +1,32 @@
+diff --git a/src/com/google/javascript/jscomp/MinimizeExitPoints.java b/src/com/google/javascript/jscomp/MinimizeExitPoints.java
+index bc9befee..ae6cde2a 100644
+--- a/src/com/google/javascript/jscomp/MinimizeExitPoints.java
++++ b/src/com/google/javascript/jscomp/MinimizeExitPoints.java
+@@ -134,10 +134,10 @@ class MinimizeExitPoints
+         Node catchCodeBlock = catchNode.getLastChild();
+         tryMinimizeExits(catchCodeBlock, exitType, labelName);
+       }
+-      /* Don't try to minimize the exits of finally blocks, as this
+-       * can cause problems if it changes the completion type of the finally
+-       * block. See ECMA 262 Sections 8.9 & 12.14
+-       */
++      if (NodeUtil.hasFinally(n)) {
++        Node finallyBlock = n.getLastChild();
++        tryMinimizeExits(finallyBlock, exitType, labelName);
++      }
+     }
+ 
+     // Just a 'label'.
+diff --git a/src/com/google/javascript/jscomp/RemoveTryCatch.java b/src/com/google/javascript/jscomp/RemoveTryCatch.java
+index 23ec299a..c4a55229 100644
+--- a/src/com/google/javascript/jscomp/RemoveTryCatch.java
++++ b/src/com/google/javascript/jscomp/RemoveTryCatch.java
+@@ -29,8 +29,6 @@ import java.util.Set;
+  * Removes try catch finally blocks from a parse tree for easier debugging
+  * (these statements impact both debugging in IE and sometimes even in FF).
+  *
+- * This changes the semantics of the code and should not be used in production!
+- *
+  */
+ class RemoveTryCatch implements CompilerPass {
+   private final AbstractCompiler compiler;

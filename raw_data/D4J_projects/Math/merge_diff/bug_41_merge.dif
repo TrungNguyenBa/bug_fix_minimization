@@ -1,0 +1,37 @@
+diff --git a/src/main/java/org/apache/commons/math/stat/descriptive/moment/Variance.java b/src/main/java/org/apache/commons/math/stat/descriptive/moment/Variance.java
+index 1de139f3e..e5518e31a 100644
+--- a/src/main/java/org/apache/commons/math/stat/descriptive/moment/Variance.java
++++ b/src/main/java/org/apache/commons/math/stat/descriptive/moment/Variance.java
+@@ -517,7 +517,7 @@ public class Variance extends AbstractStorelessUnivariateStatistic implements Se
+                 }
+ 
+                 double sumWts = 0;
+-                for (int i = begin; i < begin + length; i++) {
++                for (int i = 0; i < weights.length; i++) {
+                     sumWts += weights[i];
+                 }
+ 
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index e6f7bc601..1d2e38b07 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,10 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="3.0" date="TBD" description="TBD">
+-      <action dev="psteitz" type="fix" issue="MATH-704" due-to="Thomas Niedhart">
+-        Fixed array indexing error in Variance evaluate method for
+-        computing the weighted variance of an array segment.
+-      </action>
+       <action dev="luc" type="fix" issue="MATH-713" due-to="Thomas Neidhart">
+         Fixed case of unconstrained variables that still occur in the objective function
+         in simplex solver.
+@@ -73,7 +69,7 @@ The <action> type attribute can be add,update,fix,remove.
+       </action>
+       <action dev="psteitz" type="fix" issue="MATH-691">
+         Fixed errors in SummaryStatistics addValue causing variance, mean, or
+-        geometric mean statistics not to be updated if they have been overridden
++        geometric mean statistics not to be updated if they have been overriden
+         using instances of commons-math supplied implementations.
+       </action>
+       <action dev="psteitz" type="update" issue="MATH-694">

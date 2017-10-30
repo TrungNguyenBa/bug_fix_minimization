@@ -1,0 +1,99 @@
+diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsBashforthIntegrator.java b/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsBashforthIntegrator.java
+index 6ee9bd56c..935bb8ba3 100644
+--- a/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsBashforthIntegrator.java
++++ b/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsBashforthIntegrator.java
+@@ -271,15 +271,7 @@ public class AdamsBashforthIntegrator extends AdamsIntegrator {
+                     if (manager.evaluateStep(interpolatorTmp)) {
+                         final double dt = manager.getEventTime() - stepStart;
+                         if (Math.abs(dt) <= Math.ulp(stepStart)) {
+-                            // we cannot simply truncate the step, reject the current computation
+-                            // and let the loop compute another state with the truncated step.
+-                            // it is so small (much probably exactly 0 due to limited accuracy)
+-                            // that the code above would fail handling it.
+-                            // So we set up an artificial 0 size step by copying states
+-                            interpolator.storeTime(stepStart);
+-                            System.arraycopy(y, 0, yTmp, 0, y0.length);
+-                            hNew     = 0;
+-                            stepSize = 0;
++                            // rejecting the step would lead to a too small next step, we accept it
+                             loop = false;
+                         } else {
+                             // reject the step to match exactly the next switch time
+diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java b/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+index e0e2f0d2c..27ade7b07 100644
+--- a/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
++++ b/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+@@ -289,15 +289,7 @@ public class AdamsMoultonIntegrator extends AdamsIntegrator {
+                     if (manager.evaluateStep(interpolatorTmp)) {
+                         final double dt = manager.getEventTime() - stepStart;
+                         if (Math.abs(dt) <= Math.ulp(stepStart)) {
+-                            // we cannot simply truncate the step, reject the current computation
+-                            // and let the loop compute another state with the truncated step.
+-                            // it is so small (much probably exactly 0 due to limited accuracy)
+-                            // that the code above would fail handling it.
+-                            // So we set up an artificial 0 size step by copying states
+-                            interpolator.storeTime(stepStart);
+-                            System.arraycopy(y, 0, yTmp, 0, y0.length);
+-                            hNew     = 0;
+-                            stepSize = 0;
++                            // rejecting the step would lead to a too small next step, we accept it
+                             loop = false;
+                         } else {
+                             // reject the step to match exactly the next switch time
+diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+index e03be9ed0..34b3dc1ca 100644
+--- a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
++++ b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+@@ -292,15 +292,7 @@ public abstract class EmbeddedRungeKuttaIntegrator
+           if (manager.evaluateStep(interpolator)) {
+               final double dt = manager.getEventTime() - stepStart;
+               if (Math.abs(dt) <= Math.ulp(stepStart)) {
+-                  // we cannot simply truncate the step, reject the current computation
+-                  // and let the loop compute another state with the truncated step.
+-                  // it is so small (much probably exactly 0 due to limited accuracy)
+-                  // that the code above would fail handling it.
+-                  // So we set up an artificial 0 size step by copying states
+-                  interpolator.storeTime(stepStart);
+-                  System.arraycopy(y, 0, yTmp, 0, y0.length);
+-                  hNew     = 0;
+-                  stepSize = 0;
++                  // rejecting the step would lead to a too small next step, we accept it
+                   loop = false;
+               } else {
+                   // reject the step to match exactly the next switch time
+diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/RungeKuttaIntegrator.java b/src/main/java/org/apache/commons/math/ode/nonstiff/RungeKuttaIntegrator.java
+index b61b0b1a4..3227b9808 100644
+--- a/src/main/java/org/apache/commons/math/ode/nonstiff/RungeKuttaIntegrator.java
++++ b/src/main/java/org/apache/commons/math/ode/nonstiff/RungeKuttaIntegrator.java
+@@ -172,14 +172,7 @@ public abstract class RungeKuttaIntegrator extends AbstractIntegrator {
+         if (manager.evaluateStep(interpolator)) {
+             final double dt = manager.getEventTime() - stepStart;
+             if (Math.abs(dt) <= Math.ulp(stepStart)) {
+-                // we cannot simply truncate the step, reject the current computation
+-                // and let the loop compute another state with the truncated step.
+-                // it is so small (much probably exactly 0 due to limited accuracy)
+-                // that the code above would fail handling it.
+-                // So we set up an artificial 0 size step by copying states
+-                interpolator.storeTime(stepStart);
+-                System.arraycopy(y, 0, yTmp, 0, y0.length);
+-                stepSize = 0;
++                // rejecting the step would lead to a too small next step, we accept it
+                 loop = false;
+             } else {
+                 // reject the step to match exactly the next switch time
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index c7701c57a..9e086a708 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -90,11 +90,6 @@ The <action> type attribute can be add,update,fix,remove.
+         used to solve Boundary Value Problems (BVP). There are no implementations (yet)
+         of BVP solvers in the library.
+       </action>
+-      <action dev="luc" type="fix" issue="MATH-358" >
+-        Fixed an error in events handling in ODE solvers. In some rare cases, events
+-        occurring close to a step start were handled without truncating the step, making
+-        them appear as is they occurred close to the step end
+-      </action>
+       <action dev="luc" type="fix" >
+         Fixed a problem with getInterpolatedDerivatives returning zero derivatives when
+         an ODE step handler is configured to not use interpolation. It now returns a

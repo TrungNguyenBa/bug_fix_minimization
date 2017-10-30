@@ -1,0 +1,32 @@
+diff --git a/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java b/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java
+index 60a1b3ac5..16d3baea1 100644
+--- a/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java
++++ b/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java
+@@ -77,10 +77,9 @@ public class SimplexSolver extends AbstractLinearOptimizer {
+         double minRatio = Double.MAX_VALUE;
+         Integer minRatioPos = null;
+         for (int i = tableau.getNumObjectiveFunctions(); i < tableau.getHeight(); i++) {
+-            final double rhs = tableau.getEntry(i, tableau.getWidth() - 1);
+-            final double entry = tableau.getEntry(i, col);
+-            if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
+-                final double ratio = rhs / entry;
++            double rhs = tableau.getEntry(i, tableau.getWidth() - 1);
++            if (MathUtils.compareTo(tableau.getEntry(i, col), 0, epsilon) >= 0) {
++                double ratio = rhs / tableau.getEntry(i, col);
+                 if (ratio < minRatio) {
+                     minRatio = ratio;
+                     minRatioPos = i; 
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index a03001152..a48e1da07 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -39,9 +39,6 @@ The <action> type attribute can be add,update,fix,remove.
+   </properties>
+   <body>
+     <release version="2.1" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-288" due-to="Benjamin McCann">
+-        Fixed an error induced by entries set to 0
+-      </action>
+       <action dev="luc" type="fix" issue="MATH-286" due-to="Benjamin McCann">
+         Fixed an error leading the simplex solver to compute the right solution
+         but return another one

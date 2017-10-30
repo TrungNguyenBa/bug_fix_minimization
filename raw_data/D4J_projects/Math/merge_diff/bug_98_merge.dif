@@ -1,0 +1,41 @@
+diff --git a/src/java/org/apache/commons/math/linear/BigMatrixImpl.java b/src/java/org/apache/commons/math/linear/BigMatrixImpl.java
+index 919a5bab1..7cd61cb2c 100644
+--- a/src/java/org/apache/commons/math/linear/BigMatrixImpl.java
++++ b/src/java/org/apache/commons/math/linear/BigMatrixImpl.java
+@@ -988,7 +988,7 @@ public class BigMatrixImpl implements BigMatrix, Serializable {
+         }
+         final int nRows = this.getRowDimension();
+         final int nCols = this.getColumnDimension();
+-        final BigDecimal[] out = new BigDecimal[nRows];
++        final BigDecimal[] out = new BigDecimal[v.length];
+         for (int row = 0; row < nRows; row++) {
+             BigDecimal sum = ZERO;
+             for (int i = 0; i < nCols; i++) {
+diff --git a/src/java/org/apache/commons/math/linear/RealMatrixImpl.java b/src/java/org/apache/commons/math/linear/RealMatrixImpl.java
+index 3a717ff83..791064425 100644
+--- a/src/java/org/apache/commons/math/linear/RealMatrixImpl.java
++++ b/src/java/org/apache/commons/math/linear/RealMatrixImpl.java
+@@ -776,7 +776,7 @@ public class RealMatrixImpl implements RealMatrix, Serializable {
+         if (v.length != nCols) {
+             throw new IllegalArgumentException("vector has wrong length");
+         }
+-        final double[] out = new double[nRows];
++        final double[] out = new double[v.length];
+         for (int row = 0; row < nRows; row++) {
+             final double[] dataRow = data[row];
+             double sum = 0;
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index 3a61b1d7b..7b76af9ad 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -39,10 +39,6 @@ The <action> type attribute can be add,update,fix,remove.
+   </properties>
+   <body>
+     <release version="2.0" date="TBD" description="TBD">
+-      <action dev="luc" type="fix" issue="MATH-209" due-to="Thomas Chust">
+-        Fixed dimension error on output vector for the operate method
+-        in RealMatrixImpl and BigMatrixImpl classes.
+-      </action>
+       <action dev="luc" type="update">
+         The FirstOrderDifferentialEquations and FirstOrderIntegrator
+         interfaces now extends Serializable, allowing integrators and

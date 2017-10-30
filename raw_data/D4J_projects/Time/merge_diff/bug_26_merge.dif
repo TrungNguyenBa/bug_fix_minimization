@@ -1,0 +1,125 @@
+diff --git a/JodaTime/src/main/java/org/joda/time/DateTimeZone.java b/JodaTime/src/main/java/org/joda/time/DateTimeZone.java
+index 23f70a5c..5dac4861 100644
+--- a/JodaTime/src/main/java/org/joda/time/DateTimeZone.java
++++ b/JodaTime/src/main/java/org/joda/time/DateTimeZone.java
+@@ -918,33 +918,6 @@ public abstract class DateTimeZone implements Serializable {
+ 
+     /**
+      * Converts a local instant to a standard UTC instant with the same
+-     * local time attempting to use the same offset as the original.
+-     * <p>
+-     * This conversion is used after performing a calculation
+-     * where the calculation was done using a simple local zone.
+-     * Whenever possible, the same offset as the original offset will be used.
+-     * This is most significant during a daylight savings overlap.
+-     *
+-     * @param instantLocal  the local instant to convert to UTC
+-     * @param strict  whether the conversion should reject non-existent local times
+-     * @param originalInstantUTC  the original instant that the calculation is based on
+-     * @return the UTC instant with the same local time, 
+-     * @throws ArithmeticException if the result overflows a long
+-     * @throws IllegalArgumentException if the zone has no equivalent local time
+-     * @since 2.0
+-     */
+-    public long convertLocalToUTC(long instantLocal, boolean strict, long originalInstantUTC) {
+-        int offsetOriginal = getOffset(originalInstantUTC);
+-        long instantUTC = instantLocal - offsetOriginal;
+-        int offsetLocalFromOriginal = getOffset(instantUTC);
+-        if (offsetLocalFromOriginal == offsetOriginal) {
+-            return instantUTC;
+-        }
+-        return convertLocalToUTC(instantLocal, strict);
+-    }
+-
+-    /**
+-     * Converts a local instant to a standard UTC instant with the same
+      * local time. This conversion is used after performing a calculation
+      * where the calculation was done using a simple local zone.
+      *
+@@ -952,7 +925,7 @@ public abstract class DateTimeZone implements Serializable {
+      * @param strict  whether the conversion should reject non-existent local times
+      * @return the UTC instant with the same local time, 
+      * @throws ArithmeticException if the result overflows a long
+-     * @throws IllegalArgumentException if the zone has no equivalent local time
++     * @throws IllegalArgumentException if the zone has no eqivalent local time
+      * @since 1.5
+      */
+     public long convertLocalToUTC(long instantLocal, boolean strict) {
+diff --git a/JodaTime/src/main/java/org/joda/time/chrono/ZonedChronology.java b/JodaTime/src/main/java/org/joda/time/chrono/ZonedChronology.java
+index 819f64e3..f165f3dd 100644
+--- a/JodaTime/src/main/java/org/joda/time/chrono/ZonedChronology.java
++++ b/JodaTime/src/main/java/org/joda/time/chrono/ZonedChronology.java
+@@ -433,7 +433,7 @@ public final class ZonedChronology extends AssembledChronology {
+             } else {
+                long localInstant = iZone.convertUTCToLocal(instant);
+                localInstant = iField.add(localInstant, value);
+-               return iZone.convertLocalToUTC(localInstant, false, instant);
++               return iZone.convertLocalToUTC(localInstant, false);
+             }
+         }
+ 
+@@ -445,7 +445,7 @@ public final class ZonedChronology extends AssembledChronology {
+             } else {
+                long localInstant = iZone.convertUTCToLocal(instant);
+                localInstant = iField.add(localInstant, value);
+-               return iZone.convertLocalToUTC(localInstant, false, instant);
++               return iZone.convertLocalToUTC(localInstant, false);
+             }
+         }
+ 
+@@ -457,14 +457,14 @@ public final class ZonedChronology extends AssembledChronology {
+             } else {
+                 long localInstant = iZone.convertUTCToLocal(instant);
+                 localInstant = iField.addWrapField(localInstant, value);
+-                return iZone.convertLocalToUTC(localInstant, false, instant);
++                return iZone.convertLocalToUTC(localInstant, false);
+             }
+         }
+ 
+         public long set(long instant, int value) {
+             long localInstant = iZone.convertUTCToLocal(instant);
+             localInstant = iField.set(localInstant, value);
+-            long result = iZone.convertLocalToUTC(localInstant, false, instant);
++            long result = iZone.convertLocalToUTC(localInstant, false);
+             if (get(result) != value) {
+                 throw new IllegalFieldValueException(iField.getType(), new Integer(value),
+                     "Illegal instant due to time zone offset transition: " +
+@@ -478,7 +478,7 @@ public final class ZonedChronology extends AssembledChronology {
+             // cannot verify that new value stuck because set may be lenient
+             long localInstant = iZone.convertUTCToLocal(instant);
+             localInstant = iField.set(localInstant, text, locale);
+-            return iZone.convertLocalToUTC(localInstant, false, instant);
++            return iZone.convertLocalToUTC(localInstant, false);
+         }
+ 
+         public int getDifference(long minuendInstant, long subtrahendInstant) {
+@@ -525,7 +525,7 @@ public final class ZonedChronology extends AssembledChronology {
+             } else {
+                 long localInstant = iZone.convertUTCToLocal(instant);
+                 localInstant = iField.roundFloor(localInstant);
+-                return iZone.convertLocalToUTC(localInstant, false, instant);
++                return iZone.convertLocalToUTC(localInstant, false);
+             }
+         }
+ 
+@@ -537,7 +537,7 @@ public final class ZonedChronology extends AssembledChronology {
+             } else {
+                 long localInstant = iZone.convertUTCToLocal(instant);
+                 localInstant = iField.roundCeiling(localInstant);
+-                return iZone.convertLocalToUTC(localInstant, false, instant);
++                return iZone.convertLocalToUTC(localInstant, false);
+             }
+         }
+ 
+diff --git a/JodaTime/src/main/java/org/joda/time/field/LenientDateTimeField.java b/JodaTime/src/main/java/org/joda/time/field/LenientDateTimeField.java
+index 6cf4c718..450a4eff 100644
+--- a/JodaTime/src/main/java/org/joda/time/field/LenientDateTimeField.java
++++ b/JodaTime/src/main/java/org/joda/time/field/LenientDateTimeField.java
+@@ -72,6 +72,6 @@ public class LenientDateTimeField extends DelegatedDateTimeField {
+         long localInstant = iBase.getZone().convertUTCToLocal(instant);
+         long difference = FieldUtils.safeSubtract(value, get(instant));
+         localInstant = getType().getField(iBase.withUTC()).add(localInstant, difference);
+-        return iBase.getZone().convertLocalToUTC(localInstant, false, instant);
++        return iBase.getZone().convertLocalToUTC(localInstant, false);
+     }
+ }

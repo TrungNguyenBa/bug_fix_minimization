@@ -1,0 +1,27 @@
+diff --git a/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java b/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java
+index e09bbc357..b73ac9d3e 100644
+--- a/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java
++++ b/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java
+@@ -172,7 +172,7 @@ public class KMeansPlusPlusClusterer<T extends Clusterable<T>> {
+         while (resultSet.size() < k) {
+             // For each data point x, compute D(x), the distance between x and
+             // the nearest center that has already been chosen.
+-            double sum = 0;
++            int sum = 0;
+             for (int i = 0; i < pointSet.size(); i++) {
+                 final T p = pointSet.get(i);
+                 final Cluster<T> nearest = getNearestCluster(resultSet, p);
+diff --git a/src/site/xdoc/changes.xml b/src/site/xdoc/changes.xml
+index e4f9c3431..154001edc 100644
+--- a/src/site/xdoc/changes.xml
++++ b/src/site/xdoc/changes.xml
+@@ -52,9 +52,6 @@ The <action> type attribute can be add,update,fix,remove.
+     If the output is not quite correct, check for invisible trailing spaces!
+      -->
+     <release version="3.0" date="TBD" description="TBD">
+-      <action dev="erans" type="fix" issue="MATH-546" due-to="Nate Paymer">
+-        Fixed bug in "KMeansPlusPlusClusterer".
+-      </action>
+       <action dev="erans" type="update" issue="MATH-542">
+         All exceptions defined in Commons Math provide a context and a compound
+         message list.

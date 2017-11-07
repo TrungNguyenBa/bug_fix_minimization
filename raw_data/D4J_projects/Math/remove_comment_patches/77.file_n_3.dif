@@ -1,0 +1,10 @@
+430d429
+< @Override
+438d436
+< @Override
+446d443
+< @Override
+450c447
+< max = Math.max(max, Math.abs(a));
+---
+> max += Math.max(max, Math.abs(a));

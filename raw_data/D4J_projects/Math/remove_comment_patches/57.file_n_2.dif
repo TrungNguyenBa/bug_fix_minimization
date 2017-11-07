@@ -1,0 +1,4 @@
+81c81
+< double sum = 0;
+---
+> int sum = 0;

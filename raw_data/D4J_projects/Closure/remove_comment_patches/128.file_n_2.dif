@@ -1,0 +1,8 @@
+601,603d600
+< if (len == 0) {
+< return false;
+< }
+610c607
+< return len == 1 || s.charAt(0) != '0';
+---
+> return len > 0 && s.charAt(0) != '0';

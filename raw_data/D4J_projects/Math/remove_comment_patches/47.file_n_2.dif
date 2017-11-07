@@ -1,0 +1,19 @@
+22d21
+< private final transient boolean isZero;
+32d30
+< isZero = real == 0 && imaginary == 0;
+81,82c79,82
+< if (divisor.isZero) {
+< return isZero ? NaN : INF;
+---
+> final double c = divisor.getReal();
+> final double d = divisor.getImaginary();
+> if (c == 0.0 && d == 0.0) {
+> return NaN;
+87,88d86
+< final double c = divisor.getReal();
+< final double d = divisor.getImaginary();
+106c104
+< return isZero ? NaN : INF;
+---
+> return NaN;

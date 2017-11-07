@@ -1,0 +1,11 @@
+142c142
+< if (!Character.isDigit(lastChar) && lastChar != '.') {
+---
+> if (!Character.isDigit(lastChar)) {
+614,619d613
+< if (chars[i] == '.') {
+< if (hasDecPoint || hasExp) {
+< return false;
+< }
+< return foundDigit;
+< }

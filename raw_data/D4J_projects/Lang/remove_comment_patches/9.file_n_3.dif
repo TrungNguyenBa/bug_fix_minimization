@@ -1,0 +1,4 @@
+68,70d67
+< if (patternMatcher.regionStart() != patternMatcher.regionEnd()) {
+< throw new IllegalArgumentException("Failed to parse \""+pattern+"\" ; gave up at index "+patternMatcher.regionStart());
+< }

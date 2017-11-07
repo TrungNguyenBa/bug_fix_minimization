@@ -1,0 +1,12 @@
+23a24
+> import org.apache.commons.math.util.MathUtils;
+139a141
+> resetOccurred = false;
+173,175d174
+< for (final EventState remaining : occuringEvents) {
+< remaining.stepAccepted(eventT, eventY);
+< }
+182,184d180
+< for (final EventState remaining : occuringEvents) {
+< remaining.stepAccepted(eventT, eventY);
+< }

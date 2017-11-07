@@ -1,0 +1,38 @@
+5d4
+< import org.apache.commons.math.analysis.ParametricUnivariateRealFunction;
+10d8
+< import org.apache.commons.math.exception.NotStrictlyPositiveException;
+17,41c15
+< super(optimizer);
+< }
+< public double[] fit(double[] initialGuess) {
+< final ParametricUnivariateRealFunction f = new ParametricUnivariateRealFunction() {
+< private final ParametricUnivariateRealFunction g = new Gaussian.Parametric();
+< public double value(double x, double[] p) {
+< double v = Double.POSITIVE_INFINITY;
+< try {
+< v = g.value(x, p);
+< } catch (NotStrictlyPositiveException e) {
+< }
+< return v;
+< }
+< public double[] gradient(double x, double[] p) {
+< double[] v = { Double.POSITIVE_INFINITY,
+< Double.POSITIVE_INFINITY,
+< Double.POSITIVE_INFINITY };
+< try {
+< v = g.gradient(x, p);
+< } catch (NotStrictlyPositiveException e) {
+< }
+< return v;
+< }
+< };
+< return fit(f, initialGuess);
+---
+> super(optimizer);;
+44,45c18,19
+< final double[] guess = (new ParameterGuesser(getObservations())).guess();
+< return fit(guess);
+---
+> return fit(new Gaussian.Parametric(),
+> (new ParameterGuesser(getObservations())).guess());

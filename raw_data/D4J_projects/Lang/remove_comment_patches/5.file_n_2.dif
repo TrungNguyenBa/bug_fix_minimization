@@ -1,0 +1,2 @@
+22d21
+< <action issue="LANG-865" type="fix">LocaleUtils.toLocale does not parse strings starting with an underscore</action>

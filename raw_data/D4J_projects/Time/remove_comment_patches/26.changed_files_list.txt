@@ -1,0 +1,9 @@
+c7a581e5 : DateTimeZone.convertLocalToUTC [bugs 3102760,2182444,2553453] New method now retains the offset wherever possible during calculations This affects higher methods like withHourOfDay/withMinuteOfHour/withSecondOfMinute/withMillisOfSecond which now do not change offset when called within a DST overlap
+:100644 100644 ec774957... bd67101b... M	JodaTime/RELEASE-NOTES.txt
+:100644 100644 5dac4861... 23f70a5c... M	JodaTime/src/main/java/org/joda/time/DateTimeZone.java
+:100644 100644 f165f3dd... 819f64e3... M	JodaTime/src/main/java/org/joda/time/chrono/ZonedChronology.java
+:100644 100644 450a4eff... 6cf4c718... M	JodaTime/src/main/java/org/joda/time/field/LenientDateTimeField.java
+:100644 100644 4915d058... b2f8f22f... M	JodaTime/src/test/java/org/joda/time/MockZone.java
+:100644 100644 c3f29edc... 1dae4b55... M	JodaTime/src/test/java/org/joda/time/TestDateTimeZoneCutover.java
+:100644 100644 b67929b7... 9a85bd5c... M	JodaTime/src/test/java/org/joda/time/TestLocalDate_Basics.java
+:100644 100644 531ed1cc... 3e3db7df... M	JodaTime/src/test/java/org/joda/time/chrono/TestLenientChronology.java

@@ -1,0 +1,7 @@
+63d62
+< filename = filename.replace("\\", "/");
+107c106,107
+< String moduleName = guessCJSModuleName(script.getSourceFileName());
+---
+> String moduleName = guessCJSModuleName(normalizeSourceName(script
+> .getSourceFileName()));

@@ -1,0 +1,20 @@
+179c179
+< VariableLiveness state = isVariableReadBeforeKill(sibling, variable);
+---
+> VariableLiveness state = readVariableBeforeKilling(sibling, variable);
+196,197c196
+< private VariableLiveness isVariableReadBeforeKill(
+< Node n, String variable) {
+---
+> private VariableLiveness readVariableBeforeKilling(Node n, String variable) {
+200,205d198
+< Preconditions.checkState(n.getParent().getType() == Token.ASSIGN);
+< Node rhs = n.getNext();
+< VariableLiveness state = isVariableReadBeforeKill(rhs, variable);
+< if (state == VariableLiveness.READ) {
+< return state;
+< }
+214c207
+< VariableLiveness state = isVariableReadBeforeKill(child, variable);
+---
+> VariableLiveness state = readVariableBeforeKilling(child, variable);

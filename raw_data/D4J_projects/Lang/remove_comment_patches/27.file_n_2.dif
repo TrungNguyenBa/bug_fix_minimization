@@ -1,0 +1,8 @@
+126c126
+< if (expPos < decPos || expPos > str.length()) {
+---
+> if (expPos < decPos) {
+136,138d135
+< if (expPos > str.length()) {
+< throw new NumberFormatException(str + " is not a valid number.");
+< }

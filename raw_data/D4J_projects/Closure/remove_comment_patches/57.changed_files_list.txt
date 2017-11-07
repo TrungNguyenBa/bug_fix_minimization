@@ -1,0 +1,3 @@
+f759f431 : Handle bad goog.require/goog.provide calls more gracefully. Fixes issue 530.
+:100644 100644 f9987784... b5a3c1b2... M	src/com/google/javascript/jscomp/ClosureCodingConvention.java
+:100644 100644 9704d8e0... e7f60f75... M	test/com/google/javascript/jscomp/ClosureCodingConventionTest.java

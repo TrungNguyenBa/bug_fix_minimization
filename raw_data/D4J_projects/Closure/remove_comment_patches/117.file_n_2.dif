@@ -1,0 +1,29 @@
+425,436d424
+< JSType type = getJSType(n);
+< if (dereference) {
+< ObjectType dereferenced = type.dereference();
+< if (dereferenced != null) {
+< type = dereferenced;
+< }
+< }
+< if (type.isFunctionPrototypeType() ||
+< (type.toObjectType() != null &&
+< type.toObjectType().getConstructor() != null)) {
+< return type.toString();
+< }
+456a445,451
+> JSType type = getJSType(n);
+> if (dereference) {
+> ObjectType dereferenced = type.dereference();
+> if (dereferenced != null) {
+> type = dereferenced;
+> }
+> }
+458c453,457
+< if (qualifiedName != null) {
+---
+> if (type.isFunctionPrototypeType() ||
+> (type.toObjectType() != null &&
+> type.toObjectType().getConstructor() != null)) {
+> return type.toString();
+> } else if (qualifiedName != null) {

@@ -1,0 +1,6 @@
+48a49,50
+> final Node subclassNode;
+> final Node superclassNode;
+53a56,57
+> this.subclassNode = subclassNode;
+> this.superclassNode = superclassNode;

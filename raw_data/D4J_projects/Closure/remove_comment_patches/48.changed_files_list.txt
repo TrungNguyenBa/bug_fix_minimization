@@ -1,0 +1,3 @@
+46da17d5 : Fix issue 586. Distinguishing declared functions from inferred functions is really hard!
+:100644 100644 b29ff9c6... 09aba12d... M	src/com/google/javascript/jscomp/TypedScopeCreator.java
+:100644 100644 0849c4de... cba4cbf9... M	test/com/google/javascript/jscomp/TypeCheckTest.java

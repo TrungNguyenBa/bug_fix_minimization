@@ -1,0 +1,6 @@
+e609670b : - Fix issue #19 - attach jsdoc comments without annotations to nodes
+:100755 100755 46d7efa3... ccc9d678... M	lib/google_common_deploy.jar
+:100644 100644 58f1370b... 47ea27a1... M	src/com/google/javascript/jscomp/GlobalNamespace.java
+:100644 100644 d7983173... bdfc2e80... M	src/com/google/javascript/rhino/JSDocInfoBuilder.java
+:100644 100644 76dc7260... b3d11692... M	test/com/google/javascript/jscomp/CheckSideEffectsTest.java
+:100644 100644 b5c2960b... cac15c28... M	test/com/google/javascript/jscomp/CollapsePropertiesTest.java

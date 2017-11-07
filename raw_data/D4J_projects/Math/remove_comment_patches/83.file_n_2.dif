@@ -1,0 +1,27 @@
+133,138d132
+< return getBasicRow(col, true);
+< }
+< private Integer getBasicRowForSolution(final int col) {
+< return getBasicRow(col, false);
+< }
+< private Integer getBasicRow(final int col, boolean ignoreObjectiveRows) {
+140,141c134
+< int start = ignoreObjectiveRows ? getNumObjectiveFunctions() : 0;
+< for (int i = start; i < getHeight(); i++) {
+---
+> for (int i = getNumObjectiveFunctions(); i < getHeight(); i++) {
+172,173c165,167
+< Integer negativeVarBasicRow = getBasicRowForSolution(getNegativeDecisionVariableOffset());
+< double mostNegative = negativeVarBasicRow == null ? 0 : getEntry(negativeVarBasicRow, getRhsOffset());
+---
+> Integer basicRow =
+> getBasicRow(getNumObjectiveFunctions() + getOriginalNumDecisionVariables());
+> double mostNegative = basicRow == null ? 0 : getEntry(basicRow, getRhsOffset());
+176c170
+< Integer basicRow = getBasicRowForSolution(getNumObjectiveFunctions() + i);
+---
+> basicRow = getBasicRow(getNumObjectiveFunctions() + i);
+222,224d215
+< protected final int getNegativeDecisionVariableOffset() {
+< return getNumObjectiveFunctions() + getOriginalNumDecisionVariables();
+< }

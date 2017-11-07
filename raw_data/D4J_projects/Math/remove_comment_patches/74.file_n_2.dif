@@ -1,0 +1,19 @@
+1a2
+> import java.util.Arrays;
+101,105c102,104
+< final double[] scale = new double[y0.length];
+< if (vecAbsoluteTolerance == null) {
+< for (int i = 0; i < scale.length; ++i) {
+< scale[i] = scalAbsoluteTolerance + scalRelativeTolerance * Math.abs(y[i]);
+< }
+---
+> final double[] scale;
+> if (vecAbsoluteTolerance != null) {
+> scale = vecAbsoluteTolerance;
+107,109c106,107
+< for (int i = 0; i < scale.length; ++i) {
+< scale[i] = vecAbsoluteTolerance[i] + vecRelativeTolerance[i] * Math.abs(y[i]);
+< }
+---
+> scale = new double[y0.length];
+> Arrays.fill(scale, scalAbsoluteTolerance);

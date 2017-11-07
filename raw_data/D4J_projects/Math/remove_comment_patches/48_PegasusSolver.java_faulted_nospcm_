@@ -1,0 +1,18 @@
+package org.apache.commons.math.analysis.solvers;
+public class PegasusSolver extends BaseSecantSolver {
+public PegasusSolver() {
+super(DEFAULT_ABSOLUTE_ACCURACY, Method.PEGASUS);
+}
+public PegasusSolver(final double absoluteAccuracy) {
+super(absoluteAccuracy, Method.PEGASUS);
+}
+public PegasusSolver(final double relativeAccuracy,
+final double absoluteAccuracy) {
+super(relativeAccuracy, absoluteAccuracy, Method.PEGASUS);
+}
+public PegasusSolver(final double relativeAccuracy,
+final double absoluteAccuracy,
+final double functionValueAccuracy) {
+super(relativeAccuracy, absoluteAccuracy, functionValueAccuracy, Method.PEGASUS);
+}
+}

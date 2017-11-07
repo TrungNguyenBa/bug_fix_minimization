@@ -1,0 +1,4 @@
+46,48d45
+< <action dev="erans" type="fix" issue="MATH-929" due-to="Piotr Wydrych">
+< Fixed truncated value in "MultivariateNormalDistribution".
+< </action>

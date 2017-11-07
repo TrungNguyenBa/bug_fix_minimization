@@ -1,0 +1,18 @@
+package org.apache.commons.math.analysis.solvers;
+public class IllinoisSolver extends BaseSecantSolver {
+public IllinoisSolver() {
+super(DEFAULT_ABSOLUTE_ACCURACY, Method.ILLINOIS);
+}
+public IllinoisSolver(final double absoluteAccuracy) {
+super(absoluteAccuracy, Method.ILLINOIS);
+}
+public IllinoisSolver(final double relativeAccuracy,
+final double absoluteAccuracy) {
+super(relativeAccuracy, absoluteAccuracy, Method.ILLINOIS);
+}
+public IllinoisSolver(final double relativeAccuracy,
+final double absoluteAccuracy,
+final double functionValueAccuracy) {
+super(relativeAccuracy, absoluteAccuracy, functionValueAccuracy, Method.PEGASUS);
+}
+}

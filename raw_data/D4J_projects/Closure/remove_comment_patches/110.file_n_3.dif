@@ -1,0 +1,4 @@
+391,393d390
+< if (n == null) {
+< throw new RuntimeException("node is not a child");
+< }

@@ -1,0 +1,12 @@
+676,686d675
+< public boolean resetImplicitPrototype(
+< JSType type, ObjectType newImplicitProto) {
+< if (type instanceof PrototypeObjectType) {
+< PrototypeObjectType poType = (PrototypeObjectType) type;
+< if (!poType.hasCachedValues()) {
+< poType.setImplicitPrototype(newImplicitProto);
+< return true;
+< }
+< }
+< return false;
+< }

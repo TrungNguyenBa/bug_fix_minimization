@@ -1,0 +1,5 @@
+55,56c55
+< final BSPTree<Euclidean2D> tree = getTree(false);
+< if (tree.getCut() == null && (Boolean) tree.getAttribute()) {
+---
+> if ((Boolean) getTree(false).getAttribute()) {

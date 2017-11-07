@@ -1,0 +1,4 @@
+33,35d32
+< <action dev="luc" type="fix" issue="MATH-273" due-to="Benjamin McCann">
+< Fixed a wrong check for basic variables
+< </action>

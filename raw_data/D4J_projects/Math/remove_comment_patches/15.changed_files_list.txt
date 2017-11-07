@@ -1,0 +1,4 @@
+b221a7342 : MATH-904. Fixed wrong assumption in "pow" method.
+:100644 100644 dac692977... 7ee686e97... M	src/changes/changes.xml
+:100644 100644 fd1ce2d85... 9dc84c631... M	src/main/java/org/apache/commons/math3/util/FastMath.java
+:100644 100644 282e7b299... aee304e75... M	src/test/java/org/apache/commons/math3/util/FastMathTest.java

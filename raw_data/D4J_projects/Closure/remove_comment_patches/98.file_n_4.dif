@@ -1,0 +1,12 @@
+91c91
+< referenceInfo.isAssignedOnceInLifetime()) {
+---
+> referenceInfo.isAssignedOnce()) {
+155c155
+< referenceInfo.isAssignedOnceInLifetime()) {
+---
+> referenceInfo.isAssignedOnce()) {
+249c249
+< if (!refInfo.isAssignedOnceInLifetime()) {
+---
+> if (!refInfo.isAssignedOnce()) {

@@ -1,0 +1,4 @@
+a857aec2 : Treat the bottom function type as empty. Fixes issue 301.
+:100644 100644 32a0b250... 51f2ce20... M	src/com/google/javascript/rhino/jstype/JSType.java
+:100644 100644 b890e92b... 0760addb... M	test/com/google/javascript/jscomp/TypeCheckTest.java
+:100644 100644 cb20b509... 8ad98e64... M	test/com/google/javascript/rhino/jstype/FunctionTypeTest.java

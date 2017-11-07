@@ -1,0 +1,4 @@
+43,45d42
+< <action dev="lus" type="fix" issue="MATH-789">
+< Fixed an error in rectangular Cholesky decomposition.
+< </action>

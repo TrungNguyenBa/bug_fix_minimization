@@ -1,0 +1,3 @@
+d82fb38b : Don't quote "0" object literal keys. Fixes issue 942 ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=44143868
+:100644 100644 2270c172... 1dc33b7e... M	src/com/google/javascript/jscomp/CodeGenerator.java
+:100644 100644 826a7e1e... 7a2e8fa6... M	test/com/google/javascript/jscomp/CodePrinterTest.java

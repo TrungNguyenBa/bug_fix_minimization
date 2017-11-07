@@ -1,0 +1,5 @@
+309,312d308
+< @Override
+< public void matchConstraint(ObjectType contraint) {
+< referencedType.matchConstraint(contraint);
+< }

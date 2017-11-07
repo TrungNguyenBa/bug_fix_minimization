@@ -1,0 +1,10 @@
+197d196
+< Context rhsContext = getContextForNoInOperator(context);
+200c199
+< addExpr(first.getNext(), 1, rhsContext);
+---
+> addExpr(first.getNext(), 1, Context.OTHER);
+202c201
+< addExpr(last, 1, rhsContext);
+---
+> addExpr(last, 1, Context.OTHER);

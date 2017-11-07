@@ -1,0 +1,6 @@
+277e61721 : Fixed NullPointerException in 2D and 3D sub-line intersections.
+:100644 100644 a50812f4b... 1b0155445... M	src/changes/changes.xml
+:100644 100644 a146cb661... aad7b65a5... M	src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java
+:100644 100644 a9d621a44... ea9e96a49... M	src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java
+:100644 100644 f060cfb8f... b941ffae7... M	src/test/java/org/apache/commons/math3/geometry/euclidean/threed/SubLineTest.java
+:100644 100644 bc276d130... 7a9defe56... M	src/test/java/org/apache/commons/math3/geometry/euclidean/twod/SubLineTest.java

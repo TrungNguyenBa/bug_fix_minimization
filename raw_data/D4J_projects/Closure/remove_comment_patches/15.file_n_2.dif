@@ -1,0 +1,4 @@
+39,41d38
+< if (n.isDelProp()) {
+< return true;
+< }

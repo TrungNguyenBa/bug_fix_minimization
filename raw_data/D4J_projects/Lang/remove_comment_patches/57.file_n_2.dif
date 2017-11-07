@@ -1,0 +1,4 @@
+89c89
+< return availableLocaleList().contains(locale);
+---
+> return cAvailableLocaleSet.contains(locale);

@@ -1,0 +1,4 @@
+f76efe5f4 : MATH-349 Removed deprecated methods.
+:100644 100644 6aca50999... d20eb53c5... M	src/main/java/org/apache/commons/math/distribution/PoissonDistribution.java
+:100644 100644 64f792b60... 0a8123390... M	src/main/java/org/apache/commons/math/distribution/PoissonDistributionImpl.java
+:100644 100644 06f455e1b... a02d1bb19... M	src/test/java/org/apache/commons/math/distribution/PoissonDistributionTest.java

@@ -1,0 +1,3 @@
+871bca1f : Rejigger type name printing. Fixes issue 1047 R=johnlenz
+:100644 100644 f70a52c2... f57ae14c... M	src/com/google/javascript/jscomp/TypeValidator.java
+:100644 100644 ec100c8f... f1ede222... M	test/com/google/javascript/jscomp/TypeCheckTest.java

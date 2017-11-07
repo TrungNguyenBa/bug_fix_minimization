@@ -1,0 +1,21 @@
+433,435c433,434
+< final int offsetLocal = getOffset(instantLocal);
+< final long instantAdjusted = instantLocal - offsetLocal;
+< final int offsetAdjusted = getOffset(instantAdjusted);
+---
+> int offsetLocal = getOffset(instantLocal);
+> int offsetAdjusted = getOffset(instantLocal - offsetLocal);
+438c437
+< long nextLocal = nextTransition(instantAdjusted);
+---
+> long nextLocal = nextTransition(instantLocal - offsetLocal);
+444,452d442
+< } else if (offsetLocal > 0) {
+< long prev = previousTransition(instantAdjusted);
+< if (prev < instantAdjusted) {
+< int offsetPrev = getOffset(prev);
+< int diff = offsetPrev - offsetLocal;
+< if (instantAdjusted - prev <= diff) {
+< return offsetPrev;
+< }
+< }

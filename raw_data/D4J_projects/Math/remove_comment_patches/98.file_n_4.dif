@@ -1,0 +1,5 @@
+33,36d32
+< <action dev="luc" type="fix" issue="MATH-209" due-to="Thomas Chust">
+< Fixed dimension error on output vector for the operate method
+< in RealMatrixImpl and BigMatrixImpl classes.
+< </action>

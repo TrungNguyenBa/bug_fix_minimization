@@ -1,0 +1,5 @@
+2d846db3a : [MATH-718] Use modified Lentz-Thompson algorithm for continued fraction evaluation.
+:100644 100644 a3c40fe96... c81dff348... M	src/changes/changes.xml
+:100644 100644 35fe9160b... 253f3c59e... M	src/main/java/org/apache/commons/math3/util/ContinuedFraction.java
+:100644 100644 188efd13a... 0844d6094... M	src/test/java/org/apache/commons/math3/distribution/BinomialDistributionTest.java
+:100644 100644 ce7350248... 82b345ca8... M	src/test/java/org/apache/commons/math3/distribution/FDistributionTest.java

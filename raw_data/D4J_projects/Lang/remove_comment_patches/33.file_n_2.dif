@@ -1,0 +1,4 @@
+393c393
+< classes[i] = array[i] == null ? null : array[i].getClass();
+---
+> classes[i] = array[i].getClass();

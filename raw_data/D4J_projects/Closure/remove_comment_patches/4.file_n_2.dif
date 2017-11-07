@@ -1,0 +1,8 @@
+82c82
+< if (detectInheritanceCycle()) {
+---
+> if (detectImplicitPrototypeCycle()) {
+92c92
+< if (detectInheritanceCycle()) {
+---
+> if (detectImplicitPrototypeCycle()) {

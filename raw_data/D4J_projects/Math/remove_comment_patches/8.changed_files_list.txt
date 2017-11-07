@@ -1,0 +1,4 @@
+196e63174 : Fixed creation of generic array.
+:100644 100644 45e409db5... c1c6e5d9b... M	src/changes/changes.xml
+:100644 100644 8c08dbe36... 879eb2a29... M	src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
+:100644 100644 1a7ef5302... cd639f6a8... M	src/test/java/org/apache/commons/math3/distribution/DiscreteRealDistributionTest.java

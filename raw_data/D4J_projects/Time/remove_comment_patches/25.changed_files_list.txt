@@ -1,0 +1,4 @@
+552be4b6 : DateTimeZone.getOffsetFromLocal [2952991] The behaviour during DST overlaps is now defined to always return the earlier instant which is normally known as daylight or summer time. Previously, the result varied by hemisphere. This affects the constructor of DateTime and other methods
+:100644 100644 bd67101b... c3ac535f... M	JodaTime/RELEASE-NOTES.txt
+:100644 100644 23f70a5c... 81f58729... M	JodaTime/src/main/java/org/joda/time/DateTimeZone.java
+:100644 100644 1dae4b55... e1284576... M	JodaTime/src/test/java/org/joda/time/TestDateTimeZoneCutover.java

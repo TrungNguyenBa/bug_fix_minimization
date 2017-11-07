@@ -1,0 +1,4 @@
+1157c1157
+< jsDocParameter.getJSType(), false);
+---
+> jsDocParameter.getJSType(), true);

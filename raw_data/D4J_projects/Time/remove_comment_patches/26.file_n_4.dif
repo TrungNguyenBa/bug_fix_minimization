@@ -1,0 +1,28 @@
+299c299
+< return iZone.convertLocalToUTC(localInstant, false, instant);
+---
+> return iZone.convertLocalToUTC(localInstant, false);
+310c310
+< return iZone.convertLocalToUTC(localInstant, false, instant);
+---
+> return iZone.convertLocalToUTC(localInstant, false);
+321c321
+< return iZone.convertLocalToUTC(localInstant, false, instant);
+---
+> return iZone.convertLocalToUTC(localInstant, false);
+327c327
+< long result = iZone.convertLocalToUTC(localInstant, false, instant);
+---
+> long result = iZone.convertLocalToUTC(localInstant, false);
+339c339
+< return iZone.convertLocalToUTC(localInstant, false, instant);
+---
+> return iZone.convertLocalToUTC(localInstant, false);
+378c378
+< return iZone.convertLocalToUTC(localInstant, false, instant);
+---
+> return iZone.convertLocalToUTC(localInstant, false);
+389c389
+< return iZone.convertLocalToUTC(localInstant, false, instant);
+---
+> return iZone.convertLocalToUTC(localInstant, false);

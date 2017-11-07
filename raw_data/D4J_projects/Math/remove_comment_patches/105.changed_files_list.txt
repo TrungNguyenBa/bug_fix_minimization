@@ -1,0 +1,4 @@
+fc21b26f8 : Modified getSumSquaredErrors method in SimpleRegression to always return a non-negative result. JIRA: MATH-85 Reported by Mark Osborn Patched by Luc Maisonobe
+:100644 100644 c105a41ae... d9fa592c0... M	src/java/org/apache/commons/math/stat/regression/SimpleRegression.java
+:100644 100644 a649b10d2... b6aa67c9d... M	src/test/org/apache/commons/math/stat/regression/SimpleRegressionTest.java
+:100644 100644 8f33730f8... c534f2137... M	xdocs/changes.xml

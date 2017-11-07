@@ -1,0 +1,3 @@
+c6cc58a9 : Fix "string-to-number" conversions in the presense of verical tabs. Fixes issue 395.
+:100644 100644 2094ae20... c97e091d... M	src/com/google/javascript/jscomp/NodeUtil.java
+:100644 100644 43e3a890... 05a2d6a5... M	test/com/google/javascript/jscomp/PeepholeFoldConstantsTest.java

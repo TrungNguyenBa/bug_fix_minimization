@@ -1,0 +1,6 @@
+37b0e1b0 : Column-indicating caret can be in the end of a line. Fixes issue 487.
+:100644 100644 08219cf6... 31996091... M	build/lib/classes/org/mozilla/javascript/resources/Messages.properties
+:100644 100644 a5a719ae... f9154683... M	build/lib/rhino.jar
+:100644 100644 60d1e9f4... f551981d... M	build/lib/rhino1_7R3pre/js.jar
+:100644 100644 f529b7d0... 420dbc07... M	src/com/google/javascript/jscomp/LightweightMessageFormatter.java
+:100644 100644 0c432a10... 6cc204fe... M	test/com/google/javascript/jscomp/LightweightMessageFormatterTest.java

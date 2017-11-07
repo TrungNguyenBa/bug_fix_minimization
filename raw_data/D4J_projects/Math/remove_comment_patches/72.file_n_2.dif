@@ -1,0 +1,8 @@
+40c40
+< setResult(min, 0);
+---
+> setResult(yMin, 0);
+48c48
+< setResult(max, 0);
+---
+> setResult(yMax, 0);

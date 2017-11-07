@@ -1,0 +1,48 @@
+174,190c174,175
+< boolean isAssignedOnceInLifetime() {
+< Reference ref = getOneAndOnlyAssignment();
+< if (ref == null) {
+< return false;
+< }
+< for (BasicBlock block = ref.getBasicBlock();
+< block != null; block = block.getParent()) {
+< if (block.isFunction) {
+< break;
+< } else if (block.isLoop) {
+< return false;
+< }
+< }
+< return true;
+< }
+< private Reference getOneAndOnlyAssignment() {
+< Reference assignment = null;
+---
+> boolean isAssignedOnce() {
+> boolean assigned = false;
+195,196c180,181
+< if (assignment == null) {
+< assignment = ref;
+---
+> if (!assigned) {
+> assigned = true;
+198c183
+< return null;
+---
+> return false;
+202c187
+< return assignment;
+---
+> return assigned;
+311,312d295
+< private final boolean isFunction;
+< private final boolean isLoop;
+316,324d298
+< this.isFunction = root.getType() == Token.FUNCTION;
+< if (root.getParent() != null) {
+< int pType = root.getParent().getType();
+< this.isLoop = pType == Token.DO ||
+< pType == Token.WHILE ||
+< pType == Token.FOR;
+< } else {
+< this.isLoop = false;
+< }

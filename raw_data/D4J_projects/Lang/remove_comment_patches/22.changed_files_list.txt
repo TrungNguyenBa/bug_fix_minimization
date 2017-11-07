@@ -1,0 +1,3 @@
+0b2b82ad : Adding first method check from Math's MathUtils.gcd method; and unit tests showing that this was needed. Bug reported and solved by Christian Semrau [LANG-662]
+:100644 100644 15272e59... bf15a494... M	src/main/java/org/apache/commons/lang3/math/Fraction.java
+:100644 100644 3116f4e7... 8e21e7cc... M	src/test/java/org/apache/commons/lang3/math/FractionTest.java

@@ -1,0 +1,3 @@
+59a30b48 : Fixes Issue 482 In percent typed counting, ignore the nodes of Enum elements
+:100644 100644 5edb4f05... d3def01b... M	src/com/google/javascript/jscomp/TypeCheck.java
+:100644 100644 160759d9... 604db374... M	test/com/google/javascript/jscomp/TypeCheckTest.java

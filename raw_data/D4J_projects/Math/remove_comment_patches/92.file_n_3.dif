@@ -1,0 +1,4 @@
+33,35d32
+< <action dev="psteitz" type="fix" issue="MATH-241" due-to="Christian Semrau">
+< Fixed error in binomial coefficient computation.
+< </action>

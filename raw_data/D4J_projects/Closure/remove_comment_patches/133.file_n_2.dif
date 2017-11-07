@@ -1,0 +1,22 @@
+1002c1002
+< String line = getRemainingJSDocLine().trim();
+---
+> String line = stream.getRemainingJSDocLine().trim();
+1027c1027
+< String line = getRemainingJSDocLine();
+---
+> String line = stream.getRemainingJSDocLine();
+1090c1090
+< line = getRemainingJSDocLine();
+---
+> line = stream.getRemainingJSDocLine();
+1128c1128
+< String line = getRemainingJSDocLine();
+---
+> String line = stream.getRemainingJSDocLine();
+1669,1673d1668
+< private String getRemainingJSDocLine() {
+< String result = stream.getRemainingJSDocLine();
+< unreadToken = NO_UNREAD_TOKEN;
+< return result;
+< }

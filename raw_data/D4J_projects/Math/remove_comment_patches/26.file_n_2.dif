@@ -1,0 +1,8 @@
+49c49
+< if (FastMath.abs(a0) > overflow) {
+---
+> if (a0 > overflow) {
+71c71
+< if ((FastMath.abs(p2) > overflow) || (FastMath.abs(q2) > overflow)) {
+---
+> if ((p2 > overflow) || (q2 > overflow)) {

@@ -1,0 +1,4 @@
+bd59a190 : [LANG-788] SerializationUtils throws ClassNotFoundException when cloning primitive classes
+:100644 100644 b766b214... 7c89b61d... M	src/main/java/org/apache/commons/lang3/SerializationUtils.java
+:100644 100644 e859411a... ec922c60... M	src/site/changes/changes.xml
+:100644 100644 01c98cd2... 9bf9c0d7... M	src/test/java/org/apache/commons/lang3/SerializationUtilsTest.java

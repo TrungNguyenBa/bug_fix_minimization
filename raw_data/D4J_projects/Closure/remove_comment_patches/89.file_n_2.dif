@@ -1,0 +1,4 @@
+244,246d243
+< if (rvalue != null && rvalue.getType() == Token.FUNCTION) {
+< checkForHosedThisReferences(rvalue, refName.docInfo, refName);
+< }

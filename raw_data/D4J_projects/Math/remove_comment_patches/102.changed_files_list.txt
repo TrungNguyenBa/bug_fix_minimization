@@ -1,0 +1,6 @@
+a1bac1270 : Added check and rescaling of expected counts to sum to sum of expected counts if necessary in ChiSquare test. JIRA: MATH-175 Reported and patched by Carl Anderson.
+:100644 100644 137d4c5bf... 984d56da1... M	src/java/org/apache/commons/math/stat/inference/ChiSquareTestImpl.java
+:100644 100644 bdc7f2d73... 747b5e895... M	src/test/R/chiSquareTestCases
+:100644 100644 e043c9da2... 98a9e9384... M	src/test/org/apache/commons/math/stat/inference/ChiSquareTestTest.java
+:100644 100644 e0f16f742... f2ef73f22... M	src/test/org/apache/commons/math/stat/inference/TestUtilsTest.java
+:100644 100644 577591ac7... e777a12fd... M	xdocs/changes.xml

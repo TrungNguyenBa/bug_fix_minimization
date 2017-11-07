@@ -1,0 +1,24 @@
+129c129
+< return best(current, previous, isMinim);
+---
+> return current;
+164c164
+< return best(current, previous, isMinim);
+---
+> return current;
+169,183d168
+< private UnivariatePointValuePair best(UnivariatePointValuePair a,
+< UnivariatePointValuePair b,
+< boolean isMinim) {
+< if (a == null) {
+< return b;
+< }
+< if (b == null) {
+< return a;
+< }
+< if (isMinim) {
+< return a.getValue() < b.getValue() ? a : b;
+< } else {
+< return a.getValue() > b.getValue() ? a : b;
+< }
+< }

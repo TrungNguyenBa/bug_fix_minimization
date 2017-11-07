@@ -5,62 +5,32 @@ def remove_comments(text):
         text: blob of text with comments (can include newlines)
         returns: text with comments removed
     """
-    pattern = r"""
-                            ##  --------- COMMENT ---------
-           /\*              ##  Start of /* ... */ comment
-           [^*]*\*+         ##  Non-* followed by 1-or-more *'s
-           (                ##
-             [^/*][^*]*\*+  ##
-           )*               ##  0-or-more things which don't start with /
-                            ##    but do end with '*'
-           /                ##  End of /* ... */ comment
-         |                  ##  -OR-  various things which aren't comments:
-           (                ## 
-                            ##  ------ " ... " STRING ------
-             "              ##  Start of " ... " string
-             (              ##
-               \\.          ##  Escaped char
-             |              ##  -OR-
-               [^"\\]       ##  Non "\ characters
-             )*             ##
-             "              ##  End of " ... " string
-           |                ##  -OR-
-                            ##
-                            ##  ------ ' ... ' STRING ------
-             '              ##  Start of ' ... ' string
-             (              ##
-               \\.          ##  Escaped char
-             |              ##  -OR-
-               [^'\\]       ##  Non '\ characters
-             )*             ##
-             '              ##  End of ' ... ' string
-           |                ##  -OR-
-                            ##
-                            ##  ------ ANYTHING ELSE -------
-             .              ##  Anything other char
-             [^/"'\\]*      ##  Chars which doesn't start a comment, string
-           )                ##    or escape
-    """
+    pattern = r"(\".*?\"|\'.*?\')|(/\*.*?\*/|//[^\r\n]*$)"
     regex = re.compile(pattern, re.VERBOSE|re.MULTILINE|re.DOTALL)
-    noncomments = [m.group(2) for m in regex.finditer(text) if m.group(2)]
-
-    return "".join(noncomments)
+    def _replacer(match):
+        # if the 2nd group (capturing comments) is not None,
+        # it means we have captured a non-quoted (real) comment string.
+        if match.group(2) is not None:
+            return "" # so we will return empty to remove the comment
+        else: # otherwise, we will return the 1st group
+            return match.group(1) # captured quoted-string
+    return regex.sub(_replacer, text)
 
 def remove_spaces(text):
-	newtext = ""
-	linelist = text.split('\n')
-	for line in linelist:
-		if len(line.strip())>0:
-			newtext = newtext + line.strip() + "\n"
-	return newtext
+  newtext = ""
+  linelist = text.split('\n')
+  for line in linelist:
+    if len(line.strip())>0:
+      newtext = newtext + line.strip() + "\n"
+  return newtext
 
 
 filename = sys.argv[1]
 code_w_comments = open(filename).read()
-code_wo_spaces = remove_spaces(code_w_comments)
-code_wo_comments = remove_comments(code_wo_spaces)
+code_wo_comments = remove_comments(code_w_comments)
+code_wo_spaces = remove_spaces(code_wo_comments)
 
 fh = open(filename + "_nospcm_", "w")
-fh.write(code_wo_comments)
+fh.write(code_wo_spaces)
 fh.close()
 

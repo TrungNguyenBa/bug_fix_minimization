@@ -1,0 +1,16 @@
+1274,1275c1274,1275
+< final Class<?> type1 = array1.getClass().getComponentType();
+< T[] joinedArray = (T[]) Array.newInstance(type1, array1.length + array2.length);
+---
+> T[] joinedArray = (T[]) Array.newInstance(array1.getClass().getComponentType(),
+> array1.length + array2.length);
+1277d1276
+< try {
+1279,1285d1277
+< } catch (ArrayStoreException ase) {
+< final Class<?> type2 = array2.getClass().getComponentType();
+< if (!type1.isAssignableFrom(type2)){
+< throw new IllegalArgumentException("Cannot store "+type2.getName()+" in an array of "+type1.getName());
+< }
+< throw ase;
+< }

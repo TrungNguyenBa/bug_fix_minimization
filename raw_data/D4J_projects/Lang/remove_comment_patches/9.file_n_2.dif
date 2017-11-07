@@ -1,0 +1,2 @@
+22d21
+< <action issue="LANG-832" type="fix">FastDateParser does not handle unterminated quotes correctly</action>

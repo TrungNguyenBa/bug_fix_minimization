@@ -1,0 +1,3 @@
+75d5b74a : Applying my fix to LANG-645, and Mikael's test case; fixing the FastDateFormat to properly include the locale when formatting a Date
+:100644 100644 e30da2a5... 95925fc9... M	src/main/java/org/apache/commons/lang3/time/FastDateFormat.java
+:100644 100644 45156e3a... 3853cdd9... M	src/test/java/org/apache/commons/lang3/time/FastDateFormatTest.java

@@ -1,0 +1,12 @@
+87,90c87,88
+< return var != null
+< && var.getScope() == s
+< && !isNamedParameter(var)
+< && !blacklistedVars.contains(var);
+---
+> return var != null &&
+> var.getScope() == s && !blacklistedVars.contains(var);
+93,95d90
+< private boolean isNamedParameter(Var v) {
+< return v.getParentNode().isParamList();
+< }

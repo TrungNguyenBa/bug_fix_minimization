@@ -1,0 +1,3 @@
+f640b5de : Allow expressions on LHS of for-in loops. Fixes issue 528.
+:100644 100644 772d2511... e107faa9... M	src/com/google/javascript/jscomp/LiveVariablesAnalysis.java
+:100644 100644 f29e5a74... 1459bd49... M	test/com/google/javascript/jscomp/LiveVariableAnalysisTest.java

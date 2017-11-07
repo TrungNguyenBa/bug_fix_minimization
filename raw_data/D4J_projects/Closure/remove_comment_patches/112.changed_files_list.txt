@@ -1,0 +1,3 @@
+b168c882 : Don't infer class template keys when inferring method template keys. Fixes issue 1058. ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=53874505
+:100644 100644 b88744df... 4b30d57b... M	src/com/google/javascript/jscomp/TypeInference.java
+:100644 100644 14569dc2... 4fa5c448... M	test/com/google/javascript/jscomp/TypeCheckTest.java

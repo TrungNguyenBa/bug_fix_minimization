@@ -1,0 +1,3 @@
+f17961ae : Fix DisambiguateProperties handling of quoted properties
+:100644 100644 52248611... 01293c98... M	src/com/google/javascript/jscomp/DisambiguateProperties.java
+:100644 100644 e72ac65e... c2d4b77f... M	test/com/google/javascript/jscomp/DisambiguatePropertiesTest.java

@@ -1,0 +1,7 @@
+d06e7b7c8 : Fixed automatic step initialization in embedded Runge-Kutta integrators. The relative tolerance setting was never used, only the absolute tolerance was used. JIRA: MATH-338
+:100644 100644 70b2a2b52... 1bbad3ec3... M	src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+:100644 100644 f18bedf16... c1a0ee33e... M	src/site/xdoc/changes.xml
+:100644 100644 0355800ac... 20dd4249d... M	src/test/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegratorTest.java
+:100644 100644 895cefff6... bb36cda31... M	src/test/java/org/apache/commons/math/ode/nonstiff/DormandPrince853IntegratorTest.java
+:100644 100644 0785d9754... 56663c9a8... M	src/test/java/org/apache/commons/math/ode/nonstiff/HighamHall54IntegratorTest.java
+:100644 100644 9094b2a87... a2645b7ac... M	src/test/java/org/apache/commons/math/ode/nonstiff/HighamHall54StepInterpolatorTest.java

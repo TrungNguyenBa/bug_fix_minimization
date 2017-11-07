@@ -1,0 +1,4 @@
+e98a5000c : Fixed case of unconstrained variables that still occur in the objective function in simplex solver.
+:100644 100644 fd8943203... d96c9167b... M	src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+:100644 100644 b8e3a1d09... 1d2e38b07... M	src/site/xdoc/changes.xml
+:100644 100644 169d07d23... 46afe77ed... M	src/test/java/org/apache/commons/math/optimization/linear/SimplexSolverTest.java

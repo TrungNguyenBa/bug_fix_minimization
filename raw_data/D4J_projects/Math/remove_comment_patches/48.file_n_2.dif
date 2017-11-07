@@ -1,0 +1,6 @@
+4d3
+< import org.apache.commons.math.exception.ConvergenceException;
+83,85d81
+< if (x == x1) {
+< throw new ConvergenceException();
+< }

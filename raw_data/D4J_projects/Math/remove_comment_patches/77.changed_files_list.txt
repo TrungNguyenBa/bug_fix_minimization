@@ -1,0 +1,7 @@
+d6555de71 : fixed a wrong implementation of the Linf vector norm JIRA: MATH-326
+:100644 100644 cf103c066... ace4b8d21... M	src/main/java/org/apache/commons/math/linear/AbstractRealVector.java
+:100644 100644 45c091921... 22d0a280f... M	src/main/java/org/apache/commons/math/linear/ArrayRealVector.java
+:100644 100644 febea7a87... eb5be1b68... M	src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+:100644 100644 ff44a55fb... d5e90c349... M	src/site/xdoc/changes.xml
+:100644 100644 1632316e5... 171f23fce... M	src/test/java/org/apache/commons/math/linear/ArrayRealVectorTest.java
+:100644 100644 db27f968e... 2becb695a... M	src/test/java/org/apache/commons/math/linear/SparseRealVectorTest.java

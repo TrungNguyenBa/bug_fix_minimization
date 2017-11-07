@@ -1,0 +1,16 @@
+145c145
+< addConstant(Long.toString(mantissa) + "E" + Integer.toString(exp));
+---
+> add(Long.toString(mantissa) + "E" + Integer.toString(exp));
+147c147
+< addConstant(Long.toString(value));
+---
+> add(Long.toString(value));
+150c150
+< addConstant(String.valueOf(x));
+---
+> add(String.valueOf(x));
+153,155d152
+< void addConstant(String newcode) {
+< add(newcode);
+< }

@@ -1,0 +1,6 @@
+124d123
+< if (NodeUtil.isName(lhs)) {
+127,129d125
+< } else {
+< computeGenKill(lhs, gen, kill, conditional);
+< }

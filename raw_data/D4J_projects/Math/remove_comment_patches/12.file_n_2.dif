@@ -1,0 +1,9 @@
+2d1
+< import java.io.Serializable;
+5,8c4
+< public abstract class BitsStreamGenerator
+< implements RandomGenerator,
+< Serializable {
+< private static final long serialVersionUID = 20130104L;
+---
+> public abstract class BitsStreamGenerator implements RandomGenerator {

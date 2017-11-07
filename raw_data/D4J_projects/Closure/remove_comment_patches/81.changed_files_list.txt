@@ -1,0 +1,2 @@
+a65a72e9 : Various jQuery 1.5 updates. Tighten types marked as "Object".
+:100644 100644 2f5bbd55... 8db55cea... M	contrib/externs/jquery-1.5.js

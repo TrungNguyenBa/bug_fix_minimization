@@ -1,0 +1,29 @@
+302a303,311
+> public double getL1Norm() {
+> double res = 0;
+> Iterator iter = entries.iterator();
+> while (iter.hasNext()) {
+> iter.advance();
+> res += Math.abs(iter.value());
+> }
+> return res;
+> }
+342a352,369
+> public double getLInfNorm() {
+> double max = 0;
+> Iterator iter = entries.iterator();
+> while (iter.hasNext()) {
+> iter.advance();
+> max += iter.value();
+> }
+> return max;
+> }
+> public double getNorm() {
+> double res = 0;
+> Iterator iter = entries.iterator();
+> while (iter.hasNext()) {
+> iter.advance();
+> res += iter.value() * iter.value();
+> }
+> return Math.sqrt(res);
+> }

@@ -1,0 +1,4 @@
+7707b0bb8 : Fixed add method to match javadoc contract when one or both addends has NaN parts.
+:100644 100644 e0a8e97e9... ab58c78d4... M	src/main/java/org/apache/commons/math/complex/Complex.java
+:100644 100644 34c63692e... b2299add7... M	src/site/xdoc/changes.xml
+:100644 100644 3eb6d3eab... 97b473d71... M	src/test/java/org/apache/commons/math/complex/ComplexTest.java

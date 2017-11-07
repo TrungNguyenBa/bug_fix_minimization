@@ -1,0 +1,4 @@
+f36be8e8b : fixed an error leading the simplex solver to compute the right solution but return another one JIRA: MATH-286
+:100644 100644 c228ad62d... b38776718... M	src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+:100644 100644 504b8e79f... a48e1da07... M	src/site/xdoc/changes.xml
+:100644 100644 3a082a7b0... 9d43a5405... M	src/test/java/org/apache/commons/math/optimization/linear/SimplexSolverTest.java

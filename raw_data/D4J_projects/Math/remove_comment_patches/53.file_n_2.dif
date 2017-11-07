@@ -1,0 +1,4 @@
+54,56d53
+< if (isNaN || rhs.isNaN) {
+< return NaN;
+< }

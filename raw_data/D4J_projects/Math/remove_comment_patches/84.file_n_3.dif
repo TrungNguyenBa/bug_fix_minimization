@@ -1,0 +1,7 @@
+32,37d31
+< <release version="2.1" date="TBD" description="TBD">
+< <action dev="luc" type="fix" issue="MATH-283" due-to="Michael Nischt">
+< Prevent infinite loops in multi-directional direct optimization method when
+< the start point is exactly at the optimal point
+< </action>
+< </release>

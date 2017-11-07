@@ -1,0 +1,4 @@
+542,544d541
+< if (maybeTypeOfThis != null) {
+< maybeTypeOfThis = maybeTypeOfThis.restrictByNotNullOrUndefined();
+< }

@@ -1,0 +1,2 @@
+22d21
+< <action issue="LANG-857" type="add">StringIndexOutOfBoundsException in CharSequenceTranslator</action>

@@ -1,0 +1,4 @@
+66c8c695 : preserve whitespace at the beginning of license blocks makes the <code> in closure docs look a lot better fixes issue 701
+:100644 100644 f1f57359... cfdccbe6... M	src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+:100644 100644 0f49999d... efdad8c2... M	test/com/google/javascript/jscomp/IntegrationTest.java
+:100644 100644 26731216... 26accc96... M	test/com/google/javascript/jscomp/parsing/JsDocInfoParserTest.java

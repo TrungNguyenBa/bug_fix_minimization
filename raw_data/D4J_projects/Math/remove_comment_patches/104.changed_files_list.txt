@@ -1,0 +1,6 @@
+e39a7750e : Increased default epsilon for Gamma, Beta function evaluation. JIRA: MATH-166 Reported and patched by Lukas Theussl
+:100644 100644 4239c252d... 904e15663... M	src/java/org/apache/commons/math/special/Beta.java
+:100644 100644 8c565cbff... ba2c4dbf3... M	src/java/org/apache/commons/math/special/Gamma.java
+:100644 100644 5e916e246... 01446afce... M	src/test/org/apache/commons/math/special/BetaTest.java
+:100644 100644 e7524f1b6... e7d459616... M	src/test/org/apache/commons/math/special/GammaTest.java
+:100644 100644 f8f088c0e... 441a7a262... M	xdocs/changes.xml

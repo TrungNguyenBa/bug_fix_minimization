@@ -1,0 +1,27 @@
+43d42
+< double ret = Double.NaN;
+46,54c45
+< double sign = yMin * yMax;
+< if (sign > 0) {
+< if (Math.abs(yMin) <= functionValueAccuracy) {
+< setResult(min, 0);
+< ret = min;
+< } else if (Math.abs(yMax) <= functionValueAccuracy) {
+< setResult(max, 0);
+< ret = max;
+< } else {
+---
+> if (yMin * yMax >= 0) {
+60,69c51
+< } else if (sign < 0){
+< ret = solve(min, yMin, max, yMax, min, yMin);
+< } else {
+< if (yMin == 0.0) {
+< ret = min;
+< } else {
+< ret = max;
+< }
+< }
+< return ret;
+---
+> return solve(min, yMin, max, yMax, min, yMin);

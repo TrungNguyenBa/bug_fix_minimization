@@ -1,0 +1,78 @@
+176,194d175
+< VariableLiveness state = VariableLiveness.MAYBE_LIVE;
+< switch (n.getParent().getType()) {
+< case Token.OR:
+< case Token.AND:
+< if (n.getNext() != null) {
+< state = isVariableReadBeforeKill(
+< n.getNext(), variable);
+< if (state == VariableLiveness.KILL) {
+< state = VariableLiveness.MAYBE_LIVE;
+< }
+< }
+< break;
+< case Token.HOOK:
+< if (n.getNext() != null && n.getNext().getNext() != null) {
+< state = checkHookBranchReadBeforeKill(
+< n.getNext(), n.getNext().getNext(), variable);
+< }
+< break;
+< default:
+197,202c178,179
+< state = isVariableReadBeforeKill(sibling, variable);
+< if (state != VariableLiveness.MAYBE_LIVE) {
+< break;
+< }
+< }
+< }
+---
+> if (!ControlFlowGraph.isEnteringNewCfgNode(sibling)) {
+> VariableLiveness state = isVariableReadBeforeKill(sibling, variable);
+207a185,186
+> }
+> }
+219,221d197
+< if (ControlFlowGraph.isEnteringNewCfgNode(n)) {
+< return VariableLiveness.MAYBE_LIVE;
+< }
+235,257d210
+< switch (n.getType()) {
+< case Token.OR:
+< case Token.AND:
+< VariableLiveness v1 = isVariableReadBeforeKill(
+< n.getFirstChild(), variable);
+< VariableLiveness v2 = isVariableReadBeforeKill(
+< n.getLastChild(), variable);
+< if (v1 != VariableLiveness.MAYBE_LIVE) {
+< return v1;
+< } else if (v2 == VariableLiveness.READ) {
+< return VariableLiveness.READ;
+< } else {
+< return VariableLiveness.MAYBE_LIVE;
+< }
+< case Token.HOOK:
+< VariableLiveness first = isVariableReadBeforeKill(
+< n.getFirstChild(), variable);
+< if (first != VariableLiveness.MAYBE_LIVE) {
+< return first;
+< }
+< return checkHookBranchReadBeforeKill(
+< n.getFirstChild().getNext(), n.getLastChild(), variable);
+< default:
+259a213
+> if (!ControlFlowGraph.isEnteringNewCfgNode(child)) {
+268,281d221
+< private VariableLiveness checkHookBranchReadBeforeKill(
+< Node trueCase, Node falseCase, String variable) {
+< VariableLiveness v1 = isVariableReadBeforeKill(
+< trueCase, variable);
+< VariableLiveness v2 = isVariableReadBeforeKill(
+< falseCase, variable);
+< if (v1 == VariableLiveness.READ || v2 == VariableLiveness.READ) {
+< return VariableLiveness.READ;
+< } else if (v1 == VariableLiveness.KILL && v2 == VariableLiveness.KILL) {
+< return VariableLiveness.KILL;
+< } else {
+< return VariableLiveness.MAYBE_LIVE;
+< }
+< }

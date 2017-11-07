@@ -1,0 +1,4 @@
+96f586cb : Ensure there is a max/min valid offset in DateTimeZone
+:100644 100644 ec9d30c2... 469fa6f2... M	RELEASE-NOTES.txt
+:100644 100644 f62ab9c0... afa75d79... M	src/main/java/org/joda/time/DateTimeZone.java
+:100644 100644 106363fb... 3b4221e0... M	src/test/java/org/joda/time/TestDateTimeZone.java

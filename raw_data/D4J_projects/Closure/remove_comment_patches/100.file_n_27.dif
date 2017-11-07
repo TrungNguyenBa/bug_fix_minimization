@@ -1,0 +1,7 @@
+2a3,4
+> import com.google.common.annotations.VisibleForTesting;
+> import com.google.common.base.Objects;
+528a531,533
+> private ArrowType createArrowType(Node parameters, JSType returnType) {
+> return registry.createArrowType(parameters, returnType);
+> }

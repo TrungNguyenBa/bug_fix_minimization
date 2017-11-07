@@ -1,0 +1,2 @@
+22d21
+< <action issue="LANG-831" type="fix">FastDateParser does not handle white-space properly</action>

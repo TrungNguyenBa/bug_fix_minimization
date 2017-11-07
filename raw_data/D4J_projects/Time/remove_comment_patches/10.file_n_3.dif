@@ -1,0 +1,6 @@
+18d17
+< private static final long START_1972 = 2L * 365L * 86400L * 1000L;
+44c43
+< int[] values = chrono.get(zeroInstance, chrono.set(start, START_1972), chrono.set(end, START_1972));
+---
+> int[] values = chrono.get(zeroInstance, chrono.set(start, 0L), chrono.set(end, 0L));

@@ -1,0 +1,3 @@
+d1cfe679 : Fix null pointer bug encountered when trying to extend non-existent interfaces.
+:100644 100644 07ecdfa4... 96f256d8... M	src/com/google/javascript/jscomp/TypeCheck.java
+:100644 100644 b693dd29... 3fb9439e... M	test/com/google/javascript/jscomp/TypeCheckTest.java

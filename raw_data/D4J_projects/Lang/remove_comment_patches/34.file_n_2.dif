@@ -1,0 +1,12 @@
+19,20c19,21
+< static Map<Object, Object> getRegistry() {
+< return REGISTRY.get();
+---
+> static Set<Object> getRegistry() {
+> WeakHashMap<Object, Object> m = REGISTRY.get();
+> return m == null ? Collections.<Object> emptySet() : m.keySet();
+23,24c24
+< Map<Object, Object> m = getRegistry();
+< return m != null && m.containsKey(value);
+---
+> return getRegistry().contains(value);

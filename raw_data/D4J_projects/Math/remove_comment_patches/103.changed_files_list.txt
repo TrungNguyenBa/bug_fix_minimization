@@ -1,0 +1,4 @@
+4ce05bcd5 : Modified NormalDistributionImpl.cumulativeProbablity to catch MaxIterationsExceededException and return 0 or 1, resp. if the argument is more than 20 standard deviations from the mean.
+:100644 100644 ff54236de... a08eac52f... M	src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+:100644 100644 894215bf6... 8ce73c139... M	src/test/org/apache/commons/math/distribution/NormalDistributionTest.java
+:100644 100644 427e05894... c4e02155d... M	xdocs/changes.xml

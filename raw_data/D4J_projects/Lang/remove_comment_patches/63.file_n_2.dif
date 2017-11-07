@@ -1,0 +1,28 @@
+134,135c134
+< end.add(Calendar.MONTH, -1);
+< days += end.getActualMaximum(Calendar.DAY_OF_MONTH);
+---
+> days += 31;
+137d135
+< end.add(Calendar.MONTH, 1);
+142a141,147
+> milliseconds -= reduceAndCorrect(start, end, Calendar.MILLISECOND, milliseconds);
+> seconds -= reduceAndCorrect(start, end, Calendar.SECOND, seconds);
+> minutes -= reduceAndCorrect(start, end, Calendar.MINUTE, minutes);
+> hours -= reduceAndCorrect(start, end, Calendar.HOUR_OF_DAY, hours);
+> days -= reduceAndCorrect(start, end, Calendar.DAY_OF_MONTH, days);
+> months -= reduceAndCorrect(start, end, Calendar.MONTH, months);
+> years -= reduceAndCorrect(start, end, Calendar.YEAR, years);
+227a233,244
+> static int reduceAndCorrect(Calendar start, Calendar end, int field, int difference) {
+> end.add( field, -1 * difference );
+> int endValue = end.get(field);
+> int startValue = start.get(field);
+> if (endValue < startValue) {
+> int newdiff = startValue - endValue;
+> end.add( field, newdiff );
+> return newdiff;
+> } else {
+> return 0;
+> }
+> }

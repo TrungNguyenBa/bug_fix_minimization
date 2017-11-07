@@ -1,0 +1,5 @@
+571,574d570
+< Preconditions.checkNotNull(declaration);
+< if (declaration.getTwin() != null) {
+< return false;
+< }

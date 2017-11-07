@@ -1,0 +1,4 @@
+14dedcbc : DateTimeZone.forTimeZone [3216471] Time-zone ID "MET" from java.util.TimeZone is now mapped correctly. Other time-zone conversions have been updated appropriately
+:100644 100644 695d810e... 83f549c9... M	JodaTime/RELEASE-NOTES.txt
+:100644 100644 004821a9... 855cad05... M	JodaTime/src/main/java/org/joda/time/DateTimeZone.java
+:100644 100644 bc98acf0... a6eaac3b... M	JodaTime/src/test/java/org/joda/time/TestDateTimeZone.java

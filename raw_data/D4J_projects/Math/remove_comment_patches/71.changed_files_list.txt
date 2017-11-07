@@ -1,0 +1,8 @@
+6537e18ad : Fixed an error in events handling in ODE solvers. In some rare cases, events occurring close to a step start were handled without truncating the step, making them appear as is they occurred close to the step end JIRA: MATH-358
+:100644 100644 935bb8ba3... 6ee9bd56c... M	src/main/java/org/apache/commons/math/ode/nonstiff/AdamsBashforthIntegrator.java
+:100644 100644 27ade7b07... e0e2f0d2c... M	src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+:100644 100644 34b3dc1ca... e03be9ed0... M	src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+:100644 100644 3227b9808... b61b0b1a4... M	src/main/java/org/apache/commons/math/ode/nonstiff/RungeKuttaIntegrator.java
+:100644 100644 9e086a708... c7701c57a... M	src/site/xdoc/changes.xml
+:100644 100644 246d9b265... dbfc006a8... M	src/test/java/org/apache/commons/math/ode/nonstiff/ClassicalRungeKuttaIntegratorTest.java
+:100644 100644 bb36cda31... 3ce842ac4... M	src/test/java/org/apache/commons/math/ode/nonstiff/DormandPrince853IntegratorTest.java

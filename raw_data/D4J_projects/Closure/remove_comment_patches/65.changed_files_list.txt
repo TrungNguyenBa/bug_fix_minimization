@@ -1,0 +1,4 @@
+48aea0ff : Encode the null byte more correctly, because we have to be careful of look ahead. Contributed by kosmo.zb Fixes issue 486
+:100644 100644 4a5b1124... 82cbfe92... M	CONTRIBUTORS
+:100644 100644 6117a89b... cb9229a8... M	src/com/google/javascript/jscomp/CodeGenerator.java
+:100644 100644 be1b816c... 4ddd2249... M	test/com/google/javascript/jscomp/CodePrinterTest.java

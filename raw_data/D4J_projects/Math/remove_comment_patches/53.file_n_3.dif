@@ -1,0 +1,6 @@
+45,49d44
+< <action dev="psteitz" type="fix" issue="MATH-618" due-to="Arne Plose">
+< Complex add javadoc says that if either addend has NaN parts, the result
+< should be Complex.NaN.  Prior to the fix for this issue, NaNs were propagated
+< only in real and imaginary parts individually.
+< </action>

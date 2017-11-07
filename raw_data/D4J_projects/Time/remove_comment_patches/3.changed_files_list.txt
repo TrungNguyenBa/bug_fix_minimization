@@ -1,0 +1,5 @@
+8d109fe1 : Adding zero no longer changes the offset during DST overlap
+:100644 100644 64b87dca... 0cad3156... M	RELEASE-NOTES.txt
+:100644 100644 237b2560... 9aa8602a... M	src/main/java/org/joda/time/MutableDateTime.java
+:100644 100644 a10e75dd... 97228fc6... M	src/test/java/org/joda/time/TestMutableDateTime_Adds.java
+:100644 100644 00e6abfb... aab5bf38... M	src/test/java/org/joda/time/TestMutableDateTime_Sets.java

@@ -1,0 +1,8 @@
+55c55
+< throws MaxIterationsExceededException {
+---
+> throws ConvergenceException {
+57c57
+< throw new MaxIterationsExceededException(maximalIterationCount);
+---
+> throw new ConvergenceException(new MaxIterationsExceededException(maximalIterationCount));

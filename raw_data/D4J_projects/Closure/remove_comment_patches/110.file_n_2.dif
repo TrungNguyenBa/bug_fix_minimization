@@ -1,0 +1,37 @@
+11d10
+< import com.google.javascript.rhino.IR;
+236d234
+< boolean isFunctionDecl = NodeUtil.isFunctionDeclaration(parent);
+241,245c239,241
+< } else if (isVar || isFunctionDecl) {
+< boolean isHoisted = NodeUtil.isHoistedFunctionDeclaration(parent);
+< Node grandparent = parent.getParent();
+< Node value = v.getInitialValue() != null ?
+< v.getInitialValue() :
+---
+> } else if (isVar) {
+> Node value = n.hasChildren() ?
+> v.getInitialValue().detachFromParent() :
+247d242
+< Node varNode = null;
+254,265d248
+< if (isFunctionDecl) {
+< Node existingName = v.getNameNode();
+< Node newName = IR.name("").useSourceInfoFrom(existingName);
+< value.replaceChild(existingName, newName);
+< varNode = IR.var(existingName).useSourceInfoFrom(existingName);
+< grandparent.replaceChild(parent, varNode);
+< } else {
+< if (value != null) {
+< value.detachFromParent();
+< }
+< varNode = parent;
+< }
+275,279c258
+< if (isHoisted) {
+< grandparent.addChildToFront(newDecl);
+< } else {
+< grandparent.addChildBefore(newDecl, varNode);
+< }
+---
+> parent.getParent().addChildBefore(newDecl, parent);

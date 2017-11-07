@@ -1,0 +1,14 @@
+90c90
+< if (nextCfgNode == fallThrough && !inFinally(n.getParent(), n)) {
+---
+> if (nextCfgNode == fallThrough) {
+96,104d95
+< private boolean inFinally(Node parent, Node child) {
+< if (parent == null || parent.isFunction()) {
+< return false;
+< } else if (NodeUtil.isTryFinallyNode(parent, child)) {
+< return true;
+< } else {
+< return inFinally(parent.getParent(), parent);
+< }
+< }

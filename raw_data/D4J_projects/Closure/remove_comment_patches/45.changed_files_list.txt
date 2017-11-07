@@ -1,0 +1,3 @@
+6aa71f11 : Don't remove assignments to variables whose values have escaped and are later modified. Fixes issue 618.
+:100644 100644 393ced60... c93a073c... M	src/com/google/javascript/jscomp/RemoveUnusedVars.java
+:100644 100644 686b1d82... fdeca052... M	test/com/google/javascript/jscomp/RemoveUnusedVarsTest.java

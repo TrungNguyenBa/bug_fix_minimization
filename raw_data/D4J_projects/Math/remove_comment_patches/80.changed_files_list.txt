@@ -1,0 +1,4 @@
+3ced4f2a4 : Fixed an index computation error in eigen decomposition. Once again, kudos to Dimitri for debugging this. JIRA: MATH-318
+:100644 100644 3fc328d8b... 9d1b797be... M	src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+:100644 100644 6e2774018... e1a7df0ce... M	src/site/xdoc/changes.xml
+:100644 100644 2ed181fe3... 3bee91917... M	src/test/java/org/apache/commons/math/linear/EigenDecompositionImplTest.java

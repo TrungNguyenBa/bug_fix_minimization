@@ -1,0 +1,3 @@
+382422ad : fix a bug in constraint-matching fixes issue 700
+:100644 100644 1a51afb6... 81a7d89e... M	src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+:100644 100644 90847750... 0213f37f... M	test/com/google/javascript/jscomp/TypeCheckTest.java

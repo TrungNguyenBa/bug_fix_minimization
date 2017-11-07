@@ -1,0 +1,4 @@
+38,40d37
+< <action dev="luc" type="fix" issue="MATH-198" due-to="Frederick Salardi">
+< added an error detection for missing imaginary character while parsing complex string
+< </action>

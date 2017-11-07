@@ -1,0 +1,4 @@
+523df0c13 : Fixed regression in Frequency.getPct(Object) introduced in 2.0. Cumulative percent was being returned for Object arguments in place of percent.
+:100644 100644 c45d72883... 68c8bf2de... M	src/main/java/org/apache/commons/math/stat/Frequency.java
+:100644 100644 6ed488994... 44acbcab6... M	src/site/xdoc/changes.xml
+:100644 100644 4fcbe2b5c... f216edaf8... M	src/test/java/org/apache/commons/math/stat/FrequencyTest.java

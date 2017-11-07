@@ -1,0 +1,11 @@
+1016,1025d1015
+< static Node getRootOfQualifiedName(Node qName) {
+< for (Node current = qName; true;
+< current = current.getFirstChild()) {
+< int type = current.getType();
+< if (type == Token.NAME || type == Token.THIS) {
+< return current;
+< }
+< Preconditions.checkState(type == Token.GETPROP);
+< }
+< }

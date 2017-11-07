@@ -1,0 +1,8 @@
+660c660
+< JsMessage.Style.CLOSURE,
+---
+> JsMessage.Style.getFromParams(true, false),
+671c671
+< JsMessage.Style.CLOSURE);
+---
+> JsMessage.Style.getFromParams(true, false));

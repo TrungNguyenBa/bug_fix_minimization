@@ -1,0 +1,12 @@
+65,66d64
+< case Token.VOID:
+< return TernaryValue.FALSE;
+81d78
+< return TernaryValue.FALSE;
+83d79
+< if (!mayHaveSideEffects(n.getFirstChild())) {
+85,86d80
+< }
+< break;
+104d97
+< break;

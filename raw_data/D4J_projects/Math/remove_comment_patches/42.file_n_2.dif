@@ -1,0 +1,6 @@
+225,227c225
+< if (basicRow != null && basicRow == 0) {
+< coefficients[i] = 0;
+< } else if (basicRows.contains(basicRow)) {
+---
+> if (basicRows.contains(basicRow)) {

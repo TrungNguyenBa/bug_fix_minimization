@@ -1,0 +1,8 @@
+111a112,114
+> if (str.startsWith("--")) {
+> return null;
+> }
+279,281d281
+< if (str.trim().startsWith("--")) {
+< throw new NumberFormatException(str + " is not a valid number.");
+< }

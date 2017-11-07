@@ -1,0 +1,6 @@
+b0cba9a79 : Clarified definition of isSupportXxxBoundInclusive in RealDistribution interface, made code consistent with the definition, and deprecated these methods, marking for removal in 4.0. JIRA: MATH-859
+:100644 100644 e07d8c3ae... ec44dd50f... M	src/changes/changes.xml
+:100644 100644 8b0993c4d... e301e2ef5... M	src/main/java/org/apache/commons/math3/distribution/FDistribution.java
+:100644 100644 f09c5acbe... 90dc8fdeb... M	src/main/java/org/apache/commons/math3/distribution/RealDistribution.java
+:100644 100644 5d32f6ebf... 0d279de1f... M	src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java
+:100644 100644 1c41113fa... c693b1404... M	src/test/java/org/apache/commons/math3/distribution/RealDistributionAbstractTest.java

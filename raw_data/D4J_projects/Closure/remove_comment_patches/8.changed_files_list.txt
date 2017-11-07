@@ -1,0 +1,3 @@
+6300a435 : Don't collapse assignments into var declarations if it would cause a redeclarion of a named parameter.
+:100644 100644 47c2c4fe... e0466eac... M	src/com/google/javascript/jscomp/CollapseVariableDeclarations.java
+:100644 100644 eb48e708... 5e318e10... M	test/com/google/javascript/jscomp/CollapseVariableDeclarationsTest.java

@@ -1,0 +1,4 @@
+117c117
+< return INF;
+---
+> return NaN;

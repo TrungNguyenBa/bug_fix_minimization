@@ -1,0 +1,4 @@
+75944e54 : [LANG-865] LocaleUtils.toLocale does not parse strings starting with an underscore.
+:100644 100644 4263d9ac... a8a37693... M	src/changes/changes.xml
+:100644 100644 7568f2c6... a7a60511... M	src/main/java/org/apache/commons/lang3/LocaleUtils.java
+:100644 100644 84e3b66d... b30b3e32... M	src/test/java/org/apache/commons/lang3/LocaleUtilsTest.java

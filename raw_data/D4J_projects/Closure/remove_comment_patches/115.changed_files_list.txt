@@ -1,0 +1,4 @@
+4597738e : Automated g4 rollback of changelist 53511956.
+:100644 100644 accf4c53... 5b386006... M	src/com/google/javascript/jscomp/FunctionInjector.java
+:100644 100644 59f271e3... 4d684dad... M	test/com/google/javascript/jscomp/FunctionInjectorTest.java
+:100644 100644 a865b105... d8bb32f9... M	test/com/google/javascript/jscomp/InlineFunctionsTest.java

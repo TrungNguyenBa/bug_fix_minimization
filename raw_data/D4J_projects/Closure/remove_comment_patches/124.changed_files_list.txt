@@ -1,0 +1,3 @@
+e7f4269d : Fixes issue 1017 ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=47616701
+:100644 100644 1f925ba4... 1639f2c6... M	src/com/google/javascript/jscomp/ExploitAssigns.java
+:100644 100644 318652d0... 72cf2531... M	test/com/google/javascript/jscomp/ExploitAssignsTest.java

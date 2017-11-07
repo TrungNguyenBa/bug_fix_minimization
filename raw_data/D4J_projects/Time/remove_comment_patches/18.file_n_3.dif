@@ -1,0 +1,18 @@
+173,175c173
+< long instant;
+< try {
+< instant = iGregorianChronology.getDateTimeMillis
+---
+> long instant = iGregorianChronology.getDateTimeMillis
+178,188d175
+< } catch (IllegalFieldValueException ex) {
+< if (monthOfYear != 2 || dayOfMonth != 29) {
+< throw ex;
+< }
+< instant = iGregorianChronology.getDateTimeMillis
+< (year, monthOfYear, 28,
+< hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+< if (instant >= iCutoverMillis) {
+< throw ex;
+< }
+< }

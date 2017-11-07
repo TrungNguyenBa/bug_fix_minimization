@@ -1,0 +1,14 @@
+996,1004c996,998
+< Node parameter = null;
+< Node argument = null;
+< while (arguments.hasNext() &&
+< (parameters.hasNext() ||
+< parameter != null && parameter.isVarArgs())) {
+< if (parameters.hasNext()) {
+< parameter = parameters.next();
+< }
+< argument = arguments.next();
+---
+> while (arguments.hasNext() && parameters.hasNext()) {
+> Node parameter = parameters.next();
+> Node argument = arguments.next();

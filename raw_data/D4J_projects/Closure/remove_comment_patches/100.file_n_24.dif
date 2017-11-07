@@ -1,0 +1,7 @@
+723a724,729
+> public String getString() {
+> return string;
+> }
+> public JsDocToken getToken() {
+> return token;
+> }

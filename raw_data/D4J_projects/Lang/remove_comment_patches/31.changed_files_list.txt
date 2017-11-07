@@ -1,0 +1,3 @@
+38bf7048 : https://issues.apache.org/jira/browse/LANG-607 StringUtils.containsAny methods incorrectly matches Unicode 2.0+ supplementary characters.
+:100644 100644 e60c4497... 4aac02d1... M	src/main/java/org/apache/commons/lang3/StringUtils.java
+:100644 100644 0aa13a59... 234a4557... M	src/test/java/org/apache/commons/lang3/StringUtilsEqualsIndexOfTest.java

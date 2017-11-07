@@ -1,0 +1,10 @@
+161d160
+< private final Set<Node> injectedDecls = Sets.newHashSet();
+198d196
+< injectedDecls.clear();
+284d281
+< injectedDecls.add(newDecl.getFirstChild());
+394c391
+< if (info != null && !injectedDecls.contains(n)) {
+---
+> if (info != null) {

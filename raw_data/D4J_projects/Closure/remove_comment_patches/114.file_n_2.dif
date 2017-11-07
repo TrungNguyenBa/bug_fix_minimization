@@ -1,0 +1,9 @@
+292c292
+< } else if (!(parent.isCall() && parent.getFirstChild() == n)) {
+---
+> } else {
+481c481,482
+< if (!(n.isName() || (NodeUtil.isGet(n) && !parent.isGetProp()))) {
+---
+> if (!(n.isName() ||
+> NodeUtil.isGet(n) && !parent.isGetProp())) {

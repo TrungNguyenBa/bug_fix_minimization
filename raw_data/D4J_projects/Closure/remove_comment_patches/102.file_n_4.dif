@@ -1,0 +1,7 @@
+12d11
+< private static final String ARGUMENTS = "arguments";
+142,143c141
+< if (scope.isDeclared(name, false)
+< || (scope.isLocal() && name.equals(ARGUMENTS))) {
+---
+> if (scope.isDeclared(name, false)) {

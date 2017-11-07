@@ -1,0 +1,4 @@
+b80dfd3b : Nerf direct function inlining when the function be inlined has side-effects and the call arguments can be effected. Fixes issue 1101 ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=53511956
+:100644 100644 5b386006... accf4c53... M	src/com/google/javascript/jscomp/FunctionInjector.java
+:100644 100644 4d684dad... 59f271e3... M	test/com/google/javascript/jscomp/FunctionInjectorTest.java
+:100644 100644 d8bb32f9... a865b105... M	test/com/google/javascript/jscomp/InlineFunctionsTest.java

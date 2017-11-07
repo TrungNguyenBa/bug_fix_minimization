@@ -1,0 +1,4 @@
+0a670cb5 : add dependency management in whitespace-only mode contributed by Chris Peisert fixes issue 703
+:100644 100644 addc8e6b... 428c76a5... M	CONTRIBUTORS
+:100644 100644 b76bbb5c... d98be4a6... M	src/com/google/javascript/jscomp/Compiler.java
+:100644 100644 9662afc4... a2a89ad1... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java

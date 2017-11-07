@@ -1,0 +1,6 @@
+77a6b3a4 : Fix fromCalendarFields()/fromDateFields() to handle era BC correctly
+:100644 100644 5a458c5f... e0794250... M	RELEASE-NOTES.txt
+:100644 100644 7bb7a08c... c86b9d73... M	src/main/java/org/joda/time/LocalDate.java
+:100644 100644 325192b3... e75deca2... M	src/main/java/org/joda/time/LocalDateTime.java
+:100644 100644 1dbb381a... e00ce5db... M	src/test/java/org/joda/time/TestLocalDateTime_Constructors.java
+:100644 100644 acd703c9... ee5fa9d4... M	src/test/java/org/joda/time/TestLocalDate_Constructors.java

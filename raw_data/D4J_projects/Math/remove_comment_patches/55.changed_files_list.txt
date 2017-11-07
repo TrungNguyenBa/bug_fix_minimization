@@ -1,0 +1,4 @@
+0c38504ff : Reduced cancellation errors in Vector3D.crossProduct
+:100644 100644 0a4adb840... 2d915e570... M	src/main/java/org/apache/commons/math/geometry/Vector3D.java
+:100644 100644 72035c1a9... 45a699128... M	src/site/xdoc/changes.xml
+:100644 100644 1a80543ef... 4dc474c62... M	src/test/java/org/apache/commons/math/geometry/Vector3DTest.java

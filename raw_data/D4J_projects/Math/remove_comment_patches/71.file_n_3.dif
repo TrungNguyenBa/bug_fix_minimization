@@ -1,0 +1,5 @@
+88,91d87
+< interpolator.storeTime(stepStart);
+< System.arraycopy(y, 0, yTmp, 0, y0.length);
+< hNew     = 0;
+< stepSize = 0;

@@ -1,0 +1,5 @@
+125,126c125
+< if (options.checkGlobalThisLevel.isOn() &&
+< !options.disables(DiagnosticGroups.GLOBAL_THIS)) {
+---
+> if (options.checkGlobalThisLevel.isOn()) {

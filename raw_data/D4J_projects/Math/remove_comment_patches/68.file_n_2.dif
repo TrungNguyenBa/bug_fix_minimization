@@ -1,0 +1,23 @@
+21d20
+< setConvergenceChecker(null);
+59d57
+< VectorialPointValuePair current = new VectorialPointValuePair(point, objective);
+62d59
+< VectorialPointValuePair previous = current;
+99c96
+< return current;
+---
+> return new VectorialPointValuePair(point, objective);
+127d123
+< current = new VectorialPointValuePair(point, objective);
+181,185d176
+< if (checker != null) {
+< if (checker.converged(getIterations(), previous, current)) {
+< return current;
+< }
+< } else {
+190,191c181
+< return current;
+< }
+---
+> return new VectorialPointValuePair(point, objective);

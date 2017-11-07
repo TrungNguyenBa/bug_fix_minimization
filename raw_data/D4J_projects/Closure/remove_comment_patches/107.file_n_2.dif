@@ -1,0 +1,2 @@
+642d641
+< options.setWarningLevel(JsMessageVisitor.MSG_CONVENTIONS, CheckLevel.OFF);

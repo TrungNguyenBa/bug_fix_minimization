@@ -1,0 +1,4 @@
+234,236d233
+< if (ref.getSymbol().getScope() != ref.scope) {
+< return false;
+< }

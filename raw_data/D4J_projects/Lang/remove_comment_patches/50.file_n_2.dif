@@ -1,0 +1,24 @@
+75,77c75
+< if (locale == null) {
+< locale = Locale.getDefault();
+< }
+---
+> if (locale != null) {
+78a77
+> }
+80a80,82
+> if (locale == null) {
+> locale = Locale.getDefault();
+> }
+143,145c145
+< if (locale == null) {
+< locale = Locale.getDefault();
+< }
+---
+> if (locale != null) {
+146a147
+> }
+148a150,152
+> if (locale == null) {
+> locale = Locale.getDefault();
+> }

@@ -1,0 +1,16 @@
+169c169
+< Iterator iter = entries.iterator();
+---
+> Iterator iter = res.entries.iterator();
+180c180
+< Iterator iter = entries.iterator();
+---
+> Iterator iter = res.entries.iterator();
+190c190
+< Iterator iter = entries.iterator();
+---
+> Iterator iter = res.entries.iterator();
+201c201
+< Iterator iter = entries.iterator();
+---
+> Iterator iter = res.entries.iterator();

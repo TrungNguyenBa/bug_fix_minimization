@@ -1,0 +1,5 @@
+51,54d50
+< @Override
+< void addConstant(String newcode) {
+< add("0");
+< }

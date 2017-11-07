@@ -1,0 +1,4 @@
+b3ed2415f : Fixed an error in handling of very close events during ODE integration JIRA: MATH-322
+:100644 100644 44f6742cd... ff09646bf... M	src/main/java/org/apache/commons/math/ode/events/EventState.java
+:100644 100644 bd1f4d344... ca18f07c4... M	src/site/xdoc/changes.xml
+:000000 100644 000000000... 704497016... A	src/test/java/org/apache/commons/math/ode/events/EventStateTest.java

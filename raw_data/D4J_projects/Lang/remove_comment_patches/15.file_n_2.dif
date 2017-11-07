@@ -1,0 +1,25 @@
+97,99c97,99
+< for (TypeVariable<?> var : toTypeVarAssigns.keySet()) {
+< Type toTypeArg = unrollVariableAssignments(var, toTypeVarAssigns);
+< Type fromTypeArg = unrollVariableAssignments(var, fromTypeVarAssigns);
+---
+> for (Map.Entry<TypeVariable<?>, Type> entry : toTypeVarAssigns.entrySet()) {
+> Type toTypeArg = entry.getValue();
+> Type fromTypeArg = fromTypeVarAssigns.get(entry.getKey());
+109,120d108
+< private static Type unrollVariableAssignments(TypeVariable<?> var, Map<TypeVariable<?>, Type> typeVarAssigns) {
+< Type result;
+< do {
+< result = typeVarAssigns.get(var);
+< if (result instanceof TypeVariable<?> && !result.equals(var)) {
+< var = (TypeVariable<?>) result;
+< continue;
+< }
+< break;
+< } while (true);
+< return result;
+< }
+326c314
+< if (toClass.equals(cls)) {
+---
+> if (cls.getTypeParameters().length > 0 || toClass.equals(cls)) {

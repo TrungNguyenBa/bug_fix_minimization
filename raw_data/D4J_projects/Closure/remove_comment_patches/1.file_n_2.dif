@@ -1,0 +1,4 @@
+191,193d190
+< if (!removeGlobals) {
+< return;
+< }

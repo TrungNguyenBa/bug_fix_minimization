@@ -1,0 +1,4 @@
+a5d8d115c : [MATH-776] Use same range check in ctor as in setter for ElitisticListPopulation. Thanks to Reid Hochstedler
+:100644 100644 65a32d0c4... 5aa9b2d42... M	src/changes/changes.xml
+:100644 100644 a3090806c... 829c97d3b... M	src/main/java/org/apache/commons/math3/genetics/ElitisticListPopulation.java
+:100644 100644 f2d18719b... dbfc9f12e... M	src/test/java/org/apache/commons/math3/genetics/ElitisticListPopulationTest.java

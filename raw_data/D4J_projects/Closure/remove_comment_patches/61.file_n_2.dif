@@ -1,0 +1,7 @@
+622,627d621
+< if (nameNode.getFirstChild().getType() == Token.NAME) {
+< String namespaceName = nameNode.getFirstChild().getString();
+< if (namespaceName.equals("Math")) {
+< return false;
+< }
+< }

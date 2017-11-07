@@ -1,0 +1,2 @@
+651d650
+< result[resultOffset] = FastMath.atan2(y[yOffset], x[xOffset]);

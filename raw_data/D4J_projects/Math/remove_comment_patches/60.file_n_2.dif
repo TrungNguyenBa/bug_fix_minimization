@@ -1,0 +1,19 @@
+44,48c44,45
+< final double dev = x - mean;
+< if (FastMath.abs(dev) > 40 * standardDeviation) {
+< return dev < 0 ? 0.0d : 1.0d;
+< }
+< return 0.5 * (1.0 + Erf.erf((dev) /
+---
+> try {
+> return 0.5 * (1.0 + Erf.erf((x - mean) /
+49a47,55
+> } catch (MaxIterationsExceededException ex) {
+> if (x < (mean - 20 * standardDeviation)) {
+> return 0;
+> } else if (x > (mean + 20 * standardDeviation)) {
+> return 1;
+> } else {
+> throw ex;
+> }
+> }

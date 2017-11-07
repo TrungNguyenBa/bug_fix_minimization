@@ -1,0 +1,4 @@
+d577973f : print record types better when generating typed code. fixes issue 643
+:100644 100644 dffe3a54... f4b537d2... M	src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+:100755 100755 0e0dc0a3... 0c23a696... M	test/com/google/javascript/jscomp/ExternExportsPassTest.java
+:100644 100644 48405323... 4afd4dba... M	test/com/google/javascript/rhino/jstype/RecordTypeTest.java

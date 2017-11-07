@@ -1,0 +1,11 @@
+135c135,136
+< if (MathUtils.equals(getEntry(i, col), 1.0, epsilon) && (row == null)) {
+---
+> if (!MathUtils.equals(getEntry(i, col), 0.0, epsilon)) {
+> if (row == null) {
+137c138
+< } else if (!MathUtils.equals(getEntry(i, col), 0.0, epsilon)) {
+---
+> } else {
+140a142
+> }

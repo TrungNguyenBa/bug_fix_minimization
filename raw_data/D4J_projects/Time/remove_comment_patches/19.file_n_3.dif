@@ -1,0 +1,4 @@
+445c445
+< } else if (offsetLocal >= 0) {
+---
+> } else if (offsetLocal > 0) {

@@ -1,0 +1,8 @@
+29a30,32
+> if (lTData[i][i] < absolutePositivityThreshold) {
+> throw new NotPositiveDefiniteMatrixException();
+> }
+44,46d46
+< if (ltI[i] < absolutePositivityThreshold) {
+< throw new NotPositiveDefiniteMatrixException();
+< }

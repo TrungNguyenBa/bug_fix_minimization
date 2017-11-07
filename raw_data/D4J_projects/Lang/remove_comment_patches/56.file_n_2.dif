@@ -1,0 +1,14 @@
+2,3d1
+< import java.io.IOException;
+< import java.io.ObjectInputStream;
+37,38c35,36
+< private transient Rule[] mRules;
+< private transient int mMaxLengthEstimate;
+---
+> private Rule[] mRules;
+> private int mMaxLengthEstimate;
+474,477d471
+< private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+< in.defaultReadObject();
+< init();
+< }

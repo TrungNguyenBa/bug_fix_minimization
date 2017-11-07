@@ -1,0 +1,4 @@
+d50efdf7 : Conversion from parsed values to a date-time handles weird sets of fields better [3161586] This change is mostly for combinations like weekyear-month-week The new code doesn't handle all combinations perfectly, but its better than it was
+:100644 100644 eee3045b... 6cc5bbda... M	JodaTime/RELEASE-NOTES.txt
+:100644 100644 44255a61... 7c37fc1f... M	JodaTime/src/main/java/org/joda/time/format/DateTimeParserBucket.java
+:100644 100644 ca3c866b... 53263709... M	JodaTime/src/test/java/org/joda/time/format/TestDateTimeFormatter.java

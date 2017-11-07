@@ -1,0 +1,4 @@
+138baec1c : Fixed an overflow error in MathUtils.distance that was causing KMeansPlusPlusClusterer to fail with a NullPointerException when component distances between points exceeded Integer.MAXVALUE. JIRA: MATH-305 Reported by Erik van Ingen
+:100644 100644 46368dc9f... ad77a56eb... M	src/main/java/org/apache/commons/math/util/MathUtils.java
+:100644 100644 3c94d22e9... bd1f4d344... M	src/site/xdoc/changes.xml
+:100644 100644 da1d8a93d... dfe89adef... M	src/test/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClustererTest.java

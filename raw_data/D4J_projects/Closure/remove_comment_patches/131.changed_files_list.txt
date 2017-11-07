@@ -1,0 +1,3 @@
+7f6700e2 : Add patch from issue 921 as well as accompanying unit test.
+:100644 100644 73fed174... cadb5362... M	src/com/google/javascript/rhino/TokenStream.java
+:100644 100644 e3055d31... 755cb01b... M	test/com/google/javascript/jscomp/ConvertToDottedPropertiesTest.java

@@ -1,0 +1,9 @@
+45,48d44
+< <action dev="psteitz" type="fix" issue="MATH-704" due-to="Thomas Niedhart">
+< Fixed array indexing error in Variance evaluate method for
+< computing the weighted variance of an array segment.
+< </action>
+66c62
+< geometric mean statistics not to be updated if they have been overridden
+---
+> geometric mean statistics not to be updated if they have been overriden

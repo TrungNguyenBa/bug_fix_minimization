@@ -1,0 +1,5 @@
+bd2803b6 : Fix bug in MinimizeExitPoints with removing breaks inside finally blocks.
+:100644 100644 ae6cde2a... bc9befee... M	src/com/google/javascript/jscomp/MinimizeExitPoints.java
+:100644 100644 c4a55229... 23ec299a... M	src/com/google/javascript/jscomp/RemoveTryCatch.java
+:100644 100644 7db30f8f... 9732745d... M	test/com/google/javascript/jscomp/MinimizeExitPointsTest.java
+:100644 100644 943950e9... 53e3add5... M	test/com/google/javascript/jscomp/RemoveTryCatchTest.java

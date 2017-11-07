@@ -1,0 +1,5 @@
+98,101d97
+< case '/':
+< out.write('\\');
+< out.write('/');
+< break;

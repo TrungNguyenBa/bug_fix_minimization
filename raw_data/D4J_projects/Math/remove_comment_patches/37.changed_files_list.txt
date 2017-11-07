@@ -1,0 +1,3 @@
+65ed08e15 : Introduced tests to guard against overflow (MATH-722). Corrected Javadoc and updated unit tests accordingly.
+:100644 100644 3822a89e6... ed76a2950... M	src/main/java/org/apache/commons/math/complex/Complex.java
+:100644 100644 f694310fe... c31cb90f1... M	src/test/java/org/apache/commons/math/complex/ComplexTest.java

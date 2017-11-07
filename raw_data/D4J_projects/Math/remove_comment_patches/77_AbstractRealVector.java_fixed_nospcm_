@@ -1,0 +1,612 @@
+package org.apache.commons.math.linear;
+import java.util.Iterator;
+import org.apache.commons.math.FunctionEvaluationException;
+import org.apache.commons.math.MathRuntimeException;
+import org.apache.commons.math.analysis.BinaryFunction;
+import org.apache.commons.math.analysis.UnivariateRealFunction;
+import org.apache.commons.math.analysis.ComposableFunction;
+public abstract class AbstractRealVector implements RealVector {
+protected void checkVectorDimensions(RealVector v) {
+checkVectorDimensions(v.getDimension());
+}
+protected void checkVectorDimensions(int n)
+throws IllegalArgumentException {
+double d = getDimension();
+if (d != n) {
+throw MathRuntimeException.createIllegalArgumentException(
+"vector length mismatch: got {0} but expected {1}",
+d, n);
+}
+}
+protected void checkIndex(final int index)
+throws MatrixIndexException {
+if (index < 0 || index >= getDimension()) {
+throw new MatrixIndexException(
+"index {0} out of allowed range [{1}, {2}]",
+index, 0, getDimension() - 1);
+}
+}
+public void setSubVector(int index, RealVector v) throws MatrixIndexException {
+checkIndex(index);
+checkIndex(index + v.getDimension() - 1);
+setSubVector(index, v.getData());
+}
+public void setSubVector(int index, double[] v) throws MatrixIndexException {
+checkIndex(index);
+checkIndex(index + v.length - 1);
+for (int i = 0; i < v.length; i++) {
+setEntry(i + index, v[i]);
+}
+}
+public RealVector add(double[] v) throws IllegalArgumentException {
+double[] result = v.clone();
+Iterator<Entry> it = sparseIterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+result[e.getIndex()] += e.getValue();
+}
+return new ArrayRealVector(result, false);
+}
+public RealVector add(RealVector v) throws IllegalArgumentException {
+if (v instanceof ArrayRealVector) {
+double[] values = ((ArrayRealVector)v).getDataRef();
+return add(values);
+}
+RealVector result = v.copy();
+Iterator<Entry> it = sparseIterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+final int index = e.getIndex();
+result.setEntry(index, e.getValue() + result.getEntry(index));
+}
+return result;
+}
+public RealVector subtract(double[] v) throws IllegalArgumentException {
+double[] result = v.clone();
+Iterator<Entry> it = sparseIterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+final int index = e.getIndex();
+result[index] = e.getValue() - result[index];
+}
+return new ArrayRealVector(result, false);
+}
+public RealVector subtract(RealVector v) throws IllegalArgumentException {
+if (v instanceof ArrayRealVector) {
+double[] values = ((ArrayRealVector)v).getDataRef();
+return add(values);
+}
+RealVector result = v.copy();
+Iterator<Entry> it = sparseIterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+final int index = e.getIndex();
+v.setEntry(index, e.getValue() - result.getEntry(index));
+}
+return result;
+}
+public RealVector mapAdd(double d) {
+return copy().mapAddToSelf(d);
+}
+public RealVector mapAddToSelf(double d) {
+if (d != 0) {
+try {
+return mapToSelf(BinaryFunction.ADD.fix1stArgument(d));
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+return this;
+}
+public abstract AbstractRealVector copy();
+public double dotProduct(double[] v) throws IllegalArgumentException {
+return dotProduct(new ArrayRealVector(v, false));
+}
+public double dotProduct(RealVector v) throws IllegalArgumentException {
+checkVectorDimensions(v);
+double d = 0;
+Iterator<Entry> it = sparseIterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+d += e.getValue() * v.getEntry(e.getIndex());
+}
+return d;
+}
+public RealVector ebeDivide(double[] v) throws IllegalArgumentException {
+return ebeDivide(new ArrayRealVector(v, false));
+}
+public RealVector ebeMultiply(double[] v) throws IllegalArgumentException {
+return ebeMultiply(new ArrayRealVector(v, false));
+}
+public double getDistance(RealVector v) throws IllegalArgumentException {
+checkVectorDimensions(v);
+double d = 0;
+Iterator<Entry> it = iterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+final double diff = e.getValue() - v.getEntry(e.getIndex());
+d += diff * diff;
+}
+return Math.sqrt(d);
+}
+public double getNorm() {
+double sum = 0;
+Iterator<Entry> it = sparseIterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+final double value = e.getValue();
+sum += value * value;
+}
+return Math.sqrt(sum);
+}
+public double getL1Norm() {
+double norm = 0;
+Iterator<Entry> it = sparseIterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+norm += Math.abs(e.getValue());
+}
+return norm;
+}
+public double getLInfNorm() {
+double norm = 0;
+Iterator<Entry> it = sparseIterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+norm = Math.max(norm, Math.abs(e.getValue()));
+}
+return norm;
+}
+public double getDistance(double[] v) throws IllegalArgumentException {
+return getDistance(new ArrayRealVector(v,false));
+}
+public double getL1Distance(RealVector v) throws IllegalArgumentException {
+checkVectorDimensions(v);
+double d = 0;
+Iterator<Entry> it = iterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+d += Math.abs(e.getValue() - v.getEntry(e.getIndex()));
+}
+return d;
+}
+public double getL1Distance(double[] v) throws IllegalArgumentException {
+checkVectorDimensions(v.length);
+double d = 0;
+Iterator<Entry> it = iterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+d += Math.abs(e.getValue() - v[e.getIndex()]);
+}
+return d;
+}
+public double getLInfDistance(RealVector v) throws IllegalArgumentException {
+checkVectorDimensions(v);
+double d = 0;
+Iterator<Entry> it = iterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+d = Math.max(Math.abs(e.getValue() - v.getEntry(e.getIndex())), d);
+}
+return d;
+}
+public double getLInfDistance(double[] v) throws IllegalArgumentException {
+checkVectorDimensions(v.length);
+double d = 0;
+Iterator<Entry> it = iterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+d = Math.max(Math.abs(e.getValue() - v[e.getIndex()]), d);
+}
+return d;
+}
+public RealVector mapAbs() {
+return copy().mapAbsToSelf();
+}
+public RealVector mapAbsToSelf() {
+try {
+return mapToSelf(ComposableFunction.ABS);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapAcos() {
+return copy().mapAcosToSelf();
+}
+public RealVector mapAcosToSelf() {
+try {
+return mapToSelf(ComposableFunction.ACOS);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapAsin() {
+return copy().mapAsinToSelf();
+}
+public RealVector mapAsinToSelf() {
+try {
+return mapToSelf(ComposableFunction.ASIN);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapAtan() {
+return copy().mapAtanToSelf();
+}
+public RealVector mapAtanToSelf() {
+try {
+return mapToSelf(ComposableFunction.ATAN);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapCbrt() {
+return copy().mapCbrtToSelf();
+}
+public RealVector mapCbrtToSelf() {
+try {
+return mapToSelf(ComposableFunction.CBRT);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapCeil() {
+return copy().mapCeilToSelf();
+}
+public RealVector mapCeilToSelf() {
+try {
+return mapToSelf(ComposableFunction.CEIL);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapCos() {
+return copy().mapCosToSelf();
+}
+public RealVector mapCosToSelf() {
+try {
+return mapToSelf(ComposableFunction.COS);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapCosh() {
+return copy().mapCoshToSelf();
+}
+public RealVector mapCoshToSelf() {
+try {
+return mapToSelf(ComposableFunction.COSH);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapDivide(double d) {
+return copy().mapDivideToSelf(d);
+}
+public RealVector mapDivideToSelf(double d){
+try {
+return mapToSelf(BinaryFunction.DIVIDE.fix2ndArgument(d));
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapExp() {
+return copy().mapExpToSelf();
+}
+public RealVector mapExpToSelf() {
+try {
+return mapToSelf(ComposableFunction.EXP);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapExpm1() {
+return copy().mapExpm1ToSelf();
+}
+public RealVector mapExpm1ToSelf() {
+try {
+return mapToSelf(ComposableFunction.EXPM1);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapFloor() {
+return copy().mapFloorToSelf();
+}
+public RealVector mapFloorToSelf() {
+try {
+return mapToSelf(ComposableFunction.FLOOR);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapInv() {
+return copy().mapInvToSelf();
+}
+public RealVector mapInvToSelf() {
+try {
+return mapToSelf(ComposableFunction.INVERT);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapLog() {
+return copy().mapLogToSelf();
+}
+public RealVector mapLogToSelf() {
+try {
+return mapToSelf(ComposableFunction.LOG);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapLog10() {
+return copy().mapLog10ToSelf();
+}
+public RealVector mapLog10ToSelf() {
+try {
+return mapToSelf(ComposableFunction.LOG10);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapLog1p() {
+return copy().mapLog1pToSelf();
+}
+public RealVector mapLog1pToSelf() {
+try {
+return mapToSelf(ComposableFunction.LOG1P);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapMultiply(double d) {
+return copy().mapMultiplyToSelf(d);
+}
+public RealVector mapMultiplyToSelf(double d){
+try {
+return mapToSelf(BinaryFunction.MULTIPLY.fix1stArgument(d));
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapPow(double d) {
+return copy().mapPowToSelf(d);
+}
+public RealVector mapPowToSelf(double d){
+try {
+return mapToSelf(BinaryFunction.POW.fix2ndArgument(d));
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapRint() {
+return copy().mapRintToSelf();
+}
+public RealVector mapRintToSelf() {
+try {
+return mapToSelf(ComposableFunction.RINT);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapSignum() {
+return copy().mapSignumToSelf();
+}
+public RealVector mapSignumToSelf() {
+try {
+return mapToSelf(ComposableFunction.SIGNUM);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapSin() {
+return copy().mapSinToSelf();
+}
+public RealVector mapSinToSelf() {
+try {
+return mapToSelf(ComposableFunction.SIN);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapSinh() {
+return copy().mapSinhToSelf();
+}
+public RealVector mapSinhToSelf() {
+try {
+return mapToSelf(ComposableFunction.SINH);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapSqrt() {
+return copy().mapSqrtToSelf();
+}
+public RealVector mapSqrtToSelf() {
+try {
+return mapToSelf(ComposableFunction.SQRT);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapSubtract(double d) {
+return copy().mapSubtractToSelf(d);
+}
+public RealVector mapSubtractToSelf(double d){
+return mapAddToSelf(-d);
+}
+public RealVector mapTan() {
+return copy().mapTanToSelf();
+}
+public RealVector mapTanToSelf() {
+try {
+return mapToSelf(ComposableFunction.TAN);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapTanh() {
+return copy().mapTanhToSelf();
+}
+public RealVector mapTanhToSelf() {
+try {
+return mapToSelf(ComposableFunction.TANH);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealVector mapUlp() {
+return copy().mapUlpToSelf();
+}
+public RealVector mapUlpToSelf() {
+try {
+return mapToSelf(ComposableFunction.ULP);
+} catch (FunctionEvaluationException e) {
+throw new IllegalArgumentException(e);
+}
+}
+public RealMatrix outerProduct(RealVector v) throws IllegalArgumentException {
+RealMatrix product;
+if (v instanceof SparseRealVector || this instanceof SparseRealVector) {
+product = new OpenMapRealMatrix(this.getDimension(), v.getDimension());
+} else {
+product = new Array2DRowRealMatrix(this.getDimension(), v.getDimension());
+}
+Iterator<Entry> thisIt = sparseIterator();
+Entry thisE = null;
+while (thisIt.hasNext() && (thisE = thisIt.next()) != null) {
+Iterator<Entry> otherIt = v.sparseIterator();
+Entry otherE = null;
+while (otherIt.hasNext() && (otherE = otherIt.next()) != null) {
+product.setEntry(thisE.getIndex(), otherE.getIndex(),
+thisE.getValue() * otherE.getValue());
+}
+}
+return product;
+}
+public RealMatrix outerProduct(double[] v) throws IllegalArgumentException {
+return outerProduct(new ArrayRealVector(v, false));
+}
+public RealVector projection(double[] v) throws IllegalArgumentException {
+return projection(new ArrayRealVector(v, false));
+}
+public void set(double value) {
+Iterator<Entry> it = iterator();
+Entry e = null;
+while (it.hasNext() && (e = it.next()) != null) {
+e.setValue(value);
+}
+}
+public double[] toArray() {
+int dim = getDimension();
+double[] values = new double[dim];
+for (int i = 0; i < dim; i++) {
+values[i] = getEntry(i);
+}
+return values;
+}
+public double[] getData() {
+return toArray();
+}
+public RealVector unitVector() {
+RealVector copy = copy();
+copy.unitize();
+return copy;
+}
+public void unitize() {
+mapDivideToSelf(getNorm());
+}
+public Iterator<Entry> sparseIterator() {
+return new SparseEntryIterator();
+}
+public Iterator<Entry> iterator() {
+final int dim = getDimension();
+return new Iterator<Entry>() {
+private int i = 0;
+private EntryImpl e = new EntryImpl();
+public boolean hasNext() {
+return i < dim;
+}
+public Entry next() {
+e.setIndex(i++);
+return e;
+}
+public void remove() {
+throw new UnsupportedOperationException("Not supported");
+}
+};
+}
+public RealVector map(UnivariateRealFunction function) throws FunctionEvaluationException {
+return copy().mapToSelf(function);
+}
+public RealVector mapToSelf(UnivariateRealFunction function) throws FunctionEvaluationException {
+Iterator<Entry> it = (function.value(0) == 0) ? sparseIterator() : iterator();
+Entry e;
+while (it.hasNext() && (e = it.next()) != null) {
+e.setValue(function.value(e.getValue()));
+}
+return this;
+}
+protected class EntryImpl extends Entry {
+public EntryImpl() {
+setIndex(0);
+}
+public double getValue() {
+return getEntry(getIndex());
+}
+public void setValue(double newValue) {
+setEntry(getIndex(), newValue);
+}
+}
+protected class SparseEntryIterator implements Iterator<Entry> {
+private final int dim;
+private EntryImpl tmp = new EntryImpl();
+private EntryImpl current;
+private EntryImpl next;
+protected SparseEntryIterator() {
+dim = getDimension();
+current = new EntryImpl();
+if (current.getValue() == 0) {
+advance(current);
+}
+if(current.getIndex() >= 0){
+next = new EntryImpl();
+next.setIndex(current.getIndex());
+advance(next);
+} else {
+current = null;
+}
+}
+protected void advance(EntryImpl e) {
+if (e == null) {
+return;
+}
+do {
+e.setIndex(e.getIndex() + 1);
+} while (e.getIndex() < dim && e.getValue() == 0);
+if (e.getIndex() >= dim) {
+e.setIndex(-1);
+}
+}
+public boolean hasNext() {
+return current != null;
+}
+public Entry next() {
+tmp.setIndex(current.getIndex());
+if (next != null) {
+current.setIndex(next.getIndex());
+advance(next);
+if (next.getIndex() < 0) {
+next = null;
+}
+} else {
+current = null;
+}
+return tmp;
+}
+public void remove() {
+throw new UnsupportedOperationException("Not supported");
+}
+}
+}

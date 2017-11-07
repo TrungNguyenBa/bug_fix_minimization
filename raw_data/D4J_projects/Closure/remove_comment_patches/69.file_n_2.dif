@@ -1,0 +1,15 @@
+156,159d155
+< static final DiagnosticType EXPECTED_THIS_TYPE =
+< DiagnosticType.warning(
+< "JSC_EXPECTED_THIS_TYPE",
+< "\"{0}\" must be called with a \"this\" type");
+188d183
+< EXPECTED_THIS_TYPE,
+1123,1129d1117
+< if (functionType.isOrdinaryFunction() &&
+< !functionType.getTypeOfThis().isUnknownType() &&
+< !functionType.getTypeOfThis().isNativeObjectType() &&
+< !(child.getType() == Token.GETELEM ||
+< child.getType() == Token.GETPROP)) {
+< report(t, n, EXPECTED_THIS_TYPE, functionType.toString());
+< }

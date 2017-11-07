@@ -1,0 +1,4 @@
+33,35d32
+< <action dev="luc" type="fix" issue="MATH-274" >
+< Fixed detection of not positive definite matrices in Cholesky decomposition
+< </action>

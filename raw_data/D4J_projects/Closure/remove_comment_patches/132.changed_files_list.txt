@@ -1,0 +1,3 @@
+5b948590 : Don't reorder if condition expressions if they contain side-effects. Fixes issue 925. ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=43060270
+:100644 100644 ae568e8e... 520c5923... M	src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java
+:100644 100644 a421ac7e... 263352c4... M	test/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntaxTest.java

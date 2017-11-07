@@ -1,0 +1,3 @@
+687b2e62 : LANG-747 NumberUtils does not handle Long Hex numbers
+:100644 100644 1e6ccdc0... 70b8d646... M	src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+:100644 100644 56b0597e... bdd2a242... M	src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java

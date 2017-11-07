@@ -1,0 +1,13 @@
+72d71
+< Set<String> validProperties = Sets.newHashSet();
+83,90d81
+< String propName = parent.getLastChild().getString();
+< if (!validProperties.contains(propName)) {
+< if (NodeUtil.isVarOrSimpleAssignLhs(parent, gramps)) {
+< validProperties.add(propName);
+< } else {
+< return false;
+< }
+< }
+109d99
+< validProperties.add(child.getString());

@@ -1,0 +1,4 @@
+a6cb59ed : Fix handling of PeriodType when either years or months missing
+:100644 100644 5beb66f7... 84f44dd6... M	RELEASE-NOTES.txt
+:100644 100644 5b36bc50... 5ea67a7c... M	src/main/java/org/joda/time/Period.java
+:100644 100644 f291c9bb... 82030f80... M	src/test/java/org/joda/time/TestPeriod_Basics.java

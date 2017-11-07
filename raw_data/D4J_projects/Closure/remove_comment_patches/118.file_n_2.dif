@@ -1,0 +1,12 @@
+305,310c305,306
+< for (Node child = n.getFirstChild();
+< child != null;
+< child = child.getNext()) {
+< if (child.isQuotedString()) {
+< continue;
+< }
+---
+> Node child = n.getFirstChild();
+> while (child != null) {
+322a319
+> child = child.getNext();

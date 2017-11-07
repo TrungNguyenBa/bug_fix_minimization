@@ -1,0 +1,9 @@
+130,131c130
+< boolean negativeZero = isNegativeZero(x);
+< if ((x < 0 || negativeZero) && prev == '-') {
+---
+> if (x < 0 && prev == '-') {
+134c133
+< if ((long) x == x && !negativeZero) {
+---
+> if ((long) x == x && !isNegativeZero(x)) {

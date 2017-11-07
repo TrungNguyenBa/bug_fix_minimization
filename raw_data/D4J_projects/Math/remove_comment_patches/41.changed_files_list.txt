@@ -1,0 +1,4 @@
+882556eab : Fixed array indexing error in Variance evaluate method for computing the weighted variance of an array segment.
+:100644 100644 e5518e31a... 1de139f3e... M	src/main/java/org/apache/commons/math/stat/descriptive/moment/Variance.java
+:100644 100644 1d2e38b07... e6f7bc601... M	src/site/xdoc/changes.xml
+:100644 100644 cbb81353a... bc7069978... M	src/test/java/org/apache/commons/math/stat/descriptive/UnivariateStatisticAbstractTest.java

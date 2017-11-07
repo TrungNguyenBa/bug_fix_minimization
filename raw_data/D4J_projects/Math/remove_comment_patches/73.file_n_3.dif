@@ -1,0 +1,4 @@
+33,35d32
+< <action dev="luc" type="fix" issue="MATH-343" >
+< Fixed a missing bracketing check of initial interval in Brent solver.
+< </action>

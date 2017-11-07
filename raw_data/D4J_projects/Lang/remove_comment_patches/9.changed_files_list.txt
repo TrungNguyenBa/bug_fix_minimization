@@ -1,0 +1,4 @@
+c45d5bff : LANG-832 FastDateParser does not handle unterminated quotes correctly
+:100644 100644 b0244500... 39e83430... M	src/changes/changes.xml
+:100644 100644 8df302f9... 38857c74... M	src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+:100644 100644 ee5a5008... e2f12c10... M	src/test/java/org/apache/commons/lang3/time/FastDateParserTest.java

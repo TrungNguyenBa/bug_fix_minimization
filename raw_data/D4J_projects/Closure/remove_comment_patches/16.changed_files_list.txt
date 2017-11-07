@@ -1,0 +1,4 @@
+3b97e5e4 : When expanding goog.scope aliases in type expressions, do not expand the alias until previous aliases have been expanded. fixes issue 772
+:100644 100644 426069fc... e2f05387... M	src/com/google/javascript/jscomp/ScopedAliases.java
+:100644 100644 8ae9fd9b... 5306ccea... M	test/com/google/javascript/jscomp/IntegrationTest.java
+:100644 100644 ac09a045... fda89aa6... M	test/com/google/javascript/jscomp/ScopedAliasesTest.java

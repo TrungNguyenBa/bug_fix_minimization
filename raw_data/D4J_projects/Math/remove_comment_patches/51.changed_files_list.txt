@@ -1,0 +1,3 @@
+2f066a5b2 : MATH-631 Work around infinite loop.
+:100644 100644 fde7172e3... b3a23a1d4... M	src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+:100644 100644 c89ac0e83... ef3a75a57... M	src/test/java/org/apache/commons/math/analysis/solvers/RegulaFalsiSolverTest.java

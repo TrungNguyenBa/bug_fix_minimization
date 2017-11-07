@@ -1,0 +1,3 @@
+de726510 : When -language_in=ECMASCRIPT5_STRICT, only print 'use strict' in the first input file. Fixes Issue 489.
+:100644 100644 a4a41a8e... 45d88ba1... M	src/com/google/javascript/jscomp/Compiler.java
+:100644 100644 7fcbb1b3... 19ee30a3... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java

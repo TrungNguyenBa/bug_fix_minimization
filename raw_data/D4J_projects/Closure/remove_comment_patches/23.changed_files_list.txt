@@ -1,0 +1,3 @@
+b59cdd9e : Don't fold arrays if they have side effects. Contributed by Robert Gust-Bardon Fixes issue 747
+:100644 100644 13895f32... 7a0313cc... M	src/com/google/javascript/jscomp/PeepholeFoldConstants.java
+:100644 100644 92ef4b9a... b5a907bb... M	test/com/google/javascript/jscomp/PeepholeFoldConstantsTest.java

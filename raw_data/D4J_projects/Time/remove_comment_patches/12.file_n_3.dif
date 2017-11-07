@@ -1,0 +1,15 @@
+8d7
+< import java.util.GregorianCalendar;
+70,71d68
+< int era = calendar.get(Calendar.ERA);
+< int yearOfEra = calendar.get(Calendar.YEAR);
+73c70
+< (era == GregorianCalendar.AD ? yearOfEra : 1 - yearOfEra),
+---
+> calendar.get(Calendar.YEAR),
+83,87d79
+< if (date.getTime() < 0) {
+< GregorianCalendar cal = new GregorianCalendar();
+< cal.setTime(date);
+< return fromCalendarFields(cal);
+< }

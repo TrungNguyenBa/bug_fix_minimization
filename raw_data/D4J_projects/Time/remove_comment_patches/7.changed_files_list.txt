@@ -1,0 +1,4 @@
+1adb1e69 : Fix DateTimeFormatter.parseInto() where it obtains the default year
+:100644 100644 cacef1ff... a8e815c1... M	RELEASE-NOTES.txt
+:100644 100644 553b035c... 913d036e... M	src/main/java/org/joda/time/format/DateTimeFormatter.java
+:100644 100644 0152ce70... 5d104df2... M	src/test/java/org/joda/time/format/TestDateTimeFormatter.java

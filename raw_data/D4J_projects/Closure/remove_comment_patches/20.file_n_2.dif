@@ -1,0 +1,5 @@
+144,145c144
+< if (value != null && value.getNext() == null &&
+< NodeUtil.isImmutableValue(value)) {
+---
+> if (value != null) {

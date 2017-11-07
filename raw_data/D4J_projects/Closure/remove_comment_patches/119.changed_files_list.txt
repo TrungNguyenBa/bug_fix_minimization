@@ -1,0 +1,4 @@
+046e0b22 : Fix for errors wrt exceptions in the global scope. Fixes issue 1070 R=blickly
+:100644 100644 639318df... 0e9c4d33... M	src/com/google/javascript/jscomp/GlobalNamespace.java
+:100644 100644 1050872c... 46152b9d... M	test/com/google/javascript/jscomp/CheckGlobalNamesTest.java
+:100644 100644 51020876... 4a812cea... M	test/com/google/javascript/jscomp/CollapsePropertiesTest.java

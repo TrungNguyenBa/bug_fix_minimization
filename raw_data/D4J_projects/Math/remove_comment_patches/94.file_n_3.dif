@@ -1,0 +1,4 @@
+33,35d32
+< <action dev="luc" type="fix" issue="MATH-238" due-to="Chritian Semrau">
+< Fixed an error in gcd computation for large values.
+< </action>

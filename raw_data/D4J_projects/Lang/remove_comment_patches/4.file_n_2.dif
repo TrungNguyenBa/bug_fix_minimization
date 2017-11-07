@@ -1,0 +1,2 @@
+22d21
+< <action issue="LANG-882" type="update">LookupTranslator now works with implementations of CharSequence other than String </action>

@@ -1,0 +1,4 @@
+0123fd53 : Fix inlining bug in https://code.google.com/p/closure-compiler/issues/detail?id=1053 Attempt 2 Fixes issue 1053 ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=50800167
+:100644 100644 cdacc5f7... 0af61d0c... M	src/com/google/javascript/jscomp/ReferenceCollectingCallback.java
+:100644 100644 3810384e... be1cead1... M	test/com/google/javascript/jscomp/InlineVariablesConstantsTest.java
+:100644 100644 23f9fee5... d1c0ed71... M	test/com/google/javascript/jscomp/InlineVariablesTest.java

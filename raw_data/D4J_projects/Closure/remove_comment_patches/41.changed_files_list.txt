@@ -1,0 +1,4 @@
+00b1517c : When inferring a function type, there may be formal parameters that do not appear in the function literal Fixes issue 368
+:100644 100644 e2f0f437... e20d788d... M	src/com/google/javascript/jscomp/FunctionTypeBuilder.java
+:100644 100644 4c481b46... 152da7e9... M	test/com/google/javascript/jscomp/LooseTypeCheckTest.java
+:100644 100644 11613655... 7544dde6... M	test/com/google/javascript/jscomp/TypeCheckTest.java

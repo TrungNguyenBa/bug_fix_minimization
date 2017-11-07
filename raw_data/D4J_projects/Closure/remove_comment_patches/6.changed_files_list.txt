@@ -1,0 +1,5 @@
+9f7a3533 : Fix parts of issue 635, mostly by deleting hacks that are now obsolete
+:100644 100644 be049b09... 12ce5b33... M	src/com/google/javascript/jscomp/TypeValidator.java
+:100644 100644 5a6cf9a7... ba82d2a5... M	src/com/google/javascript/rhino/jstype/FunctionType.java
+:100644 100644 f88a769c... 94ee207a... M	test/com/google/javascript/jscomp/LooseTypeCheckTest.java
+:100644 100644 fc24441b... ad43d218... M	test/com/google/javascript/jscomp/TypeCheckTest.java

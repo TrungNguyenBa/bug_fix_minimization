@@ -1,0 +1,12 @@
+550,552d549
+< if (entityValue > 0xFFFF) {
+< entityValue = -1;
+< }
+608d604
+< break;
+614,616d609
+< if (entityValue > 0xFFFF) {
+< entityValue = -1;
+< }
+618d610
+< entityValue = -1;

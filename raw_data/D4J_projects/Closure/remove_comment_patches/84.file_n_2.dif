@@ -1,0 +1,34 @@
+246,254c246
+< Node assign = processInfixExpression(assignmentNode);
+< Node target = assign.getFirstChild();
+< if (!validAssignmentTarget(target)) {
+< errorReporter.error(
+< "invalid assignment target",
+< sourceName,
+< target.getLineno(), "", 0);
+< }
+< return assign;
+---
+> return processInfixExpression(assignmentNode);
+624,634d615
+< if (type == Token.INC || type == Token.DEC) {
+< if (!validAssignmentTarget(operand)) {
+< String msg = (type == Token.INC)
+< ? "invalid increment target"
+< : "invalid decrement target";
+< errorReporter.error(
+< msg,
+< sourceName,
+< operand.getLineno(), "", 0);
+< }
+< }
+642,650d622
+< private boolean validAssignmentTarget(Node target) {
+< switch (target.getType()) {
+< case Token.NAME:
+< case Token.GETPROP:
+< case Token.GETELEM:
+< return true;
+< }
+< return false;
+< }

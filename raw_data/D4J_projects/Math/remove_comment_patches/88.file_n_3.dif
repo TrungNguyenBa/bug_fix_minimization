@@ -1,0 +1,5 @@
+33,36d32
+< <action dev="luc" type="fix" issue="MATH-272" due-to="Benjamin McCann">
+< Fixed a problem when setting some variables (several variables were set
+< instead of only one)
+< </action>

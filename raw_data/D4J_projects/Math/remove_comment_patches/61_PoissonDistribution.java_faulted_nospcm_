@@ -1,0 +1,8 @@
+package org.apache.commons.math.distribution;
+import org.apache.commons.math.MathException;
+public interface PoissonDistribution extends IntegerDistribution {
+double getMean();
+@Deprecated
+void setMean(double p);
+double normalApproximateProbability(int x) throws MathException;
+}

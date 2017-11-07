@@ -1,0 +1,22 @@
+315c315
+< if (isNaN || Double.isInfinite(real)) {
+---
+> if (isNaN) {
+318,323d317
+< if (imaginary > 20.0) {
+< return createComplex(0.0, 1.0);
+< }
+< if (imaginary < -20.0) {
+< return createComplex(0.0, -1.0);
+< }
+331c325
+< if (isNaN || Double.isInfinite(imaginary)) {
+---
+> if (isNaN) {
+334,339d327
+< if (real > 20.0) {
+< return createComplex(1.0, 0.0);
+< }
+< if (real < -20.0) {
+< return createComplex(-1.0, 0.0);
+< }

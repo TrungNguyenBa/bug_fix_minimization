@@ -1,0 +1,4 @@
+33,35d32
+< <action dev="brentworden" type="fix" issue="MATH-227" due-to="Joerg Henning">
+< Fixed F distribution inverse CDF computation for small denominator degrees of freedom.
+< </action>

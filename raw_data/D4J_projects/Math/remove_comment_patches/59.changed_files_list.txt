@@ -1,0 +1,4 @@
+5dcca4803 : MATH-482 FastMath.max(50.0f, -50.0f) => -50.0f; should be +50.0f
+:100644 100644 8cba4d484... 4f7d447df... M	src/main/java/org/apache/commons/math/util/FastMath.java
+:100644 100644 1c8453ef7... 3356fb05c... M	src/site/xdoc/changes.xml
+:100644 100644 3a60dd8b7... ec3aff1f0... M	src/test/java/org/apache/commons/math/util/FastMathTest.java

@@ -1,0 +1,4 @@
+187,189d186
+< if (lower > str.length()) {
+< lower = str.length();
+< }

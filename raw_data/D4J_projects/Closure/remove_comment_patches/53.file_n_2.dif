@@ -1,0 +1,11 @@
+184,187d183
+< Node replacement;
+< if (nodes.isEmpty()) {
+< replacement = new Node(Token.TRUE);
+< } else {
+190c186
+< replacement = new Node(Token.COMMA);
+---
+> Node replacement = new Node(Token.COMMA);
+201d196
+< }

@@ -1,0 +1,20 @@
+304,309c304,305
+< final double lower = dCurrent - eCurrent;
+< work[lowerStart + m - 1] = lower;
+< lowerSpectra = Math.min(lowerSpectra, lower);
+< final double upper = dCurrent + eCurrent;
+< work[upperStart + m - 1] = upper;
+< upperSpectra = Math.max(upperSpectra, upper);
+---
+> work[lowerStart + m - 1] = dCurrent - eCurrent;
+> work[upperStart + m - 1] = dCurrent + eCurrent;
+498,499c494,495
+< for (int i = 4 * i0; i < 4 * n0 - 16; i += 4) {
+< if ((work[i + 3] <= TOLERANCE_2 * work[i]) ||
+---
+> for (int i = 4 * i0; i < 4 * n0 - 11; i += 4) {
+> if ((work[i + 3] <= TOLERANCE_2 * work[i]) &&
+955c951
+< if (end - start > 3) {
+---
+> if (end - start > 2) {

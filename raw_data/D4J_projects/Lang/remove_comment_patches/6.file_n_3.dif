@@ -1,0 +1,4 @@
+38c38
+< pos += Character.charCount(Character.codePointAt(input, pt));
+---
+> pos += Character.charCount(Character.codePointAt(input, pos));

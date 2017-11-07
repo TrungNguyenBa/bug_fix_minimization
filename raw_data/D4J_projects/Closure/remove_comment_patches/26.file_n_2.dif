@@ -1,0 +1,12 @@
+3d2
+< import com.google.common.collect.Sets;
+10d8
+< import java.util.Set;
+71d68
+< private Set<String> modulesWithExports = Sets.newHashSet();
+127,129d123
+< if (!modulesWithExports.contains(moduleName)) {
+< return;
+< }
+146d139
+< modulesWithExports.add(moduleName);

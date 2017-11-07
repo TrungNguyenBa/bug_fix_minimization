@@ -1,0 +1,6 @@
+42,46d41
+< <action dev="tn" type=fix issue="MATH-996" due-to="Tim Allison">
+< Creating a "Fraction" or "BigFraction" object with a maxDenominator parameter
+< does not throw a "FractionConversionException" in case the value is very close
+< to fraction.
+< </action>

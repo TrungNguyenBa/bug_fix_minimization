@@ -1,0 +1,4 @@
+204c204
+< if (getLastChar() != ' ' && op.charAt(0) != ',') {
+---
+> if (getLastChar() != ' ') {

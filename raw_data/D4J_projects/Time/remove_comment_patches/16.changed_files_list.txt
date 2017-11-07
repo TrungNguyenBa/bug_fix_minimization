@@ -1,0 +1,4 @@
+706513d5 : Fix DateTimeFormatter.parseInto() [3522138]
+:100644 100644 90b49579... c1ce71d7... M	RELEASE-NOTES.txt
+:100644 100644 f92771a1... baa276a5... M	src/main/java/org/joda/time/format/DateTimeFormatter.java
+:100644 100644 53263709... 0152ce70... M	src/test/java/org/joda/time/format/TestDateTimeFormatter.java

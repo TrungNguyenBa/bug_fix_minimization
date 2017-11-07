@@ -1,0 +1,3 @@
+b88400ce : Special case the NUL character. Fixes issue 383
+:100644 100644 8cd3ab9d... 22df6851... M	src/com/google/javascript/jscomp/CodeGenerator.java
+:100644 100644 75e11551... 329b868c... M	test/com/google/javascript/jscomp/CodePrinterTest.java

@@ -1,0 +1,16 @@
+6c6
+< private final HashMap<String, CharSequence> lookupMap;
+---
+> private final HashMap<CharSequence, CharSequence> lookupMap;
+10c10
+< lookupMap = new HashMap<String, CharSequence>();
+---
+> lookupMap = new HashMap<CharSequence, CharSequence>();
+15c15
+< this.lookupMap.put(seq[0].toString(), seq[1]);
+---
+> this.lookupMap.put(seq[0], seq[1]);
+36c36
+< final CharSequence result = lookupMap.get(subSeq.toString());
+---
+> final CharSequence result = lookupMap.get(subSeq);

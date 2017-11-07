@@ -1,0 +1,4 @@
+286c286
+< boolean isOverride = parent.getJSDocInfo() != null &&
+---
+> boolean isOverride = t.inGlobalScope() &&

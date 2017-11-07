@@ -1,0 +1,4 @@
+80bd78ea : LANG-571 ArrayUtils.add(T[] array[, offset], T element) can create unexpected ClassCastException
+:100644 100644 79c80bdc... 3a543ce2... M	src/main/java/org/apache/commons/lang3/ArrayUtils.java
+:100644 100644 e38e4811... 8d2e0e16... M	src/test/java/org/apache/commons/lang3/ArrayUtilsAddTest.java
+:100644 100644 dd68c279... e805b6de... M	xdocs/changes.xml

@@ -1,0 +1,18 @@
+76c76
+< if (compare < 0) {
+---
+> if (compare < 0 || (compare != 0 && loopUnitField.isSupported() == false)) {
+82,83c82
+< throw new IllegalArgumentException("Types array must not contain duplicate: " +
+< types[i - 1].getName() + " and " + loopType.getName());
+---
+> throw new IllegalArgumentException("Types array must not contain duplicate: " + loopType.getName());
+97,98c96
+< throw new IllegalArgumentException("Types array must not contain duplicate: " +
+< types[i - 1].getName() + " and " + loopType.getName());
+---
+> throw new IllegalArgumentException("Types array must not contain duplicate: " + loopType.getName());
+185,187d182
+< if (fieldType.getRangeDurationType() == null) {
+< break;
+< }

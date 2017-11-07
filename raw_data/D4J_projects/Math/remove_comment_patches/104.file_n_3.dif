@@ -1,0 +1,4 @@
+8c8
+< private static final double DEFAULT_EPSILON = 10e-15;
+---
+> private static final double DEFAULT_EPSILON = 10e-9;

@@ -1,0 +1,4 @@
+38e2b8f2 : fixes issue 698
+:100644 100644 d31bdcd6... 3f39c07e... M	src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java
+:100644 100644 cc7dd734... 589f6736... M	src/com/google/javascript/jscomp/MustBeReachingVariableDef.java
+:100644 100644 839e00ea... d3eeb7d0... M	test/com/google/javascript/jscomp/FlowSensitiveInlineVariablesTest.java

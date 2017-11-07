@@ -1,0 +1,8 @@
+50c50
+< if (getIterations() > 0) {
+---
+> if (iteration > 0) {
+63c63
+< incrementIterationCount();
+---
+> ++iteration;

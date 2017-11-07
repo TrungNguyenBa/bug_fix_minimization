@@ -1,0 +1,4 @@
+80c80
+< (new NodeTraversal(compiler, this)).traverseRoots(externs, root);
+---
+> (new NodeTraversal(compiler, this)).traverse(root);

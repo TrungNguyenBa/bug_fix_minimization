@@ -1,0 +1,4 @@
+79,81d78
+< if (durationField.isSupported()) {
+< return 1;
+< }

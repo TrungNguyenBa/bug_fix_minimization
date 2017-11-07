@@ -1,0 +1,8 @@
+package com.google.javascript.jscomp.deps;
+import java.util.Collection;
+public interface DependencyInfo {
+public String getName();
+public String getPathRelativeToClosureBase();
+public Collection<String> getProvides();
+public Collection<String> getRequires();
+}

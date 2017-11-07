@@ -1,0 +1,52 @@
+4c4
+< import org.apache.commons.math.exception.NotStrictlyPositiveException;
+---
+> import org.apache.commons.math.MathRuntimeException;
+19c19
+< this(p, DEFAULT_EPSILON, DEFAULT_MAX_ITERATIONS);
+---
+> this(p, new NormalDistributionImpl());
+22,26c22
+< if (p <= 0) {
+< throw new NotStrictlyPositiveException(LocalizedFormats.MEAN, p);
+< }
+< mean = p;
+< normal = new NormalDistributionImpl(p, FastMath.sqrt(p));
+---
+> setMean(p);
+31c27,28
+< this(p, epsilon, DEFAULT_MAX_ITERATIONS);
+---
+> setMean(p);
+> this.epsilon = epsilon;
+34c31,37
+< this(p, DEFAULT_EPSILON, maxIterations);
+---
+> setMean(p);
+> this.maxIterations = maxIterations;
+> }
+> @Deprecated
+> public PoissonDistributionImpl(double p, NormalDistribution z) {
+> super();
+> setNormalAndMeanInternal(z, p);
+38a42,56
+> @Deprecated
+> public void setMean(double p) {
+> setNormalAndMeanInternal(normal, p);
+> }
+> private void setNormalAndMeanInternal(NormalDistribution z,
+> double p) {
+> if (p <= 0) {
+> throw MathRuntimeException.createIllegalArgumentException(
+> LocalizedFormats.NOT_POSITIVE_POISSON_MEAN, p);
+> }
+> mean = p;
+> normal = z;
+> normal.setMean(p);
+> normal.setStandardDeviation(FastMath.sqrt(p));
+> }
+76a95,98
+> @Deprecated
+> public void setNormal(NormalDistribution value) {
+> setNormalAndMeanInternal(value, mean);
+> }

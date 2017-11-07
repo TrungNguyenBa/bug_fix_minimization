@@ -1,0 +1,11 @@
+149a150
+> boolean wasWhite= false;
+151a153,160
+> if(Character.isWhitespace(c)) {
+> if(!wasWhite) {
+> wasWhite= true;
+> regex.append("\\s*+");
+> }
+> continue;
+> }
+> wasWhite= false;

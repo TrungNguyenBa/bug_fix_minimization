@@ -1,0 +1,4 @@
+198c198
+< Partial newPartial = new Partial(newTypes, newValues, iChronology);
+---
+> Partial newPartial = new Partial(iChronology, newTypes, newValues);

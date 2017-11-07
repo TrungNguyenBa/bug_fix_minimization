@@ -1,0 +1,4 @@
+1073,1075d1072
+< if (searchList[i] == null || replacementList[i] == null) {
+< continue;
+< }

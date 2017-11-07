@@ -1,0 +1,3 @@
+d5ff460ba : MATH-855 The best point is sometimes not the last one evaluated.
+:100644 100644 ee2227cdb... cff5bfd33... M	src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java
+:100644 100644 7ccbd27ff... 2151c48d2... M	src/test/java/org/apache/commons/math3/optimization/univariate/BrentOptimizerTest.java

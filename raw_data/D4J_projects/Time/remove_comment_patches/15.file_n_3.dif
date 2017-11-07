@@ -1,0 +1,24 @@
+42c42,43
+< throw new ArithmeticException("Multiplication overflows an int: " + val1 + " * " + val2);
+---
+> throw new ArithmeticException
+> ("The calculation caused an overflow: " + val1 + " * " + val2);
+46,47c47,48
+< public static long safeMultiply(long val1, int val2) {
+< switch (val2) {
+---
+> public static long safeMultiply(long val1, int scalar) {
+> switch (scalar) {
+49,51d49
+< if (val1 == Long.MIN_VALUE) {
+< throw new ArithmeticException("Multiplication overflows a long: " + val1 + " * " + val2);
+< }
+58,60c56,59
+< long total = val1 * val2;
+< if (total / val2 != val1) {
+< throw new ArithmeticException("Multiplication overflows a long: " + val1 + " * " + val2);
+---
+> long total = val1 * scalar;
+> if (total / scalar != val1) {
+> throw new ArithmeticException
+> ("The calculation caused an overflow: " + val1 + " * " + scalar);

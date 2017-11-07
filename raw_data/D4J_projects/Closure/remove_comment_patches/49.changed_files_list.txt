@@ -1,0 +1,6 @@
+1a7ba5cb : Modify normalization to distinguish function expression names from parameters and local variables. Fixes issue 539.
+:100644 100644 7eb99260... 0fcb7786... M	src/com/google/javascript/jscomp/MakeDeclaredNamesUnique.java
+:100644 100644 d21107ff... 19ece5ae... M	test/com/google/javascript/jscomp/FunctionInjectorTest.java
+:100644 100644 a2b38e93... 7e1a21dd... M	test/com/google/javascript/jscomp/FunctionToBlockMutatorTest.java
+:100644 100644 0f5e864c... 1515f973... M	test/com/google/javascript/jscomp/InlineFunctionsTest.java
+:100644 100644 30c95184... 5b85c159... M	test/com/google/javascript/jscomp/MakeDeclaredNamesUniqueTest.java

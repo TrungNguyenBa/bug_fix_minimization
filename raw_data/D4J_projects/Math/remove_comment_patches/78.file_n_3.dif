@@ -1,0 +1,4 @@
+33,35d32
+< <action dev="luc" type="fix" issue="MATH-322" >
+< Fixed an error in handling very close events in ODE integration.
+< </action>

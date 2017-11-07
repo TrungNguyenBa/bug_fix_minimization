@@ -1,0 +1,19 @@
+549c549
+< res[i] = x[i] / diff;
+---
+> res[i] = (x[i] - boundaries[0][i]) / diff;
+565c565
+< res[i] = diff * x[i];
+---
+> res[i] = diff * x[i] + boundaries[0][i];
+586,587d585
+< final double[] bLoEnc = encode(boundaries[0]);
+< final double[] bHiEnc = encode(boundaries[1]);
+589c587
+< if (x[i] < bLoEnc[i]) {
+---
+> if (x[i] < 0) {
+592c590
+< if (x[i] > bHiEnc[i]) {
+---
+> if (x[i] > 1.0) {

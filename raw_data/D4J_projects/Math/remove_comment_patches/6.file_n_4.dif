@@ -1,0 +1,14 @@
+83a84
+> int iter = 0;
+86c87
+< incrementIterationCount();
+---
+> ++iter;
+91c92
+< if (checker.converged(getIterations(), previous, current)) {
+---
+> if (checker.converged(iter, previous, current)) {
+130c131
+< if (getIterations() % n == 0 ||
+---
+> if (iter % n == 0 ||

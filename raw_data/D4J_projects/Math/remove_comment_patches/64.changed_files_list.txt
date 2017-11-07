@@ -1,0 +1,4 @@
+7dadc2ab0 : MATH-405 corrected
+:100644 100644 152c30c3a... c4b19855a... M	src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+:100644 100644 4cf4ee006... b41456eff... M	src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+:100644 100644 59467b224... 620df2d4b... M	src/test/java/org/apache/commons/math/optimization/general/MinpackTest.java

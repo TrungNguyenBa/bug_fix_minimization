@@ -1,0 +1,4 @@
+c8becc7c4 : Fixed bracketing interval balancing in BracketingNthOrderBrentSolver.
+:100644 100644 93dd3bbdd... 59dc4617b... M	src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
+:100644 100644 d6a1857d3... 40adb29cb... M	src/site/xdoc/changes.xml
+:100644 100644 3324b7992... 13bd8f496... M	src/test/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolverTest.java

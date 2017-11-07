@@ -1,0 +1,3 @@
+79a89065 : Look through CAST nodes when annotating CALL nodes as free calls. Fixes issue 937 ------------- Created by MOE: http://code.google.com/p/moe-java MOE_MIGRATED_REVID=44143144
+:100644 100644 eda524ec... 42982afb... M	src/com/google/javascript/jscomp/PrepareAst.java
+:100644 100644 0c7ef23a... c7067e9d... M	test/com/google/javascript/jscomp/IntegrationTest.java

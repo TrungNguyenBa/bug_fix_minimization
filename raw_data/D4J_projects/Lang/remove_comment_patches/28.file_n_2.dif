@@ -1,0 +1,8 @@
+29,33d28
+< if(entityValue > 0xFFFF) {
+< char[] chrs = Character.toChars(entityValue);
+< out.write(chrs[0]);
+< out.write(chrs[1]);
+< } else {
+35d29
+< }

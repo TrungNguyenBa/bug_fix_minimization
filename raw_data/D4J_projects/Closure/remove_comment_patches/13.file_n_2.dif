@@ -1,0 +1,8 @@
+72,74c72
+< Node c = node.getFirstChild();
+< while(c != null) {
+< Node next = c.getNext();
+---
+> for (Node c = node.getFirstChild(); c != null; c = c.getNext()) {
+76d73
+< c = next;

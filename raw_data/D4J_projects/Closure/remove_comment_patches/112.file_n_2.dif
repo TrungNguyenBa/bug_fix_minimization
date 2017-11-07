@@ -1,0 +1,21 @@
+13,14d12
+< import com.google.common.base.Predicate;
+< import com.google.common.collect.ImmutableList;
+860,862c858
+< final ImmutableList<TemplateType> keys = fnType.getTemplateTypeMap()
+< .getTemplateKeys();
+< if (keys.isEmpty()) {
+---
+> if (fnType.getTemplateTypeMap().getTemplateKeys().isEmpty()) {
+865,872c861,862
+< Map<TemplateType, JSType> inferred = Maps.filterKeys(
+< inferTemplateTypesFromParameters(fnType, n),
+< new Predicate<TemplateType>() {
+< @Override
+< public boolean apply(TemplateType key) {
+< return keys.contains(key);
+< }}
+< );
+---
+> Map<TemplateType, JSType> inferred = inferTemplateTypesFromParameters(
+> fnType, n);

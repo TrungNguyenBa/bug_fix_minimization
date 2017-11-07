@@ -1,0 +1,4 @@
+264c264
+< return 100 * doubleValue();
+---
+> return multiply(100).doubleValue();

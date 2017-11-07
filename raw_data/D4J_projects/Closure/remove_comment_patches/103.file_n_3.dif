@@ -1,0 +1,12 @@
+463c463
+< @Override public ObjectType getTypeWithProperty(String field, JSType type) {
+---
+> @Override public JSType getTypeWithProperty(String field, JSType type) {
+482,488d481
+< if (foundType == null) {
+< ObjectType maybeType = ObjectType.cast(
+< registry.getGreatestSubtypeWithProperty(type, field));
+< if (maybeType != null && maybeType.hasOwnProperty(field)) {
+< foundType = maybeType;
+< }
+< }

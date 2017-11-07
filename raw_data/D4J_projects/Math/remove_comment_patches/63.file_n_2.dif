@@ -1,0 +1,49 @@
+172c172
+< return equals(x, y, 1);
+---
+> return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+446a447,450
+> @Deprecated
+> public static double nextAfter(double d, double direction) {
+> return FastMath.nextAfter(d, direction);
+> }
+524c528
+< unscaled = FastMath.floor(FastMath.nextAfter(unscaled, Double.NEGATIVE_INFINITY));
+---
+> unscaled = FastMath.floor(nextAfter(unscaled, Double.NEGATIVE_INFINITY));
+526c530
+< unscaled = FastMath.ceil(FastMath.nextAfter(unscaled, Double.POSITIVE_INFINITY));
+---
+> unscaled = FastMath.ceil(nextAfter(unscaled, Double.POSITIVE_INFINITY));
+530c534
+< unscaled = FastMath.floor(FastMath.nextAfter(unscaled, Double.NEGATIVE_INFINITY));
+---
+> unscaled = FastMath.floor(nextAfter(unscaled, Double.NEGATIVE_INFINITY));
+534c538
+< unscaled = FastMath.ceil(FastMath.nextAfter(unscaled, Double.POSITIVE_INFINITY));
+---
+> unscaled = FastMath.ceil(nextAfter(unscaled, Double.POSITIVE_INFINITY));
+536c540
+< unscaled = FastMath.floor(FastMath.nextAfter(unscaled, Double.NEGATIVE_INFINITY));
+---
+> unscaled = FastMath.floor(nextAfter(unscaled, Double.NEGATIVE_INFINITY));
+540c544
+< unscaled = FastMath.nextAfter(unscaled, Double.NEGATIVE_INFINITY);
+---
+> unscaled = nextAfter(unscaled, Double.NEGATIVE_INFINITY);
+566c570
+< unscaled = FastMath.nextAfter(unscaled, Double.POSITIVE_INFINITY);
+---
+> unscaled = nextAfter(unscaled, Double.POSITIVE_INFINITY);
+581c585
+< unscaled = FastMath.ceil(FastMath.nextAfter(unscaled,  Double.POSITIVE_INFINITY));
+---
+> unscaled = FastMath.ceil(nextAfter(unscaled,  Double.POSITIVE_INFINITY));
+850a855,861
+> public static void checkOrder(double[] val, int dir, boolean strict) {
+> if (dir > 0) {
+> checkOrder(val, OrderDirection.INCREASING, strict);
+> } else {
+> checkOrder(val, OrderDirection.DECREASING, strict);
+> }
+> }

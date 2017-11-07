@@ -1,0 +1,4 @@
+577c577
+< if (aliasingGets > 0) {
+---
+> if (type != Type.FUNCTION && aliasingGets > 0) {

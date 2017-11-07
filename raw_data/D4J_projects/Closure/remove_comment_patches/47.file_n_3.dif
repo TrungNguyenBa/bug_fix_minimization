@@ -1,0 +1,6 @@
+329,330c329,330
+< .setLineNumber(entry.getSourceLine() + 1)
+< .setColumnPosition(entry.getSourceColumn() + 1);
+---
+> .setLineNumber(entry.getSourceLine())
+> .setColumnPosition(entry.getSourceColumn());

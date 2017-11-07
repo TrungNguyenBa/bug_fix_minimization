@@ -1,0 +1,2 @@
+1a2
+> import com.google.javascript.jscomp.CodingConvention.AssertionFunctionSpec;

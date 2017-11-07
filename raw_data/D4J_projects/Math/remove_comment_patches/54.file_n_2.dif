@@ -1,0 +1,11 @@
+86,88d85
+< if ((bits & 0x8000000000000000L) != 0) {
+< sign = -1;
+< }
+1415,1418c1412
+< int cmp0 = compare(this, getZero());
+< if (cmp0 == 0) {
+< return sign < 0 ? -0.0 : +0.0;
+< } else if (cmp0 < 0) {
+---
+> if (lessThan(getZero())) {

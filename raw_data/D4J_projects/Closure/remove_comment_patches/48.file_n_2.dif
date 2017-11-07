@@ -1,0 +1,31 @@
+781,784d780
+< Scope scope = getQnameRootScope(n);
+< return scope != null && scope.isGlobal();
+< }
+< private Scope getQnameRootScope(Node n) {
+789c785
+< return var.getScope();
+---
+> return var.isGlobal();
+792c788
+< return null;
+---
+> return false;
+984,990c980,983
+< if (inferred && rhsValue != null && rhsValue.isFunction()) {
+< if (info != null) {
+< inferred = false;
+< } else if (!scope.isDeclared(qName, false) &&
+< n.isUnscopedQualifiedName()) {
+< inferred = false;
+< }
+---
+> if (inferred) {
+> inferred = !(rhsValue != null &&
+> rhsValue.isFunction() &&
+> (info != null || !scope.isDeclared(qName, false)));
+1004c997,998
+< } else if (rhsValue != null && rhsValue.isTrue()) {
+---
+> } else if (rhsValue != null &&
+> rhsValue.isTrue()) {

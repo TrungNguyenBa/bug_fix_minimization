@@ -1,0 +1,5 @@
+504,507d503
+< if (!bodyNode.isBlock()) {
+< Preconditions.checkState(config.isIdeMode);
+< bodyNode = IR.block();
+< }

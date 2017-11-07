@@ -1,0 +1,3 @@
+b12d1d64 : Automated g4 rollback.
+:100644 100644 f529b7d0... 420dbc07... M	src/com/google/javascript/jscomp/LightweightMessageFormatter.java
+:100644 100644 0c432a10... 6cc204fe... M	test/com/google/javascript/jscomp/LightweightMessageFormatterTest.java

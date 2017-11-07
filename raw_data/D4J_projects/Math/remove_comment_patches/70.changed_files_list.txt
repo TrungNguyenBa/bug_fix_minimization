@@ -1,0 +1,4 @@
+f41fcd85c : Fix NullPointerException in BisectionSolver.solve(f, min, max, initial) JIRA: MATH-369
+:100644 100644 3f669271a... 180caefbc... M	src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java
+:100644 100644 92eaeec55... 8452074ff... M	src/site/xdoc/changes.xml
+:100644 100644 d0fcafd82... a13ad2efa... M	src/test/java/org/apache/commons/math/analysis/solvers/BisectionSolverTest.java

@@ -1,0 +1,3 @@
+21a2103d : Don't remove nodes out of traversal order. Fixes issue 311.
+:100644 100644 5d705d13... e6d4320a... M	src/com/google/javascript/jscomp/UnreachableCodeElimination.java
+:100644 100644 68079253... f79beebb... M	test/com/google/javascript/jscomp/UnreachableCodeEliminationTest.java

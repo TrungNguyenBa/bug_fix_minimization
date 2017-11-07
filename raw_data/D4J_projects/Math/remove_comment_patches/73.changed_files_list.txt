@@ -1,0 +1,4 @@
+29c3b75e2 : Fixed a missing bracketing check of initial interval in Brent solver JIRA: MATH-343
+:100644 100644 4e95ed5eb... e0cb42714... M	src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+:100644 100644 c1390995d... 77f3faaca... M	src/site/xdoc/changes.xml
+:100644 100644 8fc47f00f... 587487155... M	src/test/java/org/apache/commons/math/analysis/solvers/BrentSolverTest.java

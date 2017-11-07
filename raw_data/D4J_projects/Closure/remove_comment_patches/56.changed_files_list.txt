@@ -1,0 +1,4 @@
+9e921fa9 : When getting a line from the source code according to the line number, if it happens to be the last line, and '\n' character is missing in the end of the file, we should still return the last line.
+:100644 100644 fdc952ad... 22414f63... M	src/com/google/javascript/jscomp/SourceFile.java
+:100644 100644 e1efc223... 2d988a3d... M	test/com/google/javascript/jscomp/JSCompilerSourceExcerptProviderTest.java
+:100644 100644 89a5d0c3... c88b37de... M	test/com/google/javascript/jscomp/JsMessageExtractorTest.java

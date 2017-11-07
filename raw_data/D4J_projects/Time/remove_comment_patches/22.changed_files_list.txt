@@ -1,0 +1,7 @@
+57c8aaf9 : Duraton.toPeriod(), new Period(long), new MutablePeriod(long) [3264409] Fixed to obey Javadoc. Previously, they didn't obey the Javadoc if the default time-zone had no daylight savings.
+:100644 100644 83f549c9... 3f7e1e33... M	JodaTime/RELEASE-NOTES.txt
+:100644 100644 4e40d551... 78db7917... M	JodaTime/src/main/java/org/joda/time/MutablePeriod.java
+:100644 100644 1e0a6d82... 7ec80720... M	JodaTime/src/main/java/org/joda/time/Period.java
+:100644 100644 e2da9f00... a5dcb74b... M	JodaTime/src/main/java/org/joda/time/base/BasePeriod.java
+:100644 100644 4caa6e20... 5850b561... M	JodaTime/src/test/java/org/joda/time/TestDuration_Basics.java
+:100644 100644 d1369ee5... 29f7bdf8... M	JodaTime/src/test/java/org/joda/time/TestPeriod_Constructors.java

@@ -1,0 +1,6 @@
+510,512c510
+< !mayEffectMutableState(lhs) &&
+< (!mayHaveSideEffects(cond) ||
+< (thenOp.isAssign() && thenOp.getFirstChild().isName()))) {
+---
+> !mayEffectMutableState(lhs)) {

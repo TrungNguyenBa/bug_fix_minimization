@@ -1,0 +1,10 @@
+28d27
+< private static final double DEFAULT_EPSILON = 1e-5;
+32c31
+< this(value, DEFAULT_EPSILON, 100);
+---
+> this(value, 1.0e-5, 100);
+73,75d71
+< if (epsilon == 0.0 && FastMath.abs(q1) < maxDenominator) {
+< break;
+< }

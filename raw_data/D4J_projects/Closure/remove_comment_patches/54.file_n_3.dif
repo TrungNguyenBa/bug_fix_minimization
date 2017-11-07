@@ -1,0 +1,11 @@
+175a176
+> baseType.isUnknownType() ||
+191,192c192
+< PrototypeObjectType oldPrototype = this.prototype;
+< boolean replacedPrototype = oldPrototype != null;
+---
+> boolean replacedPrototype = prototype != null;
+196,198d195
+< if (oldPrototype != null) {
+< oldPrototype.setOwnerFunction(null);
+< }

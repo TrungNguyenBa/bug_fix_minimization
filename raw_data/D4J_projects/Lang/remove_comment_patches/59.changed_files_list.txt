@@ -1,0 +1,3 @@
+c04cd233 : Applying a unit test for LANG-299 and the fix that Francisco Benavent suggests.
+:100644 100644 886d424e... 4c145099... M	src/java/org/apache/commons/lang/text/StrBuilder.java
+:100644 100644 c154913e... 8feb53c9... M	src/test/org/apache/commons/lang/text/StrBuilderAppendInsertTest.java

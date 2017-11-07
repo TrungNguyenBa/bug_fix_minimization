@@ -1,0 +1,3 @@
+686146c4 : Handle 'this' properly in the RAI. fixes issue 769
+:100644 100644 7221be51... 752e04ff... M	src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java
+:100644 100644 3f097b74... 9269bff3... M	test/com/google/javascript/jscomp/TypeInferenceTest.java

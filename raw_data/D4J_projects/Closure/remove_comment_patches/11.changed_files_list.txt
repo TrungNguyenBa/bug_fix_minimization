@@ -1,0 +1,4 @@
+482b7676 : fix a bogus 'if' branch. I have no idea what this was doing. Fixes issue 810
+:100644 100644 9388a2b9... e428dfab... M	src/com/google/javascript/jscomp/TypeCheck.java
+:100644 100644 69d12619... 0a979fe5... M	test/com/google/javascript/jscomp/LooseTypeCheckTest.java
+:100644 100644 e6282ee4... 349cc59c... M	test/com/google/javascript/jscomp/TypeCheckTest.java

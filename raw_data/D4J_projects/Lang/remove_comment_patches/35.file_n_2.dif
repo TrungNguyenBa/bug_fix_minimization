@@ -1,0 +1,17 @@
+1383,1391c1383
+< Class<?> type;
+< if (array != null){
+< type = array.getClass();
+< } else if (element != null) {
+< type = element.getClass();
+< } else {
+< throw new IllegalArgumentException("Arguments cannot both be null");
+< }
+< @SuppressWarnings("unchecked")
+---
+> Class<?> type = array != null ? array.getClass() : (element != null ? element.getClass() : Object.class);
+1452c1444,1445
+< throw new IllegalArgumentException("Array and element cannot both be null");
+---
+> final T[] emptyArray = (T[]) new Object[] { null };
+> return emptyArray;

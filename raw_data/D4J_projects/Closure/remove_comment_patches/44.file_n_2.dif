@@ -1,0 +1,3 @@
+103,104d102
+< } else if (c == '/' && getLastChar() == '/') {
+< append(" ");

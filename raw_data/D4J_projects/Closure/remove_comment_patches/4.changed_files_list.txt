@@ -1,0 +1,4 @@
+efefb736 : Fix issue 873 Converting from an interface type to a constructor which @implements itself causes stack overflow.
+:100644 100644 70142c45... 06988abe... M	src/com/google/javascript/rhino/jstype/NamedType.java
+:100644 100644 43a50a16... eecdab9c... M	src/com/google/javascript/rhino/jstype/ObjectType.java
+:100644 100644 42b01f96... 0e48208f... M	test/com/google/javascript/jscomp/TypeCheckTest.java

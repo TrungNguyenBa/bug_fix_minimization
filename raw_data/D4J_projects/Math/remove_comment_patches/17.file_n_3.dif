@@ -1,0 +1,8 @@
+909,915d908
+< if (x >= 0 && x < RADIX) {
+< return multiplyFast(x);
+< } else {
+< return multiply(newInstance(x));
+< }
+< }
+< private Dfp multiplyFast(final int x) {

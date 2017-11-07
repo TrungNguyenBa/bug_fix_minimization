@@ -1,0 +1,24 @@
+package com.google.javascript.rhino.jstype;
+import com.google.common.base.Preconditions;
+import com.google.javascript.rhino.ErrorReporter;
+import com.google.javascript.rhino.JSTypeExpression;
+import com.google.javascript.rhino.Node;
+class UnresolvedTypeExpression extends UnknownType {
+private static final long serialVersionUID = 1L;
+private final Node typeExpr;
+private final String sourceName;
+private boolean forgiving = false;
+UnresolvedTypeExpression(JSTypeRegistry registry, Node typeExpr,
+String sourceName, boolean forgiving) {
+super(registry, false);
+Preconditions.checkNotNull(typeExpr);
+this.typeExpr = typeExpr;
+this.sourceName = sourceName;
+this.forgiving = forgiving;
+}
+@Override
+JSType resolveInternal(ErrorReporter t, StaticScope<JSType> enclosing) {
+return registry.createFromTypeNodes(typeExpr, sourceName, enclosing,
+forgiving);
+}
+}

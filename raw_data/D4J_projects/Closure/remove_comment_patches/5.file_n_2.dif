@@ -1,0 +1,4 @@
+83,85d82
+< if (gramps.isDelProp()) {
+< return false;
+< }

@@ -1,0 +1,17 @@
+39,41d38
+< if (chars != null && chars.length == 0) {
+< throw new IllegalArgumentException("The chars array must not be empty");
+< }
+43,48d39
+< if (chars != null) {
+< end = chars.length;
+< } else {
+< if (!letters && !numbers) {
+< end = Integer.MAX_VALUE;
+< } else {
+51c42,44
+< }
+---
+> if (!letters && !numbers) {
+> start = 0;
+> end = Integer.MAX_VALUE;

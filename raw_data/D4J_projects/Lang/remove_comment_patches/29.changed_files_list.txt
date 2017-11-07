@@ -1,0 +1,3 @@
+982e2950 : (LANG-624) SystemUtils.getJavaVersionAsFloat throws StringIndexOutOfBoundsException on Android runtime/Dalvik VM. Oops, fix return type.
+:100644 100644 0c73f426... 2116f7c1... M	src/main/java/org/apache/commons/lang3/SystemUtils.java
+:100644 100644 10a9492c... b6bbf8ff... M	src/test/java/org/apache/commons/lang3/SystemUtilsTest.java

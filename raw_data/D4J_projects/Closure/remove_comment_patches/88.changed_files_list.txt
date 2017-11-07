@@ -1,0 +1,4 @@
+6a17da87 : Fix checks for variable reads in expressions with assignments. Fixes issue 297.
+:100644 100644 e07b5fc5... 879056f7... M	src/com/google/javascript/jscomp/DeadAssignmentsElimination.java
+:100644 100644 5dc9662f... 2d59cd7d... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java
+:100644 100644 a74acb4f... 2d82661d... M	test/com/google/javascript/jscomp/DeadAssignmentsEliminationTest.java

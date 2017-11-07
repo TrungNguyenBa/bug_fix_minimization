@@ -1,0 +1,13 @@
+482c482
+< int c = Character.codePointAt(str, i);
+---
+> char c = str.charAt(i);
+485,490c485
+< if (c >= 0x010000 && i < len - 1) {
+< writer.write("&#");
+< writer.write(Integer.toString(c, 10));
+< writer.write(';');
+< i++;
+< } else if (c > 0x7F) {
+---
+> if (c > 0x7F) {

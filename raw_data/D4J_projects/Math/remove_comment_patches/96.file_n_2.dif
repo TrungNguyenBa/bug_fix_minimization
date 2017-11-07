@@ -1,0 +1,7 @@
+91c91,94
+< ret = (real == rhs.real) && (imaginary == rhs.imaginary);
+---
+> ret = (Double.doubleToRawLongBits(real) ==
+> Double.doubleToRawLongBits(rhs.getReal())) &&
+> (Double.doubleToRawLongBits(imaginary) ==
+> Double.doubleToRawLongBits(rhs.getImaginary()));

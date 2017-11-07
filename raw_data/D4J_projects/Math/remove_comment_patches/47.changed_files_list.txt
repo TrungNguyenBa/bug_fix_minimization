@@ -1,0 +1,3 @@
+330f3fe17 : MATH-657 Complex division by zero:  z / 0 = INF if z is not ZERO  0 / 0 = NaN
+:100644 100644 ac31e4b1b... 137765c85... M	src/main/java/org/apache/commons/math/complex/Complex.java
+:100644 100644 4bc85b8f7... a002b0bc2... M	src/test/java/org/apache/commons/math/complex/ComplexTest.java

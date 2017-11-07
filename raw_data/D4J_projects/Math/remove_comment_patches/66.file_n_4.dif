@@ -1,0 +1,62 @@
+10,13c10
+< setMaxEvaluations(1000);
+< setMaximalIterationCount(100);
+< setAbsoluteAccuracy(1e-11);
+< setRelativeAccuracy(1e-9);
+---
+> super(100, 1E-10);
+15c12,13
+< protected double doOptimize()
+---
+> public double optimize(final UnivariateRealFunction f, final GoalType goalType,
+> final double min, final double max, final double startValue)
+17,18c15,16
+< return localMin(getGoalType() == GoalType.MINIMIZE,
+< getMin(), getStartValue(), getMax(),
+---
+> clearResult();
+> return localMin(f, goalType, min, startValue, max,
+21c19,25
+< private double localMin(boolean isMinim,
+---
+> public double optimize(final UnivariateRealFunction f, final GoalType goalType,
+> final double min, final double max)
+> throws MaxIterationsExceededException, FunctionEvaluationException {
+> return optimize(f, goalType, min, max, min + GOLDEN_SECTION * (max - min));
+> }
+> private double localMin(UnivariateRealFunction f,
+> GoalType goalType,
+42d45
+< double d = 0;
+44,45c47,48
+< double fx = computeObjectiveValue(x);
+< if (!isMinim) {
+---
+> double fx = computeObjectiveValue(f, x);
+> if (goalType == GoalType.MAXIMIZE) {
+50c53,54
+< while (true) {
+---
+> int count = 0;
+> while (count < maximalIterationCount) {
+57a62
+> double d = 0;
+109,110c114,115
+< double fu = computeObjectiveValue(u);
+< if (!isMinim) {
+---
+> double fu = computeObjectiveValue(f, u);
+> if (goalType == GoalType.MAXIMIZE) {
+145c150
+< setFunctionValue(isMinim ? fx : -fx);
+---
+> setResult(x, (goalType == GoalType.MAXIMIZE) ? -fx : fx, count);
+148c153,155
+< incrementIterationsCounter();
+---
+> ++count;
+> }
+> throw new MaxIterationsExceededException(maximalIterationCount);
+149a157,158
+> protected double doOptimize() {
+> throw new UnsupportedOperationException();

@@ -1,0 +1,3 @@
+006fca88 : [LANG-586] Clear ThreadLocal for HashCodeBuilder as well
+:100644 100644 547676cc... 9f7e8903... M	src/main/java/org/apache/commons/lang3/builder/HashCodeBuilder.java
+:100644 100644 f6af5f03... 64b34f90... M	src/test/java/org/apache/commons/lang3/builder/HashCodeBuilderTest.java

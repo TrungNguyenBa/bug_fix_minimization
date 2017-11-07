@@ -1,0 +1,4 @@
+43,45d42
+< <action dev="erans" type="fix" issue="MATH-835" due-to="Baste Nesse Buanes">
+< Fixed overflow in method "percentageValue" in class "Fraction".
+< </action>

@@ -1,0 +1,12 @@
+137d136
+< int numDecimals = 0;
+148d146
+< numDecimals = dec.length();
+225d222
+< if(numDecimals <= 7){
+230d226
+< }
+234d229
+< if(numDecimals <= 16){
+239d233
+< }

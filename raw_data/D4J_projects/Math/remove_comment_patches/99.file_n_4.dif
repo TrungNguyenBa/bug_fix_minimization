@@ -1,0 +1,32 @@
+4,5d3
+< import org.apache.commons.math.MathException;
+< import org.apache.commons.math.MathRuntimeException;
+209,211c207
+< public static int gcd(final int p, final int q) {
+< int u = p;
+< int v = q;
+---
+> public static int gcd(int u, int v) {
+213,217d208
+< if ((u == Integer.MIN_VALUE) || (v == Integer.MIN_VALUE)) {
+< throw MathRuntimeException.createArithmeticException(
+< "overflow: gcd({0}, {1}) is 2^31",
+< new Object[] { p, q });
+< }
+233,235c224
+< throw MathRuntimeException.createArithmeticException(
+< "overflow: gcd({0}, {1}) is 2^31",
+< new Object[] { p, q });
+---
+> throw new ArithmeticException("overflow: gcd is 2^31");
+282,289c271
+< if (a==0 || b==0){
+< return 0;
+< }
+< int lcm = Math.abs(mulAndCheck(a / gcd(a, b), b));
+< if (lcm == Integer.MIN_VALUE){
+< throw new ArithmeticException("overflow: lcm is 2^31");
+< }
+< return lcm;
+---
+> return Math.abs(mulAndCheck(a / gcd(a, b), b));

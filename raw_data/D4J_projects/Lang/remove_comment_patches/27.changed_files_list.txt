@@ -1,0 +1,3 @@
+c2560c02 : Making it so that NumberUtils.createNumber throws a NumberFormatException instead of a StringIndexOutOfBoundsException when Strings such as 1eE are passed in. Thanks to Ingo Heinrich's report and patch in LANG-638
+:100644 100644 fd03ab8f... f1f36a88... M	src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+:100644 100644 80df5620... 779eb746... M	src/test/java/org/apache/commons/lang3/math/NumberUtilsTest.java

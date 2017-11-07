@@ -1,0 +1,4 @@
+de98c0f0a : Fixed accuracy of 3D Line.revert().
+:100644 100644 343940724... d83b38818... M	src/changes/changes.xml
+:100644 100644 0c3941168... 7c9a28f14... M	src/main/java/org/apache/commons/math3/geometry/euclidean/threed/Line.java
+:100644 100644 5da16c9fc... 6c996c7cc... M	src/test/java/org/apache/commons/math3/geometry/euclidean/threed/LineTest.java

@@ -1,0 +1,4 @@
+415c415
+< final double[] out = new double[nRows];
+---
+> final double[] out = new double[v.length];

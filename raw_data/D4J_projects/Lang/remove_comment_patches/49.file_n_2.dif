@@ -1,0 +1,4 @@
+188,190d187
+< if (numerator == 0) {
+< return equals(ZERO) ? this : ZERO;
+< }

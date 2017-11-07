@@ -1,0 +1,4 @@
+45,47d44
+< <action dev="luc" type="fix" issue="MATH-727">
+< Check first step size in embedded Runge-Kutta integrators, and truncate it if needed.
+< </action>

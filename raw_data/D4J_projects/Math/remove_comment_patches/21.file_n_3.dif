@@ -1,0 +1,59 @@
+8,10c8,11
+< final int order = matrix.getRowDimension();
+< final double[][] c = matrix.getData();
+< final double[][] b = new double[order][order];
+---
+> int order = matrix.getRowDimension();
+> double[][] c = matrix.getData();
+> double[][] b = new double[order][order];
+> int[] swap  = new int[order];
+17c18
+< int swapR = r;
+---
+> swap[r] = r;
+20,22c21,23
+< int isr = index[swapR];
+< if (c[ii][ii] > c[isr][isr]) {
+< swapR = i;
+---
+> int isi = index[swap[i]];
+> if (c[ii][ii] > c[isi][isi]) {
+> swap[r] = i;
+25,31c26,29
+< if (swapR != r) {
+< final int tmpIndex    = index[r];
+< index[r]              = index[swapR];
+< index[swapR]          = tmpIndex;
+< final double[] tmpRow = b[r];
+< b[r]                  = b[swapR];
+< b[swapR]              = tmpRow;
+---
+> if (swap[r] != r) {
+> int tmp = index[r];
+> index[r] = index[swap[r]];
+> index[swap[r]] = tmp;
+46c44
+< final double sqrt = FastMath.sqrt(c[ir][ir]);
+---
+> double sqrt = FastMath.sqrt(c[ir][ir]);
+48,49c46
+< final double inverse  = 1 / sqrt;
+< final double inverse2 = 1 / c[ir][ir];
+---
+> double inverse = 1 / sqrt;
+51,52c48,49
+< final int ii = index[i];
+< final double e = inverse * c[ii][ir];
+---
+> int ii = index[i];
+> double e = inverse * c[ii][ir];
+54c51
+< c[ii][ii] -= c[ii][ir] * c[ii][ir] * inverse2;
+---
+> c[ii][ii] -= e * e;
+56,57c53,54
+< final int ij = index[j];
+< final double f = c[ii][ij] - e * b[j][r];
+---
+> int ij = index[j];
+> double f = c[ii][ij] - e * b[j][r];

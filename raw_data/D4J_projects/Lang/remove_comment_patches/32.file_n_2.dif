@@ -1,0 +1,36 @@
+10c10,15
+< private static final ThreadLocal<Set<IDKey>> REGISTRY = new ThreadLocal<Set<IDKey>>();
+---
+> private static final ThreadLocal<Set<IDKey>> registry = new ThreadLocal<Set<IDKey>>() {
+> @Override
+> protected Set<IDKey> initialValue() {
+> return new HashSet<IDKey>();
+> }
+> };
+12c17
+< return REGISTRY.get();
+---
+> return registry.get();
+15,16c20
+< Set<IDKey> registry = getRegistry();
+< return registry != null && registry.contains(new IDKey(value));
+---
+> return getRegistry().contains(new IDKey(value));
+84,88d87
+< synchronized (HashCodeBuilder.class) {
+< if (getRegistry() == null) {
+< REGISTRY.set(new HashSet<IDKey>());
+< }
+< }
+92,100c91
+< Set<IDKey> s = getRegistry();
+< if (s != null) {
+< s.remove(new IDKey(value));
+< synchronized (HashCodeBuilder.class) {
+< if (s.isEmpty()) {
+< REGISTRY.remove();
+< }
+< }
+< }
+---
+> getRegistry().remove(new IDKey(value));

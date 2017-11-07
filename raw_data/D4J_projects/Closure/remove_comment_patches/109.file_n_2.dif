@@ -1,0 +1,12 @@
+1349,1355d1348
+< private Node parseContextTypeExpression(JsDocToken token) {
+< if (token == JsDocToken.QMARK) {
+< return newNode(Token.QMARK);
+< } else {
+< return parseBasicTypeExpression(token);
+< }
+< }
+1434c1427
+< parseContextTypeExpression(next()));
+---
+> parseTypeName(next()));

@@ -1,0 +1,6 @@
+154,156c154
+< if ((startIndex >= source.length()) ||
+< (endIndex > source.length()) ||
+< source.substring(startIndex, endIndex).compareTo(
+---
+> if (source.substring(startIndex, endIndex).compareTo(

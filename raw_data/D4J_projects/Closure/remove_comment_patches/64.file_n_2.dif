@@ -1,0 +1,16 @@
+940c940
+< String code = toSource(root, sourceMap, inputSeqNum == 0);
+---
+> String code = toSource(root, sourceMap);
+960c960
+< return toSource(n, null, true);
+---
+> return toSource(n, null);
+962c962
+< private String toSource(Node n, SourceMap sourceMap, boolean firstOutput) {
+---
+> private String toSource(Node n, SourceMap sourceMap) {
+968c968
+< builder.setTagAsStrict(firstOutput &&
+---
+> builder.setTagAsStrict(

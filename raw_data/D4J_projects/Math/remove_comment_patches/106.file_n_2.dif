@@ -1,0 +1,12 @@
+73,77d72
+< if (num.intValue() < 0) {
+< // minus signs should be leading, invalid expression
+< pos.setIndex(initialIndex);
+< return null;
+< }
+108,112d102
+< if (den.intValue() < 0) {
+< // minus signs must be leading, invalid
+< pos.setIndex(initialIndex);
+< return null;
+< }

@@ -1,0 +1,4 @@
+81c81
+< super(duration);
+---
+> super(duration, null, null);

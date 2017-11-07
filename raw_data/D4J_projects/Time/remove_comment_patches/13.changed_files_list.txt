@@ -1,0 +1,4 @@
+5d08a1cd : Fix period formatter to correctly output values negative milliseconds [3564249]
+:100644 100644 1938947f... f67f195e... M	RELEASE-NOTES.txt
+:100644 100644 2471fce9... 29b0872c... M	src/main/java/org/joda/time/format/PeriodFormatterBuilder.java
+:100644 100644 ff5e392f... bef0d425... M	src/test/java/org/joda/time/format/TestISOPeriodFormat.java

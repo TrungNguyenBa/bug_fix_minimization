@@ -1,0 +1,22 @@
+62a63,79
+> @Override
+> public JSType getLeastSupertype(JSType that) {
+> if (!that.isRecordType()) {
+> return super.getLeastSupertype(that);
+> }
+> RecordType thatRecord = that.toMaybeRecordType();
+> RecordTypeBuilder builder = new RecordTypeBuilder(registry);
+> for (String property : properties.keySet()) {
+> if (thatRecord.hasProperty(property) &&
+> thatRecord.getPropertyType(property).isEquivalentTo(
+> getPropertyType(property))) {
+> builder.addProperty(property, getPropertyType(property),
+> getPropertyNode(property));
+> }
+> }
+> return builder.build();
+> }
+65c82
+< RecordType thatRecord = that.toMaybeRecordType();
+---
+> RecordType thatRecord = (RecordType) that;

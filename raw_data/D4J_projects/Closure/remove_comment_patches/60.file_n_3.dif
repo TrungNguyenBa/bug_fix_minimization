@@ -1,0 +1,54 @@
+84c84
+< Node result = trySimplifyUnusedResult(subtree.getFirstChild());
+---
+> Node result = trySimpilifyUnusedResult(subtree.getFirstChild());
+98,99c98,99
+< private Node trySimplifyUnusedResult(Node n) {
+< return trySimplifyUnusedResult(n, true);
+---
+> private Node trySimpilifyUnusedResult(Node n) {
+> return trySimpilifyUnusedResult(n, true);
+101c101
+< private Node trySimplifyUnusedResult(Node n, boolean removeUnused) {
+---
+> private Node trySimpilifyUnusedResult(Node n, boolean removeUnused) {
+105,106c105,106
+< Node trueNode = trySimplifyUnusedResult(n.getFirstChild().getNext());
+< Node falseNode = trySimplifyUnusedResult(n.getLastChild());
+---
+> Node trueNode = trySimpilifyUnusedResult(n.getFirstChild().getNext());
+> Node falseNode = trySimpilifyUnusedResult(n.getLastChild());
+114c114
+< result = trySimplifyUnusedResult(n.getFirstChild());
+---
+> result = trySimpilifyUnusedResult(n.getFirstChild());
+121c121
+< Node conditionalResultNode = trySimplifyUnusedResult(
+---
+> Node conditionalResultNode = trySimpilifyUnusedResult(
+125c125
+< result = trySimplifyUnusedResult(n.getFirstChild());
+---
+> result = trySimpilifyUnusedResult(n.getFirstChild());
+132,133c132,133
+< Node left = trySimplifyUnusedResult(n.getFirstChild());
+< Node right = trySimplifyUnusedResult(n.getLastChild());
+---
+> Node left = trySimpilifyUnusedResult(n.getFirstChild());
+> Node right = trySimpilifyUnusedResult(n.getLastChild());
+149c149
+< c = trySimplifyUnusedResult(c);
+---
+> c = trySimpilifyUnusedResult(c);
+296c296
+< left = trySimplifyUnusedResult(left);
+---
+> left = trySimpilifyUnusedResult(left);
+515c515
+< init = trySimplifyUnusedResult(init, false);
+---
+> init = trySimpilifyUnusedResult(init, false);
+518c518
+< increment = trySimplifyUnusedResult(increment, false);
+---
+> increment = trySimpilifyUnusedResult(increment, false);

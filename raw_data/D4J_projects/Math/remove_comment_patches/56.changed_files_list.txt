@@ -1,0 +1,4 @@
+e06fe05e2 : MATH-552 Fixed bug in "MultidimensionalCounter". Thanks to James Bence.
+:100644 100644 56c9ffebc... fb0614eb7... M	src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+:100644 100644 5c0e1d92d... 72035c1a9... M	src/site/xdoc/changes.xml
+:100644 100644 827030df3... a3110b99a... M	src/test/java/org/apache/commons/math/util/MultidimensionalCounterTest.java

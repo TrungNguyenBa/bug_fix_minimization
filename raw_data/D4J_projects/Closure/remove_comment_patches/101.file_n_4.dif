@@ -1,0 +1,6 @@
+319c319,321
+< options.closurePass = flags.process_closure_primitives;
+---
+> if (flags.process_closure_primitives) {
+> options.closurePass = true;
+> }

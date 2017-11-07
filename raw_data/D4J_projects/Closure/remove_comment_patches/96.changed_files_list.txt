@@ -1,0 +1,3 @@
+807aaf25 : check var_args properly Fixes issue 229.
+:100644 100644 8198efc8... b05fbc44... M	src/com/google/javascript/jscomp/TypeCheck.java
+:100644 100644 0bc7a923... bbe11aae... M	test/com/google/javascript/jscomp/TypeCheckTest.java

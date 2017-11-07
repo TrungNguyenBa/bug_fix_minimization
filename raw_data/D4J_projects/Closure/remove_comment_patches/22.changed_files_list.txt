@@ -1,0 +1,4 @@
+43a55234 : You are in a maze of twisty 'if' branches, all alike. cleanup the logic for identifying dead expressions. Fixes issue 753
+:100644 100644 ee0fc6dd... 722d2252... M	src/com/google/javascript/jscomp/CheckSideEffects.java
+:100644 100644 5de1e6f7... 00e31e0e... M	src/com/google/javascript/jscomp/NodeUtil.java
+:100644 100644 6c15df66... e6ba2188... M	test/com/google/javascript/jscomp/CheckSideEffectsTest.java

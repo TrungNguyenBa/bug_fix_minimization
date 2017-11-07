@@ -1,0 +1,5 @@
+33,36d32
+< <action dev="luc" type="fix" issue="MATH-243" due-to="Christian Semrau">
+< Fixed an error in computing gcd and lcm for some extreme values at integer
+< range boundaries.
+< </action>

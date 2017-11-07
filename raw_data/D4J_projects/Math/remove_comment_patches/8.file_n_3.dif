@@ -1,0 +1,11 @@
+1a2
+> import java.lang.reflect.Array;
+67c68
+< public Object[] sample(int sampleSize) throws NotStrictlyPositiveException {
+---
+> public T[] sample(int sampleSize) throws NotStrictlyPositiveException {
+72c73,74
+< final Object[] out = new Object[sampleSize];
+---
+> @SuppressWarnings("unchecked")
+> final T[]out = (T[]) Array.newInstance(singletons.get(0).getClass(), sampleSize);

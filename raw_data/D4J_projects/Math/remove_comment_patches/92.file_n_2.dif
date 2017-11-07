@@ -1,0 +1,58 @@
+67,83c67,70
+< if (k > n / 2)
+< return binomialCoefficient(n, n - k);
+< long result = 1;
+< if (n <= 61) {
+< for (int j = 1, i = n - k + 1; j <= k; i++, j++) {
+< result = result * i / j;
+< }
+< } else if (n <= 66) {
+< for (int j = 1, i = n - k + 1; j <= k; i++, j++) {
+< long d = gcd(i, j);
+< result = (result / (j / d)) * (i / d);
+< }
+< } else {
+< for (int j = 1, i = n - k + 1; j <= k; i++, j++) {
+< long d = gcd(i, j);
+< result = mulAndCheck((result / (j / d)), (i / d));
+< }
+---
+> long result = Math.round(binomialCoefficientDouble(n, k));
+> if (result == Long.MAX_VALUE) {
+> throw new ArithmeticException(
+> "result too large to represent in a long integer");
+88,112c75
+< if (n < k) {
+< throw new IllegalArgumentException(
+< "must have n >= k for binomial coefficient (n,k)");
+< }
+< if (n < 0) {
+< throw new IllegalArgumentException(
+< "must have n >= 0 for binomial coefficient (n,k)");
+< }
+< if ((n == k) || (k == 0)) {
+< return 1d;
+< }
+< if ((k == 1) || (k == n - 1)) {
+< return n;
+< }
+< if (k > n/2) {
+< return binomialCoefficientDouble(n, n - k);
+< }
+< if (n < 67) {
+< return binomialCoefficient(n,k);
+< }
+< double result = 1d;
+< for (int i = 1; i <= k; i++) {
+< result *= (double)(n - k + i) / (double)i;
+< }
+< return Math.floor(result + 0.5);
+---
+> return Math.floor(Math.exp(binomialCoefficientLog(n, k)) + 0.5);
+129,134d91
+< if (n < 67) {
+< return Math.log(binomialCoefficient(n,k));
+< }
+< if (n < 1030) {
+< return Math.log(binomialCoefficientDouble(n, k));
+< }

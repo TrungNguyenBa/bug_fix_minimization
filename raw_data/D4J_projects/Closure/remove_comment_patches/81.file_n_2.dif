@@ -1,0 +1,31 @@
+26a27,28
+> jQuery.deferred.prototype.promise = function() {};
+> jQuery.Deferred.prototype.promise = function() {};
+41a44
+> jQuery.DeferredObject.prototype.promise = function() {};
+78a82
+> jQuery.hasData = function(elem) {};
+95a100
+> jQuery.now = function() {};
+99a105,110
+> jQuery.Promise = function () {};
+> jQuery.Promise.prototype.done = function(doneCallbacks) {}
+> jQuery.Promise.prototype.fail = function(failCallbacks) {}
+> jQuery.Promise.prototype.isRejected = function() {}
+> jQuery.Promise.prototype.isResolved = function() {}
+> jQuery.Promise.prototype.then = function(doneCallbacks, failCallbacks) {}
+104a116,127
+> jQuery.support.boxModel;
+> jQuery.support.changeBubbles;
+> jQuery.support.cssFloat;
+> jQuery.support.hrefNormalized;
+> jQuery.support.htmlSerialize;
+> jQuery.support.leadingWhitespace;
+> jQuery.support.noCloneEvent;
+> jQuery.support.opacity;
+> jQuery.support.scriptEval;
+> jQuery.support.style;
+> jQuery.support.submitBubbles;
+> jQuery.support.tbody;
+174a198
+> jQueryObject.prototype.jquery;

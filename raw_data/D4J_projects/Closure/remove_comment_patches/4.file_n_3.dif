@@ -1,0 +1,8 @@
+6d5
+< import com.google.common.collect.Iterables;
+81,85d79
+< final boolean detectInheritanceCycle() {
+< return detectImplicitPrototypeCycle()
+< || Iterables.contains(this.getCtorImplementedInterfaces(), this)
+< || Iterables.contains(this.getCtorExtendedInterfaces(), this);
+< }

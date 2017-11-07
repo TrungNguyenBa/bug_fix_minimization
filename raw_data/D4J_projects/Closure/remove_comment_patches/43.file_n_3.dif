@@ -1,0 +1,43 @@
+281d280
+< private List<Node> lentObjectLiterals = null;
+364,370d362
+< if (n.getParent() != null && NodeUtil.isStatement(n) &&
+< lentObjectLiterals != null) {
+< for (Node objLit : lentObjectLiterals) {
+< defineObjectLiteral(objLit);
+< }
+< lentObjectLiterals.clear();
+< }
+396,405c388
+< JSDocInfo info = n.getJSDocInfo();
+< if (info != null &&
+< info.getLendsName() != null) {
+< if (lentObjectLiterals == null) {
+< lentObjectLiterals = Lists.newArrayList();
+< }
+< lentObjectLiterals.add(n);
+< } else {
+< defineObjectLiteral(n);
+< }
+---
+> defineObjectLiteral(t, n);
+409c392
+< private void defineObjectLiteral(Node objectLit) {
+---
+> private void defineObjectLiteral(NodeTraversal t, Node objectLit) {
+447c430
+< objectLit, ObjectType.cast(objectLit.getJSType()), !createdEnumType);
+---
+> t, objectLit, ObjectType.cast(objectLit.getJSType()), !createdEnumType);
+450c433
+< Node objLit, ObjectType objLitType,
+---
+> NodeTraversal t, Node objLit, ObjectType objLitType,
+458c441
+< getDeclaredType(keyNode.getSourceFileName(), info, keyNode, value);
+---
+> getDeclaredType(t.getSourceName(), info, keyNode, value);
+470c453
+< boolean isExtern = keyNode.isFromExterns();
+---
+> boolean isExtern = t.getInput() != null && t.getInput().isExtern();

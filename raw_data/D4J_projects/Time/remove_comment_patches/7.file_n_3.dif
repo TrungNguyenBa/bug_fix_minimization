@@ -1,0 +1,8 @@
+9d8
+< import org.joda.time.Instant;
+226d224
+< int defaultYear = DateTimeUtils.getChronology(chrono).year().get(instantMillis);
+230c228
+< instantLocal, chrono, iLocale, iPivotYear, defaultYear);
+---
+> instantLocal, chrono, iLocale, iPivotYear, chrono.year().get(instantLocal));

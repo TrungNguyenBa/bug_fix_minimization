@@ -1,0 +1,7 @@
+317c317,318
+< JsName name = getName(ns.name, true);
+---
+> JsName name = getName(ns.name, false);
+> if (name != null) {
+322a324
+> }

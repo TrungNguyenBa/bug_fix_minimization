@@ -1,0 +1,8 @@
+82c82
+< return NaN;
+---
+> return isZero ? NaN : INF;
+106c106
+< return NaN;
+---
+> return isZero ? NaN : INF;

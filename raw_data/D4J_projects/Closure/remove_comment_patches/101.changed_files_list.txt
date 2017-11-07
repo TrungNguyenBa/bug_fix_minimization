@@ -1,0 +1,5 @@
+369282db : Removing useless members variables. (Alan) R=robert DELTA=4  (0 added, 4 deleted, 0 changed)
+:100755 100755 25740509... d1029961... M	lib/google_common_deploy.jar
+:100644 100644 95403499... 4416fc4c... M	src/com/google/javascript/jscomp/CodingConvention.java
+:100644 100644 bdf55921... c18639ac... M	src/com/google/javascript/jscomp/CommandLineRunner.java
+:100644 100644 0149df05... 3b783ada... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java

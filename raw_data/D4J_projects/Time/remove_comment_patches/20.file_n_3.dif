@@ -1,0 +1,14 @@
+1555d1554
+< String best = null;
+1558,1559c1557,1558
+< if (best == null || id.length() > best.length()) {
+< best = id;
+---
+> bucket.setZone(DateTimeZone.forID(id));
+> return position + id.length();
+1562,1566d1560
+< }
+< if (best != null) {
+< bucket.setZone(DateTimeZone.forID(best));
+< return position + best.length();
+< }

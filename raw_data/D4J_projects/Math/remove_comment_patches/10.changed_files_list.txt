@@ -1,0 +1,4 @@
+7e2ffcc90 : Fixed DerivativeStructure.atan2 for special cases when both arguments are +/-0.
+:100644 100644 f9ac147ac... 3820d35b7... M	src/changes/changes.xml
+:100644 100644 9d0855530... d5a3c18b8... M	src/main/java/org/apache/commons/math3/analysis/differentiation/DSCompiler.java
+:100644 100644 4da9b4220... 1d357fd53... M	src/test/java/org/apache/commons/math3/analysis/differentiation/DerivativeStructureTest.java

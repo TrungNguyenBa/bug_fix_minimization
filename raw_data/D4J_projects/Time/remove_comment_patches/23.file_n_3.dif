@@ -1,0 +1,29 @@
+286,290d285
+< map.put("WET", "WET");
+< map.put("CET", "CET");
+< map.put("MET", "CET");
+< map.put("ECT", "CET");
+< map.put("EET", "EET");
+299c294
+< map.put("IET", "America/Indiana/Indianapolis");
+---
+> map.put("IET", "America/Indianapolis");
+302c297
+< map.put("AGT", "America/Argentina/Buenos_Aires");
+---
+> map.put("AGT", "America/Buenos_Aires");
+303a299,300
+> map.put("WET", "Europe/London");
+> map.put("ECT", "Europe/Paris");
+305a303
+> map.put("EET", "Europe/Bucharest");
+306a305
+> map.put("MET", "Asia/Tehran");
+309c308
+< map.put("IST", "Asia/Kolkata");
+---
+> map.put("IST", "Asia/Calcutta");
+311c310
+< map.put("VST", "Asia/Ho_Chi_Minh");
+---
+> map.put("VST", "Asia/Saigon");

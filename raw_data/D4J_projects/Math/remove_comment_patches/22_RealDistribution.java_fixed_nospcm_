@@ -1,0 +1,21 @@
+package org.apache.commons.math3.distribution;
+import org.apache.commons.math3.exception.NumberIsTooLargeException;
+import org.apache.commons.math3.exception.OutOfRangeException;
+public interface RealDistribution {
+double probability(double x);
+double density(double x);
+double cumulativeProbability(double x);
+@Deprecated
+double cumulativeProbability(double x0, double x1) throws NumberIsTooLargeException;
+double inverseCumulativeProbability(double p) throws OutOfRangeException;
+double getNumericalMean();
+double getNumericalVariance();
+double getSupportLowerBound();
+double getSupportUpperBound();
+boolean isSupportLowerBoundInclusive();
+boolean isSupportUpperBoundInclusive();
+boolean isSupportConnected();
+void reseedRandomGenerator(long seed);
+double sample();
+double[] sample(int sampleSize);
+}

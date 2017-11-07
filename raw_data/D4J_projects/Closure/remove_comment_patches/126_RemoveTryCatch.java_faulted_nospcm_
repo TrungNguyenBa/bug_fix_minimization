@@ -1,0 +1,67 @@
+package com.google.javascript.jscomp;
+import com.google.javascript.jscomp.NodeTraversal.AbstractPostOrderCallback;
+import com.google.javascript.rhino.IR;
+import com.google.javascript.rhino.JSDocInfo;
+import com.google.javascript.rhino.Node;
+import com.google.javascript.rhino.Token;
+import java.util.HashSet;
+import java.util.Set;
+class RemoveTryCatch implements CompilerPass {
+private final AbstractCompiler compiler;
+private final Set<Node> tryNodesContainingReturnStatements;
+RemoveTryCatch(AbstractCompiler compiler) {
+this.compiler = compiler;
+this.tryNodesContainingReturnStatements = new HashSet<Node>();
+}
+@Override
+public void process(Node externs, Node root) {
+NodeTraversal.traverse(compiler, root, new RemoveTryCatchCode());
+}
+private class RemoveTryCatchCode extends AbstractPostOrderCallback {
+@Override
+public void visit(NodeTraversal t, Node n, Node parent) {
+switch (n.getType()) {
+case Token.TRY:
+JSDocInfo info = n.getJSDocInfo();
+if (info != null && info.shouldPreserveTry()) {
+return;
+}
+Node tryBlock = n.getFirstChild();
+Node catchBlock = tryBlock.getNext();
+Node finallyBlock = catchBlock != null ? catchBlock.getNext() : null;
+if (finallyBlock != null &&
+tryNodesContainingReturnStatements.contains(n)) {
+return;
+}
+if (catchBlock.hasOneChild()) {
+NodeUtil.redeclareVarsInsideBranch(catchBlock);
+}
+n.detachChildren();
+Node block;
+if (!NodeUtil.isStatementBlock(parent)) {
+block = IR.block();
+parent.replaceChild(n, block);
+block.addChildToFront(tryBlock);
+} else {
+parent.replaceChild(n, tryBlock);
+block = parent;
+}
+if (finallyBlock != null) {
+block.addChildAfter(finallyBlock, tryBlock);
+}
+compiler.reportCodeChange();
+break;
+case Token.RETURN:
+for (Node anc = parent;
+anc != null && !anc.isFunction();
+anc = anc.getParent()) {
+if (anc.isTry()) {
+tryNodesContainingReturnStatements.add(anc);
+break;
+}
+}
+break;
+}
+}
+}
+}

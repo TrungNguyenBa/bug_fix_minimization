@@ -1,0 +1,23 @@
+993,994c993,994
+< int noOfItems = (endIndex - startIndex);
+< if (noOfItems <= 0) {
+---
+> int bufSize = (endIndex - startIndex);
+> if (bufSize <= 0) {
+997c997,998
+< StringBuilder buf = new StringBuilder(noOfItems * 16);
+---
+> bufSize *= ((array[startIndex] == null ? 16 : array[startIndex].toString().length()) + 1);
+> StringBuilder buf = new StringBuilder(bufSize);
+1021,1022c1022,1023
+< int noOfItems = (endIndex - startIndex);
+< if (noOfItems <= 0) {
+---
+> int bufSize = (endIndex - startIndex);
+> if (bufSize <= 0) {
+1025c1026,1028
+< StringBuilder buf = new StringBuilder(noOfItems * 16);
+---
+> bufSize *= ((array[startIndex] == null ? 16 : array[startIndex].toString().length())
+> + separator.length());
+> StringBuilder buf = new StringBuilder(bufSize);

@@ -1,0 +1,6 @@
+9be86f674 : fixed a bracketing issue due to inconsistent checks JIRA: MATH-280
+:100644 100644 5b76415e2... e6398f6ab... M	src/java/org/apache/commons/math/analysis/solvers/UnivariateRealSolverUtils.java
+:100644 100644 808a573f1... 419fbfa37... M	src/java/org/apache/commons/math/distribution/AbstractContinuousDistribution.java
+:100644 100644 468db7282... e25385370... M	src/site/xdoc/changes.xml
+:100644 100644 9afd18e58... e87094ff3... M	src/test/org/apache/commons/math/analysis/solvers/UnivariateRealSolverUtilsTest.java
+:100644 100644 dd607f3f7... 8f3433c06... M	src/test/org/apache/commons/math/distribution/NormalDistributionTest.java

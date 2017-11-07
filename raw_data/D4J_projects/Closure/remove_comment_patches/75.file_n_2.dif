@@ -1,0 +1,32 @@
+210,212d209
+< if (rawJsString.contains("\u000b")) {
+< return null;
+< }
+246,247c243
+< while (end > 0
+< && isStrWhiteSpaceChar(s.charAt(end - 1)) == TernaryValue.TRUE) {
+---
+> while (end > 0 && isStrWhiteSpaceChar(s.charAt(end-1))) {
+250,251c246
+< while (start < end
+< && isStrWhiteSpaceChar(s.charAt(start)) == TernaryValue.TRUE) {
+---
+> while (start < end && isStrWhiteSpaceChar(s.charAt(start))) {
+256c251
+< static TernaryValue isStrWhiteSpaceChar(int c) {
+---
+> static boolean isStrWhiteSpaceChar(int c) {
+258,259d252
+< case '\u000B':
+< return TernaryValue.UNKNOWN;
+265a259
+> case '\u000B':
+269c263
+< return TernaryValue.TRUE;
+---
+> return true;
+271,272c265
+< return (Character.getType(c) == Character.SPACE_SEPARATOR)
+< ? TernaryValue.TRUE : TernaryValue.FALSE;
+---
+> return Character.getType(c) == Character.SPACE_SEPARATOR;

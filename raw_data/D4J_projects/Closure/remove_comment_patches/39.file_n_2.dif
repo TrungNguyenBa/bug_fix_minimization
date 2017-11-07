@@ -1,0 +1,12 @@
+247c247
+< sb.append(getPropertyType(property).toStringHelper(forAnnotations));
+---
+> sb.append(getPropertyType(property).toString());
+249c249
+< if (!forAnnotations && i == MAX_PRETTY_PRINTED_PROPERTIES) {
+---
+> if (i == MAX_PRETTY_PRINTED_PROPERTIES) {
+258c258
+< return forAnnotations ? "?" : "{...}";
+---
+> return "{...}";

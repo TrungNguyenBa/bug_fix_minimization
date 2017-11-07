@@ -1,0 +1,4 @@
+508c508
+< final BigDecimal[] out = new BigDecimal[nRows];
+---
+> final BigDecimal[] out = new BigDecimal[v.length];

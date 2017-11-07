@@ -1,0 +1,5 @@
+25,26c25
+< return topType.isAllType() ?
+< getNativeType(ARRAY_TYPE) : topType;
+---
+> return topType;

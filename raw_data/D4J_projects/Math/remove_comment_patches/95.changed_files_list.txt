@@ -1,0 +1,4 @@
+fbf87122e : propagated trunk changes from r699157 into branch 2.0 MATH-227.  fixed F distribution inverse CDF computation for small denominator degrees of freedom.
+:100644 100644 395940365... 59aeb07b0... M	src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+:100644 100644 b626d7d0e... 69897d590... M	src/site/xdoc/changes.xml
+:100644 100644 d345d68e9... de153e006... M	src/test/org/apache/commons/math/distribution/FDistributionTest.java

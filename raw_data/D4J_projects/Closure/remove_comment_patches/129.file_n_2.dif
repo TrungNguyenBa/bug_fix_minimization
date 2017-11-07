@@ -1,0 +1,4 @@
+97,99d96
+< while (first.isCast()) {
+< first = first.getFirstChild();
+< }

@@ -1,0 +1,9 @@
+59d58
+< import java.util.regex.Pattern;
+185,186c184,186
+< Pattern p = Pattern.compile("(/|(\n[ \t]*))\\*[ \t]*@[a-zA-Z]");
+< if (p.matcher(comment.getValue()).find()) {
+---
+> String value = comment.getValue();
+> if (value.indexOf("/* @") != -1 ||
+> value.indexOf("\n * @") != -1) {

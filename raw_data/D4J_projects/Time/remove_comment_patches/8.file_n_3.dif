@@ -1,0 +1,12 @@
+116c116
+< if (minutesOffset < -59 || minutesOffset > 59) {
+---
+> if (minutesOffset < 0 || minutesOffset > 59) {
+119,121d118
+< if (hoursOffset > 0 && minutesOffset < 0) {
+< throw new IllegalArgumentException("Positive hours must not have negative minutes: " + minutesOffset);
+< }
+126c123
+< minutesOffset = hoursInMinutes - Math.abs(minutesOffset);
+---
+> minutesOffset = hoursInMinutes - minutesOffset;

@@ -1,0 +1,4 @@
+145c145
+< for (int i = begin; i < begin + length; i++) {
+---
+> for (int i = 0; i < weights.length; i++) {

@@ -1,0 +1,10 @@
+143,144c143,144
+< if (tokenLen == 2) {
+< rule = TwoDigitYearField.INSTANCE;
+---
+> if (tokenLen >= 4) {
+> rule = selectNumberRule(Calendar.YEAR, tokenLen);
+146c146
+< rule = selectNumberRule(Calendar.YEAR, tokenLen < 4 ? 4 : tokenLen);
+---
+> rule = TwoDigitYearField.INSTANCE;

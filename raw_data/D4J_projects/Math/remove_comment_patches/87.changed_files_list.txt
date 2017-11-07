@@ -1,0 +1,4 @@
+75f5c92ae : Fixed a wrong check for basic variables JIRA: MATH-273
+:100644 100644 a6d7419cf... b0d114eea... M	src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+:100644 100644 4f53d0cb4... a1fe400a6... M	src/site/xdoc/changes.xml
+:100644 100644 806618577... 954ad7ca0... M	src/test/org/apache/commons/math/optimization/linear/SimplexSolverTest.java

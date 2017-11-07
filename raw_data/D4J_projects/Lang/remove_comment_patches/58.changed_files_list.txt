@@ -1,0 +1,4 @@
+1fd45a4f : Fixing LANG-300 (reported by Jeremy Lemaire) - 1L to 9L incorrectly throw exceptions when passed into NumberUtils.createNumber. Fixed in both the math.NumbersUtils and the deprecated NumberUtils classes.
+:100644 100644 b52b29d8... 18a05efe... M	src/java/org/apache/commons/lang/NumberUtils.java
+:100644 100644 c0f06a47... eb74e72f... M	src/java/org/apache/commons/lang/math/NumberUtils.java
+:100644 100644 57532381... f3e7cc43... M	src/test/org/apache/commons/lang/math/NumberUtilsTest.java

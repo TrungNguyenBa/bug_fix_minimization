@@ -1,0 +1,22 @@
+1059a1060
+> throw new PathIsExploredException();
+1061,1064c1062,1063
+< final int iptMinus1 = ipt - 1;
+< final int jptMinus1 = jpt - 1;
+< interpolationPoints.setEntry(nfm, iptMinus1, interpolationPoints.getEntry(ipt, iptMinus1));
+< interpolationPoints.setEntry(nfm, jptMinus1, interpolationPoints.getEntry(jpt, jptMinus1));
+---
+> interpolationPoints.setEntry(nfm, ipt, interpolationPoints.getEntry(ipt, ipt));
+> interpolationPoints.setEntry(nfm, jpt, interpolationPoints.getEntry(jpt, jpt));
+1131a1131
+> throw new PathIsExploredException();
+1634c1634,1635
+< private static class PathIsExploredException extends RuntimeException {
+---
+> }
+> class PathIsExploredException extends RuntimeException {
+1639,1640c1640
+< super(PATH_IS_EXPLORED + " " + BOBYQAOptimizer.caller(3));
+< }
+---
+> super(PATH_IS_EXPLORED);

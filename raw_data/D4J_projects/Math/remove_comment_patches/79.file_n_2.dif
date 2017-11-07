@@ -1,0 +1,8 @@
+734c734
+< double sum = 0;
+---
+> int sum = 0;
+736c736
+< final double dp = p1[i] - p2[i];
+---
+> final int dp = p1[i] - p2[i];

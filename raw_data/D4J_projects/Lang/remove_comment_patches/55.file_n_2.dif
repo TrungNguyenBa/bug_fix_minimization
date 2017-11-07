@@ -1,0 +1,4 @@
+31d30
+< if(this.runningState == STATE_RUNNING) {
+33d31
+< }

@@ -1,0 +1,3 @@
+2aa9dca9 : Adjust FastDateFormat for Java 7 behavior regarding format of the year pattern (LANG-719).
+:100644 100644 8be2e613... 51da48e1... M	src/main/java/org/apache/commons/lang3/time/FastDateFormat.java
+:100644 100644 e4cde1a4... 6feb57d1... M	src/test/java/org/apache/commons/lang3/time/FastDateFormatTest.java

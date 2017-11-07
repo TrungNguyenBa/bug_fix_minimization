@@ -1,0 +1,28 @@
+61d60
+< UnivariatePointValuePair best = current;
+128,132d126
+< best = best(best,
+< best(current,
+< previous,
+< isMinim),
+< isMinim);
+135c129
+< return best;
+---
+> return best(current, previous, isMinim);
+170,174c164
+< return best(best,
+< best(current,
+< previous,
+< isMinim),
+< isMinim);
+---
+> return best(current, previous, isMinim);
+189c179
+< return a.getValue() <= b.getValue() ? a : b;
+---
+> return a.getValue() < b.getValue() ? a : b;
+191c181
+< return a.getValue() >= b.getValue() ? a : b;
+---
+> return a.getValue() > b.getValue() ? a : b;

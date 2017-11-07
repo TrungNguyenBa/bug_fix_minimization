@@ -1,0 +1,28 @@
+71a72,73
+> x1 = x;
+> f1 = fx;
+74,75c76
+< switch (method) {
+< case ILLINOIS:
+---
+> if (method == Method.ILLINOIS) {
+77,90d77
+< break;
+< case PEGASUS:
+< f0 *= f1 / (f1 + fx);
+< break;
+< case REGULA_FALSI:
+< if (x == x1) {
+< final double delta = FastMath.max(rtol * FastMath.abs(x1),
+< atol);
+< x0 = 0.5 * (x0 + x1 - delta);
+< f0 = computeObjectiveValue(x0);
+< }
+< break;
+< default:
+< throw new MathInternalError();
+91a79,80
+> if (method == Method.PEGASUS) {
+> f0 *= f1 / (f1 + fx);
+94a84
+> }

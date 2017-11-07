@@ -1,0 +1,20 @@
+930,933d929
+< JSType valueType = getDeclaredType(t.getSourceName(), info, n, rhsValue);
+< if (valueType == null && rhsValue != null) {
+< valueType = rhsValue.getJSType();
+< }
+937,943c933
+< ObjectType qVarType = ObjectType.cast(qVar.getType());
+< if (qVarType != null &&
+< rhsValue != null &&
+< rhsValue.getType() == Token.OBJECTLIT) {
+< typeRegistry.resetImplicitPrototype(
+< rhsValue.getJSType(), qVarType.getImplicitPrototype());
+< } else if (!qVar.isTypeInferred()) {
+---
+> if (!qVar.isTypeInferred()) {
+950a941,944
+> JSType valueType = getDeclaredType(t.getSourceName(), info, n, rhsValue);
+> if (valueType == null && rhsValue != null) {
+> valueType = rhsValue.getJSType();
+> }

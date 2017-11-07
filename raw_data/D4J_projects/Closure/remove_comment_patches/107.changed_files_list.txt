@@ -1,0 +1,5 @@
+49e9565f : Shut off i18n warnings if the user didn't ask for i18n. Fixes issue 1135 R=blickly
+:100644 100644 ee2dd58c... 3aae2e77... M	src/com/google/javascript/jscomp/CommandLineRunner.java
+:100644 100644 9398f9ec... 9d8e963a... M	src/com/google/javascript/jscomp/DefaultPassConfig.java
+:100644 100644 157f133e... 7837dcc7... M	src/com/google/javascript/jscomp/JsMessageVisitor.java
+:100644 100644 298933a2... 5eb35233... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java

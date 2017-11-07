@@ -1,0 +1,6 @@
+56,58c56
+< return isNoType() || isNoObjectType() || isNoResolvedType() ||
+< (registry.getNativeFunctionType(
+< JSTypeNative.LEAST_FUNCTION_TYPE) == this);
+---
+> return isNoType() || isNoObjectType() || isNoResolvedType();

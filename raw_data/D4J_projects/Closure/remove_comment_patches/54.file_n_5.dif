@@ -1,0 +1,4 @@
+390c390
+< Preconditions.checkState(ownerFunction == null || type == null);
+---
+> Preconditions.checkState(ownerFunction == null);

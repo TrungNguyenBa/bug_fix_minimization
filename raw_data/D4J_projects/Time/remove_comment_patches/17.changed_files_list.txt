@@ -1,0 +1,4 @@
+a8913f5a : Fix time zone later/earlier offset methods in Western hemisphere [3476684]
+:100644 100644 28732ee1... e0ea4ace... M	RELEASE-NOTES.txt
+:100644 100644 ec05941f... 72198993... M	src/main/java/org/joda/time/DateTimeZone.java
+:100644 100644 a7a5175d... d86b68e0... M	src/test/java/org/joda/time/TestDateTimeZoneCutover.java

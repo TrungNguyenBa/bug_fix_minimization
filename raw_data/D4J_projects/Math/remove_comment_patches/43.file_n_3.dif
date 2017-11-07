@@ -1,0 +1,6 @@
+45,49d44
+< <action dev="psteitz" type="fix" issue="MATH-691">
+< Fixed errors in SummaryStatistics addValue causing variance, mean, or
+< geometric mean statistics not to be updated if they have been overriden
+< using instances of commons-math supplied implementations.
+< </action>

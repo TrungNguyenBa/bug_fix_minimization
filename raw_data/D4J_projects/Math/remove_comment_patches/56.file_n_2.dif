@@ -1,0 +1,10 @@
+94c94,100
+< indices[last] = index - count;
+---
+> int idx = 1;
+> while (count < index) {
+> count += idx;
+> ++idx;
+> }
+> --idx;
+> indices[last] = idx;

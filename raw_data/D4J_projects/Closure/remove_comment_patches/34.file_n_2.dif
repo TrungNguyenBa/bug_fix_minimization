@@ -1,0 +1,43 @@
+57a58,59
+> addExpr(first, p, context);
+> cc.addOp(opstr, true);
+61,62d62
+< addExpr(first, p, context);
+< cc.addOp(opstr, true);
+65,66d64
+< addExpr(first, p, context);
+< cc.addOp(opstr, true);
+69c67
+< unrollBinaryOperator(n, type, opstr, context, rhsContext, p, p + 1);
+---
+> addExpr(last, p + 1, rhsContext);
+149c147,157
+< unrollBinaryOperator(n, Token.COMMA, ",", context, Context.OTHER, 0, 0);
+---
+> Node firstNonComma = n.getFirstChild();
+> while (firstNonComma.getType() == Token.COMMA) {
+> firstNonComma = firstNonComma.getFirstChild();
+> }
+> addExpr(firstNonComma, 0, context);
+> Node current = firstNonComma;
+> do {
+> current = current.getParent();
+> cc.listSeparator();
+> addExpr(current.getFirstChild().getNext(), 0, Context.OTHER);
+> } while (current != n);
+564,578d571
+< private void unrollBinaryOperator(
+< Node n, int op, String opStr, Context context,
+< Context rhsContext, int leftPrecedence, int rightPrecedence) {
+< Node firstNonOperator = n.getFirstChild();
+< while (firstNonOperator.getType() == op) {
+< firstNonOperator = firstNonOperator.getFirstChild();
+< }
+< addExpr(firstNonOperator, leftPrecedence, context);
+< Node current = firstNonOperator;
+< do {
+< current = current.getParent();
+< cc.addOp(opStr, true);
+< addExpr(current.getFirstChild().getNext(), rightPrecedence, rhsContext);
+< } while (current != n);
+< }

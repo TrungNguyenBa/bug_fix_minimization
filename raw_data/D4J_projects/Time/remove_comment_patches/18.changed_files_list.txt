@@ -1,0 +1,4 @@
+b609d7d6 : Fix GJChronology to allow some leap year dates in JulianChronology to be created [3446915]
+:100644 100644 76dfcfbb... 6062b399... M	RELEASE-NOTES.txt
+:100644 100644 6131f14f... 0a19aa64... M	src/main/java/org/joda/time/chrono/GJChronology.java
+:100644 100644 f517b9fa... 3cf49502... M	src/test/java/org/joda/time/chrono/TestGJChronology.java

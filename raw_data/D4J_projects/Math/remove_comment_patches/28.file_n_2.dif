@@ -1,0 +1,12 @@
+52d51
+< if (tableau.getNumArtificialVariables() > 0) {
+62,63d60
+< }
+< if (getIterations() < getMaxIterations() / 2) {
+67,68c64
+< int i = tableau.getNumObjectiveFunctions();
+< for (; i < tableau.getWidth() - 1 && minRow != row; i++) {
+---
+> for (int i = tableau.getNumObjectiveFunctions(); i < tableau.getWidth() - 1 && minRow != row; i++) {
+79d74
+< }

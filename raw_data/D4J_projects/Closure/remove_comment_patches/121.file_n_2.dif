@@ -1,0 +1,9 @@
+181,185c181,182
+< !staleVars.contains(v) &&
+< referenceInfo.isWellDefined() &&
+< referenceInfo.isAssignedOnceInLifetime() &&
+< (isInlineableDeclaredConstant(v, referenceInfo) ||
+< referenceInfo.isOnlyAssignmentSameScopeAsDeclaration())) {
+---
+> !staleVars.contains(v) && referenceInfo.isWellDefined() &&
+> referenceInfo.isAssignedOnceInLifetime()) {

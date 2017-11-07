@@ -1,0 +1,4 @@
+c5e143f7 : Coerce null and undefined out of the @this type when we resolve lazily. We already do this when we resolve @this blocks immediately. There's some question about whether we should be coercing to the global object instead, but i'm going to just punt on this for now. Fixes issue 274
+:100644 100644 2c836832... 3394fa62... M	src/com/google/javascript/jscomp/FunctionTypeBuilder.java
+:100644 100644 cf2d3e86... de1d1c23... M	src/com/google/javascript/rhino/jstype/FunctionType.java
+:100644 100644 cc8ecaf6... 6b2baea8... M	test/com/google/javascript/jscomp/TypeCheckTest.java

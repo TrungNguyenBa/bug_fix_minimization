@@ -1,0 +1,12 @@
+68c68
+< final int cols = problem.getUnboundParameters().length;
+---
+> final int cols = problem.getAllParameters().length;
+91c91
+< int p = problem.getUnboundParameters().length;
+---
+> int p = problem.getAllParameters().length;
+96c96
+< double[] errors = new double[problem.getUnboundParameters().length];
+---
+> double[] errors = new double[problem.getAllParameters().length];

@@ -1,0 +1,27 @@
+174,177c174,175
+< for (final EventState state : eventsStates) {
+< state.stepAccepted(eventT, eventY);
+< isLastStep = isLastStep || state.stop();
+< }
+---
+> currentEvent.stepAccepted(eventT, eventY);
+> isLastStep = currentEvent.stop();
+183c181,182
+< return eventT;
+---
+> for (final EventState remaining : occuringEvents) {
+> remaining.stepAccepted(eventT, eventY);
+185,187c184
+< boolean needReset = false;
+< for (final EventState state : eventsStates) {
+< needReset =  needReset || state.reset(eventT, eventY);
+---
+> return eventT;
+189c186
+< if (needReset) {
+---
+> if (currentEvent.reset(eventT, eventY)) {
+192a190,192
+> for (final EventState remaining : occuringEvents) {
+> remaining.stepAccepted(eventT, eventY);
+> }

@@ -1,0 +1,14 @@
+31c31
+< private static boolean isCollapsibleValue(Node value, boolean isLValue) {
+---
+> private boolean isCollapsibleValue(Node value, boolean isLValue) {
+109,113c109,111
+< while (node.isGetProp()) {
+< node = node.getFirstChild();
+< }
+< if (node.isName()
+< && isNameAssignedTo(node.getString(), replacement)) {
+---
+> Node name = node.getFirstChild();
+> if (name.isName()
+> && isNameAssignedTo(name.getString(), replacement)) {

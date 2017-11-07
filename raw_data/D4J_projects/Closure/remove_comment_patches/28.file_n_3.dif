@@ -1,0 +1,12 @@
+415c415
+< cc.addConstant("null");
+---
+> add("null");
+423c423
+< cc.addConstant("false");
+---
+> add("false");
+427c427
+< cc.addConstant("true");
+---
+> add("true");

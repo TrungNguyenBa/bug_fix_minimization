@@ -1,0 +1,6 @@
+8aa879a4 : Change on 2010/06/03 by nicksantos
+:100644 100644 7ecd5bd7... 7d09eb4d... M	gen/com/google/javascript/jscomp/FunctionInformationMap.java
+:100644 100644 32f3a259... 4031c59a... M	gen/com/google/javascript/jscomp/Instrumentation.java
+:100755 100755 41a2c233... 09e1ac22... M	lib/google_common_deploy.jar
+:100644 100644 f11616da... 5108686e... M	src/com/google/javascript/jscomp/CheckGlobalThis.java
+:100644 100644 98e17aad... b168fd9a... M	test/com/google/javascript/jscomp/CheckGlobalThisTest.java

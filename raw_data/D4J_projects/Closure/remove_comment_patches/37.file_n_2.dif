@@ -1,0 +1,4 @@
+292c292
+< body.isBlock(), body);
+---
+> body.isBlock());

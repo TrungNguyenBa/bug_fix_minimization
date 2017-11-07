@@ -1,0 +1,5 @@
+816c816,817
+< if (options.dependencyOptions.needsManagement()) {
+---
+> if (options.dependencyOptions.needsManagement() &&
+> options.closurePass) {

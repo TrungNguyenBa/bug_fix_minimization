@@ -1,0 +1,12 @@
+3c3
+< import org.apache.commons.math3.linear.DiagonalMatrix;
+---
+> import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+9c9,13
+< weightMatrix = new DiagonalMatrix(weight);
+---
+> final int dim = weight.length;
+> weightMatrix = new Array2DRowRealMatrix(dim, dim);
+> for (int i = 0; i < dim; i++) {
+> weightMatrix.setEntry(i, i, weight[i]);
+> }

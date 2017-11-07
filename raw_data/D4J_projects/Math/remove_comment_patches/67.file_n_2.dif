@@ -1,0 +1,8 @@
+31c31
+< return optimaValues[0];
+---
+> return optimizer.getFunctionValue();
+34c34
+< return optima[0];
+---
+> return optimizer.getResult();

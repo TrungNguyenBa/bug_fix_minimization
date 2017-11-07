@@ -1,0 +1,10 @@
+539c539
+< sum = (valueLong < 0 ? Math.max(sum, 5) : Math.max(sum, 4));
+---
+> sum = Math.max(sum, 4);
+568d567
+< int bufLen = buf.length();
+578,580d576
+< if (valueLong < 0 && valueLong > -DateTimeConstants.MILLIS_PER_SECOND) {
+< buf.insert(bufLen, '-');
+< }

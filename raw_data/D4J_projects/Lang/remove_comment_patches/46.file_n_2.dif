@@ -1,0 +1,33 @@
+15c15
+< return escapeJavaStyleString(str, false, false);
+---
+> return escapeJavaStyleString(str, false);
+18c18
+< escapeJavaStyleString(out, str, false, false);
+---
+> escapeJavaStyleString(out, str, false);
+21c21
+< return escapeJavaStyleString(str, true, true);
+---
+> return escapeJavaStyleString(str, true);
+24c24
+< escapeJavaStyleString(out, str, true, true);
+---
+> escapeJavaStyleString(out, str, true);
+26c26
+< private static String escapeJavaStyleString(String str, boolean escapeSingleQuotes, boolean escapeForwardSlash) {
+---
+> private static String escapeJavaStyleString(String str, boolean escapeSingleQuotes) {
+32c32
+< escapeJavaStyleString(writer, str, escapeSingleQuotes, escapeForwardSlash);
+---
+> escapeJavaStyleString(writer, str, escapeSingleQuotes);
+39,40c39
+< private static void escapeJavaStyleString(Writer out, String str, boolean escapeSingleQuote,
+< boolean escapeForwardSlash) throws IOException {
+---
+> private static void escapeJavaStyleString(Writer out, String str, boolean escapeSingleQuote) throws IOException {
+104d102
+< if (escapeForwardSlash) {
+106d103
+< }

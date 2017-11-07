@@ -1,0 +1,43 @@
+968d967
+< int lineStartChar = -1;
+972,974c971
+< if (ignoreStar) {
+< lineStartChar = stream.getCharno() + 1;
+< } else {
+---
+> if (!ignoreStar) {
+987d983
+< lineStartChar = 0;
+990,1008c986,990
+< default:
+< ignoreStar = false;
+< state = State.SEARCHING_ANNOTATION;
+< boolean isEOC = token == JsDocToken.EOC;
+< if (!isEOC) {
+< if (lineStartChar != -1 && option == WhitespaceOption.PRESERVE) {
+< int numSpaces = stream.getCharno() - lineStartChar;
+< for (int i = 0; i < numSpaces; i++) {
+< builder.append(' ');
+< }
+< lineStartChar = -1;
+< } else if (builder.length() > 0) {
+< builder.append(' ');
+< }
+< }
+< if (token == JsDocToken.EOC ||
+< token == JsDocToken.EOF ||
+< (token == JsDocToken.ANNOTATION &&
+< option != WhitespaceOption.PRESERVE)) {
+---
+> case ANNOTATION:
+> case EOC:
+> case EOF:
+> if (!(option == WhitespaceOption.PRESERVE &&
+> token == JsDocToken.ANNOTATION)) {
+1020a1003,1008
+> default:
+> ignoreStar = false;
+> state = State.SEARCHING_ANNOTATION;
+> if (builder.length() > 0) {
+> builder.append(' ');
+> }

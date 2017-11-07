@@ -1,0 +1,7 @@
+236,239c236
+< String param = null;
+< try {
+< param = params.getParameter(0);
+< } catch (CmdLineException e) {}
+---
+> String param = params.getParameter(0);

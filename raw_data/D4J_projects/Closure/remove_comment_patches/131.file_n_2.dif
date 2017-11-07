@@ -1,0 +1,13 @@
+136,138c136
+< if (length == 0 ||
+< Character.isIdentifierIgnorable(s.charAt(0)) ||
+< !Character.isJavaIdentifierStart(s.charAt(0))) {
+---
+> if (length == 0 || !Character.isJavaIdentifierStart(s.charAt(0)))
+140d137
+< }
+142,143c139
+< if (Character.isIdentifierIgnorable(s.charAt(i)) ||
+< !Character.isJavaIdentifierPart(s.charAt(i))) {
+---
+> if (!Character.isJavaIdentifierPart(s.charAt(i))) {

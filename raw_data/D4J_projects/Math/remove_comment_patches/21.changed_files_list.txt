@@ -1,0 +1,5 @@
+468ed8550 : Fixed an error in rectangular Cholesky decomposition.
+:100644 100644 ec44dd50f... 046450552... M	src/changes/changes.xml
+:100644 100644 38584d420... aba7b9806... M	src/main/java/org/apache/commons/math3/linear/RectangularCholeskyDecomposition.java
+:000000 100644 000000000... 6fbfdfd3c... A	src/test/java/org/apache/commons/math3/linear/RectangularCholeskyDecompositionTest.java
+:100644 100644 167382a8f... eba52a387... M	src/test/java/org/apache/commons/math3/random/CorrelatedRandomVectorGeneratorTest.java

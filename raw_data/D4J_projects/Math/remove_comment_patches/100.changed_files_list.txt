@@ -1,0 +1,4 @@
+876d13333 : fixed crashes in AbstractEstimator when some parameters are bound. getCovariances() and guessParametersErrors() now only give result about unbound parameters JIRA: MATH-200
+:100644 100644 19e06a052... 8e5fe1ad0... M	src/java/org/apache/commons/math/estimation/AbstractEstimator.java
+:100644 100644 52c9b8a0d... 6d89ffd51... M	src/site/xdoc/changes.xml
+:100644 100644 4d15b4b5f... 24f0f507b... M	src/test/org/apache/commons/math/estimation/GaussNewtonEstimatorTest.java

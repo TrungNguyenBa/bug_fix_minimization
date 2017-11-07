@@ -1,0 +1,17 @@
+8d7
+< import com.google.javascript.jscomp.graph.DiGraph.DiGraphEdge;
+70,71c69
+< boolean conditional = hasExceptionHandler(n);
+< computeMayUse(n, n, output, conditional);
+---
+> computeMayUse(n, n, output, false);
+74,82d71
+< private boolean hasExceptionHandler(Node cfgNode) {
+< List<DiGraphEdge<Node, Branch>> branchEdges = getCfg().getOutEdges(cfgNode);
+< for (DiGraphEdge<Node, Branch> edge : branchEdges) {
+< if (edge.getValue() == Branch.ON_EX) {
+< return true;
+< }
+< }
+< return false;
+< }

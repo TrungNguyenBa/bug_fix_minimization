@@ -1,0 +1,17 @@
+196,198d195
+< while (oldParams.hasNext()) {
+< paramBuilder.newParameterFromNode(oldParams.next());
+< }
+304d300
+< boolean isVarArgs = false;
+310c306
+< isVarArgs = isVarArgsParameter(arg, info);
+---
+> boolean isVarArgs = isVarArgsParameter(arg, info);
+337,342d332
+< if (!isVarArgs) {
+< while (oldParameterType != null && !isVarArgs) {
+< builder.newParameterFromNode(oldParameterType);
+< oldParameterType = oldParameterType.getNext();
+< }
+< }

@@ -1,0 +1,5 @@
+124,125c124
+< protected abstract double doOptimize()
+< throws MaxIterationsExceededException, FunctionEvaluationException;
+---
+> protected abstract double doOptimize();

@@ -1,0 +1,24 @@
+326c326
+< if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
+---
+> if (cs == null || cs.length() == 0 || searchChars == null || searchChars.length == 0) {
+329,333c329
+< int csLength = cs.length();
+< int searchLength = searchChars.length;
+< int csLastIndex = csLength - 1;
+< int searchLastIndex = searchLength - 1;
+< for (int i = 0; i < csLength; i++) {
+---
+> for (int i = 0; i < cs.length(); i++) {
+335c331
+< for (int j = 0; j < searchLength; j++) {
+---
+> for (int j = 0; j < searchChars.length; j++) {
+337,341d332
+< if (i < csLastIndex && j < searchLastIndex && ch >= Character.MIN_HIGH_SURROGATE && ch <= Character.MAX_HIGH_SURROGATE) {
+< if (searchChars[j + 1] == cs.charAt(i + 1)) {
+< return true;
+< }
+< } else {
+346d336
+< }

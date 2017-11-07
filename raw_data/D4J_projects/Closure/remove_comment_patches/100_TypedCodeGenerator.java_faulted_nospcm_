@@ -1,0 +1,99 @@
+package com.google.javascript.jscomp;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Sets;
+import com.google.javascript.rhino.Node;
+import com.google.javascript.rhino.Token;
+import com.google.javascript.rhino.jstype.FunctionType;
+import com.google.javascript.rhino.jstype.JSType;
+import com.google.javascript.rhino.jstype.ObjectType;
+import java.nio.charset.Charset;
+import java.util.Set;
+class TypedCodeGenerator extends CodeGenerator {
+TypedCodeGenerator(CodeConsumer consumer, Charset outputCharset) {
+super(consumer, outputCharset);
+}
+@Override
+void add(Node n, Context context) {
+Node parent = n.getParent();
+if (parent != null
+&& (parent.getType() == Token.BLOCK
+|| parent.getType() == Token.SCRIPT)) {
+if (n.getType() == Token.FUNCTION) {
+add(getFunctionAnnotation(n));
+} else if (n.getType() == Token.EXPR_RESULT
+&& n.getFirstChild().getType() == Token.ASSIGN) {
+Node rhs = n.getFirstChild().getLastChild();
+add(getTypeAnnotation(rhs));
+} else if (n.getType() == Token.VAR
+&& n.getFirstChild().getFirstChild() != null
+&& n.getFirstChild().getFirstChild().getType() == Token.FUNCTION) {
+add(getFunctionAnnotation(n.getFirstChild().getFirstChild()));
+}
+}
+super.add(n, context);
+}
+private String getTypeAnnotation(Node node) {
+JSType type = node.getJSType();
+if (type instanceof FunctionType) {
+return getFunctionAnnotation(node);
+} else if (type != null && !type.isUnknownType()
+&& !type.isEmptyType() && !type.isVoidType() &&
+!type.isFunctionPrototypeType()) {
+return "/** @type {" + node.getJSType() + "} */\n";
+} else {
+return "";
+}
+}
+private String getFunctionAnnotation(Node fnNode) {
+Preconditions.checkState(fnNode.getType() == Token.FUNCTION);
+StringBuilder sb = new StringBuilder("/**\n");
+JSType type = fnNode.getJSType();
+if (type == null || type.isUnknownType()) {
+return "";
+}
+FunctionType funType = (FunctionType) fnNode.getJSType();
+if (fnNode != null) {
+Node paramNode = NodeUtil.getFnParameters(fnNode).getFirstChild();
+for (Node n : funType.getParameters()) {
+if (paramNode == null) {
+break;
+}
+sb.append(" * @param {" + n.getJSType() + "} ");
+sb.append(paramNode.getString());
+sb.append("\n");
+paramNode = paramNode.getNext();
+}
+}
+JSType retType = funType.getReturnType();
+if (retType != null && !retType.isUnknownType() && !retType.isEmptyType()) {
+sb.append(" * @return {" + retType + "}\n");
+}
+if (funType.isConstructor() || funType.isInterface()) {
+FunctionType superConstructor = funType.getSuperClassConstructor();
+if (superConstructor != null) {
+ObjectType superInstance =
+funType.getSuperClassConstructor().getInstanceType();
+if (!superInstance.toString().equals("Object")) {
+sb.append(" * @extends {"  + superInstance + "}\n");
+}
+}
+Set<String> interfaces = Sets.newTreeSet();
+for (ObjectType interfaze : funType.getImplementedInterfaces()) {
+interfaces.add(interfaze.toString());
+}
+for (String interfaze : interfaces) {
+sb.append(" * @implements {"  + interfaze + "}\n");
+}
+if (funType.isConstructor()) {
+sb.append(" * @constructor\n");
+} else if (funType.isInterface()) {
+sb.append(" * @interface\n");
+}
+}
+if (fnNode != null && fnNode.getBooleanProp(Node.IS_DISPATCHER)) {
+sb.append(" * @javadispatch\n");
+}
+sb.append(" */\n");
+return sb.toString();
+}
+}

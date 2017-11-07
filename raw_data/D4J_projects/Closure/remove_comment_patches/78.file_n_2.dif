@@ -1,0 +1,8 @@
+10a11,13
+> static final DiagnosticType DIVIDE_BY_0_ERROR = DiagnosticType.error(
+> "JSC_DIVIDE_BY_0_ERROR",
+> "Divide by 0");
+526a530
+> error(DIVIDE_BY_0_ERROR, right);
+532a537
+> error(DIVIDE_BY_0_ERROR, right);

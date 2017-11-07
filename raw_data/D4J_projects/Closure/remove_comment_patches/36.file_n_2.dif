@@ -1,0 +1,10 @@
+332d331
+< CodingConvention convention = compiler.getCodingConvention();
+334c333
+< convention.getClassesDefinedByCall(callNode);
+---
+> compiler.getCodingConvention().getClassesDefinedByCall(callNode);
+338,340d336
+< if (convention.getSingletonGetterClassName(callNode) != null) {
+< return false;
+< }

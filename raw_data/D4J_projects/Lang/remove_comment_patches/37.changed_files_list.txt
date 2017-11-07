@@ -1,0 +1,3 @@
+ea140fb5 : LANG-567 - ArrayUtils.addAll(T[] array1, T... array2) does not handle mixed types very well Also remove unnecessary main() and suite() from test class
+:100644 100644 9011bffa... b9413e85... M	src/java/org/apache/commons/lang3/ArrayUtils.java
+:100644 100644 2b80d835... e38e4811... M	src/test/org/apache/commons/lang3/ArrayUtilsAddTest.java

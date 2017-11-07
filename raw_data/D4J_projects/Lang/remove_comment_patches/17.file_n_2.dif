@@ -1,0 +1,28 @@
+27,30c27,29
+< int pos = 0;
+< int len = input.length();
+< while (pos < len) {
+< int consumed = translate(input, pos, out);
+---
+> int sz = Character.codePointCount(input, 0, input.length());
+> for (int i = 0; i < sz; i++) {
+> int consumed = translate(input, i, out);
+32,35c31,37
+< char[] c = Character.toChars(Character.codePointAt(input, pos));
+< out.write(c);
+< pos+= c.length;
+< continue;
+---
+> out.write(Character.toChars(Character.codePointAt(input, i)));
+> } else {
+> for (int j = 0; j < consumed; j++) {
+> if (i < sz - 2) {
+> i += Character.charCount(Character.codePointAt(input, i));
+> } else {
+> i++;
+37,38c39,40
+< for (int pt = 0; pt < consumed; pt++) {
+< pos += Character.charCount(Character.codePointAt(input, pos));
+---
+> }
+> i--;

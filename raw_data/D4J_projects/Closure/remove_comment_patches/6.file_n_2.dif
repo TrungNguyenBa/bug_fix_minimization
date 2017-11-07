@@ -1,0 +1,17 @@
+206a207,209
+> if (bothIntrinsics(rightType, leftType)) {
+> registerMismatch(rightType, leftType, null);
+> } else {
+218a222
+> }
+225a230,232
+> if (bothIntrinsics(rightType, leftType)) {
+> registerMismatch(rightType, leftType, null);
+> } else {
+226a234
+> }
+230a239,242
+> private boolean bothIntrinsics(JSType rightType, JSType leftType) {
+> return (leftType.isConstructor() || leftType.isEnumType()) &&
+> (rightType.isConstructor() || rightType.isEnumType());
+> }

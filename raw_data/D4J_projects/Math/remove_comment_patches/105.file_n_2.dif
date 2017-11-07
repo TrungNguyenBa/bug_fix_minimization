@@ -1,0 +1,4 @@
+69c69
+< return Math.max(0d, sumYY - sumXY * sumXY / sumXX);
+---
+> return sumYY - sumXY * sumXY / sumXX;

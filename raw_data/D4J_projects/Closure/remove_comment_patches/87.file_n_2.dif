@@ -1,0 +1,35 @@
+164c164
+< if (isFoldableExpressBlock(thenBranch)) {
+---
+> if (isExpressBlock(thenBranch)) {
+218,219c218,219
+< boolean thenBranchIsExpressionBlock = isFoldableExpressBlock(thenBranch);
+< boolean elseBranchIsExpressionBlock = isFoldableExpressBlock(elseBranch);
+---
+> boolean thenBranchIsExpressionBlock = isExpressBlock(thenBranch);
+> boolean elseBranchIsExpressionBlock = isExpressBlock(elseBranch);
+325c325
+< private boolean isFoldableExpressBlock(Node n) {
+---
+> private boolean isExpressBlock(Node n) {
+328,341c328
+< Node maybeExpr = n.getFirstChild();
+< if (maybeExpr.getType() == Token.EXPR_RESULT) {
+< if (maybeExpr.getFirstChild().getType() == Token.CALL) {
+< Node calledFn = maybeExpr.getFirstChild().getFirstChild();
+< if (calledFn.getType() == Token.GETELEM) {
+< return false;
+< } else if (calledFn.getType() == Token.GETPROP &&
+< calledFn.getLastChild().getString().startsWith("on")) {
+< return false;
+< }
+< }
+< return true;
+< }
+< return false;
+---
+> return NodeUtil.isExpressionNode(n.getFirstChild());
+347c334
+< Preconditions.checkState(isFoldableExpressBlock(n));
+---
+> Preconditions.checkState(isExpressBlock(n));

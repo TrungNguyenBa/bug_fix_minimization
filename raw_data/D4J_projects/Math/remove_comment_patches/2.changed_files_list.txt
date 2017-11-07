@@ -1,0 +1,5 @@
+c0b655ace : MATH-1021 Reordering can prevent some overflow occurrences (fix suggested by Brian Bloniarz). Added unit test.
+:100644 100644 b26a13d34... 8969cd5a6... M	pom.xml
+:100644 100644 1bfbedb30... 20ab55107... M	src/changes/changes.xml
+:100644 100644 27691272f... 81e180cdc... M	src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
+:100644 100644 5598cd064... 0893c3557... M	src/test/java/org/apache/commons/math3/distribution/HypergeometricDistributionTest.java

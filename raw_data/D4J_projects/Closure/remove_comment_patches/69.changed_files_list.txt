@@ -1,0 +1,4 @@
+63df133d : Make sure that functions are called with a 'this' type. Fixes issue 440
+:100644 100644 74f1564c... 5edb4f05... M	src/com/google/javascript/jscomp/TypeCheck.java
+:100644 100644 45a58de3... d4a2b65a... M	test/com/google/javascript/jscomp/RemoveUnusedNamesTest.java
+:100644 100644 28277b9b... 71c85bc4... M	test/com/google/javascript/jscomp/TypeCheckTest.java

@@ -1,0 +1,3 @@
+113a08f5 : Fix an edge case in how Array.prototype.join is collapsed. Fixes issue 106.
+:100644 100644 f6d6a27f... 657ee0a5... M	src/com/google/javascript/jscomp/FoldConstants.java
+:100644 100644 c5544a6d... 6edfbb20... M	test/com/google/javascript/jscomp/FoldConstantsTest.java

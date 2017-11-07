@@ -1,0 +1,3 @@
+78b01c3a : Correct handling of conditional branches within expressions when doing dead assignment elminination. Fixes issue 384.
+:100644 100644 879056f7... aaab0d62... M	src/com/google/javascript/jscomp/DeadAssignmentsElimination.java
+:100644 100644 486fe5a7... b66a8237... M	test/com/google/javascript/jscomp/DeadAssignmentsEliminationTest.java

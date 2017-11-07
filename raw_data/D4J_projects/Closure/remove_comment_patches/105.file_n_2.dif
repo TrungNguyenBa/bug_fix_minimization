@@ -1,0 +1,22 @@
+1089c1089
+< StringBuilder sb = null;
+---
+> StringBuilder sb = new StringBuilder();
+1094,1096c1094
+< if (sb == null) {
+< sb = new StringBuilder();
+< } else {
+---
+> if (sb.length() > 0) {
+1101c1099
+< if (sb != null) {
+---
+> if (sb.length() > 0) {
+1104c1102
+< sb = null;
+---
+> sb = new StringBuilder();
+1111c1109
+< if (sb != null) {
+---
+> if (sb.length() > 0) {

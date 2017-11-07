@@ -1,0 +1,3 @@
+43c245f0 : fix a bug in open-source args parsing. Fixes issue 319.
+:100644 100644 7b3d77b4... 4c3b258e... M	src/com/google/javascript/jscomp/CommandLineRunner.java
+:100644 100644 b87fa236... cb43c720... M	test/com/google/javascript/jscomp/CommandLineRunnerTest.java

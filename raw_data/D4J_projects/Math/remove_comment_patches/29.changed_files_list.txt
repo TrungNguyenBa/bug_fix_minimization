@@ -1,0 +1,3 @@
+7bbddc220 : MATH-803:   - modified OpenMapRealVector.ebeMultiply() and ebeDivide() to handle special cases  0d * NaN, 0d * Infinity, 0d / 0d and 0d / NaN.   - added implementation of isNaN() and isInfinite() to SparseRealVectorTest.SparseRealVectorTestImpl in order to allow for testing of OpenMapRealVector.ebeMultiply() and ebeDivide() with mixed types.
+:100644 100644 2ca34470c... 294ac5726... M	src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java
+:100644 100644 d5e09f906... 3978fa552... M	src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java

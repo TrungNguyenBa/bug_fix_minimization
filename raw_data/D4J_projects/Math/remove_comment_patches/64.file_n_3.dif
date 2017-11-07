@@ -1,0 +1,46 @@
+60,61d59
+< double[] oldObj  = new double[rows];
+< double[] qtf     = new double[rows];
+70,72d67
+< for (int i=0;i<rows;i++) {
+< qtf[i]=residuals[i];
+< }
+77c72
+< qTy(qtf);
+---
+> qTy(residuals);
+104c99
+< sum += jacobian[i][pj] * qtf[i];
+---
+> sum += jacobian[i][pj] * residuals[i];
+111,112d105
+< updateResidualsAndCost();
+< current = new VectorialPointValuePair(point, objective);
+127,130c120
+< tmpVec    = objective;
+< objective = oldObj;
+< oldObj    = tmpVec;
+< determineLMParameter(qtf, delta, diag, work1, work2, work3);
+---
+> determineLMParameter(oldRes, delta, diag, work1, work2, work3);
+143a134
+> current = new VectorialPointValuePair(point, objective);
+187,192d177
+< current = new VectorialPointValuePair(point, objective);
+< if (checker != null) {
+< if (checker.converged(getIterations(), previous, current)) {
+< return current;
+< }
+< }
+202,204d186
+< tmpVec    = objective;
+< objective = oldObj;
+< oldObj    = tmpVec;
+206c188,192
+< if (checker==null) {
+---
+> if (checker != null) {
+> if (checker.converged(getIterations(), previous, current)) {
+> return current;
+> }
+> } else {

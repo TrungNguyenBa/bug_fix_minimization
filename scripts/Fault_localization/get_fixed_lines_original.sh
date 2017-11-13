@@ -21,7 +21,7 @@
 #
 die() {
     echo $1
-    exit 1
+    return
 }
 
 # Check command-line arguments

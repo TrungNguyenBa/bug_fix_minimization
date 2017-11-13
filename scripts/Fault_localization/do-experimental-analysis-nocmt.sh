@@ -1,15 +1,15 @@
 #!/bin/bash
 
-HERE=$(readlink --canonicalize "$(dirname "${BASH_SOURCE[0]}")")
+HERE=$(greadlink --canonicalize "$(dirname "${BASH_SOURCE[0]}")")
 PATH="$HERE:$PATH"
 
-if [ "$#" != 6 ]; then echo "usage: $0 PROJECT BUG COVERAGE_MATRIX STATEMENT_NAMES OUTCOME_MATRIX MUTANTS_LOG" >&2; exit 1; fi
+if [ "$#" != 6 ]; then echo "usage: $0 PROJECT BUG COVERAGE_MATRIX STATEMENT_NAMES OUTCOME_MATRIX MUTANTS_LOG" >&2; return; fi
 PROJECT=$1
 BUG=$2
-COVERAGE_MATRIX="$(readlink --canonicalize "$3")"; if [ ! -f "$COVERAGE_MATRIX" ]; then echo "given coverage matrix does not exist" >&2; exit 1; fi
-STATEMENT_NAMES="$(readlink --canonicalize "$4")"; if [ ! -f "$STATEMENT_NAMES" ]; then echo "given coverage matrix does not exist" >&2; exit 1; fi
-OUTCOME_MATRIX="$(readlink --canonicalize "$5")"; if [ ! -f "$OUTCOME_MATRIX" ]; then echo "given outcome matrix does not exist" >&2; exit 1; fi
-MUTANTS="$(readlink --canonicalize "$6")"; if [ ! -f "$MUTANTS" ]; then echo "given mutants.log does not exist" >&2; exit 1; fi
+COVERAGE_MATRIX="$(greadlink --canonicalize "$3")"; if [ ! -f "$COVERAGE_MATRIX" ]; then echo "given coverage matrix does not exist" >&2; return; fi
+STATEMENT_NAMES="$(greadlink --canonicalize "$4")"; if [ ! -f "$STATEMENT_NAMES" ]; then echo "given coverage matrix does not exist" >&2; return; fi
+OUTCOME_MATRIX="$(greadlink --canonicalize "$5")"; if [ ! -f "$OUTCOME_MATRIX" ]; then echo "given outcome matrix does not exist" >&2; return; fi
+MUTANTS="$(greadlink --canonicalize "$6")"; if [ ! -f "$MUTANTS" ]; then echo "given mutants.log does not exist" >&2; return; fi
 
 MUTANT_NAMES=$(pwd)/mutant-names.txt
 MUTANT_COVERAGES=$(pwd)/mutant-coverages.txt
@@ -36,7 +36,7 @@ crush-matrix \
   --element-type 'Statement' \
   --element-names "$STATEMENT_NAMES" \
   --total-defn "$BEST_SBFL_TOTAL_DEFN" \
-  --output "$SBFL_STMT_SUSPS_FILE" || exit 1
+  --output "$SBFL_STMT_SUSPS_FILE" || return
 
 ###############################################################
 ## Susps for best-by-mean-rank MBFL
@@ -45,21 +45,21 @@ crush-matrix \
 outcome-matrix-to-kill-matrix \
   --error-partition-scheme "$BEST_MBFL_KILL_DEFN" \
   --outcomes "$OUTCOME_MATRIX" --mutants "$MUTANTS" \
-  --output "$KILLS_FILE" || exit 1
+  --output "$KILLS_FILE" || return
 
 crush-matrix \
   --formula "$BEST_MBFL_FORMULA" --matrix "$KILLS_FILE" \
   --element-type 'Mutant' \
   --element-names "$MUTANT_NAMES" \
   --total-defn "$BEST_MBFL_TOTAL_DEFN" \
-  --output "$MUTANT_SUSPS_FILE" || exit 1
+  --output "$MUTANT_SUSPS_FILE" || return
 
 aggregate-mutant-susps-by-stmt \
   --accumulator "$BEST_MBFL_AGGREGATE_DEFN" --mutants "$MUTANTS" \
   --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
   --loaded-classes "$DEFECTS4J_HOME/framework/projects/$PROJECT/loaded_classes/$BUG.src" \
   --mutant-susps "$MUTANT_SUSPS_FILE" \
-  --output "$MBFL_STMT_SUSPS_FILE" || exit 1
+  --output "$MBFL_STMT_SUSPS_FILE" || return
 
 
 ###############################################################
@@ -70,7 +70,7 @@ mkdir -p mbfl-coverage-only; pushd mbfl-coverage-only >/dev/null
 
 outcome-matrix-to-coverage-matrix \
   --outcomes "$OUTCOME_MATRIX" --mutants "$MUTANTS" \
-  --output "$MUTANT_COVERAGES" || exit 1
+  --output "$MUTANT_COVERAGES" || return
 
 crush-matrix \
   --formula "$BEST_MBFL_FORMULA" --matrix "$KILLS_FILE" \
@@ -78,7 +78,7 @@ crush-matrix \
   --element-names "$MUTANT_NAMES" \
   --hybrid-scheme 'coverage-only' --hybrid-coverage-matrix "$MUTANT_COVERAGES" \
   --total-defn "$BEST_MBFL_TOTAL_DEFN" \
-  --output 'mutant-susps.csv' || exit 1
+  --output 'mutant-susps.csv' || return
 
 MRSBFL_STMT_SUSPS="$(pwd)/stmt-susps.csv"
 aggregate-mutant-susps-by-stmt \
@@ -86,7 +86,7 @@ aggregate-mutant-susps-by-stmt \
   --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
   --loaded-classes "$DEFECTS4J_HOME/framework/projects/$PROJECT/loaded_classes/$BUG.src" \
   --mutant-susps 'mutant-susps.csv' \
-  --output "$MRSBFL_STMT_SUSPS" || exit 1
+  --output "$MRSBFL_STMT_SUSPS" || return
 
 LINE_SUSPS="$(pwd)/line-susps.csv"
 stmt-susps-to-line-susps \
@@ -121,7 +121,7 @@ crush-matrix \
   --element-names "$MUTANT_NAMES" \
   --hybrid-scheme 'mirror' --hybrid-coverage-matrix "$MUTANT_COVERAGES" \
   --total-defn "$BEST_MBFL_TOTAL_DEFN" \
-  --output 'mutant-susps.csv' || exit 1
+  --output 'mutant-susps.csv' || return
 
 MCBFL_STMT_SUSPS="$(pwd)/stmt-susps.csv"
 aggregate-mutant-susps-by-stmt \
@@ -129,7 +129,7 @@ aggregate-mutant-susps-by-stmt \
   --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
   --loaded-classes "$DEFECTS4J_HOME/framework/projects/$PROJECT/loaded_classes/$BUG.src" \
   --mutant-susps 'mutant-susps.csv' \
-  --output "$MCBFL_STMT_SUSPS" || exit 1
+  --output "$MCBFL_STMT_SUSPS" || return
 
 LINE_SUSPS="$(pwd)/line-susps.csv"
 stmt-susps-to-line-susps \

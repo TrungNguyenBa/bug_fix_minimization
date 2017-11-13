@@ -64,7 +64,7 @@
 #
 die() {
     echo $1
-    exit 1
+    return
 }
 
 # Check command-line arguments
@@ -83,7 +83,7 @@ OUT_FILE="$OUT_DIR/$PID-$BID.buggy.lines"
 [ "$SLOC_HOME" != "" ] || die "SLOC_HOME is not set!"
 
 # Check if $BFM is set
-[ "$BFM" != ""] || die "BFM is not set!"
+[ "$BFM" != "" ] || die "BFM is not set!"
 
 # Put the defects4j command on the PATH
 PATH=$PATH:$D4J_HOME/framework/bin:$SLOC_HOME

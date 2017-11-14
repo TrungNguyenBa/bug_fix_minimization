@@ -1,7 +1,7 @@
 #! /bin/bash
 die() {
     echo $1
-    return
+    exit 1
 }
 current=$(pwd)
 if  ! (ls $FL_HOME  > /dev/null ) ; then 

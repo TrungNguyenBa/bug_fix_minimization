@@ -6,7 +6,7 @@ PATH="$HERE:$PATH"
 USAGE="$0 [--restrictions-file FILE] PROJECT BUG OUTCOME_MATRIX MUTANTS_LOG"
 die() {
   echo "$@" >&2
-  return
+  exit 1
 }
 
 RESTRICTIONS_FILE=''
@@ -20,11 +20,11 @@ while [[ "$1" = --* ]]; do
   esac
 done
 
-if [ "$#" != 4 ]; then echo "usage: $0 PROJECT BUG OUTCOME_MATRIX MUTANTS_LOG" >&2; return; fi
+if [ "$#" != 4 ]; then echo "usage: $0 PROJECT BUG OUTCOME_MATRIX MUTANTS_LOG" >&2; exit 1; fi
 PROJECT=$1
 BUG=$2
-OUTCOME_MATRIX="$(greadlink --canonicalize "$3")"; if [ ! -f "$OUTCOME_MATRIX" ]; then echo "given outcome matrix does not exist" >&2; return; fi
-MUTANTS="$(greadlink --canonicalize "$4")"; if [ ! -f "$MUTANTS" ]; then echo "given mutants.log does not exist" >&2; return; fi
+OUTCOME_MATRIX="$(greadlink --canonicalize "$3")"; if [ ! -f "$OUTCOME_MATRIX" ]; then echo "given outcome matrix does not exist" >&2; exit 1; fi
+MUTANTS="$(greadlink --canonicalize "$4")"; if [ ! -f "$MUTANTS" ]; then echo "given mutants.log does not exist" >&2; exit 1; fi
 
 MUTANT_NAMES=$(pwd)/mutant-names.txt
 MUTANT_COVERAGES=$(pwd)/mutant-coverages.txt
@@ -33,7 +33,7 @@ cut -f 1 -d ':' <"$MUTANTS" >"$MUTANT_NAMES"
 
 outcome-matrix-to-coverage-matrix \
   --outcomes "$OUTCOME_MATRIX" --mutants "$MUTANTS" \
-  --output "$MUTANT_COVERAGES" || return
+  --output "$MUTANT_COVERAGES" || exit 1
 
 for PARTITIONER in passfail all type type+message type+message+location exact; do
   if [ "$RESTRICTIONS_FILE" ]; then check-restrictions "$RESTRICTIONS_FILE" --kill-defn "$PARTITIONER" || continue; fi
@@ -42,7 +42,7 @@ for PARTITIONER in passfail all type type+message type+message+location exact; d
   outcome-matrix-to-kill-matrix \
     --error-partition-scheme "$PARTITIONER" \
     --outcomes "$OUTCOME_MATRIX" --mutants "$MUTANTS" \
-    --output "$KILLS_FILE" || return
+    --output "$KILLS_FILE" || exit 1
   echo "created kill-matrix for killdefn-$PARTITIONER in $KILLS_FILE"
 
   for FORMULA in tarantula ochiai opt2 barinel dstar2 muse jaccard; do
@@ -69,7 +69,7 @@ for PARTITIONER in passfail all type type+message type+message+location exact; d
                      --element-names "$MUTANT_NAMES" \
                      ${HYBRID_ARGS[*]} \
                      --total-defn "$TOTAL_DEFN" \
-                     --output "$MUTANT_SUSPS_FILE" || return
+                     --output "$MUTANT_SUSPS_FILE" || exit 1
 
         echo "calculated $MUTANT_SUSPS_FILE"
 
@@ -82,7 +82,7 @@ for PARTITIONER in passfail all type type+message type+message+location exact; d
                     --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
                     --loaded-classes "$DEFECTS4J_HOME/framework/projects/$PROJECT/loaded_classes/$BUG.src" \
                     --mutant-susps "$MUTANT_SUSPS_FILE" \
-                    --output "$STMT_SUSPS_FILE" || return
+                    --output "$STMT_SUSPS_FILE" || exit 1
 
           LINE_SUSPS_FILE=$(pwd)/line-susps.txt
           stmt-susps-to-line-susps --stmt-susps "$STMT_SUSPS_FILE" \

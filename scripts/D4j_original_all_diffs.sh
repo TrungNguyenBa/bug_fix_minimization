@@ -42,19 +42,21 @@ for pid in Closure Lang Math Time; do
     		IFS=$' |\t|\\' read -r -a chunks <<< "$file_line"
     		echo file_line is $file_line
             file_name=${chunks[${#chunks[@]}-1]}
-            IFS=$'/' read -r -a fchunks <<< "$file_name"
-            #check if the file is from test folder
-            istest0=${fchunks[0]}
-            istest1=${fchunks[1]}
-            istest2=${fchunks[2]}
-            echo $istest0 $istest1 $istest2
-            if [ $istest0 != "test" ] && [ $istest1 != "test" ] && [ $istest2 != "test" ]; then
-        		echo file_name is $file_name
-                #get the diff between versions for this file
-        		git -C /tmp/${pid}_${bid}_buggy diff --ignore-blank-lines -b $fixed $faulted  -- "${file_name}" > $dir_original/${bid}.file_n_${fid}.dif
-        		#get the stat of the diff
-        		diffstat -m -t -R $dir_original/${bid}.file_n_${fid}.dif > $dir_original/${bid}.file_n_${fid}.dif.stat
-	        fi
+            #if [[ file_name == "*.java" ]] ; then
+                IFS=$'/' read -r -a fchunks <<< "$file_name"
+                #check if the file is from test folder
+                istest0=${fchunks[0]}
+                istest1=${fchunks[1]}
+                istest2=${fchunks[2]}
+                echo $istest0 $istest1 $istest2
+                if [ $istest0 != "test" ] && [ $istest1 != "test" ] && [ $istest2 != "test" ]; then
+            		echo file_name is $file_name
+                    #get the diff between versions for this file
+            		git -C /tmp/${pid}_${bid}_buggy diff --ignore-blank-lines -b $fixed $faulted  -- "${file_name}" > $dir_original/${bid}.file_n_${fid}.dif
+            		#get the stat of the diff
+            		diffstat -m -t -R $dir_original/${bid}.file_n_${fid}.dif > $dir_original/${bid}.file_n_${fid}.dif.stat
+    	        fi
+            #fi
         done
     	rm -rf /tmp/${pid}_${bid}_buggy
     done

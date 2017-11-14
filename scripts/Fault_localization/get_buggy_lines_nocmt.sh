@@ -64,7 +64,7 @@
 #
 die() {
     echo $1
-    return
+    exit 1
 }
 
 # Check command-line arguments
@@ -99,21 +99,21 @@ TMP_LINES="$TMP/all_buggy_lines"
 # Determine all buggy lines, using the diff between the buggy and fixed version
 #
 # Checkout the fixed project version
-work_dir="$BFM/raw_data/D4J_projects/$PID/remove_comment_patches"
+work_dir="$BFM/raw_data/D4J_projects/$PID/raw_modified_files"
 
 # Determine and iterate over all modified classes (i.e., patched files)
 
 mod_classes=$(ls -1 $work_dir/${BID}_*_faulted_nospcm_)
 for class in $mod_classes; do
 
-    file_name=(echo $class | cut -d '_' -f 2)
-    echo "project: ${PID} bug : $BID file_name is $file_name"
+    file_name=$(basename $class | cut -d '_' -f 2)
+    echo "project: $PID bug : $BID file_name is $file_name"
     # Diff between buggy and fixed -- only show line numbers for removed and
     # added lines in the buggy version
-    diff \
+    diff -w -B -b \
         --unchanged-line-format='' \
-        --old-line-format="$file#%dn#%l%c'\12'" \
-        --new-group-format="$file#%df#FAULT_OF_OMISSION%c'\12'" \
+        --old-line-format="$file_name#%dn#%l%c'\12'" \
+        --new-group-format="$file_name#%df#FAULT_OF_OMISSION%c'\12'" \
         "$work_dir/${BID}_${file_name}_faulted_nospcm_" "$work_dir/${BID}_${file_name}_fixed_nospcm_" >> "$TMP_LINES"
 done
 # Print all removed lines to output file
@@ -132,8 +132,23 @@ done
 #
 temp_dir="/tmp/$PID-$BID"
 defects4j checkout -p$PID -v${BID}b -w$temp_dir
+#get the fautled version hash
+line=$(head -${BID} $D4J_HOME/framework/projects/$PID/commit-db | tail -1 )
+faulted_hash=$(echo $line | cut -f2 -d",")
+echo faulted_hash is $faulted_hash
+src_dir=$(grep "d4j.dir.src.classes=" $temp_dir/defects4j.build.properties | cut -f2 -d'=')
+
+
+git -C $temp_dir checkout $faulted_hash -- $src_dir
 # Set of all bug-related classes
 rel_classes=$(cat $D4J_HOME/framework/projects/$PID/loaded_classes/$BID.src)
+
+#removing comments from files
+files=$(find $temp_dir/$src_dir -type f -name "*.java")
+for f in $files; do
+    python $BFM/scripts/remove_comment.py $f
+    mv ${f}_nospcm_ $f
+done
 # Temporary directory that holds all bug-related classes -- used to compute the
 # overall number of lines of code
 DIR_SRC="$TMP/loc"

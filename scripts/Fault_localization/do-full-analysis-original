@@ -12,7 +12,7 @@ ensure-file-exists() {
 USAGE="$0 [--restrictions-file FILE] PROJECT BUG TEST_SUITE COVERAGE_MATRIX STATEMENT_NAMES OUTCOME_MATRIX MUTANTS_LOG WORKING_DIR OUTPUT"
 die() {
   echo "$@" >&2
-  return
+  exit 1
 }
 
 RESTRICTIONS_FILE=''
@@ -63,7 +63,7 @@ popd >/dev/null
 mkdir -p mbfl
 pushd mbfl >/dev/null
 if [ ! "$RESTRICTIONS_FILE" ] || python "$HERE/check-restrictions" "$RESTRICTIONS_FILE" --family mbfl; then
-  do-mbfl-analysis-original "${RESTRICTIONS_FILE_SUBARGS[@]}" "$PROJECT" "$BUG" "$OUTCOME_MATRIX" "$MUTANTS_LOG"
+  do-mbfl-analysis-original.sh "${RESTRICTIONS_FILE_SUBARGS[@]}" "$PROJECT" "$BUG" "$OUTCOME_MATRIX" "$MUTANTS_LOG"
 fi
 popd >/dev/null
 
@@ -79,7 +79,7 @@ popd >/dev/null
 find "$WORKING_DIR"/{mbfl,sbfl,experimental} -name score.txt | \
   python3 "$HERE/gather-scores-into-master-scoring-file.py" \
     --project "$PROJECT" --bug "$BUG" --test-suite "$TEST_SUITE" \
-  > "$OUTPUT" || return
+  > "$OUTPUT" || exit 1
 
 echo "DONE!"
 exit 0

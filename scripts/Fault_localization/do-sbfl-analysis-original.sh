@@ -6,7 +6,7 @@ PATH="$HERE:$PATH"
 USAGE="$0 [--restrictions-file FILE] PROJECT BUG COVERAGE_MATRIX STATEMENT_NAMES"
 die() {
   echo "$@" >&2
-  return
+  exit 1
 }
 
 RESTRICTIONS_FILE=''
@@ -20,11 +20,11 @@ while [[ "$1" = --* ]]; do
   esac
 done
 
-if [ "$#" != 4 ]; then echo "usage: $USAGE" >&2; return; fi
+if [ "$#" != 4 ]; then echo "usage: $USAGE" >&2; exit 1; fi
 PROJECT=$1
 BUG=$2
-COVERAGE_MATRIX="$(greadlink --canonicalize "$3")"; if [ ! -f "$COVERAGE_MATRIX" ]; then echo "given coverage matrix does not exist" >&2; return; fi
-STATEMENT_NAMES="$(greadlink --canonicalize "$4")"; if [ ! -f "$STATEMENT_NAMES" ]; then echo "given statement-names file does not exist" >&2; return; fi
+COVERAGE_MATRIX="$(greadlink --canonicalize "$3")"; if [ ! -f "$COVERAGE_MATRIX" ]; then echo "given coverage matrix does not exist" >&2; exit 1; fi
+STATEMENT_NAMES="$(greadlink --canonicalize "$4")"; if [ ! -f "$STATEMENT_NAMES" ]; then echo "given statement-names file does not exist" >&2; exit 1; fi
 
 for FORMULA in tarantula ochiai opt2 barinel dstar2 muse jaccard; do
   if [ "$RESTRICTIONS_FILE" ]; then check-restrictions "$RESTRICTIONS_FILE" --formula "$FORMULA" || continue; fi
@@ -39,7 +39,7 @@ for FORMULA in tarantula ochiai opt2 barinel dstar2 muse jaccard; do
                  --element-type 'Statement' \
                  --element-names "$STATEMENT_NAMES" \
                  --total-defn "$TOTAL_DEFN" \
-                 --output "$STMT_SUSPS_FILE" || return
+                 --output "$STMT_SUSPS_FILE" || exit 1
 
     LINE_SUSPS_FILE=$(pwd)/line-susps.txt
     stmt-susps-to-line-susps --stmt-susps "$STMT_SUSPS_FILE" \

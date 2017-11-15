@@ -1,7 +1,0 @@
-43,48d42
-< <action dev="tn" type="fix" issue="MATH-776" due-to="Reid Hochstedler">
-< Use same range check in constructor for ElitisticListPopulation as in corresponding setter.
-< </action>
-< <action dev="tn" type="fix" issue="MATH-767" due-to="Dennis Hendriks">
-< Fixed unbalanced use of code tags in javadoc of several classes.
-< </action>

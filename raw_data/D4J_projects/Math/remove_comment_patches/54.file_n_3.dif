@@ -1,4 +1,0 @@
-45,47d44
-< <action dev="luc" type="add" issue="MATH-567" due-to="Michel">
-< Fixed conversion problems to/from 0 in Decimal Floating Point (Dfp) class.
-< </action>

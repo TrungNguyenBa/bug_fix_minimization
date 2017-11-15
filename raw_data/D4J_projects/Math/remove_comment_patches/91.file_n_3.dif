@@ -1,5 +1,0 @@
-33,36d32
-< <action dev="luc" type="fix" issue="MATH-252">
-< Fixed a comparison error when two different fractions evaluate to the
-< same double due to limited precision.
-< </action>

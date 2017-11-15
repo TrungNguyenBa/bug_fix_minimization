@@ -1,4 +1,0 @@
-45,47d44
-< <action dev="erans" type="fix" issue="MATH-728" due-to="Bruce A. Johnson">
-< Fixed "offset by one" bug in "BOBYQAOptimizer".
-< </action>

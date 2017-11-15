@@ -1,4 +1,0 @@
-43,45d42
-< <action dev="tn" type="fix" issue="MATH-778" due-to="Sébastien Brisard">
-< Allow unlimited input values for "Dfp#multiply(int)".
-< </action>

@@ -1,5 +1,0 @@
-45,48d44
-< <action dev="luc" type="fix" issue="MATH-713" due-to="Thomas Neidhart">
-< Fixed case of unconstrained variables that still occur in the objective function
-< in simplex solver.
-< </action>

@@ -116,6 +116,8 @@ for class in $mod_classes; do
         --new-group-format="$file_name#%df#FAULT_OF_OMISSION%c'\12'" \
         "$work_dir/${BID}_${file_name}_faulted_nospcm_" "$work_dir/${BID}_${file_name}_fixed_nospcm_" >> "$TMP_LINES"
 done
+
+
 # Print all removed lines to output file
 grep --text -v "FAULT_OF_OMISSION" "$TMP_LINES" > "$OUT_FILE"
 
@@ -138,6 +140,11 @@ faulted_hash=$(echo $line | cut -f2 -d",")
 echo faulted_hash is $faulted_hash
 src_dir=$(grep "d4j.dir.src.classes=" $temp_dir/defects4j.build.properties | cut -f2 -d'=')
 
+if [[ $PID == "Time" ]]; then
+    if [ $BID == "22" ] || [ $BID == "23" ] || [ $BID == "24" ] || [ $BID == "25" ] || [ $BID == "26" ] || [ $BID == "27" ]; then
+        src_dir="JodaTime/"$src_dir
+    fi
+fi
 
 git -C $temp_dir checkout $faulted_hash -- $src_dir
 # Set of all bug-related classes

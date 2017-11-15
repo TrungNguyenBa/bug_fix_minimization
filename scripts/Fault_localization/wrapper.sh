@@ -6,6 +6,7 @@ die() {
     exit 1 
 }
 startover=0
+
 if [[ $# -gt 1 ]]; then die "Usage: $0 (--startover) "; fi
 if [[ $1 == "--nostartover" ]]; then startover=1; fi
 
@@ -97,7 +98,7 @@ for p in $projects; do
 		#perform analysis for original version
 		echo
 		echo "original version"
-		if ! (./do-full-analysis-orignial $p $i developer \
+		if ! (./do-full-analysis-original $p $i developer \
 									      $cov_dir/matrix $cov_dir/spectra \
 						      			  $km_dir/killmap.csv $km_dir/mutants.log \
 									      /tmp/scoring/$p/$i/developer \

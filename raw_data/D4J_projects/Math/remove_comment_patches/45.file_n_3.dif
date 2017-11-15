@@ -1,4 +1,0 @@
-45,47d44
-< <action dev="luc" type="fix" issue="MATH-679" due-to="Christopher Berner">
-< Fixed an integer overflow in OpenMapRealMatrix.
-< </action>

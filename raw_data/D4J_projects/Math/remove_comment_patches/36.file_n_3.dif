@@ -1,6 +1,0 @@
-45,49d44
-< <action dev="erans" type="fix" issue="MATH-744" due-to="Thundre">
-< Fixed "doubleValue" and "floatValue" method in "BigFraction" when
-< numerator and denominator are larger than the range of the
-< corresponding primitive type.
-< </action>

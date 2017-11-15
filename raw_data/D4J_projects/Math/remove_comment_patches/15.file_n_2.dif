@@ -1,4 +1,0 @@
-43,45d42
-< <action dev="erans" type="fix" issue="MATH-904" due-to="Jeff Hain">
-< Fixed "pow" method in class "FastMath".
-< </action>

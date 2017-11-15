@@ -1,6 +1,0 @@
-84,88d83
-< <action dev="luc" type="fix" issue="MATH-358" >
-< Fixed an error in events handling in ODE solvers. In some rare cases, events
-< occurring close to a step start were handled without truncating the step, making
-< them appear as is they occurred close to the step end
-< </action>

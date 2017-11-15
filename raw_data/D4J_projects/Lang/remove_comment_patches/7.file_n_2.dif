@@ -1,2 +1,0 @@
-35d34
-< <action issue="LANG-822" type="fix">NumberUtils#createNumber - bad behaviour for leading "--"</action>

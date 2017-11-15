@@ -1,5 +1,0 @@
-33,36d32
-< <action dev="luc" type="fix" issue="MATH-318" due-to="Dimitri Pourbaix">
-< Fixed an index computation error in eigen decomposition. Once again, kudos to Dimitri
-< for debugging this.
-< </action>

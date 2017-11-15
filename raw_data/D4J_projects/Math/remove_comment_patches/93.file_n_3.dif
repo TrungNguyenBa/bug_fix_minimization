@@ -1,8 +1,0 @@
-33,35d32
-< <action dev="psteitz" type="fix" issue="MATH-240" due-to="Christian Semrau">
-< Fixed error in factorial computation for 17 <= n <= 20.
-< </action>
-46c43
-< <action dev="luc" type="fix" issue="MATH-238" due-to="Christian Semrau">
----
-> <action dev="luc" type="fix" issue="MATH-238" due-to="Chritian Semrau">

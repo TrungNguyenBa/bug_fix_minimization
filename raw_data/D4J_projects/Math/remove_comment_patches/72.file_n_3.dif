@@ -1,5 +1,0 @@
-33,36d32
-< <action dev="luc" type="fix" issue="MATH-344" >
-< Fixed wrong return values when enpoints are roots in Brent solver with
-< a user provided initial guess
-< </action>

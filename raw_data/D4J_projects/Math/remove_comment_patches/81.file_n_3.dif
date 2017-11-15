@@ -1,5 +1,0 @@
-33,36d32
-< <action dev="luc" type="fix" issue="MATH-308" due-to="Dimitri Pourbaix">
-< Fixed an ArrayIndexOutOfBoundsException in eigen decomposition. Kudos to Dimitri
-< for debugging this, it was really difficult.
-< </action>

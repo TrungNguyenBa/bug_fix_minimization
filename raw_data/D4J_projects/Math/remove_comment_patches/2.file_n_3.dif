@@ -1,4 +1,0 @@
-42,44d41
-< <action dev="erans" type="fix" issue="MATH-1021" due-to="Brian Bloniarz">
-< Fixed overflow in "HypergeometricDistribution".
-< </action>

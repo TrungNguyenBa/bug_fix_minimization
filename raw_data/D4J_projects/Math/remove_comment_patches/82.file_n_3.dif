@@ -1,4 +1,0 @@
-33,35d32
-< <action dev="luc" type="fix" issue="MATH-288" due-to="Benjamin McCann">
-< Fixed an error induced by entries set to 0
-< </action>

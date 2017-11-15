@@ -1,5 +1,0 @@
-45,48d44
-< <action dev="luc" type="fix" issue="MATH-639" >
-< Fixed a wrong detection of rotation axis versus vectors plane in Rotation constructor
-< using two vectors pairs.
-< </action>

@@ -1,6 +1,0 @@
-33,37d32
-< <action dev="luc" type="fix" issue="MATH-338" due-to="Vincent Morand">
-< Fixed automatic step initialization in embedded Runge-Kutta integrators.
-< The relative tolerance setting was never used, only the absolute tolerance
-< was used.
-< </action>

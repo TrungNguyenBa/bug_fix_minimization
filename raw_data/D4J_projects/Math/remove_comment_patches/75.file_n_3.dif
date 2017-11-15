@@ -1,5 +1,0 @@
-33,36d32
-< <action dev="psteitz" type="fix" issue="MATH-329">
-< Fixed regression in Frequency.getPct(Object) introduced in 2.0. Cumulative
-< percent was being returned for Object arguments in place of percent.
-< </action>

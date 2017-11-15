@@ -1,4 +1,0 @@
-45,47d44
-< <action dev="dimpbx" type="fix" issue="MATH-377">
-< Fixed bug in chi-square computation in AbstractLeastSquaresOptimizer.
-< </action>

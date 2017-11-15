@@ -1,4 +1,0 @@
-45,47d44
-< <action dev="luc" type="fix" issue="MATH-369" due-to="Sasun Pundev">
-< Fix NullPointerException in BisectionSolver.solve(f, min, max, initial)
-< </action>

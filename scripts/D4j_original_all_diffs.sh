@@ -5,9 +5,10 @@ die() {
 }
 [ "$D4J_HOME" != "" ] || die "D4J_HOME is not set!"
 [ "$BFM" != "" ] || die "BFM is not set!"
+current=$(pwd)
 echo "living $current"
 echo "moving to $BFM"
-current=$(pwd)
+
 cd $BFM
 for pid in Closure Lang Math Time; do
     dir_project="$D4J_HOME/framework/projects/$pid"
@@ -42,7 +43,7 @@ for pid in Closure Lang Math Time; do
     		IFS=$' |\t|\\' read -r -a chunks <<< "$file_line"
     		echo file_line is $file_line
             file_name=${chunks[${#chunks[@]}-1]}
-            #if [[ file_name == "*.java" ]] ; then
+            if [[ $file_name == *".java" ]] ; then
                 IFS=$'/' read -r -a fchunks <<< "$file_name"
                 #check if the file is from test folder
                 istest0=${fchunks[0]}
@@ -56,7 +57,7 @@ for pid in Closure Lang Math Time; do
             		#get the stat of the diff
             		diffstat -m -t -R $dir_original/${bid}.file_n_${fid}.dif > $dir_original/${bid}.file_n_${fid}.dif.stat
     	        fi
-            #fi
+            fi
         done
     	rm -rf /tmp/${pid}_${bid}_buggy
     done

@@ -1,4 +1,0 @@
-33,35d32
-< <action dev="luc" type="fix" issue="MATH-326" due-to="Jake Mannix">
-< Fixed a wrong implementation of the Linf norm in vectors.
-< </action>

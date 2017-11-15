@@ -1,5 +1,0 @@
-43,46d42
-< <action dev="erans" type="fix" issue="MATH-864" due-to="Frank Hess">
-< "CMAESOptimizer": Solution was not constrained to lie within the
-< provided boundaries.
-< </action>

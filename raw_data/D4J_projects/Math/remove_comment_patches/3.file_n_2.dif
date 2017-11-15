@@ -1,4 +1,0 @@
-42,44d41
-< <action dev="erans" type="fix" issue="MATH-1005" due-to="Roman Werpachowski">
-< Fixed "MathArrays.linearCombination" when array length is 1.
-< </action>

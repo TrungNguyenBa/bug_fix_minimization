@@ -5,15 +5,23 @@ die() {
 }
 [ "$D4J_HOME" != "" ] || die "D4J_HOME is not set!"
 [ "$BFM" != "" ] || die "BFM is not set!"
+clean=$1
+projects=$2
+if [ projects == "" ] || [ projects == "ALL" ]; then
+    projects=(Closure Lang Math Time)
+fi
+
+current=$(pwd)
 echo "living $current"
 echo "moving to $BFM"
-current=$(pwd)
+
 cd $BFM
-for pid in Closure Lang Math Time; do
+for pid in $projects; do
     dir_project="$D4J_HOME/framework/projects/$pid"
     dir_patches="$dir_project/patches"
     dir_original="raw_data/D4J_projects/$pid/remove_comment_patches"
     dir_modified="raw_data/D4J_projects/$pid/raw_modified_files"
+    if [[ $clean == "--clean" ]]; then rm -rf $dir_original $dir_modified > /dev/null 2> /dev/null; fi
     cmake -E make_directory $dir_original
     cmake -E make_directory $dir_modified
     echo directory is $dir_original
@@ -27,6 +35,12 @@ for pid in Closure Lang Math Time; do
     	defects4j checkout -p ${pid} -v ${bid}b -w /tmp/${pid}_${bid}_buggy
         src_dir=$(grep "d4j.dir.src.classes=" /tmp/${pid}_${bid}_buggy/defects4j.build.properties | cut -f2 -d'=')
         src_dir=$src_dir/
+        #specific src_dir for bug 22-27 of Time
+        if [[ $pid == "Time" ]]; then
+            if [ $bid == "22" ] || [ $bid == "23" ] || [ $bid == "24" ] || [ $bid == "25" ] || [ $bid == "26" ] || [ $bid == "27" ]; then
+                src_dir="JodaTime/"$src_dir
+            fi
+        fi
     	line=$(head -${bid} $dir_project/commit-db | tail -1 )
     	#splitting the line into string array
     	IFS=$',' read -r -a array <<< "$line"
@@ -45,7 +59,7 @@ for pid in Closure Lang Math Time; do
     		IFS=$' |\t|\\' read -r -a chunks <<< "$file_line"
     		echo file_line is $file_line
             file_name=${chunks[${#chunks[@]}-1]}
-            #if [[ file_name == "*.java" ]]; then
+            if [[ $file_name == *".java" ]]; then
                 IFS=$'/' read -r -a fchunks <<< "$file_name"
                 #check if the file is from test folder
                 istest0=${fchunks[0]}
@@ -70,7 +84,7 @@ for pid in Closure Lang Math Time; do
             		#get the stat of the diff
             		diffstat -m -t -R $dir_original/${bid}.file_n_${fid}.dif > $dir_original/${bid}.file_n_${fid}.dif.stat
     	        fi
-            #fi
+            fi
         done
     	rm -rf /tmp/${pid}_${bid}_buggy
     done

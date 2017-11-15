@@ -1,2 +1,0 @@
-22d21
-< <action type="fix" issue="LANG-746">NumberUtils does not handle upper-case hex: 0X and -0X</action>

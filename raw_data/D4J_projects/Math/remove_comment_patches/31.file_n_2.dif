@@ -1,5 +1,0 @@
-43,46d42
-< <action dev="tn" type="fix" issue="MATH-718" >
-< Use modified Lentz-Thompson algorithm for continued fraction evaluation to avoid
-< underflows.
-< </action>

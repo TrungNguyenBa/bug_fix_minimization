@@ -1,7 +1,0 @@
-43,48d42
-< <action dev="tn" type="fix" issue="MATH-779" due-to="Reid Hochstedler">
-< Fixed ListPopulation#iterator to return an unmodifiable iterator.
-< </action>
-< <action dev="tn" type="fix" issue="MATH-775" due-to="Reid Hochstedler">
-< Cleanup of ListPopulation to consistently enforce the population limit.
-< </action>

@@ -1,8 +1,0 @@
-43,45d42
-< <action dev="tn" type="fix" issue="MATH-781" due-to="Scheiber Ernő">
-< Use epsilon instead of ulp in floating-point comparison when dropping columns after phase 1 in SimplexSolver.
-< </action>
-169c166
-< <action dev="psteitz" type="fix" issue="MATH-704" due-to="Thomas Neidhart">
----
-> <action dev="psteitz" type="fix" issue="MATH-704" due-to="Thomas Niedhart">

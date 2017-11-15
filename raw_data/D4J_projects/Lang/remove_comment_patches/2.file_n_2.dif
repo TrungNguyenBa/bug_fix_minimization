@@ -1,2 +1,0 @@
-22d21
-< <action issue="LANG-879" type="fix">LocaleUtils test fails with new Locale "ja_JP_JP_#u-ca-japanese" of JDK7</action>

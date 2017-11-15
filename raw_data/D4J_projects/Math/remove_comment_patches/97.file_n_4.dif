@@ -1,8 +1,0 @@
-99,101d98
-< <action dev="luc" type="fix" issue="MATH-205" due-to="Roman Werpachowski">
-< Fixed formula in fast cosine transformer javadoc comments.
-< </action>
-120,122d116
-< <action dev="brentworden" type="fix" issue="MATH-204" due-to="Mick">
-< Added root checks for the endpoints.
-< </action>

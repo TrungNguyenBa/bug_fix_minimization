@@ -1,6 +1,0 @@
-45,49d44
-< <action dev="luc" type="fix" issue="MATH-200" due-to="Plamen Petrov">
-< fixed several crashes in getCovariances() and guessParametersErrors() in
-< AbstractEstimator when some parameters are bound. The methods now explicitly
-< give result only about unbound parameters.
-< </action>

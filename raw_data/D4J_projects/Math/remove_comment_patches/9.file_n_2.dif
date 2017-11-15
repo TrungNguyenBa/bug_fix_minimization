@@ -1,4 +1,0 @@
-46,48d45
-< <action dev="luc" type="fix" issue="MATH-938" >
-< Fixed accuracy of 3D Line.revert().
-< </action>

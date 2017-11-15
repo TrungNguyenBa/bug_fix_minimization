@@ -1,4 +1,0 @@
-226c226
-< converted to types in <A HREF="../../../../../com/google/javascript/rhino/jstype/JSTypeRegistry.html#createFromTypeNodes(com.google.javascript.rhino.Node, java.lang.String, com.google.javascript.rhino.jstype.StaticScope)"><CODE>JSTypeRegistry.createFromTypeNodes(com.google.javascript.rhino.Node, java.lang.String, com.google.javascript.rhino.jstype.StaticScope<com.google.javascript.rhino.jstype.JSType>)</CODE></A>.</TD>
----
-> converted to types in <CODE>@createFromTypeNodes</CODE>.</TD>

@@ -1,5 +1,0 @@
-45,48d44
-< <action dev="psteitz" type="fix" issue="MATH-371" due-to="Kevin Childs">
-< Fixed loss of significance error in PersonsCorrelation p-value computation causing p-values
-< smaller than the machine epsilon (~1E-16) to be reported as 0.
-< </action>

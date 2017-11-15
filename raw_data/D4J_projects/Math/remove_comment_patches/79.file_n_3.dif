@@ -1,6 +1,0 @@
-33,37d32
-< <action dev="psteitz" type="fix" issue="MATH-305" due-to="Erik van Ingen">
-< Fixed an overflow error in MathUtils.distance that was causing KMeansPlusPlusClusterer
-< to fail with a NullPointerException when component distances between points
-< exceeded Integer.MAXVALUE.
-< </action>

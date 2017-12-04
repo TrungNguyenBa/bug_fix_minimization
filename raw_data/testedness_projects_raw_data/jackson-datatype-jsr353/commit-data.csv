@@ -1,5 +1,9 @@
-"","project","hash","label"
-"1298","jackson-datatype-jsr353","6b75ae8a792fb466d94ffc6d20ef65a507ff18f1","Bug-fix"
-"1322","jackson-datatype-jsr353","76d69c987d9474e04f4dc67d568f2984e274dd88","Bug-fix"
-"1328","jackson-datatype-jsr353","c917fe3d9c5c063cdffbadb72f1fd6d231418e88","Bug-fix"
-"1344","jackson-datatype-jsr353","6e1456d6a9938c7475974db418a4eba134b09388","Bug-fix"
+"","project","hash","content","label"
+"1","jackson-datatype-jsr353","6b75ae8a792fb466d94ffc6d20ef65a507ff18f1","Fix #5
+","Bug-fix"
+"2","jackson-datatype-jsr353","76d69c987d9474e04f4dc67d568f2984e274dd88","fix idea gitignore for `.idea` folder
+","Bug-fix"
+"3","jackson-datatype-jsr353","c917fe3d9c5c063cdffbadb72f1fd6d231418e88","Use syntax highlighting in the readme file.
+","Bug-fix"
+"4","jackson-datatype-jsr353","6e1456d6a9938c7475974db418a4eba134b09388","Improvements in OSGi manifest generation. Fixes #1.
+","Bug-fix"

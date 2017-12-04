@@ -60,19 +60,19 @@ if [ ! "$RESTRICTIONS_FILE" ] || python "$HERE/check-restrictions" "$RESTRICTION
 fi
 popd >/dev/null
 
-mkdir -p mbfl
-pushd mbfl >/dev/null
-if [ ! "$RESTRICTIONS_FILE" ] || python "$HERE/check-restrictions" "$RESTRICTIONS_FILE" --family mbfl; then
-  do-mbfl-analysis-original.sh "${RESTRICTIONS_FILE_SUBARGS[@]}" "$PROJECT" "$BUG" "$OUTCOME_MATRIX" "$MUTANTS_LOG"
-fi
-popd >/dev/null
+# mkdir -p mbfl
+# pushd mbfl >/dev/null
+# if [ ! "$RESTRICTIONS_FILE" ] || python "$HERE/check-restrictions" "$RESTRICTIONS_FILE" --family mbfl; then
+#   do-mbfl-analysis-original.sh "${RESTRICTIONS_FILE_SUBARGS[@]}" "$PROJECT" "$BUG" "$OUTCOME_MATRIX" "$MUTANTS_LOG"
+# fi
+# popd >/dev/null
 
-mkdir -p experimental
-pushd experimental >/dev/null
-if [ ! "$RESTRICTIONS_FILE" ] || python "$HERE/check-restrictions" "$RESTRICTIONS_FILE" --family experimental; then
-  do-experimental-analysis-original.sh "$PROJECT" "$BUG" "$COVERAGE_MATRIX" "$STATEMENT_NAMES" "$OUTCOME_MATRIX" "$MUTANTS_LOG"
-fi
-popd >/dev/null
+# mkdir -p experimental
+# pushd experimental >/dev/null
+# if [ ! "$RESTRICTIONS_FILE" ] || python "$HERE/check-restrictions" "$RESTRICTIONS_FILE" --family experimental; then
+#   do-experimental-analysis-original.sh "$PROJECT" "$BUG" "$COVERAGE_MATRIX" "$STATEMENT_NAMES" "$OUTCOME_MATRIX" "$MUTANTS_LOG"
+# fi
+# popd >/dev/null
 
 popd >/dev/null
 

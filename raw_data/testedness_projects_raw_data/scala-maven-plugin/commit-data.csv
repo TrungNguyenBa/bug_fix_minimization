@@ -1,2 +1,3 @@
-"","project","hash","label"
-"3101","scala-maven-plugin","989e9786341a3eff5d96afd5b12c1af3cc5f0389","Bug-fix"
+"","project","hash","content","label"
+"1","scala-maven-plugin","989e9786341a3eff5d96afd5b12c1af3cc5f0389","fix #129 : add addZincArgs parameters to set additionnal zinc server arguments (like -no-color)
+","Bug-fix"

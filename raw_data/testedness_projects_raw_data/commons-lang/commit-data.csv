@@ -1,22 +1,42 @@
-"","project","hash","label"
-"33","commons-lang","0432e83a4281d248d78f8a8ee249d41e9f8d6d42","Bug-fix"
-"39","commons-lang","8bb3526317408fba3ae351719feb68703aa5fdbb","Bug-fix"
-"41","commons-lang","818a544144f41194475f1593d1fcfec42f4d8766","Bug-fix"
-"43","commons-lang","bb76a6848b37cc3f418a370c56f597486618197b","Bug-fix"
-"49","commons-lang","c8cc65165143ead3df00f05c9eedaf23ad095bf9","Bug-fix"
-"50","commons-lang","1002c9e243883654f9c1e6beae643fb4e72fc172","Bug-fix"
-"55","commons-lang","d75fe46b8f1b0d5c27887052ee4714d6a9c7ea4b","Bug-fix"
-"57","commons-lang","5556026ed1dc17e70946a4a030842ade3a33baeb","Bug-fix"
-"61","commons-lang","481137553f878e2f69ce05129d4aecbf016a1756","Bug-fix"
-"70","commons-lang","b1762bd557c3d7605490e026bdf31096d83b4dde","Bug-fix"
-"72","commons-lang","a6addf94e5774f4e8fd71edbec68ff339c26e19f","Bug-fix"
-"73","commons-lang","849578d3a8ef50eea1c5bfcd63f78779d30c1550","Bug-fix"
-"74","commons-lang","51512905c31ff19b91fc67b2cb3ddb5b1fa0fd51","Bug-fix"
-"79","commons-lang","1dbdbfc3fadaee15424671e03bacb0fea134dc7e","Bug-fix"
-"80","commons-lang","fd595d7475336242f1aed9dc2fd30ce1af67d128","Bug-fix"
-"85","commons-lang","881c5fa3d2253234157076056970ed70289b87c6","Bug-fix"
-"93","commons-lang","6849dfc8a660bf8c95354520a2fa1283c9b3aa43","Bug-fix"
-"94","commons-lang","fad946a1d79486c5118a596e8ac67ef7d5189070","Bug-fix"
-"107","commons-lang","52b46e74dd29eb3eb65a593a872fd57694bc154c","Bug-fix"
-"109","commons-lang","3ff366c3db53f3687b40b0c15c14cdeb27ac8252","Bug-fix"
-"121","commons-lang","94faa31bcf5c4fcb20818a3a0d23ae789932d2df","Bug-fix"
+"","project","hash","content","label"
+"1","commons-lang","0432e83a4281d248d78f8a8ee249d41e9f8d6d42","Registered the merged contribution from Jake Wang in changes.xml (Fix #123)
+","Bug-fix"
+"2","commons-lang","8bb3526317408fba3ae351719feb68703aa5fdbb","Revert ""Allocate array of the correct size""
+","Bug-fix"
+"3","commons-lang","818a544144f41194475f1593d1fcfec42f4d8766","Fixed line ending issues once and for all
+","Bug-fix"
+"4","commons-lang","bb76a6848b37cc3f418a370c56f597486618197b","Revert ""Simplify, less clutter.""
+","Bug-fix"
+"5","commons-lang","c8cc65165143ead3df00f05c9eedaf23ad095bf9","Merge branch 'master' of https://github.com/NickManley/commons-lang This closes #117 LANG-1186 Fix NullPointerException in FastDateParser$TimeZoneStrategy
+","Bug-fix"
+"6","commons-lang","1002c9e243883654f9c1e6beae643fb4e72fc172","revert LANG-1192 while investigating travis failures
+","Bug-fix"
+"7","commons-lang","d75fe46b8f1b0d5c27887052ee4714d6a9c7ea4b","LANG-1193 ordinalIndexOf(""abc"", ""ab"", 1) gives incorrect answer of -1 (correct answer should be 0) Revert LANG-1077
+","Bug-fix"
+"8","commons-lang","5556026ed1dc17e70946a4a030842ade3a33baeb","Fix NullPointerException in FastDateParser$TimeZoneStrategy
+","Bug-fix"
+"9","commons-lang","481137553f878e2f69ce05129d4aecbf016a1756","Merge branch 'fix-LANG-1169'
+","Bug-fix"
+"10","commons-lang","b1762bd557c3d7605490e026bdf31096d83b4dde","LANG-1183 Making replacePattern/removePattern methods null safe in StringUtils
+","Bug-fix"
+"11","commons-lang","a6addf94e5774f4e8fd71edbec68ff339c26e19f","Merge branch 'fix-LANG-1139'
+","Bug-fix"
+"12","commons-lang","849578d3a8ef50eea1c5bfcd63f78779d30c1550","Merge branch 'fix-LANG-1171'
+","Bug-fix"
+"13","commons-lang","51512905c31ff19b91fc67b2cb3ddb5b1fa0fd51","LANG-1171 Remove log of excluded methods in StringUtilsTest.testStringUtilsCharSequenceContract()
+","Bug-fix"
+"14","commons-lang","1dbdbfc3fadaee15424671e03bacb0fea134dc7e","LANG-1175: fixed typo on changes
+","Bug-fix"
+"15","commons-lang","fd595d7475336242f1aed9dc2fd30ce1af67d128","Fix typo
+","Bug-fix"
+"16","commons-lang","881c5fa3d2253234157076056970ed70289b87c6","Remove empty lines
+","Bug-fix"
+"17","commons-lang","6849dfc8a660bf8c95354520a2fa1283c9b3aa43","LANG-1162 StringUtils#equals fails with Index OOBE on non-Strings with identical leading prefix
+","Bug-fix"
+"18","commons-lang","fad946a1d79486c5118a596e8ac67ef7d5189070","fix ExceptionUtilsTest to compile with java 1.6
+","Bug-fix"
+"19","commons-lang","52b46e74dd29eb3eb65a593a872fd57694bc154c","LANG-1152 StringIndexOutOfBoundsException or field over-write for large year fields in FastDateParser
+","Bug-fix"
+"20","commons-lang","3ff366c3db53f3687b40b0c15c14cdeb27ac8252","Javadoc: Fix typo but working is still awkward.
+","Bug-fix"
+"21","commons-lang","94faa31bcf5c4fcb20818a3a0d23ae789932d2df","refactor FastDateParser","Bug-fix"

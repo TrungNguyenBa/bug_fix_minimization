@@ -1,17 +1,33 @@
-"","project","hash","label"
-"675","gelfj","c82759c26169df7f2e86804198aa02e71e25028e","Bug-fix"
-"702","gelfj","e4c769f297f1147676cd5ee40cd570a06979c21d","Bug-fix"
-"708","gelfj","ad19228083fea867aef9760ba7f1196e23d2f5fa","Bug-fix"
-"715","gelfj","e6ec090c051d9317060e001b5ce8db782f301696","Bug-fix"
-"716","gelfj","e9087b11cfc9c2069f89187496426ffc56cc56dd","Bug-fix"
-"737","gelfj","8e9fb6f903ec7f346e82fb8df352311b2aeed595","Bug-fix"
-"741","gelfj","8b2f0364e96ab0728679151087edf239f5fa4ef2","Bug-fix"
-"743","gelfj","f8ac2884e45bb9a7a90561c7e907dc0e1fcebc36","Bug-fix"
-"747","gelfj","32681b2b15833bf21ef2ed6fdc6a076af722ec63","Bug-fix"
-"751","gelfj","ed800b31d8dafe1d860ff746b30389c13da119e3","Bug-fix"
-"763","gelfj","96b76187f1f466c197ec79902c43e55f872cd5e5","Bug-fix"
-"772","gelfj","51cfb9052ac9b55a7ec9f3b3d7d920217079a54f","Bug-fix"
-"779","gelfj","f346f4521d7d5902329031a00e8401ad81188bed","Bug-fix"
-"783","gelfj","723a5b6cf88549ef1a6c0c82a3a1e46207a42368","Bug-fix"
-"785","gelfj","dbff7b9a42f5380dc620d421700a8b0a772bf445","Bug-fix"
-"789","gelfj","661247ad746a30f104a401e762cecc1546f4af8a","Bug-fix"
+"","project","hash","content","label"
+"1","gelfj","c82759c26169df7f2e86804198aa02e71e25028e","Correct info about transport protocol in graylogHost
+","Bug-fix"
+"2","gelfj","e4c769f297f1147676cd5ee40cd570a06979c21d","- Target compiler moved to Java 1.5
+","Bug-fix"
+"3","gelfj","ad19228083fea867aef9760ba7f1196e23d2f5fa","reverted source and target config back to 1.6
+","Bug-fix"
+"4","gelfj","e6ec090c051d9317060e001b5ce8db782f301696","- Fixed #79
+","Bug-fix"
+"5","gelfj","e9087b11cfc9c2069f89187496426ffc56cc56dd","- Fixed #77, #78 - Readme and changelod update
+","Bug-fix"
+"6","gelfj","8e9fb6f903ec7f346e82fb8df352311b2aeed595","Use value comparison when checking log levels.
+","Bug-fix"
+"7","gelfj","8b2f0364e96ab0728679151087edf239f5fa4ef2","Fix #72 AMQP channel not set to confirm.
+","Bug-fix"
+"8","gelfj","f8ac2884e45bb9a7a90561c7e907dc0e1fcebc36","Help Fix #68 RabbitMQ optional dep in gradle.
+","Bug-fix"
+"9","gelfj","32681b2b15833bf21ef2ed6fdc6a076af722ec63","Minor R1.1.4 to fix resource handling for AMQP transport
+","Bug-fix"
+"10","gelfj","ed800b31d8dafe1d860ff746b30389c13da119e3","ensure that all resources are closed
+","Bug-fix"
+"11","gelfj","96b76187f1f466c197ec79902c43e55f872cd5e5","- Issues #52, #62
+","Bug-fix"
+"12","gelfj","51cfb9052ac9b55a7ec9f3b3d7d920217079a54f","maven repository preparation.
+","Bug-fix"
+"13","gelfj","f346f4521d7d5902329031a00e8401ad81188bed","change from Integer to int, enable long running connection tries with maxRetries = -1
+","Bug-fix"
+"14","gelfj","723a5b6cf88549ef1a6c0c82a3a1e46207a42368","FIX when graylogHost starts with tcp: or udp:
+","Bug-fix"
+"15","gelfj","dbff7b9a42f5380dc620d421700a8b0a772bf445","Issues #50, #49, #53, #54, #58, #59, #53
+","Bug-fix"
+"16","gelfj","661247ad746a30f104a401e762cecc1546f4af8a","Fix message sending when the short message is empty. This is needed to pass events like 'logger.warn(null, ex)'.
+","Bug-fix"

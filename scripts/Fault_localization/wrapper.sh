@@ -5,26 +5,35 @@ die() {
     cd $current
     exit 1 
 }
-startover=0
-
-if [[ $# -gt 1 ]]; then die "Usage: $0 (--startover) "; fi
-if [[ $1 == "--nostartover" ]]; then startover=1; fi
-
+bl=0
+sl=0
+if [[ $# -gt 2 ]]; then die "Usage: $0 (--nobl) (--nosl)"; fi
+if [[ $1 == "--nobl" ]]; then bl=1; fi
+if [[ $2 == "--nosl" ]]; then sl=1; fi
 
 #populate the analysis scripts
-if [[ startover -eq 0 ]];then ./scripts_populate.sh;fi
+if [[ bl -eq 0 ]];then ./scripts_populate.sh;fi
 echo "finish populate scripts"
 echo 
+if [[ nl -eq 0 ]]; then 
+	echo "moving into $FL_HOME/analysis/java-parse"
+	if (ls source-code-lines-original > /dev/null 2>/dev/null) ; then
+		rm -rf source-code-lines-original
+	fi
+	if ! ( run_java-parser_original.sh 2>/dev/null) ; then cd $current; die "java-parse failed"; fi
+	cp -r source-code-lines-original $FL_HOME/analysis/pipeline-scripts/.
+fi
 #moving into FL_HOME analysis scripts folder
 echo "moving into $FL_HOME/analysis/pipeline-scripts/"
 cd $FL_HOME/analysis/pipeline-scripts/
 #clean old data
 
-if (ls Scores > /dev/null 2> /dev/null); then rm -r Scores;fi
+
 if (ls $FL_HOME/real-faults-data/killmaps > /dev/null 2> /dev/null); then rm -r $FL_HOME/real-faults-data/killmaps; fi
 if (ls $FL_HOME/real-faults-data/gzoltars > /dev/null 2> /dev/null); then rm -r $FL_HOME/real-faults-data/gzoltars; fi
-
-if [[ startover -eq 0 ]]; then 
+if (ls Scores > /dev/null 2> /dev/null); then rm -r Scores;fi
+if [[ bl -eq 0 ]]; then 
+	
 	if (ls buggy-lines > /dev/null 2> /dev/null ); then 
 		if (ls buggy-lines-backup > /dev/null 2> /dev/null); then 
 			rm -r buggy-lines 
@@ -38,7 +47,7 @@ if [[ startover -eq 0 ]]; then
 	if (ls buggy-lines-nocmt > /dev/null 2> /dev/null); then rm -r buggy-lines-nocmt; fi
 	
 	echo 
-	echo "finished cleaning up"
+	echo "finished buggy cleaning up"
 	echo
 	#populate buggy line folders
 	echo "making buggy-lines folders"	
@@ -47,14 +56,25 @@ if [[ startover -eq 0 ]]; then
 	echo "finished buggy_lines_populate"
 	echo
 fi
+
+
 projects=$(ls -1 $BFM/raw_data/D4J_projects)
 mkdir Scores
 mkdir Scores/minimized  Scores/original Scores/nocmt
 #iterating through projects
 for p in $projects; do
+	# if [[ $p == "Closure" ]]; then 
+	# 	echo "Skip"
+	# 	continue
+	# fi
+
 	echo "-----"
 	counts=$(cat $D4J_HOME/framework/projects/$p/commit-db | wc -l)
 	#iterating through bugs 	
+	if [[ $counts -gt 60 ]]; then
+		counts=60
+	fi
+
 	for i in $(seq 1 $counts); do
 		echo "perform analysis for Project $p, Bug $i"
 		#extracting one by one due to storage limit
@@ -78,23 +98,23 @@ for p in $projects; do
 		else
 			cnts=$(cat $FL_HOME/analysis/pipeline-scripts/Scores/minimized/scores.csv | wc -l)
 			(( cnts-- ))
-			(tail -${cnts} $FL_HOME/analysis/pipeline-scripts/Scores/minimized/scores.csv) >> master_scores.csv
+			(tail -${cnts} $FL_HOME/analysis/pipeline-scripts/Scores/minimized/scores.csv) >> $FL_HOME/analysis/pipeline-scripts/Scores/minimized/master_scores.csv
 		fi
-		echo
-		#perform analysis for comment version
-		echo "no comment version"
-		if ! (./do-full-analysis-nocmt $p $i developer \
-							      $cov_dir/matrix $cov_dir/spectra \
-						      	  $km_dir/killmap.csv $km_dir/mutants.log \
-							      /tmp/scoring/$p/$i/developer \
-							      $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/scores.csv > /dev/null) ; then die "Error: do-full-analysis-nocmt"; fi
-		if ! (ls $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/master_scores.csv > /dev/null 2> /dev/null); then 
-			cp  $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/scores.csv   $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/master_scores.csv
-		else
-			cnts=$(cat $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/scores.csv | wc -l)
-			(( cnts-- ))
-			tail -${cnts} $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/scores.csv >> master_scores.csv
-		fi
+		# echo
+		# #perform analysis for comment version
+		# echo "no comment version"
+		# if ! (./do-full-analysis-nocmt $p $i developer \
+		# 					      $cov_dir/matrix $cov_dir/spectra \
+		# 				      	  $km_dir/killmap.csv $km_dir/mutants.log \
+		# 					      /tmp/scoring/$p/$i/developer \
+		# 					      $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/scores.csv > /dev/null) ; then die "Error: do-full-analysis-nocmt"; fi
+		# if ! (ls $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/master_scores.csv > /dev/null 2> /dev/null); then 
+		# 	cp  $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/scores.csv   $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/master_scores.csv
+		# else
+		# 	cnts=$(cat $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/scores.csv | wc -l)
+		# 	(( cnts-- ))
+		# 	tail -${cnts} $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/scores.csv >> $FL_HOME/analysis/pipeline-scripts/Scores/nocmt/master_scores.csv
+		# fi
 		#perform analysis for original version
 		echo
 		echo "original version"
@@ -108,12 +128,12 @@ for p in $projects; do
 		else
 			cnts=$(cat $FL_HOME/analysis/pipeline-scripts/Scores/original/scores.csv | wc -l)
 			(( cnts-- ))
-			tail -${cnts} $FL_HOME/analysis/pipeline-scripts/Scores/original/scores.csv >> master_scores.csv
+			tail -${cnts} $FL_HOME/analysis/pipeline-scripts/Scores/original/scores.csv >> $FL_HOME/analysis/pipeline-scripts/Scores/original/master_scores.csv
 		fi
 		#cleaning due to store limit
 		rm -r $FL_HOME/real-faults-data/killmaps/$p/$i
 		rm -r $FL_HOME/real-faults-data/gzoltars/$p/$i
-		echo "Project $p, Bug $1 finish"
+		echo "Project $p, Bug $i finish"
 
 		echo
 	done

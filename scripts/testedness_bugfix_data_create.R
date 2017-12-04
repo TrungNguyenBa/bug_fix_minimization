@@ -1,7 +1,7 @@
 directory <- "/Users/trung/Documents/Umass_rs/bug_fix_minimization/raw_data/testedness_projects_raw_data"
 data <-read.csv("/Users/trung/Documents/Umass_rs/bug_fix_minimization/csv_data/NB_result.csv",header=TRUE, sep=",")
 bug_fix<-data[data$label == "Bug-fix",]
-bug_fix<-bug_fix[-c(3)]
+#bug_fix<-bug_fix[-c(3)]
 projects <- unique(bug_fix$project)
 
 for (p in projects) {

@@ -1,43 +1,85 @@
-"","project","hash","label"
-"1461","maven-git-commit-id-plugin","80fced8db322b1a1ccead59ca1ed8fed93742cec","Bug-fix"
-"1464","maven-git-commit-id-plugin","099b7e360d72d0faaa2201dfc0c47aa754ecce34","Bug-fix"
-"1466","maven-git-commit-id-plugin","90c3998f56ed6209336cfc7a9d86bf32c0ffa27c","Bug-fix"
-"1477","maven-git-commit-id-plugin","52a53758d73f1e09e37025cb3f022f8a8228c3f1","Bug-fix"
-"1478","maven-git-commit-id-plugin","3778f3ab4bb90a26908fcbbb86dc461a3c8179f9","Bug-fix"
-"1503","maven-git-commit-id-plugin","c6517a1a753a2f708c686b6ab6b9e14299b67f3f","Bug-fix"
-"1507","maven-git-commit-id-plugin","b5740b7672344bff38f178c048822b4aecd8239f","Bug-fix"
-"1509","maven-git-commit-id-plugin","94e2404f4deedd3d7092ec821b4d31559a798818","Bug-fix"
-"1514","maven-git-commit-id-plugin","ae934ac2dae9762de539e50076d6353eab46155d","Bug-fix"
-"1516","maven-git-commit-id-plugin","02fbc8714c79051f9308fd7e50860a8f6ed47a3f","Bug-fix"
-"1518","maven-git-commit-id-plugin","df27e70159e74039d76cb27732039eedca8969e8","Bug-fix"
-"1522","maven-git-commit-id-plugin","8ae6d922d32fd12e412ed478420e1d2b583e7a8c","Bug-fix"
-"1525","maven-git-commit-id-plugin","7d9d6e8c74bee65a540ddeff93ab0545920bb2d7","Bug-fix"
-"1529","maven-git-commit-id-plugin","c1901dd6ab043c1bf764d8f3dfb04f0be23e8ec2","Bug-fix"
-"1553","maven-git-commit-id-plugin","9677d3d6ced7ce18088353bf0d58af292db121cb","Bug-fix"
-"1557","maven-git-commit-id-plugin","73147f7018c108cf413c1b9002c3674cb9c9179c","Bug-fix"
-"1558","maven-git-commit-id-plugin","45f89827c0c6706ffcd02a604bc841a74db07ef6","Bug-fix"
-"1560","maven-git-commit-id-plugin","c38736a162001d0647c5ac37cc8b3ed8d9eb3b22","Bug-fix"
-"1561","maven-git-commit-id-plugin","4fd8a5f27f9e8d7cf728f885df45007323443509","Bug-fix"
-"1562","maven-git-commit-id-plugin","68c4a4454c14c00fa5d99821fbb35c521fe523d5","Bug-fix"
-"1563","maven-git-commit-id-plugin","c9b35d4442b3ce9282b1e23fa902a08ba6d77489","Bug-fix"
-"1569","maven-git-commit-id-plugin","8e99f0ddb5967f293360e873ccbecf331278ee1e","Bug-fix"
-"1571","maven-git-commit-id-plugin","7f06d46e7a76012384382b63d4ed17914df0ba19","Bug-fix"
-"1572","maven-git-commit-id-plugin","19918d48bc8936bfe4a5aacafb5e427510c042fe","Bug-fix"
-"1574","maven-git-commit-id-plugin","8aec1c0e9466cfb507ecb09e5c99bf12f3c9255d","Bug-fix"
-"1579","maven-git-commit-id-plugin","0cc24593d7a76932cd1f04a373c752bbca8fb05a","Bug-fix"
-"1581","maven-git-commit-id-plugin","a3ed2b2a166dc826dfac256efeaeaec10dadd349","Bug-fix"
-"1585","maven-git-commit-id-plugin","fe371c5375872ea75c55ba923e4f43541fade903","Bug-fix"
-"1591","maven-git-commit-id-plugin","ca109206d0839b83c8a95ae3cd19c7ef45fa42ee","Bug-fix"
-"1605","maven-git-commit-id-plugin","bda31e93c81307f1a289b7b877f2c8c7b27c7d6b","Bug-fix"
-"1616","maven-git-commit-id-plugin","7319382b810f4255440e380b2b1d313c0a2e55f2","Bug-fix"
-"1619","maven-git-commit-id-plugin","0951a9d5df3824e90908c110a822eb7e9a34b89d","Bug-fix"
-"1620","maven-git-commit-id-plugin","87e98c276ee750138e42773b17fb3693d8dcf750","Bug-fix"
-"1626","maven-git-commit-id-plugin","50504f69112da159dba055fbc5954402b7a317a8","Bug-fix"
-"1630","maven-git-commit-id-plugin","399b9bb656a8d47ea8c66a7753f326f16b1764aa","Bug-fix"
-"1642","maven-git-commit-id-plugin","02ebbf36ead0663150385383ae13c82120e5931c","Bug-fix"
-"1659","maven-git-commit-id-plugin","399578bffb45285a79e17463a3d380eea6dc20ad","Bug-fix"
-"1678","maven-git-commit-id-plugin","98519a1b5dcf5901f7ad1c7c27a31b9ddf038abf","Bug-fix"
-"1680","maven-git-commit-id-plugin","79f42b50d850713c629535bbef6697a6cb93013d","Bug-fix"
-"1689","maven-git-commit-id-plugin","4f37653378a1ce77fd216ffe07c1caaf9a8b7f65","Bug-fix"
-"1690","maven-git-commit-id-plugin","bb1c9adc0766e45434414337c604a1fd82e13108","Bug-fix"
-"1692","maven-git-commit-id-plugin","38d29d19040966f1f760a56c407e49774415ce07","Bug-fix"
+"","project","hash","content","label"
+"1","maven-git-commit-id-plugin","80fced8db322b1a1ccead59ca1ed8fed93742cec","Fix for https://github.com/ktoso/maven-git-commit-id-plugin/issues/122: rename git.commit.id to git.commit.id.full
+","Bug-fix"
+"2","maven-git-commit-id-plugin","099b7e360d72d0faaa2201dfc0c47aa754ecce34","update jgit from 3.7.0.201502260915-r to 4.0.0.201506090130-r to fix issue #203
+","Bug-fix"
+"3","maven-git-commit-id-plugin","90c3998f56ed6209336cfc7a9d86bf32c0ffa27c","creating a new git-intergration repository to fix the integration tests the right way
+","Bug-fix"
+"4","maven-git-commit-id-plugin","52a53758d73f1e09e37025cb3f022f8a8228c3f1","make it simple and just let each class have a single instance of the jGitCommon
+","Bug-fix"
+"5","maven-git-commit-id-plugin","3778f3ab4bb90a26908fcbbb86dc461a3c8179f9","Use a single instance of JGitCommon
+","Bug-fix"
+"6","maven-git-commit-id-plugin","c6517a1a753a2f708c686b6ab6b9e14299b67f3f","Revert ""Fix paths in unit tests so that they do not fail on OS Windows""
+","Bug-fix"
+"7","maven-git-commit-id-plugin","b5740b7672344bff38f178c048822b4aecd8239f","Avoid NPE as discussed in https://github.com/ktoso/maven-git-commit-id-plugin/issues/57
+","Bug-fix"
+"8","maven-git-commit-id-plugin","94e2404f4deedd3d7092ec821b4d31559a798818","Fix for possible NPE as discussed in https://github.com/ktoso/maven-git-commit-id-plugin/issues/153
+","Bug-fix"
+"9","maven-git-commit-id-plugin","ae934ac2dae9762de539e50076d6353eab46155d","Replace deprecated Objects' method firstNonNull.
+","Bug-fix"
+"10","maven-git-commit-id-plugin","02fbc8714c79051f9308fd7e50860a8f6ed47a3f","More verbose error message for git.build.host property in case of exception
+","Bug-fix"
+"11","maven-git-commit-id-plugin","df27e70159e74039d76cb27732039eedca8969e8","Hide IP address. Return just host name.
+","Bug-fix"
+"12","maven-git-commit-id-plugin","8ae6d922d32fd12e412ed478420e1d2b583e7a8c","Fix paths in unit tests so that they do not fail on OS Windows
+","Bug-fix"
+"13","maven-git-commit-id-plugin","7d9d6e8c74bee65a540ddeff93ab0545920bb2d7","Fix typos in README.md
+","Bug-fix"
+"14","maven-git-commit-id-plugin","c1901dd6ab043c1bf764d8f3dfb04f0be23e8ec2","fix typo in readme
+","Bug-fix"
+"15","maven-git-commit-id-plugin","9677d3d6ced7ce18088353bf0d58af292db121cb","As discussed in https://github.com/ktoso/maven-git-commit-id-plugin/pull/150 a fix for the travis tests
+","Bug-fix"
+"16","maven-git-commit-id-plugin","73147f7018c108cf413c1b9002c3674cb9c9179c","fix releasing snapshots
+","Bug-fix"
+"17","maven-git-commit-id-plugin","45f89827c0c6706ffcd02a604bc841a74db07ef6","Merge pull request #155 from hgschmie/git-output-fix
+","Bug-fix"
+"18","maven-git-commit-id-plugin","c38736a162001d0647c5ac37cc8b3ed8d9eb3b22","fix indenting to 2 spaces
+","Bug-fix"
+"19","maven-git-commit-id-plugin","4fd8a5f27f9e8d7cf728f885df45007323443509","Make unit test pass in detached state.
+","Bug-fix"
+"20","maven-git-commit-id-plugin","68c4a4454c14c00fa5d99821fbb35c521fe523d5","Fix missing .gitconfig file
+","Bug-fix"
+"21","maven-git-commit-id-plugin","c9b35d4442b3ce9282b1e23fa902a08ba6d77489","Fix differences in the output of native and jgit
+","Bug-fix"
+"22","maven-git-commit-id-plugin","8e99f0ddb5967f293360e873ccbecf331278ee1e","Fix for https://github.com/ktoso/maven-git-commit-id-plugin/issues/146 : Now using SHA of commit in native git in case Repro is in detached HEAD-State and not in a CI-Environment, thats the same behavoir as in JGit-Implementation
+","Bug-fix"
+"23","maven-git-commit-id-plugin","7f06d46e7a76012384382b63d4ed17914df0ba19","One test has trouble on jenkins, fix it!
+","Bug-fix"
+"24","maven-git-commit-id-plugin","19918d48bc8936bfe4a5aacafb5e427510c042fe","fix for Allow initialization once per run (with multiple modules) #53
+","Bug-fix"
+"25","maven-git-commit-id-plugin","8aec1c0e9466cfb507ecb09e5c99bf12f3c9255d","Fixing tests and made default params for describe config really work
+","Bug-fix"
+"26","maven-git-commit-id-plugin","0cc24593d7a76932cd1f04a373c752bbca8fb05a","Small cleanups
+","Bug-fix"
+"27","maven-git-commit-id-plugin","a3ed2b2a166dc826dfac256efeaeaec10dadd349","Slightly improved exception handling for wrong dotGitDirectory.
+","Bug-fix"
+"28","maven-git-commit-id-plugin","fe371c5375872ea75c55ba923e4f43541fade903","Use parent directory not parent project to locate gitdir
+","Bug-fix"
+"29","maven-git-commit-id-plugin","ca109206d0839b83c8a95ae3cd19c7ef45fa42ee","Write git.json file with UTF-8 encoding.
+","Bug-fix"
+"30","maven-git-commit-id-plugin","bda31e93c81307f1a289b7b877f2c8c7b27c7d6b","rename variable counter to projectCounter and adding public method for accessing generateGitPropertiesFilename
+","Bug-fix"
+"31","maven-git-commit-id-plugin","7319382b810f4255440e380b2b1d313c0a2e55f2","test fixes
+","Bug-fix"
+"32","maven-git-commit-id-plugin","0951a9d5df3824e90908c110a822eb7e9a34b89d","Fixed PR about abbrevLength - it was available since 2.0.4, not 1.9
+","Bug-fix"
+"33","maven-git-commit-id-plugin","87e98c276ee750138e42773b17fb3693d8dcf750","Fix for https://github.com/ktoso/maven-git-commit-id-plugin/issues/116 added abbrevLength to Readme and pom example config
+","Bug-fix"
+"34","maven-git-commit-id-plugin","50504f69112da159dba055fbc5954402b7a317a8","fixed bug when using forceLongFormat on gitDescribe (setting it to true had no effect)
+","Bug-fix"
+"35","maven-git-commit-id-plugin","399b9bb656a8d47ea8c66a7753f326f16b1764aa","Empty prefix setting should not keep the leading ""."" Resolves #101
+","Bug-fix"
+"36","maven-git-commit-id-plugin","02ebbf36ead0663150385383ae13c82120e5931c","whoops, fix
+","Bug-fix"
+"37","maven-git-commit-id-plugin","399578bffb45285a79e17463a3d380eea6dc20ad","fix test
+","Bug-fix"
+"38","maven-git-commit-id-plugin","98519a1b5dcf5901f7ad1c7c27a31b9ddf038abf","fix invalid XML
+","Bug-fix"
+"39","maven-git-commit-id-plugin","79f42b50d850713c629535bbef6697a6cb93013d","fix readme spring integration
+","Bug-fix"
+"40","maven-git-commit-id-plugin","4f37653378a1ce77fd216ffe07c1caaf9a8b7f65","resolved #68, fixes % exploding logging statements (failing build)
+","Bug-fix"
+"41","maven-git-commit-id-plugin","bb1c9adc0766e45434414337c604a1fd82e13108","formatting fix
+","Bug-fix"
+"42","maven-git-commit-id-plugin","38d29d19040966f1f760a56c407e49774415ce07","fix formatting
+","Bug-fix"

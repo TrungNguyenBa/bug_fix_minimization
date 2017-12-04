@@ -43,7 +43,7 @@ for FORMULA in tarantula ochiai opt2 barinel dstar2 muse jaccard; do
 
     LINE_SUSPS_FILE=$(pwd)/line-susps.txt
     stmt-susps-to-line-susps --stmt-susps "$STMT_SUSPS_FILE" \
-                             --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+                             --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
                              --output "$LINE_SUSPS_FILE"
     for SCORING_SCHEME in first last mean median; do
       if [ "$RESTRICTIONS_FILE" ]; then check-restrictions "$RESTRICTIONS_FILE" --scoring-scheme "$SCORING_SCHEME" || continue; fi

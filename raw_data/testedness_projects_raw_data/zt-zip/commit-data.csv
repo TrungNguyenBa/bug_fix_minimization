@@ -1,39 +1,77 @@
-"","project","hash","label"
-"3954","zt-zip","2e78b34858badb76de755f5f81ba3f3b20629147","Bug-fix"
-"3956","zt-zip","76654f377420ef9b60f9b68c015393369e283317","Bug-fix"
-"3959","zt-zip","8f6d13c9a44fc3b7a29eef97c0ab9aaf2f29e95a","Bug-fix"
-"3966","zt-zip","b6afa9a7589c6cae57cf16862830c5db9264822c","Bug-fix"
-"3967","zt-zip","397613674d3f7c05cc5a2a3ad42f70df7b42a0e3","Bug-fix"
-"3969","zt-zip","07762b0a3e5b7640efc72915a0ff252337544a1c","Bug-fix"
-"3973","zt-zip","41ed65dab1da09b30e425328c966f8d74e23ca5a","Bug-fix"
-"3978","zt-zip","414cb58a2d6cf85312c7d6e2cb541eb421b225c7","Bug-fix"
-"3979","zt-zip","a874711cbda9c72d8f180570807d8f0443cc56ed","Bug-fix"
-"3980","zt-zip","74df05808cc4f6da35c379b7ec41e40e3309aba8","Bug-fix"
-"3982","zt-zip","b3aee9ac83f9092c24166cc0b9aa4fbde964e2f5","Bug-fix"
-"3988","zt-zip","b28540221565ff2ec0557b78275a26fc7e1a337f","Bug-fix"
-"3994","zt-zip","8bb0f4d07ea486d8f35f008b4e03a3dbbda1529c","Bug-fix"
-"3999","zt-zip","dbe640a9ed1d7e69bcfdfe96645057b061d55823","Bug-fix"
-"4008","zt-zip","cad00125e2f9647a443de666421106d1ac665d7b","Bug-fix"
-"4009","zt-zip","b670b2d9e99177f17c810190d15beaed324012fd","Bug-fix"
-"4012","zt-zip","341c72172dda2dee65c6294c007a0f602770ec1d","Bug-fix"
-"4016","zt-zip","28c16dd9286387878634eebec97f45b30397afc1","Bug-fix"
-"4017","zt-zip","da513fd565afeebff597c2d2278661d5ee5825b2","Bug-fix"
-"4021","zt-zip","878e3285ce394753910b2aa480bee96a67ab9341","Bug-fix"
-"4036","zt-zip","f793005b6538f2b0553d50addca7366aa8d55f53","Bug-fix"
-"4037","zt-zip","94a4af471827022b18bde0d5c6ec7ced066f5b39","Bug-fix"
-"4040","zt-zip","05cead293f8ca9a53b50b881ae1c727bd182ffbc","Bug-fix"
-"4041","zt-zip","468138f1598c5531409d394b585c400a3a94c014","Bug-fix"
-"4047","zt-zip","def198ff6112bb8d3e8397a77b977da6c94603d4","Bug-fix"
-"4048","zt-zip","afafeee49233de52db4d4f31ddfe0ce0416c7ad1","Bug-fix"
-"4057","zt-zip","e6669a09744cde75a00c977fcb947b86fbcc93c2","Bug-fix"
-"4062","zt-zip","e5fa1ddb4ca987036a6b6054d30debfeffb6e013","Bug-fix"
-"4072","zt-zip","90618ae174790b3cfabc4350db51f24a34fa8f87","Bug-fix"
-"4076","zt-zip","48abb0402c8f4d9281fbfea70a5714aa143f6ea4","Bug-fix"
-"4077","zt-zip","7f4928fda64a61bea6f6f8f24e91075d24dc6cd9","Bug-fix"
-"4083","zt-zip","0bfb25e39ac15caa3a94c79c5fa731110f20a958","Bug-fix"
-"4084","zt-zip","62a6b8516a15bec81f96d4f393375e5ab60c1b36","Bug-fix"
-"4087","zt-zip","cf2a81d51a3c6eba71951274a9fea1edab78df0d","Bug-fix"
-"4088","zt-zip","73461e5916409ad529e6c8cecbee0ef824283c6a","Bug-fix"
-"4094","zt-zip","6434ede828e91e6371f97cfbd539592ca8dcd0df","Bug-fix"
-"4098","zt-zip","91e3ff631d2c581cef3d360ccd91f580ac45354c","Bug-fix"
-"4099","zt-zip","a65449d6f1084c498e34dde74bf23c3f92a0992b","Bug-fix"
+"","project","hash","content","label"
+"1","zt-zip","2e78b34858badb76de755f5f81ba3f3b20629147","Some minor fixes
+","Bug-fix"
+"2","zt-zip","76654f377420ef9b60f9b68c015393369e283317","Changes from pull request comments
+","Bug-fix"
+"3","zt-zip","8f6d13c9a44fc3b7a29eef97c0ab9aaf2f29e95a","fixed buffering when creating and updating ZIP streams
+","Bug-fix"
+"4","zt-zip","b6afa9a7589c6cae57cf16862830c5db9264822c","Close InputStream after processing each ZipEntrySource
+","Bug-fix"
+"5","zt-zip","397613674d3f7c05cc5a2a3ad42f70df7b42a0e3","Fixed removing missing entries.
+","Bug-fix"
+"6","zt-zip","07762b0a3e5b7640efc72915a0ff252337544a1c","allow specifying/replacing compression level of ZipEntry fix issue #61
+","Bug-fix"
+"7","zt-zip","41ed65dab1da09b30e425328c966f8d74e23ca5a","don't close stream, as it's users responsibility to close the stream it started
+","Bug-fix"
+"8","zt-zip","414cb58a2d6cf85312c7d6e2cb541eb421b225c7","Ignoring .sonar folder
+","Bug-fix"
+"9","zt-zip","a874711cbda9c72d8f180570807d8f0443cc56ed","Fixed typo in log message: unwraping -> unwrapping
+","Bug-fix"
+"10","zt-zip","74df05808cc4f6da35c379b7ec41e40e3309aba8","Fix javadocs. Address doclint warnings on javadoc creation (jdk 1.8)
+","Bug-fix"
+"11","zt-zip","b3aee9ac83f9092c24166cc0b9aa4fbde964e2f5","Fix for OpenJDK6
+","Bug-fix"
+"12","zt-zip","b28540221565ff2ec0557b78275a26fc7e1a337f","Preserve file permissions #52: make it Java 1.5 compatible.
+","Bug-fix"
+"13","zt-zip","8bb0f4d07ea486d8f35f008b4e03a3dbbda1529c","Make zt-zip require Java 1.5
+","Bug-fix"
+"14","zt-zip","dbe640a9ed1d7e69bcfdfe96645057b061d55823","Make get_release_commands.sh spit shell-script.
+","Bug-fix"
+"15","zt-zip","cad00125e2f9647a443de666421106d1ac665d7b","Still removing the dep on commons-io
+","Bug-fix"
+"16","zt-zip","b670b2d9e99177f17c810190d15beaed324012fd","Still removing the dep on commons-io
+","Bug-fix"
+"17","zt-zip","341c72172dda2dee65c6294c007a0f602770ec1d","Fixed testCharsetEntry().
+","Bug-fix"
+"18","zt-zip","28c16dd9286387878634eebec97f45b30397afc1","fix test files initialization and move all tests to 'org.zeroturnaround.zip' package
+","Bug-fix"
+"19","zt-zip","da513fd565afeebff597c2d2278661d5ee5825b2","add static method to FileSource to map an array of files to array of their names
+","Bug-fix"
+"20","zt-zip","878e3285ce394753910b2aa480bee96a67ab9341","add methods to ZipUtil for packing single files and changing their names
+","Bug-fix"
+"21","zt-zip","f793005b6538f2b0553d50addca7366aa8d55f53","Some small changes to make SONAR happy
+","Bug-fix"
+"22","zt-zip","94a4af471827022b18bde0d5c6ec7ced066f5b39","Some small changes to make SONAR happy
+","Bug-fix"
+"23","zt-zip","05cead293f8ca9a53b50b881ae1c727bd182ffbc","Fixed an issue with compressed sizes.
+","Bug-fix"
+"24","zt-zip","468138f1598c5531409d394b585c400a3a94c014","Fixed error message.
+","Bug-fix"
+"25","zt-zip","def198ff6112bb8d3e8397a77b977da6c94603d4","fixed adding files from directory based on accept filter, it also fixed test (that failed only on windows): ZipsTest.testAddEntryFilter()
+","Bug-fix"
+"26","zt-zip","afafeee49233de52db4d4f31ddfe0ce0416c7ad1","fixed following tests failing on windows (because of locking file): ZipsTest.testInPlaceAddEntry() and ZipsTest.testInPlaceAddRemoveEntries()
+","Bug-fix"
+"27","zt-zip","e6669a09744cde75a00c977fcb947b86fbcc93c2","Refactor copying entry method Zips
+","Bug-fix"
+"28","zt-zip","e5fa1ddb4ca987036a6b6054d30debfeffb6e013","fixed JavaDoc issues
+","Bug-fix"
+"29","zt-zip","90618ae174790b3cfabc4350db51f24a34fa8f87","#41, Zips.addFile accepts a filter for filenames
+","Bug-fix"
+"30","zt-zip","48abb0402c8f4d9281fbfea70a5714aa143f6ea4","Fix #38, #40 process and iterate are transformers-aware
+","Bug-fix"
+"31","zt-zip","7f4928fda64a61bea6f6f8f24e91075d24dc6cd9","Fix testCharsetEntry on jdk6
+","Bug-fix"
+"32","zt-zip","0bfb25e39ac15caa3a94c79c5fa731110f20a958","fixed problem with preserveRoot and subdirectories by removing extra slash from addFiles(). Also added test to prove issue existed.
+","Bug-fix"
+"33","zt-zip","62a6b8516a15bec81f96d4f393375e5ab60c1b36","Fix InPlaceAction to use tmpFile from argument, not field. #17
+","Bug-fix"
+"34","zt-zip","cf2a81d51a3c6eba71951274a9fea1edab78df0d","Fix testCharsetEntry(), for jdk1.5 exception on OutputStream creation
+","Bug-fix"
+"35","zt-zip","73461e5916409ad529e6c8cecbee0ef824283c6a","Add transformers to Zips. Use charset for outputs too. #31
+","Bug-fix"
+"36","zt-zip","6434ede828e91e6371f97cfbd539592ca8dcd0df","Ignoring .idea folder
+","Bug-fix"
+"37","zt-zip","91e3ff631d2c581cef3d360ccd91f580ac45354c","Add unpacking methods which unwrap the parent directory included in the archive, fix #18
+","Bug-fix"
+"38","zt-zip","a65449d6f1084c498e34dde74bf23c3f92a0992b","add test for iteration of given entries from stream, fix #21
+","Bug-fix"

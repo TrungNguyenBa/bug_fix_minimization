@@ -1,3 +1,4 @@
-"","project","hash","label"
-"2","annotation-cli","899507ac1b734ae1e5302bdd2b9c4e91a8bdb91d","Bug-fix"
-"5","annotation-cli","6805c173e361890713ba38fce16dbc8a95844004","Bug-fix"
+"","project","hash","content","label"
+"1","annotation-cli","899507ac1b734ae1e5302bdd2b9c4e91a8bdb91d","Refactored the convert method by removing the annonymous methods with concrete classes.
+","Bug-fix"
+"2","annotation-cli","6805c173e361890713ba38fce16dbc8a95844004","This commit contains fixes #1 for the addition of the OptionReference annotation that will be used to reference instances within a instance that contain options that will be included as part of the current top-level instance.","Bug-fix"

@@ -1,23 +1,45 @@
-"","project","hash","label"
-"808","grails-maven","f32b2d9a1bdf29d79d86130ff32158c00bf107e5","Bug-fix"
-"809","grails-maven","c92463887dad90f6d605722c3ce9fccfe964f15a","Bug-fix"
-"823","grails-maven","46993e92125495940ed72dd189a40b3b7b71833b","Bug-fix"
-"824","grails-maven","4cefacc0a0713fd986759eb45559086cf45f73ff","Bug-fix"
-"826","grails-maven","23fcfb244f20e52ae62e911a84ffa80ec5394d4c","Bug-fix"
-"827","grails-maven","a82c94d74e1bee5af709117a7a89b36643c2cd18","Bug-fix"
-"830","grails-maven","826adf7d9754484cffa4b167cb2b46fc8f819797","Bug-fix"
-"831","grails-maven","64b7ccabba358e3760daa6a2fc26d7df075e4bbd","Bug-fix"
-"832","grails-maven","e2b530af6f2d00719b4e0a659b357ab7d5c01701","Bug-fix"
-"834","grails-maven","7fa3160c8f224d2ec4619ac53f4535f6a7156bce","Bug-fix"
-"842","grails-maven","d38519eeb55f0e5cdb1d9575f884fc962f37e0fd","Bug-fix"
-"851","grails-maven","138fce8fc18c10f03933658ef24600c38f86534c","Bug-fix"
-"852","grails-maven","269ea483f914726d3b4705adb9f5109a4009b219","Bug-fix"
-"853","grails-maven","4401cab947d8553d69e7f27b7c8f6600280a3ed5","Bug-fix"
-"860","grails-maven","6da42b49a5abbad8ff32373502ad7c8f264db9bf","Bug-fix"
-"862","grails-maven","84413251dc84c174e295e7a665166bf06e99b291","Bug-fix"
-"868","grails-maven","7d6dc808dd6dcf33ac46f1a49258a252ff91fe59","Bug-fix"
-"871","grails-maven","1641470bcb7cd0cb0903aa6763d485c2ce03f6b8","Bug-fix"
-"872","grails-maven","4a724c782f5c4a872faea7668d0d29de32146405","Bug-fix"
-"877","grails-maven","757a09e7173b312a28be92784d2f5fbaf6efd9ab","Bug-fix"
-"885","grails-maven","f776517cf665dffb7ada5287b95550b0a5277ab0","Bug-fix"
-"887","grails-maven","cef9ba3065c47082c5871ba38d898862636a5675","Bug-fix"
+"","project","hash","content","label"
+"1","grails-maven","f32b2d9a1bdf29d79d86130ff32158c00bf107e5","fix broken logic for establishing Groovy version
+","Bug-fix"
+"2","grails-maven","c92463887dad90f6d605722c3ce9fccfe964f15a","Fix grails version. should be 2.4.3. When 2.4.2 release, version was not bumped from 2.4.1 to 2.4.2. Then when 2.4.3 was released, version was just bumped by +1 from 2.4.1 to 2.4.2. Should be 2.4.3.
+","Bug-fix"
+"3","grails-maven","46993e92125495940ed72dd189a40b3b7b71833b","Allow for non-forked execution of grails based on configuration property.
+","Bug-fix"
+"4","grails-maven","4cefacc0a0713fd986759eb45559086cf45f73ff","Fix dependency issue with groovy version.
+","Bug-fix"
+"5","grails-maven","23fcfb244f20e52ae62e911a84ffa80ec5394d4c","Fixed a bug in AbstractGrailsMojo.java that caused it to look for the Groovy dependency using the wrong criteria (comparing artifactId with groupId and vice versa).
+","Bug-fix"
+"6","grails-maven","a82c94d74e1bee5af709117a7a89b36643c2cd18","fix for MAVEN-243 ""Unable to deploy Grails 2.3.8 application build with grails-maven 2.4.1 plugin""
+","Bug-fix"
+"7","grails-maven","826adf7d9754484cffa4b167cb2b46fc8f819797","Make the maven dependencies provided
+","Bug-fix"
+"8","grails-maven","64b7ccabba358e3760daa6a2fc26d7df075e4bbd","Merge pull request #44 from DealerDotCom/fix-pluginname
+","Bug-fix"
+"9","grails-maven","e2b530af6f2d00719b4e0a659b357ab7d5c01701","fix regression around how plugin names are identified
+","Bug-fix"
+"10","grails-maven","7fa3160c8f224d2ec4619ac53f4535f6a7156bce","fix spring loaded message
+","Bug-fix"
+"11","grails-maven","d38519eeb55f0e5cdb1d9575f884fc962f37e0fd","fix broken grails:create-pom command
+","Bug-fix"
+"12","grails-maven","138fce8fc18c10f03933658ef24600c38f86534c","fix scope handling for compile+runtime
+","Bug-fix"
+"13","grails-maven","269ea483f914726d3b4705adb9f5109a4009b219","Change dependency resolution logic to use Aether and make plugin require Maven 3.1+
+","Bug-fix"
+"14","grails-maven","4401cab947d8553d69e7f27b7c8f6600280a3ed5","initial refactor to use Aether (not working yet)
+","Bug-fix"
+"15","grails-maven","6da42b49a5abbad8ff32373502ad7c8f264db9bf","Merge pull request #42 from jdpgrailsdev/fix-test-app
+","Bug-fix"
+"16","grails-maven","84413251dc84c174e295e7a665166bf06e99b291","Remove extra call to TestApp.
+","Bug-fix"
+"17","grails-maven","7d6dc808dd6dcf33ac46f1a49258a252ff91fe59","fix for MAVEN-222 mvn dependency exclusions are ignored
+","Bug-fix"
+"18","grails-maven","1641470bcb7cd0cb0903aa6763d485c2ce03f6b8","#MAVEN-221 - fixes bug with testing any REST Url Mappings. Specifically, the Maven classpath was no longer being forwarded along to Gradle causing some configuration issues.
+","Bug-fix"
+"19","grails-maven","4a724c782f5c4a872faea7668d0d29de32146405","fix for MAVEN-219 ""Grails 2.3.0 WAR file created from maven does not include plugins""
+","Bug-fix"
+"20","grails-maven","757a09e7173b312a28be92784d2f5fbaf6efd9ab","restore signature handling
+","Bug-fix"
+"21","grails-maven","f776517cf665dffb7ada5287b95550b0a5277ab0","Fixed the springloaded issues
+","Bug-fix"
+"22","grails-maven","cef9ba3065c47082c5871ba38d898862636a5675","Fixed documentation for MvnTest since integration tests does not come into play anymore
+","Bug-fix"

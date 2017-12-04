@@ -1,20 +1,39 @@
-"","project","hash","label"
-"3830","ZombieLink","e41e40e5396af26b311511274c018d081454481c","Bug-fix"
-"3859","ZombieLink","2ea682c106ad823cccfeb637218160253b4f6db9","Bug-fix"
-"3886","ZombieLink","7f0b15186330ba911c786b06a85617be988b6bc5","Bug-fix"
-"3891","ZombieLink","811538c5d320a7d8bfc61ef5cd238071910c4104","Bug-fix"
-"3897","ZombieLink","6d000dff90ec461619e908e6b419a909b8da1a6d","Bug-fix"
-"3899","ZombieLink","668ccb1ccea260d07d0a0451c564c805c3052fd0","Bug-fix"
-"3901","ZombieLink","880e849fd399dc71fd6a3ff95cd118e314783a74","Bug-fix"
-"3902","ZombieLink","90aefe21e587643546c94f193d48d992eb2df567","Bug-fix"
-"3903","ZombieLink","4c7d17f84f69e62dfbcf5fa2ebb0f47a57b899b6","Bug-fix"
-"3906","ZombieLink","33339388fe965a8965e59bf2b1b20a048ef53d90","Bug-fix"
-"3910","ZombieLink","f8e41fe88fe1e2799eb3ba5f6ce143460d97747d","Bug-fix"
-"3920","ZombieLink","0822218b91e5542ba32d123c830706a8055b3c5a","Bug-fix"
-"3925","ZombieLink","d85c448d3850dd06d46664d2d7a39898ef4200d1","Bug-fix"
-"3926","ZombieLink","1556cb688ee9d325d0cb44984372182f35ac5a0f","Bug-fix"
-"3932","ZombieLink","0e9601ccdb1e4c9c6e4e03542e0fbf87e121924e","Bug-fix"
-"3934","ZombieLink","3ceaf61d6ab5e82f534fc764e11ecc5f31da2ada","Bug-fix"
-"3936","ZombieLink","7141093b188e832e130635777c5895eb507bcdab","Bug-fix"
-"3940","ZombieLink","3c21bec64bd23cf64e91fd7f64c78c4e0da6d506","Bug-fix"
-"3944","ZombieLink","e58d762007040044247183ff0817e15d8fc3c529","Bug-fix"
+"","project","hash","content","label"
+"1","ZombieLink","e41e40e5396af26b311511274c018d081454481c","Fix TypeToken usage on JsonDeserializer (closes #23)
+","Bug-fix"
+"2","ZombieLink","2ea682c106ad823cccfeb637218160253b4f6db9","Refactor package and annotation names
+","Bug-fix"
+"3","ZombieLink","7f0b15186330ba911c786b06a85617be988b6bc5","Tweak explicit identification of static query and form params (issue #14)
+","Bug-fix"
+"4","ZombieLink","811538c5d320a7d8bfc61ef5cd238071910c4104","Refactor design for synchronous and asynchronous request execution
+","Bug-fix"
+"5","ZombieLink","6d000dff90ec461619e908e6b419a909b8da1a6d","Refactor design for proxy generation and invocation; restrict knowledge of validations
+","Bug-fix"
+"6","ZombieLink","668ccb1ccea260d07d0a0451c564c805c3052fd0","Infer a raw response when parser is unspecified; update test cases; fix bugs (issue #9)
+","Bug-fix"
+"7","ZombieLink","880e849fd399dc71fd6a3ff95cd118e314783a74","Refactor and isolate responsibilities for configuration management (issue #11)
+","Bug-fix"
+"8","ZombieLink","90aefe21e587643546c94f193d48d992eb2df567","Refactor and isolate responsibilities for configuration management (issue #11)
+","Bug-fix"
+"9","ZombieLink","4c7d17f84f69e62dfbcf5fa2ebb0f47a57b899b6","Refactor and isolate responsibilities for configuration management (issue #11)
+","Bug-fix"
+"10","ZombieLink","33339388fe965a8965e59bf2b1b20a048ef53d90","Refactor for reduced coupling (Ca, Ce)
+","Bug-fix"
+"11","ZombieLink","f8e41fe88fe1e2799eb3ba5f6ce143460d97747d","Update test cases; fix bugs
+","Bug-fix"
+"12","ZombieLink","0822218b91e5542ba32d123c830706a8055b3c5a","Refactor packages [ci skip]
+","Bug-fix"
+"13","ZombieLink","d85c448d3850dd06d46664d2d7a39898ef4200d1","Update test cases; fix bugs
+","Bug-fix"
+"14","ZombieLink","1556cb688ee9d325d0cb44984372182f35ac5a0f","Add processor-chain aggregator; udpate proxy factory; remove deprecated request builders; update test cases and fix bugs (issue #6) (closes #8)
+","Bug-fix"
+"15","ZombieLink","0e9601ccdb1e4c9c6e4e03542e0fbf87e121924e","Tweak processor contracts; add a path parameter processor (breaks build) (issues #7, #8)
+","Bug-fix"
+"16","ZombieLink","3ceaf61d6ab5e82f534fc764e11ecc5f31da2ada","Refactor request processing contracts; add an entity processor (breaks build) (issues #6, #8)
+","Bug-fix"
+"17","ZombieLink","7141093b188e832e130635777c5895eb507bcdab","Abandon strict param population in favor of explicit identification (closes #5)
+","Bug-fix"
+"18","ZombieLink","3c21bec64bd23cf64e91fd7f64c78c4e0da6d506","Fix javadoc on POSTParamPopulator (issue #5) [ci skip]
+","Bug-fix"
+"19","ZombieLink","e58d762007040044247183ff0817e15d8fc3c529","Accept all 2xx type response codes as successful operations (fixes #3) [ci skip]
+","Bug-fix"

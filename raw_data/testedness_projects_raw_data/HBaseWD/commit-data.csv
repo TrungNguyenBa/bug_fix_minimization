@@ -1,2 +1,3 @@
-"","project","hash","label"
-"892","HBaseWD","3bc49c9f6e5a75b19719793e13c24dc969d3c291","Bug-fix"
+"","project","hash","content","label"
+"1","HBaseWD","3bc49c9f6e5a75b19719793e13c24dc969d3c291","HBASEWD-17: Wrong interval pairs when end key is empty in original scan
+","Bug-fix"

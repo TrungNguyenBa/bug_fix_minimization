@@ -1,7 +1,12 @@
-"","project","hash","label"
-"235","elasticsearch-jetty","22b67aca5dbc382c1164af319351890867fbab15","Bug-fix"
-"241","elasticsearch-jetty","5091f46231d59748353560ebab899b4fee70be91","Bug-fix"
-"256","elasticsearch-jetty","2bcec9771a1a3f1162e35f3f8cf2beb215657a4e","Bug-fix"
-"266","elasticsearch-jetty","bec868a31466861af8c7929ee8c12d3da11798da","Bug-fix"
-"269","elasticsearch-jetty","2a973b9c3885ee4b53da79411d4b9930c2dd6bf9","Bug-fix"
-"271","elasticsearch-jetty","2bb50d4ffa249d45a9b96ba658f77f3fe3f05d6c","Bug-fix"
+"","project","hash","content","label"
+"1","elasticsearch-jetty","22b67aca5dbc382c1164af319351890867fbab15","[#eng-6544] make the tests pass with es 1.2.1
+","Bug-fix"
+"2","elasticsearch-jetty","5091f46231d59748353560ebab899b4fee70be91","Attempt to fix sonian/elasticsearch-jetty#40
+","Bug-fix"
+"3","elasticsearch-jetty","2bcec9771a1a3f1162e35f3f8cf2beb215657a4e","[#eng-5593] bump to 0.90.10-SNAPSHOT
+","Bug-fix"
+"4","elasticsearch-jetty","bec868a31466861af8c7929ee8c12d3da11798da","[#eng-3896] Wall hack to work around composing a non-public method.
+","Bug-fix"
+"5","elasticsearch-jetty","2a973b9c3885ee4b53da79411d4b9930c2dd6bf9","Update README to correct installation instructions; fixes #33
+","Bug-fix"
+"6","elasticsearch-jetty","2bb50d4ffa249d45a9b96ba658f77f3fe3f05d6c","Fix NPE for boundAddress() in HttpServerTransports","Bug-fix"

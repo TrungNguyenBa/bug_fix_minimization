@@ -1,4 +1,7 @@
-"","project","hash","label"
-"3089","Rythm","45c08af520609204f1435f907010a7c708c0697f","Bug-fix"
-"3092","Rythm","817d7828d516579c7de964137d76706f41c8de58","Bug-fix"
-"3094","Rythm","d8f6af2c2cb19f0f13ece119a0313f66af3af1f9","Bug-fix"
+"","project","hash","content","label"
+"1","Rythm","45c08af520609204f1435f907010a7c708c0697f","Created a wrapper view (RhythmicFrameLayout) that can be used to easily add grids to view hierarchy. TBD: fix invalidation issue
+","Bug-fix"
+"2","Rythm","817d7828d516579c7de964137d76706f41c8de58","A commit before renaming. Small changes here and there
+","Bug-fix"
+"3","Rythm","d8f6af2c2cb19f0f13ece119a0313f66af3af1f9","Made the structure and working proof of concept
+","Bug-fix"

@@ -56,7 +56,7 @@ crush-matrix \
 
 aggregate-mutant-susps-by-stmt \
   --accumulator "$BEST_MBFL_AGGREGATE_DEFN" --mutants "$MUTANTS" \
-  --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+  --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
   --loaded-classes "$DEFECTS4J_HOME/framework/projects/$PROJECT/loaded_classes/$BUG.src" \
   --mutant-susps "$MUTANT_SUSPS_FILE" \
   --output "$MBFL_STMT_SUSPS_FILE" || exit 1
@@ -83,7 +83,7 @@ crush-matrix \
 MRSBFL_STMT_SUSPS="$(pwd)/stmt-susps.csv"
 aggregate-mutant-susps-by-stmt \
   --accumulator "$BEST_MBFL_AGGREGATE_DEFN" --mutants "$MUTANTS" \
-  --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+  --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
   --loaded-classes "$DEFECTS4J_HOME/framework/projects/$PROJECT/loaded_classes/$BUG.src" \
   --mutant-susps 'mutant-susps.csv' \
   --output "$MRSBFL_STMT_SUSPS" || exit 1
@@ -91,7 +91,7 @@ aggregate-mutant-susps-by-stmt \
 LINE_SUSPS="$(pwd)/line-susps.csv"
 stmt-susps-to-line-susps \
   --stmt-susps "$MRSBFL_STMT_SUSPS" \
-  --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+  --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
   --output 'line-susps.csv'
 
 for SCORING_SCHEME in first last mean median; do
@@ -126,7 +126,7 @@ crush-matrix \
 MCBFL_STMT_SUSPS="$(pwd)/stmt-susps.csv"
 aggregate-mutant-susps-by-stmt \
   --accumulator "$BEST_MBFL_AGGREGATE_DEFN" --mutants "$MUTANTS" \
-  --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+  --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
   --loaded-classes "$DEFECTS4J_HOME/framework/projects/$PROJECT/loaded_classes/$BUG.src" \
   --mutant-susps 'mutant-susps.csv' \
   --output "$MCBFL_STMT_SUSPS" || exit 1
@@ -134,7 +134,7 @@ aggregate-mutant-susps-by-stmt \
 LINE_SUSPS="$(pwd)/line-susps.csv"
 stmt-susps-to-line-susps \
   --stmt-susps "$MCBFL_STMT_SUSPS" \
-  --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+  --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
   --output "$LINE_SUSPS"
 
 for SCORING_SCHEME in first last mean median; do
@@ -173,7 +173,7 @@ for TECHNIQUE in 'failover' 'susp-averaging' 'susp-maxing'; do
       --output "$STMT_SUSPS"
     stmt-susps-to-line-susps \
       --stmt-susps "$STMT_SUSPS" \
-      --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+      --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
       --output "$LINE_SUSPS"
 
     for SCORING_SCHEME in first last mean median; do

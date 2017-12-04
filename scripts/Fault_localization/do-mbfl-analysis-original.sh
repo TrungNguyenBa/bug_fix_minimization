@@ -79,14 +79,14 @@ for PARTITIONER in passfail all type type+message type+message+location exact; d
           STMT_SUSPS_FILE="$(pwd)/stmt-susps.txt"
           aggregate-mutant-susps-by-stmt \
                     --accumulator "$AGGREGATOR" --mutants "$MUTANTS" \
-                    --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+                    --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
                     --loaded-classes "$DEFECTS4J_HOME/framework/projects/$PROJECT/loaded_classes/$BUG.src" \
                     --mutant-susps "$MUTANT_SUSPS_FILE" \
                     --output "$STMT_SUSPS_FILE" || exit 1
 
           LINE_SUSPS_FILE=$(pwd)/line-susps.txt
           stmt-susps-to-line-susps --stmt-susps "$STMT_SUSPS_FILE" \
-                                   --source-code-lines "$HERE/source-code-lines/$PROJECT-${BUG}b.source-code.lines" \
+                                   --source-code-lines "$HERE/source-code-lines-original/$PROJECT-${BUG}b.source-code.lines" \
                                    --output "$LINE_SUSPS_FILE"
           for SCORING_SCHEME in first last mean median; do
             if [ "$RESTRICTIONS_FILE" ]; then check-restrictions "$RESTRICTIONS_FILE" --scoring-scheme "$SCORING_SCHEME" || continue; fi

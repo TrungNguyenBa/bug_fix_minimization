@@ -1,29 +1,57 @@
-"","project","hash","label"
-"1718","mongo-java-server","cc0ea865f99ab869064f0f85d35be2de235f8020","Bug-fix"
-"1719","mongo-java-server","dbdd88fb5b2e7957c37d1c50e6fba9b7d6ee50a0","Bug-fix"
-"1726","mongo-java-server","1c7ada5e7fc219cda08838d6075b6adf02b1c3dd","Bug-fix"
-"1732","mongo-java-server","375fe5546b7431bcdd7b979ddd450bb3fa6be71a","Bug-fix"
-"1735","mongo-java-server","8f12144455ad8f88f14076186eb89400fb30542c","Bug-fix"
-"1739","mongo-java-server","2c06721ce354cba5f6e30b97a776ab57774ee2e0","Bug-fix"
-"1742","mongo-java-server","114ff23c68eb1e2b80484a2e7bb516e25be4dd97","Bug-fix"
-"1745","mongo-java-server","78bf0c5d48d0900322f000e6fc34f3222314e82b","Bug-fix"
-"1746","mongo-java-server","2fab49195700162d629b41333fb3ac927e38fd00","Bug-fix"
-"1751","mongo-java-server","3cdf59ba301919225505b7b0898ded0df8e86ee9","Bug-fix"
-"1752","mongo-java-server","cc2752ca7341392c950ef8e8c9c870029b33c433","Bug-fix"
-"1762","mongo-java-server","9292681553d9550837b5a2af7c164728aa4b85b1","Bug-fix"
-"1765","mongo-java-server","2a216ea012831306e52e6c022f41dac6db432925","Bug-fix"
-"1776","mongo-java-server","35d2d90fb798daaaa1bb191d46f3c1dc777a6deb","Bug-fix"
-"1779","mongo-java-server","d65d7dceec0859808bbd16508994d360efa70b31","Bug-fix"
-"1795","mongo-java-server","c22c7399d6f76b701beb547da4ff04d259a87117","Bug-fix"
-"1800","mongo-java-server","c0e0f24a2fa0b2168fc98cec2e5a5b60d2c1b04f","Bug-fix"
-"1801","mongo-java-server","df6facbd2c44d51e6e5944a9b15f448ed39a335c","Bug-fix"
-"1803","mongo-java-server","b7524850161c32c972fa56afdca16cb3f44d1e54","Bug-fix"
-"1809","mongo-java-server","4e47245b67be24db9d112da29f49271cd16eb723","Bug-fix"
-"1813","mongo-java-server","f03f5b9d4354cabe95dc93000cf4dd20d7b19af0","Bug-fix"
-"1814","mongo-java-server","78f179212a6335cf99cd4ababde161dd61f04d17","Bug-fix"
-"1817","mongo-java-server","ef97662a64e1a68ba3fa4b1296a0f6f73d54c747","Bug-fix"
-"1825","mongo-java-server","bc55affa58dffde448fc3bd09182591e8b9830cd","Bug-fix"
-"1826","mongo-java-server","50aad9de36e1ca711ab3c01d55187a14f3ff3013","Bug-fix"
-"1830","mongo-java-server","e8c08ff201e8cb9f9cbfcb33e223559c256aeee9","Bug-fix"
-"1832","mongo-java-server","6564dea99ec4b3f892e21ef83001a4c598d450f8","Bug-fix"
-"1838","mongo-java-server","f3651c806471d8a4dca344fa709dc4a643b84195","Bug-fix"
+"","project","hash","content","label"
+"1","mongo-java-server","cc0ea865f99ab869064f0f85d35be2de235f8020","cleanup duplicate
+","Bug-fix"
+"2","mongo-java-server","dbdd88fb5b2e7957c37d1c50e6fba9b7d6ee50a0","fix for JDK6
+","Bug-fix"
+"3","mongo-java-server","1c7ada5e7fc219cda08838d6075b6adf02b1c3dd","fix $pull operator. closes #20
+","Bug-fix"
+"4","mongo-java-server","375fe5546b7431bcdd7b979ddd450bb3fa6be71a","fix unit test
+","Bug-fix"
+"5","mongo-java-server","8f12144455ad8f88f14076186eb89400fb30542c","fix field selection. closes #16
+","Bug-fix"
+"6","mongo-java-server","2c06721ce354cba5f6e30b97a776ab57774ee2e0","fix maven groupId of subprojects #14
+","Bug-fix"
+"7","mongo-java-server","114ff23c68eb1e2b80484a2e7bb516e25be4dd97","implement $rename operator
+","Bug-fix"
+"8","mongo-java-server","78bf0c5d48d0900322f000e6fc34f3222314e82b","fix javadoc
+","Bug-fix"
+"9","mongo-java-server","2fab49195700162d629b41333fb3ac927e38fd00","fix backend tests on jdk 6
+","Bug-fix"
+"10","mongo-java-server","3cdf59ba301919225505b7b0898ded0df8e86ee9","README: fix indentation
+","Bug-fix"
+"11","mongo-java-server","cc2752ca7341392c950ef8e8c9c870029b33c433","README: fix H2 backend example
+","Bug-fix"
+"12","mongo-java-server","9292681553d9550837b5a2af7c164728aa4b85b1","avoid test name conflict
+","Bug-fix"
+"13","mongo-java-server","2a216ea012831306e52e6c022f41dac6db432925","fix warnings
+","Bug-fix"
+"14","mongo-java-server","35d2d90fb798daaaa1bb191d46f3c1dc777a6deb","fix queries for binary data. closes #12
+","Bug-fix"
+"15","mongo-java-server","d65d7dceec0859808bbd16508994d360efa70b31","Avoid looking into subdocument for query. ref #9
+","Bug-fix"
+"16","mongo-java-server","c22c7399d6f76b701beb547da4ff04d259a87117","define compile encoding to be UTF-8
+","Bug-fix"
+"17","mongo-java-server","c0e0f24a2fa0b2168fc98cec2e5a5b60d2c1b04f","move QueryOperator to the right source directory
+","Bug-fix"
+"18","mongo-java-server","df6facbd2c44d51e6e5944a9b15f448ed39a335c","Fix query matcher for negative $in queries. Closes #7.
+","Bug-fix"
+"19","mongo-java-server","b7524850161c32c972fa56afdca16cb3f44d1e54","adjust the test timeout in the hope to make it less flaky
+","Bug-fix"
+"20","mongo-java-server","4e47245b67be24db9d112da29f49271cd16eb723","cleanup and avoid deprecation warning
+","Bug-fix"
+"21","mongo-java-server","f03f5b9d4354cabe95dc93000cf4dd20d7b19af0","make MongoServer.getLocalAddress() public. Closes #2.
+","Bug-fix"
+"22","mongo-java-server","78f179212a6335cf99cd4ababde161dd61f04d17","type safety
+","Bug-fix"
+"23","mongo-java-server","ef97662a64e1a68ba3fa4b1296a0f6f73d54c747","fix package of MemoryBackendTest
+","Bug-fix"
+"24","mongo-java-server","bc55affa58dffde448fc3bd09182591e8b9830cd","fix typo in readme
+","Bug-fix"
+"25","mongo-java-server","50aad9de36e1ca711ab3c01d55187a14f3ff3013","Cleanup and fix projection of subdocuments.
+","Bug-fix"
+"26","mongo-java-server","e8c08ff201e8cb9f9cbfcb33e223559c256aeee9","Quick fix for dot notation projection
+","Bug-fix"
+"27","mongo-java-server","6564dea99ec4b3f892e21ef83001a4c598d450f8","refactor BSON decoder
+","Bug-fix"
+"28","mongo-java-server","f3651c806471d8a4dca344fa709dc4a643b84195","copy two unit tests from https://github.com/foursquare/fongo/issues/28
+","Bug-fix"

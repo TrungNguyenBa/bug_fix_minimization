@@ -109,7 +109,7 @@ for class in $mod_classes; do
     echo "project: $PID bug : $BID file_name is $file_name"
     # Diff between buggy and fixed -- only show line numbers for removed and
     # added lines in the buggy version
-    diff -w -B -b \
+    diff  \
         --unchanged-line-format='' \
         --old-line-format="$file_name#%dn#%l%c'\12'" \
         --new-group-format="$file_name#%df#FAULT_OF_OMISSION%c'\12'" \

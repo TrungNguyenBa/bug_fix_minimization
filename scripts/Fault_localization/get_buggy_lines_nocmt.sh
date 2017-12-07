@@ -110,10 +110,13 @@ for class in $mod_classes; do
     echo "project: $PID bug : $BID file_name is $file_name"
     # Diff between buggy and fixed -- only show line numbers for removed and
     # added lines in the buggy version
+    file_name2=${file_name::-5}
+    file_name2=$(echo $file_name2 | tr '.' '/').java
+    echo "project: $PID bug : $BID file_name is $file_name2"
     diff -w -B -b \
         --unchanged-line-format='' \
-        --old-line-format="$file_name#%dn#%l%c'\12'" \
-        --new-group-format="$file_name#%df#FAULT_OF_OMISSION%c'\12'" \
+        --old-line-format="$file_name2#%dn#%l%c'\12'" \
+        --new-group-format="$file_name2#%df#FAULT_OF_OMISSION%c'\12'" \
         "$work_dir/${BID}_${file_name}_faulted_nospcm_" "$work_dir/${BID}_${file_name}_fixed_nospcm_" >> "$TMP_LINES"
 done
 

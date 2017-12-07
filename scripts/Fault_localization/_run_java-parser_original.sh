@@ -2,13 +2,13 @@
 #$ -l h_rt=8:00:00
 #$ -l mem=4G
 #$ -l rmem=2G
-module load apps/java/1.7.0u55
+#module load apps/java/1.7.0u55
 export MALLOC_ARENA_MAX=1
 export _JAVA_OPTIONS="-XX:MaxHeapSize=256m -Xmx1024m"
 
 # get node name. if something goes wrong this will be useful to inform
 # iceberg's admins
-hostname;
+#hostname;
 
 #
 # Print error message and exit
@@ -44,10 +44,10 @@ for bf in b f; do
   echo "* Checking out $pid-${bid}${bf}"
   $D4J_HOME/framework/bin/defects4j checkout -p $pid -v ${bid}${bf} -w $TMP_DIR || die "Checkout failed!"
 
-  line=$(head -${BID} $D4J_HOME/framework/projects/$PID/commit-db | tail -1 )
+  line=$(head -${bid} $D4J_HOME/framework/projects/$pid/commit-db | tail -1 )
   faulted_hash=$(echo $line | cut -f2 -d",")
   fixed_hash=$(echo $line | cut -f3 -d",")
-  src_dir=$(grep "d4j.dir.src.classes=" $TMP_DIR /defects4j.build.properties | cut -f2 -d'=')
+  src_dir=$(grep "d4j.dir.src.classes=" $TMP_DIR/defects4j.build.properties | cut -f2 -d'=')
   
   if [[ b == "f" ]]; then
     git -C $TMP_DIR checkout $faulted_hash -- $src_dir
@@ -73,8 +73,8 @@ for bf in b f; do
       "$output_dir/$pid-${bid}${bf}.$EXT" || die "Parsing failed!"
 
   if [ -f "$output_dir/$pid-${bid}${bf}.$EXT" ]; then
-    num_lines=`wc -l "$output_dir/$pid-${bid}${bf}.$EXT" | cut -f1 -d' '`
-    if [ "$num_lines" -eq 0 ]; then
+    num_lines=`cat "$output_dir/$pid-${bid}${bf}.$EXT" | wc -l `
+    if [[ "$num_lines" -eq 0 ]]; then
       echo "[WARN] File $output_dir/$pid-${bid}${bf}.$EXT is empty!"
     fi
   else

@@ -40,9 +40,9 @@ COVERAGE_MATRIX=$(greadlink --canonicalize "$4"); ensure-file-exists "$COVERAGE_
 if [[ "$COVERAGE_MATRIX" = *.gz ]]; then COVERAGE_MATRIX=${COVERAGE_MATRIX%.gz}; zcat <$COVERAGE_MATRIX.gz >$COVERAGE_MATRIX || die 'unable to unzip coverage matrix'; fi
 STATEMENT_NAMES=$(greadlink --canonicalize "$5"); ensure-file-exists "$STATEMENT_NAMES"
 if [[ "$STATEMENT_NAMES" = *.gz ]]; then STATEMENT_NAMES=${STATEMENT_NAMES%.gz}; zcat <$STATEMENT_NAMES.gz >$STATEMENT_NAMES || die 'unable to unzip spectra'; fi
-OUTCOME_MATRIX=$(greadlink --canonicalize "$6"); ensure-file-exists "$OUTCOME_MATRIX"
-if [[ "$OUTCOME_MATRIX" = *.gz ]]; then OUTCOME_MATRIX=${OUTCOME_MATRIX%.gz}; zcat <$OUTCOME_MATRIX.gz >$OUTCOME_MATRIX || die 'unable to unzip killmap'; fi
-MUTANTS_LOG=$(greadlink --canonicalize "$7"); ensure-file-exists "$MUTANTS_LOG"
+#OUTCOME_MATRIX=$(greadlink --canonicalize "$6"); ensure-file-exists "$OUTCOME_MATRIX"
+#if [[ "$OUTCOME_MATRIX" = *.gz ]]; then OUTCOME_MATRIX=${OUTCOME_MATRIX%.gz}; zcat <$OUTCOME_MATRIX.gz >$OUTCOME_MATRIX || die 'unable to unzip killmap'; fi
+#MUTANTS_LOG=$(greadlink --canonicalize "$7"); ensure-file-exists "$MUTANTS_LOG"
 WORKING_DIR=$8
 OUTPUT=$9
 

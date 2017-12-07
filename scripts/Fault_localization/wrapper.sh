@@ -12,15 +12,16 @@ if [[ $1 == "--nobl" ]]; then bl=1; fi
 if [[ $2 == "--nosl" ]]; then sl=1; fi
 
 #populate the analysis scripts
-if [[ bl -eq 0 ]];then ./scripts_populate.sh;fi
+./scripts_populate.sh
 echo "finish populate scripts"
 echo 
-if [[ nl -eq 0 ]]; then 
-	echo "moving into $FL_HOME/analysis/java-parse"
+if [[ sl -eq 0 ]]; then 
+	echo "moving into $FL_HOME/analysis/java-parser"
+	cd $FL_HOME/analysis/java-parser
 	if (ls source-code-lines-original > /dev/null 2>/dev/null) ; then
 		rm -rf source-code-lines-original
 	fi
-	if ! ( run_java-parser_original.sh 2>/dev/null) ; then cd $current; die "java-parse failed"; fi
+	if ! ( ./run_java-parser_original.sh ) ; then cd $current; die "java-parse failed"; fi
 	cp -r source-code-lines-original $FL_HOME/analysis/pipeline-scripts/.
 fi
 #moving into FL_HOME analysis scripts folder
@@ -78,21 +79,37 @@ for p in $projects; do
 	for i in $(seq 1 $counts); do
 		echo "perform analysis for Project $p, Bug $i"
 		#extracting one by one due to storage limit
-		if ! (tar xvf $FL_HOME/real-faults-data/data/$p/$i/*h-killmap-files.tar.gz -C $FL_HOME/real-faults-data/ 2> /dev/null); then echo "ERROR untar killmap ($p $i)"; continue; fi
+		#if ! (tar xvf $FL_HOME/real-faults-data/data/$p/$i/*h-killmap-files.tar.gz -C $FL_HOME/real-faults-data/ 2> /dev/null); then echo "ERROR untar killmap ($p $i)"; continue; fi
 
-		if ! (tar xvf $FL_HOME/real-faults-data/data/$p/$i/*gzoltar-files.tar.gz -C $FL_HOME/real-faults-data/ 2> /dev/null); then echo "ERROR untar gzoltar ($p $i)"; continue; fi
+		if ! (tar xvf $FL_HOME/real-faults-data/data/$p/$i/*gzoltar-files.tar.gz -C $FL_HOME/real-faults-data/ 2> /dev/null); then 
+			echo "ERROR untar gzoltar ($p $i)"
+			# echo "Re-do gzoltar "  
+			# $FL_HOME/gzoltar/run_gzoltar.sh $p $i $FL_HOME/real-faults-data/ developer
+			continue
+		fi
 
-		if ! (gunzip $FL_HOME/real-faults-data/killmaps/$p/$i/killmap.csv.gz 2> /dev/null) ; then echo "ERROR gunzip killmap ($p $i)"; continue; fi
+		#run gzoltar for non-minimized version
+		if ! (ls $FL_HOME/real-faults-data/gzoltars-original/gzoltars/$p/$i > /dev/null 2> /dev/null);then 
+			$FL_HOME/gzoltar/run_gzoltar_original.sh $p $i $FL_HOME/real-faults-data/gzoltars-original/ developer
+		fi
+		#if ! (gunzip $FL_HOME/real-faults-data/killmaps/$p/$i/killmap.csv.gz 2> /dev/null) ; then echo "ERROR gunzip killmap ($p $i)"; continue; fi
 
 		cov_dir=$FL_HOME/real-faults-data/gzoltars/$p/$i
 		km_dir=$FL_HOME/real-faults-data/killmaps/$p/$i
+
+		#create empty files for km_dir, just to bypass do-full-analysis checking
+		if ! (ls $km_dir > /dev/null 2> /dev/null) ; then
+			mkdir -p $km_dir
+			touch $km_dir/killmap.csv
+			touch $km_dir/mutants.log 
+		fi
 		#perform analysis for minimized version
 		echo "minimized version"
 		if ! (./do-full-analysis $p $i developer \
 						      $cov_dir/matrix $cov_dir/spectra \
 						      $km_dir/killmap.csv $km_dir/mutants.log \
 						      /tmp/scoring/$p/$i/developer \
-						      $FL_HOME/analysis/pipeline-scripts/Scores/minimized/scores.csv > /dev/null); then die "Error: do-full-analysis" ; fi
+						      $FL_HOME/analysis/pipeline-scripts/Scores/minimized/scores.csv  > /dev/null 2> /dev/null); then die "Error: do-full-analysis" ; fi
 		if ! (ls $FL_HOME/analysis/pipeline-scripts/Scores/minimized/master_scores.csv > /dev/null 2> /dev/null); then 
 			cp  $FL_HOME/analysis/pipeline-scripts/Scores/minimized/scores.csv   $FL_HOME/analysis/pipeline-scripts/Scores/minimized/master_scores.csv
 		else
@@ -118,11 +135,13 @@ for p in $projects; do
 		#perform analysis for original version
 		echo
 		echo "original version"
+		cov_dir=$FL_HOME/real-faults-data/gzoltars-original/gzoltars/$p/$i
+		echo $cov_dir
 		if ! (./do-full-analysis-original $p $i developer \
 									      $cov_dir/matrix $cov_dir/spectra \
 						      			  $km_dir/killmap.csv $km_dir/mutants.log \
 									      /tmp/scoring/$p/$i/developer \
-									      $FL_HOME/analysis/pipeline-scripts/Scores/original/scores.csv > /dev/null)  ; then die "Error: do-full-analysis-original"; fi
+									      $FL_HOME/analysis/pipeline-scripts/Scores/original/scores.csv > /dev/null 2> /dev/null )  ; then die "Error: do-full-analysis-original"; fi
 		if ! (ls $FL_HOME/analysis/pipeline-scripts/Scores/original/master_scores.csv > /dev/null 2> /dev/null); then 
 			cp  $FL_HOME/analysis/pipeline-scripts/Scores/original/scores.csv   $FL_HOME/analysis/pipeline-scripts/Scores/original/master_scores.csv
 		else
@@ -133,8 +152,9 @@ for p in $projects; do
 		#cleaning due to store limit
 		rm -r $FL_HOME/real-faults-data/killmaps/$p/$i
 		rm -r $FL_HOME/real-faults-data/gzoltars/$p/$i
+		rm -r $FL_HOME/real-faults-data/gzoltars-original/gzoltars/$p/$i
 		echo "Project $p, Bug $i finish"
-
+		#die "no reason"
 		echo
 	done
 	echo "finish analysis for $p"

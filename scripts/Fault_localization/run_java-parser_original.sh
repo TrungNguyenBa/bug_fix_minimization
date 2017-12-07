@@ -14,9 +14,9 @@ die() {
 [ "$D4J_HOME" != "" ] || die "D4J_HOME is not set!"
 
 ## compile utility
-mvn clean package || die "Compilation of the java-parser failed!"
+#mvn clean package || die "Compilation of the java-parser failed!"
 
-JAVA_PARSER_JAR="$PWD/target/java-parser-0.0.1-SNAPSHOT-jar-with-dependencies.jar"
+export JAVA_PARSER_JAR="$PWD/target/java-parser-0.0.1-SNAPSHOT-jar-with-dependencies.jar"
 # Check whether JAVA_PARSER_JAR is set and exists
 if [ ! -f "$JAVA_PARSER_JAR" ]; then
   die "There is no $JAVA_PARSER_JAR file"
@@ -33,9 +33,9 @@ for pid in Closure Lang Math Time; do
   bids=$(cat $dir_project/commit-db | wc -l)
 
   # Iterate over all bugs (real and artificial) for this project
-  for bid in $bids; do
+  for bid in $(seq 1 $bids); do
     echo "Project $pid-${bid} ..."
-    qsub "$PWD/_run_java-parser.sh" $pid $bid $OUTPUT_DIR
+    "$PWD/_run_java-parser_original.sh" $pid $bid $OUTPUT_DIR
   done
 done
 

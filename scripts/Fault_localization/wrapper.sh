@@ -32,9 +32,8 @@ cd $FL_HOME/analysis/pipeline-scripts/
 
 if (ls $FL_HOME/real-faults-data/killmaps > /dev/null 2> /dev/null); then rm -r $FL_HOME/real-faults-data/killmaps; fi
 if (ls $FL_HOME/real-faults-data/gzoltars > /dev/null 2> /dev/null); then rm -r $FL_HOME/real-faults-data/gzoltars; fi
-if (ls Scores > /dev/null 2> /dev/null); then rm -r Scores;fi
 if [[ bl -eq 0 ]]; then 
-	
+	if (ls Scores > /dev/null 2> /dev/null); then rm -r Scores;fi
 	if (ls buggy-lines > /dev/null 2> /dev/null ); then 
 		if (ls buggy-lines-backup > /dev/null 2> /dev/null); then 
 			rm -r buggy-lines 
@@ -71,12 +70,17 @@ for p in $projects; do
 
 	echo "-----"
 	counts=$(cat $D4J_HOME/framework/projects/$p/commit-db | wc -l)
+
+	ifirst=1
+	if [[ $p == "Closure" ]]; then
+		ifirst=59
+	fi
 	#iterating through bugs 	
 	if [[ $counts -gt 60 ]]; then
 		counts=60
 	fi
 
-	for i in $(seq 1 $counts); do
+	for i in $(seq $ifirst $counts); do
 		echo "perform analysis for Project $p, Bug $i"
 		#extracting one by one due to storage limit
 		#if ! (tar xvf $FL_HOME/real-faults-data/data/$p/$i/*h-killmap-files.tar.gz -C $FL_HOME/real-faults-data/ 2> /dev/null); then echo "ERROR untar killmap ($p $i)"; continue; fi
@@ -93,6 +97,10 @@ for p in $projects; do
 			$FL_HOME/gzoltar/run_gzoltar_original.sh $p $i $FL_HOME/real-faults-data/gzoltars-original/ developer
 		fi
 		#if ! (gunzip $FL_HOME/real-faults-data/killmaps/$p/$i/killmap.csv.gz 2> /dev/null) ; then echo "ERROR gunzip killmap ($p $i)"; continue; fi
+		if !(ls $FL_HOME/real-faults-data/gzoltars-original/gzoltars/$p/$i/matrix > /dev/null 2> /dev/null) || !(ls $FL_HOME/real-faults-data/gzoltars-original/gzoltars/$p/$i/spectra > /dev/null 2> /dev/null); then
+			echo "ERROR $FL_HOME/real-faults-data/gzoltars-original/gzoltars/$p/$i/matrix or $FL_HOME/real-faults-data/gzoltars-original/gzoltars/$p/$i/spectra does not exist"
+			continue
+		fi
 
 		cov_dir=$FL_HOME/real-faults-data/gzoltars/$p/$i
 		km_dir=$FL_HOME/real-faults-data/killmaps/$p/$i

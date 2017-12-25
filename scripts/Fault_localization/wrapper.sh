@@ -32,8 +32,9 @@ cd $FL_HOME/analysis/pipeline-scripts/
 
 if (ls $FL_HOME/real-faults-data/killmaps > /dev/null 2> /dev/null); then rm -r $FL_HOME/real-faults-data/killmaps; fi
 if (ls $FL_HOME/real-faults-data/gzoltars > /dev/null 2> /dev/null); then rm -r $FL_HOME/real-faults-data/gzoltars; fi
+if (ls Scores > /dev/null 2> /dev/null); then rm -r Scores;fi
 if [[ bl -eq 0 ]]; then 
-	if (ls Scores > /dev/null 2> /dev/null); then rm -r Scores;fi
+	
 	if (ls buggy-lines > /dev/null 2> /dev/null ); then 
 		if (ls buggy-lines-backup > /dev/null 2> /dev/null); then 
 			rm -r buggy-lines 
@@ -72,13 +73,13 @@ for p in $projects; do
 	counts=$(cat $D4J_HOME/framework/projects/$p/commit-db | wc -l)
 
 	ifirst=1
-	if [[ $p == "Closure" ]]; then
-		ifirst=59
-	fi
-	#iterating through bugs 	
-	if [[ $counts -gt 60 ]]; then
-		counts=60
-	fi
+	# if [[ $p == "Closure" ]]; then
+	# 	ifirst=59
+	# fi
+	# #iterating through bugs 	
+	# if [[ $counts -gt 60 ]]; then
+	# 	counts=60
+	# fi
 
 	for i in $(seq $ifirst $counts); do
 		echo "perform analysis for Project $p, Bug $i"
@@ -87,8 +88,8 @@ for p in $projects; do
 
 		if ! (tar xvf $FL_HOME/real-faults-data/data/$p/$i/*gzoltar-files.tar.gz -C $FL_HOME/real-faults-data/ 2> /dev/null); then 
 			echo "ERROR untar gzoltar ($p $i)"
-			# echo "Re-do gzoltar "  
-			# $FL_HOME/gzoltar/run_gzoltar.sh $p $i $FL_HOME/real-faults-data/ developer
+			echo "Re-do gzoltar "  
+			$FL_HOME/gzoltar/run_gzoltar.sh $p $i $FL_HOME/real-faults-data/ developer
 			continue
 		fi
 
@@ -102,6 +103,7 @@ for p in $projects; do
 			continue
 		fi
 
+
 		cov_dir=$FL_HOME/real-faults-data/gzoltars/$p/$i
 		km_dir=$FL_HOME/real-faults-data/killmaps/$p/$i
 
@@ -111,6 +113,11 @@ for p in $projects; do
 			touch $km_dir/killmap.csv
 			touch $km_dir/mutants.log 
 		fi
+		
+		# create candidates files 
+		./create_candidates.sh $p $i buggy-lines
+		./create_candidates.sh $p $i buggy-lines-original
+
 		#perform analysis for minimized version
 		echo "minimized version"
 		if ! (./do-full-analysis $p $i developer \

@@ -3,6 +3,11 @@ die() {
     echo $1
     exit 1
 }
+if [[ $# > 1 ]]; then
+	die "something wrong bl populate"
+fi
+
+
 if ! (ls $BFM  > /dev/null) ; then
 	die "BFM not yet been set "
 fi
@@ -23,11 +28,11 @@ for p in $projects; do
 		echo "-----"
 		echo "Poulate buggy-lines folder: "
 		$FL_HOME/d4j_integration/get_buggy_lines.sh $p $i $FL_HOME/analysis/pipeline-scripts/buggy-lines
-		echo 
-		echo "Poulate buggy-lines-original folder: "
-		$FL_HOME/d4j_integration/get_buggy_lines_original.sh $p $i $FL_HOME/analysis/pipeline-scripts/buggy-lines-original
-		echo
-	 	echo "Poulate buggy-lines-nocmt folder: "
-		$FL_HOME/d4j_integration/get_buggy_lines_nocmt.sh $p $i $FL_HOME/analysis/pipeline-scripts/buggy-lines-nocmt
+		# echo 
+		# echo "Poulate buggy-lines-original folder: "
+		# $FL_HOME/d4j_integration/get_buggy_lines_original.sh $p $i $FL_HOME/analysis/pipeline-scripts/buggy-lines-original
+		# echo
+	 	# echo "Poulate buggy-lines-nocmt folder: "
+		# $FL_HOME/d4j_integration/get_buggy_lines_nocmt.sh $p $i $FL_HOME/analysis/pipeline-scripts/buggy-lines-nocmt
 	done
 done

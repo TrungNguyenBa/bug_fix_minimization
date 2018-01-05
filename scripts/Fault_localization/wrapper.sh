@@ -32,9 +32,8 @@ cd $FL_HOME/analysis/pipeline-scripts/
 
 if (ls $FL_HOME/real-faults-data/killmaps > /dev/null 2> /dev/null); then rm -r $FL_HOME/real-faults-data/killmaps; fi
 if (ls $FL_HOME/real-faults-data/gzoltars > /dev/null 2> /dev/null); then rm -r $FL_HOME/real-faults-data/gzoltars; fi
-if (ls Scores > /dev/null 2> /dev/null); then rm -r Scores;fi
 if [[ bl -eq 0 ]]; then 
-	
+	if (ls Scores > /dev/null 2> /dev/null); then rm -r Scores;fi
 	if (ls buggy-lines > /dev/null 2> /dev/null ); then 
 		if (ls buggy-lines-backup > /dev/null 2> /dev/null); then 
 			rm -r buggy-lines 
@@ -114,7 +113,7 @@ for p in $projects; do
 			touch $km_dir/mutants.log 
 		fi
 		
-		# create candidates files 
+# create candidates files 
 		./create_candidates.sh $p $i buggy-lines
 		./create_candidates.sh $p $i buggy-lines-original
 

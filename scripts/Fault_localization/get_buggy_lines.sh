@@ -118,7 +118,6 @@ for class in $mod_classes; do
         defects4j checkout -p$PID -v${BID}b -w$work_dir
         cp $work_dir/$src_dir/$file "$TMP/$PID-$BID_${class}_buggy"
     fi
-
     # Diff between buggy and fixed -- only show line numbers for removed and
     # added lines in the buggy version
     diff \

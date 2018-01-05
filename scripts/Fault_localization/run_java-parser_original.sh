@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+j#!/usr/bin/env bash
 
 PWD=`pwd`
 

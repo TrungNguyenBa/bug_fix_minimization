@@ -1,74 +1,119 @@
-minimized_scores<-read.csv("/Users/trung/Documents/Umass_rs/backup/no-omission/minimized_scores_noFOM.csv")
-original_scores<-read.csv("/Users/trung/Documents/Umass_rs/backup/no-omission/original_scores_noFOM.csv")
 
-minimized_scores <- unique(minimized_scores)
-original_scores <- unique(original_scores)
-if (nrow(minimized_scores) == nrow(original_scores)) {
-  print ("here")
-  Ochiai_m <- minimized_scores[minimized_scores$Formula == "ochiai" & minimized_scores$ScoringScheme == "first",]
-  Ochiai_non <- original_scores[original_scores$Formula == "ochiai" & original_scores$ScoringScheme == "first" ,]
-  Barinel_m <- minimized_scores[minimized_scores$Formula == "barinel" & minimized_scores$ScoringScheme == "first" ,]
-  Barinel_non <-original_scores[original_scores$Formula == "barinel" & original_scores$ScoringScheme == "first",]
-  Op2_m <- minimized_scores[minimized_scores$Formula == "opt2" & minimized_scores$ScoringScheme == "first",]
-  Op2_non <- original_scores[original_scores$Formula == "opt2" & original_scores$ScoringScheme == "first",]
-  DStar_m <- minimized_scores[minimized_scores$Formula == "dstar2" & minimized_scores$ScoringScheme == "first",]
-  DStar_non <-original_scores[original_scores$Formula == "dstar2"  & original_scores$ScoringScheme == "first",]
-  Tarantula_m <- minimized_scores[minimized_scores$Formula == "tarantula" & minimized_scores$ScoringScheme == "first",]
-  Tarantula_non <- original_scores[original_scores$Formula == "tarantula" & original_scores$ScoringScheme == "first",]
-  Muse_m <- minimized_scores[minimized_scores$Formula == "muse" & minimized_scores$ScoringScheme == "first" ,]
-  Muse_non <- original_scores[original_scores$Formula == "muse" & original_scores$ScoringScheme == "first",]
-  Jaccard_m <- minimized_scores[minimized_scores$Formula == "jaccard" & minimized_scores$ScoringScheme == "first",]
-  Jaccard_non <- original_scores[original_scores$Formula == "jaccard" & original_scores$ScoringScheme == "first",]
-  library(effsize)
-  #RQ1 evaluation
+
+print ("here")
+Ochiai_m <- minimized_scores[minimized_scores$Formula == "ochiai" ,]
+Ochiai_non <- original_scores[original_scores$Formula == "ochiai" ,]
+Barinel_m <- minimized_scores[minimized_scores$Formula == "barinel" ,]
+Barinel_non <- original_scores[original_scores$Formula == "barinel",]
+Op2_m <- minimized_scores[minimized_scores$Formula == "opt2" ,]
+Op2_non <- original_scores[original_scores$Formula == "opt2",]
+DStar_m <- minimized_scores[minimized_scores$Formula == "dstar2" ,]
+DStar_non <-original_scores[original_scores$Formula == "dstar2" ,]
+Tarantula_m <- minimized_scores[minimized_scores$Formula == "tarantula" ,]
+Tarantula_non <- original_scores[original_scores$Formula == "tarantula",]
+Muse_m <- minimized_scores[minimized_scores$Formula == "muse"  ,]
+Muse_non <- original_scores[original_scores$Formula == "muse",]
+Jaccard_m <- minimized_scores[minimized_scores$Formula == "jaccard" ,]
+Jaccard_non <- original_scores[original_scores$Formula == "jaccard",]
+library(effsize)
+#RQ1 evaluation
+
+
+#RQ2 evaluation
+
+#Ochiai > Tarantula
+#minimized
+print (length(Tarantula_m) == length(Ochiai_m))
+m1 <- t.test(Tarantula_m$ScoreWRTLoadedClasses,Ochiai_m$ScoreWRTLoadedClasses, paired = T)
+c1 <- cohen.d(Tarantula_m$ScoreWRTLoadedClasses,Ochiai_m$ScoreWRTLoadedClasses, paired = T)
+#Barinel > Ochiai 
+m2 <- t.test(Ochiai_m$ScoreWRTLoadedClasses,Barinel_m$ScoreWRTLoadedClasses, paired = T) 
+c2 <- cohen.d( Ochiai_m$ScoreWRTLoadedClasses,Barinel_m$ScoreWRTLoadedClasses, paired = T)
+#Barinel > Tarantula
+m3 <- t.test(Tarantula_m$ScoreWRTLoadedClasses,Barinel_m$ScoreWRTLoadedClasses, paired = T)
+c3 <- cohen.d(Tarantula_m$ScoreWRTLoadedClasses,Barinel_m$ScoreWRTLoadedClasses, paired = T)
+#Op2 > Ochiai
+print(nrow(Ochiai_m))
+m4 <- t.test(Ochiai_m$ScoreWRTLoadedClasses,Op2_m$ScoreWRTLoadedClasses, paired = T)
+c4 <- cohen.d(Ochiai_m$ScoreWRTLoadedClasses,Op2_m$ScoreWRTLoadedClasses, paired = T)
+#Op2 > Tarantula
+m5 <- t.test(Tarantula_m$ScoreWRTLoadedClasses,Op2_m$ScoreWRTLoadedClasses, paired = T)
+c5 <- cohen.d(Tarantula_m$ScoreWRTLoadedClasses,Op2_m$ScoreWRTLoadedClasses, paired = T)
+#DStar > Ochiai
+m6 <- t.test(Ochiai_m$ScoreWRTLoadedClasses,DStar_m$ScoreWRTLoadedClasses, paired = T)
+c6 <- cohen.d( Ochiai_m$ScoreWRTLoadedClasses,DStar_m$ScoreWRTLoadedClasses, paired = T)
+#DStar > Tarantula 
+m7 <- t.test(Tarantula_m$ScoreWRTLoadedClasses,DStar_m$ScoreWRTLoadedClasses, paired = T )
+c7 <- cohen.d(Tarantula_m$ScoreWRTLoadedClasses,DStar_m$ScoreWRTLoadedClasses, paired = T)
+Ccm <- c(c1["estimate"],c2["estimate"],c3["estimate"],c4["estimate"],c5["estimate"],c6["estimate"],c7["estimate"])
+Cpm <- c(m1["p.value"],m2["p.value"],m3["p.value"],m4["p.value"],m5["p.value"],m6["p.value"],m7["p.value"])
+
+
+
+# non-minimized
+m1 <- t.test(Tarantula_non$ScoreWRTLoadedClasses,Ochiai_non$ScoreWRTLoadedClasses, paired = T)
+c1 <- cohen.d(Tarantula_non$ScoreWRTLoadedClasses,Ochiai_non$ScoreWRTLoadedClasses, paired = T)
+#Barinel > Ochiai 
+m2 <- t.test(Ochiai_non$ScoreWRTLoadedClasses,Barinel_non$ScoreWRTLoadedClasses, paired = T) 
+c2 <- cohen.d( Ochiai_non$ScoreWRTLoadedClasses,Barinel_non$ScoreWRTLoadedClasses, paired = T)
+#Barinel > Tarantula
+m3 <- t.test(Tarantula_non$ScoreWRTLoadedClasses,Barinel_non$ScoreWRTLoadedClasses, paired = T)
+c3 <- cohen.d(Tarantula_non$ScoreWRTLoadedClasses,Barinel_non$ScoreWRTLoadedClasses, paired = T)
+#Op2 > Ochiai
+print(nrow(Ochiai_non))
+m4 <- t.test(Ochiai_non$ScoreWRTLoadedClasses,Op2_non$ScoreWRTLoadedClasses, paired = T)
+c4 <- cohen.d(Ochiai_non$ScoreWRTLoadedClasses,Op2_non$ScoreWRTLoadedClasses, paired = T)
+#Op2 > Tarantula
+m5 <- t.test(Tarantula_non$ScoreWRTLoadedClasses,Op2_non$ScoreWRTLoadedClasses, paired = T)
+c5 <- cohen.d(Tarantula_non$ScoreWRTLoadedClasses,Op2_non$ScoreWRTLoadedClasses, paired = T)
+#DStar > Ochiai
+m6 <- t.test(Ochiai_non$ScoreWRTLoadedClasses,DStar_non$ScoreWRTLoadedClasses, paired = T)
+c6 <- cohen.d( Ochiai_non$ScoreWRTLoadedClasses,DStar_non$ScoreWRTLoadedClasses, paired = T)
+#DStar > Tarantula 
+m7 <- t.test(Tarantula_non$ScoreWRTLoadedClasses,DStar_non$ScoreWRTLoadedClasses, paired = T )
+c7 <- cohen.d(Tarantula_non$ScoreWRTLoadedClasses,DStar_non$ScoreWRTLoadedClasses, paired = T)
+Ccnonm <- c(c1["estimate"],c2["estimate"],c3["estimate"],c4["estimate"],c5["estimate"],c6["estimate"],c7["estimate"])
+Cpnonm <- c(m1["p.value"],m2["p.value"],m3["p.value"],m4["p.value"],m5["p.value"],m6["p.value"],m7["p.value"])
+
+
+
+
+
+Ochiai_old <- old_scores[old_scores$Formula == "ochiai" ,]
+Barinel_old <- old_scores[old_scores$Formula == "barinel" ,]
+Op2_old <- old_scores[old_scores$Formula == "opt2" ,]
+DStar_old <- old_scores[old_scores$Formula == "dstar2" ,]
+Tarantula_old <- old_scores[old_scores$Formula == "tarantula" ,]
+Muse_old <- old_scores[old_scores$Formula == "muse"  ,]
+Jaccard_old <- old_scores[old_scores$Formula == "jaccard" ,]
+
+
+m1 <- t.test(Tarantula_old$ScoreWRTLoadedClasses,Ochiai_old$ScoreWRTLoadedClasses, paired = T)
+c1 <- cohen.d(Tarantula_old$ScoreWRTLoadedClasses,Ochiai_old$ScoreWRTLoadedClasses, paired = T)
+#Barinel > Ochiai 
+m2 <- t.test(Ochiai_old$ScoreWRTLoadedClasses,Barinel_old$ScoreWRTLoadedClasses, paired = T) 
+c2 <- cohen.d( Ochiai_old$ScoreWRTLoadedClasses,Barinel_old$ScoreWRTLoadedClasses, paired = T)
+#Barinel > Tarantula
+m3 <- t.test(Tarantula_old$ScoreWRTLoadedClasses,Barinel_old$ScoreWRTLoadedClasses, paired = T)
+c3 <- cohen.d(Tarantula_old$ScoreWRTLoadedClasses,Barinel_old$ScoreWRTLoadedClasses, paired = T)
+#Op2 > Ochiai
+print(nrow(Ochiai_old))
+m4 <- t.test(Ochiai_old$ScoreWRTLoadedClasses,Op2_old$ScoreWRTLoadedClasses, paired = T)
+c4 <- cohen.d(Ochiai_old$ScoreWRTLoadedClasses,Op2_old$ScoreWRTLoadedClasses, paired = T)
+#Op2 > Tarantula
+m5 <- t.test(Tarantula_old$ScoreWRTLoadedClasses,Op2_old$ScoreWRTLoadedClasses, paired = T)
+c5 <- cohen.d(Tarantula_old$ScoreWRTLoadedClasses,Op2_old$ScoreWRTLoadedClasses, paired = T)
+#DStar > Ochiai
+m6 <- t.test(Ochiai_old$ScoreWRTLoadedClasses,DStar_old$ScoreWRTLoadedClasses, paired = T)
+c6 <- cohen.d( Ochiai_old$ScoreWRTLoadedClasses,DStar_old$ScoreWRTLoadedClasses, paired = T)
+#DStar > Tarantula 
+m7 <- t.test(Tarantula_old$ScoreWRTLoadedClasses,DStar_old$ScoreWRTLoadedClasses, paired = T )
+c7 <- cohen.d(Tarantula_old$ScoreWRTLoadedClasses,DStar_old$ScoreWRTLoadedClasses, paired = T)
+Ccoldm <- c(c1["estimate"],c2["estimate"],c3["estimate"],c4["estimate"],c5["estimate"],c6["estimate"],c7["estimate"])
+Cpoldm <- c(m1["p.value"],m2["p.value"],m3["p.value"],m4["p.value"],m5["p.value"],m6["p.value"],m7["p.value"])
+
+
+
+
   
   
-  #RQ2 evaluation
-  
-  #Ochiai > Tarantula
-  print (length(Tarantula_m) == length(Ochiai_m))
-  m1 <- t.test(Tarantula_m$Score,Ochiai_m$Score, paired=T)
-  cohen.d(Tarantula_m$Score,Ochiai_m$Score,paired = TRUE)
-  #Barinel > Ochiai 
-  m2 <- t.test(Ochiai_m$Score,Barinel_m$Score, paired=T) 
-  cohen.d(Barinel_m$Score, Ochiai_m$Score, paired = TRUE)
-  #Barinel > Tarantula
-  m3 <- t.test(Tarantula_m$Score,Barinel_m$Score, paired=T)
-  cohen.d(Barinel_m$Score, Tarantula_m$Score, paired = TRUE)
-  #Op2 > Ochiai
-  m4 <- t.test(Ochiai_m$Score,Op2_m$Score, paired=T)
-  cohen.d(Op2_m$Score, Ochiai_m$Score,   paired = TRUE)
-  #Op2 > Tarantula
-  m5 <- t.test(Tarantula_m$Score,Op2_m$Score, paired=T)
-  cohen.d(Op2_m$Score, Tarantula_m$Score,paired = TRUE)
-  #DStar > Ochiai
-  m6 <- t.test(Ochiai_m$Score,DStar_m$Score, paired=T)
-  cohen.d(DStar_m$Score, Ochiai_m$Score,   paired = TRUE)
-  #DStar > Tarantula 
-  m7 <- t.test(Tarantula_m$Score,DStar_m$Score ,paired=T)
-  cohen.d(DStar_m$Score, Tarantula_m$Score, paired = TRUE)
-  
-  print (length(Tarantula_non) == length(Ochiai_non))
-  #Ochiai > Tarantula
-  non1 <- t.test(Tarantula_non$Score,Ochiai_non$Score,  paired=T)
-  cohen.d(Tarantula_non$Score,Ochiai_non$Score,  paired = TRUE)
-  #Barinel > Ochiai 
-  non2 <- t.test(Ochiai_non$Score,Barinel_non$Score, paired=T) 
-  cohen.d(Barinel_non$Score, Ochiai_non$Score,   paired = TRUE)
-  #Barinel > Tarantula
-  non3 <- t.test(Tarantula_non$Score,Barinel_non$Score, paired=T)
-  cohen.d(Barinel_non$Score, Tarantula_non$Score,  paired = TRUE)
-  #Op2 > Ochiai
-  non4 <- t.test(Ochiai_non$Score,Op2_non$Score, paired=T)
-  cohen.d(Op2_non$Score, Ochiai_non$Score,  paired = TRUE)
-  #Op2 > Tarantula
-  non5 <- t.test(Tarantula_non$Score,Op2_non$Score, paired=T)
-  cohen.d(Op2_non$Score, Tarantula_non$Score,  paired = TRUE)
-  #DStar > Ochiai
-  non6 <- t.test(Ochiai_non$Score,DStar_non$Score ,paired=T)
-  cohen.d(DStar_non$Score, Ochiai_non$Score,  paired = TRUE)
-  #DStar > Tarantula 
-  print (length(Tarantula_non) == length(DStar_non))
-  non7 <- t.test(Tarantula_non$Score,DStar_non$Score, paired=T)
-  cohen.d( Tarantula_non$Score,DStar_non$Score,  paired = TRUE)
-}

@@ -106,26 +106,31 @@ for p in Closure Lang Math Time; do
 	
 
 	#check if the loaded classes, relevant_tests have been populated 
-	if ! ( ls $currentdir/loaded_classes/100000.*  > /dev/null 2> /dev/null  ) || !( ls $currentdir/relevant_tests/100000*  > /dev/null 2> /dev/null  ); then 
-		echo populate loaded classes, relevant_tests 
-		for l in $lines; do
-			bugid=$(echo $l | cut -d ',' -f1 )
-			hashb=$(echo $l | cut -d ',' -f2 )
-			hashf=$(echo $l | cut -d ',' -f3 )
-			tempdir=/tmp/$p-$bugid
-			if ! (ls $tempdir > /dev/null 2> /dev/null ); then 
-				$D4J_HOME/framework/bin/defects4j checkout -p $p -v ${bugid}b -w $tempdir
-			fi
-			srcfd=$(grep "d4j.dir.src.classes=" $tempdir/defects4j.build.properties | cut -f2 -d'=')
-			testfd=$(grep "d4j.dir.src.tests=" $tempdir/defects4j.build.properties | cut -f2 -d'=')
-			#populate relevant_tests with symlink
-			ln -s $currentdir/relevant_tests/${bugid} $currentdir/relevant_tests/${bugid}00000
-			
-			#populate loaded_classes with symlink
+	 
+	
+	for l in $lines; do
+		bugid=$(echo $l | cut -d ',' -f1 )
+		hashb=$(echo $l | cut -d ',' -f2 )
+		hashf=$(echo $l | cut -d ',' -f3 )
+		echo populate loaded classes, relevant_tests for $p  $bugid
+		# tempdir=/tmp/$p-$bugid
+		# if ! (ls $tempdir > /dev/null 2> /dev/null ); then 
+		# 	$D4J_HOME/framework/bin/defects4j checkout -p $p -v ${bugid}b -w $tempdir
+		# fi
+		# srcfd=$(grep "d4j.dir.src.classes=" $tempdir/defects4j.build.properties | cut -f2 -d'=')
+		# testfd=$(grep "d4j.dir.src.tests=" $tempdir/defects4j.build.properties | cut -f2 -d'=')
+		#populate relevant_tests with symlink
+		#ln -s $currentdir/relevant_tests/${bugid} $currentdir/relevant_tests/${bugid}00000
+		if !( ls $currentdir/relevant_tests/{bugid}00000*  > /dev/null 2> /dev/null  ); then 
+			$D4J_HOME/framework/util/get_modified_classes.pl -p $p -b $bugid -o $currentdir/relevant_tests/${bugid}00000
+		fi
+		#populate loaded_classes with symlink
+		if ! ( ls $currentdir/loaded_classes/${bugid}00000.*  > /dev/null 2> /dev/null  ); then
 			ln -s $currentdir/loaded_classes/${bugid}.src $currentdir/loaded_classes/${bugid}00000.src
 			ln -s $currentdir/loaded_classes/${bugid}.test $currentdir/loaded_classes/${bugid}00000.test
-		done 
-	fi
+		fi 
+	done 
+	
 
 	#check if the trigger_tests folder has been populated
 	export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
@@ -135,19 +140,20 @@ for p in Closure Lang Math Time; do
 		hashf=$(echo $l | cut -d ',' -f3 )
 		
 		#populate trigger_tests
-		if !( ls $currentdir/trigger_tests/${bugid}00000  > /dev/null 2> /dev/null ) ; then 
-			echo populate trigger_tests for $p-$bugid
+		if !( ls $currentdir/trigger_tests/${bugid}00000  > /dev/null 2> /dev/null ) || [[ $(tail -n 1 $currentdir/trigger_tests/${bugid}00000) == "" ]] ; then 
+			echo populate trigger_tests for $p-${bugid}00000
 			tempdir=/tmp/$p-$bugid
 			if ! (ls $tempdir > /dev/null 2> /dev/null ); then 
 				$D4J_HOME/framework/bin/defects4j checkout -p $p -v ${bugid}b -w $tempdir
 			fi
 			srcfd=$(grep "d4j.dir.src.classes=" $tempdir/defects4j.build.properties | cut -f2 -d'=')
 			testfd=$(grep "d4j.dir.src.tests=" $tempdir/defects4j.build.properties | cut -f2 -d'=')
-			git -C $tempdir checkout $hashb -- $srcfd  $testfd
+			git -C $tempdir checkout $hashb -- $srcfd
 			$D4J_HOME/framework/bin/defects4j test -w $tempdir -r && cp $tempdir/failing_tests $currentdir/trigger_tests/${bugid}00000
 		fi
 	done
 	
+
 	rm -rf /tmp/$p-*
 done
 

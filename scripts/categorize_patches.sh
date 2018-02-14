@@ -86,13 +86,14 @@ log() {
 [ "$D4J_HOME" != "" ] || die "D4J_HOME is not set!"
 
 # Iterate over all projects in Defects4J
-for pid in Chart Closure Lang Math Time; do
+for pid in Closure Lang Math Time; do
     dir_project="$D4J_HOME/framework/projects/$pid"
     dir_patches="$dir_project/patches"
     # Determine the number of bugs for this project
-    num_bugs=$(cat $dir_project/commit-db | wc -l)
+    lines=$(cat $dir_project/commit-db )
     # Iterate over all bugs for this project
-    for bid in $(seq 1 $num_bugs); do
+    for l in $lines; do
+        bid=$(echo $l | cut -d"," -f1)
         ((NUM_FAULTS++))
         # Obtain the number of insertions, deletions, and modifications for all patched
         # files, using diffstat.
@@ -120,7 +121,8 @@ for pid in Chart Closure Lang Math Time; do
             ((num_del+=$del))
             ((num_mod+=$mod))
             # Add details to csv file
-            echo "$pid,$bid,$src,$ins,$del,$mod" >> $CSV
+            echo "$pid,$bid,${src##*/},$ins,$del,$mod"
+            echo "$pid,$bid,${src##*/},$ins,$del,$mod" >> $CSV
         done
         # Count all deletions and additions in diff
         minus=$(grep -E "^-\s+" "$dir_patches/$bid.src.patch" | wc -l)

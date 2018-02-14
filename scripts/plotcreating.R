@@ -1,9 +1,10 @@
 setwd("/Users/trung/Documents/Umass_rs/bug_fix_minimization/plots/D4J")
 getwd()
 #D4J plots
-png(filename="Line_DIF.png")
+
 line_diff = merge_diff$ins_diff + merge_diff$del_diff + merge_diff$mod_diff
 normal = merge_diff$INS + merge_diff$DEL + merge_diff$MOD
+png(filename="Line_DIF.png")
 percentage = (line_diff)/normal*100
 percentage = percentage[percentage < 400 & percentage >0]
 plot(density(percentage),main="Distribution of differences in number of changed lines",xlab="Increase percentage",xaxt='n',xlim=c(0,400),breaks=seq(0,400,by=20))

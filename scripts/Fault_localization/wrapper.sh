@@ -89,7 +89,6 @@ for p in $projects; do
 			echo "ERROR untar gzoltar ($p $i)"
 			echo "Re-do gzoltar "  
 			$FL_HOME/gzoltar/run_gzoltar.sh $p $i $FL_HOME/real-faults-data/ developer
-			continue
 		fi
 
 		#run gzoltar for non-minimized version

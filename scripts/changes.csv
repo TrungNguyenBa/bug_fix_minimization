@@ -1,0 +1,912 @@
+0,0,1,AbstractCategoryItemRenderer.java
+14,0,0,DatasetUtilities.java
+2,0,0,TimeSeries.java
+2,0,0,XYPlot.java
+4,0,1,XYSeries.java
+7,0,1,ShapeList.java
+0,0,2,TimePeriodValues.java
+0,0,1,Week.java
+0,0,1,TimeSeries.java
+0,0,1,StandardToolTipTagFragmentGenerator.java
+0,0,1,ShapeUtilities.java
+0,0,1,MultiplePiePlot.java
+0,0,1,BorderArrangement.java
+6,0,0,CategoryPlot.java 6,0,0,XYPlot.java
+5,0,0,PiePlot.java
+0,0,3,DefaultIntervalCategoryDataset.java
+1,0,1,TimeSeries.java
+1,2,1,DefaultKeyedValues.java 9,0,0,DefaultKeyedValues2D.java
+6,0,0,CategoryPlot.java
+0,0,1,ValueMarker.java
+39,0,0,DefaultBoxAndWhiskerCategoryDataset.java
+29,0,3,KeyedObjects2D.java
+19,0,0,MinMaxCategoryRenderer.java
+0,0,1,GrayPaintScale.java
+12,0,2,StatisticalBarRenderer.java
+2,0,0,Axis.java
+3,0,0,RemoveUnusedVars.java
+4,0,0,TypeCheck.java
+6,0,2,FlowSensitiveInlineVariables.java
+0,0,2,NamedType.java
+3,0,0,InlineObjectLiterals.java
+0,8,0,TypeValidator.java
+4,0,1,ChainableReverseAbstractInterpreter.java
+4,0,0,CollapseVariableDeclarations.java
+1,0,1,ProcessCommonJSModules.java
+0,0,1,NodeUtil.java
+0,2,0,TypeCheck.java
+6,0,0,MaybeReachingVariableUse.java
+0,0,1,PeepholeOptimizationsPass.java
+0,0,1,ControlFlowAnalysis.java
+3,0,0,FlowSensitiveInlineVariables.java
+6,0,3,ScopedAliases.java
+4,0,1,TypedScopeCreator.java
+0,0,1,Compiler.java
+2,0,0,ChainableReverseAbstractInterpreter.java
+1,0,1,PeepholeSubstituteAlternateSyntax.java
+0,17,2,CheckSideEffects.java
+0,24,2,CheckSideEffects.java
+6,0,1,PeepholeFoldConstants.java
+1,0,3,ScopedAliases.java
+0,2,2,TypeInference.java
+3,0,0,RemoveUnusedVars.java
+4,0,0,TypeCheck.java
+6,0,2,FlowSensitiveInlineVariables.java
+0,0,2,NamedType.java
+3,0,0,InlineObjectLiterals.java
+0,8,0,TypeValidator.java
+4,0,1,ChainableReverseAbstractInterpreter.java
+4,0,0,CollapseVariableDeclarations.java
+1,0,1,ProcessCommonJSModules.java
+0,0,1,NodeUtil.java
+0,2,0,TypeCheck.java
+6,0,0,MaybeReachingVariableUse.java
+0,0,1,PeepholeOptimizationsPass.java
+0,0,1,ControlFlowAnalysis.java
+3,0,0,FlowSensitiveInlineVariables.java
+6,0,3,ScopedAliases.java
+4,0,1,TypedScopeCreator.java
+0,0,1,Compiler.java
+2,0,0,ChainableReverseAbstractInterpreter.java
+1,0,1,PeepholeSubstituteAlternateSyntax.java
+0,17,2,CheckSideEffects.java
+0,24,2,CheckSideEffects.java
+6,0,1,PeepholeFoldConstants.java
+1,0,3,ScopedAliases.java
+0,2,2,TypeInference.java
+5,0,0,ProcessCommonJSModules.java
+3,0,3,IR.java
+4,0,0,InlineCostEstimator.java
+10,0,0,InlineObjectLiterals.java
+0,0,1,FlowSensitiveInlineVariables.java 8,0,1,MustBeReachingVariableDef.java
+0,1,0,Compiler.java
+15,3,0,JsDocInfoParser.java
+3,0,0,PrototypeObjectType.java
+0,2,2,CodeGenerator.java 0,0,1,CodePrinter.java
+0,13,2,TypeInference.java
+3,0,0,InlineVariables.java
+0,0,1,NodeTraversal.java 4,0,0,parsing/IRFactory.java
+0,0,1,CodeConsumer.java
+0,0,3,PrototypeObjectType.java
+0,2,1,NameAnalyzer.java
+9,0,0,FunctionTypeBuilder.java
+7,0,0,IRFactory.java
+17,0,0,TypedScopeCreator.java
+2,0,0,CodeConsumer.java
+4,0,2,RemoveUnusedVars.java
+0,16,0,RecordType.java
+0,0,2,debugging/sourcemap/SourceMapConsumerV3.java 5,0,1,javascript/jscomp/SourceMap.java
+3,0,4,TypedScopeCreator.java
+14,8,0,MakeDeclaredNamesUnique.java
+5,0,1,PeepholeReplaceKnownMethods.java
+0,0,1,CodeConsumer.java
+0,0,1,CodeGenerator.java
+4,0,0,InlineObjectLiterals.java
+6,0,1,jscomp/TypedScopeCreator.java 4,1,1,rhino/jstype/FunctionType.java
+1,0,1,FunctionRewriter.java
+4,0,0,SourceFile.java
+0,0,1,ClosureCodingConvention.java
+4,0,0,LiveVariablesAnalysis.java
+1,0,1,Compiler.java
+5,0,0,NodeUtil.java
+6,0,0,NodeUtil.java
+0,0,1,LightweightMessageFormatter.java
+0,0,1,LightweightMessageFormatter.java
+0,0,4,Compiler.java
+0,0,1,CodeGenerator.java
+2,0,0,TypeCheck.java
+0,0,1,AnalyzePrototypeProperties.java
+2,0,1,JsDocInfoParser.java
+7,0,0,TypeCheck.java
+0,0,1,TypedScopeCreator.java
+0,0,1,CheckAccessControls.java
+2,0,0,FunctionToBlockMutator.java 0,0,1,RenameLabels.java
+0,0,1,CodeGenerator.java
+13,0,2,PeepholeFoldConstants.java
+3,0,1,NodeUtil.java
+33,2,4,DeadAssignmentsElimination.java
+1,0,0,CodeGenerator.java
+0,2,0,PeepholeFoldConstants.java
+0,0,1,Normalize.java 1,0,0,VarCheck.java
+2,0,0,NodeUtil.java
+7,0,0,IRFactory.java
+2,0,1,JSType.java
+3,0,1,CommandLineRunner.java
+27,0,0,IRFactory.java
+7,13,1,UnreachableCodeElimination.java
+0,0,1,NodeUtil.java
+12,0,1,PeepholeSubstituteAlternateSyntax.java
+6,0,0,DeadAssignmentsElimination.java
+3,0,0,CollapseProperties.java 0,0,1,GlobalNamespace.java
+0,0,1,jscomp/FunctionTypeBuilder.java 3,0,0,rhino/jstype/FunctionType.java
+9,0,0,CheckGlobalThis.java
+0,0,1,ProcessClosurePrimitives.java
+0,0,1,ProcessClosurePrimitives.java
+19,0,0,NodeUtil.java
+7,0,0,TypedScopeCreator.java
+3,0,1,TypeCheck.java
+1,0,1,PeepholeFoldConstants.java
+19,0,0,ReferenceCollectingCallback.java
+5,0,1,CheckGlobalThis.java
+7,0,1,CheckGlobalThis.java
+0,2,1,CommandLineRunner.java
+0,0,1,Normalize.java
+1,0,0,ControlFlowAnalysis.java 7,0,0,DisambiguateProperties.java
+0,0,1,UnionType.java
+2,0,5,FoldConstants.java
+4,0,0,jscomp/GlobalNamespace.java 0,2,0,rhino/JSDocInfoBuilder.java
+1,0,0,CommandLineRunner.java
+3,0,1,ScopedAliases.java
+4,0,1,JsDocInfoParser.java
+18,0,4,jscomp/ScopedAliases.java 3,0,0,rhino/Node.java
+1,0,1,ClosureReverseAbstractInterpreter.java
+6,0,3,TypeInference.java
+0,0,1,ProcessClosurePrimitives.java
+0,0,1,NameAnalyzer.java
+0,11,0,FunctionInjector.java
+12,0,0,FunctionInjector.java
+12,12,0,TypeValidator.java
+3,0,0,DisambiguateProperties.java
+1,0,0,GlobalNamespace.java
+3,0,0,ReferenceCollectingCallback.java
+2,0,1,InlineVariables.java
+1,0,1,IRFactory.java
+0,0,1,CodeGenerator.java
+2,0,0,ExploitAssigns.java
+0,0,1,TypeCheck.java
+0,4,0,MinimizeExitPoints.java
+9,0,1,UnreachableCodeElimination.java
+3,0,1,CodeGenerator.java
+3,0,0,PrepareAst.java
+0,0,1,CollapseProperties.java
+1,0,1,TokenStream.java
+2,0,1,PeepholeSubstituteAlternateSyntax.java
+1,0,0,JsDocInfoParser.java
+11,0,1,RemoveUnusedVars.java
+8,0,2,TypeCheck.java
+11,0,4,FlowSensitiveInlineVariables.java
+0,0,2,NamedType.java 17,2,0,ObjectType.java
+6,0,3,InlineObjectLiterals.java
+0,17,16,jscomp/TypeValidator.java 0,3,2,rhino/jstype/FunctionType.java
+6,0,1,ChainableReverseAbstractInterpreter.java
+6,0,2,CollapseVariableDeclarations.java
+5,1,1,ProcessCommonJSModules.java
+21,0,9,NodeUtil.java
+0,6,0,TypeCheck.java
+17,0,1,MaybeReachingVariableUse.java
+3,0,1,PeepholeOptimizationsPass.java
+0,0,1,ControlFlowAnalysis.java 8,0,1,ControlFlowGraph.java
+4,0,0,FlowSensitiveInlineVariables.java
+7,1,8,ScopedAliases.java
+6,0,1,TypedScopeCreator.java
+0,1,1,Compiler.java
+4,0,0,ChainableReverseAbstractInterpreter.java
+6,0,2,PeepholeSubstituteAlternateSyntax.java
+0,35,13,CheckSideEffects.java 16,0,0,NodeUtil.java
+0,35,13,CheckSideEffects.java 16,0,0,NodeUtil.java
+9,0,3,PeepholeFoldConstants.java
+5,0,13,ScopedAliases.java
+0,3,3,TypeInference.java
+8,0,0,ProcessCommonJSModules.java
+5,0,4,IR.java
+4,0,3,CodeConsumer.java 0,0,3,CodeGenerator.java 9,0,0,InlineCostEstimator.java
+21,0,9,InlineObjectLiterals.java
+2,0,1,FlowSensitiveInlineVariables.java 11,0,2,MustBeReachingVariableDef.java
+0,1,0,Compiler.java
+27,10,8,JsDocInfoParser.java
+5,0,0,PrototypeObjectType.java
+29,21,2,CodeGenerator.java 0,0,1,CodePrinter.java
+0,13,2,jscomp/TypeInference.java 9,0,0,rhino/jstype/JSType.java 26,0,0,rhino/jstype/PrototypeObjectType.java 5,0,0,rhino/jstype/ProxyObjectType.java 7,0,0,rhino/jstype/UnionType.java
+7,0,3,InlineVariables.java
+0,0,1,NodeTraversal.java 7,0,0,parsing/IRFactory.java
+1,0,2,CodeConsumer.java
+0,0,3,PrototypeObjectType.java
+0,2,3,NameAnalyzer.java
+16,0,2,FunctionTypeBuilder.java
+9,0,0,IRFactory.java
+0,0,1,CompilerOptions.java 30,0,6,TypedScopeCreator.java
+7,0,0,CodeConsumer.java
+8,0,3,RemoveUnusedVars.java
+0,24,1,RecordType.java
+3,3,3,debugging/sourcemap/FilePosition.java 1,0,2,debugging/sourcemap/SourceMapConsumerV3.java 12,0,1,javascript/jscomp/SourceMap.java
+37,1,7,TypedScopeCreator.java
+36,11,1,MakeDeclaredNamesUnique.java
+9,0,2,PeepholeReplaceKnownMethods.java
+4,0,1,CodeConsumer.java
+0,0,1,CodeGenerator.java
+5,0,17,InlineObjectLiterals.java
+32,18,0,jscomp/TypedScopeCreator.java 8,1,1,rhino/jstype/FunctionType.java 20,0,0,rhino/jstype/JSTypeRegistry.java 0,0,1,rhino/jstype/PrototypeObjectType.java
+5,0,4,FunctionRewriter.java
+10,0,2,SourceFile.java
+3,0,2,ClosureCodingConvention.java
+4,0,2,LiveVariablesAnalysis.java
+1,0,1,Compiler.java
+9,0,1,NodeUtil.java 0,0,15,PeepholeRemoveDeadCode.java
+8,0,0,NodeUtil.java
+2,0,1,LightweightMessageFormatter.java
+2,0,1,LightweightMessageFormatter.java
+2,0,4,Compiler.java
+0,0,1,CodeGenerator.java
+3,0,0,TypeCheck.java
+3,0,0,RemoveUnusedVars.java
+4,0,0,TypeCheck.java
+6,0,2,FlowSensitiveInlineVariables.java
+0,0,2,NamedType.java
+3,0,0,InlineObjectLiterals.java
+0,8,0,TypeValidator.java
+4,0,1,ChainableReverseAbstractInterpreter.java
+4,0,0,CollapseVariableDeclarations.java
+1,0,1,ProcessCommonJSModules.java
+0,0,1,NodeUtil.java
+0,2,0,TypeCheck.java
+6,0,0,MaybeReachingVariableUse.java
+0,0,1,PeepholeOptimizationsPass.java
+0,0,1,ControlFlowAnalysis.java
+3,0,0,FlowSensitiveInlineVariables.java
+6,0,3,ScopedAliases.java
+4,0,1,TypedScopeCreator.java
+0,0,1,Compiler.java
+2,0,0,ChainableReverseAbstractInterpreter.java
+1,0,1,PeepholeSubstituteAlternateSyntax.java
+0,17,2,CheckSideEffects.java
+0,24,2,CheckSideEffects.java
+6,0,1,PeepholeFoldConstants.java
+1,0,3,ScopedAliases.java
+0,2,2,TypeInference.java
+5,0,0,ProcessCommonJSModules.java
+3,0,3,IR.java
+4,0,0,InlineCostEstimator.java
+10,0,0,InlineObjectLiterals.java
+0,0,1,FlowSensitiveInlineVariables.java 8,0,1,MustBeReachingVariableDef.java
+0,1,0,Compiler.java
+15,3,0,JsDocInfoParser.java
+3,0,0,PrototypeObjectType.java
+0,2,2,CodeGenerator.java 0,0,1,CodePrinter.java
+0,13,2,TypeInference.java
+3,0,0,InlineVariables.java
+0,0,1,NodeTraversal.java 4,0,0,parsing/IRFactory.java
+0,0,1,CodeConsumer.java
+0,0,3,PrototypeObjectType.java
+0,2,1,NameAnalyzer.java
+9,0,0,FunctionTypeBuilder.java
+7,0,0,IRFactory.java
+17,0,0,TypedScopeCreator.java
+2,0,0,CodeConsumer.java
+4,0,2,RemoveUnusedVars.java
+0,16,0,RecordType.java
+0,0,2,debugging/sourcemap/SourceMapConsumerV3.java 5,0,1,javascript/jscomp/SourceMap.java
+3,0,4,TypedScopeCreator.java
+14,8,0,MakeDeclaredNamesUnique.java
+5,0,1,PeepholeReplaceKnownMethods.java
+0,0,1,CodeConsumer.java
+0,0,1,CodeGenerator.java
+4,0,0,InlineObjectLiterals.java
+6,0,1,jscomp/TypedScopeCreator.java 4,1,1,rhino/jstype/FunctionType.java
+1,0,1,FunctionRewriter.java
+4,0,0,SourceFile.java
+0,0,1,ClosureCodingConvention.java
+4,0,0,LiveVariablesAnalysis.java
+1,0,1,Compiler.java
+5,0,0,NodeUtil.java
+6,0,0,NodeUtil.java
+0,0,1,LightweightMessageFormatter.java
+0,0,1,LightweightMessageFormatter.java
+0,0,4,Compiler.java
+0,0,1,CodeGenerator.java
+2,0,0,TypeCheck.java
+0,0,1,AnalyzePrototypeProperties.java
+2,0,1,JsDocInfoParser.java
+7,0,0,TypeCheck.java
+0,0,1,TypedScopeCreator.java
+0,0,1,CheckAccessControls.java
+2,0,0,FunctionToBlockMutator.java 0,0,1,RenameLabels.java
+0,0,1,CodeGenerator.java
+13,0,2,PeepholeFoldConstants.java
+3,0,1,NodeUtil.java
+33,2,4,DeadAssignmentsElimination.java
+1,0,0,CodeGenerator.java
+0,2,0,PeepholeFoldConstants.java
+0,0,1,Normalize.java 1,0,0,VarCheck.java
+2,0,0,NodeUtil.java
+7,0,0,IRFactory.java
+2,0,1,JSType.java
+3,0,1,CommandLineRunner.java
+27,0,0,IRFactory.java
+7,13,1,UnreachableCodeElimination.java
+0,0,1,NodeUtil.java
+12,0,1,PeepholeSubstituteAlternateSyntax.java
+6,0,0,DeadAssignmentsElimination.java
+3,0,0,CollapseProperties.java 0,0,1,GlobalNamespace.java
+0,0,1,jscomp/FunctionTypeBuilder.java 3,0,0,rhino/jstype/FunctionType.java
+9,0,0,CheckGlobalThis.java
+0,0,1,ProcessClosurePrimitives.java
+0,0,1,ProcessClosurePrimitives.java
+19,0,0,NodeUtil.java
+7,0,0,TypedScopeCreator.java
+3,0,1,TypeCheck.java
+1,0,1,PeepholeFoldConstants.java
+19,0,0,ReferenceCollectingCallback.java
+5,0,1,CheckGlobalThis.java
+7,0,1,CheckGlobalThis.java
+0,2,1,CommandLineRunner.java
+0,0,1,Normalize.java
+1,0,0,ControlFlowAnalysis.java 7,0,0,DisambiguateProperties.java
+0,0,1,UnionType.java
+2,0,5,FoldConstants.java
+4,0,0,jscomp/GlobalNamespace.java 0,2,0,rhino/JSDocInfoBuilder.java
+1,0,0,CommandLineRunner.java
+3,0,1,ScopedAliases.java
+4,0,1,JsDocInfoParser.java
+18,0,4,jscomp/ScopedAliases.java 3,0,0,rhino/Node.java
+1,0,1,ClosureReverseAbstractInterpreter.java
+6,0,3,TypeInference.java
+0,0,1,ProcessClosurePrimitives.java
+0,0,1,NameAnalyzer.java
+0,11,0,FunctionInjector.java
+12,0,0,FunctionInjector.java
+12,12,0,TypeValidator.java
+3,0,0,DisambiguateProperties.java
+1,0,0,GlobalNamespace.java
+3,0,0,ReferenceCollectingCallback.java
+2,0,1,InlineVariables.java
+1,0,1,IRFactory.java
+0,0,1,CodeGenerator.java
+2,0,0,ExploitAssigns.java
+0,0,1,TypeCheck.java
+0,4,0,MinimizeExitPoints.java
+9,0,1,UnreachableCodeElimination.java
+3,0,1,CodeGenerator.java
+3,0,0,PrepareAst.java
+0,0,1,CollapseProperties.java
+1,0,1,TokenStream.java
+2,0,1,PeepholeSubstituteAlternateSyntax.java
+1,0,0,JsDocInfoParser.java
+11,0,1,RemoveUnusedVars.java
+8,0,2,TypeCheck.java
+11,0,4,FlowSensitiveInlineVariables.java
+0,0,2,NamedType.java 17,2,0,ObjectType.java
+6,0,3,InlineObjectLiterals.java
+0,17,16,jscomp/TypeValidator.java 0,3,2,rhino/jstype/FunctionType.java
+6,0,1,ChainableReverseAbstractInterpreter.java
+6,0,2,CollapseVariableDeclarations.java
+5,1,1,ProcessCommonJSModules.java
+21,0,9,NodeUtil.java
+0,6,0,TypeCheck.java
+17,0,1,MaybeReachingVariableUse.java
+3,0,1,PeepholeOptimizationsPass.java
+0,0,1,ControlFlowAnalysis.java 8,0,1,ControlFlowGraph.java
+4,0,0,FlowSensitiveInlineVariables.java
+7,1,8,ScopedAliases.java
+6,0,1,TypedScopeCreator.java
+0,1,1,Compiler.java
+4,0,0,ChainableReverseAbstractInterpreter.java
+6,0,2,PeepholeSubstituteAlternateSyntax.java
+0,35,13,CheckSideEffects.java 16,0,0,NodeUtil.java
+0,35,13,CheckSideEffects.java 16,0,0,NodeUtil.java
+9,0,3,PeepholeFoldConstants.java
+5,0,13,ScopedAliases.java
+0,3,3,TypeInference.java
+8,0,0,ProcessCommonJSModules.java
+5,0,4,IR.java
+4,0,3,CodeConsumer.java 0,0,3,CodeGenerator.java 9,0,0,InlineCostEstimator.java
+21,0,9,InlineObjectLiterals.java
+2,0,1,FlowSensitiveInlineVariables.java 11,0,2,MustBeReachingVariableDef.java
+0,1,0,Compiler.java
+27,10,8,JsDocInfoParser.java
+5,0,0,PrototypeObjectType.java
+29,21,2,CodeGenerator.java 0,0,1,CodePrinter.java
+0,13,2,jscomp/TypeInference.java 9,0,0,rhino/jstype/JSType.java 26,0,0,rhino/jstype/PrototypeObjectType.java 5,0,0,rhino/jstype/ProxyObjectType.java 7,0,0,rhino/jstype/UnionType.java
+7,0,3,InlineVariables.java
+0,0,1,NodeTraversal.java 7,0,0,parsing/IRFactory.java
+1,0,2,CodeConsumer.java
+0,0,3,PrototypeObjectType.java
+0,2,3,NameAnalyzer.java
+16,0,2,FunctionTypeBuilder.java
+9,0,0,IRFactory.java
+0,0,1,CompilerOptions.java 30,0,6,TypedScopeCreator.java
+7,0,0,CodeConsumer.java
+8,0,3,RemoveUnusedVars.java
+0,24,1,RecordType.java
+3,3,3,debugging/sourcemap/FilePosition.java 1,0,2,debugging/sourcemap/SourceMapConsumerV3.java 12,0,1,javascript/jscomp/SourceMap.java
+37,1,7,TypedScopeCreator.java
+36,11,1,MakeDeclaredNamesUnique.java
+9,0,2,PeepholeReplaceKnownMethods.java
+4,0,1,CodeConsumer.java
+0,0,1,CodeGenerator.java
+5,0,17,InlineObjectLiterals.java
+32,18,0,jscomp/TypedScopeCreator.java 8,1,1,rhino/jstype/FunctionType.java 20,0,0,rhino/jstype/JSTypeRegistry.java 0,0,1,rhino/jstype/PrototypeObjectType.java
+5,0,4,FunctionRewriter.java
+10,0,2,SourceFile.java
+3,0,2,ClosureCodingConvention.java
+4,0,2,LiveVariablesAnalysis.java
+1,0,1,Compiler.java
+9,0,1,NodeUtil.java 0,0,15,PeepholeRemoveDeadCode.java
+8,0,0,NodeUtil.java
+2,0,1,LightweightMessageFormatter.java
+2,0,1,LightweightMessageFormatter.java
+2,0,4,Compiler.java
+0,0,1,CodeGenerator.java
+3,0,0,TypeCheck.java
+1,0,2,AnalyzePrototypeProperties.java
+2,0,2,JsDocInfoParser.java
+16,0,0,TypeCheck.java
+0,0,1,TypedScopeCreator.java
+0,4,5,CheckAccessControls.java
+18,0,1,FunctionToBlockMutator.java 23,4,2,RenameLabels.java
+0,0,1,CodeGenerator.java
+18,1,4,PeepholeFoldConstants.java
+9,0,6,NodeUtil.java
+78,0,19,DeadAssignmentsElimination.java
+1,0,0,CodeGenerator.java
+0,6,0,PeepholeFoldConstants.java
+1,0,3,Normalize.java 1,0,0,VarCheck.java
+3,0,0,NodeUtil.java
+7,0,2,IRFactory.java
+2,0,1,JSType.java
+4,0,1,CommandLineRunner.java
+30,0,1,IRFactory.java
+12,21,2,UnreachableCodeElimination.java
+3,0,1,NodeUtil.java
+23,0,6,PeepholeSubstituteAlternateSyntax.java
+9,0,9,DeadAssignmentsElimination.java
+4,0,0,CollapseProperties.java 5,1,2,GlobalNamespace.java
+1,0,1,jscomp/FunctionTypeBuilder.java 11,0,0,rhino/jstype/FunctionType.java
+11,0,0,CheckGlobalThis.java
+0,0,1,ProcessClosurePrimitives.java
+0,0,1,ProcessClosurePrimitives.java
+21,0,1,NodeUtil.java
+14,0,0,NodeUtil.java 29,0,5,TypedScopeCreator.java
+8,0,3,TypeCheck.java
+4,0,1,PeepholeFoldConstants.java
+0,0,1,CollapseProperties.java 0,0,3,InlineVariables.java 45,0,8,ReferenceCollectingCallback.java
+3,0,4,CheckGlobalThis.java
+0,2,0,jscomp/AbstractCommandLineRunner.java 25,0,7,jscomp/CheckGlobalThis.java 0,1,0,jscomp/CodingConvention.java 0,1,0,jscomp/DefaultCodingConvention.java 0,0,1,jscomp/JSModuleGraph.java 0,1,0,jscomp/JsMessageExtractor.java 0,1,0,jscomp/LinkedFlowScope.java 0,1,0,jscomp/SanityCheck.java 1,0,0,jscomp/SourceFile.java 0,0,1,jscomp/Tracer.java 0,0,1,jscomp/TypedCodeGenerator.java 0,2,0,jscomp/deps/DependencyInfo.java 0,3,0,jscomp/deps/DepsFileParser.java 0,1,0,jscomp/deps/JsFileLineParser.java 0,4,0,jscomp/deps/JsFileParser.java 0,2,0,jscomp/deps/SimpleDependencyInfo.java 0,2,0,jscomp/deps/SortedDependencies.java 0,8,0,jscomp/parsing/JsDocInfoParser.java 0,1,0,jscomp/parsing/ParserRunner.java 0,4,0,rhino/jstype/FunctionPrototypeType.java 0,7,0,rhino/jstype/FunctionType.java 0,4,0,rhino/jstype/InstanceObjectType.java 0,0,1,rhino/jstype/JSTypeRegistry.java 1,0,0,rhino/jstype/NamedType.java 0,2,0,rhino/jstype/ObjectType.java 0,1,0,rhino/jstype/ProxyObjectType.java 0,3,0,rhino/jstype/RecordTypeBuilder.java 0,1,0,rhino/jstype/UnresolvedTypeExpression.java
+0,4,1,CodingConvention.java 0,2,1,CommandLineRunner.java
+0,0,1,Normalize.java 5,0,2,SyntacticScopeCreator.java
+1,0,1,ControlFlowAnalysis.java 12,0,1,DisambiguateProperties.java
+0,1,1,UnionType.java
+2,0,5,FoldConstants.java
+9,0,0,jscomp/GlobalNamespace.java 0,2,1,rhino/JSDocInfoBuilder.java
+2,0,1,CommandLineRunner.java 0,0,2,DefaultPassConfig.java 14,0,0,JsMessageVisitor.java
+7,0,1,ScopedAliases.java
+12,0,1,JsDocInfoParser.java
+38,0,5,jscomp/ScopedAliases.java 4,0,0,rhino/Node.java
+0,1,2,ClosureReverseAbstractInterpreter.java
+11,0,3,TypeInference.java
+0,0,6,ProcessClosurePrimitives.java
+6,1,3,NameAnalyzer.java
+0,14,0,FunctionInjector.java
+14,0,0,FunctionInjector.java
+15,12,1,TypeValidator.java
+4,1,2,DisambiguateProperties.java
+1,0,0,GlobalNamespace.java
+3,0,0,ReferenceCollectingCallback.java
+6,0,2,InlineVariables.java 23,0,1,ReferenceCollectingCallback.java
+1,1,2,IRFactory.java
+1,0,2,CodeGenerator.java
+2,0,4,ExploitAssigns.java
+0,0,2,TypeCheck.java
+0,0,4,MinimizeExitPoints.java 2,0,0,RemoveTryCatch.java
+10,0,1,UnreachableCodeElimination.java
+3,0,1,CodeGenerator.java
+6,0,0,PrepareAst.java
+0,0,1,CollapseProperties.java
+4,0,2,TokenStream.java
+2,0,1,PeepholeSubstituteAlternateSyntax.java
+9,0,4,JsDocInfoParser.java
+9,0,2,NumberUtils.java
+3,0,0,LocaleUtils.java
+4,0,0,NumberUtils.java
+0,0,4,LookupTranslator.java
+21,0,0,LocaleUtils.java
+0,0,1,CharSequenceTranslator.java
+3,3,0,NumberUtils.java
+1,2,0,FastDatePrinter.java
+3,0,0,FastDateParser.java
+0,9,0,FastDateParser.java
+4,0,0,RandomStringUtils.java
+7,0,0,RandomStringUtils.java
+19,0,0,SerializationUtils.java
+3,0,0,StringUtils.java
+0,0,4,TypeUtils.java
+0,0,1,NumberUtils.java
+0,6,3,CharSequenceTranslator.java
+0,0,3,FastDateFormat.java
+6,0,3,NumericEntityUnescaper.java
+0,0,2,StringUtils.java
+0,0,1,DateUtils.java
+6,0,1,Fraction.java
+31,0,0,ExtendedMessageFormat.java
+0,0,1,NumberUtils.java
+0,0,27,EntityArrays.java
+0,0,1,FastDateFormat.java
+3,0,1,NumberUtils.java
+6,0,0,NumericEntityUnescaper.java
+0,0,1,SystemUtils.java
+38,0,5,StringUtils.java
+8,0,0,StringUtils.java
+14,5,3,HashCodeBuilder.java
+0,0,1,ClassUtils.java
+0,0,2,ToStringStyle.java
+0,0,2,ArrayUtils.java
+8,0,1,NumberUtils.java
+8,0,0,ArrayUtils.java
+1,0,0,FastDateFormat.java
+3,0,0,StringUtils.java
+7,0,1,StringUtils.java
+19,0,2,ClassUtils.java
+5,0,2,Entities.java
+1,0,0,ExtendedMessageFormat.java
+3,0,0,NumberUtils.java
+3,0,0,WordUtils.java
+3,0,7,StringEscapeUtils.java
+6,0,0,StrBuilder.java
+4,0,0,EqualsBuilder.java
+3,0,0,Fraction.java
+0,4,6,FastDateFormat.java
+1,0,0,BooleanUtils.java
+4,0,0,StringEscapeUtils.java
+0,0,2,DateUtils.java
+3,0,0,LocaleUtils.java
+2,0,0,StopWatch.java
+4,0,2,FastDateFormat.java
+0,0,1,LocaleUtils.java
+0,1,1,NumberUtils.java
+0,0,1,StrBuilder.java
+0,0,2,StrBuilder.java
+0,0,1,StrBuilder.java
+8,0,0,Entities.java
+0,17,3,DurationFormatUtils.java
+21,0,0,ValuedEnum.java
+30,0,0,DateUtils.java
+9,0,2,NumberUtils.java
+3,0,0,LocaleUtils.java
+6,0,6,NumberUtils.java
+1,0,8,LookupTranslator.java
+25,0,18,LocaleUtils.java
+0,0,1,CharSequenceTranslator.java
+7,7,1,NumberUtils.java
+7,0,6,FastDatePrinter.java
+3,0,0,FastDateParser.java
+0,9,0,FastDateParser.java
+4,0,0,RandomStringUtils.java
+9,0,10,RandomStringUtils.java
+22,0,2,SerializationUtils.java
+9,0,9,StringUtils.java
+13,0,5,TypeUtils.java
+0,0,3,NumberUtils.java
+0,7,13,CharSequenceTranslator.java
+6,0,4,FastDateFormat.java
+17,0,4,NumericEntityUnescaper.java
+0,5,7,StringUtils.java
+0,0,1,DateUtils.java
+7,0,2,Fraction.java
+45,0,0,ExtendedMessageFormat.java
+0,0,2,NumberUtils.java
+0,0,27,EntityArrays.java
+0,0,1,FastDateFormat.java
+3,0,1,NumberUtils.java
+5,0,2,NumericEntityUnescaper.java
+0,0,1,SystemUtils.java
+48,0,25,StringUtils.java
+12,0,14,StringUtils.java
+14,7,4,HashCodeBuilder.java
+1,0,2,ClassUtils.java
+1,1,3,ToStringStyle.java
+9,2,5,ArrayUtils.java
+8,0,1,NumberUtils.java
+9,0,3,ArrayUtils.java
+1,0,0,FastDateFormat.java
+3,0,0,StringUtils.java
+7,0,3,java/org/apache/commons/lang/StringUtils.java 36,0,1,test/org/apache/commons/lang/StringUtilsEqualsIndexOfTest.java
+28,0,3,ClassUtils.java
+5,0,2,Entities.java
+1,0,0,ExtendedMessageFormat.java
+3,0,0,NumberUtils.java
+5,0,0,WordUtils.java
+5,0,18,StringEscapeUtils.java
+6,0,0,StrBuilder.java
+4,0,2,EqualsBuilder.java
+3,0,0,Fraction.java
+0,4,8,FastDateFormat.java
+1,0,0,BooleanUtils.java
+4,0,0,StringEscapeUtils.java
+0,0,6,DateUtils.java
+3,0,0,LocaleUtils.java
+2,0,1,StopWatch.java
+10,0,2,FastDateFormat.java
+0,0,1,LocaleUtils.java
+0,1,1,NumberUtils.java 0,1,1,math/NumberUtils.java
+0,0,1,StrBuilder.java
+0,0,2,StrBuilder.java
+1,0,1,StrBuilder.java
+7,0,1,Entities.java
+0,25,8,DurationFormatUtils.java
+37,0,2,ValuedEnum.java
+47,0,1,DateUtils.java
+3,0,0,BigFraction.java 3,0,0,Fraction.java
+0,0,1,HypergeometricDistribution.java
+3,0,0,MathArrays.java
+3,0,0,threed/SubLine.java 3,0,0,twod/SubLine.java
+0,0,1,Complex.java
+0,0,1,BaseOptimizer.java 0,1,3,nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java 1,0,0,nonlinear/scalar/noderiv/CMAESOptimizer.java 0,1,2,nonlinear/scalar/noderiv/PowellOptimizer.java 0,0,2,nonlinear/scalar/noderiv/SimplexOptimizer.java 0,1,2,nonlinear/vector/jacobian/GaussNewtonOptimizer.java 0,0,3,nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java
+2,3,6,AbstractIntegrator.java
+0,0,2,DiscreteDistribution.java
+1,0,1,Line.java
+1,0,0,DSCompiler.java
+0,0,1,MultivariateNormalDistribution.java
+3,0,1,BitsStreamGenerator.java
+9,0,0,AbstractLeastSquaresOptimizer.java
+0,3,1,Weight.java 9,0,0,jacobian/AbstractLeastSquaresOptimizer.java
+1,0,1,FastMath.java
+19,0,2,FastMath.java
+4,0,0,Dfp.java
+2,0,4,CMAESOptimizer.java
+13,0,0,CMAESOptimizer.java
+1,0,1,CMAESOptimizer.java
+4,1,9,RectangularCholeskyDecomposition.java
+0,0,1,FDistribution.java 0,0,1,UniformRealDistribution.java
+7,0,2,BrentOptimizer.java
+0,0,2,BrentOptimizer.java
+3,0,0,HarmonicFitter.java
+0,0,2,Fraction.java
+0,0,1,Fraction.java
+4,0,0,SimplexSolver.java
+12,1,3,OpenMapRealVector.java
+0,0,1,MannWhitneyUTest.java
+0,20,13,ContinuedFraction.java
+0,0,1,PolygonsSet.java
+0,0,1,SimplexTableau.java
+0,0,1,ListPopulation.java
+0,0,2,ElitisticListPopulation.java
+12,0,0,BigFraction.java
+12,0,2,Complex.java
+0,0,4,BOBYQAOptimizer.java
+9,0,0,EmbeddedRungeKuttaIntegrator.java
+6,0,2,BracketingNthOrderBrentSolver.java
+0,0,1,Variance.java
+2,0,1,SimplexTableau.java
+0,0,3,SummaryStatistics.java
+6,1,0,AbstractIntegrator.java
+5,0,0,OpenMapRealMatrix.java
+0,0,2,Complex.java
+2,0,3,Complex.java
+3,0,0,BaseSecantSolver.java
+0,0,4,OpenMapRealVector.java
+0,4,0,BaseSecantSolver.java
+9,0,0,BaseSecantSolver.java
+1,0,3,Rotation.java
+3,0,0,Complex.java
+6,0,1,Dfp.java
+17,0,1,Vector3D.java
+0,6,1,MultidimensionalCounter.java
+0,0,1,KMeansPlusPlusClusterer.java
+0,0,1,GaussianFitter.java
+0,0,1,FastMath.java
+0,7,3,NormalDistributionImpl.java
+0,0,2,PoissonDistributionImpl.java
+0,1,3,MultiStartUnivariateRealOptimizer.java
+0,0,1,MathUtils.java
+19,5,3,LevenbergMarquardtOptimizer.java
+0,5,2,AbstractLeastSquaresOptimizer.java
+0,11,11,BrentOptimizer.java
+0,0,2,MultiStartUnivariateRealOptimizer.java
+10,0,2,LevenbergMarquardtOptimizer.java
+0,0,1,PearsonsCorrelation.java
+0,0,1,BisectionSolver.java
+4,0,0,EmbeddedRungeKuttaIntegrator.java 3,0,0,RungeKuttaIntegrator.java
+0,0,2,BrentSolver.java
+4,0,0,BrentSolver.java
+3,0,4,EmbeddedRungeKuttaIntegrator.java
+0,0,1,Frequency.java
+6,0,8,SingularValueDecompositionImpl.java
+0,0,1,ArrayRealVector.java 0,9,0,OpenMapRealVector.java
+11,0,0,EventState.java
+0,0,2,MathUtils.java
+0,0,1,EigenDecompositionImpl.java
+1,0,3,EigenDecompositionImpl.java
+0,0,1,SimplexSolver.java
+0,0,3,SimplexTableau.java
+9,0,0,MultiDirectional.java
+0,0,1,UnivariateRealSolverUtils.java
+3,3,0,CholeskyDecompositionImpl.java
+0,2,2,SimplexTableau.java
+0,1,5,SimplexTableau.java
+4,0,0,Frequency.java
+3,0,0,Frequency.java
+0,0,2,Fraction.java
+43,0,6,MathUtils.java
+8,0,2,MathUtils.java
+0,0,1,MathUtils.java
+2,0,1,FDistributionImpl.java
+0,0,1,Complex.java
+14,0,2,BrentSolver.java
+0,0,1,BigMatrixImpl.java 0,0,1,RealMatrixImpl.java
+8,0,0,MathUtils.java
+0,0,3,AbstractEstimator.java
+1,0,1,ComplexFormat.java
+17,0,0,ChiSquareTestImpl.java
+10,0,0,NormalDistributionImpl.java
+0,0,1,Gamma.java
+0,0,1,SimpleRegression.java
+8,0,0,ProperFractionFormat.java
+5,0,0,BigFraction.java 9,1,2,Fraction.java
+0,0,1,HypergeometricDistribution.java
+5,0,0,MathArrays.java
+3,0,0,threed/SubLine.java 3,0,0,twod/SubLine.java
+0,0,1,Complex.java
+0,0,1,BaseOptimizer.java 0,1,3,nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer.java 2,0,0,nonlinear/scalar/noderiv/CMAESOptimizer.java 0,1,2,nonlinear/scalar/noderiv/PowellOptimizer.java 1,0,2,nonlinear/scalar/noderiv/SimplexOptimizer.java 0,1,2,nonlinear/vector/jacobian/GaussNewtonOptimizer.java 0,0,3,nonlinear/vector/jacobian/LevenbergMarquardtOptimizer.java
+5,2,8,AbstractIntegrator.java
+0,0,4,DiscreteDistribution.java
+2,0,1,Line.java
+3,0,0,DSCompiler.java
+0,0,1,MultivariateNormalDistribution.java
+5,0,5,BitsStreamGenerator.java
+0,4,2,Weight.java 10,0,2,general/AbstractLeastSquaresOptimizer.java
+0,3,2,Weight.java 10,0,2,jacobian/AbstractLeastSquaresOptimizer.java
+2,0,1,FastMath.java
+22,0,13,FastMath.java
+12,0,2,Dfp.java
+4,0,6,CMAESOptimizer.java
+21,0,1,CMAESOptimizer.java
+12,0,1,CMAESOptimizer.java
+4,1,18,RectangularCholeskyDecomposition.java
+0,0,1,FDistribution.java 8,0,8,RealDistribution.java 0,0,1,UniformRealDistribution.java
+18,0,11,BrentOptimizer.java
+28,0,3,BrentOptimizer.java
+0,0,1,exception/util/LocalizedFormats.java 9,0,0,optimization/fitting/HarmonicFitter.java
+0,0,2,Fraction.java
+0,0,1,Fraction.java
+8,0,16,SimplexSolver.java
+23,0,4,OpenMapRealVector.java
+0,0,3,MannWhitneyUTest.java
+1,20,49,ContinuedFraction.java
+2,0,1,PolygonsSet.java
+0,0,1,SimplexTableau.java
+1,0,2,ListPopulation.java
+2,0,3,ElitisticListPopulation.java
+18,0,2,BigFraction.java
+11,0,11,Complex.java
+2,0,15,BOBYQAOptimizer.java
+9,0,0,EmbeddedRungeKuttaIntegrator.java
+6,0,2,BracketingNthOrderBrentSolver.java
+0,0,1,Variance.java
+5,0,1,SimplexTableau.java
+0,0,3,SummaryStatistics.java
+6,2,0,AbstractIntegrator.java
+6,0,0,OpenMapRealMatrix.java
+2,0,2,Complex.java
+7,0,6,Complex.java
+5,0,6,BaseSecantSolver.java 2,1,6,IllinoisSolver.java 3,1,9,PegasusSolver.java 17,0,9,RegulaFalsiSolver.java
+0,0,4,OpenMapRealVector.java
+0,7,1,BaseSecantSolver.java
+12,0,10,BaseSecantSolver.java
+1,42,39,Rotation.java
+3,0,0,Complex.java
+7,0,2,Dfp.java
+31,0,4,Vector3D.java
+0,6,1,MultidimensionalCounter.java
+0,0,1,KMeansPlusPlusClusterer.java
+39,10,46,GaussianFitter.java
+0,0,1,FastMath.java
+0,6,8,NormalDistributionImpl.java
+0,14,0,PoissonDistribution.java 4,66,5,PoissonDistributionImpl.java
+4,10,5,MultiStartUnivariateRealOptimizer.java
+0,53,10,MathUtils.java
+0,5,1,AbstractLeastSquaresOptimizer.java 18,9,14,LevenbergMarquardtOptimizer.java
+0,0,1,linear/EigenDecompositionImpl.java 0,1,2,linear/SingularValueDecompositionImpl.java 0,3,5,optimization/general/AbstractLeastSquaresOptimizer.java
+0,0,3,ConvergingAlgorithmImpl.java 1,0,1,optimization/univariate/AbstractUnivariateRealOptimizer.java 0,10,32,optimization/univariate/BrentOptimizer.java
+0,1,2,MultiStartUnivariateRealOptimizer.java 0,1,13,UnivariateRealOptimizer.java
+21,0,10,LevenbergMarquardtOptimizer.java
+0,0,1,PearsonsCorrelation.java
+0,0,1,BisectionSolver.java
+8,0,2,AdamsBashforthIntegrator.java 8,0,2,AdamsMoultonIntegrator.java 8,0,2,EmbeddedRungeKuttaIntegrator.java 7,0,2,RungeKuttaIntegrator.java
+0,0,2,BrentSolver.java
+10,2,1,BrentSolver.java
+3,2,7,EmbeddedRungeKuttaIntegrator.java
+0,0,1,Frequency.java
+1,0,24,SingularValueDecompositionImpl.java
+34,0,0,AbstractRealVector.java 3,0,1,ArrayRealVector.java 0,33,0,OpenMapRealVector.java
+21,7,3,EventState.java
+0,0,2,MathUtils.java
+0,0,1,EigenDecompositionImpl.java
+4,0,6,EigenDecompositionImpl.java
+1,0,3,SimplexSolver.java
+28,1,18,SimplexTableau.java
+12,0,0,MultiDirectional.java
+0,0,3,analysis/solvers/UnivariateRealSolverUtils.java 0,0,1,distribution/AbstractContinuousDistribution.java
+6,5,0,CholeskyDecompositionImpl.java
+0,2,4,SimplexTableau.java
+2,12,15,SimplexTableau.java
+4,0,3,Frequency.java
+17,0,1,Frequency.java
+0,11,3,Fraction.java
+77,0,8,MathUtils.java
+15,0,4,MathUtils.java
+0,0,1,MathUtils.java
+5,0,2,FDistributionImpl.java
+0,3,1,Complex.java
+21,0,9,analysis/BrentSolver.java 0,0,9,transform/FastCosineTransformer.java
+0,0,1,BigMatrixImpl.java 0,0,1,RealMatrixImpl.java
+4,0,0,MessagesResources_fr.java 50,0,11,util/MathUtils.java
+0,0,5,AbstractEstimator.java
+2,0,1,ComplexFormat.java
+34,2,2,ChiSquareTestImpl.java
+13,0,3,NormalDistributionImpl.java
+0,0,1,Beta.java 0,0,1,Gamma.java
+15,0,1,SimpleRegression.java
+21,0,0,ProperFractionFormat.java
+9,0,1,Partial.java 0,3,0,field/UnsupportedDurationField.java
+3,0,1,Partial.java 3,0,0,field/UnsupportedDurationField.java
+20,0,0,MutableDateTime.java
+0,0,1,Partial.java
+6,0,6,Period.java
+26,0,0,GJChronology.java
+0,0,1,DateTimeFormatter.java
+3,0,2,DateTimeZone.java
+6,0,3,DateTimeZone.java
+1,0,1,BaseSingleFieldPeriod.java
+1,0,4,ZoneInfoCompiler.java
+6,0,1,LocalDate.java 6,0,1,LocalDateTime.java
+4,0,1,PeriodFormatterBuilder.java
+5,0,0,BasicMonthOfYearDateTimeField.java
+3,0,0,FieldUtils.java
+0,0,1,DateTimeFormatter.java
+13,0,5,DateTimeZone.java
+12,0,0,GJChronology.java
+0,0,1,DateTimeZone.java
+6,0,2,DateTimeFormatterBuilder.java
+10,0,6,DefaultNameProvider.java
+5,0,1,BasePeriod.java
+5,4,4,DateTimeZone.java
+5,0,0,DateTimeParserBucket.java
+9,0,0,DateTimeZone.java
+0,0,7,ZonedChronology.java
+2,0,0,PeriodFormatterBuilder.java
+9,0,1,Partial.java 0,3,0,field/UnsupportedDurationField.java
+5,0,3,Partial.java 3,0,0,field/UnsupportedDurationField.java
+20,1,11,MutableDateTime.java
+1,0,3,Partial.java
+7,0,7,Period.java
+29,0,0,GJChronology.java
+3,0,2,DateTimeFormatter.java
+21,0,6,DateTimeZone.java
+8,1,6,DateTimeZone.java
+2,0,2,BaseSingleFieldPeriod.java
+1,0,4,ZoneInfoCompiler.java
+9,0,5,LocalDate.java 9,0,5,LocalDateTime.java
+4,0,2,PeriodFormatterBuilder.java
+6,0,0,BasicMonthOfYearDateTimeField.java
+2,1,14,FieldUtils.java
+4,0,1,DateTimeFormatter.java
+23,0,7,DateTimeZone.java
+13,0,3,GJChronology.java
+0,0,1,DateTimeZone.java
+6,0,2,DateTimeFormatterBuilder.java
+12,0,18,DefaultNameProvider.java
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+--- /tmp/Chart-900000b/source/org/jfree/data/time/TimeSeries.java
++++ /tmp/Chart-900000b/source/org/jfree/data/time/TimeSeries.java
+@@ -940,1 +940,1 @@
+-        if (endIndex < 0) {
++        if ((endIndex < 0)  || (endIndex < startIndex)) {

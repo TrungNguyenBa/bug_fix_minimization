@@ -122,7 +122,7 @@ for p in Closure Lang Math Time; do
 		#populate relevant_tests with symlink
 		#ln -s $currentdir/relevant_tests/${bugid} $currentdir/relevant_tests/${bugid}00000
 		if !( ls $currentdir/relevant_tests/{bugid}00000*  > /dev/null 2> /dev/null  ); then 
-			$D4J_HOME/framework/util/get_modified_classes.pl -p $p -b $bugid -o $currentdir/relevant_tests/${bugid}00000
+			$D4J_HOME/framework/util/get_modified_classes.pl -p $p -b $bugid -o $currentdir/modified_classes/${bugid}00000
 		fi
 		#populate loaded_classes with symlink
 		if ! ( ls $currentdir/loaded_classes/${bugid}00000.*  > /dev/null 2> /dev/null  ); then

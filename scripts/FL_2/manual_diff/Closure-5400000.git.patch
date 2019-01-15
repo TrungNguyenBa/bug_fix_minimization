@@ -1,0 +1,83 @@
+diff --git a/src/com/google/javascript/jscomp/TypedScopeCreator.java b/src/com/google/javascript/jscomp/TypedScopeCreator.java
+index dc7b2b08..037a4258 100644
+--- a/src/com/google/javascript/jscomp/TypedScopeCreator.java
++++ b/src/com/google/javascript/jscomp/TypedScopeCreator.java
+@@ -1386,7 +1386,13 @@ final class TypedScopeCreator implements ScopeCreator {
+       if ("prototype".equals(propName)) {
+         Var qVar = scope.getVar(qName);
+         if (qVar != null) {
+-          if (!qVar.isTypeInferred()) {
++          ObjectType qVarType = ObjectType.cast(qVar.getType());
++          if (qVarType != null &&
++              rhsValue != null &&
++              rhsValue.getType() == Token.OBJECTLIT) {
++            typeRegistry.resetImplicitPrototype(
++                rhsValue.getJSType(), qVarType.getImplicitPrototype());
++          } else if (!qVar.isTypeInferred()) {
+             // Just ignore assigns to declared prototypes.
+             return;
+           }
+diff --git a/src/com/google/javascript/rhino/jstype/FunctionType.java b/src/com/google/javascript/rhino/jstype/FunctionType.java
+index 0499e5ec..02d9ef49 100644
+--- a/src/com/google/javascript/rhino/jstype/FunctionType.java
++++ b/src/com/google/javascript/rhino/jstype/FunctionType.java
+@@ -338,7 +338,6 @@ public class FunctionType extends PrototypeObjectType {
+     //
+     // In the second case, we just use the anonymous object as the prototype.
+     if (baseType.hasReferenceName() ||
+-        baseType.isUnknownType() ||
+         isNativeObjectType() ||
+         baseType.isFunctionPrototypeType() ||
+         !(baseType instanceof PrototypeObjectType)) {
+@@ -363,11 +362,15 @@ public class FunctionType extends PrototypeObjectType {
+       return false;
+     }
+ 
+-    boolean replacedPrototype = prototype != null;
++    PrototypeObjectType oldPrototype = this.prototype;
++    boolean replacedPrototype = oldPrototype != null;
+     this.prototype = prototype;
+     this.prototypeSlot = new SimpleSlot("prototype", prototype, true);
+     this.prototype.setOwnerFunction(this);
+ 
++    if (oldPrototype != null) {
++      oldPrototype.setOwnerFunction(null);
++    }
+     if (isConstructor() || isInterface()) {
+       FunctionType superClass = getSuperClassConstructor();
+       if (superClass != null) {
+diff --git a/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java b/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java
+index e07dcbf6..15d4fa38 100644
+--- a/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java
++++ b/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java
+@@ -1299,6 +1299,17 @@ public class JSTypeRegistry implements Serializable {
+     return type;
+   }
+ 
++  public boolean resetImplicitPrototype(
++      JSType type, ObjectType newImplicitProto) {
++    if (type instanceof PrototypeObjectType) {
++      PrototypeObjectType poType = (PrototypeObjectType) type;
++      if (!poType.hasCachedValues()) {
++        poType.setImplicitPrototype(newImplicitProto);
++        return true;
++      }
++    }
++    return false;
++  }
+   /**
+    * Create an anonymous object type for a native type.
+    */
+diff --git a/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java b/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+index 3af33366..2faffbd1 100644
+--- a/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
++++ b/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+@@ -587,7 +587,7 @@ class PrototypeObjectType extends ObjectType {
+   }
+ 
+   void setOwnerFunction(FunctionType type) {
+-    Preconditions.checkState(ownerFunction == null);
++    Preconditions.checkState(ownerFunction == null || type == null);
+     ownerFunction = type;
+   }
+ 

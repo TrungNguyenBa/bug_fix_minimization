@@ -1,0 +1,8 @@
+--- /tmp/Chart-700000b/source/org/jfree/data/time/TimePeriodValues.java
++++ /tmp/Chart-700000b/source/org/jfree/data/time/TimePeriodValues.java
+@@ -299,1 +299,1 @@
+-            long s = getDataItem(this.minMiddleIndex).getPeriod().getStart()
++            long s = getDataItem(this.maxMiddleIndex).getPeriod().getStart()
+@@ -301,1 +301,1 @@
+-            long e = getDataItem(this.minMiddleIndex).getPeriod().getEnd()
++            long e = getDataItem(this.maxMiddleIndex).getPeriod().getEnd()

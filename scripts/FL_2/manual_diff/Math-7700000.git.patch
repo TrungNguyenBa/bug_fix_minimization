@@ -1,0 +1,53 @@
+diff --git a/src/main/java/org/apache/commons/math/linear/AbstractRealVector.java b/src/main/java/org/apache/commons/math/linear/AbstractRealVector.java
+index cf103c066..5192b9d78 100644
+--- a/src/main/java/org/apache/commons/math/linear/AbstractRealVector.java
++++ b/src/main/java/org/apache/commons/math/linear/AbstractRealVector.java
+@@ -205,6 +205,15 @@ public abstract class AbstractRealVector implements RealVector {
+         return Math.sqrt(d);
+     }
+ 
++    public double getLInfNorm() {
++        double norm = 0;
++        Iterator<Entry> it = sparseIterator();
++        Entry e;
++        while (it.hasNext() && (e = it.next()) != null) {
++            norm = Math.max(norm, Math.abs(e.getValue()));
++        }
++        return norm;
++    }
+     /** {@inheritDoc} */
+     public double getDistance(double[] v) throws IllegalArgumentException {
+         return getDistance(new ArrayRealVector(v,false));
+diff --git a/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java b/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java
+index 45c091921..244ed18f4 100644
+--- a/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java
++++ b/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java
+@@ -715,7 +715,7 @@ public class ArrayRealVector extends AbstractRealVector implements Serializable
+     public double getLInfNorm() {
+         double max = 0;
+         for (double a : data) {
+-            max += Math.max(max, Math.abs(a));
++            max = Math.max(max, Math.abs(a));
+         }
+         return max;
+     }
+diff --git a/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+index febea7a87..b3c9daade 100644
+--- a/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
++++ b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+@@ -557,15 +557,6 @@ public class OpenMapRealVector extends AbstractRealVector implements SparseRealV
+     }
+ 
+     /** {@inheritDoc} */
+-    public double getLInfNorm() {
+-        double max = 0;
+-        Iterator iter = entries.iterator();
+-        while (iter.hasNext()) {
+-            iter.advance();
+-            max += iter.value();
+-        }
+-        return max;
+-    }
+ 
+     /** {@inheritDoc} */
+     public double getNorm() {

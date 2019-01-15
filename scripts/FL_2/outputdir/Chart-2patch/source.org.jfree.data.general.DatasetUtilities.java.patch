@@ -1,0 +1,24 @@
+--- /tmp/Chart-200000b/source/org/jfree/data/general/DatasetUtilities.java
++++ /tmp/Chart-200000b/source/org/jfree/data/general/DatasetUtilities.java
+@@ -754,0 +754,1 @@
++                    double value = intervalXYData.getXValue(series, item);
+@@ -756,0 +757,4 @@
++                    if (!Double.isNaN(value)) {
++                        minimum = Math.min(minimum, value);
++                        maximum = Math.max(maximum, value);
++                    }
+@@ -758,0 +763,1 @@
++                        maximum = Math.max(maximum, lvalue);
+@@ -760,0 +766,1 @@
++                        minimum = Math.min(minimum, uvalue);
+@@ -1241,0 +1248,1 @@
++                    double value = ixyd.getYValue(series, item);
+@@ -1243,0 +1251,4 @@
++                    if (!Double.isNaN(value)) {
++                        minimum = Math.min(minimum, value);
++                        maximum = Math.max(maximum, value);
++                    }
+@@ -1245,0 +1257,1 @@
++                        maximum = Math.max(maximum, lvalue);
+@@ -1247,0 +1260,1 @@
++                        minimum = Math.min(minimum, uvalue);

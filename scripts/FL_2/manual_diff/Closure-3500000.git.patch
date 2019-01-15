@@ -1,0 +1,91 @@
+diff --git a/src/com/google/javascript/jscomp/TypeInference.java b/src/com/google/javascript/jscomp/TypeInference.java
+index 13e10920..fb6be1eb 100644
+--- a/src/com/google/javascript/jscomp/TypeInference.java
++++ b/src/com/google/javascript/jscomp/TypeInference.java
+@@ -1118,21 +1118,8 @@ class TypeInference
+ 
+     ObjectType constraintObj =
+         ObjectType.cast(constraint.restrictByNotNullOrUndefined());
+-    if (constraintObj != null && constraintObj.isRecordType()) {
+-      ObjectType objType = ObjectType.cast(type.restrictByNotNullOrUndefined());
+-      if (objType != null) {
+-        for (String prop : constraintObj.getOwnPropertyNames()) {
+-          JSType propType = constraintObj.getPropertyType(prop);
+-          if (!objType.isPropertyTypeDeclared(prop)) {
+-            JSType typeToInfer = propType;
+-            if (!objType.hasProperty(prop)) {
+-              typeToInfer =
+-                  getNativeType(VOID_TYPE).getLeastSupertype(propType);
+-            }
+-            objType.defineInferredProperty(prop, typeToInfer, null);
+-          }
+-        }
+-      }
++    if (constraintObj != null) {
++      type.matchConstraint(constraintObj);
+     }
+   }
+ 
+diff --git a/src/com/google/javascript/rhino/jstype/JSType.java b/src/com/google/javascript/rhino/jstype/JSType.java
+index 8592ca60..8b4572c7 100644
+--- a/src/com/google/javascript/rhino/jstype/JSType.java
++++ b/src/com/google/javascript/rhino/jstype/JSType.java
+@@ -1170,4 +1170,5 @@ public abstract class JSType implements Serializable {
+    *     annotations. Otherwise, it's for warnings.
+    */
+   abstract String toStringHelper(boolean forAnnotations);
++  public void matchConstraint(ObjectType contraint) {}
+ }
+diff --git a/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java b/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+index f4b537d2..647ad7be 100644
+--- a/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
++++ b/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+@@ -550,4 +550,20 @@ class PrototypeObjectType extends ObjectType {
+     }
+     return this;
+   }
++  @Override
++  public void matchConstraint(ObjectType constraintObj) {
++    if (constraintObj.isRecordType()) {
++      for (String prop : constraintObj.getOwnPropertyNames()) {
++        JSType propType = constraintObj.getPropertyType(prop);
++        if (!isPropertyTypeDeclared(prop)) {
++          JSType typeToInfer = propType;
++          if (!hasProperty(prop)) {
++            typeToInfer = getNativeType(JSTypeNative.VOID_TYPE)
++                .getLeastSupertype(propType);
++          }
++          defineInferredProperty(prop, typeToInfer, null);
++        }
++      }
++    }
++  }
+ }
+diff --git a/src/com/google/javascript/rhino/jstype/ProxyObjectType.java b/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+index e025d519..284610da 100644
+--- a/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
++++ b/src/com/google/javascript/rhino/jstype/ProxyObjectType.java
+@@ -419,4 +419,8 @@ class ProxyObjectType extends ObjectType {
+     }
+     return this;
+   }
++  @Override
++  public void matchConstraint(ObjectType contraint) {
++    referencedType.matchConstraint(contraint);
++  }
+ }
+diff --git a/src/com/google/javascript/rhino/jstype/UnionType.java b/src/com/google/javascript/rhino/jstype/UnionType.java
+index f54d8d48..70dca356 100644
+--- a/src/com/google/javascript/rhino/jstype/UnionType.java
++++ b/src/com/google/javascript/rhino/jstype/UnionType.java
+@@ -586,4 +586,10 @@ public class UnionType extends JSType {
+     }
+     return currentCommonSuper;
+   }
++  @Override
++  public void matchConstraint(ObjectType constraintObj) {
++    for (JSType alternate : alternates) {
++      alternate.matchConstraint(constraintObj);
++    }
++  }
+ }

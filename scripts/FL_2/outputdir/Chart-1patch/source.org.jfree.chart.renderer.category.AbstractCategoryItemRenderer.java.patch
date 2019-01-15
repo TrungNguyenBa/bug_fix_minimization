@@ -1,0 +1,5 @@
+--- /tmp/Chart-100000b/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
++++ /tmp/Chart-100000b/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
+@@ -1797,1 +1797,1 @@
+-        if (dataset != null) {
++        if (dataset == null) {

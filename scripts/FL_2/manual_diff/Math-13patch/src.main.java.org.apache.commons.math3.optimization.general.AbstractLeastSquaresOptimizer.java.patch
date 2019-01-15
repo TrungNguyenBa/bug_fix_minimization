@@ -1,0 +1,15 @@
+--- /tmp/Math-1300000b/src/main/java/org/apache/commons/math3/optimization/general/AbstractLeastSquaresOptimizer.java
++++ /tmp/Math-1300000b/src/main/java/org/apache/commons/math3/optimization/general/AbstractLeastSquaresOptimizer.java
+@@ -28,0 +28,1 @@
++import org.apache.commons.math3.linear.DiagonalMatrix;
+@@ -560,0 +561,8 @@
++        if (m instanceof DiagonalMatrix) {
++            final int dim = m.getRowDimension();
++            final RealMatrix sqrtM = new DiagonalMatrix(dim);
++            for (int i = 0; i < dim; i++) {
++               sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));
++            }
++            return sqrtM;
++        } else {
+@@ -562,0 +571,1 @@
++        }

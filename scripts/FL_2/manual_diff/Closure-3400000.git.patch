@@ -1,0 +1,57 @@
+diff --git a/src/com/google/javascript/jscomp/CodeGenerator.java b/src/com/google/javascript/jscomp/CodeGenerator.java
+index 83cdb420..dff2d36d 100644
+--- a/src/com/google/javascript/jscomp/CodeGenerator.java
++++ b/src/com/google/javascript/jscomp/CodeGenerator.java
+@@ -100,8 +100,6 @@ class CodeGenerator {
+           "Bad binary operator \"%s\": expected 2 arguments but got %s",
+           opstr, childCount);
+       int p = NodeUtil.precedence(type);
+-      addExpr(first, p, context);
+-      cc.addOp(opstr, true);
+ 
+       // For right-hand-side of operations, only pass context if it's
+       // the IN_FOR_INIT_CLAUSE one.
+@@ -117,7 +115,7 @@ class CodeGenerator {
+         // Assignments are the only right-associative binary operators
+         addExpr(last, p, rhsContext);
+       } else {
+-        addExpr(last, p + 1, rhsContext);
++        unrollBinaryOperator(n, type, opstr, context, rhsContext, p, p + 1);
+       }
+       return;
+     }
+@@ -746,6 +744,21 @@ class CodeGenerator {
+     cc.endSourceMapping(n);
+   }
+ 
++  private void unrollBinaryOperator(
++      Node n, int op, String opStr, Context context,
++      Context rhsContext, int leftPrecedence, int rightPrecedence) {
++    Node firstNonOperator = n.getFirstChild();
++    while (firstNonOperator.getType() == op) {
++      firstNonOperator = firstNonOperator.getFirstChild();
++    }
++    addExpr(firstNonOperator, leftPrecedence, context);
++    Node current = firstNonOperator;
++    do {
++      current = current.getParent();
++      cc.addOp(opStr, true);
++      addExpr(current.getFirstChild().getNext(), rightPrecedence, rhsContext);
++    } while (current != n);
++  }
+   static boolean isSimpleNumber(String s) {
+     int len = s.length();
+     for (int index = 0; index < len; index++) {
+diff --git a/src/com/google/javascript/jscomp/CodePrinter.java b/src/com/google/javascript/jscomp/CodePrinter.java
+index 52dfa9b2..31c62d92 100644
+--- a/src/com/google/javascript/jscomp/CodePrinter.java
++++ b/src/com/google/javascript/jscomp/CodePrinter.java
+@@ -331,7 +331,7 @@ class CodePrinter {
+     @Override
+     void appendOp(String op, boolean binOp) {
+       if (binOp) {
+-        if (getLastChar() != ' ') {
++        if (getLastChar() != ' ' && op.charAt(0) != ',') {
+           append(" ");
+         }
+         append(op);

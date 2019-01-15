@@ -1,0 +1,10 @@
+--- /tmp/Chart-1900000b/source/org/jfree/chart/plot/CategoryPlot.java
++++ /tmp/Chart-1900000b/source/org/jfree/chart/plot/CategoryPlot.java
+@@ -691,0 +691,3 @@
++        if (axis == null) {
++            throw new IllegalArgumentException("Null 'axis' argument.");
++        }
+@@ -965,0 +968,3 @@
++        if (axis == null) {
++            throw new IllegalArgumentException("Null 'axis' argument.");
++        }

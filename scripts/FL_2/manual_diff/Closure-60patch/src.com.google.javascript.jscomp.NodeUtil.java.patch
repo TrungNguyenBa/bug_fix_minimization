@@ -1,0 +1,10 @@
+--- /tmp/Closure-6000000b/src/com/google/javascript/jscomp/NodeUtil.java
++++ /tmp/Closure-6000000b/src/com/google/javascript/jscomp/NodeUtil.java
+@@ -107,0 +107,2 @@
++      case Token.VOID:
++        return TernaryValue.FALSE;
+@@ -133,0 +135,1 @@
++        if (!mayHaveSideEffects(n.getFirstChild())) {
+@@ -134,0 +137,2 @@
++        }
++        break;

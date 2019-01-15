@@ -1,0 +1,10 @@
+--- /tmp/Chart-500000b/source/org/jfree/data/xy/XYSeries.java
++++ /tmp/Chart-500000b/source/org/jfree/data/xy/XYSeries.java
+@@ -535,0 +535,4 @@
++        if (this.allowDuplicateXValues) {
++            add(x, y);
++            return null;
++        }
+@@ -542,1 +546,1 @@
+-        if (index >= 0 && !this.allowDuplicateXValues) {
++        if (index >= 0) {

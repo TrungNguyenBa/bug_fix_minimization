@@ -1,0 +1,11 @@
+--- /tmp/Closure-9500000b/src/com/google/javascript/jscomp/TypedScopeCreator.java
++++ /tmp/Closure-9500000b/src/com/google/javascript/jscomp/TypedScopeCreator.java
+@@ -894,0 +894,3 @@
++      if (n.getType() == Token.GETPROP && !scope.isGlobal() &&
++          isQnameRootedInGlobalScope(n)) {
++        Scope globalScope = scope.getGlobalScope();
+@@ -894,0 +897,4 @@
++        if (!globalScope.isDeclared(variableName, false)) {
++          scopeToDeclareIn = scope.getGlobalScope();
++        }
++      }

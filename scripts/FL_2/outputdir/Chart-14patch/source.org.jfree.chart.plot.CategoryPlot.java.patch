@@ -1,0 +1,10 @@
+--- /tmp/Chart-1400000b/source/org/jfree/chart/plot/CategoryPlot.java
++++ /tmp/Chart-1400000b/source/org/jfree/chart/plot/CategoryPlot.java
+@@ -2163,0 +2163,3 @@
++        if (markers == null) {
++            return false;
++        }
+@@ -2445,0 +2448,3 @@
++        if (markers == null) {
++            return false;
++        }

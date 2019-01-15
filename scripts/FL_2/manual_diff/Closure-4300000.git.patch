@@ -1,0 +1,89 @@
+diff --git a/src/com/google/javascript/jscomp/TypedScopeCreator.java b/src/com/google/javascript/jscomp/TypedScopeCreator.java
+index 215f0360..caad547e 100644
+--- a/src/com/google/javascript/jscomp/TypedScopeCreator.java
++++ b/src/com/google/javascript/jscomp/TypedScopeCreator.java
+@@ -407,6 +407,7 @@ final class TypedScopeCreator implements ScopeCreator {
+      */
+     private final List<Node> nonExternFunctions = Lists.newArrayList();
+ 
++    private List<Node> lentObjectLiterals = null;
+     /**
+      * Type-less stubs.
+      *
+@@ -531,6 +532,13 @@ final class TypedScopeCreator implements ScopeCreator {
+           }
+           break;
+       }
++      if (n.getParent() != null && NodeUtil.isStatement(n) &&
++          lentObjectLiterals != null) {
++        for (Node objLit : lentObjectLiterals) {
++          defineObjectLiteral(objLit);
++        }
++        lentObjectLiterals.clear();
++      }
+     }
+ 
+     private void attachLiteralTypes(NodeTraversal t, Node n) {
+@@ -564,7 +572,16 @@ final class TypedScopeCreator implements ScopeCreator {
+           break;
+ 
+         case Token.OBJECTLIT:
+-          defineObjectLiteral(t, n);
++          JSDocInfo info = n.getJSDocInfo();
++          if (info != null &&
++              info.getLendsName() != null) {
++            if (lentObjectLiterals == null) {
++              lentObjectLiterals = Lists.newArrayList();
++            }
++            lentObjectLiterals.add(n);
++          } else {
++          defineObjectLiteral(  n);
++          }
+           break;
+ 
+           // NOTE(nicksantos): If we ever support Array tuples,
+@@ -572,7 +589,7 @@ final class TypedScopeCreator implements ScopeCreator {
+       }
+     }
+ 
+-    private void defineObjectLiteral(NodeTraversal t, Node objectLit) {
++    private void defineObjectLiteral(Node objectLit) {
+       // Handle the @lends annotation.
+       JSType type = null;
+       JSDocInfo info = objectLit.getJSDocInfo();
+@@ -616,7 +633,7 @@ final class TypedScopeCreator implements ScopeCreator {
+ 
+       // If this is an enum, the properties were already taken care of above.
+       processObjectLitProperties(
+-          t, objectLit, ObjectType.cast(objectLit.getJSType()), !createdEnumType);
++          objectLit, ObjectType.cast(objectLit.getJSType()), !createdEnumType);
+     }
+ 
+     /**
+@@ -628,7 +645,7 @@ final class TypedScopeCreator implements ScopeCreator {
+      *     well. If false, the caller should take crae of this.
+      */
+     void processObjectLitProperties(
+-        NodeTraversal t, Node objLit, ObjectType objLitType,
++        Node objLit, ObjectType objLitType,
+         boolean declareOnOwner) {
+       for (Node keyNode = objLit.getFirstChild(); keyNode != null;
+            keyNode = keyNode.getNext()) {
+@@ -636,7 +653,7 @@ final class TypedScopeCreator implements ScopeCreator {
+         String memberName = NodeUtil.getObjectLitKeyName(keyNode);
+         JSDocInfo info = keyNode.getJSDocInfo();
+         JSType valueType =
+-            getDeclaredType(t.getSourceName(), info, keyNode, value);
++            getDeclaredType(keyNode.getSourceFileName(), info, keyNode, value);
+         JSType keyType =  objLitType.isEnumType() ?
+             objLitType.toMaybeEnumType().getElementsType() :
+             NodeUtil.getObjectLitKeyTypeFromValueType(keyNode, valueType);
+@@ -653,7 +670,7 @@ final class TypedScopeCreator implements ScopeCreator {
+ 
+         if (keyType != null && objLitType != null && declareOnOwner) {
+           // Declare this property on its object literal.
+-          boolean isExtern = t.getInput() != null && t.getInput().isExtern();
++          boolean isExtern = keyNode.isFromExterns();
+           objLitType.defineDeclaredProperty(memberName, keyType, keyNode);
+         }
+       }

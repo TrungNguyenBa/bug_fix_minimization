@@ -1,0 +1,51 @@
+diff --git a/src/com/google/javascript/jscomp/MakeDeclaredNamesUnique.java b/src/com/google/javascript/jscomp/MakeDeclaredNamesUnique.java
+index 7eb99260..1ee609ba 100644
+--- a/src/com/google/javascript/jscomp/MakeDeclaredNamesUnique.java
++++ b/src/com/google/javascript/jscomp/MakeDeclaredNamesUnique.java
+@@ -80,14 +80,9 @@ class MakeDeclaredNamesUnique
+     if (declarationRoot.getType() == Token.FUNCTION) {
+       // Add the function parameters
+       Node fnParams = declarationRoot.getFirstChild().getNext();
+-      for (Node c = fnParams.getFirstChild(); c != null; c = c.getNext()) {
+-        String name = c.getString();
+-        renamer.addDeclaredName(name);
+-      }
+ 
+       // Add the function body declarations
+       Node functionBody = declarationRoot.getLastChild();
+-      findDeclaredNames(functionBody, null, renamer);
+     } else {
+       // Add the block declarations
+       findDeclaredNames(declarationRoot, null, renamer);
+@@ -123,6 +118,17 @@ class MakeDeclaredNamesUnique
+         }
+         break;
+ 
++      case Token.LP: {
++          Renamer renamer = nameStack.peek().forChildScope();
++          for (Node c = n.getFirstChild(); c != null; c = c.getNext()) {
++            String name = c.getString();
++            renamer.addDeclaredName(name);
++          }
++          Node functionBody = n.getNext();
++          findDeclaredNames(functionBody, null, renamer);
++          nameStack.push(renamer);
++        }
++        break;
+       case Token.CATCH:
+         {
+           Renamer renamer = nameStack.peek().forChildScope();
+@@ -155,10 +161,13 @@ class MakeDeclaredNamesUnique
+         break;
+ 
+       case Token.FUNCTION:
++        nameStack.pop();
+         // Remove function recursive name (if any).
+         nameStack.pop();
+         break;
+ 
++      case Token.LP:
++        break;
+       case Token.CATCH:
+         // Remove catch except name from the stack of names.
+         nameStack.pop();

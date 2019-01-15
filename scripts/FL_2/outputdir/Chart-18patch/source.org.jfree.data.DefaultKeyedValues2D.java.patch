@@ -1,0 +1,14 @@
+--- /tmp/Chart-1800000b/source/org/jfree/data/DefaultKeyedValues2D.java
++++ /tmp/Chart-1800000b/source/org/jfree/data/DefaultKeyedValues2D.java
+@@ -447,0 +447,6 @@
++    	if (columnKey == null) {
++    		throw new IllegalArgumentException("Null 'columnKey' argument.");
++    	}
++    	if (!this.columnKeys.contains(columnKey)) {
++    		throw new UnknownKeyException("Unknown key: " + columnKey);
++    	}
+@@ -451,0 +457,2 @@
++            int index = rowData.getIndex(columnKey);
++            if (index >= 0) {
+@@ -452,0 +460,1 @@
++            }

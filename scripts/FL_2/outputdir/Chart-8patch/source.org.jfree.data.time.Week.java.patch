@@ -1,0 +1,5 @@
+--- /tmp/Chart-800000b/source/org/jfree/data/time/Week.java
++++ /tmp/Chart-800000b/source/org/jfree/data/time/Week.java
+@@ -174,1 +174,1 @@
+-        this(time, RegularTimePeriod.DEFAULT_TIME_ZONE, Locale.getDefault());
++        this(time, zone, Locale.getDefault());

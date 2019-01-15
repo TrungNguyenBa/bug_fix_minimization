@@ -1,0 +1,13 @@
+--- /tmp/Closure-5400000b/src/com/google/javascript/rhino/jstype/FunctionType.java
++++ /tmp/Closure-5400000b/src/com/google/javascript/rhino/jstype/FunctionType.java
+@@ -341,1 +341,0 @@
+-        baseType.isUnknownType() ||
+@@ -366,1 +365,2 @@
+-    boolean replacedPrototype = prototype != null;
++    PrototypeObjectType oldPrototype = this.prototype;
++    boolean replacedPrototype = oldPrototype != null;
+@@ -370,0 +370,1 @@
++    if (oldPrototype != null) {
+@@ -370,0 +371,2 @@
++      oldPrototype.setOwnerFunction(null);
++    }

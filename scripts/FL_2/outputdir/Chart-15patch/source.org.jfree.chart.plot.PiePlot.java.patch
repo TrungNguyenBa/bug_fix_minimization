@@ -1,0 +1,10 @@
+--- /tmp/Chart-1500000b/source/org/jfree/chart/plot/PiePlot.java
++++ /tmp/Chart-1500000b/source/org/jfree/chart/plot/PiePlot.java
+@@ -1373,0 +1373,3 @@
++        if (this.dataset == null) {
++            return 0.0;
++        }
+@@ -2048,0 +2051,1 @@
++        if (this.dataset != null) {
+@@ -2050,0 +2054,1 @@
++        }

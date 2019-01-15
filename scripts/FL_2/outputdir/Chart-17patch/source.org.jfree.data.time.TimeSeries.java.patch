@@ -1,0 +1,6 @@
+--- /tmp/Chart-1700000b/source/org/jfree/data/time/TimeSeries.java
++++ /tmp/Chart-1700000b/source/org/jfree/data/time/TimeSeries.java
+@@ -856,1 +856,2 @@
+-        Object clone = createCopy(0, getItemCount() - 1);
++        TimeSeries clone = (TimeSeries) super.clone();
++        clone.data = (List) ObjectUtilities.deepClone(this.data);

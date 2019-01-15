@@ -55,9 +55,6 @@ def remove_D4J_dir(Project,bugID,checkoutdir="/tmp"):
 	subprocess.run("rm -rf {}/{}-{}00000b".format(checkoutdir,Project,bugID),shell=True,stdout=PIPE,stderr=PIPE)
 	subprocess.run("rm -rf {}/{}-{}b".format(checkoutdir,Project,bugID),shell=True,stdout=PIPE,stderr=PIPE)
 	subprocess.run("rm -rf {}/{}-{}f".format(checkoutdir,Project,bugID),shell=True,stdout=PIPE,stderr=PIPE)
-#get list of modified lines from buggy -> buggy' (minimized D4J)
-
-#get list of modified lines from buggy -> fix
 
 
 def get_modify_lines(diff_string) :
@@ -161,15 +158,18 @@ def get_patch(diff_original, list_of_modified_line_from_D4J_diff):
 
 def patch_apply(project,bug,checkoutdir,output_dir,file):
 	patch=file.replace("/",".") + ".patch"
-	results1= subprocess.Popen("/Users/trung/Documents/Umass_rs/bug_fix_minimization/scripts/FL_2/applypatch.sh " + "{}/{}-{}patch/{} ".format(checkoutdir,project,bug,patch) + "{}/{}-{}00000b/{}".format(checkoutdir,project,bug,file),shell = True)
+	# for some reasons calling the actual command does not work, this way is used as an alternative
+	results1= subprocess.Popen("/Users/trung/Documents/Umass_rs/bug_fix_minimization/scripts/FL_2/applypatch.sh " + "{}/{}-{}patch/{} ".format(checkoutdir,project,bug,patch) + "{}/{}-{}00000b/{}".format(checkoutdir,project,bug,file),shell = True,stdout = PIPE,stderr = PIPE)
 	results1.wait()
+	print(results1.args)
 	if (results1.returncode == 0): 
+		if (results1.stdout.decode().find("FAILED") != -1):
+			print ("patch apply error {}-{} : file =  {}".format(project,bug,file))
+			return False
 		print (results1.args)
 		return True
 	else:
 		print ("patch apply error {}-{} : file =  {}".format(project,bug,file))
-		print ("Error message:")
-		#print (results1.stderr.decode())
 		print ("(--------------------)")
 		return False
 
@@ -181,20 +181,22 @@ def test_trigger_tests(project,bug,checkoutdir):
 		r = subprocess.run("defects4j test -w {} -t {}".format(fullpath,t),shell=True,stdout=PIPE,stderr=PIPE)
 		if (r.returncode == 1) or (r.stdout.decode().find("Failing tests: 0") == -1):
 			if (r.stderr.decode().find ("BUILD FAILED") != -1):
+				print ("Not Compiled")
 				return "Not Compiled"
 			print ("Error test {}-{} : {}".format(project,bug,t))
 			return False
 	return True
 
 parser = argparse.ArgumentParser()
-parser.add_argument('versions_file', help='CSV file with "project,bugId" pairs to ask about')
-parser.add_argument('--output-dir', default="/tmp")
-parser.add_argument('--checkoutdir', default="/tmp")
-parser.add_argument('--apply', action='store_true')
-parser.add_argument('--trigger_tests',action='store_true' )
-parser.add_argument('--delete-after-finish',action='store_true')
-parser.add_argument('--Result-save', default="")
-parser.add_argument('--Ignore-list', default="")
+parser.add_argument('versions_file', help='CSV file with "project,bugId" pairs to create new minimized patch')
+parser.add_argument('--output-dir', help = 'Directory to store the new patch', default="/tmp")
+parser.add_argument('--checkoutdir', help ='Directory to checkout defect', default="/tmp")
+parser.add_argument('--apply', help = 'Apply the new patch to the non-minimized bug version', action='store_true')
+parser.add_argument('--trigger_tests',help = 'Test the trigger tests on the new minimized fixed version - requires --apply option',action='store_true' )
+parser.add_argument('--delete-after-finish',help ='Remove everything after finish',action='store_true')
+parser.add_argument('--Result-save',help = 'Store the results of succeed/fail to patch for all defect in the versions_file',default="")
+parser.add_argument('--Ignore-list',help = 'CSV file of list of bugs ("project,bugId") to ignore',default="")
+parser.add_argument('--Not-check-out',help = 'Disable checking out defects',action='store_true')
 args = parser.parse_args()
 
 check_d4jcommand()
@@ -205,6 +207,8 @@ with open(args.versions_file) as f:
 if (args.Ignore_list != ""):
 	with open(args.Ignore_list) as f:
 		ignore_list = list(csv.reader(f))
+else:
+	ignore_list = []
 		
 if (args.Result_save != ""):
 	filetowriteresult=open(args.Result_save,"w")
@@ -216,12 +220,13 @@ for i, (project,bug) in enumerate(versions, start=1):
 			filetowriteresult.write("{}-{}: {}; {}\n".format(project,bug,"Ignore",""))
 		continue
 	print ("making patch for {}-{} ({}/{})".format(project,bug,i,len(versions)))
-	D4J_checkout_result= D4J_checkout(project,bug,args.checkoutdir)
-	if (D4J_checkout_result == False):
-		if (args.Result_save != ""):
-			print ("Checkout error {}-{}".format(project,bug))
-			filetowriteresult.write("{}-{}: {}; {}\n".format(project,bug,"D4J checkout error",""))
-		continue
+	if (args.Not_check_out != True):
+		D4J_checkout_result= D4J_checkout(project,bug,args.checkoutdir)
+		if (D4J_checkout_result == False):
+			if (args.Result_save != ""):
+				print ("Checkout error {}-{}".format(project,bug))
+				filetowriteresult.write("{}-{}: {}; {}\n".format(project,bug,"D4J checkout error",""))
+			continue
 	paths=get_path_all_version(project,bug,args.checkoutdir)
 	modified_files=get_minimized_modified_classes(project,bug,args.checkoutdir)
 	ready_to_apply = True
@@ -243,8 +248,8 @@ for i, (project,bug) in enumerate(versions, start=1):
 		subprocess.run("mkdir -p {}/{}-{}patch | ls {}/{}-{}patch".format(args.output_dir,project,bug,args.output_dir,project,bug),shell=True,stdout=PIPE,stderr=PIPE)
 
 		filetowrite = open("{}/{}-{}patch/{}".format(args.output_dir,project,bug,patchname),"w")
-		filetowrite.write("--- {}/{}-{}00000b/{}\n".format(args.output_dir,project,bug,f))
-		filetowrite.write("+++ {}/{}-{}00000b/{}\n".format(args.output_dir,project,bug,f))
+		filetowrite.write("--- {}/{}-{}00000b/{}\n".format(args.checkoutdir,project,bug,f))
+		filetowrite.write("+++ {}/{}-{}00000b/{}\n".format(args.checkoutdir,project,bug,f))
 		if (pacth != []):
 			for h in pacth:
 				#creating patch file

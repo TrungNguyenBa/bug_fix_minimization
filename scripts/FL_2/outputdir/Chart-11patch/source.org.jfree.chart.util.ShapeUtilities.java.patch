@@ -1,0 +1,5 @@
+--- /tmp/Chart-1100000b/source/org/jfree/chart/util/ShapeUtilities.java
++++ /tmp/Chart-1100000b/source/org/jfree/chart/util/ShapeUtilities.java
+@@ -274,1 +274,1 @@
+-        PathIterator iterator2 = p1.getPathIterator(null);
++        PathIterator iterator2 = p2.getPathIterator(null);

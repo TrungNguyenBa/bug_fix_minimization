@@ -1,0 +1,31 @@
+diff --git a/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java b/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java
+index 00827db20..c6668b0b6 100644
+--- a/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java
++++ b/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java
+@@ -341,8 +341,10 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
+                 // trigger the event
+                 interpolator.setInterpolatedTime(eventT);
+                 final double[] eventY = interpolator.getInterpolatedState().clone();
+-                currentEvent.stepAccepted(eventT, eventY);
+-                isLastStep = currentEvent.stop();
++                for (final EventState state : eventsStates) {
++                    state.stepAccepted(eventT, eventY);
++                    isLastStep = isLastStep || state.stop();
++                }
+ 
+                 // handle the first part of the step, up to the event
+                 for (final StepHandler handler : stepHandlers) {
+@@ -358,8 +360,12 @@ public abstract class AbstractIntegrator implements FirstOrderIntegrator {
+                     return eventT;
+                 }
+ 
+-                if (currentEvent.reset(eventT, eventY)) {
+                     // some event handler has triggered changes that
++                boolean needReset = false;
++                for (final EventState state : eventsStates) {
++                    needReset =  needReset || state.reset(eventT, eventY);
++                }
++                if (needReset) {                    // some event handler has triggered changes that
+                     // invalidate the derivatives, we need to recompute them
+                     System.arraycopy(eventY, 0, y, 0, y.length);
+                     computeDerivatives(eventT, y, yDot);

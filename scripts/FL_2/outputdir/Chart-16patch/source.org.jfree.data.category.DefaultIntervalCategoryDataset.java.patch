@@ -1,0 +1,10 @@
+--- /tmp/Chart-1600000b/source/org/jfree/data/category/DefaultIntervalCategoryDataset.java
++++ /tmp/Chart-1600000b/source/org/jfree/data/category/DefaultIntervalCategoryDataset.java
+@@ -199,2 +199,2 @@
+-                this.seriesKeys = null;
+-                this.categoryKeys = null;
++                this.seriesKeys = new Comparable[0];
++                this.categoryKeys = new Comparable[0];
+@@ -330,1 +330,1 @@
+-        if (categoryKeys.length != this.startData[0].length) {
++        if (categoryKeys.length != getCategoryCount()) {

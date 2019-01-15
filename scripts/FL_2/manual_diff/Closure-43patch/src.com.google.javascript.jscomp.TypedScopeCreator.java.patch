@@ -1,0 +1,23 @@
+--- /tmp/Closure-4300000b/src/com/google/javascript/jscomp/TypedScopeCreator.java
++++ /tmp/Closure-4300000b/src/com/google/javascript/jscomp/TypedScopeCreator.java
+@@ -410,0 +410,1 @@
++    private List<Node> lentObjectLiterals = null;
+@@ -533,0 +534,7 @@
++      if (n.getParent() != null && NodeUtil.isStatement(n) &&
++          lentObjectLiterals != null) {
++        for (Node objLit : lentObjectLiterals) {
++          defineObjectLiteral(objLit);
++        }
++        lentObjectLiterals.clear();
++      }
+@@ -566,0 +574,8 @@
++          JSDocInfo info = n.getJSDocInfo();
++          if (info != null &&
++              info.getLendsName() != null) {
++            if (lentObjectLiterals == null) {
++              lentObjectLiterals = Lists.newArrayList();
++            }
++            lentObjectLiterals.add(n);
++          } else {
+@@ -567,0 +583,1 @@
++          }

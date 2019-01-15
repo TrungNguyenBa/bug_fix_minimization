@@ -1,0 +1,45 @@
+diff --git a/src/com/google/javascript/jscomp/TypeValidator.java b/src/com/google/javascript/jscomp/TypeValidator.java
+index f70a52c2..8741e1fd 100644
+--- a/src/com/google/javascript/jscomp/TypeValidator.java
++++ b/src/com/google/javascript/jscomp/TypeValidator.java
+@@ -722,6 +722,18 @@ class TypeValidator {
+    *     to an Object type, if possible.
+    */
+   String getReadableJSTypeName(Node n, boolean dereference) {
++    JSType type = getJSType(n);
++    if (dereference) {
++      ObjectType dereferenced = type.dereference();
++      if (dereferenced != null) {
++        type = dereferenced;
++      }
++    }
++    if (type.isFunctionPrototypeType() ||
++        (type.toObjectType() != null &&
++         type.toObjectType().getConstructor() != null)) {
++      return type.toString();
++    }
+     // If we're analyzing a GETPROP, the property may be inherited by the
+     // prototype chain. So climb the prototype chain and find out where
+     // the property was originally defined.
+@@ -750,20 +762,9 @@ class TypeValidator {
+       }
+     }
+ 
+-    JSType type = getJSType(n);
+-    if (dereference) {
+-      ObjectType dereferenced = type.dereference();
+-      if (dereferenced != null) {
+-        type = dereferenced;
+-      }
+-    }
+ 
+     String qualifiedName = n.getQualifiedName();
+-    if (type.isFunctionPrototypeType() ||
+-        (type.toObjectType() != null &&
+-         type.toObjectType().getConstructor() != null)) {
+-      return type.toString();
+-    } else if (qualifiedName != null) {
++    if (qualifiedName != null) {
+       return qualifiedName;
+     } else if (type.isFunctionType()) {
+       // Don't show complex function names.

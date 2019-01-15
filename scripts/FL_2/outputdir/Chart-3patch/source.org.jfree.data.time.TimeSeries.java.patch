@@ -1,0 +1,5 @@
+--- /tmp/Chart-300000b/source/org/jfree/data/time/TimeSeries.java
++++ /tmp/Chart-300000b/source/org/jfree/data/time/TimeSeries.java
+@@ -1055,0 +1055,2 @@
++        copy.minY = Double.NaN;
++        copy.maxY = Double.NaN;

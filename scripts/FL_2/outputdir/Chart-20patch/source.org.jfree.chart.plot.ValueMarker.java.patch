@@ -1,0 +1,5 @@
+--- /tmp/Chart-2000000b/source/org/jfree/chart/plot/ValueMarker.java
++++ /tmp/Chart-2000000b/source/org/jfree/chart/plot/ValueMarker.java
+@@ -95,1 +95,1 @@
+-        super(paint, stroke, paint, stroke, alpha);
++        super(paint, stroke, outlinePaint, outlineStroke, alpha);

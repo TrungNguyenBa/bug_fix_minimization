@@ -1,0 +1,10 @@
+--- /tmp/Chart-1400000b/source/org/jfree/chart/plot/XYPlot.java
++++ /tmp/Chart-1400000b/source/org/jfree/chart/plot/XYPlot.java
+@@ -2290,0 +2290,3 @@
++        if (markers == null) {
++            return false;
++        }
+@@ -2526,0 +2529,3 @@
++        if (markers == null) {
++            return false;
++        }

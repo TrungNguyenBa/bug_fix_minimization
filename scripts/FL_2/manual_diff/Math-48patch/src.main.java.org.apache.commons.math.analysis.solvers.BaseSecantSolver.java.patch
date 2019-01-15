@@ -1,0 +1,8 @@
+--- /tmp/Math-4800000b/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
++++ /tmp/Math-4800000b/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+@@ -21,0 +21,1 @@
++import org.apache.commons.math.exception.ConvergenceException;
+@@ -180,0 +181,3 @@
++                    if (x == x1) {
++                        throw new ConvergenceException();
++                    }

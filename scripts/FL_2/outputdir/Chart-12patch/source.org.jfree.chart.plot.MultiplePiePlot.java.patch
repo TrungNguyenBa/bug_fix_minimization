@@ -1,0 +1,5 @@
+--- /tmp/Chart-1200000b/source/org/jfree/chart/plot/MultiplePiePlot.java
++++ /tmp/Chart-1200000b/source/org/jfree/chart/plot/MultiplePiePlot.java
+@@ -143,1 +143,1 @@
+-        this.dataset = dataset;
++        setDataset(dataset);

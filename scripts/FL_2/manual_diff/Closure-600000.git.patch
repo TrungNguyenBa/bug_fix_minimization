@@ -1,0 +1,50 @@
+diff --git a/src/com/google/javascript/jscomp/TypeValidator.java b/src/com/google/javascript/jscomp/TypeValidator.java
+index be049b09..62ffce5c 100644
+--- a/src/com/google/javascript/jscomp/TypeValidator.java
++++ b/src/com/google/javascript/jscomp/TypeValidator.java
+@@ -363,11 +363,8 @@ class TypeValidator {
+       JSType leftType, Node owner, String propName) {
+     // The NoType check is a hack to make typedefs work OK.
+     if (!leftType.isNoType() && !rightType.canAssignTo(leftType)) {
+-      if (bothIntrinsics(rightType, leftType)) {
+         // We have a superior warning for this mistake, which gives you
+         // the line numbers of both types.
+-        registerMismatch(rightType, leftType, null);
+-      } else {
+         // Do not type-check interface methods, because we expect that
+         // they will have dummy implementations that do not match the type
+         // annotations.
+@@ -384,7 +381,6 @@ class TypeValidator {
+             "assignment to property " + propName + " of " +
+             getReadableJSTypeName(owner, true),
+             rightType, leftType);
+-      }
+       return false;
+     }
+     return true;
+@@ -404,13 +400,9 @@ class TypeValidator {
+   boolean expectCanAssignTo(NodeTraversal t, Node n, JSType rightType,
+       JSType leftType, String msg) {
+     if (!rightType.canAssignTo(leftType)) {
+-      if (bothIntrinsics(rightType, leftType)) {
+         // We have a superior warning for this mistake, which gives you
+         // the line numbers of both types.
+-        registerMismatch(rightType, leftType, null);
+-      } else {
+         mismatch(t, n, msg, rightType, leftType);
+-      }
+       return false;
+     }
+     return true;
+diff --git a/src/com/google/javascript/rhino/jstype/FunctionType.java b/src/com/google/javascript/rhino/jstype/FunctionType.java
+index 5a6cf9a7..ad624102 100644
+--- a/src/com/google/javascript/rhino/jstype/FunctionType.java
++++ b/src/com/google/javascript/rhino/jstype/FunctionType.java
+@@ -1016,7 +1016,6 @@ public class FunctionType extends PrototypeObjectType {
+       // TODO(nicksantos): fix this.
+       boolean treatThisTypesAsCovariant =
+         // If either one of these is a ctor, skip 'this' checking.
+-        isConstructor() || other.isConstructor() ||
+ 
+         // An interface 'this'-type is non-restrictive.
+         // In practical terms, if C implements I, and I has a method m,

@@ -1,0 +1,113 @@
+Closure-10: False; False to patch
+Closure-102: False; Fail test
+Closure-104: True; 
+Closure-106: True; 
+Closure-111: True; 
+Closure-114: True; 
+Closure-115: False; False to patch
+Closure-121: False; Fail test-Not Compiled
+Closure-122: False; False to patch
+Closure-124: True; 
+Closure-132: Ignore; 
+Closure-133: False; Fail test
+Closure-15: True; 
+Closure-17: False; False to patch
+Closure-23: False; False to patch
+Closure-25: False; False to patch
+Closure-27: True; 
+Closure-29: True; 
+Closure-32: False; Fail test-Not Compiled
+Closure-34: False; False to patch
+Closure-35: False; Fail test-Not Compiled
+Closure-37: True; 
+Closure-38: False; Fail test-Not Compiled
+Closure-39: Ignore; 
+Closure-41: False; Fail test-Not Compiled
+Closure-43: False; Fail test-Not Compiled
+Closure-44: True; 
+Closure-48: True; 
+Closure-50: False; False to patch
+Closure-54: False; False to patch
+Closure-58: True; 
+Closure-61: True; 
+Closure-62: True; 
+Closure-65: True; 
+Closure-7: True; 
+Closure-80: True; 
+Closure-81: False; Fail test
+Closure-83: True; 
+Closure-86: True; 
+Closure-9: False; False to patch
+Closure-91: True; 
+Closure-93: Ignore; 
+Closure-95: False; Fail test-Not Compiled
+Closure-97: True; 
+Closure-99: False; False to patch
+Lang-10: True; 
+Lang-12: False; False to patch
+Lang-13: True; 
+Lang-18: True; 
+Lang-19: False; False to patch
+Lang-2: Ignore; 
+Lang-23: False; Fail test
+Lang-24: True; 
+Lang-26: Ignore; 
+Lang-3: False; False to patch
+Lang-30: False; False to patch
+Lang-32: False; False to patch
+Lang-33: True; 
+Lang-39: True; 
+Lang-42: Ignore; 
+Lang-44: True; 
+Lang-46: False; Fail test-Not Compiled
+Lang-49: Ignore; 
+Lang-5: False; False to patch
+Lang-50: True; 
+Lang-51: Ignore; 
+Lang-52: True; 
+Lang-61: False; False to patch
+Lang-64: False; Fail test-Not Compiled
+Lang-8: False; False to patch
+Math-102: False; Fail test-Not Compiled
+Math-14: False; False to patch
+Math-16: False; False to patch
+Math-20: False; False to patch
+Math-21: True; 
+Math-22: True; 
+Math-24: False; Fail test-Not Compiled
+Math-25: True; 
+Math-27: Ignore; 
+Math-33: Ignore; 
+Math-35: True; 
+Math-45: True; 
+Math-52: False; False to patch
+Math-53: Ignore; 
+Math-54: True; 
+Math-55: False; False to patch
+Math-57: Ignore; 
+Math-58: False; False to patch
+Math-61: False; False to patch
+Math-63: True; 
+Math-64: False; False to patch
+Math-65: False; False to patch
+Math-69: True; 
+Math-70: Ignore; 
+Math-72: Ignore; 
+Math-77: False; False to patch
+Math-78: True; 
+Math-8: False; False to patch
+Math-80: True; 
+Math-82: False; False to patch
+Math-88: False; False to patch
+Math-92: False; Fail test-Not Compiled
+Math-99: False; Fail test
+Time-1: True; 
+Time-11: Ignore; 
+Time-15: False; Fail test
+Time-16: True; 
+Time-18: False; Fail test-Not Compiled
+Time-24: Ignore; 
+Time-4: True; 
+Time-7: False; False to patch
+Time-8: True; 
+Time-9: False; Fail test-Not Compiled

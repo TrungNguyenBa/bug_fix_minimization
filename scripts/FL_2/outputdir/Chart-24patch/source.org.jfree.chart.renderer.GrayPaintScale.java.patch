@@ -1,0 +1,5 @@
+--- /tmp/Chart-2400000b/source/org/jfree/chart/renderer/GrayPaintScale.java
++++ /tmp/Chart-2400000b/source/org/jfree/chart/renderer/GrayPaintScale.java
+@@ -117,1 +117,1 @@
+-        int g = (int) ((value - this.lowerBound) / (this.upperBound 
++        int g = (int) ((v - this.lowerBound) / (this.upperBound 
